@@ -12,6 +12,17 @@
     <name>primefaces</name>
 
     <build>
+		<resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>META-INF/resources/primefaces/schedule/build/**/*</exclude>
+                </excludes>
+            </resource>
+        </resources>
+		
+		
         <plugins>
             <plugin>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -77,9 +88,7 @@
                         <goals>
                             <goal>compress</goal>
                         </goals>
-                    </execution>
-                </executions>
-                <configuration>
+						<configuration>
                     <nosuffix>true</nosuffix>
                     <linebreakpos>-1</linebreakpos>
                     <excludes>
@@ -436,26 +445,38 @@
                     </aggregations>
 
                 </configuration>
+                    </execution>
+					<execution>
+					   <id>minify</id>
+                        <phase>package</phase>
+                        <configuration>
+							<jswarn>false</jswarn>
+                            <force>true</force>
+                            <useProcessedResources>true</useProcessedResources>
+                            <excludes>
+                                <exclude>**/*.something</exclude>
+                                <exclude>**/photocam.js</exclude>
+                                <exclude>**/0-quill.min.js</exclude>
+                                <exclude>**/jquery.js</exclude>
+                                <exclude>**/fullcalendar.min.js</exclude>
+                                <exclude>**/0-timeline.min.js</exclude>
+                                <exclude>**/0-chartjs.js</exclude>
+                                <exclude>**/0-jquery.inputmask.js</exclude>
+                                <exclude>**/raphael.js</exclude>
+                                <exclude>**/theme.css</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*.js</include>
+                                <include>**/*.css</include>
+                            </includes>
+						</configuration>
+				</execution>
+                </executions>
             </plugin>
 
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>add-module-infos</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>add-module-info</goal>
-                        </goals>
-                        <configuration>
-                            <overwriteExistingFiles>true</overwriteExistingFiles>
-                            <module>
-                                <moduleInfoFile>src/jre11/java/module-info.java</moduleInfoFile>
-                            </module>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
 
         </plugins>

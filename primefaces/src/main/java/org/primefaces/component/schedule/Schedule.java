@@ -47,6 +47,8 @@ import org.primefaces.util.*;
 @ResourceDependency(library = "primefaces", name = "components.css")
 @ResourceDependency(library = "primefaces", name = "moment/moment.js")
 @ResourceDependency(library = "primefaces", name = "moment/moment-timezone-with-data.js")
+@ResourceDependency(library = "primefaces", name = "jquery/jquery.js")
+@ResourceDependency(library = "primefaces", name = "jquery/jquery-plugins.js")
 @ResourceDependency(library = "primefaces", name = "core.js")
 @ResourceDependency(library = "primefaces", name = "components.js")
 @ResourceDependency(library = "primefaces", name = "schedule/schedule.js")
@@ -112,7 +114,7 @@ public class Schedule extends ScheduleBase {
                 int monthDelta = Double.valueOf(params.get(clientId + "_monthDelta")).intValue();
                 int dayDelta = Double.valueOf(params.get(clientId + "_dayDelta")).intValue();
                 int minuteDelta = Double.valueOf(params.get(clientId + "_minuteDelta")).intValue();
-                boolean allDay = Boolean.valueOf(params.get(clientId + "_allDay")).booleanValue();
+                boolean allDay = Boolean.parseBoolean(params.get(clientId + "_allDay"));
 
                 LocalDateTime startDate = movedEvent.getStartDate();
                 LocalDateTime endDate = movedEvent.getEndDate();
