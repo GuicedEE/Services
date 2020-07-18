@@ -849,7 +849,6 @@
                             <include>net.shibboleth.utilities:*</include>
                             <include>org.apache.wss4j:wss4j-ws-security-dom:*</include>
                             <include>org.apache.wss4j:wss4j-ws-security-common:*</include>
-
                         </includes>
                     </artifactSet>
                     <filters>
@@ -861,6 +860,9 @@
                                 <exclude>META-INF/*.DSA</exclude>
                                 <exclude>META-INF/*.RSA</exclude>
                                 <exclude>1.class</exclude>
+								<exclude>/1*</exclude>
+								<exclude>*1.class</exclude>
+								<exclude>/1.class</exclude>
                                 <exclude>META-INF/services/</exclude>
                                 <exclude>META-INF/cxf/</exclude>
                             </excludes>
@@ -887,61 +889,12 @@
                             <pattern>net.sf.saxon</pattern>
                             <shadedPattern>org.apache.cxf.common.util.rel.saxon</shadedPattern>
                         </relocation>
-                        <relocation>
-                            <pattern>META-INF/versions/9/com</pattern>
-                            <shadedPattern>com</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>META-INF/versions/11/org</pattern>
-                            <shadedPattern>org</shadedPattern>
-                        </relocation>
                     </relocations>
-                    <transformers>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                    </transformers>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>add-module-infos</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>add-module-info</goal>
-                        </goals>
-                        <configuration>
-                            <overwriteExistingFiles>true</overwriteExistingFiles>
-                            <module>
-                                <moduleInfoFile>src/moditect/module-info.java</moduleInfoFile>
-                            </module>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-
-                                <zip destfile="${project.build.directory}/org.apache.cxf-${project.version}-temp.jar">
-                                    <zipfileset src="${project.build.directory}/org.apache.cxf-${project.version}.jar">
-                                        <exclude name="1.class"/>
-                                    </zipfileset>
-                                    <fileset dir="${project.build.directory}/../src/resources/"/>
-                                </zip>
-                                <move file="${project.build.directory}/org.apache.cxf-${project.version}-temp.jar" tofile="${project.build.directory}/org.apache.cxf-${project.version}.jar"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
 
