@@ -1,0 +1,89 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+    <artifactId>hibernate-ehcache</artifactId>
+
+    <name>hibernate-ehcache</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.hibernate:hibernate-ehcache</include>
+                                </includes>
+                            </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>net.sf.ehcache</pattern>
+                                    <shadedPattern>org.ehcache</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jboss-logmanager</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>${maven.hibernate.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jboss.logging</groupId>
+                    <artifactId>jboss-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.sf.ehcache</groupId>
+                    <artifactId>ehcache</artifactId>
+                </exclusion>
+            </exclusions>
+            <optional>true</optional>
+        </dependency>
+
+    </dependencies>
+
+</project>
