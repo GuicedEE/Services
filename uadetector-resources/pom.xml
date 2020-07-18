@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+	
+    <artifactId>uadetector-resources</artifactId>
+
+    <name>net.sf.uadetector.resources</name>
+    <description>This package contains a verified version of the data file from http://user-agent-string.info. During the verification process the data are
+        checked for ability to run against the current implementation. The goal is to provide frequently updated resources for detection of user agents without
+        having to release a new implementation.
+    </description>
+
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <!-- internal -->
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>uadetector-core</artifactId>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+</project>

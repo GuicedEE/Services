@@ -1,0 +1,266 @@
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--
+      - Note that due to the special requirements of logging unit-tests, most
+      - tests are executed in the "integration-test" phase rather than the
+      - "test" phase. Please run "mvn integration-test" to run the full suite of
+      - available unit tests.
+      -->
+        <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>commons-logging</artifactId>
+    <name>Apache Commons Logging</name>
+
+    <description>Apache Commons Logging is a thin adapter allowing configurable bridging to other,
+        well known logging systems.
+    </description>
+    <url>http://commons.apache.org/proper/commons-logging/</url>
+
+    <issueManagement>
+        <system>JIRA</system>
+        <url>http://issues.apache.org/jira/browse/LOGGING</url>
+    </issueManagement>
+
+    <inceptionYear>2001</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>baliuka</id>
+            <name>Juozas Baliuka</name>
+            <email>baliuka@apache.org</email>
+            <roles>
+                <role>Java Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>morgand</id>
+            <name>Morgan Delagrange</name>
+            <email>morgand@apache.org</email>
+            <organization>Apache</organization>
+            <roles>
+                <role>Java Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>donaldp</id>
+            <name>Peter Donald</name>
+            <email>donaldp@apache.org</email>
+        </developer>
+        <developer>
+            <id>rdonkin</id>
+            <name>Robert Burrell Donkin</name>
+            <email>rdonkin@apache.org</email>
+            <organization>The Apache Software Foundation</organization>
+        </developer>
+        <developer>
+            <id>skitching</id>
+            <name>Simon Kitching</name>
+            <email>skitching@apache.org</email>
+            <organization>The Apache Software Foundation</organization>
+        </developer>
+        <developer>
+            <id>dennisl</id>
+            <name>Dennis Lundberg</name>
+            <email>dennisl@apache.org</email>
+            <organization>The Apache Software Foundation</organization>
+        </developer>
+        <developer>
+            <id>costin</id>
+            <name>Costin Manolache</name>
+            <email>costin@apache.org</email>
+            <organization>The Apache Software Foundation</organization>
+        </developer>
+        <developer>
+            <id>craigmcc</id>
+            <name>Craig McClanahan</name>
+            <email>craigmcc@apache.org</email>
+            <organization>The Apache Software Foundation</organization>
+        </developer>
+        <developer>
+            <id>tn</id>
+            <name>Thomas Neidhart</name>
+            <email>tn@apache.org</email>
+            <organization>The Apache Software Foundation</organization>
+        </developer>
+        <developer>
+            <id>sanders</id>
+            <name>Scott Sanders</name>
+            <email>sanders@apache.org</email>
+            <organization>The Apache Software Foundation</organization>
+        </developer>
+        <developer>
+            <id>rsitze</id>
+            <name>Richard Sitze</name>
+            <email>rsitze@apache.org</email>
+            <organization>The Apache Software Foundation</organization>
+        </developer>
+        <developer>
+            <id>bstansberry</id>
+            <name>Brian Stansberry</name>
+        </developer>
+        <developer>
+            <id>rwaldhoff</id>
+            <name>Rodney Waldhoff</name>
+            <email>rwaldhoff@apache.org</email>
+            <organization>The Apache Software Foundation</organization>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <name>Matthew P. Del Buono</name>
+            <roles>
+                <role>Provided patch</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Vince Eagen</name>
+            <email>vince256 at comcast dot net</email>
+            <roles>
+                <role>Lumberjack logging abstraction</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Peter Lawrey</name>
+            <roles>
+                <role>Provided patch</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Berin Loritsch</name>
+            <email>bloritsch at apache dot org</email>
+            <roles>
+                <role>Lumberjack logging abstraction</role>
+                <role>JDK 1.4 logging abstraction</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Philippe Mouawad</name>
+            <roles>
+                <role>Provided patch</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Neeme Praks</name>
+            <email>neeme at apache dot org</email>
+            <roles>
+                <role>Avalon logging abstraction</role>
+            </roles>
+        </contributor>
+
+    </contributors>
+
+    <scm>
+        <connection>scm:git:https://gitbox.apache.org/repos/asf/commons-logging</connection>
+        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/commons-logging</developerConnection>
+        <url>https://gitbox.apache.org/repos/asf/commons-logging</url>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <type>jar</type>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <commons.componentid>logging</commons.componentid>
+        <commons.module.name>org.apache.commons.logging</commons.module.name>
+        <commons.release.version>1.2</commons.release.version>
+        <commons.jira.id>LOGGING</commons.jira.id>
+        <commons.jira.pid>12310484</commons.jira.pid>
+        <!-- The RC version used in the staging repository URL. -->
+        <commons.rc.version>RC2</commons.rc.version>
+        <commons.surefire.version>2.12</commons.surefire.version>
+        <skipSurefireReport>true</skipSurefireReport>
+        <!-- Allow default test run order to be changed -->
+        <failsafe.runorder>filesystem</failsafe.runorder>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>commons-logging:commons-logging:*</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-module-infos</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>add-module-info</goal>
+                        </goals>
+                        <configuration>
+                            <overwriteExistingFiles>true</overwriteExistingFiles>
+                            <module>
+                                <moduleInfoFile>
+                                    src/moditect/module-info.java
+                                </moduleInfoFile>
+                            </module>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

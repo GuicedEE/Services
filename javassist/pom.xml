@@ -1,0 +1,170 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+
+    <!--<groupId>org.javassist</groupId>-->
+    <artifactId>javassist</artifactId>
+
+    <packaging>jar</packaging>
+
+    <description>
+        Javassist (JAVA programming ASSISTant) makes Java bytecode manipulation
+        simple. It is a class library for editing bytecodes in Java.
+    </description>
+
+    <name>javassist</name>
+    <url>http://www.javassist.org/</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <organization>
+        <name>Shigeru Chiba, www.javassist.org</name>
+    </organization>
+
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://jira.jboss.org/jira/browse/JASSIST/</url>
+    </issueManagement>
+    <licenses>
+        <!-- this is the license under which javassist is usually distributed
+          -->
+        <license>
+            <name>MPL 1.1</name>
+            <url>http://www.mozilla.org/MPL/MPL-1.1.html</url>
+        </license>
+        <!-- this is the license under which javassist is distributed when
+         it is bundled with JBoss
+          -->
+        <license>
+            <name>LGPL 2.1</name>
+            <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+        </license>
+        <!-- this is the license under which javassist can be distributed.
+          -->
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:jboss-javassist/javassist.git</connection>
+        <developerConnection>scm:git:git@github.com:jboss-javassist/javassist.git</developerConnection>
+        <url>scm:git:git@github.com:jboss-javassist/javassist.git</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>chiba</id>
+            <name>Shigeru Chiba</name>
+            <email>chiba@javassist.org</email>
+            <organization>The Javassist Project</organization>
+            <organizationUrl>http://www.javassist.org/</organizationUrl>
+            <roles>
+                <role>project lead</role>
+            </roles>
+            <timezone>9</timezone>
+        </developer>
+
+        <developer>
+            <id>adinn</id>
+            <name>Andrew Dinn</name>
+            <email>adinn@redhat.com</email>
+            <organization>JBoss</organization>
+            <organizationUrl>http://www.jboss.org/</organizationUrl>
+            <roles>
+                <role>contributing developer</role>
+            </roles>
+            <timezone>0</timezone>
+        </developer>
+
+        <developer>
+            <id>kabir.khan@jboss.com</id>
+            <name>Kabir Khan</name>
+            <email>kabir.khan@jboss.com</email>
+            <organization>JBoss</organization>
+            <organizationUrl>http://www.jboss.org/</organizationUrl>
+            <roles>
+                <role>contributing developer</role>
+            </roles>
+            <timezone>0</timezone>
+        </developer>
+
+        <developer>
+            <id>scottmarlow</id>
+            <name>Scott Marlow</name>
+            <email>smarlow@redhat.com</email>
+            <organization>JBoss</organization>
+            <organizationUrl>http://www.jboss.org/</organizationUrl>
+            <roles>
+                <role>contributing developer</role>
+            </roles>
+            <timezone>-5</timezone>
+        </developer>
+
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.27.0-GA</version>
+            <optional>true</optional>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.javassist:javassist:*</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-module-infos</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>add-module-info</goal>
+                        </goals>
+                        <configuration>
+                            <overwriteExistingFiles>true</overwriteExistingFiles>
+                            <module>
+                                <moduleInfoFile>
+                                    src/moditect/module-info.java
+                                </moduleInfoFile>
+                            </module>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+

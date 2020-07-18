@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018, 2019 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+
+    SPDX-License-Identifier: BSD-3-Clause
+
+-->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>jakarta.xml.bind-api</artifactId>
+    <packaging>jar</packaging>
+    <name>jaxb</name>
+
+    <properties>
+        <config.dir>${project.basedir}/../etc/config</config.dir>
+        <legal.doc.source>${project.basedir}/..</legal.doc.source>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>javax.activation</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jaxb.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jakarta.activation-api</artifactId>
+                    <groupId>jakarta.activation</groupId>
+                </exclusion>
+            </exclusions>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>javax.activation-api</artifactId>
+                    <groupId>javax.activation</groupId>
+                </exclusion>
+            </exclusions>
+            <optional>true</optional>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jakarta.activation-api</artifactId>
+                    <groupId>jakarta.activation</groupId>
+                </exclusion>
+            </exclusions>
+            <optional>true</optional>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.codehaus.woodstox/stax2-api -->
+        <dependency>
+            <groupId>org.codehaus.woodstox</groupId>
+            <artifactId>stax2-api</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.staxex</groupId>
+            <artifactId>stax-ex</artifactId>
+            <version>1.8.3</version>
+        </dependency>
+
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>jdk9</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <inherited>false</inherited>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <createSourcesJar>true</createSourcesJar>
+                            <shadeSourcesContent>true</shadeSourcesContent>
+                            <shadeTestJar>false</shadeTestJar>
+                            <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
+
+                            <artifactSet>
+                                <includes>
+                                    <include>jakarta.xml.bind:jakarta.xml.bind-api:*</include>
+                                    <include>org.glassfish.jaxb:jaxb-runtime:*</include>
+                                    <!--<include>javax.xml.bind:jaxb-api:*</include>-->
+                                    <include>org.glassfish.jaxb:txw2:*</include>
+                                    <include>com.sun.istack:istack-commons-runtime:*</include>
+                                    <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
+                                    <include>com.sun.xml.fastinfoset:FastInfoset:*</include>
+                                    <include>com.sun.xml.bind:jaxb-impl:*</include>
+                                </includes>
+                            </artifactSet>
+                            <!-- Dont transform the service resources -->
+                            <!--   <transformers>
+                                   <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                               </transformers>-->
+                            <relocations>
+                                <relocation>
+                                    <pattern>META-INF/versions/9/com</pattern>
+                                    <shadedPattern>com</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>META-INF/versions/9/javax</pattern>
+                                    <shadedPattern>javax</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.moditect</groupId>
+                        <artifactId>moditect-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>add-module-infos</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>add-module-info</goal>
+                                </goals>
+                                <configuration>
+                                    <overwriteExistingFiles>true</overwriteExistingFiles>
+                                    <module>
+                                        <moduleInfoFile>src/moditect/module-info.java</moduleInfoFile>
+                                    </module>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>jdk8</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <inherited>false</inherited>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <createSourcesJar>true</createSourcesJar>
+                            <shadeSourcesContent>true</shadeSourcesContent>
+                            <shadeTestJar>false</shadeTestJar>
+                            <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
+
+                            <artifactSet>
+                                <includes>
+                                    <include>jakarta.xml.bind:jakarta.xml.bind-api:*</include>
+                                    <include>org.glassfish.jaxb:jaxb-runtime:*</include>
+                                    <!--<include>javax.xml.bind:jaxb-api:*</include>-->
+                                    <include>org.glassfish.jaxb:txw2:*</include>
+                                    <include>com.sun.istack:istack-commons-runtime:*</include>
+                                    <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
+                                    <include>com.sun.xml.fastinfoset:FastInfoset:*</include>
+                                    <include>com.sun.xml.bind:jaxb-impl:*</include>
+                                </includes>
+                            </artifactSet>
+                            <!-- Dont transform the service resources -->
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+
+</project>

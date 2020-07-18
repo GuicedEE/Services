@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>javax.security.jacc</artifactId>
+
+    <packaging>jar</packaging>
+    <name>java.security.jacc</name>
+    <description>JSR-000115 Java(TM) Authorization Contract for Containers API</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.security.jacc</artifactId>
+            <version>3.2-b06</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <type>jar</type>
+        </dependency>
+
+
+    </dependencies>
+
+    <properties>
+
+    </properties>
+
+    <licenses>
+        <license>
+            <name>Common Development and Distribution License</name>
+            <url>http://repository.jboss.org/licenses/cddl.txt</url>
+            <distribution>repo</distribution>
+        </license>
+        <license>
+            <name>GNU General Public License, Version 2 with the Classpath Exception</name>
+            <url>http://repository.jboss.org/licenses/gpl-2.0-ce.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:jboss/jboss-jacc-api_spec.git</connection>
+        <developerConnection>scm:git:git@github.com:jboss/jboss-jacc-api_spec.git</developerConnection>
+        <url>https://github.com/jboss/jboss-jacc-api_spec</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.glassfish:javax.security.jacc:*</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-module-infos</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>add-module-info</goal>
+                        </goals>
+                        <configuration>
+                            <overwriteExistingFiles>true</overwriteExistingFiles>
+                            <module>
+                                <moduleInfoFile>
+                                    src/moditect/module-info.java
+                                </moduleInfoFile>
+                            </module>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

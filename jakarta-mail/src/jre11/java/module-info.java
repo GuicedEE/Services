@@ -1,0 +1,2 @@
+module jakarta.mail {
+}
