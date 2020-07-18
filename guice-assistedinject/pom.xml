@@ -2,24 +2,24 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <groupId>com.guicedee.services.extensions</groupId>
-        <artifactId>extensions-parent</artifactId>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
+	
+    <artifactId>guice-assistedinject</artifactId>
 
-    <artifactId>guice-jmx</artifactId>
-
-    <name>google.guice.extensions.jmx</name>
+    <groupId>com.guicedee.services</groupId>
+    <name>google.guice.extensions.assistedinject</name>
 
     <dependencies>
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guice</artifactId>
-
             <type>jar</type>
-            </dependency>
+        </dependency>
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guava</artifactId>
@@ -28,20 +28,14 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.inject</artifactId>
-
             <type>jar</type>
-            </dependency>
+        </dependency>
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>aopalliance-core</artifactId>
+            <type>jar</type>
+        </dependency>
 
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip> <!-- Test is not actually a unit test. -->
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

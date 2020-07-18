@@ -151,7 +151,13 @@
         <profile>
             <id>enable-guice</id>
             <modules>
-                <module>guice</module>
+                <module>guice-core</module>
+                <module>guice-assistedinject</module>
+                <module>guice-grapher</module>
+                <module>guice-jmx</module>
+                <module>guice-jndi</module>
+                <module>guice-persist</module>
+                <module>guice-servlet</module>
             </modules>
         </profile>
 

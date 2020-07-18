@@ -5,20 +5,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.guicedee.services.extensions</groupId>
-        <artifactId>extensions-parent</artifactId>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
+	
+    <artifactId>guice-servlet</artifactId>
 
-    <artifactId>guice-grapher</artifactId>
-
-    <name>google.guice.extensions.grapher</name>
+    <name>google.guice.extensions.servlet</name>
 
     <dependencies>
-
         <dependency>
             <groupId>com.guicedee.services</groupId>
-            <artifactId>guice-assistedinject</artifactId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${project.version}</version>
+
         </dependency>
 
         <dependency>
@@ -27,16 +28,5 @@
             <type>jar</type>
         </dependency>
 
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>guava</artifactId>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>javax.inject</artifactId>
-            <type>jar</type>
-        </dependency>
     </dependencies>
-
 </project>
