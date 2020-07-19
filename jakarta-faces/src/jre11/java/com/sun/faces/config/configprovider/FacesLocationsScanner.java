@@ -15,6 +15,7 @@ public class FacesLocationsScanner
 		strings.add("/");
 		strings.add("");
 		strings.add("META-INF");
+		strings.add("META-INF/resources");
 		strings.add("WEB-INF");
 		strings.add("WEB-INF/classes/META-INF");
 		return strings;
