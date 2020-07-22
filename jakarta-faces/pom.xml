@@ -62,7 +62,15 @@
                             </artifactSet>
                             <filters>
                                 <filter>
-                                    <artifact>*:*</artifact>
+                                    <artifact>org.glassfish:*</artifact>
+                                    <excludes>
+                                        <exclude>**/ApplicationImpl.java</exclude>
+                                        <exclude>**/ELUtils.java</exclude>
+                                        <exclude>META-INF/services/*</exclude>
+                                    </excludes>
+                                </filter>
+                                <filter>
+                                    <artifact>jakarta.faces:*</artifact>
                                     <excludes>
                                         <exclude>**/ApplicationImpl.java</exclude>
                                         <exclude>**/ELUtils.java</exclude>

@@ -12,17 +12,6 @@
     <name>primefaces</name>
 
     <build>
-		<resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>META-INF/resources/primefaces/schedule/build/**/*</exclude>
-                </excludes>
-            </resource>
-        </resources>
-		
-		
         <plugins>
             <plugin>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -35,15 +24,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
-                    <createSourcesJar>true</createSourcesJar>
-                    <shadeSourcesContent>true</shadeSourcesContent>
-                    <shadeTestJar>false</shadeTestJar>
-                    <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
-
                     <artifactSet>
                         <includes>
-                            <include>com.github.librepdf:*</include>
                             <include>org.primefaces:primefaces:*</include>
                             <include>com.rometools:rome:*</include>
                             <include>com.rometools:rome-utils:*</include>
@@ -71,11 +53,6 @@
                             <shadedPattern>com.guicedee.services.primefaces.rometools</shadedPattern>
                         </relocation>
                     </relocations>
-
-                    <transformers>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                    </transformers>
-
                 </configuration>
             </plugin>
 
