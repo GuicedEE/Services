@@ -36,41 +36,6 @@
     <properties>
         <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <commons.componentid>text</commons.componentid>
-        <commons.module.name>org.apache.commons.text</commons.module.name>
-
-        <commons.release.version>1.6</commons.release.version>
-        <commons.release.desc>(Java 8+)</commons.release.desc>
-
-        <commons.jira.id>TEXT</commons.jira.id>
-        <commons.jira.pid>12318221</commons.jira.pid>
-
-        <commons.site.path>text</commons.site.path>
-        <commons.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/commons/content/proper/commons-text</commons.scmPubUrl>
-        <commons.scmPubCheckoutDirectory>site-content</commons.scmPubCheckoutDirectory>
-
-
-        <checkstyle.plugin.version>3.0.0</checkstyle.plugin.version>
-        <checkstyle.version>8.14</checkstyle.version>
-
-        <spotbugs.plugin.version>3.1.8</spotbugs.plugin.version>
-
-        <commons.jacoco.version>0.8.2</commons.jacoco.version>
-
-        <!-- generate report even if there are binary incompatible changes -->
-        <commons.japicmp.breakBuildOnBinaryIncompatibleModifications>false</commons.japicmp.breakBuildOnBinaryIncompatibleModifications>
-        <!-- 0.12.0 dies with a NullPointerException -->
-        <commons.japicmp.version>0.13.0</commons.japicmp.version>
-        <japicmp.skip>false</japicmp.skip>
-
-        <!-- Commons Release Plugin -->
-        <commons.bc.version>1.6</commons.bc.version>
-        <commons.rc.version>RC1</commons.rc.version>
-        <commons.release.isDistModule>true</commons.release.isDistModule>
-        <commons.distSvnStagingUrl>scm:svn:https://dist.apache.org/repos/dist/dev/commons/${commons.componentid}</commons.distSvnStagingUrl>
-        <commons.releaseManagerName>Rob Tompkins</commons.releaseManagerName>
-        <commons.releaseManagerKey>B6E73D84EA4FCC47166087253FAAD2CD5ECBB314</commons.releaseManagerKey>
     </properties>
 
     <dependencies>
@@ -83,11 +48,9 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
-            <version>1.8</version>
+            <version>1.9</version>
             <optional>true</optional>
         </dependency>
-
-
     </dependencies>
 
 
