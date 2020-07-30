@@ -170,6 +170,11 @@ public final class Errors implements Serializable {
 
   /** Within guice's core, allow for better missing binding messages */
   <T> Errors missingImplementationWithHint(Key<T> key, Injector injector) {
+    if (InternalFlags.enableExperimentalErrorMessages()) {
+      MissingImplementationError error = new MissingImplementationError(key, getSources());
+      return addMessage(
+          new Message(GuiceInternal.GUICE_INTERNAL, ErrorId.MISSING_IMPLEMENTATION, error));
+    }
     StringBuilder sb = new StringBuilder();
 
     sb.append(format("No implementation for %s was bound.", key));
@@ -504,6 +509,12 @@ public final class Errors implements Serializable {
 
   public Errors recursiveBinding() {
     return addMessage(ErrorId.RECURSIVE_BINDING, "Binding points to itself.");
+  }
+
+  Errors bindingAlreadySet(Binding<?> binding, Binding<?> original) {
+    BindingAlreadySetError error = new BindingAlreadySetError(binding, original, getSources());
+    return addMessage(
+        new Message(GuiceInternal.GUICE_INTERNAL, ErrorId.BINDING_ALREADY_SET, error));
   }
 
   public Errors bindingAlreadySet(Key<?> key, Object source) {

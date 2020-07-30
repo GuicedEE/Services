@@ -2134,7 +2134,7 @@
         </attribute>
         <attribute>
             <description>
-                <![CDATA[Advisory tooltip informaton.]]>
+                <![CDATA[Advisory tooltip information.]]>
             </description>
             <name>title</name>
             <required>false</required>
@@ -5348,7 +5348,7 @@
         </attribute>
         <attribute>
             <description>
-                <![CDATA[Advisory tooltip informaton.]]>
+                <![CDATA[Advisory tooltip information.]]>
             </description>
             <name>title</name>
             <required>false</required>
@@ -5840,7 +5840,7 @@
         </attribute>
         <attribute>
             <description>
-                <![CDATA[Advisory tooltip informaton.]]>
+                <![CDATA[Advisory tooltip information.]]>
             </description>
             <name>title</name>
             <required>false</required>
@@ -11337,6 +11337,22 @@
             <required>false</required>
             <type>java.lang.Boolean</type>
         </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Enable to zoom the image by dragging touch. Default is true.]]>
+            </description>
+            <name>zoomOnTouch</name>
+            <required>false</required>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Enable to zoom the image by wheeling mouse. Default is true.]]>
+            </description>
+            <name>zoomOnWheel</name>
+            <required>false</required>
+            <type>boolean</type>
+        </attribute>
     </tag>
     <tag>
         <description>
@@ -14828,7 +14844,7 @@
         </attribute>
         <attribute>
             <description>
-                <![CDATA[Advisory tooltip informaton.]]>
+                <![CDATA[Advisory tooltip information.]]>
             </description>
             <name>title</name>
             <required>false</required>
@@ -15143,7 +15159,7 @@
         </attribute>
         <attribute>
             <description>
-                <![CDATA[Advisory tooltip informaton.]]>
+                <![CDATA[Advisory tooltip information.]]>
             </description>
             <name>title</name>
             <required>false</required>
@@ -17374,7 +17390,7 @@
         </attribute>
         <attribute>
             <description>
-                <![CDATA[Advisory tooltip informaton.]]>
+                <![CDATA[Advisory tooltip information.]]>
             </description>
             <name>title</name>
             <required>false</required>
@@ -19421,6 +19437,14 @@
                 <![CDATA[Name of the client side widget.]]>
             </description>
             <name>widgetVar</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Advisory tooltip information.]]>
+            </description>
+            <name>title</name>
             <required>false</required>
             <type>java.lang.String</type>
         </attribute>
@@ -23443,7 +23467,7 @@
         </attribute>
         <attribute>
             <description>
-                <![CDATA[Advisory tooltip informaton.]]>
+                <![CDATA[Advisory tooltip information.]]>
             </description>
             <name>title</name>
             <required>false</required>
@@ -24144,7 +24168,7 @@
         </attribute>
         <attribute>
             <description>
-                <![CDATA[Advisory tooltip informaton.]]>
+                <![CDATA[Advisory tooltip information.]]>
             </description>
             <name>title</name>
             <required>false</required>
@@ -24806,7 +24830,7 @@
         </attribute>
         <attribute>
             <description>
-                <![CDATA[Advisory tooltip informaton.]]>
+                <![CDATA[Advisory tooltip information.]]>
             </description>
             <name>title</name>
             <required>false</required>

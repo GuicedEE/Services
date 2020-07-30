@@ -72,7 +72,7 @@
                         <exclude>**/*.js</exclude>
                         <exclude>**/*.css</exclude>
                     </excludes>
-                    <aggregations>
+                     <aggregations>
                         <aggregation>
                             <insertNewLine>true</insertNewLine>
                             <removeIncluded>true</removeIncluded>
@@ -420,14 +420,13 @@
                             </includes>
                         </aggregation>
                     </aggregations>
-
                 </configuration>
                     </execution>
 					<execution>
 					   <id>minify</id>
                         <phase>package</phase>
                         <configuration>
-							<jswarn>false</jswarn>
+                            <jswarn>false</jswarn>
                             <force>true</force>
                             <useProcessedResources>true</useProcessedResources>
                             <excludes>
@@ -446,7 +445,8 @@
                                 <include>**/*.js</include>
                                 <include>**/*.css</include>
                             </includes>
-						</configuration>
+                        </configuration>
+
 				</execution>
                 </executions>
             </plugin>
