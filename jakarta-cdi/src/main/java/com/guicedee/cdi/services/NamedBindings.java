@@ -1,6 +1,7 @@
 package com.guicedee.cdi.services;
 
 import com.google.inject.Binder;
+import com.google.inject.Key;
 import com.google.inject.name.Names;
 import io.github.classgraph.ClassInfo;
 
