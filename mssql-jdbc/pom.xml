@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc_auth</artifactId>
-            <version>8.2.2.x64</version>
+            <version>8.4.0.x64</version>
             <type>dll</type>
             <optional>true</optional>
         </dependency>
@@ -85,15 +85,15 @@
 
     <profiles>
         <profile>
-            <id>jdk13</id>
+            <id>jdk14</id>
             <activation>
-                <jdk>[13,)</jdk>
+                <jdk>[14,)</jdk>
             </activation>
             <dependencies>
                 <dependency>
                     <groupId>com.microsoft.sqlserver</groupId>
                     <artifactId>mssql-jdbc</artifactId>
-                    <version>8.2.2.jre13</version>
+                    <version>8.4.0.jre14</version>
                     <optional>true</optional>
                 </dependency>
             </dependencies>
@@ -106,7 +106,7 @@
                 <dependency>
                     <groupId>com.microsoft.sqlserver</groupId>
                     <artifactId>mssql-jdbc</artifactId>
-                    <version>8.2.2.jre11</version>
+                    <version>8.4.0.jre11</version>
                     <optional>true</optional>
                 </dependency>
             </dependencies>
@@ -122,7 +122,7 @@
                 <dependency>
                     <groupId>com.microsoft.sqlserver</groupId>
                     <artifactId>mssql-jdbc</artifactId>
-                    <version>8.2.2.jre8</version>
+                    <version>8.4.0.jre8</version>
                     <optional>true</optional>
                 </dependency>
             </dependencies>
