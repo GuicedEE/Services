@@ -22,7 +22,6 @@
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
 
-
     <modelVersion>4.0.0</modelVersion>
     <artifactId>commons-beanutils</artifactId>
 
@@ -30,13 +29,6 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.9.4</version>
-            <optional>true</optional>
-        </dependency>
-
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-collections4</artifactId>
@@ -51,27 +43,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>shade</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <artifactSet>
-                                <includes>
-                                    <include>commons-beanutils:commons-beanutils</include>
-                                </includes>
-                            </artifactSet>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>

@@ -36,7 +36,7 @@
         <site.deploy.url>scp://people.apache.org/www/cxf.apache.org/maven-site</site.deploy.url>
         <maven-owasp-plugin-version>4.0.2</maven-owasp-plugin-version>
 
-        <jetty.version>9.4.30.v20200611</jetty.version>
+        <jetty.version>9.4.31.v20200723</jetty.version>
 
         <stax.version>1.8.3</stax.version>
         <stax2.api.version>4.2.1</stax2.api.version>

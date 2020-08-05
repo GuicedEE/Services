@@ -30,8 +30,8 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.google.inject.Stage;
 import com.google.inject.internal.InjectorImpl.InjectorOptions;
+import com.google.inject.internal.util.ContinuousStopwatch;
 import com.google.inject.internal.util.SourceProvider;
-import com.google.inject.internal.util.Stopwatch;
 import com.google.inject.spi.BindingSourceRestriction;
 import com.google.inject.spi.Dependency;
 import com.google.inject.spi.Element;
@@ -46,8 +46,17 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 /**
- * A partially-initialized injector. See {@link InternalInjectorCreator}, which uses this to build a
- * tree of injectors in batch.
+ * InjectorShell is used by {@link InternalInjectorCreator} to recursively create a tree of
+ * uninitialized {@link Injector}s. Each InjectorShell corresponds to either the top-level root
+ * injector, or a private child injector.
+ *
+ * <p>The root InjectorShell extracts elements from its list of modules and processes these elements
+ * to aggregate data that is used to populate its injector's fields. Child injectors are constructed
+ * similarly, but using {@link PrivateElements} instead of modules.
+ *
+ * <p>It is necessary to create the root and child injectors in a single batch because there can be
+ * bidirectional parent <-> child injector dependencies that require the entire tree of injectors to
+ * be initialized together in the {@link InternalInjectorCreator}.
  *
  * @author jessewilson@google.com (Jesse Wilson)
  */
@@ -133,7 +142,7 @@ final class InjectorShell {
     List<InjectorShell> build(
         Initializer initializer,
         ProcessedBindingData processedBindingData,
-        Stopwatch stopwatch,
+        ContinuousStopwatch stopwatch,
         Errors errors) {
       checkState(stage != null, "Stage not initialized");
       checkState(privateElements == null || parent != null, "PrivateElements with no parent");
