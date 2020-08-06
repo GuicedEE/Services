@@ -8,4 +8,5 @@ module com.google.guice {
 	requires java.xml;
 
 	requires static org.objectweb.asm;
+    requires java.annotation;
 }

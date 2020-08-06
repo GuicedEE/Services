@@ -17,4 +17,6 @@ module com.google.guice {
 	requires transitive org.apache.commons.lang3;
 	requires transitive aopalliance;
 	requires transitive java.xml;
+
+	requires java.annotation;
 }
