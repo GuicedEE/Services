@@ -93,11 +93,10 @@ final class ConstructorBindingImpl<T> extends BindingImpl<T>
       throws ErrorsException {
     int numErrors = errors.size();
 
-    @SuppressWarnings("unchecked") // constructorBinding guarantees type is consistent
-    Class<? super T> rawType =
+    Class<?> rawType =
         constructorInjector == null
             ? key.getTypeLiteral().getRawType()
-            : (Class) constructorInjector.getDeclaringType().getRawType();
+            : constructorInjector.getDeclaringType().getRawType();
 
     // We can't inject abstract classes.
     if (Modifier.isAbstract(rawType.getModifiers())) {
@@ -145,7 +144,7 @@ final class ConstructorBindingImpl<T> extends BindingImpl<T>
   }
 
   /** Returns true if the inject annotation is on the constructor. */
-  private static boolean hasAtInject(Constructor cxtor) {
+  private static boolean hasAtInject(Constructor<?> cxtor) {
     return cxtor.isAnnotationPresent(Inject.class)
         || cxtor.isAnnotationPresent(javax.inject.Inject.class);
   }
