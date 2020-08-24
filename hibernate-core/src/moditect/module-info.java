@@ -48,6 +48,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate;
 	//exports org.hibernate.action.internal;
 	exports org.hibernate.action.spi;
+	exports org.hibernate.query;
 	//exports org.hibernate.internal;
 	//exports org.hibernate.internal.build;
 	//exports org.hibernate.internal.log;

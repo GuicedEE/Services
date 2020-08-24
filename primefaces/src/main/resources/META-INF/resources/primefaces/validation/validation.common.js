@@ -180,6 +180,9 @@ if (window.PrimeFaces) {
             var nonInputs = $();
             for (var i = 0; i < process.length; i++) {
                 var component = process.eq(i);
+                if (component.is(':not(:input)')) {
+                    nonInputs = nonInputs.add(component);
+                }
                 nonInputs = nonInputs.add(component.find(':not(:input)'));
             }
             nonInputs = nonInputs.filter('[data-p-val]');
@@ -195,7 +198,7 @@ if (window.PrimeFaces) {
             // render messages
             update = PrimeFaces.expressions.SearchExpressionFacade.resolveComponentsAsSelector(update);
             for (var i = 0; i < update.length; i++) {
-                var component = process.eq(i);
+                var component = update.eq(i);
                 PrimeFaces.validation.Utils.renderMessages(vc.messages, component);
             }
 

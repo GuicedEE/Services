@@ -36,6 +36,7 @@ open module primefaces {
 
 	requires static core;
 
+	exports org.primefaces.model.charts.optionconfig.animation;
 
 	exports org.primefaces;
 	exports org.primefaces.application;
@@ -89,7 +90,7 @@ open module primefaces {
 	exports org.primefaces.component.dialog;
 	exports org.primefaces.component.dnd;
 	exports org.primefaces.component.dock;
-	exports org.primefaces.component.editor;
+	//exports org.primefaces.component.editor;
 	exports org.primefaces.component.effect;
 	exports org.primefaces.component.export;
 	exports org.primefaces.component.feedreader;
@@ -118,7 +119,7 @@ open module primefaces {
 	exports org.primefaces.component.keyboard;
 	exports org.primefaces.component.keyfilter;
 	exports org.primefaces.component.knob;
-	exports org.primefaces.component.layout;
+	//exports org.primefaces.component.layout;
 	exports org.primefaces.component.lifecycle;
 	exports org.primefaces.component.lightbox;
 	exports org.primefaces.component.link;

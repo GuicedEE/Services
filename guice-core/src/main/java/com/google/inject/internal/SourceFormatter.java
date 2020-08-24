@@ -21,11 +21,13 @@ import java.util.Optional;
 /** Formatting a single source in Guice error message. */
 final class SourceFormatter {
   static final String INDENT = Strings.repeat(" ", 5);
+
   private final Object source;
   private final Formatter formatter;
+  private final boolean omitPreposition;
   private final String moduleStack;
 
-  SourceFormatter(Object source, Formatter formatter) {
+  SourceFormatter(Object source, Formatter formatter, boolean omitPreposition) {
     if (source instanceof ElementSource) {
       ElementSource elementSource = (ElementSource) source;
       this.source = elementSource.getDeclaringSource();
@@ -35,6 +37,7 @@ final class SourceFormatter {
       this.moduleStack = "";
     }
     this.formatter = formatter;
+    this.omitPreposition = omitPreposition;
   }
 
   void format() {
@@ -44,23 +47,30 @@ final class SourceFormatter {
     } else if (source instanceof InjectionPoint) {
       formatInjectionPoint(null, (InjectionPoint) source);
     } else if (source instanceof Class) {
-      formatter.format("at %s%n", StackTraceElements.forType((Class<?>) source));
+      formatter.format("%s%s%n", preposition("at "), StackTraceElements.forType((Class<?>) source));
     } else if (source instanceof Member) {
       formatMember((Member) source);
     } else if (source instanceof TypeLiteral) {
-      formatter.format("while locating %s%n", source);
+      formatter.format("%s%s%n", preposition("while locating "), source);
     } else if (source instanceof Key) {
       formatKey((Key<?>) source);
     } else if (source instanceof Thread) {
       appendModuleSource = false;
-      formatter.format("in thread %s%n", source);
+      formatter.format("%s%s%n", preposition("in thread "), source);
     } else {
-      formatter.format("at %s%n", source);
+      formatter.format("%s%s%n", preposition("at "), source);
     }
 
     if (appendModuleSource) {
       formatter.format("%s \\_ installed by: %s%n", INDENT, moduleStack);
     }
+  }
+
+  private String preposition(String prepostition) {
+    if (omitPreposition) {
+      return "";
+    }
+    return prepostition;
   }
 
   private void formatDependency(Dependency<?> dependency) {
@@ -73,11 +83,11 @@ final class SourceFormatter {
   }
 
   private void formatKey(Key<?> key) {
-    formatter.format("for %s%n", Messages.convert(key));
+    formatter.format("%s%s%n", preposition("for "), Messages.convert(key));
   }
 
   private void formatMember(Member member) {
-    formatter.format("at %s%n", StackTraceElements.forMember(member));
+    formatter.format("%s%s%n", preposition("at "), StackTraceElements.forMember(member));
   }
 
   private void formatInjectionPoint(Dependency<?> dependency, InjectionPoint injectionPoint) {
@@ -85,13 +95,13 @@ final class SourceFormatter {
     Class<? extends Member> memberType = Classes.memberType(member);
     formatMember(injectionPoint.getMember());
     if (memberType == Field.class) {
-      formatter.format("%s \\_ for field %s%n", INDENT, member.getName());
+      formatter.format("%s \\_ for field %s%n", INDENT, Messages.redBold(member.getName()));
     } else if (dependency != null) {
       int ordinal = dependency.getParameterIndex() + 1;
       Optional<String> name = getParameterName(member, dependency.getParameterIndex());
       formatter.format(
           "%s \\_ for %s parameter %s%n",
-          INDENT, ordinal + Messages.getOrdinalSuffix(ordinal), name.orElse(""));
+          INDENT, ordinal + Messages.getOrdinalSuffix(ordinal), Messages.redBold(name.orElse("")));
     }
   }
 

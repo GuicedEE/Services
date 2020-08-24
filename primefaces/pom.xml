@@ -292,15 +292,6 @@
                         <aggregation>
                             <insertNewLine>true</insertNewLine>
                             <removeIncluded>true</removeIncluded>
-                            <output>${project.build.directory}/classes/META-INF/resources/primefaces/layout/layout.js</output>
-                            <includes>
-                                <include>${project.build.directory}/classes/META-INF/resources/primefaces/layout/0-jquery.layout.js</include>
-                                <include>${project.build.directory}/classes/META-INF/resources/primefaces/layout/1-layout.js</include>
-                            </includes>
-                        </aggregation>
-                        <aggregation>
-                            <insertNewLine>true</insertNewLine>
-                            <removeIncluded>true</removeIncluded>
                             <output>${project.build.directory}/classes/META-INF/resources/primefaces/knob/knob.js</output>
                             <includes>
                                 <include>${project.build.directory}/classes/META-INF/resources/primefaces/knob/1-jquery.knob.js</include>
@@ -393,6 +384,7 @@
                                 <include>${project.build.directory}/classes/META-INF/resources/primefaces/fileupload/0-jquery.iframe-transport.js</include>
                                 <include>${project.build.directory}/classes/META-INF/resources/primefaces/fileupload/1-jquery.fileupload.js</include>
                                 <include>${project.build.directory}/classes/META-INF/resources/primefaces/fileupload/2-fileupload.js</include>
+                                <include>${project.build.directory}/classes/META-INF/resources/primefaces/fileupload/3-fileupload.simple.js</include>
                             </includes>
                         </aggregation>
                         <aggregation>
@@ -433,6 +425,7 @@
                     </aggregations>
 
 
+
 					
                 </configuration>
                     </execution>
@@ -460,6 +453,7 @@
                                 <include>**/*.css</include>
                             </includes>
                         </configuration>
+
 				</execution>
                 </executions>
             </plugin>
