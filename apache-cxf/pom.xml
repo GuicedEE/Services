@@ -51,7 +51,7 @@
         <xmlschema.core.version>2.2.5</xmlschema.core.version>
         <jasypt.version>1.9.3</jasypt.version>
 
-        <cxf.rt.version>3.3.7</cxf.rt.version>
+        <cxf.rt.version>3.4.0</cxf.rt.version>
         <cxf.bundle.version>3.0.0-milestone2</cxf.bundle.version>
         <wss4j.policy.version>2.3.0</wss4j.policy.version>
         <wss4j.imp.version>2.2.5</wss4j.imp.version>
