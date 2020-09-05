@@ -8,6 +8,8 @@ module org.apache.kafka.client {
 	exports org.apache.kafka.server.policy;
 	exports org.apache.kafka.server.quota;
 	
+	exports  org.apache.kafka.common.serialization;
+	
 	requires com.github.luben.zstd_jni;
 	requires org.slf4j;
 	
