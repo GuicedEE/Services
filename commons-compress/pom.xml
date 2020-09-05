@@ -87,11 +87,10 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.github.luben</groupId>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>zstd-jni</artifactId>
-            <version>1.4.5-4</version>
-            <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.brotli</groupId>
             <artifactId>dec</artifactId>
@@ -221,7 +220,6 @@
                             <artifactSet>
                                 <includes>
                                     <include>org.apache.commons:commons-compress</include>
-                                    <include>com.github.luben:zstd-jni</include>
                                     <include>org.brotli:dec</include>
                                     <include>org.tukaani:xz</include>
                                 </includes>
