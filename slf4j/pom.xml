@@ -30,6 +30,7 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>log4j-core</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

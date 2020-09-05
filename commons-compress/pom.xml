@@ -89,6 +89,7 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>zstd-jni</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

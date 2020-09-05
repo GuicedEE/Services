@@ -73,6 +73,7 @@
                 <module>jfreechart</module>
                 <module>zstd_jni</module>
                 <module>kafka-client</module>
+                <module>mapstruct</module>
             </modules>
         </profile>
 
