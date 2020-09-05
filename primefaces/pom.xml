@@ -72,7 +72,7 @@
                         <exclude>**/*.js</exclude>
                         <exclude>**/*.css</exclude>
                     </excludes>
-                          <aggregations>
+                           <aggregations>
                         <aggregation>
                             <insertNewLine>true</insertNewLine>
                             <removeIncluded>true</removeIncluded>
@@ -422,7 +422,17 @@
                                 <include>${project.build.directory}/classes/META-INF/resources/primefaces/texteditor/1-texteditor.js</include>
                             </includes>
                         </aggregation>
+                        <aggregation>
+                            <insertNewLine>true</insertNewLine>
+                            <removeIncluded>true</removeIncluded>
+                            <output>${project.build.directory}/classes/META-INF/resources/primefaces/filedownload/filedownload.js</output>
+                            <includes>
+                                <include>${project.build.directory}/classes/META-INF/resources/primefaces/filedownload/0-download.js</include>
+                                <include>${project.build.directory}/classes/META-INF/resources/primefaces/filedownload/1-pf-filedownload.js</include>
+                            </includes>
+                        </aggregation>
                     </aggregations>
+
 
 
 
@@ -447,12 +457,14 @@
                                 <exclude>**/0-jquery.inputmask.js</exclude>
                                 <exclude>**/raphael.js</exclude>
                                 <exclude>**/theme.css</exclude>
+                                <exclude>**/build/**</exclude>
                             </excludes>
                             <includes>
                                 <include>**/*.js</include>
                                 <include>**/*.css</include>
                             </includes>
                         </configuration>
+
 
 				</execution>
                 </executions>
