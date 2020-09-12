@@ -432,10 +432,6 @@
                             </includes>
                         </aggregation>
                     </aggregations>
-
-
-
-
 					
                 </configuration>
                     </execution>
@@ -464,8 +460,6 @@
                                 <include>**/*.css</include>
                             </includes>
                         </configuration>
-
-
 				</execution>
                 </executions>
             </plugin>
