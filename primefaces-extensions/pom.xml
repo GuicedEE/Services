@@ -1,42 +1,50 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	    <parent>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
         <groupId>com.guicedee.services</groupId>
         <artifactId>services-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
 
+    <artifactId>primefaces-extensions</artifactId>
 
-	<name>ehcache</name>
-	<artifactId>ehcache</artifactId>
-	<packaging>jar</packaging>
+    <name>primefaces-extensions</name>
+    <packaging>jar</packaging>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.ehcache</groupId>
-			<artifactId>ehcache</artifactId>
-			<optional>true</optional>
-		</dependency>
+    <repositories>
+        <repository>
+            <id>OSS Snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
+            <artifactId>primefaces</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>slf4j</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>cache-api</artifactId>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>primefaces-extensions</artifactId>
+            <version>9.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.primefaces</groupId>
+                    <artifactId>primefaces</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>
 
-	<build>
+    <build>
         <plugins>
             <plugin>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -49,14 +57,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
-                    <createSourcesJar>true</createSourcesJar>
-                    <shadeSourcesContent>true</shadeSourcesContent>
-                    <shadeTestJar>false</shadeTestJar>
-                    <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
                     <artifactSet>
                         <includes>
-                            <include>org.ehcache:*</include>
+                            <include>org.primefaces.extensions</include>
                         </includes>
                     </artifactSet>
                     <filters>
@@ -64,19 +67,17 @@
                             <artifact>*:*</artifact>
                             <excludes>
                                 <exclude>module-info.java</exclude>
+                                <exclude>*.jar</exclude>
                             </excludes>
                         </filter>
                     </filters>
-                    <transformers>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                    </transformers>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
             </plugin>
-
 
         </plugins>
     </build>

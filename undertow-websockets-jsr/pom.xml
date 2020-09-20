@@ -46,22 +46,7 @@
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-websockets-jsr</artifactId>
-            <version>${io.undertow.version}</version>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jboss.spec.javax.websocket</groupId>
-                    <artifactId>jboss-websocket-api_1.1_spec</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.jboss.xnio</groupId>
-                    <artifactId>xnio-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.jboss.threads</groupId>
-                    <artifactId>jboss-threads</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
 

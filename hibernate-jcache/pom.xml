@@ -28,15 +28,12 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jcache</artifactId>
-            <version>${maven.hibernate.version}</version>
             <optional>true</optional>
         </dependency>
-
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>

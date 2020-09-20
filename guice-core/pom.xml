@@ -18,18 +18,15 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.inject</artifactId>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>aopalliance-core</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guava</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -41,7 +38,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-lang3</artifactId>
-            <type>jar</type>
         </dependency>
     </dependencies>
 

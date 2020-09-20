@@ -37,48 +37,6 @@
         Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
     </description>
 
-    <properties>
-
-        <!-- override parent as version used by parent requires Java 8 -->
-        <commons.felix.version>3.5.1</commons.felix.version>
-
-        <commons.componentid>compress</commons.componentid>
-        <commons.module.name>org.apache.commons.compress</commons.module.name>
-        <commons.jira.id>COMPRESS</commons.jira.id>
-        <commons.jira.pid>12310904</commons.jira.pid>
-        <!-- configuration bits for cutting a release candidate -->
-        <commons.release.version>${project.version}</commons.release.version>
-        <commons.rc.version>RC1</commons.rc.version>
-        <!-- old version used by japicmp -->
-        <commons.bc.version>1.19</commons.bc.version>
-        <powermock.version>1.7.4</powermock.version>
-        <commons.pmd-plugin.version>3.12.0</commons.pmd-plugin.version>
-
-        <commons.manifestlocation>${project.build.outputDirectory}/META-INF</commons.manifestlocation>
-        <commons.manifestfile>${commons.manifestlocation}/MANIFEST.MF</commons.manifestfile>
-        <commons.osgi.import>
-            org.tukaani.xz;resolution:=optional,
-            org.brotli.dec;resolution:=optional,
-            com.github.luben.zstd;resolution:=optional,
-            javax.crypto.*;resolution:=optional,
-            *
-        </commons.osgi.import>
-
-        <!-- only show issues of the current version -->
-        <commons.changes.onlyCurrentVersion>true</commons.changes.onlyCurrentVersion>
-
-        <!-- generate report even if there are binary incompatible changes -->
-        <commons.japicmp.breakBuildOnBinaryIncompatibleModifications>false</commons.japicmp.breakBuildOnBinaryIncompatibleModifications>
-
-        <!-- definition uses commons.componentId starting with parent 47,
-             this doesn't work for us -->
-        <commons.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/commons/content/proper/${project.artifactId}</commons.scmPubUrl>
-        <japicmp.skip>false</japicmp.skip>
-
-        <pax.exam.version>4.13.1</pax.exam.version>
-        <slf4j.version>1.7.26</slf4j.version>
-    </properties>
-
     <issueManagement>
         <system>jira</system>
         <url>https://issues.apache.org/jira/browse/COMPRESS</url>
@@ -95,20 +53,17 @@
         <dependency>
             <groupId>org.brotli</groupId>
             <artifactId>dec</artifactId>
-            <version>0.1.2</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.tukaani</groupId>
             <artifactId>xz</artifactId>
-            <version>1.8</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
-            <version>1.20</version>
             <optional>true</optional>
         </dependency>
 

@@ -21,7 +21,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>cache-api</artifactId>
-            <type>jar</type>
         </dependency>
     </dependencies>
 

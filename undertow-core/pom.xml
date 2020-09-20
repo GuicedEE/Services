@@ -36,14 +36,12 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jboss-logmanager</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>org.eclipse.jetty.alpn</groupId>
             <artifactId>alpn-api</artifactId>
             <optional>true</optional>
-            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -54,14 +52,12 @@
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-core</artifactId>
-            <version>${undertow.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.jboss.xnio</groupId>
             <artifactId>xnio-api</artifactId>
-            <version>${xnio.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -69,7 +65,6 @@
         <dependency>
             <groupId>org.jboss.xnio</groupId>
             <artifactId>xnio-nio</artifactId>
-            <version>${xnio.version}</version>
             <optional>true</optional>
         </dependency>
 

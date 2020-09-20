@@ -42,13 +42,11 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-lang3</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
-            <version>1.9</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

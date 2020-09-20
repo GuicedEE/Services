@@ -19,14 +19,12 @@
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.security.jacc</artifactId>
-            <version>3.2-b06</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <type>jar</type>
         </dependency>
 
 

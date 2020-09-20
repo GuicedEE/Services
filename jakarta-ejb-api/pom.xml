@@ -37,19 +37,16 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.transaction</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>jakarta.ejb</groupId>
             <artifactId>jakarta.ejb-api</artifactId>
-            <version>3.2.6</version>
             <optional>true</optional>
         </dependency>
 

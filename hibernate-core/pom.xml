@@ -11,7 +11,8 @@
     <packaging>jar</packaging>
 
     <name>hibernate.core</name>
-    <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves</description>
+    <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
+    </description>
 
     <dependencies>
         <dependency>
@@ -22,7 +23,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -48,13 +48,11 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>hibernate-commons-annotations</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jandex</artifactId>
-            <type>jar</type>
         </dependency>
 
 
@@ -66,84 +64,29 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javassist</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>dom4j</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.security.jacc</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>org.apache.ant</groupId>
             <artifactId>ant</artifactId>
-            <type>jar</type>
             <optional>true</optional>
         </dependency>
 
-		<dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>${maven.hibernate.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>jaxb-api</artifactId>
-                        <groupId>javax.xml.bind</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>hibernate-commons-annotations</artifactId>
-                        <groupId>org.hibernate.common</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>javax.persistence-api</artifactId>
-                        <groupId>javax.persistence</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>javassist</artifactId>
-                        <groupId>org.javassist</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>jboss-transaction-api_1.2_spec</artifactId>
-                        <groupId>org.jboss.spec.javax.transaction</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>javax.persistence-api</artifactId>
-                        <groupId>javax.persistence</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>jandex</artifactId>
-                        <groupId>org.jboss</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>dom4j</artifactId>
-                        <groupId>org.dom4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>jaxb-api</artifactId>
-                        <groupId>javax.xml.bind</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>jaxb-runtime</artifactId>
-                        <groupId>org.glassfish.jaxb</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>jboss-logging</artifactId>
-                        <groupId>org.jboss.logging</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>javax.activation-api</artifactId>
-                        <groupId>javax.activation</groupId>
-                    </exclusion>
-                </exclusions>
-                <optional>true</optional>
-            </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <optional>true</optional>
+        </dependency>
 
     </dependencies>
 

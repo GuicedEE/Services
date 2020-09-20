@@ -21,12 +21,10 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>cache-annotations-ri-common</artifactId>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guice</artifactId>
-            <type>jar</type>
         </dependency>
     </dependencies>
 </project>

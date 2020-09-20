@@ -51,74 +51,6 @@ limitations under the License.
         <url>https://github.com/apache/commons-codec</url>
     </scm>
 
-    <properties>
-        <poi.version>4.1.2</poi.version>
-    </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml</artifactId>
-                <version>${poi.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.xmlbeans</groupId>
-                        <artifactId>xmlbeans</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.poi</groupId>
-                        <artifactId>poi-ooxml-schemas</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>commons-compress</artifactId>
-                        <groupId>org.apache.commons</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>poi</artifactId>
-                        <groupId>org.apache.poi</groupId>
-                    </exclusion>
-                </exclusions>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml-schemas</artifactId>
-                <version>${poi.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.xmlbeans</groupId>
-                        <artifactId>xmlbeans</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>poi</artifactId>
-                        <groupId>org.apache.poi</groupId>
-                    </exclusion>
-                </exclusions>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-scratchpad</artifactId>
-                <version>${poi.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.xmlbeans</groupId>
-                        <artifactId>xmlbeans</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>poi</artifactId>
-                        <groupId>org.apache.poi</groupId>
-                    </exclusion>
-                </exclusions>
-                <optional>true</optional>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
-
     <!-- Codec only has test dependencies ATM -->
     <dependencies>
 
@@ -148,7 +80,6 @@ limitations under the License.
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-scratchpad</artifactId>
             <optional>true</optional>
-
         </dependency>
 
         <dependency>

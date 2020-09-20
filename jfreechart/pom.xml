@@ -47,14 +47,12 @@
         <dependency>
             <groupId>net.sourceforge.barbecue</groupId>
             <artifactId>barbecue</artifactId>
-            <version>1.5-beta1</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>jfree</groupId>
             <artifactId>jfreechart</artifactId>
-            <version>1.0.0</version>
             <optional>true</optional>
         </dependency>
 

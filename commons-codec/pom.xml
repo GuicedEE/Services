@@ -208,7 +208,6 @@ limitations under the License.
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.14</version>
             <optional>true</optional>
         </dependency>
 

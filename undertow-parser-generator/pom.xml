@@ -37,14 +37,12 @@
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-parser-generator</artifactId>
-            <version>${undertow.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.jboss.classfilewriter</groupId>
             <artifactId>jboss-classfilewriter</artifactId>
-            <version>1.2.4.Final</version>
             <optional>true</optional>
         </dependency>
 

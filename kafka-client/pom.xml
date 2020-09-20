@@ -46,24 +46,14 @@
        <dependency>
 			<groupId>org.apache.kafka</groupId>
 			<artifactId>kafka-clients</artifactId>
-			<version>2.6.0</version>
            <optional>true</optional>
-           <exclusions>
-               <exclusion>
-                   <groupId>com.github.luben</groupId>
-                   <artifactId>zstd-jni</artifactId>
-               </exclusion>
-               <exclusion>
-                   <groupId>org.slf4j</groupId>
-                   <artifactId>slf4j-api</artifactId>
-               </exclusion>
-           </exclusions>
 		</dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>slf4j</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>zstd-jni</artifactId>
@@ -72,14 +62,12 @@
         <dependency>
             <groupId>org.xerial.snappy</groupId>
             <artifactId>snappy-java</artifactId>
-            <version>1.1.7.7</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.lz4</groupId>
             <artifactId>lz4-java</artifactId>
-            <version>1.7.1</version>
             <optional>true</optional>
         </dependency>
 

@@ -10,30 +10,27 @@
 	
     <artifactId>guice-assistedinject</artifactId>
 
-    <groupId>com.guicedee.services</groupId>
     <name>google.guice.extensions.assistedinject</name>
 
     <dependencies>
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guice</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guava</artifactId>
-            <type>jar</type>
         </dependency>
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.inject</artifactId>
-            <type>jar</type>
         </dependency>
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>aopalliance-core</artifactId>
-            <type>jar</type>
         </dependency>
 
     </dependencies>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -10,7 +11,10 @@
 
     <artifactId>uadetector-core</artifactId>
     <name>net.sf.uadetector.core</name>
-    <description>The UADetector core library includes the API and implementation to read the detection information and the functions to identify User-Agents, but not the database (also known as UAS data). The UAS data can be found in the resources module.</description>
+    <description>The UADetector core library includes the API and implementation to read the detection information and
+        the functions to identify User-Agents, but not the database (also known as UAS data). The UAS data can be found
+        in the resources module.
+    </description>
 
     <packaging>jar</packaging>
 
@@ -32,14 +36,12 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guava</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <type>jar</type>
-            </dependency>
+        </dependency>
 
     </dependencies>
 

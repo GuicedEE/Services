@@ -25,84 +25,51 @@
     <packaging>jar</packaging>
     <name>jaxb</name>
 
-    <properties>
-        <config.dir>${project.basedir}/../etc/config</config.dir>
-        <legal.doc.source>${project.basedir}/..</legal.doc.source>
-    </properties>
-
     <dependencies>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.activation</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.activation</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>${jaxb.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jakarta.activation-api</artifactId>
-                    <groupId>jakarta.activation</groupId>
-                </exclusion>
-            </exclusions>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>${jaxb.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>javax.activation-api</artifactId>
-                    <groupId>javax.activation</groupId>
-                </exclusion>
-            </exclusions>
             <optional>true</optional>
         </dependency>
-
 
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>${jaxb.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jakarta.activation-api</artifactId>
-                    <groupId>jakarta.activation</groupId>
-                </exclusion>
-            </exclusions>
             <optional>true</optional>
         </dependency>
 
-
-        <!-- https://mvnrepository.com/artifact/org.codehaus.woodstox/stax2-api -->
         <dependency>
             <groupId>org.codehaus.woodstox</groupId>
             <artifactId>stax2-api</artifactId>
-            <version>4.2.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.jvnet.staxex</groupId>
             <artifactId>stax-ex</artifactId>
-            <version>1.8.3</version>
         </dependency>
+
 
     </dependencies>
 

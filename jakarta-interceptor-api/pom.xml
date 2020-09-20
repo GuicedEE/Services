@@ -71,18 +71,7 @@
         <dependency>
             <groupId>jakarta.interceptor</groupId>
             <artifactId>jakarta.interceptor-api</artifactId>
-            <version>1.2.5</version>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>jakarta.annotation</groupId>
-                    <artifactId>jakarta.annotation-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>jakarta.ejb</groupId>
-                    <artifactId>jakarta.ejb-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 

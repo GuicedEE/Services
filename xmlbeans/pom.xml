@@ -54,26 +54,18 @@ limitations under the License.
         <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-B</artifactId>
-            <version>9.0</version>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>saxon-dom</artifactId>
-            <version>8.7</version>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>net.sf.saxon</groupId>
-                    <artifactId>saxon</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>org.apache.ant</groupId>
             <artifactId>ant</artifactId>
-            <type>jar</type>
             <optional>true</optional>
         </dependency>
 
@@ -81,7 +73,6 @@ limitations under the License.
         <dependency>
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
-            <version>3.1.0</version>
             <optional>true</optional>
         </dependency>
 

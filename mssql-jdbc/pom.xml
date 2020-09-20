@@ -20,10 +20,6 @@
 
     <url>https://github.com/Microsoft/mssql-jdbc</url>
 
-    <properties>
-        <mssql.jdbc>8.4.1</mssql.jdbc>
-    </properties>
-
     <licenses>
         <license>
             <name>MIT License</name>
@@ -50,10 +46,16 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc_auth</artifactId>
-            <version>${mssql.jdbc}.x64</version>
             <type>dll</type>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -86,51 +88,5 @@
 
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>jdk14</id>
-            <activation>
-                <jdk>[14,)</jdk>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>com.microsoft.sqlserver</groupId>
-                    <artifactId>mssql-jdbc</artifactId>
-                    <version>${mssql.jdbc}.jre14</version>
-                    <optional>true</optional>
-                </dependency>
-            </dependencies>
-
-        </profile>
-
-        <profile>
-            <id>jdk9</id>
-            <dependencies>
-                <dependency>
-                    <groupId>com.microsoft.sqlserver</groupId>
-                    <artifactId>mssql-jdbc</artifactId>
-                    <version>${mssql.jdbc}.jre11</version>
-                    <optional>true</optional>
-                </dependency>
-            </dependencies>
-        </profile>
-
-
-        <profile>
-            <id>jdk8</id>
-            <activation>
-                <jdk>1.8</jdk>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>com.microsoft.sqlserver</groupId>
-                    <artifactId>mssql-jdbc</artifactId>
-                    <version>${mssql.jdbc}.jre8</version>
-                    <optional>true</optional>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
 
 </project>

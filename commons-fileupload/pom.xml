@@ -189,45 +189,27 @@
         <url>http://issues.apache.org/jira/browse/FILEUPLOAD</url>
     </issueManagement>
 
-    <properties>
-        <commons.componentid>fileupload</commons.componentid>
-        <commons.module.name>org.apache.commons.fileupload</commons.module.name>
-        <commons.release.version>1.4</commons.release.version>
-        <commons.rc.version>RC1</commons.rc.version>
-        <commons.jira.id>FILEUPLOAD</commons.jira.id>
-        <commons.jira.pid>12310476</commons.jira.pid>
-        <commons.site.path>fileupload</commons.site.path>
-        <commons.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/commons/content/proper/commons-fileupload</commons.scmPubUrl>
-        <commons.scmPubCheckoutDirectory>site-content</commons.scmPubCheckoutDirectory>
-        <commons.osgi.export>!org.apache.commons.fileupload.util.mime,org.apache.commons.*;version=${project.version};-noimport:=true</commons.osgi.export>
-        <commons.osgi.import>!javax.portlet,*</commons.osgi.import>
-        <commons.osgi.dynamicImport>javax.portlet</commons.osgi.dynamicImport>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
-            <groupId>portlet-api</groupId>
-            <artifactId>portlet-api</artifactId>
-            <version>1.0</version>
-            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-io</artifactId>
-            <type>jar</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>portlet-api</groupId>
+            <artifactId>portlet-api</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.4</version>
             <optional>true</optional>
         </dependency>
 

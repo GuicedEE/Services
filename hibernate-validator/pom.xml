@@ -18,7 +18,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.el</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -29,7 +28,6 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>${maven.hibernate.validator.version}</version>
             <optional>true</optional>
         </dependency>
 

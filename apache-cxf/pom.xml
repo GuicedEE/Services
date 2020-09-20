@@ -28,47 +28,14 @@
         <url>https://issues.apache.org/jira/browse/CXF</url>
     </issueManagement>
     <properties>
-        <cxf.compiler.fork>false</cxf.compiler.fork>
-        <cxf.build-utils.version>3.4.3</cxf.build-utils.version>
-        <cxf.xjc-utils.version>3.3.0</cxf.xjc-utils.version>
-        <cxf.jdk.version>1.8</cxf.jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <site.deploy.url>scp://people.apache.org/www/cxf.apache.org/maven-site</site.deploy.url>
-        <maven-owasp-plugin-version>4.0.2</maven-owasp-plugin-version>
-
-        <jetty.version>9.4.31.v20200723</jetty.version>
-
-        <stax.version>1.8.3</stax.version>
-        <stax2.api.version>4.2.1</stax2.api.version>
-        <woodstox.version>6.2.1</woodstox.version>
-        <wsdl4j.version>1.6.3</wsdl4j.version>
-        <opensaml.openws.version>1.5.4</opensaml.openws.version>
-        <neethi.version>3.1.1</neethi.version>
-
-        <jersey.version>2.31</jersey.version>
-        <oauth.version>20100527</oauth.version>
-
-        <xmlschema.core.version>2.2.5</xmlschema.core.version>
-        <jasypt.version>1.9.3</jasypt.version>
-
-        <cxf.rt.version>3.4.0</cxf.rt.version>
-        <cxf.bundle.version>3.0.0-milestone2</cxf.bundle.version>
-        <wss4j.policy.version>2.3.0</wss4j.policy.version>
-        <wss4j.imp.version>2.2.5</wss4j.imp.version>
-
-        <http.core.version>4.4.13</http.core.version>
-        <http.nio.version>4.4.13</http.nio.version>
-
-        <opensaml.version>2.6.4</opensaml.version>
-        <xmlsec.version>2.2.0</xmlsec.version>
-
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -89,21 +56,23 @@
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache</artifactId>
-            <version>2.10.6</version>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.jws</groupId>
+            <artifactId>jakarta.jws-api</artifactId>
         </dependency>
 
 
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>rt</artifactId>
-            <version>2.3.3</version>
             <optional>true</optional>
         </dependency>
 
@@ -111,45 +80,33 @@
         <dependency>
             <groupId>org.jvnet.staxex</groupId>
             <artifactId>stax-ex</artifactId>
-            <version>${stax.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.woodstox</groupId>
             <artifactId>woodstox-core</artifactId>
-            <version>${woodstox.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.codehaus.woodstox</groupId>
             <artifactId>stax2-api</artifactId>
-            <version>${stax2.api.version}</version>
         </dependency>
 
         <dependency>
             <groupId>wsdl4j</groupId>
             <artifactId>wsdl4j</artifactId>
-            <version>${wsdl4j.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.opensaml</groupId>
             <artifactId>openws</artifactId>
-            <version>${opensaml.openws.version}</version>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jakarta.activation-api</artifactId>
-                    <groupId>jakarta.activation</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>org.apache.neethi</groupId>
             <artifactId>neethi</artifactId>
-            <version>${neethi.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -161,90 +118,61 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            <version>${jetty.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-continuation</artifactId>
-            <version>${jetty.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-http</artifactId>
-            <version>${jetty.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-io</artifactId>
-            <version>${jetty.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-util</artifactId>
-            <version>${jetty.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-security</artifactId>
-            <version>${jetty.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-server</artifactId>
-            <version>${jersey.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>validation-api</artifactId>
-                    <groupId>javax.validation</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jakarta.activation-api</artifactId>
-                    <groupId>jakarta.activation</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jakarta.annotation-api</artifactId>
-                    <groupId>jakarta.annotation</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jakarta.xml.bind-api</artifactId>
-                    <groupId>jakarta.xml.bind</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>net.oauth.core</groupId>
             <artifactId>oauth-provider</artifactId>
-            <version>${oauth.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>net.oauth.core</groupId>
             <artifactId>oauth</artifactId>
-            <version>${oauth.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.ws.xmlschema</groupId>
             <artifactId>xmlschema-core</artifactId>
-            <version>${xmlschema.core.version}</version>
             <optional>true</optional>
         </dependency>
-
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -269,34 +197,22 @@
             <optional>true</optional>
         </dependency>
 
-
-        <!-- https://mvnrepository.com/artifact/org.apache.wss4j/wss4j-ws-security-dom -->
         <dependency>
             <groupId>org.apache.wss4j</groupId>
             <artifactId>wss4j-ws-security-dom</artifactId>
-            <version>2.2.5</version>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.wss4j/wss4j-ws-security-common -->
         <dependency>
             <groupId>org.apache.wss4j</groupId>
             <artifactId>wss4j-ws-security-common</artifactId>
-            <version>2.3.0</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.jasypt</groupId>
             <artifactId>jasypt</artifactId>
-            <version>${jasypt.version}</version>
             <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>jakarta.jws</groupId>
-            <artifactId>jakarta.jws-api</artifactId>
-            <version>2.1.0</version>
         </dependency>
 
         <dependency>
@@ -307,7 +223,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-collections4</artifactId>
-
         </dependency>
 
         <dependency>
@@ -318,7 +233,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-codec</artifactId>
-
         </dependency>
 
         <dependency>
@@ -326,34 +240,35 @@
             <artifactId>wss4j-policy</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.apache.wss4j</groupId>
             <artifactId>wss4j-ws-security-stax</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.apache.wss4j</groupId>
             <artifactId>wss4j-bindings-wss10</artifactId>
             <optional>true</optional>
-            <version>2.0.0-rc1</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.wss4j</groupId>
             <artifactId>wss4j-bindings-wsu10</artifactId>
             <optional>true</optional>
-            <version>2.0.0-rc1</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.wss4j</groupId>
             <artifactId>wss4j-bindings-wss11</artifactId>
             <optional>true</optional>
-            <version>2.0.0-rc1</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.wss4j</groupId>
             <artifactId>wss4j-bindings-wssc</artifactId>
             <optional>true</optional>
-            <version>2.0.0-rc1</version>
         </dependency>
 
         <dependency>
@@ -365,7 +280,6 @@
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-ws-policy</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -378,338 +292,247 @@
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-ws-security</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk16</artifactId>
-            <version>1.46</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-security-jose -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-security-jose</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-json-basic</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-security -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-security</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-security-oauth2</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-security-oauth -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-security-oauth</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-extension-providers -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-extension-providers</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-extension-search</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-databinding-jaxb -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-databinding-jaxb</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-sse</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- Thanks for using https://jar-download.com -->
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-service-description -->
-        <!--    <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-rs-service-description</artifactId>
-                <version>${cxf.rt.version}</version>
-                <optional>true</optional>
-            </dependency>-->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-ws-addr</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-wsdl -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-wsdl</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-service-description-swagger -->
-        <!-- <dependency>
-             <groupId>org.apache.cxf</groupId>
-             <artifactId>cxf-rt-rs-service-description-swagger</artifactId>
-             <version>${cxf.rt.version}</version>
-             <optional>true</optional>
-         </dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-ws-mex -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-ws-mex</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-security-sso-saml -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-security-sso-saml</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-security-xml -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-security-xml</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-security-saml -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-security-saml</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-databinding-xmlbeans -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-databinding-xmlbeans</artifactId>
-            <version>3.1.18</version>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-tools-common</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.glassfish.jaxb</groupId>
-                    <artifactId>jaxb-xjc</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.glassfish.jaxb</groupId>
-                    <artifactId>jaxb-runtime</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity-engine-core -->
+
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
-            <version>2.2</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-js -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-js</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-service-description-openapi-v3 -->
-        <!-- <dependency>
-             <groupId>org.apache.cxf</groupId>
-             <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
-             <version>${cxf.rt.version}</version>
-             <optional>true</optional>
-         </dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-security-oauth2-saml -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-security-oauth2-saml</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-websocket -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-websocket</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-features-metrics -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-features-metrics</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-extension-reactivestreams -->
-        <!--    <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-rs-extension-reactivestreams</artifactId>
-                <version>${cxf.rt.version}</version>
-                <optional>true</optional>
-            </dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.reactivestreams/reactive-streams -->
-        <!--     <dependency>
-                 <groupId>org.reactivestreams</groupId>
-                 <artifactId>reactive-streams</artifactId>
-                 <version>1.0.3</version>
-                 <optional>true</optional>
-             </dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-ws-transfer -->
+
         <dependency>
             <groupId>org.opensaml</groupId>
             <artifactId>opensaml-xmlsec-api</artifactId>
-            <version>3.4.5</version>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.opensaml</groupId>
             <artifactId>opensaml-messaging-api</artifactId>
-            <version>3.4.5</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.opensaml/opensaml-security-api -->
+
         <dependency>
             <groupId>org.opensaml</groupId>
             <artifactId>opensaml-security-api</artifactId>
-            <version>3.4.5</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.cryptacular/cryptacular -->
+
         <dependency>
             <groupId>org.cryptacular</groupId>
             <artifactId>cryptacular</artifactId>
-            <version>1.2.4</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-http -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-core -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-core</artifactId>
-            <version>2.7.18</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-api -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-api</artifactId>
-            <version>2.7.18</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-client</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-management -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-management</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-local -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-local</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http-jetty</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-jms -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-jms</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-udp -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-udp</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-ws-rm -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-ws-rm</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-javascript -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-javascript</artifactId>
-            <version>${cxf.rt.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -909,177 +732,5 @@
         <name>The Apache Software Foundation</name>
         <url>https://www.apache.org/</url>
     </organization>
-
-
-    <dependencyManagement>
-        <dependencies>
-            <!-- https://mvnrepository.com/artifact/io.undertow/undertow-core -->
-            <dependency>
-                <groupId>io.undertow</groupId>
-                <artifactId>undertow-core</artifactId>
-                <version>2.1.2.Final</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
-            <dependency>
-                <groupId>org.bouncycastle</groupId>
-                <artifactId>bcprov-jdk15on</artifactId>
-                <version>1.66</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/ca.juliusdavies/not-yet-commons-ssl -->
-            <dependency>
-                <groupId>ca.juliusdavies</groupId>
-                <artifactId>not-yet-commons-ssl</artifactId>
-                <version>0.3.11</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>29.0-jre</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>4.5.12</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>1.14</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.bouncycastle</groupId>
-                <artifactId>bcprov-jdk16</artifactId>
-                <version>1.46</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-transports-http-undertow</artifactId>
-                <version>${cxf.rt.version}</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.wss4j</groupId>
-                <artifactId>wss4j-policy</artifactId>
-                <version>${wss4j.policy.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.wss4j</groupId>
-                <artifactId>wss4j-ws-security-stax</artifactId>
-                <version>${wss4j.policy.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.wss4j</groupId>
-                <artifactId>wss4j-bindings-wss10</artifactId>
-                <version>2.0.0-rc1</version>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.wss4j</groupId>
-                <artifactId>wss4j-bindings-wsu10</artifactId>
-                <version>2.0.0-rc1</version>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.wss4j</groupId>
-                <artifactId>wss4j-bindings-wss11</artifactId>
-                <version>2.0.0-rc1</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.wss4j</groupId>
-                <artifactId>wss4j-bindings-wssc</artifactId>
-                <version>2.0.0-rc1</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.wss4j</groupId>
-                <artifactId>wss4j-ws-security-policy-stax</artifactId>
-                <version>${wss4j.policy.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpcore</artifactId>
-                <version>${http.core.version}</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpcore-nio</artifactId>
-                <version>${http.nio.version}</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.opensaml</groupId>
-                <artifactId>opensaml</artifactId>
-                <version>${opensaml.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.santuario</groupId>
-                <artifactId>xmlsec</artifactId>
-                <version>${xmlsec.version}</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.wss4j</groupId>
-                <artifactId>wss4j-ws-security-dom</artifactId>
-                <version>${wss4j.policy.version}</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.wss4j</groupId>
-                <artifactId>wss4j-ws-security-common</artifactId>
-                <version>2.3.0</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-core</artifactId>
-                <version>${cxf.rt.version}</version>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-frontend-jaxws</artifactId>
-                <version>${cxf.rt.version}</version>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-transports-http</artifactId>
-                <version>${cxf.rt.version}</version>
-                <optional>true</optional>
-            </dependency>
-
-
-            <!-- Jetty is needed if you're are not using the CXFServlet -->
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-transports-http-jetty</artifactId>
-                <version>${cxf.rt.version}</version>
-                <optional>true</optional>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
 
 </project>

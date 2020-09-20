@@ -17,19 +17,16 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.activation</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
-            <version>${maven.hibernate.version}</version>
             <optional>true</optional>
         </dependency>
 

@@ -44,14 +44,6 @@
     <inceptionYear>2015</inceptionYear>
     <packaging>jar</packaging>
 
-    <properties>
-        <!-- needed for checkstyle/findbugs -->
-        <main.basedir>${project.basedir}</main.basedir>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <timestamp>${maven.build.timestamp}</timestamp>
-        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-    </properties>
-
     <scm>
         <connection>scm:git:git://github.com/hazelcast/hazelcast-kubernetes.git</connection>
         <developerConnection>scm:git:git@github.com:hazelcast/hazelcast-kubernetes.git</developerConnection>
@@ -89,25 +81,21 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>cache-api</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>hazelcast-all</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.activation</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-hibernate53</artifactId>
-            <version>${hazelcast.hibernate.version}</version>
             <optional>true</optional>
         </dependency>
 

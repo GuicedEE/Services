@@ -77,13 +77,11 @@
         <dependency>
             <groupId>jakarta.el</groupId>
             <artifactId>jakarta.el-api</artifactId>
-            <version>3.0.3</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>jakarta.el</artifactId>
-            <version>3.0.3</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

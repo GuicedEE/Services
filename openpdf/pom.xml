@@ -17,42 +17,36 @@
         <dependency>
             <groupId>com.github.librepdf</groupId>
             <artifactId>openpdf</artifactId>
-            <version>1.3.20</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.66</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcpkix-jdk15on</artifactId>
-            <version>1.65</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.github.albfernandez </groupId>
             <artifactId>juniversalchardet</artifactId>
-            <version>2.3.2</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.twelvemonkeys.imageio</groupId>
             <artifactId>imageio-tiff</artifactId>
-            <version>3.6</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>fontbox</artifactId>
-            <version>2.0.21</version>
             <optional>true</optional>
         </dependency>
 
@@ -76,7 +70,6 @@
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>fop</artifactId>
-            <version>2.5</version>
             <optional>true</optional>
         </dependency>
 
@@ -125,7 +118,6 @@
                         <groupId>org.ow2.asm</groupId>
                         <artifactId>asm</artifactId>
                         <version>${maven.asm.version}</version>
-                        <type>jar</type>
                     </dependency>
                 </dependencies>
             </plugin>

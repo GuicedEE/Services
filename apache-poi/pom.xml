@@ -51,36 +51,8 @@ limitations under the License.
     </scm>
 
     <properties>
-        <poi.version>4.1.2</poi.version>
-
-        <!-- Fix to build on JDK 7: version 4.0.0 requires Java 8. -->
-        <!-- Can be dropped when CP 49 is released -->
-        <commons.felix.version>3.5.1</commons.felix.version>
-        <commons.componentid>codec</commons.componentid>
-        <commons.module.name>org.apache.commons.codec</commons.module.name>
-        <commons.jira.id>CODEC</commons.jira.id>
-        <commons.jira.pid>12310464</commons.jira.pid>
-        <!-- Ensure copies work OK (can be removed later when this is in parent POM) -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <commons.encoding>UTF-8</commons.encoding>
-        <checkstyle.header.file>${basedir}/LICENSE-header.txt</checkstyle.header.file>
-        <checkstyle.version>2.17</checkstyle.version>
-        <commons.japicmp.version>0.14.1</commons.japicmp.version>
-        <commons.jacoco.version>0.8.4</commons.jacoco.version>
-
-        <!-- generate report even if there are binary incompatible changes -->
-        <commons.japicmp.breakBuildOnBinaryIncompatibleModifications>false</commons.japicmp.breakBuildOnBinaryIncompatibleModifications>
-        <japicmp.skip>false</japicmp.skip>
-
-        <!-- Commons Release Plugin -->
-        <commons.bc.version>1.12</commons.bc.version>
-        <commons.rc.version>RC1</commons.rc.version>
-        <commons.release-plugin.version>1.5</commons.release-plugin.version>
-        <commons.release.isDistModule>true</commons.release.isDistModule>
-        <commons.distSvnStagingUrl>scm:svn:https://dist.apache.org/repos/dist/dev/commons/${commons.componentid}</commons.distSvnStagingUrl>
-        <commons.releaseManagerName>Gary Gregory</commons.releaseManagerName>
-        <commons.releaseManagerKey>86fdc7e2a11262cb</commons.releaseManagerKey>
     </properties>
 
     <developers>
@@ -236,117 +208,43 @@ limitations under the License.
         </contributor>
     </contributors>
 
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml</artifactId>
-                <version>${poi.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.xmlbeans</groupId>
-                        <artifactId>xmlbeans</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.poi</groupId>
-                        <artifactId>poi-ooxml-schemas</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>commons-compress</artifactId>
-                        <groupId>org.apache.commons</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>poi</artifactId>
-                        <groupId>org.apache.poi</groupId>
-                    </exclusion>
-                </exclusions>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml-schemas</artifactId>
-                <version>${poi.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.xmlbeans</groupId>
-                        <artifactId>xmlbeans</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>poi</artifactId>
-                        <groupId>org.apache.poi</groupId>
-                    </exclusion>
-                </exclusions>
-                <optional>true</optional>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-scratchpad</artifactId>
-                <version>${poi.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.xmlbeans</groupId>
-                        <artifactId>xmlbeans</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>poi</artifactId>
-                        <groupId>org.apache.poi</groupId>
-                    </exclusion>
-                </exclusions>
-                <optional>true</optional>
-            </dependency>
-
-
-        </dependencies>
-    </dependencyManagement>
-
     <!-- Codec only has test dependencies ATM -->
     <dependencies>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-logging</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-codec</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-math3</artifactId>
-            <type>jar</type>
         </dependency>
-
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-collections4</artifactId>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>${poi.version}</version>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-codec</groupId>
-                    <artifactId>commons-codec</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>
@@ -367,13 +265,13 @@ limitations under the License.
                             <artifactSet>
                                 <includes>
                                     <include>org.apache.poi:poi</include>
+                                    <include>com.zaxxer</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
 
             <plugin>
                 <groupId>org.moditect</groupId>
