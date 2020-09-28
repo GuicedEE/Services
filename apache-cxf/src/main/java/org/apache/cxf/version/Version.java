@@ -53,7 +53,7 @@ public final class Version {
 			} catch (Exception var14) {
 			}
 
-			version = p.getProperty("product.version", "<unknown>");
+			version = p.getProperty("product.version", "3.4.0");
 			name = p.getProperty("product.name", "Apache CXF");
 			buildNumber = p.getProperty("build.number", "<unknown>");
 			if (!version.contains("SNAPSHOT") && !version.contains("<unknown>")) {

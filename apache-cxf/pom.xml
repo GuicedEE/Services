@@ -43,6 +43,14 @@
             <artifactId>slf4j</artifactId>
         </dependency>
 
+<!--
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+-->
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guava</artifactId>
@@ -63,6 +71,19 @@
             <artifactId>ehcache</artifactId>
             <optional>true</optional>
         </dependency>
+
+       <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-tools-validator</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-hc</artifactId>
+            <optional>true</optional>
+        </dependency>
+
 
         <dependency>
             <groupId>jakarta.jws</groupId>
@@ -116,43 +137,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-continuation</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-http</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-io</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-util</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-security</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
             <groupId>jakarta.ws.rs</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
         </dependency>
@@ -185,12 +169,12 @@
             <artifactId>httpcore-nio</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.opensaml</groupId>
             <artifactId>opensaml</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.apache.santuario</groupId>
             <artifactId>xmlsec</artifactId>
@@ -234,7 +218,6 @@
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.wss4j</groupId>
             <artifactId>wss4j-policy</artifactId>
@@ -280,12 +263,6 @@
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-ws-policy</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http-undertow</artifactId>
             <optional>true</optional>
         </dependency>
 
@@ -354,6 +331,14 @@
             <artifactId>cxf-rt-rs-extension-search</artifactId>
             <optional>true</optional>
         </dependency>
+<!--
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
+            <optional>true</optional>
+        </dependency>
+-->
 
 
         <dependency>
@@ -445,7 +430,6 @@
             <artifactId>cxf-rt-features-metrics</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.opensaml</groupId>
             <artifactId>opensaml-xmlsec-api</artifactId>
@@ -476,17 +460,17 @@
             <optional>true</optional>
         </dependency>
 
-        <dependency>
+   <!--     <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-core</artifactId>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
 
-        <dependency>
+    <!--    <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-api</artifactId>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -508,10 +492,17 @@
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <artifactId>cxf-rt-transports-http-undertow</artifactId>
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.cxf.services.sts</groupId>
+            <artifactId>cxf-services-sts-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+<!--
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-jms</artifactId>
@@ -523,6 +514,7 @@
             <artifactId>cxf-rt-transports-udp</artifactId>
             <optional>true</optional>
         </dependency>
+-->
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -532,15 +524,58 @@
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-javascript</artifactId>
+            <artifactId>cxf-core</artifactId>
             <optional>true</optional>
         </dependency>
+
+     <!--  <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-javascript</artifactId>
+            <optional>true</optional>
+        </dependency>-->
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-beanutils</artifactId>
         </dependency>
 
+       <!-- <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-continuation</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-http</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-io</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-util</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-security</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <optional>true</optional>
+        </dependency>
+-->
     </dependencies>
 
     <build>
@@ -571,64 +606,24 @@
                             <include>org.opensaml:opensaml-xmlsec-api:*</include>
                             <include>org.opensaml:opensaml-messaging-api:*</include>
                             <include>org.opensaml:opensaml-security-api:*</include>
+
                             <include>org.cryptacular:cryptacular:*</include>
                             <include>org.reactivestreams:reactive-streams:*</include>
                             <include>org.apache.velocity:velocity-engine-core:*</include>
-                            <include>org.eclipse.jetty:*:*</include>
+                            <!--<include>org.eclipse.jetty:*:*</include>-->
+                            <include>org.objectweb.asm:asm:*</include>
+
                             <include>org.apache.cxf:*:*</include>
-                            <include>org.apache.cxf:cxf-core:*</include>
-                            <include>org.apache.cxf:cxf-rt-core:*</include>
-                            <include>org.apache.cxf:cxf-tools-common:*</include>
-                            <include>org.bouncycastle:bcprov-jdk16:*</include>
-                            <include>org.jacorb:jacorb-omgapi:*</include>
-                            <include>org.apache.cxf:cxf-rt-transports-http:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-security-jose:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-json-basic:*</include>
-                            <include>org.apache.cxf:cxf-rt-security:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-security-oauth2:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-security-oauth:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-security-xml:*</include>
-                            <include>org.apache.cxf:cxf-rt-frontend-js:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-service-description-openapi-v3:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-security-oauth2-saml:*</include>
-                            <include>org.apache.cxf:cxf-rt-transports-websocket:*</include>
-                            <include>org.apache.cxf:cxf-rt-features-metrics:*</include>
 
-                            <include>org.apache.cxf:cxf-rt-rs-client:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-security-jose-jaxrs:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-extension-providers:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-extension-search:*</include>
+                            <include>org.eclipse.jetty:*:*</include>
+                            <include>org.glassfish.jersey*:*:*</include>
 
-                            <include>org.apache.cxf:cxf-rt-databinding-jaxb:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-sse:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-service-description:*</include>
-                            <include>org.apache.cxf:cxf-rt-ws-addr:*</include>
-                            <include>org.apache.cxf:cxf-rt-wsdl:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-service-description-swagger:*</include>
-                            <include>org.apache.cxf:cxf-rt-ws-mex:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-security-sso-saml:*</include>
-                            <include>org.apache.cxf:cxf-rt-security-saml:*</include>
-                            <include>org.apache.cxf:cxf-rt-databinding-xmlbeans:*</include>
-                            <include>org.apache.cxf:cxf-rt-rs-extension-reactivestreams:*</include>
+                            <include>org.apache.wss4j:*:*</include>
 
+                            <include>org.opensaml:*</include>
 
-                            <include>org.apache.cxf:cxf-rt-frontend-jaxrs:*</include>
+                            <include>org.ow2.asm:asm:*</include>
 
-                            <include>org.apache.cxf:cxf-rt-frontend-jaxws:*</include>
-                            <include>org.apache.cxf:cxf-rt-bindings-xml:*</include>
-                            <include>org.apache.cxf:cxf-rt-frontend-simple:*</include>
-                            <include>org.apache.cxf:cxf-rt-ws-addr:*</include>
-
-                            <include>org.apache.cxf:cxf-rt-ws-policy:*</include>
-                            <include>org.apache.cxf:cxf-rt-ws-security:*</include>
-                            <include>org.apache.cxf:cxf-rt-wsdl:*</include>
-                            <include>org.apache.cxf:cxf-rt-bindings-soap:*</include>
-                            <include>org.apache.cxf:cxf-rt-databinding:*</include>
-                            <include>org.apache.cxf:cxf-rt-databinding-jaxb:*</include>
-                            <include>org.apache.cxf:cxf-rt-security:*</include>
-                            <include>org.apache.cxf:cxf-rt-security-saml:*</include>
-                            <include>org.apache.cxf:cxf-rt-ws-security:*</include>
-                            <include>org.apache.cxf:cxf-rt-transports-http:*</include>
                             <include>wsdl4j:wsdl4j:*</include>
                             <include>com.sun.xml.bind:jaxb-xjc:*</include>
                             <include>antlr:antlr:*</include>
@@ -636,7 +631,6 @@
                             <include>org.apache.httpcomponents:httpasyncclient:*</include>
                             <include>org.apache.httpcomponents:httpclient:*</include>
                             <include>org.apache.mina:mina-core:*</include>
-                            <include>asm:asm:*</include>
                             <include>rhino:js:*</include>
                             <include>org.apache.ws.security:wss4j:*</include>
                             <include>org.opensaml:openws:*</include>
@@ -655,14 +649,14 @@
                             <!--<include>com.fasterxml.woodstox:woodstox-core:*</include>-->
                             <include>xalan:xalan:*</include>
                             <include>org.apache.santuario:xmlsec:*</include>
-                            <include>org.apache.cxf:cxf-rt-transports-http-undertow:*</include>
+
                             <include>net.oauth.core:*:*</include>
 
                             <include>org.apache.wss4j:*</include>
                             <include>org.jasypt:*</include>
                             <!--<include>org.codehaus.woodstox:woodstox-core-asl:*</include>-->
                             <include>ca.juliusdavies:not-yet-commons-ssl:*</include>
-                            <include>org.glassfish.jersey*:*:*</include>
+                            <!--<include>org.glassfish.jersey*:*:*</include>-->
                             <include>com.sun.xml.stream.buffer:*</include>
                             <include>org.jvnet.mimepull:*</include>
                             <include>com.sun.xml.messaging.saaj:*</include>
@@ -670,8 +664,7 @@
                             <include>org.opensaml:*</include>
                             <include>org.cryptacular:*</include>
                             <include>net.shibboleth.utilities:*</include>
-                            <include>org.apache.wss4j:wss4j-ws-security-dom:*</include>
-                            <include>org.apache.wss4j:wss4j-ws-security-common:*</include>
+
                         </includes>
                     </artifactSet>
                     <filters>

@@ -25,24 +25,14 @@ org.apache.cxf.transport.http.policy.HTTPServerAssertionBuilder::true:true
 org.apache.cxf.transport.http.policy.NoOpPolicyInterceptorProvider::true:true
 
 
-org.apache.cxf.transport.http_jetty.JettyDestinationFactory::true
-org.apache.cxf.transport.http_jetty.JettyHTTPServerEngineFactory::true
-org.apache.cxf.transport.http_jetty.continuations.JettyContinuationProviderFactory:org.apache.cxf.transport.http.ContinuationProviderFactory:true
-
-org.apache.cxf.transport.jms.JMSTransportFactory::true
-org.apache.cxf.transport.jms.wsdl11.JMSWSDLExtensionLoader::true:true
-
-
+org.apache.cxf.transport.http_undertow.UndertowDestinationFactory::true
+org.apache.cxf.transport.http_undertow.UndertowHTTPServerEngineFactory::true
 
 org.apache.cxf.transport.http.asyncclient.AsyncHTTPConduitFactory:org.apache.cxf.transport.http.HTTPConduitFactory:true:true
 org.apache.cxf.transport.http.asyncclient.AsyncHttpTransportFactory:org.apache.cxf.transport.ConduitInitiator:true:true
 
-
-org.apache.cxf.transport.udp.UDPTransportFactory::true
-
 org.apache.cxf.binding.soap.SoapBindingFactory::true
 org.apache.cxf.binding.soap.SoapTransportFactory::true
-
 
 
 org.apache.cxf.binding.xml.XMLBindingFactory::true
@@ -82,6 +72,3 @@ org.apache.cxf.ws.rm.policy.RMPolicyInterceptorProvider::true:true
 org.apache.cxf.ws.rm.policy.RM10AssertionBuilder::true:true
 org.apache.cxf.ws.rm.policy.RM12AssertionBuilder::true:true
 org.apache.cxf.ws.rm.policy.WSRMP12PolicyLoader::true:true
-
-
-org.apache.cxf.javascript.JavascriptServerListener::true

@@ -14,6 +14,8 @@ module org.hibernate.orm.core {
 	requires java.desktop;
 	requires net.bytebuddy;
 
+	requires transitive com.guicedee.guicedinjection;
+
 	requires java.management;
 	requires dom4j;
 
@@ -22,6 +24,8 @@ module org.hibernate.orm.core {
 	requires static jakarta.enterprise.cdi;
 	requires transitive java.validation;
 	requires transitive javax.inject;
+
+	requires org.json;
 
 	requires jdk.unsupported;
 
@@ -45,6 +49,8 @@ module org.hibernate.orm.core {
 	opens org.hibernate.cache.spi to org.jboss.logging;
 	opens org.hibernate.bytecode to org.jboss.logging;
 
+	exports com.guicedee.services.hibernate to com.guicedee.guicedpersistence;
+	
 	exports org.hibernate;
 	//exports org.hibernate.action.internal;
 	exports org.hibernate.action.spi;
@@ -63,6 +69,9 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.internal.util.xml;
 	exports org.hibernate.annotations;
 	exports org.hibernate.boot;
+
+	opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
+	exports org.hibernate.jpa.boot.internal;
 	//exports org.hibernate.boot.internal;
 	//exports org.hibernate.boot.archive.internal;
 	exports org.hibernate.boot.archive.scan.spi;
@@ -309,10 +318,17 @@ module org.hibernate.orm.core {
 	opens org.hibernate.xsd.cfg;
 	opens org.hibernate.xsd.mapping;
 
+	//opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
+
 	exports org.hibernate.internal.util.config to com.hazelcast.all, com.hazelcast.hibernate;
 
 	//exports org.hibernate.cache.internal;
 	//exports org.hibernate.internal.util;
+
+	provides com.guicedee.guicedinjection.interfaces.IFileContentsScanner with com.guicedee.services.hibernate.PersistenceFileHandler;
+	provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with com.guicedee.services.hibernate.PersistenceGuiceConfigurator;
+	provides com.guicedee.guicedinjection.interfaces.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
+	provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
 
 	uses org.hibernate.action.spi.AfterTransactionCompletionProcess;
 	uses org.hibernate.action.spi.BeforeTransactionCompletionProcess;

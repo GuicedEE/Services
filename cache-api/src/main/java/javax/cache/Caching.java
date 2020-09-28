@@ -453,10 +453,13 @@ public final class Caching {
           });
 
         }
-
         cachingProviders.put(serviceClassLoader, providers);
       }
 
+      if(providers.keySet().size() > 1 && providers.containsKey("com.hazelcast.cache.HazelcastCachingProvider"))
+      {
+        providers.remove("org.ehcache.jsr107.EhcacheCachingProvider");
+      }
       return providers.values();
     }
 
