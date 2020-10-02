@@ -135,9 +135,14 @@
                                     <include>jakarta.servlet:jakarta.servlet-api:*</include>
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>jakarta</pattern>
+                                    <shadedPattern>javax</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
-
                 </executions>
             </plugin>
 
