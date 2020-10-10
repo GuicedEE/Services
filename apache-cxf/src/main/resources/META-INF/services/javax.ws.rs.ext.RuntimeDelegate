@@ -1,2 +1,1 @@
-org.glassfish.jersey.server.internal.RuntimeDelegateImpl
 org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl

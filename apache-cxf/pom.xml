@@ -679,7 +679,8 @@
 								<exclude>/1*</exclude>
 								<exclude>*1.class</exclude>
 								<exclude>/1.class</exclude>
-                                <exclude>META-INF/services/</exclude>
+								<exclude>META-INF/services</exclude>
+                                <exclude>META-INF/cxf</exclude>
                             </excludes>
                         </filter>
                     </filters>
@@ -705,7 +706,20 @@
                             <shadedPattern>org.apache.cxf.common.util.rel.saxon</shadedPattern>
                         </relocation>
                     </relocations>
+
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm</artifactId>
+                        <version>${maven.asm.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.yupiik.maven</groupId>
+                        <artifactId>maven-shade-transformers</artifactId>
+                        <version>0.0.1</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.moditect</groupId>
@@ -726,4 +740,50 @@
         <url>https://www.apache.org/</url>
     </organization>
 
+    <profiles>
+        <profile>
+            <id>jdk8</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <inherited>true</inherited>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <createSourcesJar>true</createSourcesJar>
+                            <shadeSourcesContent>true</shadeSourcesContent>
+                            <shadeTestJar>false</shadeTestJar>
+                            <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>module-info.java</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>1.class</exclude>
+                                        <exclude>/1*</exclude>
+                                        <exclude>*1.class</exclude>
+                                        <exclude>/1.class</exclude>
+                                        <exclude>/META-INF/services</exclude>
+                                        <exclude>/META-INF/cxf</exclude>
+                                    </excludes>
+                                </filter>
+
+                            </filters>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

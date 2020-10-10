@@ -68,10 +68,58 @@
             <optional>true</optional>
         </dependency>
 
-
     </dependencies>
 
     <profiles>
+
+        <profile>
+            <id>jdk8</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>shade</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactSet>
+                                        <includes>
+                                            <include>io.undertow:undertow-core</include>
+                                            <include>org.eclipse.jetty.alpn:alpn-api</include>
+                                            <include>org.jboss.threads:jboss-threads</include>
+                                            <include>org.wildfly.client:wildfly-client-config</include>
+                                            <include>org.wildfly.common:wildfly-common</include>
+                                            <include>org.wildfly.common:wildfly-common-jdk9-supplement</include>
+                                            <include>org.jboss.xnio:xnio-api</include>
+                                            <include>org.jboss.xnio:xnio-nio</include>
+                                        </includes>
+                                    </artifactSet>
+                                    <filters>
+                                        <filter>
+                                            <artifact>*:*</artifact>
+                                            <excludes>
+                                                <exclude>schema/</exclude>
+                                                <exclude>META-INF/services</exclude>
+                                            </excludes>
+                                        </filter>
+                                    </filters>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.moditect</groupId>
+                        <artifactId>moditect-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
         <profile>
             <id>jdk9</id>
             <build>
@@ -129,45 +177,6 @@
 
                 </plugins>
             </build>
-
-        </profile>
-
-        <profile>
-            <id>jdk8</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-shade-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>shade</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>shade</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactSet>
-                                        <includes>
-                                            <include>io.undertow:undertow-core</include>
-                                            <include>org.eclipse.jetty.alpn:alpn-api</include>
-                                            <include>org.jboss.threads:jboss-threads</include>
-                                            <include>org.wildfly.client:wildfly-client-config</include>
-                                            <include>org.wildfly.common:wildfly-common</include>
-                                            <include>org.jboss.xnio:xnio-api</include>
-                                            <include>org.jboss.xnio:xnio-nio</include>
-                                        </includes>
-                                    </artifactSet>
-                                    <transformers>
-                                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                                    </transformers>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-
         </profile>
     </profiles>
 

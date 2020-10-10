@@ -66,7 +66,7 @@
                                     <excludes>
                                         <exclude>**/ApplicationImpl.java</exclude>
                                         <exclude>**/ELUtils.java</exclude>
-                                        <exclude>META-INF/services/*</exclude>
+                                        <!--<exclude>META-INF/services/*</exclude>-->
                                     </excludes>
                                 </filter>
                                 <filter>
@@ -74,7 +74,7 @@
                                     <excludes>
                                         <exclude>**/ApplicationImpl.java</exclude>
                                         <exclude>**/ELUtils.java</exclude>
-                                        <exclude>META-INF/services/*</exclude>
+                                        <!--<exclude>META-INF/services/*</exclude>-->
                                     </excludes>
                                 </filter>
                             </filters>
