@@ -50,12 +50,10 @@
             <optional>true</optional>
         </dependency>
 
-
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
-
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
