@@ -78,6 +78,12 @@
                                     </excludes>
                                 </filter>
                             </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>jakarta</pattern>
+                                    <shadedPattern>javax</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
@@ -96,6 +102,7 @@
             <artifactId>jakarta.faces</artifactId>
             <optional>true</optional>
         </dependency>
+
 
         <dependency>
             <groupId>com.guicedee</groupId>

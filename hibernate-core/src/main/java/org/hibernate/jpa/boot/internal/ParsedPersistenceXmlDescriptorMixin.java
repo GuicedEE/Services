@@ -1,20 +1,19 @@
 package org.hibernate.jpa.boot.internal;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.bytecode.enhance.spi.EnhancementContext;
+
+import javax.persistence.SharedCacheMode;
+import javax.persistence.ValidationMode;
+import javax.persistence.spi.PersistenceUnitTransactionType;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-import javax.persistence.SharedCacheMode;
-import javax.persistence.ValidationMode;
-import javax.persistence.spi.PersistenceUnitTransactionType;
-
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.bytecode.enhance.spi.EnhancementContext;
-import org.json.JSONPropertyIgnore;
 
 /**
  * Describes the information gleaned from a {@code <persistence-unit/>} element in a {@code persistence.xml} file
@@ -28,7 +27,7 @@ import org.json.JSONPropertyIgnore;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
         setterVisibility = JsonAutoDetect.Visibility.NONE)
-public class ParsedPersistenceXmlDescriptor implements org.hibernate.jpa.boot.spi.PersistenceUnitDescriptor {
+public class ParsedPersistenceXmlDescriptorMixin implements org.hibernate.jpa.boot.spi.PersistenceUnitDescriptor {
     @JsonIgnore
     private URL persistenceUnitRootUrl;
 
@@ -50,7 +49,7 @@ public class ParsedPersistenceXmlDescriptor implements org.hibernate.jpa.boot.sp
     @JsonProperty("shared-cache-mode")
     private SharedCacheMode sharedCacheMode;
 
-    public ParsedPersistenceXmlDescriptor() {
+    public ParsedPersistenceXmlDescriptorMixin() {
     }
 
     @JsonProperty("properties")
@@ -62,7 +61,7 @@ public class ParsedPersistenceXmlDescriptor implements org.hibernate.jpa.boot.sp
     private List<String> mappingFiles = new ArrayList<String>();
     private List<URL> jarFileUrls = new ArrayList<URL>();
 
-    public ParsedPersistenceXmlDescriptor(URL persistenceUnitRootUrl) {
+    public ParsedPersistenceXmlDescriptorMixin(URL persistenceUnitRootUrl) {
         this.persistenceUnitRootUrl = persistenceUnitRootUrl;
     }
 

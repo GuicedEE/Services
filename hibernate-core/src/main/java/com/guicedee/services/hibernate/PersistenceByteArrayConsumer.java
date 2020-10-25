@@ -10,6 +10,7 @@ import com.guicedee.logger.LogFactory;
 import io.github.classgraph.Resource;
 import io.github.classgraph.ResourceList;
 import org.hibernate.jpa.boot.internal.ParsedPersistenceXmlDescriptor;
+import org.hibernate.jpa.boot.internal.ParsedPersistenceXmlDescriptorMixin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,6 +42,8 @@ public class PersistenceByteArrayConsumer
 		om.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
 		om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		om.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+
+		om.addMixIn(ParsedPersistenceXmlDescriptor.class, ParsedPersistenceXmlDescriptorMixin.class);
 
 		om.registerModule(new SimpleModule()
 						.addDeserializer(Properties.class,new StringToPropertiesDeserializer()));
@@ -98,7 +101,8 @@ public class PersistenceByteArrayConsumer
 			try {
 				JSONObject persU = pers.getJSONObject("persistence-unit");
 				try {
-					ParsedPersistenceXmlDescriptor pp = om.readValue(persU.toString(), ParsedPersistenceXmlDescriptor.class);
+					ParsedPersistenceXmlDescriptor descriptor = new ParsedPersistenceXmlDescriptor(null);
+					ParsedPersistenceXmlDescriptor pp = om.readerForUpdating(descriptor).readValue(persU.toString());
 					units.add(pp);
 				} catch (JsonProcessingException e) {
 					log.log(Level.SEVERE, "Error streaming into Persistence Unit", e);
