@@ -27,7 +27,7 @@ import java.util.Properties;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
         setterVisibility = JsonAutoDetect.Visibility.NONE)
-public class ParsedPersistenceXmlDescriptorMixin implements org.hibernate.jpa.boot.spi.PersistenceUnitDescriptor {
+public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDescriptor implements org.hibernate.jpa.boot.spi.PersistenceUnitDescriptor {
     @JsonIgnore
     private URL persistenceUnitRootUrl;
 
@@ -50,18 +50,20 @@ public class ParsedPersistenceXmlDescriptorMixin implements org.hibernate.jpa.bo
     private SharedCacheMode sharedCacheMode;
 
     public ParsedPersistenceXmlDescriptorMixin() {
+        super(null);
     }
 
     @JsonProperty("properties")
     private Properties properties = new Properties();
 
     @JsonProperty("class")
-    private List<String> classes = new ArrayList<String>();
+    private List<String> classes = new ArrayList<>();
 
-    private List<String> mappingFiles = new ArrayList<String>();
-    private List<URL> jarFileUrls = new ArrayList<URL>();
+    private List<String> mappingFiles = new ArrayList<>();
+    private List<URL> jarFileUrls = new ArrayList<>();
 
     public ParsedPersistenceXmlDescriptorMixin(URL persistenceUnitRootUrl) {
+        super(persistenceUnitRootUrl);
         this.persistenceUnitRootUrl = persistenceUnitRootUrl;
     }
 

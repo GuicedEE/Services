@@ -101,8 +101,8 @@ public class PersistenceByteArrayConsumer
 			try {
 				JSONObject persU = pers.getJSONObject("persistence-unit");
 				try {
-					ParsedPersistenceXmlDescriptor descriptor = new ParsedPersistenceXmlDescriptor(null);
-					ParsedPersistenceXmlDescriptor pp = om.readerForUpdating(descriptor).readValue(persU.toString());
+					ParsedPersistenceXmlDescriptorMixin descriptor = new ParsedPersistenceXmlDescriptorMixin(null);
+					ParsedPersistenceXmlDescriptorMixin pp = om.readerForUpdating(descriptor).readValue(persU.toString());
 					units.add(pp);
 				} catch (JsonProcessingException e) {
 					log.log(Level.SEVERE, "Error streaming into Persistence Unit", e);
