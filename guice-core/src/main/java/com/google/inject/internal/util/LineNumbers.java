@@ -42,7 +42,7 @@ import org.objectweb.asm.Opcodes;
  */
 final class LineNumbers {
 
-  private static final int ASM_API_LEVEL = Opcodes.ASM7;
+  private static final int ASM_API_LEVEL = Opcodes.ASM9;
 
   private final Class<?> type;
   private final Map<String, Integer> lines = Maps.newHashMap();
@@ -115,11 +115,8 @@ final class LineNumbers {
 
   private String memberKey(Member member) {
     checkNotNull(member, "member");
-
-    /*if[AOP]*/
     if (member instanceof Field) {
       return member.getName();
-
     } else if (member instanceof Method) {
       return member.getName() + org.objectweb.asm.Type.getMethodDescriptor((Method) member);
 
@@ -129,15 +126,10 @@ final class LineNumbers {
         sb.append(org.objectweb.asm.Type.getDescriptor(param));
       }
       return sb.append(")V").toString();
-
     } else {
       throw new IllegalArgumentException(
           "Unsupported implementation class for Member, " + member.getClass());
     }
-    /*end[AOP]*/
-    /*if[NO_AOP]
-    return "<NO_MEMBER_KEY>";
-    end[NO_AOP]*/
   }
 
   private class LineNumberReader extends ClassVisitor {

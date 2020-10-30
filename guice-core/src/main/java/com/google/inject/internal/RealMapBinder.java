@@ -490,7 +490,7 @@ public final class RealMapBinder<K, V> implements Module {
       // we don't build up this data structure
       if (duplicates != null) {
         initializationState = InitializationState.HAS_ERRORS;
-        reportDuplicateKeysError(duplicates, errors);
+        reportDuplicateKeysError(mapKey, duplicates, errors);
 
         return false;
       }
@@ -514,26 +514,9 @@ public final class RealMapBinder<K, V> implements Module {
     }
 
     private static <K, V> void reportDuplicateKeysError(
-        Multimap<K, Binding<V>> duplicates, Errors errors) {
-      StringBuilder sb = new StringBuilder("Map injection failed due to duplicated key ");
-      boolean first = true;
-      for (Map.Entry<K, Collection<Binding<V>>> entry : duplicates.asMap().entrySet()) {
-        K dupKey = entry.getKey();
-
-        if (first) {
-          first = false;
-          sb.append("\"").append(dupKey).append("\", from bindings:\n");
-        } else {
-          sb.append("\n and key: \"").append(dupKey).append("\", from bindings:\n");
-        }
-
-        for (Binding<V> dup : entry.getValue()) {
-          sb.append("\t at ").append(Errors.convert(dup.getSource())).append("\n");
-        }
-      }
-
-      // TODO(user): Add a different error for every duplicated key
-      errors.addMessage(sb.toString());
+        Key<Map<K, V>> mapKey, Multimap<K, Binding<V>> duplicates, Errors errors) {
+      errors.duplicateMapKey(mapKey, duplicates);
+        return;
     }
 
     private boolean containsElement(Element element) {

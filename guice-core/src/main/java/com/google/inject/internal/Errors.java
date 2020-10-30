@@ -16,11 +16,11 @@
 
 package com.google.inject.internal;
 
-import static com.google.inject.internal.MoreTypes.getRawType;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 import com.google.inject.Binding;
 import com.google.inject.ConfigurationException;
@@ -32,6 +32,7 @@ import com.google.inject.Scope;
 import com.google.inject.TypeLiteral;
 import com.google.inject.internal.util.SourceProvider;
 import com.google.inject.spi.ElementSource;
+import com.google.inject.spi.InterceptorBinding;
 import com.google.inject.spi.Message;
 import com.google.inject.spi.ScopeBinding;
 import com.google.inject.spi.TypeConverterBinding;
@@ -46,6 +47,7 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Formatter;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -128,6 +130,14 @@ public final class Errors implements Serializable {
         : new Errors(this, source);
   }
 
+  public Errors aopDisabled(InterceptorBinding binding) {
+    return addMessage(
+        ErrorId.AOP_DISABLED,
+        "Binding interceptor is not supported when bytecode generation is disabled. %nInterceptor"
+            + " bound at: %s",
+        binding.getSource());
+  }
+
   /**
    * We use a fairly generic error message here. The motivation is to share the same message for
    * both bind time errors:
@@ -151,19 +161,10 @@ public final class Errors implements Serializable {
 
   /** Within guice's core, allow for better missing binding messages */
   <T> Errors missingImplementationWithHint(Key<T> key, Injector injector) {
-    if (InternalFlags.enableExperimentalErrorMessages()) {
-      MissingImplementationError<T> error =
-          new MissingImplementationError<T>(key, injector, getSources());
+    MissingImplementationError<T> error =
+        new MissingImplementationError<T>(key, injector, getSources());
       return addMessage(
           new Message(GuiceInternal.GUICE_INTERNAL, ErrorId.MISSING_IMPLEMENTATION, error));
-    }
-    StringBuilder sb = new StringBuilder();
-
-    sb.append(format("No implementation for %s was bound.", key));
-
-    MissingImplementationErrorHints.getSuggestions(key, injector).forEach(sb::append);
-
-    return addMessage(ErrorId.MISSING_IMPLEMENTATION, sb.toString());
   }
 
   public Errors jitDisabled(Key<?> key) {
@@ -182,18 +183,11 @@ public final class Errors implements Serializable {
   }
 
   public Errors atInjectRequired(TypeLiteral<?> type) {
-    if (InternalFlags.enableExperimentalErrorMessages()) {
-      return addMessage(
-          new Message(
-              GuiceInternal.GUICE_INTERNAL,
-              ErrorId.MISSING_CONSTRUCTOR,
-              new MissingConstructorError(type, /* atInjectRequired= */ true, getSources())));
-    }
     return addMessage(
-        ErrorId.AT_INJECT_REQUIRED,
-        "Explicit @Inject annotations are required on constructors,"
-            + " but %s has no constructors annotated with @Inject.",
-        type.getRawType());
+        new Message(
+            GuiceInternal.GUICE_INTERNAL,
+            ErrorId.MISSING_CONSTRUCTOR,
+            new MissingConstructorError(type, /* atInjectRequired= */ true, getSources())));
   }
 
   public Errors converterReturnedNull(
@@ -309,14 +303,11 @@ public final class Errors implements Serializable {
   }
 
   public Errors scopeNotFound(Class<? extends Annotation> scopeAnnotation) {
-    if (InternalFlags.enableExperimentalErrorMessages()) {
-      return addMessage(
-          new Message(
-              GuiceInternal.GUICE_INTERNAL,
-              ErrorId.SCOPE_NOT_FOUND,
-              new ScopeNotFoundError(scopeAnnotation, getSources())));
-    }
-    return addMessage(ErrorId.SCOPE_NOT_FOUND, "No scope is bound to %s.", scopeAnnotation);
+    return addMessage(
+        new Message(
+            GuiceInternal.GUICE_INTERNAL,
+            ErrorId.SCOPE_NOT_FOUND,
+            new ScopeNotFoundError(scopeAnnotation, getSources())));
   }
 
   public Errors scopeAnnotationOnAbstractType(
@@ -345,24 +336,11 @@ public final class Errors implements Serializable {
           + " or a zero-argument constructor that is not private.";
 
   public Errors missingConstructor(TypeLiteral<?> type) {
-    if (InternalFlags.enableExperimentalErrorMessages()) {
-      return addMessage(
-          new Message(
-              GuiceInternal.GUICE_INTERNAL,
-              ErrorId.MISSING_CONSTRUCTOR,
-              new MissingConstructorError(type, /* atInjectRequired= */ false, getSources())));
-    }
-    // Don't bother including the type in the message twice, unless the type is generic (i.e. the
-    // type has generics that the raw class loses)
-    String typeString = type.toString();
-    String rawTypeString = getRawType(type.getType()).getName();
     return addMessage(
-        ErrorId.MISSING_CONSTRUCTOR,
-        "No implementation for %s (with no qualifier annotation) was bound, and could not find an"
-            + " injectable constructor%s. %s",
-        typeString,
-        typeString.equals(rawTypeString) ? "" : " in " + rawTypeString,
-        CONSTRUCTOR_RULES);
+        new Message(
+            GuiceInternal.GUICE_INTERNAL,
+            ErrorId.MISSING_CONSTRUCTOR,
+            new MissingConstructorError(type, /* atInjectRequired= */ false, getSources())));
   }
 
   public Errors tooManyConstructors(Class<?> implementation) {
@@ -376,6 +354,14 @@ public final class Errors implements Serializable {
   public Errors constructorNotDefinedByType(Constructor<?> constructor, TypeLiteral<?> type) {
     return addMessage(
         ErrorId.CONSTRUCTOR_NOT_DEFINED_BY_TYPE, "%s does not define %s", type, constructor);
+  }
+
+  public <K, V> Errors duplicateMapKey(Key<Map<K, V>> mapKey, Multimap<K, Binding<V>> duplicates) {
+    return addMessage(
+        new Message(
+            GuiceInternal.GUICE_INTERNAL,
+            ErrorId.DUPLICATE_MAP_KEY,
+            new DuplicateMapKeyError<K, V>(mapKey, duplicates, getSources())));
   }
 
   public Errors duplicateScopes(
@@ -449,8 +435,9 @@ public final class Errors implements Serializable {
         b);
   }
 
-  public Errors recursiveBinding() {
-    return addMessage(ErrorId.RECURSIVE_BINDING, "Binding points to itself.");
+  public Errors recursiveBinding(Key<?> key, Key<?> linkedKey) {
+    return addMessage(
+        ErrorId.RECURSIVE_BINDING, "Binding points to itself. Key: %s", Messages.convert(key));
   }
 
   Errors bindingAlreadySet(Binding<?> binding, Binding<?> original) {
@@ -475,24 +462,12 @@ public final class Errors implements Serializable {
   }
 
   public Errors childBindingAlreadySet(Key<?> key, Set<Object> sources) {
-    Formatter allSources = new Formatter();
-    for (Object source : sources) {
-      if (source == null) {
-        allSources.format("%n    (bound by a just-in-time binding)");
-      } else {
-        allSources.format("%n    bound at %s", source);
-      }
-    }
-    Errors errors =
-        addMessage(
+    Message message =
+        new Message(
+            GuiceInternal.GUICE_INTERNAL,
             ErrorId.CHILD_BINDING_ALREADY_SET,
-            "Unable to create binding for %s."
-                + " It was already configured on one or more child injectors or private modules"
-                + "%s%n"
-                + "  If it was in a PrivateModule, did you forget to expose the binding?",
-            key,
-            allSources.out());
-    return errors;
+            new ChildBindingAlreadySetError(key, sources, getSources()));
+      return addMessage(message);
   }
 
   public Errors errorCheckingDuplicateBinding(Key<?> key, Object source, Throwable t) {
@@ -638,8 +613,7 @@ public final class Errors implements Serializable {
       return;
     }
 
-    ErrorsException exception = toException();
-    throw exception;
+    throw toException();
   }
 
   public ErrorsException toException() {
@@ -706,7 +680,7 @@ public final class Errors implements Serializable {
 
   // TODO(lukes): inline in callers.  There are some callers outside of guice, so this is difficult
   public static void formatSource(Formatter formatter, Object source) {
-    Messages.formatSource(formatter, source);
+    formatter.format("  ");
+    new SourceFormatter(source, formatter, false).format();
   }
-
 }

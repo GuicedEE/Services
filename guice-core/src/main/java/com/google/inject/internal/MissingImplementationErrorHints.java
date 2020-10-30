@@ -9,6 +9,7 @@ import com.google.inject.Binding;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.TypeLiteral;
+import com.google.inject.spi.BindingSourceRestriction;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
@@ -40,6 +41,10 @@ final class MissingImplementationErrorHints {
   static <T> ImmutableList<String> getSuggestions(Key<T> key, Injector injector) {
     ImmutableList.Builder<String> suggestions = ImmutableList.builder();
     TypeLiteral<T> type = key.getTypeLiteral();
+
+    BindingSourceRestriction.getMissingImplementationSuggestion(GuiceInternal.GUICE_INTERNAL, key)
+        .ifPresent(suggestions::add);
+
     // Keys which have similar strings as the desired key
     List<String> possibleMatches = new ArrayList<>();
     List<Binding<T>> sameTypes = injector.findBindingsByType(type);
@@ -57,6 +62,7 @@ final class MissingImplementationErrorHints {
         suggestions.add(
             Messages.format("%n    %d more binding%s with other annotations.", remaining, plural));
       }
+      suggestions.add("%n");
     } else {
       // For now, do a simple substring search for possibilities. This can help spot
       // issues when there are generics being used (such as a wrapper class) and the
@@ -70,15 +76,10 @@ final class MissingImplementationErrorHints {
         String have = bindingKey.getTypeLiteral().toString();
         if (have.contains(want) || want.contains(have)) {
           Formatter fmt = new Formatter();
-          if (InternalFlags.enableExperimentalErrorMessages()) {
-            fmt.format("%s bound ", Messages.convert(bindingKey));
-            new SourceFormatter(
-                    bindingMap.get(bindingKey).getSource(), fmt, /* omitPreposition= */ false)
-                .format();
-          } else {
-            fmt.format("%s bound", Messages.convert(bindingKey));
-            Messages.formatSource(fmt, bindingMap.get(bindingKey).getSource());
-          }
+          fmt.format("%s bound ", Messages.convert(bindingKey));
+          new SourceFormatter(
+                  bindingMap.get(bindingKey).getSource(), fmt, /* omitPreposition= */ false)
+              .format();
           possibleMatches.add(fmt.toString());
           // TODO: Consider a check that if there are more than some number of results,
           // don't suggest any.

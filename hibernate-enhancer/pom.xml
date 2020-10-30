@@ -1,0 +1,55 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>hibernate-enhance-maven-plugin</artifactId>
+    <packaging>jar</packaging>
+
+    <name>hibernate-enhance-maven-plugin</name>
+    <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate.orm.tooling</groupId>
+            <artifactId>hibernate-enhance-maven-plugin</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgument>-proc:none</compilerArgument>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.hibernate.orm.tooling:*</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

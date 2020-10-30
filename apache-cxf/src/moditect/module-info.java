@@ -11,7 +11,7 @@ module org.apache.cxf {
 	requires java.management;
 	requires java.desktop;
 	requires java.validation;
-	requires java.jws;
+	requires javax.jws;
 	requires java.rmi;
 
 	requires org.slf4j;

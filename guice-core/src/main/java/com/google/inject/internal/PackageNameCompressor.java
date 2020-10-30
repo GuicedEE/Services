@@ -24,6 +24,8 @@ import com.google.common.base.Strings;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -33,6 +35,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Munges an error message to remove/shorten package names and adds a legend at the end.
@@ -52,16 +55,31 @@ final class PackageNameCompressor {
 
   private static final Joiner PACKAGE_JOINER = Joiner.on('.');
 
-  // TODO(user): Consider validating this regex by also passing in all of the known types from
+  // TODO(erichang): Consider validating this regex by also passing in all of the known types from
   // keys, module names, component names, etc and checking against that list. This may have some
   // extra complications with taking apart types like List<Foo> to get the inner class names.
   private static final Pattern CLASSNAME_PATTERN =
       // Match lowercase package names with trailing dots. Start with a non-word character so we
-      // don't match substrings in like Bar.Foo and match the ar.Foo. Start a group to not include
-      // the non-word character.
-      Pattern.compile("[\\W](([a-z_0-9]++[.])++"
-          // Then match a name starting with an uppercase letter. This is the outer class name.
-          + "[A-Z][\\w$]++)");
+      // don't match substrings in like Bar.Foo and match the com.foo.Foo. Require at least 2
+      // package names to avoid matching non package names like a sentence ending with a period and
+      // starting with an upper case letter without space, for example:
+      // foo.Must in message "Invalid value for foo.Must not be empty." should not be compressed.
+      // Start a group to not include the non-word character.
+      Pattern.compile(
+          "[\\W](([a-z_0-9]++[.]){2,}+"
+              // Then match a name starting with an uppercase letter. This is the outer class name.
+              + "[A-Z][\\w$]*)");
+
+  // Pattern used to filter out quoted strings that should not have their package name compressed.
+  // Picked '"' here because Guice uses it when including a string literal in an error message. This
+  // will allow user to include class names in the error message and disable the compressor by
+  // putting the name in a pair of '"'.
+  // The pattern without the escapes: ([^"]+)((")?[^"\r\n]*")?
+  // First group captures non quoted strings
+  // Second group captures either a single quote or a string with a pair of quotes within a line
+  // Class names in second group will not be compressed.
+  private static final Pattern QUOTED_PATTERN =
+      Pattern.compile("([^\\\"]+)((\\\")?[^\\\"\\r\\n]*\\\")?");
 
   /**
    * Compresses an error message by stripping the packages out of class names and adding them
@@ -86,17 +104,64 @@ final class PackageNameCompressor {
       return input;
     }
 
+    StringBuilder output = new StringBuilder();
+    Set<String> replacedShortNames = replaceFullNames(input, replacementMap, output);
+    if (replacedShortNames.isEmpty()) {
+      return input;
+    }
+
+    String classNameLegend =
+        buildClassNameLegend(Maps.filterKeys(replacementMap, replacedShortNames::contains));
+    return output.append(classNameLegend).toString();
+  }
+
+  /**
+   * Replaces full class names in {@code input} and append the replaced content to {@code output}
+   * and then returns a set of short names that were used as replacement.
+   *
+   * <p>String literals that are quoted in the {@code input} will be added to the {@code output}
+   * unchanged. So any full class name that only appear in the string literal will not be included
+   * in the returned short names set.
+   */
+  private static ImmutableSet<String> replaceFullNames(
+      String input, Map<String, String> replacementMap, StringBuilder output) {
+    ImmutableSet.Builder<String> replacedShortNames = ImmutableSet.builder();
+    // Sort short names in reverse alphabetical order. This is necessary so that a short name that
+    // has a prefix that is another short name will be replaced first, otherwise the longer name
+    // will not be collected as one of the replacedShortNames.
+    List<String> shortNames =
+        replacementMap.keySet().stream()
+            .sorted(Ordering.natural().reverse())
+            .collect(Collectors.toList());
+    Matcher matcher = QUOTED_PATTERN.matcher(input);
+    while (matcher.find()) {
+      String replaced = matcher.group(1);
+      for (String shortName : shortNames) {
+        String fullName = replacementMap.get(shortName);
+        int beforeLen = replaced.length();
+        replaced = replaced.replace(fullName, shortName);
+        // If the replacement happened then put the short name in replacedShortNames.
+        // Only values in replacedShortNames are included in the full class name legend.
+        if (replaced.length() < beforeLen) {
+          replacedShortNames.add(shortName);
+        }
+      }
+      output.append(replaced);
+      String quoted = matcher.group(2);
+      if (quoted != null) {
+        output.append(quoted);
+      }
+    }
+    return replacedShortNames.build();
+  }
+
+  private static String buildClassNameLegend(Map<String, String> replacementMap) {
+    StringBuilder legendBuilder = new StringBuilder();
     // Find the longest key for building the legend
     int longestKey = replacementMap.keySet().stream().max(comparing(String::length)).get().length();
-
-    String replacedString = input;
-    StringBuilder legendBuilder = new StringBuilder();
     for (Map.Entry<String, String> entry : replacementMap.entrySet()) {
       String shortName = entry.getKey();
       String fullName = entry.getValue();
-      // Do the replacements in the message
-      replacedString = replacedString.replace(fullName, shortName);
-
       // Skip certain prefixes. We need to check the shortName for a . though in case
       // there was some type of conflict like java.util.concurrent.Future and
       // java.util.foo.Future that got shortened to concurrent.Future and foo.Future.
@@ -113,14 +178,17 @@ final class PackageNameCompressor {
           .append(": ")
           // Add enough spaces to adjust the columns
           .append(Strings.repeat(" ", longestKey - shortName.length()))
+          // Surround the full class name with quotes to avoid them getting compressed again if
+          // the error is wrapped inside another Guice error.
+          .append('"')
           .append(fullName)
+          .append('"')
           .append("\n");
     }
 
     return legendBuilder.length() == 0
-        ? replacedString
-        : replacedString
-            + Messages.bold(LEGEND_HEADER)
+        ? ""
+        : Messages.bold(LEGEND_HEADER)
             + Messages.faint(legendBuilder.toString())
             + Messages.bold(LEGEND_FOOTER);
   }

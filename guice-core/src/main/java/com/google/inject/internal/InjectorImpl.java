@@ -160,7 +160,11 @@ final class InjectorImpl implements Injector, Lookups {
       errors.throwConfigurationExceptionIfErrorsExist();
       return result;
     } catch (ErrorsException e) {
-      throw new ConfigurationException(errors.merge(e.getErrors()).getMessages());
+      ConfigurationException exception =
+          new ConfigurationException(errors.merge(e.getErrors()).getMessages());
+
+
+      throw exception;
     }
   }
 
@@ -193,7 +197,8 @@ final class InjectorImpl implements Injector, Lookups {
           return getBinding(key);
         }
       } catch (ErrorsException e) {
-        throw new ConfigurationException(e.getErrors().getMessages());
+        ConfigurationException exception = new ConfigurationException(e.getErrors().getMessages());
+        throw exception;
       }
     }
 
@@ -1065,7 +1070,9 @@ final class InjectorImpl implements Injector, Lookups {
     try {
       return membersInjectorStore.get(typeLiteral, errors);
     } catch (ErrorsException e) {
-      throw new ConfigurationException(errors.merge(e.getErrors()).getMessages());
+      ConfigurationException exception =
+          new ConfigurationException(errors.merge(e.getErrors()).getMessages());
+      throw exception;
     }
   }
 
@@ -1084,20 +1091,17 @@ final class InjectorImpl implements Injector, Lookups {
     Key<T> key = dependency.getKey();
     BindingImpl<? extends T> binding = getBindingOrThrow(key, errors, JitLimitation.NO_JIT);
     final InternalFactory<? extends T> internalFactory = binding.getInternalFactory();
-    final Object source = binding.getSource();
 
     return new Provider<T>() {
       @Override
       public T get() {
         InternalContext currentContext = enterContext();
-        Dependency previous = currentContext.pushDependency(dependency, source);
         try {
           T t = internalFactory.get(currentContext, dependency, false);
           return t;
         } catch (InternalProvisionException e) {
           throw e.addSource(dependency).toProvisionException();
         } finally {
-          currentContext.popStateAndSetDependency(previous);
           currentContext.close();
         }
       }
@@ -1118,7 +1122,9 @@ final class InjectorImpl implements Injector, Lookups {
       errors.throwIfNewErrors(0);
       return result;
     } catch (ErrorsException e) {
-      throw new ConfigurationException(errors.merge(e.getErrors()).getMessages());
+      ConfigurationException exception =
+          new ConfigurationException(errors.merge(e.getErrors()).getMessages());
+      throw exception;
     }
   }
 
