@@ -3,4 +3,5 @@ module javax.el {
 	exports javax.el;
 
 	uses javax.el.ExpressionFactory;
+	provides javax.el.ExpressionFactory with com.sun.el.ExpressionFactoryImpl;
 }
