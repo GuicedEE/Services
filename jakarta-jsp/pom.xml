@@ -51,11 +51,11 @@
             <artifactId>guiced-servlets</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jakarta.servlet.jsp</artifactId>
-            <optional>true</optional>
-        </dependency>
+            <dependency>
+                <groupId>jakarta.servlet.jsp</groupId>
+                <artifactId>jakarta.servlet.jsp-api</artifactId>
+                <optional>true</optional>
+            </dependency>
     </dependencies>
 
     <licenses>
@@ -88,10 +88,15 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.glassfish.web:jakarta.servlet.jsp:*</include>
                                     <include>jakarta.servlet.jsp:jakarta.servlet.jsp-api:jar:*</include>
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>jakarta</pattern>
+                                    <shadedPattern>javax</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
 

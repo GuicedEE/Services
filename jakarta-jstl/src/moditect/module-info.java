@@ -3,6 +3,8 @@ open module javax.servlet.jsp.jstl {
 	requires java.xml;
 	requires static java.sql;
 
+	requires static java.xml.bind;
+
 	requires java.desktop;
 	requires java.naming;
 	requires jdk.xml.dom;

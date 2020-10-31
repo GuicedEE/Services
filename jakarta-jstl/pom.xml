@@ -67,13 +67,17 @@
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>javax.servlet.jsp.jstl</artifactId>
-            <optional>true</optional>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
         </dependency>
 
         <dependency>
@@ -101,7 +105,6 @@
                                 <includes>
                                     <include>jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:*</include>
                                     <include>xalan:xalan</include>
-                                    <include>org.glassfish.web:javax.servlet.jsp.jstl</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -140,6 +143,10 @@
                                 <relocation>
                                     <pattern>trax</pattern>
                                     <shadedPattern>com.oracle.wls.shaded.trax</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>jakarta</pattern>
+                                    <shadedPattern>javax</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
