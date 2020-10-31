@@ -665,7 +665,7 @@
                             <include>org.opensaml:*</include>
                             <include>org.cryptacular:*</include>
                             <include>net.shibboleth.utilities:*</include>
-
+                            <!--<include>jakarta.xml.ws:jakarta.xml.ws-api:*</include>-->
                         </includes>
                     </artifactSet>
                     <filters>

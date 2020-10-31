@@ -121,6 +121,10 @@
                                     <pattern>META-INF/versions/9/javax</pattern>
                                     <shadedPattern>javax</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>jakarta</pattern>
+                                    <shadedPattern>javax</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </plugin>
@@ -170,6 +174,12 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
+                            <relocations>
+                                <relocation>
+                                    <pattern>jakarta</pattern>
+                                    <shadedPattern>javax</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </plugin>
                     <plugin>
