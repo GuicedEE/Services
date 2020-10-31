@@ -39,7 +39,7 @@ open module javax.faces {
 	requires static javax.ejb;
 
 	requires java.annotation;
-	requires java.json;
+	requires jakarta.json;
 	requires javax.websocket.api;
 
 	provides javax.enterprise.inject.spi.Extension with com.sun.faces.application.view.ViewScopeExtension, com.sun.faces.flow.FlowCDIExtension, com.sun.faces.flow.FlowDiscoveryCDIExtension, com.sun.faces.cdi.CdiExtension;
@@ -59,5 +59,7 @@ open module javax.faces {
 	uses com.sun.faces.spi.InjectionProvider;
 	uses com.sun.faces.spi.SerializationProvider;
 	uses javax.faces.application.ApplicationConfigurationPopulator;
+
+
 
 }

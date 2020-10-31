@@ -30,11 +30,11 @@ public final class Classpath
 	{
 		return search(Thread.currentThread()
 		                    .getContextClassLoader(), prefix,
-		              suffix, com.sun.faces.facelets.util.Classpath.SearchAdvice.AllMatches);
+		              suffix, SearchAdvice.AllMatches);
 	}
 
 	public static URL[] search(ClassLoader cl, String prefix, String suffix,
-	                           com.sun.faces.facelets.util.Classpath.SearchAdvice advice)
+	                           SearchAdvice advice)
 			throws IOException
 	{
 		if (suffix.startsWith("."))
@@ -88,7 +88,7 @@ public final class Classpath
 	public static URL[] search(ClassLoader cl, String prefix, String suffix)
 			throws IOException
 	{
-		return search(cl, prefix, suffix, com.sun.faces.facelets.util.Classpath.SearchAdvice.AllMatches);
+		return search(cl, prefix, suffix, SearchAdvice.AllMatches);
 	}
 
 	public enum SearchAdvice

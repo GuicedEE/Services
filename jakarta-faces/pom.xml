@@ -103,6 +103,11 @@
             <optional>true</optional>
         </dependency>
 
+       <!--<dependency>
+            <groupId>jakarta.faces</groupId>
+            <artifactId>jakarta.faces-api</artifactId>
+            <optional>true</optional>
+        </dependency>-->
 
         <dependency>
             <groupId>com.guicedee</groupId>

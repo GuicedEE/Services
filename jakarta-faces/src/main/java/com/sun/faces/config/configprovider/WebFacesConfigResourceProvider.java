@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 1997, 2018 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1997, 2020 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -16,23 +16,22 @@
 
 package com.sun.faces.config.configprovider;
 
-import com.sun.faces.facelets.util.Classpath;
+import static com.sun.faces.config.WebConfiguration.WebContextInitParameter.javaxFacesConfigFiles;
 
-import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 import java.util.Collection;
 
-import static com.sun.faces.config.WebConfiguration.*;
-import static com.sun.faces.config.WebConfiguration.WebContextInitParameter.*;
+import com.sun.faces.config.WebConfiguration.WebContextInitParameter;
+
+import com.sun.faces.facelets.util.Classpath;
+import javax.servlet.ServletContext;
 
 /**
  *
  */
-public class WebFacesConfigResourceProvider
-		extends BaseWebConfigResourceProvider
-{
+public class WebFacesConfigResourceProvider extends BaseWebConfigResourceProvider {
 
 	/**
 	 * <p>
@@ -41,15 +40,13 @@ public class WebFacesConfigResourceProvider
 	 */
 	private static final String WEB_INF_RESOURCE = "/WEB-INF/faces-config.xml";
 
-	private static final String[] EXCLUDES = {WEB_INF_RESOURCE};
+	private static final String[] EXCLUDES = { WEB_INF_RESOURCE };
 	private static final String SEPARATORS = ",|;";
-
 
 	// ------------------------------ Methods from ConfigurationResourceProvider
 
-
 	/**
-	 * @see com.sun.faces.spi.ConfigurationResourceProvider#getResources(javax.servlet.ServletContext)
+	 * @see com.sun.faces.spi.ConfigurationResourceProvider#getResources(ServletContext)
 	 */
 	@Override
 	public Collection<URI> getResources(ServletContext context)
@@ -72,25 +69,20 @@ public class WebFacesConfigResourceProvider
 		return all;
 	}
 
-
 	// ------------------------------ Methods from BaseWebConfigResourceProvider
 
-
 	@Override
-	protected WebContextInitParameter getParameter()
-	{
-		return JavaxFacesConfigFiles;
+	protected WebContextInitParameter getParameter() {
+		return javaxFacesConfigFiles;
 	}
 
 	@Override
-	protected String getSeparatorRegex()
-	{
-		return SEPARATORS;
-	}
-
-	@Override
-	protected String[] getExcludedResources()
-	{
+	protected String[] getExcludedResources() {
 		return EXCLUDES;
+	}
+
+	@Override
+	protected String getSeparatorRegex() {
+		return SEPARATORS;
 	}
 }

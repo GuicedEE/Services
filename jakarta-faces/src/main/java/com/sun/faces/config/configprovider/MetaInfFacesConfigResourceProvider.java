@@ -66,7 +66,7 @@ public class MetaInfFacesConfigResourceProvider
 
 
 	/**
-	 * @see com.sun.faces.spi.ConfigurationResourceProvider#getResources(javax.servlet.ServletContext)
+	 * @see ConfigurationResourceProvider#getResources(ServletContext)
 	 */
 	@Override
 	public Collection<URI> getResources(ServletContext context)
