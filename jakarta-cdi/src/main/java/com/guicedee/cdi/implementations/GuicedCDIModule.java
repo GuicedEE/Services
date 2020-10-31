@@ -11,14 +11,13 @@ import com.guicedee.cdi.services.NamedBindings;
 import com.guicedee.guicedinjection.GuiceContext;
 import com.guicedee.guicedinjection.interfaces.IGuiceModule;
 import io.github.classgraph.ClassInfo;
-import io.github.classgraph.MethodInfo;
 
 import javax.annotation.PostConstruct;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
+
 import javax.inject.Named;
 
 import java.lang.reflect.Method;

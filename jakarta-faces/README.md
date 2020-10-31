@@ -142,7 +142,7 @@ Then create a backing bean class as below:
 ```java
 package com.example;
 
-import javax.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 @Named

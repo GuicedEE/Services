@@ -1,4 +1,4 @@
-package javax.cdi.docgen;
+package jakarta.cdi.docgen;
 
 public class JavaDocGenerator
 {

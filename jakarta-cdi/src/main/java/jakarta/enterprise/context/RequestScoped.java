@@ -1,7 +1,13 @@
-package javax.enterprise.context;
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+package jakarta.enterprise.context;
 
 import com.google.inject.ScopeAnnotation;
 
+import jakarta.enterprise.context.NormalScope;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
@@ -15,6 +21,5 @@ import java.lang.annotation.Target;
 @NormalScope
 @Inherited
 @ScopeAnnotation
-public @interface ApplicationScoped {
-
+public @interface RequestScoped {
 }

@@ -3,10 +3,11 @@
 // (powered by Fernflower decompiler)
 //
 
-package javax.enterprise.context;
+package jakarta.enterprise.context;
 
 import com.google.inject.ScopeAnnotation;
 
+import jakarta.enterprise.context.NormalScope;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
@@ -17,8 +18,10 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@NormalScope
+@NormalScope(
+		passivating = true
+)
 @Inherited
 @ScopeAnnotation
-public @interface RequestScoped {
+public @interface SessionScoped {
 }
