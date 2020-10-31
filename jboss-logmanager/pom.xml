@@ -17,8 +17,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
+            <groupId>jakarta.json</groupId>
+            <artifactId>jakarta.json-api</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -86,6 +87,10 @@
                                 <relocation>
                                     <pattern>META-INF/versions/9/org</pattern>
                                     <shadedPattern>org</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax</pattern>
+                                    <shadedPattern>jakarta</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

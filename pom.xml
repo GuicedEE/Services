@@ -135,13 +135,17 @@
                 <module>jakarta-persistence-api</module>
                 <module>jakarta-jsp</module>
                 <module>jakarta-jws</module>
+                <module>java-rs-ws</module>
                 <module>jakarta-jstl</module>
                 <module>jakarta-mail</module>
                 <module>jakarta-security-jacc</module>
                 <module>jakarta-validation-api</module>
                 <module>jakarta-websocket</module>
                 <module>jakarta-xml-bind-api</module>
+                <module>jakarta-xml-soap-api</module>
                 <module>jakarta-servlet-api</module>
+				<module>jakarta-xml-ws-api</module>
+				<module>jakarta-xml-rs-api</module>
                 <module>jakarta-transaction-api</module>
             </modules>
         </profile>

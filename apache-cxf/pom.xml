@@ -40,6 +40,12 @@
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.xml.soap-api</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>slf4j</artifactId>
         </dependency>
 
@@ -86,18 +92,21 @@
 
 
         <dependency>
-            <groupId>javax.jws</groupId>
-            <artifactId>javax.jws-api</artifactId>
-            <version>1.1</version>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.jws-api</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>java.ws.rs</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>rt</artifactId>
             <optional>true</optional>
         </dependency>
-
 
         <dependency>
             <groupId>org.jvnet.staxex</groupId>
@@ -133,12 +142,12 @@
         </dependency>
 
         <dependency>
-            <groupId>jakarta.xml.ws</groupId>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.xml.ws-api</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>jakarta.ws.rs</groupId>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
         </dependency>
 
@@ -332,15 +341,6 @@
             <artifactId>cxf-rt-rs-extension-search</artifactId>
             <optional>true</optional>
         </dependency>
-<!--
-
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
-            <optional>true</optional>
-        </dependency>
--->
-
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -461,18 +461,6 @@
             <optional>true</optional>
         </dependency>
 
-   <!--     <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-core</artifactId>
-            <optional>true</optional>
-        </dependency>-->
-
-    <!--    <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-api</artifactId>
-            <optional>true</optional>
-        </dependency>-->
-
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-client</artifactId>
@@ -539,44 +527,6 @@
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-beanutils</artifactId>
         </dependency>
-
-       <!-- <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-continuation</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-http</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-io</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-util</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-security</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <optional>true</optional>
-        </dependency>
--->
     </dependencies>
 
     <build>
@@ -592,7 +542,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <createDependencyReducedPom>true</createDependencyReducedPom>
                     <createSourcesJar>true</createSourcesJar>
                     <shadeSourcesContent>true</shadeSourcesContent>
                     <shadeTestJar>false</shadeTestJar>
@@ -665,6 +615,7 @@
                             <include>org.opensaml:*</include>
                             <include>org.cryptacular:*</include>
                             <include>net.shibboleth.utilities:*</include>
+                            <include>org.apache.cxf.services.sts:*</include>
                             <!--<include>jakarta.xml.ws:jakarta.xml.ws-api:*</include>-->
                         </includes>
                     </artifactSet>
@@ -705,6 +656,10 @@
                         <relocation>
                             <pattern>net.sf.saxon</pattern>
                             <shadedPattern>org.apache.cxf.common.util.rel.saxon</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>jakarta</pattern>
+                            <shadedPattern>javax</shadedPattern>
                         </relocation>
                     </relocations>
 
@@ -758,7 +713,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <createDependencyReducedPom>true</createDependencyReducedPom>
                             <createSourcesJar>true</createSourcesJar>
                             <shadeSourcesContent>true</shadeSourcesContent>
                             <shadeTestJar>false</shadeTestJar>
@@ -781,6 +736,12 @@
                                 </filter>
 
                             </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>jakarta</pattern>
+                                    <shadedPattern>javax</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </plugin>
                 </plugins>

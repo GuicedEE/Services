@@ -8,16 +8,19 @@ module org.apache.cxf {
 	requires transitive com.google.common;
 
 	requires java.annotation;
-	requires java.management;
+	requires static java.management;
 	requires java.desktop;
 	requires java.validation;
-	requires javax.jws;
+
 	requires java.rmi;
 
 	requires org.slf4j;
 
-	requires transitive java.ws.rs;
-	requires transitive java.xml.ws;
+	requires javax.xml.soap;
+
+	requires javax.ws.rs;
+	requires javax.xml.ws;
+	requires javax.jws;
 
 	requires org.codehaus.stax2;
 
