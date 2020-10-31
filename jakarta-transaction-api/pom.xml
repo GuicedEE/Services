@@ -38,6 +38,18 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>cdi-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>interceptor-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
     <build>
