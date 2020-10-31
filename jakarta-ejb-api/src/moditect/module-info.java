@@ -4,7 +4,6 @@ module javax.ejb {
 	requires java.transaction;
 
 	requires java.xml;
-	requires java.servlet;
 	requires java.naming;
 
 	exports javax.ejb;
