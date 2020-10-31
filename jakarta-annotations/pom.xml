@@ -101,6 +101,12 @@
                             <include>jakarta.annotation:jakarta.annotation-api:*</include>
                         </includes>
                     </artifactSet>
+                    <relocations>
+                        <relocation>
+                            <pattern>jakarta</pattern>
+                            <shadedPattern>javax</shadedPattern>
+                        </relocation>
+                    </relocations>
                 </configuration>
             </plugin>
             <plugin>
