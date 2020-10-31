@@ -63,10 +63,10 @@
             <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>ejb-api</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>jakarta.interceptor</groupId>
@@ -95,6 +95,12 @@
                                     <include>jakarta.interceptor:jakarta.interceptor-api:*</include>
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>jakarta</pattern>
+                                    <shadedPattern>javax</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
 
