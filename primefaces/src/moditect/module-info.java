@@ -250,6 +250,7 @@ open module primefaces {
 	exports org.primefaces.model.charts.axes.cartesian.linear;
 	exports org.primefaces.model.charts.axes.cartesian;
 	exports org.primefaces.model.charts;
+	exports org.primefaces.model.datepicker;
 	exports org.primefaces.component.datatable.export;
 	exports org.primefaces.component.autoupdate;
 	exports org.primefaces.csp;
