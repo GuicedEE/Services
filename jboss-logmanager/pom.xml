@@ -80,6 +80,7 @@
                                     <artifact>*:*</artifact>
                                     <excludes>
                                         <exclude>schema/</exclude>
+                                        <exclude>META-INF/servicse/*</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
