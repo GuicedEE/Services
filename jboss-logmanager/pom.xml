@@ -80,7 +80,7 @@
                                     <artifact>*:*</artifact>
                                     <excludes>
                                         <exclude>schema/</exclude>
-                                        <exclude>META-INF/servicse/*</exclude>
+                                        <!--<exclude>META-INF/services/*</exclude>-->
                                     </excludes>
                                 </filter>
                             </filters>
@@ -90,8 +90,8 @@
                                     <shadedPattern>org</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>javax</pattern>
-                                    <shadedPattern>jakarta</shadedPattern>
+                                    <pattern>javax.json</pattern>
+                                    <shadedPattern>jakarta.json</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
