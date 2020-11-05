@@ -65,16 +65,34 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>OSS Snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
+	<profiles>
+		<profile>
+			<id>jdk8</id>
+			<repositories>
+				<repository>
+					<id>OSS Snapshots</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+				</repository>
+				<repository>
+					<id>jitpack.io</id>
+					<url>https://jitpack.io</url>
+				</repository>
+			</repositories>
+		</profile>
+		<profile>
+			<id>jdk9</id>
+			<repositories>
+				<repository>
+					<id>OSS Snapshots</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+				</repository>
+				<repository>
+					<id>jitpack.io</id>
+					<url>https://jitpack.io</url>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
 
     <dependencies>
 
