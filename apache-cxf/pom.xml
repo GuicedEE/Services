@@ -540,15 +540,7 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <createDependencyReducedPom>true</createDependencyReducedPom>
-                    <createSourcesJar>true</createSourcesJar>
-                    <shadeSourcesContent>true</shadeSourcesContent>
-                    <shadeTestJar>false</shadeTestJar>
-                    <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
-
+						<configuration>
                     <artifactSet>
                         <includes>
                             <!--<include>org.codehaus.woodstox:stax2-api:*</include>-->
@@ -672,6 +664,8 @@
 						<transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
 					</transformers>
                 </configuration>
+                    </execution>
+                </executions>
                 <dependencies>
                     <dependency>
                         <groupId>org.ow2.asm</groupId>

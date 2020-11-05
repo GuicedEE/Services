@@ -82,51 +82,53 @@
                         <artifactId>maven-shade-plugin</artifactId>
                         <executions>
                             <execution>
+                                <id>shade</id>
                                 <phase>package</phase>
                                 <goals>
                                     <goal>shade</goal>
                                 </goals>
+                                <configuration>
+                                    <artifactSet>
+                                        <includes>
+                                            <include>jakarta.xml.bind:jakarta.xml.bind-api:*</include>
+                                            <include>org.glassfish.jaxb:jaxb-runtime:*</include>
+                                            <!--<include>javax.xml.bind:jaxb-api:*</include>-->
+                                            <include>org.glassfish.jaxb:txw2:*</include>
+                                            <include>com.sun.istack:istack-commons-runtime:*</include>
+                                            <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
+                                            <include>com.sun.xml.fastinfoset:FastInfoset:*</include>
+                                            <include>com.sun.xml.bind:jaxb-impl:*</include>
+                                        </includes>
+                                    </artifactSet>
+                                    <filters>
+                                        <filter>
+                                            <artifact>*:*</artifact>
+                                            <excludes>
+                                                <exclude>META-INF/*.SF</exclude>
+                                                <exclude>META-INF/*.DSA</exclude>
+                                                <exclude>META-INF/*.RSA</exclude>
+                                                <exclude>META-INF/services/*</exclude>
+                                            </excludes>
+                                        </filter>
+                                    </filters>
+                                    <relocations>
+                                       <relocation>
+                                            <pattern>META-INF/versions/9/com</pattern>
+                                            <shadedPattern>com</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>META-INF/versions/9/javax</pattern>
+                                            <shadedPattern>javax</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>jakarta</pattern>
+                                            <shadedPattern>javax</shadedPattern>
+                                        </relocation>
+                                    </relocations>
+                                </configuration>
                             </execution>
                         </executions>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <createDependencyReducedPom>true</createDependencyReducedPom>
-                            <createSourcesJar>true</createSourcesJar>
-                            <shadeSourcesContent>true</shadeSourcesContent>
-                            <shadeTestJar>false</shadeTestJar>
-                            <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
-
-                            <artifactSet>
-                                <includes>
-                                    <include>jakarta.xml.bind:jakarta.xml.bind-api:*</include>
-                                    <include>org.glassfish.jaxb:jaxb-runtime:*</include>
-                                    <!--<include>javax.xml.bind:jaxb-api:*</include>-->
-                                    <include>org.glassfish.jaxb:txw2:*</include>
-                                    <include>com.sun.istack:istack-commons-runtime:*</include>
-                                    <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
-                                    <include>com.sun.xml.fastinfoset:FastInfoset:*</include>
-                                    <include>com.sun.xml.bind:jaxb-impl:*</include>
-                                </includes>
-                            </artifactSet>
-                            <!-- Dont transform the service resources -->
-                            <!--   <transformers>
-                                   <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                               </transformers>-->
-                            <relocations>
-                                <relocation>
-                                    <pattern>META-INF/versions/9/com</pattern>
-                                    <shadedPattern>com</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>META-INF/versions/9/javax</pattern>
-                                    <shadedPattern>javax</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>jakarta</pattern>
-                                    <shadedPattern>javax</shadedPattern>
-                                </relocation>
-                            </relocations>
-                        </configuration>
+                        <inherited>true</inherited>
                     </plugin>
                     <plugin>
                         <groupId>org.moditect</groupId>
@@ -144,43 +146,57 @@
                         <artifactId>maven-shade-plugin</artifactId>
                         <executions>
                             <execution>
+                                <id>shade</id>
                                 <phase>package</phase>
                                 <goals>
                                     <goal>shade</goal>
                                 </goals>
+                                <configuration>
+                                    <artifactSet>
+                                        <includes>
+                                            <include>jakarta.xml.bind:jakarta.xml.bind-api:*</include>
+                                            <include>org.glassfish.jaxb:jaxb-runtime:*</include>
+                                            <!--<include>javax.xml.bind:jaxb-api:*</include>-->
+                                            <include>org.glassfish.jaxb:txw2:*</include>
+                                            <include>com.sun.istack:istack-commons-runtime:*</include>
+                                            <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
+                                            <include>com.sun.xml.fastinfoset:FastInfoset:*</include>
+                                            <include>com.sun.xml.bind:jaxb-impl:*</include>
+                                        </includes>
+                                    </artifactSet>
+                                    <filters>
+                                        <filter>
+                                            <artifact>*:*</artifact>
+                                            <excludes>
+                                                <exclude>META-INF/*.SF</exclude>
+                                                <exclude>META-INF/*.DSA</exclude>
+                                                <exclude>META-INF/*.RSA</exclude>
+                                                <exclude>META-INF/services/*</exclude>
+                                            </excludes>
+                                        </filter>
+                                    </filters>
+                                    <relocations>
+                                        <relocation>
+                                            <pattern>META-INF/versions/9/com</pattern>
+                                            <shadedPattern>com</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>META-INF/versions/9/javax</pattern>
+                                            <shadedPattern>javax</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>META-INF/versions/9/jakarta</pattern>
+                                            <shadedPattern>javax</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>jakarta</pattern>
+                                            <shadedPattern>javax</shadedPattern>
+                                        </relocation>
+                                    </relocations>
+                                </configuration>
                             </execution>
                         </executions>
-                        <inherited>false</inherited>
-                        <configuration>
-                            <createDependencyReducedPom>true</createDependencyReducedPom>
-                            <createSourcesJar>true</createSourcesJar>
-                            <shadeSourcesContent>true</shadeSourcesContent>
-                            <shadeTestJar>false</shadeTestJar>
-                            <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
-
-                            <artifactSet>
-                                <includes>
-                                    <include>jakarta.xml.bind:jakarta.xml.bind-api:*</include>
-                                    <include>org.glassfish.jaxb:jaxb-runtime:*</include>
-                                    <!--<include>javax.xml.bind:jaxb-api:*</include>-->
-                                    <include>org.glassfish.jaxb:txw2:*</include>
-                                    <include>com.sun.istack:istack-commons-runtime:*</include>
-                                    <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
-                                    <include>com.sun.xml.fastinfoset:FastInfoset:*</include>
-                                    <include>com.sun.xml.bind:jaxb-impl:*</include>
-                                </includes>
-                            </artifactSet>
-                            <!-- Dont transform the service resources -->
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                            </transformers>
-                            <relocations>
-                                <relocation>
-                                    <pattern>jakarta</pattern>
-                                    <shadedPattern>javax</shadedPattern>
-                                </relocation>
-                            </relocations>
-                        </configuration>
+                        <inherited>true</inherited>
                     </plugin>
                     <plugin>
                         <groupId>org.moditect</groupId>
