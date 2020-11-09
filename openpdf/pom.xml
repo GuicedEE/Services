@@ -38,18 +38,7 @@
             <optional>true</optional>
         </dependency>
 
-        <dependency>
-            <groupId>com.twelvemonkeys.imageio</groupId>
-            <artifactId>imageio-tiff</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.pdfbox</groupId>
-            <artifactId>fontbox</artifactId>
-            <optional>true</optional>
-        </dependency>
-
+     
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
@@ -57,18 +46,8 @@
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>commons-logging</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.xmlgraphics</groupId>
-            <artifactId>fop</artifactId>
-            <optional>true</optional>
+            <artifactId>org.apache.fop</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
     </dependencies>
@@ -84,12 +63,6 @@
                         <includes>
                             <include>com.github.librepdf</include>
                             <include>com.github.albfernandez</include>
-                            <include>com.twelvemonkeys.imageio</include>
-                            <include>com.twelvemonkeys.common</include>
-                            <include>org.apache.xmlgraphics</include>
-                            <include>org.apache.pdfbox</include>
-                            <include>javax.media:jai-core</include>
-                            <include>com.sun.media:jai-codec</include>
                         </includes>
                     </artifactSet>
                     <filters>

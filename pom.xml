@@ -23,6 +23,7 @@
             <id>enable-commons</id>
             <modules>
                 <module>apache-cxf</module>
+                <module>apache-fop</module>
                 <module>apache-poi</module>
                 <module>apache-poi-ooxml</module>
                 <module>commons-beanutils</module>

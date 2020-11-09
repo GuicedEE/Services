@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!--
+ To produce reports, use the reporting profile, for example: mvn -Preporting clean site
+ You may need to use the -U option to update your environment if you get an error.
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+        <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>org.apache.fop</artifactId>
+
+    <name>Apache FOP</name>
+   
+    <!-- Codec only has test dependencies ATM -->
+    <dependencies>
+
+
+		<dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>fop</artifactId>
+            <optional>true</optional>
+        </dependency>
+		
+		<dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>fontbox</artifactId>
+            <optional>true</optional>
+        </dependency>
+		
+		 <dependency>
+            <groupId>com.twelvemonkeys.imageio</groupId>
+            <artifactId>imageio-tiff</artifactId>
+            <optional>true</optional>
+        </dependency>
+		
+		<dependency>
+			<groupId>com.thoughtworks.qdox</groupId>
+			<artifactId>qdox</artifactId>
+			<version>2.0.0</version>
+			<optional>true</optional>
+		</dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+
+    </dependencies>
+	
+	
+    <build>
+        <resources>
+            <resource>
+                <directory>src/resources/main</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                     <include>org.apache.xmlgraphics</include>
+									<include>org.apache.pdfbox</include>
+									<include>com.thoughtworks.qdox</include>
+									<include>com.twelvemonkeys.imageio</include>
+									<include>com.twelvemonkeys.common</include>
+									<include>javax.media:jai-core</include>
+									<include>com.sun.media:jai-codec</include>
+									<include>xalan:xalan</include>
+									<include>xalan:serializer</include>
+									<include>xml-apis:xml-apis</include>
+									<include>xml-apis:xml-apis-ext</include>
+                                </includes>
+                            </artifactSet>
+							<filters>
+                                <filter>
+                                    <artifact>xalan:xalan</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
+                            </transformers>
+
+							 <relocations>
+								<relocation>
+                                    <pattern>org.apache.xalan</pattern>
+                                    <shadedPattern>org.apache.fop.shaded.xalan</shadedPattern>
+                                </relocation>
+			
+							 </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm</artifactId>
+                        <version>${maven.asm.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.yupiik.maven</groupId>
+                        <artifactId>maven-shade-transformers</artifactId>
+                        <version>0.0.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
