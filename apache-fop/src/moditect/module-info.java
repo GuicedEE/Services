@@ -1,5 +1,7 @@
 module org.apache.fop {
 
+    requires static java.desktop;
+
     requires static org.apache.commons.logging;
     requires static org.apache.commons.io;
 
