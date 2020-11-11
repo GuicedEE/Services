@@ -1,30 +1,30 @@
 module jakarta.enterprise.cdi {
 	requires transitive jakarta.enterprise.interceptor;
 
-	requires transitive javax.el;
+	requires transitive jakarta.el;
 
 	requires transitive com.guicedee.guicedinjection;
 	requires transitive com.google.guice.extensions.servlet;
 
 	requires java.annotation;
 
-	exports javax.decorator;
-	exports javax.enterprise.context;
-	exports javax.enterprise.context.control;
-	exports javax.enterprise.context.spi;
+	exports jakarta.decorator;
+	exports jakarta.enterprise.context;
+	exports jakarta.enterprise.context.control;
+	exports jakarta.enterprise.context.spi;
 
-	exports javax.enterprise.event;
-	exports javax.enterprise.inject;
-	exports javax.enterprise.inject.literal;
-	exports javax.enterprise.inject.se;
-	exports javax.enterprise.inject.spi;
-	exports javax.enterprise.util;
+	exports jakarta.enterprise.event;
+	exports jakarta.enterprise.inject;
+	exports jakarta.enterprise.inject.literal;
+	exports jakarta.enterprise.inject.se;
+	exports jakarta.enterprise.inject.spi;
+	exports jakarta.enterprise.util;
 
 	exports com.guicedee.cdi.services;
 
-	uses javax.enterprise.inject.spi.Extension;
-	uses javax.enterprise.inject.se.SeContainerInitializer;
-	uses javax.enterprise.inject.spi.CDIProvider;
+	uses jakarta.enterprise.inject.spi.Extension;
+	uses jakarta.enterprise.inject.se.SeContainerInitializer;
+	uses jakarta.enterprise.inject.spi.CDIProvider;
 
 	provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with com.guicedee.cdi.implementations.GuicedCDIConfigurator;
 	provides com.guicedee.guicedinjection.interfaces.IGuiceModule with com.guicedee.cdi.implementations.GuicedCDIModule;

@@ -1,3 +1,3 @@
-package javax.websocket.javadoc;
+package jakarta.websocket.javadoc;
 
 public class JavadocGenerator {}

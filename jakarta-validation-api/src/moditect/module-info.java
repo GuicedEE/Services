@@ -1,13 +1,13 @@
 module java.validation {
-	exports javax.validation;
-	exports javax.validation.bootstrap;
-	exports javax.validation.constraints;
-	exports javax.validation.constraintvalidation;
-	exports javax.validation.executable;
-	exports javax.validation.groups;
-	exports javax.validation.metadata;
-	exports javax.validation.spi;
-	exports javax.validation.valueextraction;
+	exports jakarta.validation;
+	exports jakarta.validation.bootstrap;
+	exports jakarta.validation.constraints;
+	exports jakarta.validation.constraintvalidation;
+	exports jakarta.validation.executable;
+	exports jakarta.validation.groups;
+	exports jakarta.validation.metadata;
+	exports jakarta.validation.spi;
+	exports jakarta.validation.valueextraction;
 
-	uses javax.validation.spi.ValidationProvider;
+	uses jakarta.validation.spi.ValidationProvider;
 }

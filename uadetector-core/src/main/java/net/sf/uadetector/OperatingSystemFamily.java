@@ -281,15 +281,15 @@ public enum OperatingSystemFamily
 	/**
 	 * The internal family name in the UAS database.
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
 	/**
 	 * The regular expression which a family name must be match.
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Pattern pattern;
 
-	private OperatingSystemFamily(@javax.validation.constraints.NotNull String name, @javax.validation.constraints.NotNull Pattern pattern)
+	private OperatingSystemFamily(@jakarta.validation.constraints.NotNull String name, @jakarta.validation.constraints.NotNull Pattern pattern)
 	{
 		this.name = name;
 		this.pattern = pattern;
@@ -307,7 +307,7 @@ public enum OperatingSystemFamily
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	public static OperatingSystemFamily evaluate(@javax.validation.constraints.NotNull String family)
+	public static OperatingSystemFamily evaluate(@jakarta.validation.constraints.NotNull String family)
 	{
 		Check.notNull(family, "family");
 
@@ -337,7 +337,7 @@ public enum OperatingSystemFamily
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	protected static OperatingSystemFamily evaluateByName(@javax.validation.constraints.NotNull String family)
+	protected static OperatingSystemFamily evaluateByName(@jakarta.validation.constraints.NotNull String family)
 	{
 		Check.notNull(family, "family");
 
@@ -367,7 +367,7 @@ public enum OperatingSystemFamily
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	protected static OperatingSystemFamily evaluateByPattern(@javax.validation.constraints.NotNull String family)
+	protected static OperatingSystemFamily evaluateByPattern(@jakarta.validation.constraints.NotNull String family)
 	{
 		Check.notNull(family, "family");
 
@@ -391,7 +391,7 @@ public enum OperatingSystemFamily
 	 *
 	 * @return the internal family name
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getName()
 	{
 		return this.name;
@@ -402,7 +402,7 @@ public enum OperatingSystemFamily
 	 *
 	 * @return regular expression
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Pattern getPattern()
 	{
 		return pattern;

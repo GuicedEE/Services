@@ -25,10 +25,10 @@ import org.jsr107.ri.annotations.InternalCacheKeyInvocationContext;
 import org.jsr107.ri.annotations.StaticCacheInvocationContext;
 import org.jsr107.ri.annotations.StaticCacheKeyInvocationContext;
 
-import javax.cache.annotation.CacheKeyGenerator;
-import javax.cache.annotation.CacheResolverFactory;
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import jakarta.cache.annotation.CacheKeyGenerator;
+import jakarta.cache.annotation.CacheResolverFactory;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 

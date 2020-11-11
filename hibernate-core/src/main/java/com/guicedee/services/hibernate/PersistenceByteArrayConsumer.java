@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.guicedee.guicedinjection.interfaces.ObjectBinderKeys;
 import com.guicedee.logger.LogFactory;
 
@@ -16,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
 
+import java.lang.reflect.Field;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -100,10 +102,19 @@ public class PersistenceByteArrayConsumer
 			JSONObject pers = jsonObj.getJSONObject("persistence");
 			try {
 				JSONObject persU = pers.getJSONObject("persistence-unit");
+				ParsedPersistenceXmlDescriptor p =new ParsedPersistenceXmlDescriptor(null);
 				try {
 					ParsedPersistenceXmlDescriptorMixin descriptor = new ParsedPersistenceXmlDescriptorMixin(null);
 					ParsedPersistenceXmlDescriptorMixin pp = om.readerForUpdating(descriptor).readValue(persU.toString());
-					units.add(pp);
+					for (Field declaredField : pp.getClass().getDeclaredFields()) {
+						try {
+							p.getClass().getField(declaredField.getName()).set(p, declaredField.get(pp));
+						}catch (Throwable T)
+						{
+							//ignore field
+						}
+					}
+					units.add(p);
 				} catch (JsonProcessingException e) {
 					log.log(Level.SEVERE, "Error streaming into Persistence Unit", e);
 				}
@@ -113,8 +124,17 @@ public class PersistenceByteArrayConsumer
 				JSONArray persU = pers.getJSONArray("persistence-unit");
 				persU.forEach(a->{
 					try {
-						ParsedPersistenceXmlDescriptor p1 = om.readValue(a.toString(), ParsedPersistenceXmlDescriptorMixin.class);
-						units.add(p1);
+						ParsedPersistenceXmlDescriptorMixin p1 = om.readValue(a.toString(), ParsedPersistenceXmlDescriptorMixin.class);
+						ParsedPersistenceXmlDescriptor p =new ParsedPersistenceXmlDescriptor(null);
+						for (Field declaredField : p1.getClass().getDeclaredFields()) {
+							try {
+								p.getClass().getField(declaredField.getName()).set(p, declaredField.get(p1));
+							}catch (Throwable T)
+							{
+								//ignore field
+							}
+						}
+						units.add(p);
 					} catch (JsonProcessingException e1) {
 						log.log(Level.SEVERE, "Error streaming into Persistence Unit", e1);
 					}

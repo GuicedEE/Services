@@ -28,7 +28,7 @@ import org.jsr107.ri.annotations.DefaultCacheKeyGenerator;
 import org.jsr107.ri.annotations.DefaultCacheResolverFactory;
 import org.jsr107.ri.annotations.guice.*;
 
-import javax.cache.annotation.*;
+import jakarta.cache.annotation.*;
 import java.lang.reflect.Method;
 
 /**

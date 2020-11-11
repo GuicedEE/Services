@@ -1,4 +1,4 @@
-package javax.servlet.docgen;
+package jakarta.servlet.docgen;
 
 public class JavaDocGenerator
 {

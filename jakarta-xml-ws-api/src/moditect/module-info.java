@@ -1,19 +1,19 @@
-module javax.xml.ws {
+module jakarta.xml.ws {
     requires transitive java.xml;
     requires transitive java.xml.bind;
-    requires transitive javax.xml.soap;
+    requires transitive jakarta.xml.soap;
     requires java.logging;
 
-    exports javax.xml.ws;
-    exports javax.xml.ws.handler;
-    exports javax.xml.ws.handler.soap;
-    exports javax.xml.ws.http;
-    exports javax.xml.ws.soap;
-    exports javax.xml.ws.spi;
-    exports javax.xml.ws.spi.http;
-    exports javax.xml.ws.wsaddressing;
+    exports jakarta.xml.ws;
+    exports jakarta.xml.ws.handler;
+    exports jakarta.xml.ws.handler.soap;
+    exports jakarta.xml.ws.http;
+    exports jakarta.xml.ws.soap;
+    exports jakarta.xml.ws.spi;
+    exports jakarta.xml.ws.spi.http;
+    exports jakarta.xml.ws.wsaddressing;
 
-    opens javax.xml.ws.wsaddressing to javax.xml.bind;
+    opens jakarta.xml.ws.wsaddressing to jakarta.xml.bind;
 
-    uses javax.xml.ws.spi.Provider;
+    uses jakarta.xml.ws.spi.Provider;
 }

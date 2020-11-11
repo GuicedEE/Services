@@ -16,10 +16,10 @@
  */
 package org.jsr107.ri.annotations;
 
-import javax.cache.annotation.CacheKeyGenerator;
-import javax.cache.annotation.CacheMethodDetails;
-import javax.cache.annotation.CachePut;
-import javax.cache.annotation.CacheResolver;
+import jakarta.cache.annotation.CacheKeyGenerator;
+import jakarta.cache.annotation.CacheMethodDetails;
+import jakarta.cache.annotation.CachePut;
+import jakarta.cache.annotation.CacheResolver;
 import java.util.List;
 
 /**

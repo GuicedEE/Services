@@ -1,4 +1,4 @@
-module javax.jms {
+module jakarta.jms {
 	requires java.transaction.xa;
-	exports javax.jms;
+	exports jakarta.jms;
 }

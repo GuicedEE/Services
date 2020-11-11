@@ -1,9 +1,9 @@
 module jakarta.mail {
-	exports javax.mail;
-	exports javax.mail.event;
-	exports javax.mail.internet;
-	exports javax.mail.search;
-	exports javax.mail.util;
+	exports jakarta.mail;
+	exports jakarta.mail.event;
+	exports jakarta.mail.internet;
+	exports jakarta.mail.search;
+	exports jakarta.mail.util;
 
 	exports com.sun.mail.auth;
 	exports com.sun.mail.dsn;
@@ -18,9 +18,9 @@ module jakarta.mail {
 	exports com.sun.mail.imap;
 	exports com.sun.mail.imap.protocol;
 
-	uses javax.mail.Provider;
+	uses jakarta.mail.Provider;
 
-	provides javax.mail.Provider with com.sun.mail.imap.IMAPProvider,
+	provides jakarta.mail.Provider with com.sun.mail.imap.IMAPProvider,
 			                             com.sun.mail.imap.IMAPSSLProvider,
 			                             com.sun.mail.smtp.SMTPProvider,
 			                             com.sun.mail.smtp.SMTPSSLProvider,

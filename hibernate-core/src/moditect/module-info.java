@@ -23,7 +23,7 @@ module org.hibernate.orm.core {
 
 	requires static jakarta.enterprise.cdi;
 	requires transitive java.validation;
-	requires transitive javax.inject;
+	requires transitive jakarta.inject;
 
 	requires org.json;
 
@@ -32,7 +32,7 @@ module org.hibernate.orm.core {
 	requires java.instrument;
 
 	requires static ant;
-	requires javax.security.jacc.api;
+	requires jakarta.security.jacc.api;
 
 	uses org.hibernate.boot.registry.selector.StrategyRegistrationProvider;
 	uses org.hibernate.boot.registry.selector.spi.StrategyCreator;
@@ -784,7 +784,7 @@ module org.hibernate.orm.core {
 	uses org.hibernate.type.descriptor.java.spi.JavaTypeDescriptorRegistry;
 	uses org.hibernate.type.descriptor.java.spi.RegistryHelper;
 
-	provides javax.persistence.spi.PersistenceProvider with org.hibernate.jpa.HibernatePersistenceProvider;
+	provides jakarta.persistence.spi.PersistenceProvider with org.hibernate.jpa.HibernatePersistenceProvider;
 
 	opens org.hibernate.cache.spi.entry;
 	opens org.hibernate.query.criteria.internal.path;

@@ -123,7 +123,7 @@ public final class ExecutorServices
 	 * @param executorService
 	 * 		executor to stop
 	 */
-	public static void shutdown(@javax.validation.constraints.NotNull ExecutorService executorService)
+	public static void shutdown(@jakarta.validation.constraints.NotNull ExecutorService executorService)
 	{
 		Check.notNull(executorService, "executorService");
 		shutdown(executorService, SHUTDOWN_DURATION, TimeUnit.SECONDS);
@@ -139,8 +139,8 @@ public final class ExecutorServices
 	 * @param unit
 	 * 		duration unit
 	 */
-	public static void shutdown(@javax.validation.constraints.NotNull ExecutorService executorService, long duration,
-	                            @javax.validation.constraints.NotNull TimeUnit unit)
+	public static void shutdown(@jakarta.validation.constraints.NotNull ExecutorService executorService, long duration,
+	                            @jakarta.validation.constraints.NotNull TimeUnit unit)
 	{
 		Check.notNull(executorService, "executorService");
 		Check.notNull(duration, "duration");

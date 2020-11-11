@@ -17,15 +17,15 @@
 
 package org.jsr107.ri.annotations;
 
-import javax.cache.Cache;
-import javax.cache.CacheManager;
-import javax.cache.Caching;
-import javax.cache.annotation.CacheMethodDetails;
-import javax.cache.annotation.CacheResolver;
-import javax.cache.annotation.CacheResolverFactory;
-import javax.cache.annotation.CacheResult;
-import javax.cache.configuration.MutableConfiguration;
-import javax.cache.spi.CachingProvider;
+import jakarta.cache.Cache;
+import jakarta.cache.CacheManager;
+import jakarta.cache.Caching;
+import jakarta.cache.annotation.CacheMethodDetails;
+import jakarta.cache.annotation.CacheResolver;
+import jakarta.cache.annotation.CacheResolverFactory;
+import jakarta.cache.annotation.CacheResult;
+import jakarta.cache.configuration.MutableConfiguration;
+import jakarta.cache.spi.CachingProvider;
 import java.lang.annotation.Annotation;
 import java.util.logging.Logger;
 
@@ -61,7 +61,7 @@ public class DefaultCacheResolverFactory implements CacheResolverFactory {
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheResolverFactory#getCacheResolver(javax.cache.annotation.CacheMethodDetails)
+   * @see jakarta.cache.annotation.CacheResolverFactory#getCacheResolver(jakarta.cache.annotation.CacheMethodDetails)
    */
   @Override
   public CacheResolver getCacheResolver(CacheMethodDetails<? extends Annotation> cacheMethodDetails) {

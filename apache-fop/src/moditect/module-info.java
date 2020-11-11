@@ -5,6 +5,8 @@ module org.apache.fop {
     requires static org.apache.commons.logging;
     requires static org.apache.commons.io;
 
+    requires java.xml;
+
     provides javax.imageio.spi.ImageReaderSpi with com.twelvemonkeys.imageio.plugins.tiff.TIFFImageReaderSpi,
             com.twelvemonkeys.imageio.plugins.tiff.BigTIFFImageReaderSpi;
 

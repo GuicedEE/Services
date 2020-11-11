@@ -13,7 +13,7 @@ module com.google.guice {
 	requires transitive java.logging;
 
 	requires transitive com.google.common;
-	requires transitive javax.inject;
+	requires transitive jakarta.inject;
 	requires transitive org.apache.commons.lang3;
 	requires transitive aopalliance;
 	requires transitive java.xml;

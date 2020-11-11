@@ -36,7 +36,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return detected device category
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	ReadableDeviceCategory getDeviceCategory();
 
 	/**
@@ -44,7 +44,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return family of an user agent
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	UserAgentFamily getFamily();
 
 	/**
@@ -52,7 +52,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return icon name of an user agent
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getIcon();
 
 	/**
@@ -60,7 +60,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return name of an user agent
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getName();
 
 	/**
@@ -68,7 +68,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return the running operating system
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	OperatingSystem getOperatingSystem();
 
 	/**
@@ -76,7 +76,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return the manufacturer
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getProducer();
 
 	/**
@@ -84,7 +84,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return URL to the website of the manufacturer
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getProducerUrl();
 
 	/**
@@ -92,7 +92,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return the type of an user agent
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	UserAgentType getType();
 
 	/**
@@ -100,7 +100,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return the type name of an user agent
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getTypeName();
 
 	/**
@@ -108,7 +108,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return the URL to the product page
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getUrl();
 
 	/**
@@ -116,7 +116,7 @@ public interface ReadableUserAgent
 	 *
 	 * @return version number of an user agent
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	VersionNumber getVersionNumber();
 
 }

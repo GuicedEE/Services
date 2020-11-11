@@ -55,7 +55,7 @@ public interface DataStore
 	 *
 	 * @return current UAS data
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	Charset getCharset();
 
 	/**
@@ -63,7 +63,7 @@ public interface DataStore
 	 *
 	 * @return current UAS data
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	Data getData();
 
 	/**
@@ -71,7 +71,7 @@ public interface DataStore
 	 *
 	 * @return the data reader to read in UAS data
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	DataReader getDataReader();
 
 	/**
@@ -79,7 +79,7 @@ public interface DataStore
 	 *
 	 * @return URL to UAS data
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	URL getDataUrl();
 
 	/**
@@ -87,7 +87,7 @@ public interface DataStore
 	 *
 	 * @return URL to version information of UAS data
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	URL getVersionUrl();
 
 }

@@ -5,7 +5,7 @@ module org.hibernate.validator {
 	requires com.fasterxml.classmate;
 	requires static java.persistence;
 	requires static java.scripting;
-	requires transitive javax.el;
+	requires transitive jakarta.el;
 	requires java.desktop;
 	requires java.compiler;
 
@@ -40,9 +40,9 @@ module org.hibernate.validator {
 	uses org.hibernate.validator.spi.scripting.ScriptEvaluator;
 	uses org.hibernate.validator.spi.scripting.ScriptEvaluatorFactory;
 
-	uses javax.validation.valueextraction.ValueExtractor;
-	uses javax.validation.ConstraintValidator;
+	uses jakarta.validation.valueextraction.ValueExtractor;
+	uses jakarta.validation.ConstraintValidator;
 
-	provides javax.validation.spi.ValidationProvider with org.hibernate.validator.HibernateValidator;
+	provides jakarta.validation.spi.ValidationProvider with org.hibernate.validator.HibernateValidator;
 
 }

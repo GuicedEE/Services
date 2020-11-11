@@ -29,7 +29,7 @@ public final class DaemonThreadFactory
 	/**
 	 * Name of a new thread
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String threadName;
 
 	/**
@@ -38,7 +38,7 @@ public final class DaemonThreadFactory
 	 * @param threadName
 	 * 		name of a thread to be created
 	 */
-	public DaemonThreadFactory(@javax.validation.constraints.NotNull String threadName)
+	public DaemonThreadFactory(@jakarta.validation.constraints.NotNull String threadName)
 	{
 		Check.notNull(threadName, "threadName");
 		Check.notEmpty(threadName.trim(), "threadName");
@@ -46,7 +46,7 @@ public final class DaemonThreadFactory
 	}
 
 	@Override
-	public Thread newThread(@javax.validation.constraints.NotNull Runnable runnable)
+	public Thread newThread(@jakarta.validation.constraints.NotNull Runnable runnable)
 	{
 		Thread thread = new Thread(runnable);
 		thread.setName(threadName);

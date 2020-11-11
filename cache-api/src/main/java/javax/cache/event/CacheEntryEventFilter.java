@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.event;
+package jakarta.cache.event;
 
 /**
  * A function that may be used to check {@link CacheEntryEvent}s prior to being

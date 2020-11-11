@@ -1,3 +1,3 @@
-package javax.xml.ws.rs.javadoc;
+package jakarta.xml.ws.rs.javadoc;
 
 public class JavaDocGenerator {}

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.event;
+package jakarta.cache.event;
 
 /**
  * Invoked if a cache entry is removed, or if a batch call is made, after the

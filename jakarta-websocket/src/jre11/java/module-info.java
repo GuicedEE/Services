@@ -1,3 +1,0 @@
-module javax.websocket.api {
-
-}

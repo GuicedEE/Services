@@ -5,7 +5,7 @@ import com.google.inject.Key;
 import com.google.inject.name.Names;
 import io.github.classgraph.ClassInfo;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Map;

@@ -125,6 +125,22 @@
                                     <pattern>antlr</pattern>
                                     <shadedPattern>org.hibernate.relocated.antlr</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>javax.persistence</pattern>
+                                    <shadedPattern>jakarta.persistence</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.xml.bind</pattern>
+                                    <shadedPattern>jakarta.xml.bind</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.inject</pattern>
+                                    <shadedPattern>jakarta.inject</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.transaction</pattern>
+                                    <shadedPattern>jakarta.transaction</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>

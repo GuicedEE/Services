@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.processor;
+package jakarta.cache.processor;
 
-import javax.cache.Cache;
-import javax.cache.integration.CacheLoader;
+import jakarta.cache.Cache;
+import jakarta.cache.integration.CacheLoader;
 
 /**
- * A mutable representation of a {@link javax.cache.Cache.Entry}.
+ * A mutable representation of a {@link jakarta.cache.Cache.Entry}.
  * <p>
  * Mutable entries are used by {@link EntryProcessor}s to mutate
  * {@link Cache.Entry}s in place, atomically.

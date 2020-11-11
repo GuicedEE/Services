@@ -46,57 +46,57 @@ public class Data
 
 	private static final long serialVersionUID = 8522012551928801089L;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, SortedSet<BrowserPattern>> browserPatterns;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Set<Browser> browsers;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, SortedSet<DevicePattern>> devicePatterns;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Set<Device> devices;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final SortedMap<DevicePattern, Device> patternToDeviceMap;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Set<BrowserOperatingSystemMapping> browserToOperatingSystemMappings;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, BrowserType> browserTypes;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, SortedSet<OperatingSystemPattern>> operatingSystemPatterns;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Set<OperatingSystem> operatingSystems;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final SortedMap<BrowserPattern, Browser> patternToBrowserMap;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final SortedMap<OperatingSystemPattern, OperatingSystem> patternToOperatingSystemMap;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final List<Robot> robots;
 
 	/**
 	 * Version information of the UAS data
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String version;
 
-	public Data(@javax.validation.constraints.NotNull Set<Browser> browsers, @javax.validation.constraints.NotNull Map<Integer, SortedSet<BrowserPattern>> browserPatterns,
-	            @javax.validation.constraints.NotNull Map<Integer, BrowserType> browserTypes, @javax.validation.constraints.NotNull SortedMap<BrowserPattern, Browser> patternToBrowserMap,
-	            @javax.validation.constraints.NotNull Set<BrowserOperatingSystemMapping> browserToOperatingSystemMappings,
-	            @javax.validation.constraints.NotNull Set<OperatingSystem> operatingSystems,
-	            @javax.validation.constraints.NotNull Map<Integer, SortedSet<OperatingSystemPattern>> operatingSystemPatterns,
-	            @javax.validation.constraints.NotNull SortedMap<OperatingSystemPattern, OperatingSystem> patternToOperatingSystemMap,
-	            @javax.validation.constraints.NotNull List<Robot> robots, @javax.validation.constraints.NotNull Set<Device> devices,
-	            @javax.validation.constraints.NotNull Map<Integer, SortedSet<DevicePattern>> devicePatterns,
-	            @javax.validation.constraints.NotNull SortedMap<DevicePattern, Device> patternToDeviceMap, @javax.validation.constraints.NotNull String version)
+	public Data(@jakarta.validation.constraints.NotNull Set<Browser> browsers, @jakarta.validation.constraints.NotNull Map<Integer, SortedSet<BrowserPattern>> browserPatterns,
+	            @jakarta.validation.constraints.NotNull Map<Integer, BrowserType> browserTypes, @jakarta.validation.constraints.NotNull SortedMap<BrowserPattern, Browser> patternToBrowserMap,
+	            @jakarta.validation.constraints.NotNull Set<BrowserOperatingSystemMapping> browserToOperatingSystemMappings,
+	            @jakarta.validation.constraints.NotNull Set<OperatingSystem> operatingSystems,
+	            @jakarta.validation.constraints.NotNull Map<Integer, SortedSet<OperatingSystemPattern>> operatingSystemPatterns,
+	            @jakarta.validation.constraints.NotNull SortedMap<OperatingSystemPattern, OperatingSystem> patternToOperatingSystemMap,
+	            @jakarta.validation.constraints.NotNull List<Robot> robots, @jakarta.validation.constraints.NotNull Set<Device> devices,
+	            @jakarta.validation.constraints.NotNull Map<Integer, SortedSet<DevicePattern>> devicePatterns,
+	            @jakarta.validation.constraints.NotNull SortedMap<DevicePattern, Device> patternToDeviceMap, @jakarta.validation.constraints.NotNull String version)
 	{
 		Check.notNull(browsers, "browsers");
 		Check.notNull(browserPatterns, "browserPatterns");
@@ -130,73 +130,73 @@ public class Data
 		this.version = Check.notNull(version, "version");
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Map<Integer, SortedSet<BrowserPattern>> getBrowserPatterns()
 	{
 		return browserPatterns;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Set<Browser> getBrowsers()
 	{
 		return browsers;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Set<BrowserOperatingSystemMapping> getBrowserToOperatingSystemMappings()
 	{
 		return browserToOperatingSystemMappings;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Map<Integer, BrowserType> getBrowserTypes()
 	{
 		return browserTypes;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Map<Integer, SortedSet<DevicePattern>> getDevicePatterns()
 	{
 		return devicePatterns;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Set<Device> getDevices()
 	{
 		return devices;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Map<Integer, SortedSet<OperatingSystemPattern>> getOperatingSystemPatterns()
 	{
 		return operatingSystemPatterns;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Set<OperatingSystem> getOperatingSystems()
 	{
 		return operatingSystems;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public SortedMap<BrowserPattern, Browser> getPatternToBrowserMap()
 	{
 		return patternToBrowserMap;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public SortedMap<DevicePattern, Device> getPatternToDeviceMap()
 	{
 		return patternToDeviceMap;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public SortedMap<OperatingSystemPattern, OperatingSystem> getPatternToOperatingSystemMap()
 	{
 		return patternToOperatingSystemMap;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public List<Robot> getRobots()
 	{
 		return robots;
@@ -207,7 +207,7 @@ public class Data
 	 *
 	 * @return version of UAS data
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getVersion()
 	{
 		return version;
@@ -335,7 +335,7 @@ public class Data
 		return builder.toString();
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String toStats()
 	{
 		StringBuilder builder = new StringBuilder();

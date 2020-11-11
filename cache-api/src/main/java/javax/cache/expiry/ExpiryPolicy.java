@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.expiry;
+package jakarta.cache.expiry;
 
 /**
  * Defines functions to determine when cache entries will expire based on

@@ -35,7 +35,7 @@ module org.ehcache  {
 	requires org.slf4j;
 	requires jdk.unsupported;
 
-	provides javax.cache.spi.CachingProvider with org.ehcache.jsr107.EhcacheCachingProvider;
+	provides jakarta.cache.spi.CachingProvider with org.ehcache.jsr107.EhcacheCachingProvider;
 
 	uses  org.ehcache.core.spi.service.ServiceFactory;
 	provides org.ehcache.core.spi.service.ServiceFactory with org.ehcache.impl.internal.store.heap.OnHeapStoreProviderFactory,

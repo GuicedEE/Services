@@ -28,7 +28,7 @@ public interface OrderedPattern<T extends OrderedPattern<?>>
 	 *
 	 * @return compiled representation of a regular expression
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	Pattern getPattern();
 
 	/**

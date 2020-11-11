@@ -48,9 +48,6 @@
             <artifactId>undertow-websockets-jsr</artifactId>
             <optional>true</optional>
         </dependency>
-
-
-        <!-- Test dependencies -->
     </dependencies>
 
     <build>
@@ -71,6 +68,16 @@
                                     <include>io.undertow:undertow-websockets-jsr</include>
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>javax.servlet</pattern>
+                                    <shadedPattern>jakarta.servlet</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.websocket</pattern>
+                                    <shadedPattern>jakarta.websocket</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

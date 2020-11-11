@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,36 +16,36 @@
     <name>jakarta.mail</name>
 
     <dependencies>
-      <dependency>
+        <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>jakarta.mail</artifactId>
-			<optional>true</optional>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>imap</artifactId>
-			<optional>true</optional>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>smtp</artifactId>
-			<optional>true</optional>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>dsn</artifactId>
-			<optional>true</optional>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>pop3</artifactId>
-			<optional>true</optional>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>gimap</artifactId>
-			<optional>true</optional>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>
@@ -103,12 +104,6 @@
                                     </excludes>
                                 </filter>
                             </filters>
-                            <relocations>
-                                <relocation>
-                                    <pattern>jakarta</pattern>
-                                    <shadedPattern>javax</shadedPattern>
-                                </relocation>
-                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

@@ -19,7 +19,7 @@ import net.sf.uadetector.UserAgent;
 import net.sf.uadetector.UserAgentFamily;
 import net.sf.uadetector.internal.Check;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.SortedSet;

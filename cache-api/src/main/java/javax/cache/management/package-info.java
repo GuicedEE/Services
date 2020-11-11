@@ -21,4 +21,4 @@
  * @author Greg Luck
  * @since 1.0
  */
-package javax.cache.management;
+package jakarta.cache.management;

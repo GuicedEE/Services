@@ -24,7 +24,7 @@ import com.google.inject.TypeLiteral;
 import com.google.inject.internal.ProvisionListenerStackCallback.ProvisionCallback;
 import com.google.inject.spi.InjectionListener;
 import com.google.inject.spi.InjectionPoint;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * Injects members of instances of a given type.

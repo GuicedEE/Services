@@ -1,7 +1,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-	
+
     <parent>
         <groupId>com.guicedee.services</groupId>
         <artifactId>services-parent</artifactId>
@@ -11,7 +11,8 @@
 
     <name>javax.jpa.api</name>
 
-    <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves</description>
+    <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
+    </description>
 
     <dependencies>
         <dependency>
@@ -39,12 +40,6 @@
                                     <include>jakarta.persistence:jakarta.persistence-api:*</include>
                                 </includes>
                             </artifactSet>
-                            <relocations>
-                                <relocation>
-                                    <pattern>jakarta</pattern>
-                                    <shadedPattern>javax</shadedPattern>
-                                </relocation>
-                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

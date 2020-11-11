@@ -112,6 +112,12 @@
                                     <include>org.apache.geronimo.specs</include>
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>javax.jms</pattern>
+                                    <shadedPattern>jakarta.jms</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

@@ -1,12 +1,12 @@
-module javax.xml.soap {
+module jakarta.xml.soap {
     requires transitive java.xml;
     requires transitive jakarta.activation;
     requires java.logging;
 
-    exports javax.xml.soap;
+    exports jakarta.xml.soap;
 
-    uses javax.xml.soap.MessageFactory;
-    uses javax.xml.soap.SAAJMetaFactory;
-    uses javax.xml.soap.SOAPConnectionFactory;
-    uses javax.xml.soap.SOAPFactory;
+    uses jakarta.xml.soap.MessageFactory;
+    uses jakarta.xml.soap.SAAJMetaFactory;
+    uses jakarta.xml.soap.SOAPConnectionFactory;
+    uses jakarta.xml.soap.SOAPFactory;
 }

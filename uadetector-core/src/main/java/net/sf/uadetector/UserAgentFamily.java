@@ -4412,15 +4412,15 @@ public enum UserAgentFamily
 	/**
 	 * The internal family name in the UAS database.
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
 	/**
 	 * The regular expression which a family name must be match.
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Pattern pattern;
 
-	private UserAgentFamily(@javax.validation.constraints.NotNull String name, @javax.validation.constraints.NotNull Pattern pattern)
+	private UserAgentFamily(@jakarta.validation.constraints.NotNull String name, @jakarta.validation.constraints.NotNull Pattern pattern)
 	{
 		this.name = name;
 		this.pattern = pattern;
@@ -4438,8 +4438,8 @@ public enum UserAgentFamily
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	@javax.validation.constraints.NotNull
-	public static UserAgentFamily evaluate(@javax.validation.constraints.NotNull String family)
+	@jakarta.validation.constraints.NotNull
+	public static UserAgentFamily evaluate(@jakarta.validation.constraints.NotNull String family)
 	{
 		Check.notNull(family, "family");
 
@@ -4469,8 +4469,8 @@ public enum UserAgentFamily
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	@javax.validation.constraints.NotNull
-	protected static UserAgentFamily evaluateByName(@javax.validation.constraints.NotNull String family)
+	@jakarta.validation.constraints.NotNull
+	protected static UserAgentFamily evaluateByName(@jakarta.validation.constraints.NotNull String family)
 	{
 		Check.notNull(family, "family");
 
@@ -4499,8 +4499,8 @@ public enum UserAgentFamily
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	@javax.validation.constraints.NotNull
-	protected static UserAgentFamily evaluateByPattern(@javax.validation.constraints.NotNull String family)
+	@jakarta.validation.constraints.NotNull
+	protected static UserAgentFamily evaluateByPattern(@jakarta.validation.constraints.NotNull String family)
 	{
 		Check.notNull(family, "family");
 
@@ -4523,7 +4523,7 @@ public enum UserAgentFamily
 	 *
 	 * @return the internal family name
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getName()
 	{
 		return this.name;
@@ -4534,7 +4534,7 @@ public enum UserAgentFamily
 	 *
 	 * @return regular expression
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Pattern getPattern()
 	{
 		return pattern;

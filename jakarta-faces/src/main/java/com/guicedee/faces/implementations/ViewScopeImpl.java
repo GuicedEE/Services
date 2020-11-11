@@ -2,8 +2,8 @@ package com.guicedee.faces.implementations;
 
 import java.util.Map;
 
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.FacesContext;
+import jakarta.faces.component.UIViewRoot;
+import jakarta.faces.context.FacesContext;
 
 import com.google.inject.Key;
 import com.google.inject.Provider;

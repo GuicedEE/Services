@@ -1,10 +1,10 @@
 open module primefaces {
 
-	requires transitive javax.faces;
+	requires transitive jakarta.faces;
 	requires transitive org.apache.commons.io;
 	requires transitive org.apache.commons.fileupload;
 	requires transitive java.servlet;
-	requires transitive javax.el;
+	requires transitive jakarta.el;
 	requires transitive java.validation;
 
 	requires transitive java.xml.bind;
@@ -289,6 +289,4 @@ open module primefaces {
 	provides org.primefaces.component.fileupload.FileUploadDecoder with org.primefaces.component.fileupload.NativeFileUploadDecoder,
 			                                                               org.primefaces.component.fileupload.CommonsFileUploadDecoder;
 
-	provides com.guicedee.guicedservlets.undertow.services.UndertowDeploymentConfigurator with com.guicedee.services.primefaces.configurations.UndertowServletConfig;
-	provides com.guicedee.guicedservlets.services.IGuiceSiteBinder with com.guicedee.services.primefaces.configurations.GuicedPrimefacesServletModule;
 }

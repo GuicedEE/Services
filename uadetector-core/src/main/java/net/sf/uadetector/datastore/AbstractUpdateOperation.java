@@ -100,7 +100,7 @@ public abstract class AbstractUpdateOperation
 	 */
 	private long lastUpdateCheck = 0;
 
-	public AbstractUpdateOperation(@javax.validation.constraints.NotNull RefreshableDataStore dataStore)
+	public AbstractUpdateOperation(@jakarta.validation.constraints.NotNull RefreshableDataStore dataStore)
 	{
 		Check.notNull(dataStore, "dataStore");
 		store = dataStore;
@@ -174,7 +174,7 @@ public abstract class AbstractUpdateOperation
 	 * 		if an I/O exception occurs
 	 */
 
-	private static String retrieveRemoteVersion(@javax.validation.constraints.NotNull URL url, @javax.validation.constraints.NotNull Charset charset) throws IOException
+	private static String retrieveRemoteVersion(@jakarta.validation.constraints.NotNull URL url, @jakarta.validation.constraints.NotNull Charset charset) throws IOException
 	{
 		try (InputStream stream = url.openStream();
 		     InputStreamReader reader = new InputStreamReader(stream, charset);
@@ -206,7 +206,7 @@ public abstract class AbstractUpdateOperation
 	 *
 	 * @return current version of UAS data
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private String getCurrentVersion()
 	{
 		return store.getData()

@@ -42,7 +42,7 @@ public final class BrowserPattern
 	/**
 	 * A compiled representation of a regular expression to detect a browser
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Pattern pattern;
 	/**
 	 * Position of a {@code BrowserPattern} (only relevant if there are multiple patterns for a browser in a
@@ -51,7 +51,7 @@ public final class BrowserPattern
 
 	private final int position;
 
-	public BrowserPattern(int id, @javax.validation.constraints.NotNull Pattern pattern, int position)
+	public BrowserPattern(int id, @jakarta.validation.constraints.NotNull Pattern pattern, int position)
 	{
 		Check.notNegative(id, "id");
 		Check.notNull(pattern, "pattern");
@@ -242,7 +242,7 @@ public final class BrowserPattern
 		 * 		<p>
 		 * 		if one of the needed arguments to build an instance of {@code BrowserPattern} is invalid
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public BrowserPattern build()
 		{
 			return new BrowserPattern(id, pattern, position);
@@ -265,8 +265,8 @@ public final class BrowserPattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the parsed integer is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setId(@javax.validation.constraints.NotNull String id)
+		@jakarta.validation.constraints.NotNull
+		public Builder setId(@jakarta.validation.constraints.NotNull String id)
 		{
 			Check.notEmpty(id, "id");
 
@@ -285,7 +285,7 @@ public final class BrowserPattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the given integer is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setId(int id)
 		{
 			Check.notNegative(id, "id");
@@ -302,8 +302,8 @@ public final class BrowserPattern
 		 *
 		 * @return this {@code Builder}, for chaining
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setPerlRegularExpression(@javax.validation.constraints.NotNull String regex)
+		@jakarta.validation.constraints.NotNull
+		public Builder setPerlRegularExpression(@jakarta.validation.constraints.NotNull String regex)
 		{
 			Check.notEmpty(regex, "regex");
 
@@ -319,8 +319,8 @@ public final class BrowserPattern
 		 *
 		 * @return this {@code Builder}, for chaining
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setPattern(@javax.validation.constraints.NotNull Pattern pattern)
+		@jakarta.validation.constraints.NotNull
+		public Builder setPattern(@jakarta.validation.constraints.NotNull Pattern pattern)
 		{
 			Check.notNull(pattern, "pattern");
 
@@ -345,8 +345,8 @@ public final class BrowserPattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the parsed integer is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setPosition(@javax.validation.constraints.NotNull String position)
+		@jakarta.validation.constraints.NotNull
+		public Builder setPosition(@jakarta.validation.constraints.NotNull String position)
 		{
 			Check.notEmpty(position, "position");
 
@@ -365,7 +365,7 @@ public final class BrowserPattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the given integer is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setPosition(int position)
 		{
 			Check.notNegative(position, "position");

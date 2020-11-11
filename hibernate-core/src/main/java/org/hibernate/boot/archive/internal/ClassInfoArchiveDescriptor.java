@@ -7,7 +7,7 @@ import io.github.classgraph.ResourceList;
 import org.hibernate.boot.archive.spi.*;
 import com.guicedee.guicedinjection.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.net.URL;
 
 public class ClassInfoArchiveDescriptor extends AbstractArchiveDescriptor {

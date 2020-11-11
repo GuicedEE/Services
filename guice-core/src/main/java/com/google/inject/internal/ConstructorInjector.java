@@ -22,7 +22,7 @@ import com.google.inject.spi.Dependency;
 import com.google.inject.spi.InjectionPoint;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * Creates instances using an injectable constructor. After construction, all injectable fields and

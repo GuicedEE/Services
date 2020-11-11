@@ -12,6 +12,10 @@
     <artifactId>mssql-jdbc</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <mssql.jdbc>8.4.1</mssql.jdbc>
+    </properties>
+
     <name>mssqljdbc</name>
 
     <description>
@@ -46,6 +50,7 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc_auth</artifactId>
+            <version>${mssql.jdbc}.x64</version>
             <type>dll</type>
             <optional>true</optional>
         </dependency>
@@ -53,6 +58,7 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
+            <version>${mssql.jdbc}.jre11</version>
             <optional>true</optional>
         </dependency>
 
@@ -88,5 +94,56 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>jdk14</id>
+            <activation>
+                <jdk>[14,)</jdk>
+            </activation>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.microsoft.sqlserver</groupId>
+                        <artifactId>mssql-jdbc</artifactId>
+                        <version>${mssql.jdbc}.jre14</version>
+                        <optional>true</optional>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+
+        <profile>
+            <id>jdk9</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.microsoft.sqlserver</groupId>
+                        <artifactId>mssql-jdbc</artifactId>
+                        <version>${mssql.jdbc}.jre11</version>
+                        <optional>true</optional>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+
+        <profile>
+            <id>jdk8</id>
+            <activation>
+                <jdk>1.8</jdk>
+            </activation>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.microsoft.sqlserver</groupId>
+                        <artifactId>mssql-jdbc</artifactId>
+                        <version>${mssql.jdbc}.jre8</version>
+                        <optional>true</optional>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+
+    </profiles>
 
 </project>

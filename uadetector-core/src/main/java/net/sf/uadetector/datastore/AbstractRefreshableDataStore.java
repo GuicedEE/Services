@@ -95,8 +95,8 @@ public abstract class AbstractRefreshableDataStore
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the given strings are not valid URLs
 	 */
-	protected AbstractRefreshableDataStore(@javax.validation.constraints.NotNull DataReader reader, @javax.validation.constraints.NotNull String dataUrl,
-	                                       @javax.validation.constraints.NotNull String versionUrl, @javax.validation.constraints.NotNull Charset charset, @javax.validation.constraints.NotNull DataStore fallback)
+	protected AbstractRefreshableDataStore(@jakarta.validation.constraints.NotNull DataReader reader, @jakarta.validation.constraints.NotNull String dataUrl,
+	                                       @jakarta.validation.constraints.NotNull String versionUrl, @jakarta.validation.constraints.NotNull Charset charset, @jakarta.validation.constraints.NotNull DataStore fallback)
 	{
 		this(reader, UrlUtil.build(dataUrl), UrlUtil.build(versionUrl), charset, fallback);
 	}
@@ -121,8 +121,8 @@ public abstract class AbstractRefreshableDataStore
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the created instance of {@link Data} is empty
 	 */
-	protected AbstractRefreshableDataStore(@javax.validation.constraints.NotNull DataReader reader, @javax.validation.constraints.NotNull URL dataUrl, @javax.validation.constraints.NotNull URL versionUrl,
-	                                       @javax.validation.constraints.NotNull Charset charset, DataStore fallback)
+	protected AbstractRefreshableDataStore(@jakarta.validation.constraints.NotNull DataReader reader, @jakarta.validation.constraints.NotNull URL dataUrl, @jakarta.validation.constraints.NotNull URL versionUrl,
+	                                       @jakarta.validation.constraints.NotNull Charset charset, DataStore fallback)
 	{
 		Check.notNull(reader, "reader");
 		Check.notNull(charset, "charset");
@@ -199,7 +199,7 @@ public abstract class AbstractRefreshableDataStore
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the given instance of {@code Data} is empty
 	 */
-	protected void setData(@javax.validation.constraints.NotNull Data data)
+	protected void setData(@jakarta.validation.constraints.NotNull Data data)
 	{
 		Check.notNull(data, "data");
 
@@ -262,7 +262,7 @@ public abstract class AbstractRefreshableDataStore
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	protected void setUpdateOperation(@javax.validation.constraints.NotNull UpdateOperation updateOperation)
+	protected void setUpdateOperation(@jakarta.validation.constraints.NotNull UpdateOperation updateOperation)
 	{
 		Check.notNull(updateOperation, "updateOperation");
 		this.updateOperation = updateOperation;

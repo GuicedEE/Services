@@ -16,11 +16,11 @@ module org.apache.cxf {
 
 	requires org.slf4j;
 
-	requires javax.xml.soap;
+	requires jakarta.xml.soap;
 
-	requires javax.ws.rs;
-	requires javax.xml.ws;
-	requires javax.jws;
+	requires jakarta.ws.rs;
+	requires jakarta.xml.ws;
+	requires jakarta.jws;
 
 	requires org.codehaus.stax2;
 
@@ -85,40 +85,40 @@ module org.apache.cxf {
 
 	opens org.apache.cxf.jaxrs.provider.aegis to com.google.guice;
 
-	uses javax.ws.rs.ext.MessageBodyWriter;
-	uses javax.ws.rs.ext.MessageBodyReader;
-	uses javax.ws.rs.ext.ExceptionMapper;
-	uses javax.ws.rs.ext.ContextResolver;
-	uses javax.ws.rs.ext.ReaderInterceptor;
-	uses javax.ws.rs.ext.WriterInterceptor;
-	uses javax.ws.rs.ext.ParamConverterProvider;
-	uses javax.ws.rs.container.ContainerRequestFilter;
-	uses javax.ws.rs.container.ContainerResponseFilter;
-	uses javax.ws.rs.container.DynamicFeature;
+	uses jakarta.ws.rs.ext.MessageBodyWriter;
+	uses jakarta.ws.rs.ext.MessageBodyReader;
+	uses jakarta.ws.rs.ext.ExceptionMapper;
+	uses jakarta.ws.rs.ext.ContextResolver;
+	uses jakarta.ws.rs.ext.ReaderInterceptor;
+	uses jakarta.ws.rs.ext.WriterInterceptor;
+	uses jakarta.ws.rs.ext.ParamConverterProvider;
+	uses jakarta.ws.rs.container.ContainerRequestFilter;
+	uses jakarta.ws.rs.container.ContainerResponseFilter;
+	uses jakarta.ws.rs.container.DynamicFeature;
 	uses org.apache.cxf.jaxrs.ext.ContextResolver;
 
 //	opens org.glassfish.jersey.server.wadl.internal  to java.ws.rs;
 
 	opens org.apache.cxf.ws.addressing to java.xml.bind;
 
-	provides javax.xml.ws.spi.Provider with org.apache.cxf.jaxws22.spi.ProviderImpl;
+	provides jakarta.xml.ws.spi.Provider with org.apache.cxf.jaxws22.spi.ProviderImpl;
 
 	//provides org.apache.cxf.jaxrs.openapi.JaxRs2Extension with org.apache.cxf.jaxrs.openapi.JaxRs2Extension;
-	provides javax.ws.rs.sse.SseEventSource.Builder with org.apache.cxf.jaxrs.sse.client.SseEventSourceBuilderImpl;
+	provides jakarta.ws.rs.sse.SseEventSource.Builder with org.apache.cxf.jaxrs.sse.client.SseEventSourceBuilderImpl;
 
 	uses org.apache.cxf.jaxrs.ext.JAXRSServerFactoryCustomizationExtension;
 	provides org.apache.cxf.jaxrs.ext.JAXRSServerFactoryCustomizationExtension with org.apache.cxf.jaxrs.sse.ext.SseTransportCustomizationExtension;
 
 	provides com.sun.xml.ws.spi.db.BindingContextFactory with com.sun.xml.ws.db.glassfish.JAXBRIContextFactory;
-	provides javax.ws.rs.client.ClientBuilder with org.apache.cxf.jaxrs.client.spec.ClientBuilderImpl;
+	provides jakarta.ws.rs.client.ClientBuilder with org.apache.cxf.jaxrs.client.spec.ClientBuilderImpl;
 
-	provides javax.ws.rs.ext.RuntimeDelegate with org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl;
+	provides jakarta.ws.rs.ext.RuntimeDelegate with org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl;
 
-	provides javax.xml.soap.MessageFactory with com.sun.xml.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl,
+	provides jakarta.xml.soap.MessageFactory with com.sun.xml.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl,
 			                                       com.sun.xml.messaging.saaj.soap.ver1_2.SOAPMessageFactory1_2Impl;
-	provides javax.xml.soap.SAAJMetaFactory with com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl;
-	provides javax.xml.soap.SOAPConnectionFactory with com.sun.xml.messaging.saaj.client.p2p.HttpSOAPConnectionFactory;
-	provides javax.xml.soap.SOAPFactory with com.sun.xml.messaging.saaj.soap.ver1_1.SOAPFactory1_1Impl,
+	provides jakarta.xml.soap.SAAJMetaFactory with com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl;
+	provides jakarta.xml.soap.SOAPConnectionFactory with com.sun.xml.messaging.saaj.client.p2p.HttpSOAPConnectionFactory;
+	provides jakarta.xml.soap.SOAPFactory with com.sun.xml.messaging.saaj.soap.ver1_1.SOAPFactory1_1Impl,
 			                                    com.sun.xml.messaging.saaj.soap.ver1_2.SOAPFactory1_2Impl;
 
 	//uses org.eclipse.jetty.http.HttpFieldPreEncoder;

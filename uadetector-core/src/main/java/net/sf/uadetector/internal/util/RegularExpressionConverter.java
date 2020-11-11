@@ -53,7 +53,7 @@ public final class RegularExpressionConverter
 	 *
 	 * @return PERL style regular expression as string
 	 */
-	public static String convertPatternToPerlRegex(@javax.validation.constraints.NotNull Pattern pattern)
+	public static String convertPatternToPerlRegex(@jakarta.validation.constraints.NotNull Pattern pattern)
 	{
 		Check.notNull(pattern, "pattern");
 		String modifiers = Flag.convertToModifiers(Flag.parse(pattern.flags()));
@@ -71,7 +71,7 @@ public final class RegularExpressionConverter
 	 *
 	 * @return Pattern
 	 */
-	public static Pattern convertPerlRegexToPattern(@javax.validation.constraints.NotNull String regex)
+	public static Pattern convertPerlRegexToPattern(@jakarta.validation.constraints.NotNull String regex)
 	{
 		return convertPerlRegexToPattern(regex, false);
 	}
@@ -88,7 +88,7 @@ public final class RegularExpressionConverter
 	 *
 	 * @return Pattern
 	 */
-	public static Pattern convertPerlRegexToPattern(@javax.validation.constraints.NotNull String regex, @javax.validation.constraints.NotNull boolean faultTolerant)
+	public static Pattern convertPerlRegexToPattern(@jakarta.validation.constraints.NotNull String regex, @jakarta.validation.constraints.NotNull boolean faultTolerant)
 	{
 		Check.notNull(regex, "regex");
 
@@ -175,7 +175,7 @@ public final class RegularExpressionConverter
 		 *
 		 * @return sum of numerical values of passed flags or 0
 		 */
-		public static int convertToBitmask(@javax.validation.constraints.NotNull Collection<Flag> flags)
+		public static int convertToBitmask(@jakarta.validation.constraints.NotNull Collection<Flag> flags)
 		{
 			Check.notNull(flags, "flags");
 
@@ -207,7 +207,7 @@ public final class RegularExpressionConverter
 		 *
 		 * @return sum of numerical values of passed flags or 0
 		 */
-		public static String convertToModifiers(@javax.validation.constraints.NotNull Collection<Flag> flags)
+		public static String convertToModifiers(@jakarta.validation.constraints.NotNull Collection<Flag> flags)
 		{
 			Check.notNull(flags, "flags");
 
@@ -269,7 +269,7 @@ public final class RegularExpressionConverter
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the given number is smaller than zero
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public static Set<Flag> parse(int bitmask)
 		{
 			Check.notNegative(bitmask, "bitmask");
@@ -293,7 +293,7 @@ public final class RegularExpressionConverter
 		 *
 		 * @return a set of modifier flags that may include CASE_INSENSITIVE, MULTILINE, DOTALL and COMMENTS
 		 */
-		public static Set<Flag> parse(@javax.validation.constraints.NotNull String modifiers)
+		public static Set<Flag> parse(@jakarta.validation.constraints.NotNull String modifiers)
 		{
 			Check.notNull(modifiers, "modifiers");
 
@@ -341,7 +341,7 @@ public final class RegularExpressionConverter
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public int compareType(@javax.validation.constraints.NotNull Flag f1, @javax.validation.constraints.NotNull Flag f2)
+			public int compareType(@jakarta.validation.constraints.NotNull Flag f1, @jakarta.validation.constraints.NotNull Flag f2)
 			{
 				Character c1 = f1.getCharacter();
 				Character c2 = f2.getCharacter();

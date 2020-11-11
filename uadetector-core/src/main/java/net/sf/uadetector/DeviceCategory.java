@@ -28,13 +28,13 @@ public final class DeviceCategory
 	 */
 	public static final DeviceCategory EMPTY = new DeviceCategory();
 	private static final long serialVersionUID = 1L;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Category category;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String icon;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String infoUrl;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
 	private final int hash;
 
@@ -49,8 +49,8 @@ public final class DeviceCategory
 		this(Category.UNKNOWN, "icon", "infoUrl", "name");
 	}
 
-	public DeviceCategory(@javax.validation.constraints.NotNull Category category, @javax.validation.constraints.NotNull String icon, @javax.validation.constraints.NotNull String infoUrl,
-	                      @javax.validation.constraints.NotNull String name)
+	public DeviceCategory(@jakarta.validation.constraints.NotNull Category category, @jakarta.validation.constraints.NotNull String icon, @jakarta.validation.constraints.NotNull String infoUrl,
+	                      @jakarta.validation.constraints.NotNull String name)
 	{
 		this.category = Check.notNull(category, "category");
 		this.icon = Check.notNull(icon, "icon");
@@ -59,8 +59,8 @@ public final class DeviceCategory
 		hash = buildHashCode(category, icon, infoUrl, name);
 	}
 
-	private int buildHashCode(@javax.validation.constraints.NotNull Category category, @javax.validation.constraints.NotNull String icon, @javax.validation.constraints.NotNull String infoUrl,
-	                          @javax.validation.constraints.NotNull String name)
+	private int buildHashCode(@jakarta.validation.constraints.NotNull Category category, @jakarta.validation.constraints.NotNull String icon, @jakarta.validation.constraints.NotNull String infoUrl,
+	                          @jakarta.validation.constraints.NotNull String name)
 	{
 		int prime = 31;
 		int result = 1;
@@ -72,28 +72,28 @@ public final class DeviceCategory
 	}
 
 	@Override
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Category getCategory()
 	{
 		return category;
 	}
 
 	@Override
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getIcon()
 	{
 		return icon;
 	}
 
 	@Override
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getInfoUrl()
 	{
 		return infoUrl;
 	}
 
 	@Override
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getName()
 	{
 		return name;
@@ -158,7 +158,7 @@ public final class DeviceCategory
 			// default constructor
 		}
 
-		public Builder(@javax.validation.constraints.NotNull DeviceCategory deviceCategory)
+		public Builder(@jakarta.validation.constraints.NotNull DeviceCategory deviceCategory)
 		{
 			Check.notNull(deviceCategory, "deviceCategory");
 			category = Check.notNull(deviceCategory.getCategory(), "deviceCategory.getCategory()");
@@ -167,35 +167,35 @@ public final class DeviceCategory
 			name = Check.notNull(deviceCategory.getName(), "deviceCategory.getName()");
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public DeviceCategory build()
 		{
 			return new DeviceCategory(category, icon, infoUrl, name);
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setCategory(@javax.validation.constraints.NotNull Category category)
+		@jakarta.validation.constraints.NotNull
+		public Builder setCategory(@jakarta.validation.constraints.NotNull Category category)
 		{
 			this.category = Check.notNull(category, "category");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setIcon(@javax.validation.constraints.NotNull String icon)
+		@jakarta.validation.constraints.NotNull
+		public Builder setIcon(@jakarta.validation.constraints.NotNull String icon)
 		{
 			this.icon = Check.notNull(icon, "icon");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setInfoUrl(@javax.validation.constraints.NotNull String infoUrl)
+		@jakarta.validation.constraints.NotNull
+		public Builder setInfoUrl(@jakarta.validation.constraints.NotNull String infoUrl)
 		{
 			this.infoUrl = Check.notNull(infoUrl, "infoUrl");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setName(@javax.validation.constraints.NotNull String name)
+		@jakarta.validation.constraints.NotNull
+		public Builder setName(@jakarta.validation.constraints.NotNull String name)
 		{
 			this.name = Check.notNull(name, "name");
 			return this;

@@ -13,9 +13,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */package javax.cache.integration;
+ */package jakarta.cache.integration;
 
-import javax.cache.CacheException;
+import jakarta.cache.CacheException;
 
 /**
  * An exception to indicate a problem has occurred executing a {@link CacheLoader}.

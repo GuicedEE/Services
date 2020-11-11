@@ -1,3 +1,3 @@
 module java.ws.rs {
-	requires transitive javax.ws.rs;
+	requires transitive jakarta.ws.rs;
 }

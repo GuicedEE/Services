@@ -12,13 +12,13 @@ import com.guicedee.guicedinjection.GuiceContext;
 import com.guicedee.guicedinjection.interfaces.IGuiceModule;
 import io.github.classgraph.ClassInfo;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import java.lang.reflect.Method;
 
@@ -40,7 +40,7 @@ public class GuicedCDIModule
 		                                       .getClassesWithAnnotation(ApplicationScoped.class.getCanonicalName()))
 		{
 			if (classInfo.isInterfaceOrAnnotation()
-			    || classInfo.hasAnnotation("javax.enterprise.context.Dependent"))
+			    || classInfo.hasAnnotation("jakarta.enterprise.context.Dependent"))
 			{
 				continue;
 			}
@@ -54,7 +54,7 @@ public class GuicedCDIModule
 		                                       .getClassesWithAnnotation(RequestScoped.class.getCanonicalName()))
 		{
 			if (classInfo.isInterfaceOrAnnotation()
-			    || classInfo.hasAnnotation("javax.enterprise.context.Dependent"))
+			    || classInfo.hasAnnotation("jakarta.enterprise.context.Dependent"))
 			{
 				continue;
 			}
@@ -68,7 +68,7 @@ public class GuicedCDIModule
 		                                       .getClassesWithAnnotation(SessionScoped.class.getCanonicalName()))
 		{
 			if (classInfo.isInterfaceOrAnnotation()
-			    || classInfo.hasAnnotation("javax.enterprise.context.Dependent"))
+			    || classInfo.hasAnnotation("jakarta.enterprise.context.Dependent"))
 			{
 				continue;
 			}
@@ -82,7 +82,7 @@ public class GuicedCDIModule
 		                                       .getClassesWithAnnotation(Named.class.getCanonicalName()))
 		{
 			if (classInfo.isInterfaceOrAnnotation()
-			    || classInfo.hasAnnotation("javax.enterprise.context.Dependent"))
+			    || classInfo.hasAnnotation("jakarta.enterprise.context.Dependent"))
 			{
 				continue;
 			}

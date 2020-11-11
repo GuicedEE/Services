@@ -16,17 +16,17 @@
  */
 package org.jsr107.ri.annotations;
 
-import javax.cache.annotation.CacheDefaults;
-import javax.cache.annotation.CacheKey;
-import javax.cache.annotation.CacheKeyGenerator;
-import javax.cache.annotation.CacheMethodDetails;
-import javax.cache.annotation.CachePut;
-import javax.cache.annotation.CacheRemove;
-import javax.cache.annotation.CacheRemoveAll;
-import javax.cache.annotation.CacheResolver;
-import javax.cache.annotation.CacheResolverFactory;
-import javax.cache.annotation.CacheResult;
-import javax.cache.annotation.CacheValue;
+import jakarta.cache.annotation.CacheDefaults;
+import jakarta.cache.annotation.CacheKey;
+import jakarta.cache.annotation.CacheKeyGenerator;
+import jakarta.cache.annotation.CacheMethodDetails;
+import jakarta.cache.annotation.CachePut;
+import jakarta.cache.annotation.CacheRemove;
+import jakarta.cache.annotation.CacheRemoveAll;
+import jakarta.cache.annotation.CacheResolver;
+import jakarta.cache.annotation.CacheResolverFactory;
+import jakarta.cache.annotation.CacheResult;
+import jakarta.cache.annotation.CacheValue;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.AnnotationFormatError;
 import java.lang.reflect.Method;
@@ -336,7 +336,7 @@ public abstract class AbstractCacheLookupUtil<I> implements CacheContextSource<I
   }
 
   /**
-   * Create a StaticCacheInvocationContext implementation specific to the {@link javax.cache.annotation.CacheRemove} annotated method
+   * Create a StaticCacheInvocationContext implementation specific to the {@link jakarta.cache.annotation.CacheRemove} annotated method
    *
    * @param cacheRemoveAnnotation The annotation on the method
    * @param cacheDefaultsAnnotation    The defaults annotation for the class, if it exists

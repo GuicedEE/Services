@@ -58,7 +58,7 @@ public final class UrlUtil
 	 * @throws IllegalStateOfArgumentException
 	 * 		if the string representation of the given URL is invalid and a {@link MalformedURLException} occurs
 	 */
-	public static URL build(@javax.validation.constraints.NotNull String url)
+	public static URL build(@jakarta.validation.constraints.NotNull String url)
 	{
 		Check.notNull(url, "url");
 
@@ -92,7 +92,7 @@ public final class UrlUtil
 	 * @throws IOException
 	 * 		if an I/O error occurs
 	 */
-	public static String read(@javax.validation.constraints.NotNull URL url, @javax.validation.constraints.NotNull Charset charset) throws IOException
+	public static String read(@jakarta.validation.constraints.NotNull URL url, @jakarta.validation.constraints.NotNull Charset charset) throws IOException
 	{
 		Check.notNull(url, "url");
 		Check.notNull(charset, "charset");
@@ -121,7 +121,7 @@ public final class UrlUtil
 	 * @throws CanNotOpenStreamException
 	 * 		if no stream to the given {@code URL} can be established
 	 */
-	public static InputStream open(@javax.validation.constraints.NotNull URL url)
+	public static InputStream open(@jakarta.validation.constraints.NotNull URL url)
 	{
 		Check.notNull(url, "url");
 
@@ -148,7 +148,7 @@ public final class UrlUtil
 	 * @throws IOException
 	 * 		If an I/O error occurs
 	 */
-	private static String readAll(@javax.validation.constraints.NotNull Reader reader) throws IOException
+	private static String readAll(@jakarta.validation.constraints.NotNull Reader reader) throws IOException
 	{
 		StringBuilder buffer = new StringBuilder();
 		int cp;
@@ -170,7 +170,7 @@ public final class UrlUtil
 	 * @throws IllegalStateException
 	 * 		if no URL can be resolved to the given file
 	 */
-	public static URL toUrl(@javax.validation.constraints.NotNull File file)
+	public static URL toUrl(@jakarta.validation.constraints.NotNull File file)
 	{
 		Check.notNull(file, "file");
 

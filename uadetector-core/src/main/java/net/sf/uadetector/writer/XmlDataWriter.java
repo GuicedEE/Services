@@ -73,7 +73,7 @@ public final class XmlDataWriter
 	 * @throws TransformerException
 	 * 		If an unrecoverable error occurs during the course of the transformation.
 	 */
-	public static void write(@javax.validation.constraints.NotNull Data data, @javax.validation.constraints.NotNull OutputStream outputStream) throws ParserConfigurationException,
+	public static void write(@jakarta.validation.constraints.NotNull Data data, @jakarta.validation.constraints.NotNull OutputStream outputStream) throws ParserConfigurationException,
 			                                                                                                                                                  TransformerException
 	{
 		Check.notNull(data, "data");
@@ -108,14 +108,14 @@ public final class XmlDataWriter
 		transform(source, result);
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	static DocumentBuilder newDocumentBuilder() throws ParserConfigurationException
 	{
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		return docFactory.newDocumentBuilder();
 	}
 
-	private static Element createDescription(@javax.validation.constraints.NotNull Data data, @javax.validation.constraints.NotNull Document doc)
+	private static Element createDescription(@jakarta.validation.constraints.NotNull Data data, @jakarta.validation.constraints.NotNull Document doc)
 	{
 		Element description = doc.createElement(Tag.DESCRIPTION);
 		Element label = doc.createElement(Tag.LABEL);
@@ -312,7 +312,7 @@ public final class XmlDataWriter
 		return deviceTypesElement;
 	}
 
-	static void transform(@javax.validation.constraints.NotNull Source xmlInput, @javax.validation.constraints.NotNull Result xmlOutput) throws TransformerException
+	static void transform(@jakarta.validation.constraints.NotNull Source xmlInput, @jakarta.validation.constraints.NotNull Result xmlOutput) throws TransformerException
 	{
 		Check.notNull(xmlInput, "xmlInput");
 		Check.notNull(xmlOutput, "xmlOutput");

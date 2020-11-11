@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.spi;
+package jakarta.cache.spi;
 
-import javax.cache.CacheException;
-import javax.cache.CacheManager;
-import javax.cache.configuration.OptionalFeature;
+import jakarta.cache.CacheException;
+import jakarta.cache.CacheManager;
+import jakarta.cache.configuration.OptionalFeature;
 import java.io.Closeable;
 import java.net.URI;
 import java.util.Properties;

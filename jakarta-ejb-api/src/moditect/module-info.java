@@ -1,4 +1,4 @@
-module javax.ejb {
+module jakarta.ejb {
 	requires java.rmi;
 
 	requires java.transaction;
@@ -6,10 +6,10 @@ module javax.ejb {
 	requires java.xml;
 	requires java.naming;
 
-	exports javax.ejb;
-	exports javax.ejb.embeddable;
-	exports javax.ejb.spi;
+	exports jakarta.ejb;
+	exports jakarta.ejb.embeddable;
+	exports jakarta.ejb.spi;
 
-	uses javax.ejb.spi.EJBContainerProvider;
-	uses javax.ejb.EJBContext;
+	uses jakarta.ejb.spi.EJBContainerProvider;
+	uses jakarta.ejb.EJBContext;
 }

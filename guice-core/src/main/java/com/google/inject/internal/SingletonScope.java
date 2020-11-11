@@ -16,7 +16,7 @@ import com.google.inject.spi.Dependency;
 import com.google.inject.spi.Message;
 import java.util.Formatter;
 import java.util.List;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * One instance per {@link Injector}. Also see {@code @}{@link Singleton}.

@@ -236,6 +236,12 @@
                                     <include>portlet-api:portlet-api:*</include>
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>javax.servlet</pattern>
+                                    <shadedPattern>jakarta.servlet</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
 

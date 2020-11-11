@@ -14,46 +14,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.processor;
+package jakarta.cache.processor;
 
-import javax.cache.Cache;
-import javax.cache.event.CacheEntryListener;
-import javax.cache.expiry.ExpiryPolicy;
-import javax.cache.integration.CacheWriter;
+import jakarta.cache.Cache;
+import jakarta.cache.event.CacheEntryListener;
+import jakarta.cache.expiry.ExpiryPolicy;
+import jakarta.cache.integration.CacheWriter;
 
 
 /**
  * An invocable function that allows applications to perform compound operations
- * on a {@link javax.cache.Cache.Entry} atomically, according to the defined
+ * on a {@link jakarta.cache.Cache.Entry} atomically, according to the defined
  * consistency of a {@link Cache}.
  * <p>
- * Any {@link javax.cache.Cache.Entry} mutations will not take effect until after
+ * Any {@link jakarta.cache.Cache.Entry} mutations will not take effect until after
  * the {@link EntryProcessor#process(MutableEntry, Object...)} method has completed
  * execution.
  * <p>
  * If an exception is thrown by an {@link EntryProcessor}, a Caching Implementation
  * must wrap any {@link Exception} thrown wrapped in an {@link
  * EntryProcessorException}. If this occurs no mutations will be made to the
- * {@link javax.cache.Cache.Entry}.
+ * {@link jakarta.cache.Cache.Entry}.
  * <p>
  * Implementations may execute {@link EntryProcessor}s in situ, thus avoiding
  * locking, round-trips and expensive network transfers.
  * 
  * <h3>Effect of {@link MutableEntry} operations</h3>
- * {@link javax.cache.Cache.Entry} access, via a call to
- * {@link javax.cache.Cache.Entry#getValue()}, will behave as if
+ * {@link jakarta.cache.Cache.Entry} access, via a call to
+ * {@link jakarta.cache.Cache.Entry#getValue()}, will behave as if
  * {@link Cache#get(Object)} was called for the key.  This includes updating
  * necessary statistics, consulting the configured {@link ExpiryPolicy} and loading
- * from a configured {@link javax.cache.integration.CacheLoader}.
+ * from a configured {@link jakarta.cache.integration.CacheLoader}.
  * <p>
- * {@link javax.cache.Cache.Entry} mutation, via a call to
+ * {@link jakarta.cache.Cache.Entry} mutation, via a call to
  * {@link MutableEntry#setValue(Object)}, will behave as if {@link
  * Cache#put(Object, Object)} was called for the key. This includes updating
  * necessary statistics, consulting the configured {@link
  * ExpiryPolicy}, notifying {@link CacheEntryListener}s and writing to a
  * configured {@link CacheWriter}.
  * <p>
- * {@link javax.cache.Cache.Entry} removal, via a call to
+ * {@link jakarta.cache.Cache.Entry} removal, via a call to
  * {@link MutableEntry#remove()}, will behave as if {@link Cache#remove(Object)}
  * was called for the key. This includes updating necessary statistics, notifying
  * {@link CacheEntryListener}s and causing a delete on a configured

@@ -18,7 +18,8 @@
 
 -->
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.guicedee.services</groupId>
@@ -64,12 +65,6 @@
                                     <include>jakarta.websocket:jakarta.websocket-api:*</include>
                                 </includes>
                             </artifactSet>
-                            <relocations>
-                                <relocation>
-                                    <pattern>jakarta</pattern>
-                                    <shadedPattern>javax</shadedPattern>
-                                </relocation>
-                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
@@ -84,27 +79,27 @@
 
         </plugins>
     </build>
-	
-	<profiles>
-		<profile>
-			<id>jdk8</id>
-			<repositories>
-				<repository>
-					<id>Jakarta</id>
-					<url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
-				</repository>
-			</repositories>
-		</profile>
-		<profile>
-			<id>jdk9</id>
-			<repositories>
-				<repository>
-					<id>Jakarta</id>
-					<url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
-				</repository>
-			</repositories>
-		</profile>
-	</profiles>
+
+    <profiles>
+        <profile>
+            <id>jdk8</id>
+            <repositories>
+                <repository>
+                    <id>Jakarta</id>
+                    <url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>jdk9</id>
+            <repositories>
+                <repository>
+                    <id>Jakarta</id>
+                    <url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 
 
 </project>

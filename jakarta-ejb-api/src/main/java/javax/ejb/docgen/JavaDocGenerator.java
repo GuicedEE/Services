@@ -1,4 +1,4 @@
-package javax.ejb.docgen;
+package jakarta.ejb.docgen;
 
 public class JavaDocGenerator
 {

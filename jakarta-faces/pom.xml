@@ -35,7 +35,7 @@
         <artifactId>services-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
-	
+
     <artifactId>javax.faces</artifactId>
     <packaging>jar</packaging>
 
@@ -66,7 +66,6 @@
                                     <excludes>
                                         <exclude>**/ApplicationImpl.java</exclude>
                                         <exclude>**/ELUtils.java</exclude>
-                                        <exclude>META-INF/services/*</exclude>
                                     </excludes>
                                 </filter>
                                 <filter>
@@ -74,24 +73,18 @@
                                     <excludes>
                                         <exclude>**/ApplicationImpl.java</exclude>
                                         <exclude>**/ELUtils.java</exclude>
-                                        <exclude>META-INF/services/*</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
-                            <relocations>
-                                <relocation>
-                                    <pattern>jakarta</pattern>
-                                    <shadedPattern>javax</shadedPattern>
-                                </relocation>
-                            </relocations>
-							<transformers>
-								<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-								<transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
-							</transformers>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
+                            </transformers>
                         </configuration>
                     </execution>
                 </executions>
-				<dependencies>
+                <dependencies>
                     <dependency>
                         <groupId>org.ow2.asm</groupId>
                         <artifactId>asm</artifactId>
@@ -119,11 +112,11 @@
             <optional>true</optional>
         </dependency>
 
-       <!--<dependency>
-            <groupId>jakarta.faces</groupId>
-            <artifactId>jakarta.faces-api</artifactId>
-            <optional>true</optional>
-        </dependency>-->
+        <dependency>
+             <groupId>jakarta.faces</groupId>
+             <artifactId>jakarta.faces-api</artifactId>
+             <optional>true</optional>
+         </dependency>
 
         <dependency>
             <groupId>com.guicedee</groupId>

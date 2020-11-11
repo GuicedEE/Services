@@ -1,4 +1,4 @@
-module javax.security.jacc.api {
+module jakarta.security.jacc.api {
 	requires java.servlet;
-	exports javax.security.jacc;
+	exports jakarta.security.jacc;
 }

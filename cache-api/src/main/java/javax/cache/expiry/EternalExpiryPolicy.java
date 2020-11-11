@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.expiry;
+package jakarta.cache.expiry;
 
-import javax.cache.configuration.Factory;
-import javax.cache.configuration.FactoryBuilder;
+import jakarta.cache.configuration.Factory;
+import jakarta.cache.configuration.FactoryBuilder;
 import java.io.Serializable;
 
-import static javax.cache.expiry.Duration.ETERNAL;
+import static jakarta.cache.expiry.Duration.ETERNAL;
 
 /**
  * An eternal {@link ExpiryPolicy} specifies that Cache Entries

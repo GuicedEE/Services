@@ -86,7 +86,7 @@
                             </filters>
                             <relocations>
                                 <relocation>
-                                    <pattern>META-INF/versions/9/org</pattern>
+                                    <pattern>META-INF.versions.9.org</pattern>
                                     <shadedPattern>org</shadedPattern>
                                 </relocation>
                                 <relocation>

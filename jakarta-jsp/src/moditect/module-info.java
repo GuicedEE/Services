@@ -1,11 +1,11 @@
-open module javax.servlet.jsp {
+open module jakarta.servlet.jsp {
 
-	exports javax.servlet.jsp;
+	exports jakarta.servlet.jsp;
 
 	requires transitive java.logging;
 	requires java.xml;
 
-	requires transitive javax.el;
+	requires transitive jakarta.el;
 	requires transitive java.servlet;
 
 	requires java.desktop;

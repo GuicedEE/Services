@@ -32,11 +32,11 @@
  *            new AccessedExpiryPolicy&lt;String&gt;(new Duration(TimeUnit.HOURS, 1))));
  * </code></pre>
  * <p>
- * {@link javax.cache.configuration.OptionalFeature}, though not specific to
+ * {@link jakarta.cache.configuration.OptionalFeature}, though not specific to
  * cache configuration, allows application to determine the optional features
  * supported at runtime.
  *
  * @author Greg Luck
  * @since 1.0
  */
-package javax.cache.configuration;
+package jakarta.cache.configuration;

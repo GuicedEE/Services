@@ -35,33 +35,33 @@ public final class UserAgent
 	 * Serialization version
 	 */
 	private static final long serialVersionUID = 1L;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final DeviceCategory deviceCategory;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final UserAgentFamily family;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String icon;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final OperatingSystem operatingSystem;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String producer;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String producerUrl;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final UserAgentType type;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String typeName;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String url;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final VersionNumber versionNumber;
 
-	public UserAgent(@javax.validation.constraints.NotNull DeviceCategory deviceType, @javax.validation.constraints.NotNull UserAgentFamily family, @javax.validation.constraints.NotNull String icon,
-	                 @javax.validation.constraints.NotNull String name, @javax.validation.constraints.NotNull OperatingSystem operatingSystem, @javax.validation.constraints.NotNull String producer,
-	                 @javax.validation.constraints.NotNull String producerUrl, @javax.validation.constraints.NotNull UserAgentType type, @javax.validation.constraints.NotNull String typeName,
-	                 @javax.validation.constraints.NotNull String url, @javax.validation.constraints.NotNull VersionNumber versionNumber)
+	public UserAgent(@jakarta.validation.constraints.NotNull DeviceCategory deviceType, @jakarta.validation.constraints.NotNull UserAgentFamily family, @jakarta.validation.constraints.NotNull String icon,
+	                 @jakarta.validation.constraints.NotNull String name, @jakarta.validation.constraints.NotNull OperatingSystem operatingSystem, @jakarta.validation.constraints.NotNull String producer,
+	                 @jakarta.validation.constraints.NotNull String producerUrl, @jakarta.validation.constraints.NotNull UserAgentType type, @jakarta.validation.constraints.NotNull String typeName,
+	                 @jakarta.validation.constraints.NotNull String url, @jakarta.validation.constraints.NotNull VersionNumber versionNumber)
 	{
 		Check.notNull(deviceType, "deviceType");
 		Check.notNull(family, "family");
@@ -166,7 +166,7 @@ public final class UserAgent
 		return versionNumber.equals(other.versionNumber);
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	@Override
 	public String toString()
 	{
@@ -197,7 +197,7 @@ public final class UserAgent
 		return builder.toString();
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	@Override
 	public DeviceCategory getDeviceCategory()
 	{
@@ -237,13 +237,13 @@ public final class UserAgent
 			// default constructor
 		}
 
-		public Builder(@javax.validation.constraints.NotNull String userAgentString)
+		public Builder(@jakarta.validation.constraints.NotNull String userAgentString)
 		{
 			Check.notNull(userAgentString, "userAgentString");
 			this.userAgentString = userAgentString;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public UserAgent build()
 		{
 			return new UserAgent(deviceCategory, family, icon, name, operatingSystem, producer, producerUrl, type, typeName, url,
@@ -255,16 +255,16 @@ public final class UserAgent
 			return userAgentString;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setUserAgentString(@javax.validation.constraints.NotNull String userAgentString)
+		@jakarta.validation.constraints.NotNull
+		public Builder setUserAgentString(@jakarta.validation.constraints.NotNull String userAgentString)
 		{
 			Check.notNull(userAgentString, "userAgentString");
 			this.userAgentString = userAgentString;
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setOperatingSystem(@javax.validation.constraints.NotNull OperatingSystem operatingSystem)
+		@jakarta.validation.constraints.NotNull
+		public Builder setOperatingSystem(@jakarta.validation.constraints.NotNull OperatingSystem operatingSystem)
 		{
 			Check.notNull(operatingSystem, "operatingSystem");
 			this.operatingSystem = operatingSystem;
@@ -278,8 +278,8 @@ public final class UserAgent
 		}
 
 
-		@javax.validation.constraints.NotNull
-		public Builder setDeviceCategory(@javax.validation.constraints.NotNull DeviceCategory deviceCategory)
+		@jakarta.validation.constraints.NotNull
+		public Builder setDeviceCategory(@jakarta.validation.constraints.NotNull DeviceCategory deviceCategory)
 		{
 			Check.notNull(deviceCategory, "deviceCategory");
 			this.deviceCategory = deviceCategory;
@@ -351,24 +351,24 @@ public final class UserAgent
 		}
 
 
-		@javax.validation.constraints.NotNull
-		public Builder setFamily(@javax.validation.constraints.NotNull UserAgentFamily family)
+		@jakarta.validation.constraints.NotNull
+		public Builder setFamily(@jakarta.validation.constraints.NotNull UserAgentFamily family)
 		{
 			Check.notNull(family, "family");
 			this.family = family;
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setIcon(@javax.validation.constraints.NotNull String icon)
+		@jakarta.validation.constraints.NotNull
+		public Builder setIcon(@jakarta.validation.constraints.NotNull String icon)
 		{
 			Check.notNull(icon, "icon");
 			this.icon = icon;
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setName(@javax.validation.constraints.NotNull String name)
+		@jakarta.validation.constraints.NotNull
+		public Builder setName(@jakarta.validation.constraints.NotNull String name)
 		{
 			Check.notNull(name, "name");
 			this.name = name;
@@ -376,8 +376,8 @@ public final class UserAgent
 		}
 
 
-		@javax.validation.constraints.NotNull
-		public Builder setOperatingSystem(@javax.validation.constraints.NotNull ReadableOperatingSystem os)
+		@jakarta.validation.constraints.NotNull
+		public Builder setOperatingSystem(@jakarta.validation.constraints.NotNull ReadableOperatingSystem os)
 		{
 			Check.notNull(os, "os");
 			this.operatingSystem = new OperatingSystem(os.getFamily(), os.getFamilyName(), os.getIcon(), os.getName(), os.getProducer(),
@@ -385,24 +385,24 @@ public final class UserAgent
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setProducer(@javax.validation.constraints.NotNull String producer)
+		@jakarta.validation.constraints.NotNull
+		public Builder setProducer(@jakarta.validation.constraints.NotNull String producer)
 		{
 			Check.notNull(producer, "producer");
 			this.producer = producer;
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setProducerUrl(@javax.validation.constraints.NotNull String producerUrl)
+		@jakarta.validation.constraints.NotNull
+		public Builder setProducerUrl(@jakarta.validation.constraints.NotNull String producerUrl)
 		{
 			Check.notNull(producerUrl, "producerUrl");
 			this.producerUrl = producerUrl;
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setType(@javax.validation.constraints.NotNull UserAgentType type)
+		@jakarta.validation.constraints.NotNull
+		public Builder setType(@jakarta.validation.constraints.NotNull UserAgentType type)
 		{
 			Check.notNull(type, "type");
 			this.type = type;
@@ -410,8 +410,8 @@ public final class UserAgent
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setTypeName(@javax.validation.constraints.NotNull String typeName)
+		@jakarta.validation.constraints.NotNull
+		public Builder setTypeName(@jakarta.validation.constraints.NotNull String typeName)
 		{
 			Check.notNull(typeName, "typeName");
 			this.type = UserAgentType.evaluateByTypeName(typeName);
@@ -419,8 +419,8 @@ public final class UserAgent
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setUrl(@javax.validation.constraints.NotNull String url)
+		@jakarta.validation.constraints.NotNull
+		public Builder setUrl(@jakarta.validation.constraints.NotNull String url)
 		{
 			Check.notNull(url, "url");
 			this.url = url;
@@ -428,8 +428,8 @@ public final class UserAgent
 		}
 
 
-		@javax.validation.constraints.NotNull
-		public Builder setVersionNumber(@javax.validation.constraints.NotNull VersionNumber versionNumber)
+		@jakarta.validation.constraints.NotNull
+		public Builder setVersionNumber(@jakarta.validation.constraints.NotNull VersionNumber versionNumber)
 		{
 			Check.notNull(versionNumber, "versionNumber");
 			this.versionNumber = versionNumber;

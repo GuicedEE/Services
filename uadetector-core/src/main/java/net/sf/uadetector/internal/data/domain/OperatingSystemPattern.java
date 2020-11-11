@@ -43,7 +43,7 @@ public final class OperatingSystemPattern
 	/**
 	 * A compiled representation of a regular expression to detect an operating system
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Pattern pattern;
 	/**
 	 * Position of a {@code OperatingSystemPattern} (only relevant if there are multiple patterns for an operating
@@ -52,7 +52,7 @@ public final class OperatingSystemPattern
 
 	private final int position;
 
-	public OperatingSystemPattern(int id, @javax.validation.constraints.NotNull Pattern pattern, int position)
+	public OperatingSystemPattern(int id, @jakarta.validation.constraints.NotNull Pattern pattern, int position)
 	{
 		Check.notNegative(id, "id");
 		Check.notNull(pattern, "pattern");
@@ -240,7 +240,7 @@ public final class OperatingSystemPattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the parsed integer is smaller than {@code 0}
 		 */
-		public Builder setId(@javax.validation.constraints.NotNull String id)
+		public Builder setId(@jakarta.validation.constraints.NotNull String id)
 		{
 			Check.notEmpty(id, "id");
 
@@ -275,7 +275,7 @@ public final class OperatingSystemPattern
 		 *
 		 * @return this {@code Builder}, for chaining
 		 */
-		public Builder setPerlRegularExpression(@javax.validation.constraints.NotNull String regex)
+		public Builder setPerlRegularExpression(@jakarta.validation.constraints.NotNull String regex)
 		{
 			Check.notEmpty(regex, "regex");
 
@@ -291,7 +291,7 @@ public final class OperatingSystemPattern
 		 *
 		 * @return this {@code Builder}, for chaining
 		 */
-		public Builder setPattern(@javax.validation.constraints.NotNull Pattern pattern)
+		public Builder setPattern(@jakarta.validation.constraints.NotNull Pattern pattern)
 		{
 			Check.notNull(pattern, "pattern");
 
@@ -316,7 +316,7 @@ public final class OperatingSystemPattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the parsed integer is smaller than {@code 0}
 		 */
-		public Builder setPosition(@javax.validation.constraints.NotNull String position)
+		public Builder setPosition(@jakarta.validation.constraints.NotNull String position)
 		{
 			Check.notEmpty(position, "position");
 

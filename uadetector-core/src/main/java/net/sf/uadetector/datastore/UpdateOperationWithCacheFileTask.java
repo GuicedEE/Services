@@ -55,7 +55,7 @@ final class UpdateOperationWithCacheFileTask
 	 */
 	private final AbstractRefreshableDataStore store;
 
-	public UpdateOperationWithCacheFileTask(@javax.validation.constraints.NotNull AbstractRefreshableDataStore dataStore, @javax.validation.constraints.NotNull File cacheFile)
+	public UpdateOperationWithCacheFileTask(@jakarta.validation.constraints.NotNull AbstractRefreshableDataStore dataStore, @jakarta.validation.constraints.NotNull File cacheFile)
 	{
 		super(dataStore);
 		Check.notNull(dataStore, "dataStore");
@@ -74,7 +74,7 @@ final class UpdateOperationWithCacheFileTask
 	 * @throws IllegalStateException
 	 * 		if the file can not be deleted
 	 */
-	protected static File createTemporaryFile(@javax.validation.constraints.NotNull File file)
+	protected static File createTemporaryFile(@jakarta.validation.constraints.NotNull File file)
 	{
 		Check.notNull(file, "file");
 
@@ -98,7 +98,7 @@ final class UpdateOperationWithCacheFileTask
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the file can not be deleted
 	 */
-	protected static void deleteFile(@javax.validation.constraints.NotNull File file)
+	protected static void deleteFile(@jakarta.validation.constraints.NotNull File file)
 	{
 		Check.notNull(file, "file");
 		Check.stateIsTrue(!file.exists() || file.delete(), "Cannot delete file '%s'.", file.getPath());
@@ -115,7 +115,7 @@ final class UpdateOperationWithCacheFileTask
 	 * @throws IllegalStateException
 	 * 		if an I/O error occurs
 	 */
-	private static boolean isEmpty(@javax.validation.constraints.NotNull File file, @javax.validation.constraints.NotNull Charset charset)
+	private static boolean isEmpty(@jakarta.validation.constraints.NotNull File file, @jakarta.validation.constraints.NotNull Charset charset)
 	{
 		try
 		{
@@ -137,7 +137,7 @@ final class UpdateOperationWithCacheFileTask
 	 *
 	 * @return {@code true} if the {@code newer} Data is really newer, otherwise {@code false}
 	 */
-	protected static boolean isNewerData(@javax.validation.constraints.NotNull Data older, @javax.validation.constraints.NotNull Data newer)
+	protected static boolean isNewerData(@jakarta.validation.constraints.NotNull Data older, @jakarta.validation.constraints.NotNull Data newer)
 	{
 		return newer.getVersion()
 		            .compareTo(older.getVersion()) > 0;
@@ -157,7 +157,7 @@ final class UpdateOperationWithCacheFileTask
 	 * @throws IOException
 	 * 		if an I/O error occurs
 	 */
-	protected static void readAndSave(@javax.validation.constraints.NotNull File file, @javax.validation.constraints.NotNull DataStore store) throws IOException
+	protected static void readAndSave(@jakarta.validation.constraints.NotNull File file, @jakarta.validation.constraints.NotNull DataStore store) throws IOException
 	{
 		Check.notNull(file, "file");
 		Check.notNull(store, "store");
@@ -210,7 +210,7 @@ final class UpdateOperationWithCacheFileTask
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the file can not be renamed
 	 */
-	protected static void renameFile(@javax.validation.constraints.NotNull File from, @javax.validation.constraints.NotNull File to)
+	protected static void renameFile(@jakarta.validation.constraints.NotNull File from, @jakarta.validation.constraints.NotNull File to)
 	{
 		Check.notNull(from, "from");
 		Check.stateIsTrue(from.exists(), "Argument 'from' must not be an existing file.");

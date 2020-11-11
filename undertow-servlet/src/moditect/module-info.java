@@ -21,7 +21,7 @@ module undertow.servlet {
     exports io.undertow.servlet.spec;
     exports io.undertow.servlet.sse;
 
-    provides javax.servlet.ServletContainerInitializer with io.undertow.servlet.sse.ServerSentEventSCI;
+    provides jakarta.servlet.ServletContainerInitializer with io.undertow.servlet.sse.ServerSentEventSCI;
 
     provides io.undertow.server.handlers.builder.HandlerBuilder with io.undertow.servlet.handlers.MarkSecureHandler.Builder;
 

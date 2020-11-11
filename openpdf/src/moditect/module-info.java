@@ -1,7 +1,11 @@
 module com.github.librepdf.openpdf {
-	requires java.desktop;
+	requires static java.desktop;
 	requires java.annotation;
 
+	requires static org.bouncycastle.pkix;
+	requires static org.bouncycastle.provider;
+	requires static com.github.spotbugs.spotbugs;
+	requires static imageio.tiff;
 	requires static org.apache.fop;
 
 	exports com.lowagie.text;

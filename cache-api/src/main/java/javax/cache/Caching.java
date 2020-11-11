@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache;
+package jakarta.cache;
 
-import javax.cache.spi.CachingProvider;
+import jakarta.cache.spi.CachingProvider;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Iterator;
@@ -47,7 +47,7 @@ import java.util.WeakHashMap;
  * {@link CachingProvider} implementation must be declared in the following
  * file:
  * <pre>
- *   META-INF/services/javax.cache.spi.CachingProvider
+ *   META-INF/services/jakarta.cache.spi.CachingProvider
  * </pre>
  * This file must be resolvable via the class path.
  * <p>
@@ -56,7 +56,7 @@ import java.util.WeakHashMap;
  * <p>
  * Alternatively when the fully qualified class name of a
  * {@link CachingProvider} implementation is specified using the system property
- * <code>javax.cache.spi.cachingprovider</code>, that implementation will be used
+ * <code>jakarta.cache.spi.cachingprovider</code>, that implementation will be used
  * as the default {@link CachingProvider}.
  * <p>
  * All {@link CachingProvider}s that are automatically detected or explicitly
@@ -95,9 +95,9 @@ import java.util.WeakHashMap;
 public final class Caching {
 
   /**
-   * The <code>javax.cache.spi.cachingprovider</code> constant.
+   * The <code>jakarta.cache.spi.cachingprovider</code> constant.
    */
-  public static final String JAVAX_CACHE_CACHING_PROVIDER = "javax.cache" +
+  public static final String JAVAX_CACHE_CACHING_PROVIDER = "jakarta.cache" +
       ".spi.CachingProvider";
 
   /**
@@ -173,7 +173,7 @@ public final class Caching {
    * Obtains the {@link CachingProvider}s that are available via the
    * {@link #getDefaultClassLoader()}.
    * <p>
-   * If a <code>javax.cache.spi.cachingprovider</code> system property is defined,
+   * If a <code>jakarta.cache.spi.cachingprovider</code> system property is defined,
    * only that {@link CachingProvider} specified by that property is returned.
    * Otherwise all {@link CachingProvider}s that are available via a
    * {@link ServiceLoader} for {@link CachingProvider}s using the default
@@ -191,7 +191,7 @@ public final class Caching {
    * Obtains the {@link CachingProvider}s that are available via the specified
    * {@link ClassLoader}.
    * <p>
-   * If a <code>javax.cache.spi.cachingprovider</code> system property is defined,
+   * If a <code>jakarta.cache.spi.cachingprovider</code> system property is defined,
    * only that {@link CachingProvider} specified by that property is returned.
    * Otherwise all {@link CachingProvider}s that are available via a
    * {@link ServiceLoader} for {@link CachingProvider}s using the specified
@@ -396,7 +396,7 @@ public final class Caching {
      * Obtain the {@link CachingProvider}s that are available via the
      * {@link #getDefaultClassLoader()}.
      * <p>
-     * If a <code>javax.cache.spi.cachingprovider</code> system property is defined,
+     * If a <code>jakarta.cache.spi.cachingprovider</code> system property is defined,
      * only that {@link CachingProvider} specified by that property is returned.
      * Otherwise all {@link CachingProvider}s that are available via a
      * {@link ServiceLoader} for {@link CachingProvider}s using the default
@@ -414,7 +414,7 @@ public final class Caching {
      * Obtain the {@link CachingProvider}s that are available via the specified
      * {@link ClassLoader}.
      * <p>
-     * If a <code>javax.cache.spi.cachingprovider</code> system property is defined,
+     * If a <code>jakarta.cache.spi.cachingprovider</code> system property is defined,
      * only that {@link CachingProvider} specified by that property is returned.
      * Otherwise all {@link CachingProvider}s that are available via a
      * {@link ServiceLoader} for {@link CachingProvider}s using the specified

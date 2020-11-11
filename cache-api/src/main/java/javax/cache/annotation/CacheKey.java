@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.annotation;
+package jakarta.cache.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

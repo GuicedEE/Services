@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.event;
+package jakarta.cache.event;
 
 import java.util.EventObject;
 
-import javax.cache.Cache;
-import javax.cache.configuration.CacheEntryListenerConfiguration;
+import jakarta.cache.Cache;
+import jakarta.cache.configuration.CacheEntryListenerConfiguration;
 
 /**
  * A Cache entry event base class.

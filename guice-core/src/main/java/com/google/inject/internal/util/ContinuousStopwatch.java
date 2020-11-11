@@ -20,7 +20,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 import com.google.common.base.Stopwatch;
 import java.util.logging.Logger;
-import javax.annotation.concurrent.NotThreadSafe;
+import jakarta.annotation.concurrent.NotThreadSafe;
 
 /**
  * A continuously timing stopwatch that is used for simple performance monitoring.

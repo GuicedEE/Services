@@ -20,7 +20,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-	
+
     <parent>
         <groupId>com.guicedee.services</groupId>
         <artifactId>services-parent</artifactId>
@@ -144,10 +144,6 @@
                                     <pattern>trax</pattern>
                                     <shadedPattern>com.oracle.wls.shaded.trax</shadedPattern>
                                 </relocation>
-                                <relocation>
-                                    <pattern>jakarta</pattern>
-                                    <shadedPattern>javax</shadedPattern>
-                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>
@@ -162,26 +158,26 @@
 
     </build>
 
-	<profiles>
-		<profile>
-			<id>jdk8</id>
-			<repositories>
-				<repository>
-					<id>Jakarta</id>
-					<url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
-				</repository>
-			</repositories>
-		</profile>
-		<profile>
-			<id>jdk9</id>
-			<repositories>
-				<repository>
-					<id>Jakarta</id>
-					<url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
-				</repository>
-			</repositories>
-		</profile>
-	</profiles>
+    <profiles>
+        <profile>
+            <id>jdk8</id>
+            <repositories>
+                <repository>
+                    <id>Jakarta</id>
+                    <url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>jdk9</id>
+            <repositories>
+                <repository>
+                    <id>Jakarta</id>
+                    <url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 
 </project>
 

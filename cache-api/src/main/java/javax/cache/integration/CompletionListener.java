@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.integration;
+package jakarta.cache.integration;
 
 /**
  * A CompletionListener is implemented by an application when it needs to be

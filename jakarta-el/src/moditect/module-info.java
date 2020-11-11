@@ -1,8 +1,8 @@
-module javax.el {
+module jakarta.el {
 	requires java.desktop;
-	exports javax.el;
+	exports jakarta.el;
 
-	exports com.sun.el to javax.faces;
-	uses javax.el.ExpressionFactory;
-	provides javax.el.ExpressionFactory with com.sun.el.ExpressionFactoryImpl;
+	exports com.sun.el to jakarta.faces;
+	uses jakarta.el.ExpressionFactory;
+	provides jakarta.el.ExpressionFactory with com.sun.el.ExpressionFactoryImpl;
 }

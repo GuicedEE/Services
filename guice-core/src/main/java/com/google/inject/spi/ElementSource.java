@@ -21,7 +21,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.inject.internal.util.StackTraceElements;
 import com.google.inject.internal.util.StackTraceElements.InMemoryStackTraceElement;
 import java.util.List;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * Contains information about where and how an {@link Element element} was bound.

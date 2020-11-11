@@ -50,7 +50,7 @@ public interface ReadableVersionNumber
 	 *
 	 * @return bugfix segment
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getBugfix();
 
 	/**
@@ -58,7 +58,7 @@ public interface ReadableVersionNumber
 	 *
 	 * @return extension of the version number
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getExtension();
 
 	/**
@@ -69,7 +69,7 @@ public interface ReadableVersionNumber
 	 *
 	 * @return a list of segments of the version number
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	List<String> getGroups();
 
 	/**
@@ -77,7 +77,7 @@ public interface ReadableVersionNumber
 	 *
 	 * @return major segment
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getMajor();
 
 	/**
@@ -85,7 +85,7 @@ public interface ReadableVersionNumber
 	 *
 	 * @return minor segment
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getMinor();
 
 	/**
@@ -93,7 +93,7 @@ public interface ReadableVersionNumber
 	 *
 	 * @return numeric groups as dot separated version string
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String toVersionString();
 
 }

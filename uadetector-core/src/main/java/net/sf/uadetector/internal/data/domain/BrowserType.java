@@ -34,10 +34,10 @@ public final class BrowserType
 	private static final long serialVersionUID = 2643535063309729806L;
 
 	private final int id;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
 
-	public BrowserType(int id, @javax.validation.constraints.NotNull String name)
+	public BrowserType(int id, @jakarta.validation.constraints.NotNull String name)
 	{
 		Check.notNegative(id, "id");
 		Check.notNull(name, "name");
@@ -131,7 +131,7 @@ public final class BrowserType
 		 * 		<p>
 		 * 		if one of the needed arguments to build an instance of {@code BrowserType} is invalid
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public BrowserType build()
 		{
 			return new BrowserType(id, name);
@@ -146,8 +146,8 @@ public final class BrowserType
 		 * @param id
 		 * 		ID of browser type
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setId(@javax.validation.constraints.NotNull String id)
+		@jakarta.validation.constraints.NotNull
+		public Builder setId(@jakarta.validation.constraints.NotNull String id)
 		{
 			Check.notNull(id, "id");
 
@@ -161,7 +161,7 @@ public final class BrowserType
 		 * @param id
 		 * 		ID of browser type
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setId(int id)
 		{
 			Check.notNegative(id, "id");
@@ -176,8 +176,8 @@ public final class BrowserType
 		 * @param name
 		 * 		name of the browser type
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setName(@javax.validation.constraints.NotNull String name)
+		@jakarta.validation.constraints.NotNull
+		public Builder setName(@jakarta.validation.constraints.NotNull String name)
 		{
 			Check.notNull(name, "name");
 

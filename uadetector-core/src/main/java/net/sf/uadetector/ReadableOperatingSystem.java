@@ -35,7 +35,7 @@ public interface ReadableOperatingSystem
 	 *
 	 * @return the family of an operating system
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	OperatingSystemFamily getFamily();
 
 	/**
@@ -43,7 +43,7 @@ public interface ReadableOperatingSystem
 	 *
 	 * @return the family of an operating system
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getFamilyName();
 
 	/**
@@ -51,7 +51,7 @@ public interface ReadableOperatingSystem
 	 *
 	 * @return the icon name of an operating system
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getIcon();
 
 	/**
@@ -59,7 +59,7 @@ public interface ReadableOperatingSystem
 	 *
 	 * @return the name of an operating system
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getName();
 
 	/**
@@ -67,7 +67,7 @@ public interface ReadableOperatingSystem
 	 *
 	 * @return the manufacturer
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getProducer();
 
 	/**
@@ -75,7 +75,7 @@ public interface ReadableOperatingSystem
 	 *
 	 * @return the URL to the website of the manufacturer
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getProducerUrl();
 
 	/**
@@ -83,7 +83,7 @@ public interface ReadableOperatingSystem
 	 *
 	 * @return the URL to the product page
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getUrl();
 
 	/**
@@ -91,7 +91,7 @@ public interface ReadableOperatingSystem
 	 *
 	 * @return version number an operating system
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	VersionNumber getVersionNumber();
 
 }

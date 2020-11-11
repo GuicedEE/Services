@@ -1,17 +1,18 @@
 module java.persistence {
 	requires transitive java.logging;
-	requires static java.sql;
+	requires transitive java.sql;
+
 	requires java.instrument;
 
-	exports javax.persistence;
-	exports javax.persistence.criteria;
-	exports javax.persistence.metamodel;
-	exports javax.persistence.spi;
+	exports jakarta.persistence;
+	exports jakarta.persistence.criteria;
+	exports jakarta.persistence.metamodel;
+	exports jakarta.persistence.spi;
 
 	requires jakarta.activation;
 
-	uses javax.persistence.spi.PersistenceUnitInfo;
-	uses javax.persistence.spi.ClassTransformer;
-	uses javax.persistence.spi.PersistenceProvider;
-	uses javax.persistence.spi.PersistenceProviderResolver;
+	uses jakarta.persistence.spi.PersistenceUnitInfo;
+	uses jakarta.persistence.spi.ClassTransformer;
+	uses jakarta.persistence.spi.PersistenceProvider;
+	uses jakarta.persistence.spi.PersistenceProviderResolver;
 }

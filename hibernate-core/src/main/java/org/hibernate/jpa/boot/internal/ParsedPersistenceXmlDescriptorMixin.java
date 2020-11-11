@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.bytecode.enhance.spi.EnhancementContext;
 
-import javax.persistence.SharedCacheMode;
-import javax.persistence.ValidationMode;
-import javax.persistence.spi.PersistenceUnitTransactionType;
+import jakarta.persistence.SharedCacheMode;
+import jakarta.persistence.ValidationMode;
+import jakarta.persistence.spi.PersistenceUnitTransactionType;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ import java.util.Properties;
 /**
  * Describes the information gleaned from a {@code <persistence-unit/>} element in a {@code persistence.xml} file
  * whether parsed directly by Hibernate or passed to us by an EE container as a
- * {@link javax.persistence.spi.PersistenceUnitInfo}.
+ * {@link jakarta.persistence.spi.PersistenceUnitInfo}.
  *
  * Easier to consolidate both views into a single contract and extract information through that shared contract.
  *
@@ -27,7 +27,7 @@ import java.util.Properties;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
         setterVisibility = JsonAutoDetect.Visibility.NONE)
-public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDescriptor implements org.hibernate.jpa.boot.spi.PersistenceUnitDescriptor {
+public class ParsedPersistenceXmlDescriptorMixin  {
     @JsonIgnore
     private URL persistenceUnitRootUrl;
 
@@ -50,7 +50,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
     private SharedCacheMode sharedCacheMode;
 
     public ParsedPersistenceXmlDescriptorMixin() {
-        super(null);
+
     }
 
     @JsonProperty("properties")
@@ -63,16 +63,16 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
     private List<URL> jarFileUrls = new ArrayList<>();
 
     public ParsedPersistenceXmlDescriptorMixin(URL persistenceUnitRootUrl) {
-        super(persistenceUnitRootUrl);
+        //super(persistenceUnitRootUrl);
         this.persistenceUnitRootUrl = persistenceUnitRootUrl;
     }
 
-    @Override
+    
     public URL getPersistenceUnitRootUrl() {
         return persistenceUnitRootUrl;
     }
 
-    @Override
+    
     public String getName() {
         return name;
     }
@@ -81,7 +81,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.name = name;
     }
 
-    @Override
+    
     public Object getNonJtaDataSource() {
         return nonJtaDataSource;
     }
@@ -90,7 +90,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.nonJtaDataSource = nonJtaDataSource;
     }
 
-    @Override
+    
     public Object getJtaDataSource() {
         return jtaDataSource;
     }
@@ -99,7 +99,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.jtaDataSource = jtaDataSource;
     }
 
-    @Override
+    
     public String getProviderClassName() {
         return providerClassName;
     }
@@ -108,7 +108,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.providerClassName = providerClassName;
     }
 
-    @Override
+    
     public PersistenceUnitTransactionType getTransactionType() {
         return transactionType;
     }
@@ -117,7 +117,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.transactionType = transactionType;
     }
 
-    @Override
+    
     public boolean isUseQuotedIdentifiers() {
         return useQuotedIdentifiers;
     }
@@ -126,12 +126,12 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.useQuotedIdentifiers = useQuotedIdentifiers;
     }
 
-    @Override
+    
     public Properties getProperties() {
         return properties;
     }
 
-    @Override
+    
     public boolean isExcludeUnlistedClasses() {
         return excludeUnlistedClasses;
     }
@@ -140,7 +140,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.excludeUnlistedClasses = excludeUnlistedClasses;
     }
 
-    @Override
+    
     public ValidationMode getValidationMode() {
         return validationMode;
     }
@@ -149,7 +149,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.validationMode = ValidationMode.valueOf( validationMode );
     }
 
-    @Override
+    
     public SharedCacheMode getSharedCacheMode() {
         return sharedCacheMode;
     }
@@ -158,7 +158,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.sharedCacheMode = SharedCacheMode.valueOf( sharedCacheMode );
     }
 
-    @Override
+    
     public List<String> getManagedClassNames() {
         return classes;
     }
@@ -171,7 +171,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.classes.addAll( classes );
     }
 
-    @Override
+    
     public List<String> getMappingFileNames() {
         return mappingFiles;
     }
@@ -184,7 +184,7 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         this.mappingFiles.addAll( mappingFiles );
     }
 
-    @Override
+    
     public List<URL> getJarFileUrls() {
         return jarFileUrls;
     }
@@ -193,17 +193,17 @@ public class ParsedPersistenceXmlDescriptorMixin extends ParsedPersistenceXmlDes
         jarFileUrls.add( jarFileUrl );
     }
 
-    @Override
+    
     public ClassLoader getClassLoader() {
         return null;
     }
 
-    @Override
+    
     public ClassLoader getTempClassLoader() {
         return null;
     }
 
-    @Override
+    
     public void pushClassTransformer(EnhancementContext enhancementContext) {
         // todo : log a message that this is currently not supported...
     }

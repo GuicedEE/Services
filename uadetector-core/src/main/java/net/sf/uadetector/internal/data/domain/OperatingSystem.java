@@ -32,29 +32,29 @@ public final class OperatingSystem
 {
 
 	private static final long serialVersionUID = -5330180544816352323L;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String family;
 	private final int hash;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String icon;
 
 	private final int id;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String infoUrl;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final SortedSet<OperatingSystemPattern> patterns;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String producer;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String producerUrl;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String url;
 
-	public OperatingSystem(int id, @javax.validation.constraints.NotNull String name, @javax.validation.constraints.NotNull String family,
-	                       @javax.validation.constraints.NotNull String infoUrl, @javax.validation.constraints.NotNull SortedSet<OperatingSystemPattern> patterns, @javax.validation.constraints.NotNull String producer,
-	                       @javax.validation.constraints.NotNull String producerUrl, @javax.validation.constraints.NotNull String url, @javax.validation.constraints.NotNull String icon)
+	public OperatingSystem(int id, @jakarta.validation.constraints.NotNull String name, @jakarta.validation.constraints.NotNull String family,
+	                       @jakarta.validation.constraints.NotNull String infoUrl, @jakarta.validation.constraints.NotNull SortedSet<OperatingSystemPattern> patterns, @jakarta.validation.constraints.NotNull String producer,
+	                       @jakarta.validation.constraints.NotNull String producerUrl, @jakarta.validation.constraints.NotNull String url, @jakarta.validation.constraints.NotNull String icon)
 	{
 		this.id = Check.notNegative(id, "id");
 		this.name = Check.notNull(name, "name");
@@ -68,9 +68,9 @@ public final class OperatingSystem
 		hash = buildHashCode(id, name, family, infoUrl, patterns, producer, producerUrl, url, icon);
 	}
 
-	private static int buildHashCode(int id, @javax.validation.constraints.NotNull String name, @javax.validation.constraints.NotNull String family,
-	                                 @javax.validation.constraints.NotNull String infoUrl, @javax.validation.constraints.NotNull SortedSet<OperatingSystemPattern> patterns, @javax.validation.constraints.NotNull String producer,
-	                                 @javax.validation.constraints.NotNull String producerUrl, @javax.validation.constraints.NotNull String url, @javax.validation.constraints.NotNull String icon)
+	private static int buildHashCode(int id, @jakarta.validation.constraints.NotNull String name, @jakarta.validation.constraints.NotNull String family,
+	                                 @jakarta.validation.constraints.NotNull String infoUrl, @jakarta.validation.constraints.NotNull SortedSet<OperatingSystemPattern> patterns, @jakarta.validation.constraints.NotNull String producer,
+	                                 @jakarta.validation.constraints.NotNull String producerUrl, @jakarta.validation.constraints.NotNull String url, @jakarta.validation.constraints.NotNull String icon)
 	{
 		int prime = 31;
 		int result = 1;
@@ -92,20 +92,20 @@ public final class OperatingSystem
 	 * @param builder
 	 * 		user agent builder
 	 */
-	public void copyTo(@javax.validation.constraints.NotNull UserAgent.Builder builder)
+	public void copyTo(@jakarta.validation.constraints.NotNull UserAgent.Builder builder)
 	{
 		OperatingSystemFamily f = OperatingSystemFamily.evaluate(family);
 		VersionNumber version = VersionNumber.parseOperatingSystemVersion(f, builder.getUserAgentString());
 		builder.setOperatingSystem(new net.sf.uadetector.OperatingSystem(f, family, icon, name, producer, producerUrl, url, version));
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getFamily()
 	{
 		return family;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getIcon()
 	{
 		return icon;
@@ -118,37 +118,37 @@ public final class OperatingSystem
 		return id;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getInfoUrl()
 	{
 		return infoUrl;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getName()
 	{
 		return name;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public SortedSet<OperatingSystemPattern> getPatterns()
 	{
 		return patterns;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getProducer()
 	{
 		return producer;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getProducerUrl()
 	{
 		return producerUrl;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getUrl()
 	{
 		return url;
@@ -241,30 +241,30 @@ public final class OperatingSystem
 	public static final class Builder
 	{
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String family = "";
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String icon = "";
 
 		private int id = Integer.MIN_VALUE;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String infoUrl = "";
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String name = "";
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private SortedSet<OperatingSystemPattern> patterns = new TreeSet<>();
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String producer = "";
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String producerUrl = "";
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String url = "";
 
 		public Builder()
@@ -281,7 +281,7 @@ public final class OperatingSystem
 		 * 		<p>
 		 * 		if the given argument is {@code null}
 		 */
-		protected Builder(@javax.validation.constraints.NotNull Builder builder)
+		protected Builder(@jakarta.validation.constraints.NotNull Builder builder)
 		{
 			Check.notNull(builder, "builder");
 
@@ -296,7 +296,7 @@ public final class OperatingSystem
 			url = builder.url;
 		}
 
-		public Builder(@javax.validation.constraints.NotNull OperatingSystem operatingSystem)
+		public Builder(@jakarta.validation.constraints.NotNull OperatingSystem operatingSystem)
 		{
 			Check.notNull(operatingSystem, "operatingSystem");
 			id = Check.notNegative(operatingSystem.getId(), "operatingSystem.getId()");
@@ -310,8 +310,8 @@ public final class OperatingSystem
 			icon = Check.notNull(operatingSystem.getIcon(), "operatingSystem.getIcon()");
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder addPatterns(@javax.validation.constraints.NotNull Set<OperatingSystemPattern> patterns)
+		@jakarta.validation.constraints.NotNull
+		public Builder addPatterns(@jakarta.validation.constraints.NotNull Set<OperatingSystemPattern> patterns)
 		{
 			Check.notNull(patterns, "patterns");
 
@@ -319,7 +319,7 @@ public final class OperatingSystem
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public OperatingSystem build()
 		{
 			return new OperatingSystem(id, name, family, infoUrl, patterns, producer, producerUrl, url, icon);
@@ -330,33 +330,33 @@ public final class OperatingSystem
 		 *
 		 * @return a new instance of the current builder, never {@code null}
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public OperatingSystem.Builder copy()
 		{
 			return new Builder(this);
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public String getFamily()
 		{
 			return family;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setFamily(@javax.validation.constraints.NotNull String family)
+		@jakarta.validation.constraints.NotNull
+		public Builder setFamily(@jakarta.validation.constraints.NotNull String family)
 		{
 			this.family = Check.notNull(family, "family");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public String getIcon()
 		{
 			return icon;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setIcon(@javax.validation.constraints.NotNull String icon)
+		@jakarta.validation.constraints.NotNull
+		public Builder setIcon(@jakarta.validation.constraints.NotNull String icon)
 		{
 			this.icon = Check.notNull(icon, "icon");
 			return this;
@@ -367,8 +367,8 @@ public final class OperatingSystem
 			return id;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setId(@javax.validation.constraints.NotNull String id)
+		@jakarta.validation.constraints.NotNull
+		public Builder setId(@jakarta.validation.constraints.NotNull String id)
 		{
 			Check.notEmpty(id, "id");
 
@@ -376,86 +376,86 @@ public final class OperatingSystem
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setId(int id)
 		{
 			this.id = Check.notNegative(id, "id");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public String getInfoUrl()
 		{
 			return infoUrl;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setInfoUrl(@javax.validation.constraints.NotNull String infoUrl)
+		@jakarta.validation.constraints.NotNull
+		public Builder setInfoUrl(@jakarta.validation.constraints.NotNull String infoUrl)
 		{
 			this.infoUrl = Check.notNull(infoUrl, "infoUrl");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public String getName()
 		{
 			return name;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setName(@javax.validation.constraints.NotNull String name)
+		@jakarta.validation.constraints.NotNull
+		public Builder setName(@jakarta.validation.constraints.NotNull String name)
 		{
 			this.name = Check.notNull(name, "name");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public SortedSet<OperatingSystemPattern> getPatterns()
 		{
 			return patterns;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setPatterns(@javax.validation.constraints.NotNull SortedSet<OperatingSystemPattern> patterns)
+		@jakarta.validation.constraints.NotNull
+		public Builder setPatterns(@jakarta.validation.constraints.NotNull SortedSet<OperatingSystemPattern> patterns)
 		{
 			this.patterns = new TreeSet<>(Check.notNull(patterns, "patterns"));
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public String getProducer()
 		{
 			return producer;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setProducer(@javax.validation.constraints.NotNull String producer)
+		@jakarta.validation.constraints.NotNull
+		public Builder setProducer(@jakarta.validation.constraints.NotNull String producer)
 		{
 			this.producer = Check.notNull(producer, "producer");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public String getProducerUrl()
 		{
 			return producerUrl;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setProducerUrl(@javax.validation.constraints.NotNull String producerUrl)
+		@jakarta.validation.constraints.NotNull
+		public Builder setProducerUrl(@jakarta.validation.constraints.NotNull String producerUrl)
 		{
 			this.producerUrl = Check.notNull(producerUrl, "producerUrl");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public String getUrl()
 		{
 			return url;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setUrl(@javax.validation.constraints.NotNull String url)
+		@jakarta.validation.constraints.NotNull
+		public Builder setUrl(@jakarta.validation.constraints.NotNull String url)
 		{
 			this.url = Check.notNull(url, "url");
 			return this;

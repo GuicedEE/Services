@@ -37,33 +37,33 @@ public final class OperatingSystem
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final OperatingSystemFamily family;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String familyName;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String icon;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String producer;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String producerUrl;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String url;
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final VersionNumber versionNumber;
 
-	public OperatingSystem(@javax.validation.constraints.NotNull OperatingSystemFamily family, @javax.validation.constraints.NotNull String familyName, @javax.validation.constraints.NotNull String icon,
-	                       @javax.validation.constraints.NotNull String name, @javax.validation.constraints.NotNull String producer, @javax.validation.constraints.NotNull String producerUrl, @javax.validation.constraints.NotNull String url,
-	                       @javax.validation.constraints.NotNull VersionNumber versionNumber)
+	public OperatingSystem(@jakarta.validation.constraints.NotNull OperatingSystemFamily family, @jakarta.validation.constraints.NotNull String familyName, @jakarta.validation.constraints.NotNull String icon,
+	                       @jakarta.validation.constraints.NotNull String name, @jakarta.validation.constraints.NotNull String producer, @jakarta.validation.constraints.NotNull String producerUrl, @jakarta.validation.constraints.NotNull String url,
+	                       @jakarta.validation.constraints.NotNull VersionNumber versionNumber)
 	{
 		Check.notNull(family, "family");
 		Check.notNull(familyName, "familyName");

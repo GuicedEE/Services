@@ -1,6 +1,6 @@
 module java.servlet {
-	exports javax.servlet;
-	exports javax.servlet.annotation;
-	exports javax.servlet.descriptor;
-	exports javax.servlet.http;
+	exports jakarta.servlet;
+	exports jakarta.servlet.annotation;
+	exports jakarta.servlet.descriptor;
+	exports jakarta.servlet.http;
 }

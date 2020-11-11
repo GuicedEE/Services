@@ -812,7 +812,7 @@
  * <p>A very common use case (and the situation that caused the initial creation
  * of the <em>BeanUtils</em> package) was the desire to convert the set of request
  * parameters that were included in a
- * <code>javax.servlet.HttpServletRequest</code> received by a web application
+ * <code>jakarta.servlet.HttpServletRequest</code> received by a web application
  * into a set of corresponding property setter calls on an arbitrary JavaBean.
  * (This is one of the fundamental services provided by the
  * <a href="http://struts.apache.org/">Struts Framework</a>, which uses

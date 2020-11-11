@@ -17,50 +17,23 @@
 module java.xml.bind {
 	requires transitive jakarta.activation;
 	requires transitive java.xml;
-
+	requires transitive java.validation;
 	requires transitive java.logging;
 	requires java.desktop;
-
-	requires transitive java.validation;
-
-	exports javax.xml.bind;
-	exports javax.xml.bind.annotation;
-	exports javax.xml.bind.annotation.adapters;
-	exports javax.xml.bind.attachment;
-	exports javax.xml.bind.helpers;
-	exports javax.xml.bind.util;
-
-	uses javax.xml.bind.JAXBContextFactory;
-
 	requires java.compiler;
-
 	requires org.codehaus.stax2;
 
-	exports com.sun.xml.bind;
-	exports com.sun.xml.bind.annotation;
-	exports com.sun.xml.bind.api;
-	exports com.sun.xml.bind.api.impl;
-	exports com.sun.xml.bind.marshaller;
-	exports com.sun.xml.bind.unmarshaller;
-	exports com.sun.xml.bind.util;
-	exports com.sun.xml.bind.v2;
-	exports com.sun.xml.bind.v2.model.annotation;
-	exports com.sun.xml.bind.v2.model.core;
-	exports com.sun.xml.bind.v2.model.impl;
-	exports com.sun.xml.bind.v2.model.nav;
-	exports com.sun.xml.bind.v2.model.runtime;
-	exports com.sun.xml.bind.v2.model.util;
-	exports com.sun.xml.bind.v2.runtime;
-	exports com.sun.xml.bind.v2.runtime.unmarshaller;
-	exports com.sun.xml.bind.v2.schemagen;
-	exports com.sun.xml.bind.v2.schemagen.episode;
-	exports com.sun.xml.bind.v2.schemagen.xmlschema;
-	exports com.sun.xml.bind.v2.util;
-
+	exports jakarta.xml.bind;
+	exports jakarta.xml.bind.annotation;
+	exports jakarta.xml.bind.annotation.adapters;
+	exports jakarta.xml.bind.attachment;
+	exports jakarta.xml.bind.helpers;
+	exports jakarta.xml.bind.util;
 	exports com.sun.xml.txw2;
 
-	opens com.sun.xml.bind.v2.model.nav to com.sun.tools.xjc;
+	uses jakarta.xml.bind.JAXBContextFactory;
 
-	provides javax.xml.bind.JAXBContextFactory with com.sun.xml.bind.v2.JAXBContextFactory;
-	provides javax.xml.bind.JAXBContext with com.sun.xml.bind.v2.ContextFactory;
+
+	provides jakarta.xml.bind.JAXBContextFactory with org.glassfish.jaxb.runtime.v2.JAXBContextFactory;
+	provides jakarta.xml.bind.JAXBContext with org.glassfish.jaxb.runtime.v2.ContextFactory;
 }

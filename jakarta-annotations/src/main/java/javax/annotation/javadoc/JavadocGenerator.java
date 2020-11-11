@@ -1,4 +1,4 @@
-package javax.annotation.javadoc;
+package jakarta.annotation.javadoc;
 
 public class JavadocGenerator
 {

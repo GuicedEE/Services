@@ -36,33 +36,33 @@ public class DataBuilder
 	private static final OrderedPatternComparator<BrowserPattern> BROWSER_PATTERN_COMPARATOR = new OrderedPatternComparator<>();
 	private static final OrderedPatternComparator<DevicePattern> DEVICE_PATTERN_COMPARATOR = new OrderedPatternComparator<>();
 	private static final OrderedPatternComparator<OperatingSystemPattern> OS_PATTERN_COMPARATOR = new OrderedPatternComparator<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, BrowserType> browserTypes = new HashMap<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, SortedSet<BrowserPattern>> browserPatterns = new HashMap<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, SortedSet<OperatingSystemPattern>> operatingSystemPatterns = new HashMap<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, Browser.Builder> browserBuilders = new HashMap<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Set<Browser> browsers = new HashSet<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Set<Device> devices = new HashSet<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, Device.Builder> deviceBuilders = new HashMap<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, SortedSet<DevicePattern>> devicePatterns = new HashMap<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Map<Integer, OperatingSystem.Builder> operatingSystemBuilders = new HashMap<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Set<OperatingSystem> operatingSystems = new HashSet<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final List<Robot> robots = new ArrayList<>();
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Set<BrowserOperatingSystemMapping> browserToOperatingSystemMap = new HashSet<>();
 	private String version;
 
-	public DataBuilder appendBrowser(@javax.validation.constraints.NotNull Browser browser)
+	public DataBuilder appendBrowser(@jakarta.validation.constraints.NotNull Browser browser)
 	{
 		Check.notNull(browser, "browser");
 
@@ -86,8 +86,8 @@ public class DataBuilder
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if a builder with the same ID already exists
 	 */
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendBrowserBuilder(@javax.validation.constraints.NotNull Browser.Builder browserBuilder)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendBrowserBuilder(@jakarta.validation.constraints.NotNull Browser.Builder browserBuilder)
 	{
 		Check.notNull(browserBuilder, "browserBuilder");
 		Check.notNegative(browserBuilder.getId(), "browserBuilder.getId()");
@@ -106,8 +106,8 @@ public class DataBuilder
 		return this;
 	}
 
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendBrowserOperatingSystemMapping(@javax.validation.constraints.NotNull BrowserOperatingSystemMapping browserOsMapping)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendBrowserOperatingSystemMapping(@jakarta.validation.constraints.NotNull BrowserOperatingSystemMapping browserOsMapping)
 	{
 		Check.notNull(browserOsMapping, "browserOsMapping");
 
@@ -126,8 +126,8 @@ public class DataBuilder
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendBrowserPattern(@javax.validation.constraints.NotNull BrowserPattern pattern)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendBrowserPattern(@jakarta.validation.constraints.NotNull BrowserPattern pattern)
 	{
 		Check.notNull(pattern, "pattern");
 		if (!browserPatterns.containsKey(pattern.getId()))
@@ -140,8 +140,8 @@ public class DataBuilder
 		return this;
 	}
 
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendBrowserType(@javax.validation.constraints.NotNull BrowserType type)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendBrowserType(@jakarta.validation.constraints.NotNull BrowserType type)
 	{
 		Check.notNull(type, "type");
 
@@ -149,7 +149,7 @@ public class DataBuilder
 		return this;
 	}
 
-	public DataBuilder appendDevice(@javax.validation.constraints.NotNull Device device)
+	public DataBuilder appendDevice(@jakarta.validation.constraints.NotNull Device device)
 	{
 		Check.notNull(device, "device");
 
@@ -173,8 +173,8 @@ public class DataBuilder
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if a builder with the same ID already exists
 	 */
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendDeviceBuilder(@javax.validation.constraints.NotNull Device.Builder deviceBuilder)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendDeviceBuilder(@jakarta.validation.constraints.NotNull Device.Builder deviceBuilder)
 	{
 		Check.notNull(deviceBuilder, "deviceBuilder");
 		Check.notNegative(deviceBuilder.getId(), "deviceBuilder.getId()");
@@ -199,8 +199,8 @@ public class DataBuilder
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendDevicePattern(@javax.validation.constraints.NotNull DevicePattern pattern)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendDevicePattern(@jakarta.validation.constraints.NotNull DevicePattern pattern)
 	{
 		Check.notNull(pattern, "pattern");
 		if (!devicePatterns.containsKey(pattern.getId()))
@@ -213,8 +213,8 @@ public class DataBuilder
 		return this;
 	}
 
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendOperatingSystem(@javax.validation.constraints.NotNull OperatingSystem operatingSystem)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendOperatingSystem(@jakarta.validation.constraints.NotNull OperatingSystem operatingSystem)
 	{
 		Check.notNull(operatingSystem, "operatingSystem");
 
@@ -238,8 +238,8 @@ public class DataBuilder
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if a builder with the same ID already exists
 	 */
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendOperatingSystemBuilder(@javax.validation.constraints.NotNull OperatingSystem.Builder operatingSystemBuilder)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendOperatingSystemBuilder(@jakarta.validation.constraints.NotNull OperatingSystem.Builder operatingSystemBuilder)
 	{
 		Check.notNull(operatingSystemBuilder, "operatingSystemBuilder");
 		Check.notNegative(operatingSystemBuilder.getId(), "operatingSystemBuilder.getId()");
@@ -262,8 +262,8 @@ public class DataBuilder
 	 * 		<p>
 	 * 		if the pattern is {@code null}
 	 */
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendOperatingSystemPattern(@javax.validation.constraints.NotNull OperatingSystemPattern pattern)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendOperatingSystemPattern(@jakarta.validation.constraints.NotNull OperatingSystemPattern pattern)
 	{
 		Check.notNull(pattern, "pattern");
 
@@ -277,8 +277,8 @@ public class DataBuilder
 		return this;
 	}
 
-	@javax.validation.constraints.NotNull
-	public DataBuilder appendRobot(@javax.validation.constraints.NotNull Robot robot)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder appendRobot(@jakarta.validation.constraints.NotNull Robot robot)
 	{
 		Check.notNull(robot, "robot");
 
@@ -286,7 +286,7 @@ public class DataBuilder
 		return this;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Data build()
 	{
 		addTypeToBrowser(browserBuilders, browserTypes);
@@ -531,8 +531,8 @@ public class DataBuilder
 		return patternDevice;
 	}
 
-	@javax.validation.constraints.NotNull
-	public DataBuilder setVersion(@javax.validation.constraints.NotNull String version)
+	@jakarta.validation.constraints.NotNull
+	public DataBuilder setVersion(@jakarta.validation.constraints.NotNull String version)
 	{
 		Check.notNull(version, "version");
 

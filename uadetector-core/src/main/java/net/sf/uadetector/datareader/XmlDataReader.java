@@ -70,7 +70,7 @@ public final class XmlDataReader
 	 * 		if any of the given arguments is {@code null}
 	 */
 	@Override
-	public Data read(@javax.validation.constraints.NotNull URL url, @javax.validation.constraints.NotNull Charset charset)
+	public Data read(@jakarta.validation.constraints.NotNull URL url, @jakarta.validation.constraints.NotNull Charset charset)
 	{
 		Check.notNull(url, "url");
 		Check.notNull(charset, "charset");
@@ -100,7 +100,7 @@ public final class XmlDataReader
 	 * 		if any of the given argument is {@code null}
 	 */
 	@Override
-	public Data read(@javax.validation.constraints.NotNull String data)
+	public Data read(@jakarta.validation.constraints.NotNull String data)
 	{
 		Check.notNull(data, "data");
 
@@ -127,7 +127,7 @@ public final class XmlDataReader
 	 * @throws net.sf.uadetector.exception.CanNotOpenStreamException
 	 * 		if no stream to the given {@code URL} can be established
 	 */
-	protected static Data readXml(@javax.validation.constraints.NotNull InputStream inputStream, @javax.validation.constraints.NotNull Charset charset)
+	protected static Data readXml(@jakarta.validation.constraints.NotNull InputStream inputStream, @jakarta.validation.constraints.NotNull Charset charset)
 	{
 		Check.notNull(inputStream, "inputStream");
 		Check.notNull(charset, "charset");
@@ -161,7 +161,7 @@ public final class XmlDataReader
 			// This class is not intended to create objects from it.
 		}
 
-		public static void parse(@javax.validation.constraints.NotNull InputStream stream, @javax.validation.constraints.NotNull DataBuilder builder)
+		public static void parse(@jakarta.validation.constraints.NotNull InputStream stream, @jakarta.validation.constraints.NotNull DataBuilder builder)
 				throws ParserConfigurationException, SAXException, IOException
 		{
 			SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -172,7 +172,7 @@ public final class XmlDataReader
 			validate(handler);
 		}
 
-		protected static void validate(@javax.validation.constraints.NotNull XmlDataHandler handler)
+		protected static void validate(@jakarta.validation.constraints.NotNull XmlDataHandler handler)
 		{
 			if (handler.hasError())
 			{

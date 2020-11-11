@@ -1,4 +1,4 @@
-package javax.ws.rs.javadoc;
+package jakarta.ws.rs.javadoc;
 
 /**
  * This class designates a class holder to generate sources and javadoc to upload into Maven Central

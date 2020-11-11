@@ -91,8 +91,8 @@ public final class CachingXmlDataStore
 	 * 		<p>
 	 * 		if one of the given arguments is {@code null}
 	 */
-	private CachingXmlDataStore(@javax.validation.constraints.NotNull DataReader reader, @javax.validation.constraints.NotNull URL dataUrl, @javax.validation.constraints.NotNull URL versionUrl,
-	                            @javax.validation.constraints.NotNull Charset charset, @javax.validation.constraints.NotNull File cacheFile, @javax.validation.constraints.NotNull DataStore fallback)
+	private CachingXmlDataStore(@jakarta.validation.constraints.NotNull DataReader reader, @jakarta.validation.constraints.NotNull URL dataUrl, @jakarta.validation.constraints.NotNull URL versionUrl,
+	                            @jakarta.validation.constraints.NotNull Charset charset, @jakarta.validation.constraints.NotNull File cacheFile, @jakarta.validation.constraints.NotNull DataStore fallback)
 	{
 		super(reader, dataUrl, versionUrl, charset, fallback);
 		setUpdateOperation(new UpdateOperationWithCacheFileTask(this, cacheFile));
@@ -120,8 +120,8 @@ public final class CachingXmlDataStore
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if no URL can be resolved to the given given file
 	 */
-	@javax.validation.constraints.NotNull
-	public static CachingXmlDataStore createCachingXmlDataStore(@javax.validation.constraints.NotNull URL dataUrl, @javax.validation.constraints.NotNull URL versionURL, @javax.validation.constraints.NotNull DataStore fallback)
+	@jakarta.validation.constraints.NotNull
+	public static CachingXmlDataStore createCachingXmlDataStore(@jakarta.validation.constraints.NotNull URL dataUrl, @jakarta.validation.constraints.NotNull URL versionURL, @jakarta.validation.constraints.NotNull DataStore fallback)
 	{
 		return createCachingXmlDataStore(findOrCreateCacheFile(), dataUrl, versionURL, DEFAULT_CHARSET,
 		                                 fallback);
@@ -153,9 +153,9 @@ public final class CachingXmlDataStore
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if no URL can be resolved to the given given file
 	 */
-	@javax.validation.constraints.NotNull
-	public static CachingXmlDataStore createCachingXmlDataStore(@javax.validation.constraints.NotNull File cacheFile, @javax.validation.constraints.NotNull URL dataUrl,
-	                                                            @javax.validation.constraints.NotNull URL versionUrl, @javax.validation.constraints.NotNull Charset charset, @javax.validation.constraints.NotNull DataStore fallback)
+	@jakarta.validation.constraints.NotNull
+	public static CachingXmlDataStore createCachingXmlDataStore(@jakarta.validation.constraints.NotNull File cacheFile, @jakarta.validation.constraints.NotNull URL dataUrl,
+	                                                            @jakarta.validation.constraints.NotNull URL versionUrl, @jakarta.validation.constraints.NotNull Charset charset, @jakarta.validation.constraints.NotNull DataStore fallback)
 	{
 		Check.notNull(cacheFile, "cacheFile");
 		Check.notNull(charset, "charset");
@@ -178,7 +178,7 @@ public final class CachingXmlDataStore
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the cache file can not be created
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public static File findOrCreateCacheFile()
 	{
 		File file = new File(CACHE_DIR, PREFIX + SUFFIX);
@@ -214,8 +214,8 @@ public final class CachingXmlDataStore
 	 *
 	 * @return a fallback data store
 	 */
-	private static DataStore readCacheFileAsFallback(@javax.validation.constraints.NotNull DataReader reader, @javax.validation.constraints.NotNull File cacheFile,
-	                                                 @javax.validation.constraints.NotNull Charset charset, @javax.validation.constraints.NotNull DataStore fallback)
+	private static DataStore readCacheFileAsFallback(@jakarta.validation.constraints.NotNull DataReader reader, @jakarta.validation.constraints.NotNull File cacheFile,
+	                                                 @jakarta.validation.constraints.NotNull Charset charset, @jakarta.validation.constraints.NotNull DataStore fallback)
 	{
 		DataStore fallbackDataStore;
 		if (!isEmpty(cacheFile, charset))
@@ -252,7 +252,7 @@ public final class CachingXmlDataStore
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if an I/O error occurs
 	 */
-	private static boolean isEmpty(@javax.validation.constraints.NotNull File file, @javax.validation.constraints.NotNull Charset charset)
+	private static boolean isEmpty(@jakarta.validation.constraints.NotNull File file, @jakarta.validation.constraints.NotNull Charset charset)
 	{
 		try
 		{
@@ -297,7 +297,7 @@ public final class CachingXmlDataStore
 	 * @deprecated
 	 */
 	@Deprecated
-	public static CachingXmlDataStore createCachingXmlDataStore(@javax.validation.constraints.NotNull DataStore fallback)
+	public static CachingXmlDataStore createCachingXmlDataStore(@jakarta.validation.constraints.NotNull DataStore fallback)
 	{
 		return createCachingXmlDataStore(findOrCreateCacheFile(), fallback);
 	}
@@ -323,9 +323,9 @@ public final class CachingXmlDataStore
 	 * 		if no URL can be resolved to the given given file
 	 * @deprecated
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	@Deprecated
-	public static CachingXmlDataStore createCachingXmlDataStore(@javax.validation.constraints.NotNull File cacheFile, @javax.validation.constraints.NotNull DataStore fallback)
+	public static CachingXmlDataStore createCachingXmlDataStore(@jakarta.validation.constraints.NotNull File cacheFile, @jakarta.validation.constraints.NotNull DataStore fallback)
 	{
 		return createCachingXmlDataStore(cacheFile, UrlUtil.build(DEFAULT_DATA_URL), UrlUtil.build(DEFAULT_VERSION_URL), DEFAULT_CHARSET,
 		                                 fallback);
@@ -354,9 +354,9 @@ public final class CachingXmlDataStore
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the given cache file can not be read
 	 */
-	@javax.validation.constraints.NotNull
-	public static CachingXmlDataStore createCachingXmlDataStore(@javax.validation.constraints.NotNull URL dataUrl, @javax.validation.constraints.NotNull URL versionUrl,
-	                                                            @javax.validation.constraints.NotNull Charset charset, @javax.validation.constraints.NotNull DataStore fallback)
+	@jakarta.validation.constraints.NotNull
+	public static CachingXmlDataStore createCachingXmlDataStore(@jakarta.validation.constraints.NotNull URL dataUrl, @jakarta.validation.constraints.NotNull URL versionUrl,
+	                                                            @jakarta.validation.constraints.NotNull Charset charset, @jakarta.validation.constraints.NotNull DataStore fallback)
 	{
 		return createCachingXmlDataStore(findOrCreateCacheFile(), dataUrl, versionUrl, charset, fallback);
 	}

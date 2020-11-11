@@ -1,3 +1,3 @@
-package javax.jms.javadoc;
+package jakarta.jms.javadoc;
 
 public class JavaDocGenerator {}

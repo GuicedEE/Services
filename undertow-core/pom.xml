@@ -108,6 +108,16 @@
                                             </excludes>
                                         </filter>
                                     </filters>
+                                    <relocations>
+                                        <relocation>
+                                            <pattern>javax.servlet</pattern>
+                                            <shadedPattern>jakarta.servlet</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>javax.websocket</pattern>
+                                            <shadedPattern>jakarta.websocket</shadedPattern>
+                                        </relocation>
+                                    </relocations>
                                 </configuration>
                             </execution>
                         </executions>
@@ -163,6 +173,14 @@
                                         <relocation>
                                             <pattern>META-INF.versions.11.org</pattern>
                                             <shadedPattern>org</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>javax.servlet</pattern>
+                                            <shadedPattern>jakarta.servlet</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>javax.websocket</pattern>
+                                            <shadedPattern>jakarta.websocket</shadedPattern>
                                         </relocation>
                                     </relocations>
                                 </configuration>

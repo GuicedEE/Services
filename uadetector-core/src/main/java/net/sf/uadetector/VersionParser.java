@@ -72,7 +72,7 @@ final class VersionParser
 	 *
 	 * @return more accurately identified version number or {@code null}
 	 */
-	static VersionNumber identifyAndroidVersion(@javax.validation.constraints.NotNull String userAgent)
+	static VersionNumber identifyAndroidVersion(@jakarta.validation.constraints.NotNull String userAgent)
 	{
 		VersionNumber version = VersionNumber.UNKNOWN;
 		List<Pattern> patterns = new ArrayList<>();
@@ -300,7 +300,7 @@ final class VersionParser
 	 *
 	 * @return an object of {@code VersionNumber}, never {@code null}
 	 */
-	static VersionNumber parseFirstVersionNumber(@javax.validation.constraints.NotNull String text)
+	static VersionNumber parseFirstVersionNumber(@jakarta.validation.constraints.NotNull String text)
 	{
 		Check.notNull(text, "text");
 
@@ -328,7 +328,7 @@ final class VersionParser
 	 *
 	 * @return an object of {@code VersionNumber}, never {@code null}
 	 */
-	public static VersionNumber parseLastVersionNumber(@javax.validation.constraints.NotNull String text)
+	public static VersionNumber parseLastVersionNumber(@jakarta.validation.constraints.NotNull String text)
 	{
 		Check.notNull(text, "text");
 
@@ -355,7 +355,7 @@ final class VersionParser
 	 *
 	 * @return trimmed string
 	 */
-	private static String trimRight(@javax.validation.constraints.NotNull String text)
+	private static String trimRight(@jakarta.validation.constraints.NotNull String text)
 	{
 		return text.replaceAll("\\s+$", "");
 	}
@@ -370,7 +370,7 @@ final class VersionParser
 	 *
 	 * @return extracted version number
 	 */
-	public static VersionNumber parseOperatingSystemVersion(@javax.validation.constraints.NotNull OperatingSystemFamily family, @javax.validation.constraints.NotNull String userAgent)
+	public static VersionNumber parseOperatingSystemVersion(@jakarta.validation.constraints.NotNull OperatingSystemFamily family, @jakarta.validation.constraints.NotNull String userAgent)
 	{
 		Check.notNull(family, "family");
 		Check.notNull(userAgent, "userAgent");
@@ -427,7 +427,7 @@ final class VersionParser
 	 *
 	 * @return an object of {@code VersionNumber}, never {@code null}
 	 */
-	public static VersionNumber parseVersion(@javax.validation.constraints.NotNull String version)
+	public static VersionNumber parseVersion(@jakarta.validation.constraints.NotNull String version)
 	{
 		Check.notNull(version, "version");
 

@@ -49,7 +49,7 @@ public final class XmlDataHandler
 	 * Corresponding logger for this class
 	 */
 	private static final java.util.logging.Logger LOG = java.util.logging.Logger.getLogger(XmlDataHandler.class.toString());
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final DataBuilder dataBuilder;
 	private Browser.Builder browserBuilder = new Browser.Builder();
 	private Device.Builder deviceBuilder = new Device.Builder();
@@ -80,7 +80,7 @@ public final class XmlDataHandler
 	 */
 	private boolean warning = false;
 
-	public XmlDataHandler(@javax.validation.constraints.NotNull DataBuilder builder)
+	public XmlDataHandler(@jakarta.validation.constraints.NotNull DataBuilder builder)
 	{
 		Check.notNull(builder, "builder");
 
@@ -760,15 +760,15 @@ public final class XmlDataHandler
 		 */
 		VERSION("version");
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String tagName;
 
-		private Tag(@javax.validation.constraints.NotNull String tagName)
+		private Tag(@jakarta.validation.constraints.NotNull String tagName)
 		{
 			this.tagName = tagName;
 		}
 
-		public static Tag evaluate(@javax.validation.constraints.NotNull String tagName)
+		public static Tag evaluate(@jakarta.validation.constraints.NotNull String tagName)
 		{
 			Check.notNull(tagName, "tagName");
 
@@ -785,7 +785,7 @@ public final class XmlDataHandler
 			return result;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public String getTagName()
 		{
 			return tagName;

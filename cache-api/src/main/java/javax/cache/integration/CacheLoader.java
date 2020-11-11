@@ -14,14 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.integration;
+package jakarta.cache.integration;
 
-import javax.cache.configuration.CompleteConfiguration;
+import jakarta.cache.configuration.CompleteConfiguration;
 import java.util.Map;
 
 /**
  * Used when a cache is read-through or when loading data into a cache via the
- * {@link javax.cache.Cache#loadAll(java.util.Set, boolean,
+ * {@link jakarta.cache.Cache#loadAll(java.util.Set, boolean,
  * CompletionListener)} method.
  *
  * @param <K> the type of keys handled by this loader

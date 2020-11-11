@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.management;
+package jakarta.cache.management;
 
-import javax.cache.Cache;
-import javax.cache.integration.CacheLoader;
-import javax.cache.integration.CacheWriter;
+import jakarta.cache.Cache;
+import jakarta.cache.integration.CacheLoader;
+import jakarta.cache.integration.CacheWriter;
 import javax.management.MXBean;
 
 /**
@@ -29,7 +29,7 @@ import javax.management.MXBean;
  * unique and has the following type and attributes:
  * <p>
  * Type:
- * <code>javax.cache:type=CacheConfiguration</code>
+ * <code>jakarta.cache:type=CacheConfiguration</code>
  * <p>
  * Required Attributes:
  * <ul>

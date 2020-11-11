@@ -22,7 +22,7 @@ import com.google.inject.Module;
 import com.google.inject.internal.util.StackTraceElements;
 import com.google.inject.internal.util.StackTraceElements.InMemoryStackTraceElement;
 import java.util.List;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * Associated to a {@link Module module}, provides the module class name, the parent module {@link

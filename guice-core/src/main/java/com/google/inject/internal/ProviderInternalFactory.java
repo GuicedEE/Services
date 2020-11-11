@@ -20,8 +20,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.inject.internal.ProvisionListenerStackCallback.ProvisionCallback;
 import com.google.inject.spi.Dependency;
-import javax.inject.Provider;
-import javax.annotation.Nullable;
+import jakarta.inject.Provider;
+import jakarta.annotation.Nullable;
 
 /**
  * Base class for InternalFactories that are used by Providers, to handle circular dependencies.

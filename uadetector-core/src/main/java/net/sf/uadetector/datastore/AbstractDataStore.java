@@ -118,8 +118,8 @@ public abstract class AbstractDataStore
 	 * 		<p>
 	 * 		if one of the given arguments is {@code null}
 	 */
-	protected AbstractDataStore(@javax.validation.constraints.NotNull Data data, @javax.validation.constraints.NotNull DataReader reader, @javax.validation.constraints.NotNull URL dataUrl,
-	                            @javax.validation.constraints.NotNull URL versionUrl, @javax.validation.constraints.NotNull Charset charset)
+	protected AbstractDataStore(@jakarta.validation.constraints.NotNull Data data, @jakarta.validation.constraints.NotNull DataReader reader, @jakarta.validation.constraints.NotNull URL dataUrl,
+	                            @jakarta.validation.constraints.NotNull URL versionUrl, @jakarta.validation.constraints.NotNull Charset charset)
 	{
 		Check.notNull(data, "data");
 		Check.notNull(reader, "reader");
@@ -168,7 +168,7 @@ public abstract class AbstractDataStore
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	protected static final Data readData(@javax.validation.constraints.NotNull DataReader reader, @javax.validation.constraints.NotNull URL url, @javax.validation.constraints.NotNull Charset charset)
+	protected static final Data readData(@jakarta.validation.constraints.NotNull DataReader reader, @jakarta.validation.constraints.NotNull URL url, @jakarta.validation.constraints.NotNull Charset charset)
 	{
 		Check.notNull(reader, "reader");
 		Check.notNull(url, "url");

@@ -99,10 +99,10 @@ public enum UserAgentType
 	/**
 	 * Name of the user agent type
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
 
-	private UserAgentType(@javax.validation.constraints.NotNull String name)
+	private UserAgentType(@jakarta.validation.constraints.NotNull String name)
 	{
 		this.name = name;
 	}
@@ -119,7 +119,7 @@ public enum UserAgentType
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	public static UserAgentType evaluateByTypeName(@javax.validation.constraints.NotNull String typeName)
+	public static UserAgentType evaluateByTypeName(@jakarta.validation.constraints.NotNull String typeName)
 	{
 		Check.notNull(typeName, "typeName");
 
@@ -141,7 +141,7 @@ public enum UserAgentType
 	 *
 	 * @return name of the type
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getName()
 	{
 		return name;

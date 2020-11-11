@@ -1,3 +1,3 @@
-package javax.xml.soap.javadoc;
+package jakarta.xml.soap.javadoc;
 
 public class JavaDocGenerator {}

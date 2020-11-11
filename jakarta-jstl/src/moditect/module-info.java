@@ -1,5 +1,5 @@
-open module javax.servlet.jsp.jstl {
-	requires transitive javax.servlet.jsp;
+open module jakarta.servlet.jsp.jstl {
+	requires transitive jakarta.servlet.jsp;
 	requires java.xml;
 	requires static java.sql;
 
@@ -9,8 +9,8 @@ open module javax.servlet.jsp.jstl {
 	requires java.naming;
 	requires jdk.xml.dom;
 
-	exports javax.servlet.jsp.jstl.core;
-	exports javax.servlet.jsp.jstl.fmt;
-	exports javax.servlet.jsp.jstl.sql;
-	exports javax.servlet.jsp.jstl.tlv;
+	exports jakarta.servlet.jsp.jstl.core;
+	exports jakarta.servlet.jsp.jstl.fmt;
+	exports jakarta.servlet.jsp.jstl.sql;
+	exports jakarta.servlet.jsp.jstl.tlv;
 }

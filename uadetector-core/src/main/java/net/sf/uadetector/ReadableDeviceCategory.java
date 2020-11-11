@@ -26,7 +26,7 @@ public interface ReadableDeviceCategory
 	 *
 	 * @return enum value of a category
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	Category getCategory();
 
 	/**
@@ -34,7 +34,7 @@ public interface ReadableDeviceCategory
 	 *
 	 * @return icon of the category
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getIcon();
 
 	/**
@@ -42,7 +42,7 @@ public interface ReadableDeviceCategory
 	 *
 	 * @return information URL
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getInfoUrl();
 
 	/**
@@ -50,7 +50,7 @@ public interface ReadableDeviceCategory
 	 *
 	 * @return name of the category
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	String getName();
 
 	/**
@@ -119,10 +119,10 @@ public interface ReadableDeviceCategory
 		/**
 		 * Name of the device category
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private final String name;
 
-		private Category(@javax.validation.constraints.NotNull String name)
+		private Category(@jakarta.validation.constraints.NotNull String name)
 		{
 			this.name = name;
 		}
@@ -139,7 +139,7 @@ public interface ReadableDeviceCategory
 		 * 		<p>
 		 * 		if the given argument is {@code null}
 		 */
-		public static Category evaluate(@javax.validation.constraints.NotNull String categoryName)
+		public static Category evaluate(@jakarta.validation.constraints.NotNull String categoryName)
 		{
 			Check.notNull(categoryName, "categoryName");
 
@@ -161,7 +161,7 @@ public interface ReadableDeviceCategory
 		 *
 		 * @return name of the category
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public String getName()
 		{
 			return name;

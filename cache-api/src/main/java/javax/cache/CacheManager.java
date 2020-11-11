@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache;
+package jakarta.cache;
 
-import javax.cache.configuration.Configuration;
-import javax.cache.management.CacheMXBean;
-import javax.cache.spi.CachingProvider;
+import jakarta.cache.configuration.Configuration;
+import jakarta.cache.management.CacheMXBean;
+import jakarta.cache.spi.CachingProvider;
 import java.io.Closeable;
 import java.lang.management.ManagementFactory;
 import java.net.URI;
@@ -140,7 +140,7 @@ public interface CacheManager extends Closeable {
    * @param <C> the type of the Configuration
    * @param cacheName     the name of the {@link Cache}. Names should not use
    *                      forward slashes(/) or colons(:), or start with
-   *                      java. or javax. These prefixes are reserved.
+   *                      java. or jakarta. These prefixes are reserved.
    * @param configuration a {@link Configuration} for the {@link Cache}
    * @throws IllegalStateException         if the {@link CacheManager}
    *                                       {@link #isClosed()}
@@ -282,7 +282,7 @@ public interface CacheManager extends Closeable {
    * is unique and has the following type and attributes:
    * <p>
    * Type:
-   * <code>javax.cache:type=CacheConfiguration</code>
+   * <code>jakarta.cache:type=CacheConfiguration</code>
    * <p>
    * Required Attributes:
    * <ul>
@@ -307,7 +307,7 @@ public interface CacheManager extends Closeable {
    * is unique and has the following type and attributes:
    * <p>
    * Type:
-   * <code>javax.cache:type=CacheStatistics</code>
+   * <code>jakarta.cache:type=CacheStatistics</code>
    * <p>
    * Required Attributes:
    * <ul>

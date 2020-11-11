@@ -32,31 +32,31 @@ public final class Robot
 	 */
 	public static final String TYPENAME = "Robot";
 	private static final long serialVersionUID = -605392434061575985L;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final UserAgentFamily family;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String familyName;
 	private final int hash;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String icon;
 
 	private final int id;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String infoUrl;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String producer;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String producerUrl;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String userAgentString;
 
-	public Robot(int id, @javax.validation.constraints.NotNull String name, @javax.validation.constraints.NotNull UserAgentFamily family,
-	             @javax.validation.constraints.NotNull String familyName,
-	             @javax.validation.constraints.NotNull String infoUrl, @javax.validation.constraints.NotNull String producer,
-	             @javax.validation.constraints.NotNull String producerUrl,
-	             @javax.validation.constraints.NotNull String userAgentString, @javax.validation.constraints.NotNull String icon)
+	public Robot(int id, @jakarta.validation.constraints.NotNull String name, @jakarta.validation.constraints.NotNull UserAgentFamily family,
+	             @jakarta.validation.constraints.NotNull String familyName,
+	             @jakarta.validation.constraints.NotNull String infoUrl, @jakarta.validation.constraints.NotNull String producer,
+	             @jakarta.validation.constraints.NotNull String producerUrl,
+	             @jakarta.validation.constraints.NotNull String userAgentString, @jakarta.validation.constraints.NotNull String icon)
 	{
 		this.id = Check.notNegative(id, "id");
 		this.name = Check.notNull(name, "name");
@@ -71,11 +71,11 @@ public final class Robot
 	}
 
 	private static int buildHashCode(
-			int id, @javax.validation.constraints.NotNull String name, @javax.validation.constraints.NotNull UserAgentFamily family,
-			@javax.validation.constraints.NotNull String familyName,
-			@javax.validation.constraints.NotNull String infoUrl, @javax.validation.constraints.NotNull String producer,
-			@javax.validation.constraints.NotNull String producerUrl,
-			@javax.validation.constraints.NotNull String userAgentString, @javax.validation.constraints.NotNull String icon)
+			int id, @jakarta.validation.constraints.NotNull String name, @jakarta.validation.constraints.NotNull UserAgentFamily family,
+			@jakarta.validation.constraints.NotNull String familyName,
+			@jakarta.validation.constraints.NotNull String infoUrl, @jakarta.validation.constraints.NotNull String producer,
+			@jakarta.validation.constraints.NotNull String producerUrl,
+			@jakarta.validation.constraints.NotNull String userAgentString, @jakarta.validation.constraints.NotNull String icon)
 	{
 		int prime = 31;
 		int result = 1;
@@ -91,7 +91,7 @@ public final class Robot
 		return result;
 	}
 
-	public void copyTo(@javax.validation.constraints.NotNull UserAgent.Builder builder)
+	public void copyTo(@jakarta.validation.constraints.NotNull UserAgent.Builder builder)
 	{
 		builder.setFamily(family);
 		builder.setIcon(icon);
@@ -102,19 +102,19 @@ public final class Robot
 		builder.setType(UserAgentType.ROBOT);
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public UserAgentFamily getFamily()
 	{
 		return family;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getFamilyName()
 	{
 		return familyName;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getIcon()
 	{
 		return icon;
@@ -127,31 +127,31 @@ public final class Robot
 		return id;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getInfoUrl()
 	{
 		return infoUrl;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getName()
 	{
 		return name;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getProducer()
 	{
 		return producer;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getProducerUrl()
 	{
 		return producerUrl;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getUserAgentString()
 	{
 		return userAgentString;
@@ -246,30 +246,30 @@ public final class Robot
 
 		private static final String EMPTY = "";
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private UserAgentFamily family = UserAgentFamily.UNKNOWN;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String familyName = EMPTY;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String icon = EMPTY;
 
 		private int id = Integer.MIN_VALUE;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String infoUrl = EMPTY;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String name = EMPTY;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String producer = EMPTY;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String producerUrl = EMPTY;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String userAgentString = EMPTY;
 
 		public Builder()
@@ -277,7 +277,7 @@ public final class Robot
 			// default constructor
 		}
 
-		public Builder(@javax.validation.constraints.NotNull Robot robot)
+		public Builder(@jakarta.validation.constraints.NotNull Robot robot)
 		{
 			Check.notNull(robot, "robot");
 			id = Check.notNegative(robot.getId(), "robot.getId()");
@@ -291,71 +291,71 @@ public final class Robot
 			icon = Check.notNull(robot.getIcon(), "robot.getIcon()");
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Robot build()
 		{
 			return new Robot(id, name, family, familyName, infoUrl, producer, producerUrl, userAgentString, icon);
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setFamilyName(@javax.validation.constraints.NotNull String familyName)
+		@jakarta.validation.constraints.NotNull
+		public Builder setFamilyName(@jakarta.validation.constraints.NotNull String familyName)
 		{
 			this.familyName = Check.notNull(familyName, "familyName");
 			family = UserAgentFamily.evaluate(familyName);
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setIcon(@javax.validation.constraints.NotNull String icon)
+		@jakarta.validation.constraints.NotNull
+		public Builder setIcon(@jakarta.validation.constraints.NotNull String icon)
 		{
 			this.icon = Check.notNull(icon, "icon");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setId(int id)
 		{
 			this.id = Check.notNegative(id, "id");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setId(@javax.validation.constraints.NotNull String id)
+		@jakarta.validation.constraints.NotNull
+		public Builder setId(@jakarta.validation.constraints.NotNull String id)
 		{
 			this.id = Integer.parseInt(Check.notEmpty(id, "id"));
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setInfoUrl(@javax.validation.constraints.NotNull String infoUrl)
+		@jakarta.validation.constraints.NotNull
+		public Builder setInfoUrl(@jakarta.validation.constraints.NotNull String infoUrl)
 		{
 			this.infoUrl = Check.notNull(infoUrl, "infoUrl");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setName(@javax.validation.constraints.NotNull String name)
+		@jakarta.validation.constraints.NotNull
+		public Builder setName(@jakarta.validation.constraints.NotNull String name)
 		{
 			this.name = Check.notNull(name, "name");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setProducer(@javax.validation.constraints.NotNull String producer)
+		@jakarta.validation.constraints.NotNull
+		public Builder setProducer(@jakarta.validation.constraints.NotNull String producer)
 		{
 			this.producer = Check.notNull(producer, "producer");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setProducerUrl(@javax.validation.constraints.NotNull String producerUrl)
+		@jakarta.validation.constraints.NotNull
+		public Builder setProducerUrl(@jakarta.validation.constraints.NotNull String producerUrl)
 		{
 			this.producerUrl = Check.notNull(producerUrl, "producerUrl");
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setUserAgentString(@javax.validation.constraints.NotNull String userAgentString)
+		@jakarta.validation.constraints.NotNull
+		public Builder setUserAgentString(@jakarta.validation.constraints.NotNull String userAgentString)
 		{
 			this.userAgentString = Check.notNull(userAgentString, "userAgentString");
 			return this;

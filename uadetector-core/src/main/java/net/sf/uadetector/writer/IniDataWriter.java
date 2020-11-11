@@ -128,7 +128,7 @@ public final class IniDataWriter
 		}
 	}
 
-	private static void createCategory(@javax.validation.constraints.NotNull String category, @javax.validation.constraints.NotNull StringBuilder builder)
+	private static void createCategory(@jakarta.validation.constraints.NotNull String category, @jakarta.validation.constraints.NotNull StringBuilder builder)
 	{
 		builder.append(Char.SQUARE_BRACKET_OPEN);
 		builder.append(category);
@@ -136,7 +136,7 @@ public final class IniDataWriter
 		builder.append(Char.NEWLINE);
 	}
 
-	private static void createComment(@javax.validation.constraints.NotNull String comment, @javax.validation.constraints.NotNull StringBuilder builder)
+	private static void createComment(@jakarta.validation.constraints.NotNull String comment, @jakarta.validation.constraints.NotNull StringBuilder builder)
 	{
 		builder.append(Char.SEMICOLON);
 		builder.append(Char.WHITESPACE);
@@ -144,7 +144,7 @@ public final class IniDataWriter
 		builder.append(Char.NEWLINE);
 	}
 
-	private static void createDescription(@javax.validation.constraints.NotNull Data data, @javax.validation.constraints.NotNull StringBuilder builder)
+	private static void createDescription(@jakarta.validation.constraints.NotNull Data data, @jakarta.validation.constraints.NotNull StringBuilder builder)
 	{
 		createComment("Data (format ini) for UASparser - http://user-agent-string.info/download/UASparser", builder);
 		createComment("Version: " + data.getVersion(), builder);
@@ -197,13 +197,13 @@ public final class IniDataWriter
 		}
 	}
 
-	private static void createKeyValuePair(@javax.validation.constraints.NotNull Identifiable identifiable, @javax.validation.constraints.NotNull String value,
-	                                       @javax.validation.constraints.NotNull StringBuilder builder)
+	private static void createKeyValuePair(@jakarta.validation.constraints.NotNull Identifiable identifiable, @jakarta.validation.constraints.NotNull String value,
+	                                       @jakarta.validation.constraints.NotNull StringBuilder builder)
 	{
 		createKeyValuePair(identifiable.getId(), value, builder);
 	}
 
-	private static void createKeyValuePair(@javax.validation.constraints.NotNull int id, @javax.validation.constraints.NotNull String value, @javax.validation.constraints.NotNull StringBuilder builder)
+	private static void createKeyValuePair(@jakarta.validation.constraints.NotNull int id, @jakarta.validation.constraints.NotNull String value, @jakarta.validation.constraints.NotNull StringBuilder builder)
 	{
 		builder.append(id);
 		builder.append(Char.SQUARE_BRACKET_OPEN);
@@ -308,7 +308,7 @@ public final class IniDataWriter
 	 * @throws IOException
 	 * 		if the given output stream can not be written
 	 */
-	public static void write(@javax.validation.constraints.NotNull Data data, @javax.validation.constraints.NotNull OutputStream outputStream) throws IOException
+	public static void write(@jakarta.validation.constraints.NotNull Data data, @jakarta.validation.constraints.NotNull OutputStream outputStream) throws IOException
 	{
 		Check.notNull(data, "data");
 		Check.notNull(outputStream, "outputStream");

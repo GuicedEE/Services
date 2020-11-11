@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.processor;
+package jakarta.cache.processor;
 
-import javax.cache.CacheException;
+import jakarta.cache.CacheException;
 
 /**
  * A mechanism to represent and obtain the result of processing
- * a {@link javax.cache.Cache} entry using an {@link EntryProcessor}.
+ * a {@link jakarta.cache.Cache} entry using an {@link EntryProcessor}.
  *
  * @param <T> the type of the return value
  *

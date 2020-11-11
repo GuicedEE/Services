@@ -33,7 +33,7 @@ public class UserAgentStringParserImpl<T extends DataStore>
 	 * Storage for all detection informations for <i>UASparsers</i> from <a
 	 * href="http://user-agent-string.info/">http://user-agent-string.info</a>.
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final T store;
 
 	/**
@@ -45,7 +45,7 @@ public class UserAgentStringParserImpl<T extends DataStore>
 	 * 		<p>
 	 * 		if the given argument is {@code null}
 	 */
-	public UserAgentStringParserImpl(@javax.validation.constraints.NotNull T store)
+	public UserAgentStringParserImpl(@jakarta.validation.constraints.NotNull T store)
 	{
 		super();
 		Check.notNull(store, "store");
@@ -53,7 +53,7 @@ public class UserAgentStringParserImpl<T extends DataStore>
 		this.store = store;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	@Override
 	protected T getDataStore()
 	{

@@ -22,7 +22,7 @@ import org.jsr107.ri.annotations.AbstractCacheRemoveEntryInterceptor;
 import org.jsr107.ri.annotations.CacheContextSource;
 import org.jsr107.ri.annotations.InterceptorType;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 /**
  * @author Michael Stachel

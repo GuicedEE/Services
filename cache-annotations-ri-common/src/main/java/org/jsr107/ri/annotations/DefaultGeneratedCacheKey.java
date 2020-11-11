@@ -17,7 +17,7 @@
 
 package org.jsr107.ri.annotations;
 
-import javax.cache.annotation.GeneratedCacheKey;
+import jakarta.cache.annotation.GeneratedCacheKey;
 import java.util.Arrays;
 
 /**

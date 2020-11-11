@@ -42,27 +42,27 @@ import com.sun.faces.context.flash.FlashELResolver;
 import com.sun.faces.mgbean.BeanManager;
 import com.sun.faces.util.MessageUtils;
 
-import javax.el.ArrayELResolver;
-import javax.el.BeanELResolver;
-import javax.el.CompositeELResolver;
-import javax.el.ELContext;
-import javax.el.ELResolver;
-import javax.el.ExpressionFactory;
-import javax.el.ListELResolver;
-import javax.el.MapELResolver;
-import javax.el.ResourceBundleELResolver;
-import javax.el.ValueExpression;
-import javax.faces.FacesException;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.el.EvaluationException;
-import javax.faces.el.PropertyResolver;
-import javax.faces.el.ReferenceSyntaxException;
-import javax.faces.el.VariableResolver;
-import javax.servlet.ServletContext;
-import javax.servlet.jsp.JspApplicationContext;
-import javax.servlet.jsp.JspFactory;
+import jakarta.el.ArrayELResolver;
+import jakarta.el.BeanELResolver;
+import jakarta.el.CompositeELResolver;
+import jakarta.el.ELContext;
+import jakarta.el.ELResolver;
+import jakarta.el.ExpressionFactory;
+import jakarta.el.ListELResolver;
+import jakarta.el.MapELResolver;
+import jakarta.el.ResourceBundleELResolver;
+import jakarta.el.ValueExpression;
+import jakarta.faces.FacesException;
+import jakarta.faces.component.UIViewRoot;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.el.EvaluationException;
+import jakarta.faces.el.PropertyResolver;
+import jakarta.faces.el.ReferenceSyntaxException;
+import jakarta.faces.el.VariableResolver;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.jsp.JspApplicationContext;
+import jakarta.servlet.jsp.JspFactory;
 
 /**
  * <p>
@@ -253,12 +253,12 @@ public class ELUtils {
     private static boolean tryAddCDIELResolver(FacesCompositeELResolver composite) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
 
-        javax.enterprise.inject.spi.BeanManager beanManager = getCdiBeanManager(facesContext);
+        jakarta.enterprise.inject.spi.BeanManager beanManager = null;// getCdiBeanManager(facesContext);
 
         if (beanManager == null) {
             // TODO: use version enum and >=
             if (getFacesConfigXmlVersion(facesContext).equals("2.3") || getWebXmlVersion(facesContext).equals("4.0")) {
-                throw new FacesException("Unable to find CDI BeanManager");
+             //   throw new FacesException("Unable to find CDI BeanManager");
             }
         } else {
             CdiExtension cdiExtension = getBeanReference(beanManager, CdiExtension.class);
@@ -283,8 +283,8 @@ public class ELUtils {
                     composite.addRootELResolver(streamELResolver);
 
                     // Assume that if we have getStreamELResolver, then we must have
-                    // javax.el.staticFieldELResolver
-                    composite.addRootELResolver((ELResolver) newInstance("javax.el.StaticFieldELResolver"));
+                    // jakarta.el.staticFieldELResolver
+                    composite.addRootELResolver((ELResolver) newInstance("jakarta.el.StaticFieldELResolver"));
                 }
             } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException t) {
                 // This is normal on containers that do not have these ELResolvers
@@ -304,7 +304,7 @@ public class ELUtils {
      * @param associate the <code>ApplicationAssociate</code>
      * @param provideDefault whether or not to return a <code>DummpyPropertyResolverImpl</code>
      * @return the <code>PropertyResolver</code>s set via
-     * {@link javax.faces.application.Application#setPropertyResolver(javax.faces.el.PropertyResolver)} or, if that is
+     * {@link jakarta.faces.application.Application#setPropertyResolver(jakarta.faces.el.PropertyResolver)} or, if that is
      * <code>null</code>, return the <code>PropertyResolver</code> chain from the parsed configuration resources. If either
      * of those are null, and <code>provideDefault</code> is <code>true</code>, return the
      * <code>DummyPropertyResolverImpl</code>.
@@ -328,7 +328,7 @@ public class ELUtils {
      * @param associate the <code>ApplicationAssociate</code>
      * @param provideDefault whether or not to return a <code>DummpyPropertyResolverImpl</code>
      * @return the <code>VariableResolver</code>s set via
-     * {@link javax.faces.application.Application#setVariableResolver(javax.faces.el.VariableResolver)} or, if that is
+     * {@link jakarta.faces.application.Application#setVariableResolver(jakarta.faces.el.VariableResolver)} or, if that is
      * <code>null</code>, return the <code>VariableResolver</code> chain from the parsed configuration resources. If either
      * of those are null, , and <code>provideDefault</code> is <code>true</code>, return the
      * <code>ChainAwareVariableResolver</code>.

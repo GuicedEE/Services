@@ -14,19 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache;
+package jakarta.cache;
 
-import javax.cache.configuration.CacheEntryListenerConfiguration;
-import javax.cache.configuration.Configuration;
-import javax.cache.event.CacheEntryListener;
-import javax.cache.event.CacheEntryRemovedListener;
-import javax.cache.expiry.ExpiryPolicy;
-import javax.cache.integration.CacheLoader;
-import javax.cache.integration.CacheWriter;
-import javax.cache.integration.CompletionListener;
-import javax.cache.processor.EntryProcessor;
-import javax.cache.processor.EntryProcessorException;
-import javax.cache.processor.EntryProcessorResult;
+import jakarta.cache.configuration.CacheEntryListenerConfiguration;
+import jakarta.cache.configuration.Configuration;
+import jakarta.cache.event.CacheEntryListener;
+import jakarta.cache.event.CacheEntryRemovedListener;
+import jakarta.cache.expiry.ExpiryPolicy;
+import jakarta.cache.integration.CacheLoader;
+import jakarta.cache.integration.CacheWriter;
+import jakarta.cache.integration.CompletionListener;
+import jakarta.cache.processor.EntryProcessor;
+import jakarta.cache.processor.EntryProcessorException;
+import jakarta.cache.processor.EntryProcessorResult;
 import java.io.Closeable;
 import java.util.Iterator;
 import java.util.Map;
@@ -570,7 +570,7 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
      * @param <C> the type of the Configuration
      * @param clazz the configuration interface or class to return. This includes
      *              {@link Configuration}.class and
-     *              {@link javax.cache.configuration.CompleteConfiguration}s.
+     *              {@link jakarta.cache.configuration.CompleteConfiguration}s.
      * @return the requested implementation of {@link Configuration}
      * @throws IllegalArgumentException if the caching provider doesn't support
      *                                  the specified class.
@@ -618,7 +618,7 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
      * {@link Map} of {@link EntryProcessorResult}s, one result per key.  Should the
      * {@link EntryProcessor} or Caching implementation throw an exception, the
      * exception is wrapped and re-thrown when a call to
-     * {@link javax.cache.processor.EntryProcessorResult#get()} is made.
+     * {@link jakarta.cache.processor.EntryProcessorResult#get()} is made.
      *
      * @param <T>            the type of the return value
      * @param keys           the set of keys for entries to process

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.annotation;
+package jakarta.cache.annotation;
 
 import java.lang.annotation.Annotation;
 
@@ -24,7 +24,7 @@ import java.lang.annotation.Annotation;
  * or {@link CacheRemoveAll}
  * <p>
  * Used with {@link CacheResolver#resolveCache(CacheInvocationContext)} to
- * determine the {@link javax.cache.Cache} to use at runtime for the method
+ * determine the {@link jakarta.cache.Cache} to use at runtime for the method
  * invocation.
  *
  * @param <A> The type of annotation this context information is for. One of
@@ -54,7 +54,7 @@ public interface CacheInvocationContext<A extends Annotation>
    * implementation does not support the specified class, the {@link
    * IllegalArgumentException} is thrown.
    *
-   * @param <T> The type of the expected underlying {@link javax.cache.Cache} implementation.
+   * @param <T> The type of the expected underlying {@link jakarta.cache.Cache} implementation.
    * @param cls the class of the object to be returned. This is normally either the
    *            underlying implementation class or an interface that it implements.
    * @return an instance of the specified class

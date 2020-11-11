@@ -1,5 +1,6 @@
 module org.apache.xmlbeans {
-	requires transitive java.xml;
+
+	requires java.xml;
 	requires static jdk.javadoc;
 
 	exports org.apache.xmlbeans;

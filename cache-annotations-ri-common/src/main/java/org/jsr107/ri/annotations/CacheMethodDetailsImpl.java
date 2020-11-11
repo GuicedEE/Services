@@ -16,19 +16,19 @@
  */
 package org.jsr107.ri.annotations;
 
-import javax.cache.annotation.CacheMethodDetails;
+import jakarta.cache.annotation.CacheMethodDetails;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Set;
 
 
 /**
- * Static details about the annotated method, used with {@link javax.cache.annotation.CacheResolverFactory} to
- * find the {@link javax.cache.annotation.CacheResolver};
+ * Static details about the annotated method, used with {@link jakarta.cache.annotation.CacheResolverFactory} to
+ * find the {@link jakarta.cache.annotation.CacheResolver};
  *
- * @param <A> The type of annotation this context information is for. One of {@link javax.cache.annotation.CacheResult},
- *            {@link javax.cache.annotation.CachePut}, {@link javax.cache.annotation.CacheRemove}, or
- *            {@link javax.cache.annotation.CacheRemoveAll}.
+ * @param <A> The type of annotation this context information is for. One of {@link jakarta.cache.annotation.CacheResult},
+ *            {@link jakarta.cache.annotation.CachePut}, {@link jakarta.cache.annotation.CacheRemove}, or
+ *            {@link jakarta.cache.annotation.CacheRemoveAll}.
  * @author Eric Dalquist
  * @since 1.0
  */
@@ -69,7 +69,7 @@ public class CacheMethodDetailsImpl<A extends Annotation> implements CacheMethod
 
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheMethodDetails#getMethod()
+   * @see jakarta.cache.annotation.CacheMethodDetails#getMethod()
    */
   @Override
   public Method getMethod() {
@@ -77,7 +77,7 @@ public class CacheMethodDetailsImpl<A extends Annotation> implements CacheMethod
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheMethodDetails#getAnnotations()
+   * @see jakarta.cache.annotation.CacheMethodDetails#getAnnotations()
    */
   @Override
   public Set<Annotation> getAnnotations() {
@@ -85,7 +85,7 @@ public class CacheMethodDetailsImpl<A extends Annotation> implements CacheMethod
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheMethodDetails#getCacheAnnotation()
+   * @see jakarta.cache.annotation.CacheMethodDetails#getCacheAnnotation()
    */
   @Override
   public A getCacheAnnotation() {
@@ -93,7 +93,7 @@ public class CacheMethodDetailsImpl<A extends Annotation> implements CacheMethod
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheMethodDetails#getCacheName()
+   * @see jakarta.cache.annotation.CacheMethodDetails#getCacheName()
    */
   @Override
   public String getCacheName() {

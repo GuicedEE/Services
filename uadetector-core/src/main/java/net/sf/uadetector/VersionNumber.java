@@ -70,12 +70,12 @@ public final class VersionNumber
 	/**
 	 * Extension or suffix of the version number consisting of alphanumeric and special characters
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String extension;
 	/**
 	 * Groups, segments or categories of the version number
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final List<String> groups;
 
 	/**
@@ -90,7 +90,7 @@ public final class VersionNumber
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if one of the segments of the version number is smaller than 0 and not empty
 	 */
-	public VersionNumber(@javax.validation.constraints.NotNull List<String> groups)
+	public VersionNumber(@jakarta.validation.constraints.NotNull List<String> groups)
 	{
 		this(groups, EMPTY_EXTENSION);
 	}
@@ -110,7 +110,7 @@ public final class VersionNumber
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if one of the groups of the version number is not empty or a positive number
 	 */
-	public VersionNumber(@javax.validation.constraints.NotNull List<String> groups, @javax.validation.constraints.NotNull String extension)
+	public VersionNumber(@jakarta.validation.constraints.NotNull List<String> groups, @jakarta.validation.constraints.NotNull String extension)
 	{
 		Check.notNull(groups, "groups");
 		Check.notNull(extension, "extension");
@@ -138,7 +138,7 @@ public final class VersionNumber
 	 *
 	 * @return a new list of groups without {@code null} values
 	 */
-	public static List<String> replaceNullValueWithEmptyGroup(@javax.validation.constraints.NotNull List<String> groups)
+	public static List<String> replaceNullValueWithEmptyGroup(@jakarta.validation.constraints.NotNull List<String> groups)
 	{
 		Check.notNull(groups, "groups");
 
@@ -187,7 +187,7 @@ public final class VersionNumber
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the major segment is smaller than 0 and not empty
 	 */
-	public VersionNumber(@javax.validation.constraints.NotNull String major)
+	public VersionNumber(@jakarta.validation.constraints.NotNull String major)
 	{
 		this(Check.notNull(major, "major"), EMPTY_GROUP);
 	}
@@ -206,7 +206,7 @@ public final class VersionNumber
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the major or minor segment is smaller than 0 and not empty
 	 */
-	public VersionNumber(@javax.validation.constraints.NotNull String major, @javax.validation.constraints.NotNull String minor)
+	public VersionNumber(@jakarta.validation.constraints.NotNull String major, @jakarta.validation.constraints.NotNull String minor)
 	{
 		this(Check.notNull(major, "major"), Check.notNull(minor, "minor"), EMPTY_GROUP);
 	}
@@ -227,7 +227,7 @@ public final class VersionNumber
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the major, minor or bugfix segment is smaller than 0 and not empty
 	 */
-	public VersionNumber(@javax.validation.constraints.NotNull String major, @javax.validation.constraints.NotNull String minor, @javax.validation.constraints.NotNull String bugfix)
+	public VersionNumber(@jakarta.validation.constraints.NotNull String major, @jakarta.validation.constraints.NotNull String minor, @jakarta.validation.constraints.NotNull String bugfix)
 	{
 		this(Check.notNull(major, "major"), Check.notNull(minor, "minor"), Check.notNull(bugfix, "bugfix"), EMPTY_EXTENSION);
 	}
@@ -250,8 +250,8 @@ public final class VersionNumber
 	 * @throws net.sf.uadetector.exception.IllegalStateOfArgumentException
 	 * 		if the major, minor or bugfix segment is smaller than 0 and not empty
 	 */
-	public VersionNumber(@javax.validation.constraints.NotNull String major, @javax.validation.constraints.NotNull String minor, @javax.validation.constraints.NotNull String bugfix,
-	                     @javax.validation.constraints.NotNull String extension)
+	public VersionNumber(@jakarta.validation.constraints.NotNull String major, @jakarta.validation.constraints.NotNull String minor, @jakarta.validation.constraints.NotNull String bugfix,
+	                     @jakarta.validation.constraints.NotNull String extension)
 	{
 		this(Arrays.asList(Check.notNull(major, "major"), Check.notNull(minor, "minor"), Check.notNull(bugfix, "bugfix")), Check.notNull(
 				extension, "extension"));
@@ -266,7 +266,7 @@ public final class VersionNumber
 	 *
 	 * @return an object of {@code VersionNumber}, never {@code null}
 	 */
-	public static VersionNumber parseLastVersionNumber(@javax.validation.constraints.NotNull String text)
+	public static VersionNumber parseLastVersionNumber(@jakarta.validation.constraints.NotNull String text)
 	{
 		return VersionParser.parseLastVersionNumber(Check.notNull(text, "text"));
 	}
@@ -281,7 +281,7 @@ public final class VersionNumber
 	 *
 	 * @return extracted version number
 	 */
-	public static VersionNumber parseOperatingSystemVersion(@javax.validation.constraints.NotNull OperatingSystemFamily family, @javax.validation.constraints.NotNull String userAgent)
+	public static VersionNumber parseOperatingSystemVersion(@jakarta.validation.constraints.NotNull OperatingSystemFamily family, @jakarta.validation.constraints.NotNull String userAgent)
 	{
 		Check.notNull(family, "family");
 		Check.notNull(userAgent, "userAgent");
@@ -296,7 +296,7 @@ public final class VersionNumber
 	 *
 	 * @return an object of {@code VersionNumber}, never {@code null}
 	 */
-	public static VersionNumber parseVersion(@javax.validation.constraints.NotNull String version)
+	public static VersionNumber parseVersion(@jakarta.validation.constraints.NotNull String version)
 	{
 		return VersionParser.parseVersion(Check.notNull(version, "version"));
 	}
@@ -353,7 +353,7 @@ public final class VersionNumber
 	 *
 	 * @return a formated version string
 	 */
-	private static String toVersionString(@javax.validation.constraints.NotNull List<String> groups)
+	private static String toVersionString(@jakarta.validation.constraints.NotNull List<String> groups)
 	{
 		StringBuilder builder = new StringBuilder(6);
 		int count = 0;
@@ -433,7 +433,7 @@ public final class VersionNumber
 	 *
 	 * @return numeric groups as dot separated version number string
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	@Override
 	public String toVersionString()
 	{
@@ -487,7 +487,7 @@ public final class VersionNumber
 	 *
 	 * @return a string representation of this version number
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	@Override
 	public String toString()
 	{

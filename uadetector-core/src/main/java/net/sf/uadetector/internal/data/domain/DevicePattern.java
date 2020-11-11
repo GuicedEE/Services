@@ -42,7 +42,7 @@ public final class DevicePattern
 	/**
 	 * A compiled representation of a regular expression to detect a device
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Pattern pattern;
 	/**
 	 * Position of a {@code DevicePattern} (only relevant if there are multiple patterns for a device in a
@@ -51,7 +51,7 @@ public final class DevicePattern
 
 	private final int position;
 
-	public DevicePattern(int id, @javax.validation.constraints.NotNull Pattern pattern, int position)
+	public DevicePattern(int id, @jakarta.validation.constraints.NotNull Pattern pattern, int position)
 	{
 		Check.notNegative(id, "id");
 		Check.notNull(pattern, "pattern");
@@ -241,7 +241,7 @@ public final class DevicePattern
 		 * 		<p>
 		 * 		if one of the needed arguments to build an instance of {@code DevicePattern} is invalid
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public DevicePattern build()
 		{
 			return new DevicePattern(id, pattern, position);
@@ -264,8 +264,8 @@ public final class DevicePattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the parsed integer is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setId(@javax.validation.constraints.NotNull String id)
+		@jakarta.validation.constraints.NotNull
+		public Builder setId(@jakarta.validation.constraints.NotNull String id)
 		{
 			Check.notEmpty(id, "id");
 
@@ -284,7 +284,7 @@ public final class DevicePattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the given integer is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setId(int id)
 		{
 			Check.notNegative(id, "id");
@@ -301,8 +301,8 @@ public final class DevicePattern
 		 *
 		 * @return this {@code Builder}, for chaining
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setPerlRegularExpression(@javax.validation.constraints.NotNull String regex)
+		@jakarta.validation.constraints.NotNull
+		public Builder setPerlRegularExpression(@jakarta.validation.constraints.NotNull String regex)
 		{
 			Check.notEmpty(regex, "regex");
 
@@ -318,8 +318,8 @@ public final class DevicePattern
 		 *
 		 * @return this {@code Builder}, for chaining
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setPattern(@javax.validation.constraints.NotNull Pattern pattern)
+		@jakarta.validation.constraints.NotNull
+		public Builder setPattern(@jakarta.validation.constraints.NotNull Pattern pattern)
 		{
 			Check.notNull(pattern, "pattern");
 
@@ -344,8 +344,8 @@ public final class DevicePattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the parsed integer is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setPosition(@javax.validation.constraints.NotNull String position)
+		@jakarta.validation.constraints.NotNull
+		public Builder setPosition(@jakarta.validation.constraints.NotNull String position)
 		{
 			Check.notEmpty(position, "position");
 
@@ -364,7 +364,7 @@ public final class DevicePattern
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the given integer is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setPosition(int position)
 		{
 			Check.notNegative(position, "position");

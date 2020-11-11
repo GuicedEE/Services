@@ -14,15 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.configuration;
+package jakarta.cache.configuration;
 
-import javax.cache.Cache;
-import javax.cache.CacheManager;
-import javax.cache.event.CacheEntryListener;
-import javax.cache.expiry.EternalExpiryPolicy;
-import javax.cache.expiry.ExpiryPolicy;
-import javax.cache.integration.CacheLoader;
-import javax.cache.integration.CacheWriter;
+import jakarta.cache.Cache;
+import jakarta.cache.CacheManager;
+import jakarta.cache.event.CacheEntryListener;
+import jakarta.cache.expiry.EternalExpiryPolicy;
+import jakarta.cache.expiry.ExpiryPolicy;
+import jakarta.cache.integration.CacheLoader;
+import jakarta.cache.integration.CacheWriter;
 import java.util.HashSet;
 
 /**

@@ -30,22 +30,22 @@ public final class Device
 
 	private static final long serialVersionUID = 1L;
 	private final int hash;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String icon;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final Category category;
 
 	private final int id;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String infoUrl;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final String name;
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	private final SortedSet<DevicePattern> patterns;
 
-	public Device(@javax.validation.constraints.NotNull String name,
-	              int id, @javax.validation.constraints.NotNull Category category, @javax.validation.constraints.NotNull String icon,
-	              @javax.validation.constraints.NotNull String infoUrl, @javax.validation.constraints.NotNull SortedSet<DevicePattern> patterns)
+	public Device(@jakarta.validation.constraints.NotNull String name,
+	              int id, @jakarta.validation.constraints.NotNull Category category, @jakarta.validation.constraints.NotNull String icon,
+	              @jakarta.validation.constraints.NotNull String infoUrl, @jakarta.validation.constraints.NotNull SortedSet<DevicePattern> patterns)
 	{
 		this.category = category;
 		this.icon = Check.notNull(icon, "icon");
@@ -56,8 +56,8 @@ public final class Device
 		hash = buildHashCode(category, icon, id, infoUrl, name, patterns);
 	}
 
-	private static int buildHashCode(@javax.validation.constraints.NotNull Category category, @javax.validation.constraints.NotNull String icon, int id,
-	                                 @javax.validation.constraints.NotNull String infoUrl, @javax.validation.constraints.NotNull String name, @javax.validation.constraints.NotNull SortedSet<DevicePattern> patterns)
+	private static int buildHashCode(@jakarta.validation.constraints.NotNull Category category, @jakarta.validation.constraints.NotNull String icon, int id,
+	                                 @jakarta.validation.constraints.NotNull String infoUrl, @jakarta.validation.constraints.NotNull String name, @jakarta.validation.constraints.NotNull SortedSet<DevicePattern> patterns)
 	{
 		int prime = 31;
 		int result = 1;
@@ -70,13 +70,13 @@ public final class Device
 		return result;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public Category getCategory()
 	{
 		return category;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getIcon()
 	{
 		return icon;
@@ -89,19 +89,19 @@ public final class Device
 		return id;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getInfoUrl()
 	{
 		return infoUrl;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public String getName()
 	{
 		return name;
 	}
 
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	public SortedSet<DevicePattern> getPatterns()
 	{
 		return patterns;
@@ -164,17 +164,17 @@ public final class Device
 
 		private static final String EMPTY = "";
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String icon = EMPTY;
 
 		private int id = Integer.MIN_VALUE;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private String infoUrl = EMPTY;
 
 		private String name;
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		private SortedSet<DevicePattern> patterns = new TreeSet<>();
 
 		public Builder()
@@ -191,7 +191,7 @@ public final class Device
 		 * 		<p>
 		 * 		if the given argument is {@code null}
 		 */
-		private Builder(@javax.validation.constraints.NotNull Builder builder)
+		private Builder(@jakarta.validation.constraints.NotNull Builder builder)
 		{
 			Check.notNull(builder, "builder");
 
@@ -201,7 +201,7 @@ public final class Device
 			name = builder.name;
 		}
 
-		public Builder(@javax.validation.constraints.NotNull Device device)
+		public Builder(@jakarta.validation.constraints.NotNull Device device)
 		{
 			Check.notNull(device, "device");
 			icon = Check.notNull(device.getIcon(), "device.getIcon()");
@@ -211,7 +211,7 @@ public final class Device
 			patterns = new TreeSet<>(Check.notNull(device.getPatterns(), "device.getPatterns()"));
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Device build()
 		{
 			return new Device(name, id, Category.evaluate(name), icon, infoUrl, patterns);
@@ -222,7 +222,7 @@ public final class Device
 		 *
 		 * @return a new instance of the current builder, never {@code null}
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder copy()
 		{
 			return new Builder(this);
@@ -233,8 +233,8 @@ public final class Device
 			return icon;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setIcon(@javax.validation.constraints.NotNull String icon)
+		@jakarta.validation.constraints.NotNull
+		public Builder setIcon(@jakarta.validation.constraints.NotNull String icon)
 		{
 			this.icon = Check.notNull(icon, "icon");
 			return this;
@@ -245,14 +245,14 @@ public final class Device
 			return id;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setId(@javax.validation.constraints.NotNull String id)
+		@jakarta.validation.constraints.NotNull
+		public Builder setId(@jakarta.validation.constraints.NotNull String id)
 		{
 			setId(Integer.parseInt(Check.notEmpty(id, "id")));
 			return this;
 		}
 
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setId(int id)
 		{
 			this.id = Check.notNegative(id, "id");
@@ -264,8 +264,8 @@ public final class Device
 			return infoUrl;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setInfoUrl(@javax.validation.constraints.NotNull String infoUrl)
+		@jakarta.validation.constraints.NotNull
+		public Builder setInfoUrl(@jakarta.validation.constraints.NotNull String infoUrl)
 		{
 			this.infoUrl = Check.notNull(infoUrl, "infoUrl");
 			return this;
@@ -276,8 +276,8 @@ public final class Device
 			return name;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setName(@javax.validation.constraints.NotNull String name)
+		@jakarta.validation.constraints.NotNull
+		public Builder setName(@jakarta.validation.constraints.NotNull String name)
 		{
 			this.name = Check.notNull(name, "name");
 			return this;
@@ -288,8 +288,8 @@ public final class Device
 			return patterns;
 		}
 
-		@javax.validation.constraints.NotNull
-		public Builder setPatterns(@javax.validation.constraints.NotNull SortedSet<DevicePattern> patterns)
+		@jakarta.validation.constraints.NotNull
+		public Builder setPatterns(@jakarta.validation.constraints.NotNull SortedSet<DevicePattern> patterns)
 		{
 			this.patterns = new TreeSet<>(Check.notNull(patterns, "patterns"));
 			return this;

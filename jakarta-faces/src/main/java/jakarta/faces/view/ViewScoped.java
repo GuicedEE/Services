@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package javax.faces.view;
+package jakarta.faces.view;
 
 import com.google.inject.ScopeAnnotation;
 
@@ -25,13 +25,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.enterprise.context.NormalScope;
+import jakarta.enterprise.context.NormalScope;
 
 /**
  * <p class="changed_added_2_2">
  * When this annotation, along with {@code
- * javax.inject.Named} is found on a class, the runtime must place the bean in a CDI scope such that it remains active
- * as long as {@link javax.faces.application.NavigationHandler#handleNavigation} does not cause a navigation to a view
+ * jakarta.inject.Named} is found on a class, the runtime must place the bean in a CDI scope such that it remains active
+ * as long as {@link jakarta.faces.application.NavigationHandler#handleNavigation} does not cause a navigation to a view
  * with a viewId that is different than the viewId of the current view. Any injections and notifications required by CDI
  * and the javax EE platform must occur as usual at the expected time.
  * </p>
@@ -40,7 +40,7 @@ import javax.enterprise.context.NormalScope;
  *
  * <p>
  * If <code>ProjectStage</code> is not <code>ProjectStage.Production</code>, verify that the current
- * {@link javax.faces.component.UIViewRoot} does not have its {@code transient} property set to {@code true}. If so,
+ * {@link jakarta.faces.component.UIViewRoot} does not have its {@code transient} property set to {@code true}. If so,
  * add a <code>FacesMessage</code> for the current {@code viewId} to the <code>FacesContext</code> stating
  * {@code @ViewScoped} beans cannot work if the view is marked as transient. Also log a <code>Level.WARNING</code>
  * message to the log. If <code>ProjectStage</code> <strong>is</strong> <code>ProjectStage.Production</code>, do not do
@@ -48,7 +48,7 @@ import javax.enterprise.context.NormalScope;
  * </p>
  *
  * <p>
- * The bean must be stored in the map returned from {@link javax.faces.component.UIViewRoot#getViewMap(boolean)}.
+ * The bean must be stored in the map returned from {@link jakarta.faces.component.UIViewRoot#getViewMap(boolean)}.
  * </p>
  *
  * <p>
@@ -65,7 +65,7 @@ import javax.enterprise.context.NormalScope;
  *
  * <li>
  * <p>
- * {@link javax.faces.context.FacesContext#setViewRoot} is called with the new {@code UIViewRoot} being different than
+ * {@link jakarta.faces.context.FacesContext#setViewRoot} is called with the new {@code UIViewRoot} being different than
  * the current one.
  * </p>
  * </li>
@@ -81,13 +81,13 @@ import javax.enterprise.context.NormalScope;
  *
  * <p>
  * In the session expiration case, the runtime must ensure that
- * {@link javax.faces.context.FacesContext#getCurrentInstance} returns a valid instance if it is called during the
+ * {@link jakarta.faces.context.FacesContext#getCurrentInstance} returns a valid instance if it is called during the
  * processing of the {@code @PreDestroy} annotated method. The set of methods on {@code
  * FacesContext} that are valid to call in this circumstance is identical to those documented as "valid to call this
- * method during application startup or shutdown". On the {@link javax.faces.context.ExternalContext} returned from
+ * method during application startup or shutdown". On the {@link jakarta.faces.context.ExternalContext} returned from
  * that {@code
  * FacesContext}, all of the methods documented as "valid to call this method during application startup or shutdown"
- * are valid to call. In addition, the method {@link javax.faces.context.ExternalContext#getSessionMap} is also valid
+ * are valid to call. In addition, the method {@link jakarta.faces.context.ExternalContext#getSessionMap} is also valid
  * to call.
  * </p>
  *

@@ -34,8 +34,8 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
             <optional>true</optional>
         </dependency>
 
@@ -58,22 +58,13 @@
                             <artifactSet>
                                 <includes>
                                     <include>jakarta.activation</include>
-                                    <include>javax.activation</include>
+                                    <include>com.sun.activation</include>
                                 </includes>
                             </artifactSet>
-                            <relocations>
-                                <relocation>
-                                    <pattern>jakarta</pattern>
-                                    <shadedPattern>javax</shadedPattern>
-                                </relocation>
-                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
-
             </plugin>
-
-
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>

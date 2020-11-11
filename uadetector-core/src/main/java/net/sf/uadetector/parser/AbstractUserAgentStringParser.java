@@ -218,7 +218,7 @@ public abstract class AbstractUserAgentStringParser
 		builder.setDeviceCategory(category);
 	}
 
-	private static DeviceCategory findDeviceCategoryByValue(@javax.validation.constraints.NotNull Category category, @javax.validation.constraints.NotNull Data data)
+	private static DeviceCategory findDeviceCategoryByValue(@jakarta.validation.constraints.NotNull Category category, @jakarta.validation.constraints.NotNull Data data)
 	{
 		for (Device device : data.getDevices())
 		{

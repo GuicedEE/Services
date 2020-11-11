@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package javax.cache.event;
+package jakarta.cache.event;
 
-import javax.cache.CacheException;
+import jakarta.cache.CacheException;
 
 /**
  * An exception to indicate a problem has occurred with a listener.

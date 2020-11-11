@@ -1,7 +1,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-        <parent>
+    <parent>
         <groupId>com.guicedee.services</groupId>
         <artifactId>services-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
@@ -49,13 +49,13 @@
             <artifactId>slf4j</artifactId>
         </dependency>
 
-<!--
+        <!--
 
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>ehcache</artifactId>
-        </dependency>
--->
+                <dependency>
+                    <groupId>com.guicedee.services</groupId>
+                    <artifactId>ehcache</artifactId>
+                </dependency>
+        -->
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
@@ -78,7 +78,7 @@
             <optional>true</optional>
         </dependency>
 
-       <dependency>
+        <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-tools-validator</artifactId>
             <optional>true</optional>
@@ -179,11 +179,13 @@
             <artifactId>httpcore-nio</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.opensaml</groupId>
-            <artifactId>opensaml</artifactId>
+            <artifactId>opensaml-core</artifactId>
             <optional>true</optional>
         </dependency>
+
 
         <dependency>
             <groupId>org.apache.santuario</groupId>
@@ -491,19 +493,19 @@
             <optional>true</optional>
         </dependency>
 
-<!--
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-jms</artifactId>
-            <optional>true</optional>
-        </dependency>
+        <!--
+                <dependency>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-transports-jms</artifactId>
+                    <optional>true</optional>
+                </dependency>
 
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-udp</artifactId>
-            <optional>true</optional>
-        </dependency>
--->
+                <dependency>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-transports-udp</artifactId>
+                    <optional>true</optional>
+                </dependency>
+        -->
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -517,11 +519,11 @@
             <optional>true</optional>
         </dependency>
 
-     <!--  <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-javascript</artifactId>
-            <optional>true</optional>
-        </dependency>-->
+        <!--  <dependency>
+               <groupId>org.apache.cxf</groupId>
+               <artifactId>cxf-rt-javascript</artifactId>
+               <optional>true</optional>
+           </dependency>-->
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
@@ -535,135 +537,169 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <executions>
                     <execution>
-					<id>shade</id>
+                        <id>shade</id>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
                         </goals>
-						<configuration>
-                    <artifactSet>
-                        <includes>
-                            <!--<include>org.codehaus.woodstox:stax2-api:*</include>-->
-                            <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
-                            <include>org.apache.ws.xmlschema:xmlschema-core:*</include>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <!--<include>org.codehaus.woodstox:stax2-api:*</include>-->
+                                    <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
+                                    <include>org.apache.ws.xmlschema:xmlschema-core:*</include>
 
-                            <include>org.opensaml:opensaml-xmlsec-api:*</include>
-                            <include>org.opensaml:opensaml-messaging-api:*</include>
-                            <include>org.opensaml:opensaml-security-api:*</include>
+                                    <include>org.opensaml:opensaml-xmlsec-api:*</include>
+                                    <include>org.opensaml:opensaml-messaging-api:*</include>
+                                    <include>org.opensaml:opensaml-security-api:*</include>
 
-                            <include>org.cryptacular:cryptacular:*</include>
-                            <include>org.reactivestreams:reactive-streams:*</include>
-                            <include>org.apache.velocity:velocity-engine-core:*</include>
-                            <!--<include>org.eclipse.jetty:*:*</include>-->
-                            <include>org.objectweb.asm:asm:*</include>
+                                    <include>org.cryptacular:cryptacular:*</include>
+                                    <include>org.reactivestreams:reactive-streams:*</include>
+                                    <include>org.apache.velocity:velocity-engine-core:*</include>
+                                    <!--<include>org.eclipse.jetty:*:*</include>-->
+                                    <include>org.objectweb.asm:asm:*</include>
 
-                            <include>org.apache.cxf:*:*</include>
+                                    <include>org.apache.cxf:*:*</include>
 
-                            <!--<include>org.eclipse.jetty:*:*</include>
-                            <include>org.glassfish.jersey*:*:*</include>-->
+                                    <!--<include>org.eclipse.jetty:*:*</include>
+                                    <include>org.glassfish.jersey*:*:*</include>-->
 
-                            <include>org.apache.wss4j:*:*</include>
+                                    <include>org.apache.wss4j:*:*</include>
 
-                            <include>org.opensaml:*</include>
+                                    <include>org.opensaml:*</include>
 
-                            <include>org.ow2.asm:asm:*</include>
+                                    <include>org.ow2.asm:asm:*</include>
 
-                            <include>wsdl4j:wsdl4j:*</include>
-                            <include>com.sun.xml.bind:jaxb-xjc:*</include>
-                            <include>antlr:antlr:*</include>
-                            <include>xml-resolver:xml-resolver:*</include>
-                            <include>org.apache.httpcomponents:httpasyncclient:*</include>
-                            <include>org.apache.httpcomponents:httpclient:*</include>
-                            <include>org.apache.mina:mina-core:*</include>
-                            <include>rhino:js:*</include>
-                            <include>org.apache.ws.security:wss4j:*</include>
-                            <include>org.opensaml:openws:*</include>
-                            <include>org.opensaml:xmltooling:*</include>
-                            <include>xalan:serializer:*</include>
-                            <include>org.apache.neethi:neethi:*</include>
-                            <include>org.apache.ws.xmlschema:xmlschema-core:*</include>
-                            <include>org.apache.httpcomponents:httpcore:*</include>
-                            <include>org.apache.httpcomponents:httpcore-nio:*</include>
-                            <!--<include>org.apache.xmlbeans:*:*</include>
-                            <include>com.guicedee.services:commons-xmlbeans:*</include>-->
-                            <include>org.opensaml:opensaml:*</include>
-                            <include>org.apache.velocity:velocity:*</include>
-                            <include>org.owasp.esapi:esapi:*</include>
-                            <include>xerces:xercesImpl:*</include>
-                            <!--<include>com.fasterxml.woodstox:woodstox-core:*</include>-->
-                            <include>xalan:xalan:*</include>
-                            <include>org.apache.santuario:xmlsec:*</include>
+                                    <include>wsdl4j:wsdl4j:*</include>
+                                    <include>com.sun.xml.bind:jaxb-xjc:*</include>
+                                    <include>antlr:antlr:*</include>
+                                    <include>xml-resolver:xml-resolver:*</include>
+                                    <include>org.apache.httpcomponents:httpasyncclient:*</include>
+                                    <include>org.apache.httpcomponents:httpclient:*</include>
+                                    <include>org.apache.mina:mina-core:*</include>
+                                    <include>rhino:js:*</include>
+                                    <include>org.apache.ws.security:wss4j:*</include>
+                                    <include>org.opensaml:openws:*</include>
+                                    <include>org.opensaml:xmltooling:*</include>
+                                    <include>xalan:serializer:*</include>
+                                    <include>org.apache.neethi:neethi:*</include>
+                                    <include>org.apache.ws.xmlschema:xmlschema-core:*</include>
+                                    <include>org.apache.httpcomponents:httpcore:*</include>
+                                    <include>org.apache.httpcomponents:httpcore-nio:*</include>
+                                    <!--<include>org.apache.xmlbeans:*:*</include>
+                                    <include>com.guicedee.services:commons-xmlbeans:*</include>-->
+                                    <include>org.opensaml:opensaml:*</include>
+                                    <include>org.apache.velocity:velocity:*</include>
+                                    <include>org.owasp.esapi:esapi:*</include>
+                                    <include>xerces:xercesImpl:*</include>
+                                    <!--<include>com.fasterxml.woodstox:woodstox-core:*</include>-->
+                                    <include>xalan:xalan:*</include>
+                                    <include>org.apache.santuario:xmlsec:*</include>
 
-                            <include>net.oauth.core:*:*</include>
+                                    <include>net.oauth.core:*:*</include>
 
-                            <include>org.apache.wss4j:*</include>
-                            <include>org.jasypt:*</include>
-                            <!--<include>org.codehaus.woodstox:woodstox-core-asl:*</include>-->
-                            <include>ca.juliusdavies:not-yet-commons-ssl:*</include>
-                            <!--<include>org.glassfish.jersey*:*:*</include>-->
-                            <include>com.sun.xml.stream.buffer:*</include>
-                            <include>org.jvnet.mimepull:*</include>
-                            <include>com.sun.xml.messaging.saaj:*</include>
-                            <include>com.sun.xml.ws:*</include>
-                            <include>org.opensaml:*</include>
-                            <include>org.cryptacular:*</include>
-                            <include>net.shibboleth.utilities:*</include>
-                            <include>org.apache.cxf.services.sts:*</include>
-                            <!--<include>jakarta.xml.ws:jakarta.xml.ws-api:*</include>-->
-                        </includes>
-                    </artifactSet>
-                    <filters>
-                        <filter>
-                            <artifact>*:*</artifact>
-                            <excludes>
-                                <exclude>module-info.java</exclude>
-                                <exclude>META-INF/*.SF</exclude>
-                                <exclude>META-INF/*.DSA</exclude>
-                                <exclude>META-INF/*.RSA</exclude>
-                                <exclude>1.class</exclude>
-								<exclude>/1*</exclude>
-								<exclude>*1.class</exclude>
-								<exclude>/1.class</exclude>
-								<exclude>META-INF/services/*</exclude>
-                                <exclude>META-INF/cxf</exclude>
-                            </excludes>
-                        </filter>
-                    </filters>
-                    <relocations>
-                        <relocation>
-                            <pattern>org.owasp.esapi</pattern>
-                            <shadedPattern>org.apache.cxf.common.util.rel.esapi</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>org.objectweb.asm</pattern>
-                            <shadedPattern>org.apache.cxf.common.util.rel.asm</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>org.w3c.dom.html</pattern>
-                            <shadedPattern>org.apache.cxf.common.util.rel.dom</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>antlr</pattern>
-                            <shadedPattern>org.apache.cxf.common.util.rel.antlr</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>net.sf.saxon</pattern>
-                            <shadedPattern>org.apache.cxf.common.util.rel.saxon</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>jakarta</pattern>
-                            <shadedPattern>javax</shadedPattern>
-                        </relocation>
-						<relocation>
-                            <pattern>META-INF/services_</pattern>
-                            <shadedPattern>META-INF/services</shadedPattern>
-                        </relocation>
-                    </relocations>
-					<transformers>
-						<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-						<transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
-					</transformers>
-                </configuration>
+                                    <include>org.apache.wss4j:*</include>
+                                    <include>org.jasypt:*</include>
+                                    <!--<include>org.codehaus.woodstox:woodstox-core-asl:*</include>-->
+                                    <include>ca.juliusdavies:not-yet-commons-ssl:*</include>
+                                    <!--<include>org.glassfish.jersey*:*:*</include>-->
+                                    <include>com.sun.xml.stream.buffer:*</include>
+                                    <include>org.jvnet.mimepull:*</include>
+                                    <include>com.sun.xml.messaging.saaj:*</include>
+                                    <include>com.sun.xml.ws:*</include>
+                                    <include>org.opensaml:*</include>
+                                    <include>org.cryptacular:*</include>
+                                    <include>net.shibboleth.utilities:*</include>
+                                    <include>org.apache.cxf.services.sts:*</include>
+                                    <!--<include>jakarta.xml.ws:jakarta.xml.ws-api:*</include>-->
+                                </includes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>module-info.java</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>1.class</exclude>
+                                        <exclude>/1*</exclude>
+                                        <exclude>*1.class</exclude>
+                                        <exclude>/1.class</exclude>
+                                        <exclude>META-INF/services/*</exclude>
+                                        <exclude>META-INF/cxf</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.owasp.esapi</pattern>
+                                    <shadedPattern>org.apache.cxf.common.util.rel.esapi</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.objectweb.asm</pattern>
+                                    <shadedPattern>org.apache.cxf.common.util.rel.asm</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.w3c.dom.html</pattern>
+                                    <shadedPattern>org.apache.cxf.common.util.rel.dom</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>antlr</pattern>
+                                    <shadedPattern>org.apache.cxf.common.util.rel.antlr</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>net.sf.saxon</pattern>
+                                    <shadedPattern>org.apache.cxf.common.util.rel.saxon</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>META-INF/services_</pattern>
+                                    <shadedPattern>META-INF/services</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.annotation</pattern>
+                                    <shadedPattern>jakarta.annotation</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.validation</pattern>
+                                    <shadedPattern>jakarta.validation</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.servlet</pattern>
+                                    <shadedPattern>jakarta.servlet</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.ws.rs</pattern>
+                                    <shadedPattern>jakarta.ws.rs</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.jws</pattern>
+                                    <shadedPattern>jakarta.jws</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.xml.ws</pattern>
+                                    <shadedPattern>jakarta.xml.ws</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.xml.soap</pattern>
+                                    <shadedPattern>jakarta.xml.soap</shadedPattern>
+                                </relocation>
+
+                            </relocations>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
+                            </transformers>
+                        </configuration>
                     </execution>
                 </executions>
                 <dependencies>
@@ -698,5 +734,5 @@
         <url>https://www.apache.org/</url>
     </organization>
 
-    
+
 </project>

@@ -16,13 +16,13 @@
  */
 package org.jsr107.ri.annotations;
 
-import javax.cache.annotation.CacheKeyInvocationContext;
+import jakarta.cache.annotation.CacheKeyInvocationContext;
 import java.lang.annotation.Annotation;
 
 /**
- * @param <A> The type of annotation this context information is for. One of {@link javax.cache.annotation.CacheResult},
- *            {@link javax.cache.annotation.CachePut}, {@link javax.cache.annotation.CacheRemove}, or
- *            {@link javax.cache.annotation.CacheRemoveAll}.
+ * @param <A> The type of annotation this context information is for. One of {@link jakarta.cache.annotation.CacheResult},
+ *            {@link jakarta.cache.annotation.CachePut}, {@link jakarta.cache.annotation.CacheRemove}, or
+ *            {@link jakarta.cache.annotation.CacheRemoveAll}.
  * @author Eric Dalquist
  * @since 1.0
  */

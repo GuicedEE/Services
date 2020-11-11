@@ -41,7 +41,7 @@ public interface RefreshableDataStore
 	 * This data store will be used instantly during initialization to avoid long initializations times of an
 	 * {@link net.sf.uadetector.UserAgentStringParser}, especially when reading data by a network connection.
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	DataStore getFallback();
 
 	/**
@@ -49,7 +49,7 @@ public interface RefreshableDataStore
 	 *
 	 * @return an update operation
 	 */
-	@javax.validation.constraints.NotNull
+	@jakarta.validation.constraints.NotNull
 	UpdateOperation getUpdateOperation();
 
 	/**

@@ -14,4 +14,4 @@
  * @author Greg Luck
  * @since 1.0
  */
-package javax.cache.processor;
+package jakarta.cache.processor;

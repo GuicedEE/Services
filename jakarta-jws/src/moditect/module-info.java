@@ -1,4 +1,4 @@
-module javax.jws {
-    exports javax.jws;
-    exports javax.jws.soap;
+module jakarta.jws {
+    exports jakarta.jws;
+    exports jakarta.jws.soap;
 }

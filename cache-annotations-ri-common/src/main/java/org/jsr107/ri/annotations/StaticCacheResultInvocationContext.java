@@ -17,8 +17,8 @@
 
 package org.jsr107.ri.annotations;
 
-import javax.cache.annotation.CacheResolver;
-import javax.cache.annotation.CacheResult;
+import jakarta.cache.annotation.CacheResolver;
+import jakarta.cache.annotation.CacheResult;
 
 /**
  * @author Eric Dalquist

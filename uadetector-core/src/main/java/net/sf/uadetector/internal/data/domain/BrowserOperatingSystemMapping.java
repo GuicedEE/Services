@@ -134,7 +134,7 @@ public final class BrowserOperatingSystemMapping
 		 * 		if one of the needed arguments to build an instance of {@code BrowserOperatingSystemMapping} is
 		 * 		invalid
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public BrowserOperatingSystemMapping build()
 		{
 			return new BrowserOperatingSystemMapping(browserId, operatingSystemId);
@@ -164,8 +164,8 @@ public final class BrowserOperatingSystemMapping
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the interpreted number is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setBrowserId(@javax.validation.constraints.NotNull String browserId)
+		@jakarta.validation.constraints.NotNull
+		public Builder setBrowserId(@jakarta.validation.constraints.NotNull String browserId)
 		{
 			Check.notNull(browserId, "browserId");
 
@@ -182,7 +182,7 @@ public final class BrowserOperatingSystemMapping
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the given number is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setBrowserId(int browserId)
 		{
 			Check.notNegative(browserId, "browserId");
@@ -215,8 +215,8 @@ public final class BrowserOperatingSystemMapping
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the interpreted number is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
-		public Builder setOperatingSystemId(@javax.validation.constraints.NotNull String operatingSystemId)
+		@jakarta.validation.constraints.NotNull
+		public Builder setOperatingSystemId(@jakarta.validation.constraints.NotNull String operatingSystemId)
 		{
 			Check.notNull(operatingSystemId, "operatingSystemId");
 
@@ -233,7 +233,7 @@ public final class BrowserOperatingSystemMapping
 		 * @throws net.sf.uadetector.exception.IllegalNegativeArgumentException
 		 * 		if the given number is smaller than {@code 0}
 		 */
-		@javax.validation.constraints.NotNull
+		@jakarta.validation.constraints.NotNull
 		public Builder setOperatingSystemId(int operatingSystemId)
 		{
 			Check.notNegative(operatingSystemId, "operatingSystemId");

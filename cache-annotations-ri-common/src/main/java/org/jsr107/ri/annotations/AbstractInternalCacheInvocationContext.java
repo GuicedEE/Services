@@ -16,7 +16,7 @@
  */
 package org.jsr107.ri.annotations;
 
-import javax.cache.annotation.CacheInvocationParameter;
+import jakarta.cache.annotation.CacheInvocationParameter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -31,9 +31,9 @@ import java.util.Set;
  * than creating new immutable Lists.
  * </p>
  * @param <I> The intercepted method invocation
- * @param <A> The type of annotation this context information is for. One of {@link javax.cache.annotation.CacheResult},
- *            {@link javax.cache.annotation.CachePut}, {@link javax.cache.annotation.CacheRemove}, or
- *            {@link javax.cache.annotation.CacheRemoveAll}.
+ * @param <A> The type of annotation this context information is for. One of {@link jakarta.cache.annotation.CacheResult},
+ *            {@link jakarta.cache.annotation.CachePut}, {@link jakarta.cache.annotation.CacheRemove}, or
+ *            {@link jakarta.cache.annotation.CacheRemoveAll}.
  * @author Eric Dalquist
  * @since 1.0
  */
@@ -92,7 +92,7 @@ public abstract class AbstractInternalCacheInvocationContext<I, A extends Annota
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheMethodDetails#getAnnotations()
+   * @see jakarta.cache.annotation.CacheMethodDetails#getAnnotations()
    */
   @Override
   public Set<Annotation> getAnnotations() {
@@ -100,7 +100,7 @@ public abstract class AbstractInternalCacheInvocationContext<I, A extends Annota
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheMethodDetails#getCacheAnnotation()
+   * @see jakarta.cache.annotation.CacheMethodDetails#getCacheAnnotation()
    */
   @Override
   public A getCacheAnnotation() {
@@ -108,7 +108,7 @@ public abstract class AbstractInternalCacheInvocationContext<I, A extends Annota
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheMethodDetails#getCacheName()
+   * @see jakarta.cache.annotation.CacheMethodDetails#getCacheName()
    */
   @Override
   public String getCacheName() {
@@ -116,7 +116,7 @@ public abstract class AbstractInternalCacheInvocationContext<I, A extends Annota
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheMethodDetails#getMethod()
+   * @see jakarta.cache.annotation.CacheMethodDetails#getMethod()
    */
   @Override
   public Method getMethod() {
@@ -124,7 +124,7 @@ public abstract class AbstractInternalCacheInvocationContext<I, A extends Annota
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheInvocationContext#getTarget()
+   * @see jakarta.cache.annotation.CacheInvocationContext#getTarget()
    */
   @Override
   public Object getTarget() {
@@ -132,7 +132,7 @@ public abstract class AbstractInternalCacheInvocationContext<I, A extends Annota
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheInvocationContext#getAllParameters()
+   * @see jakarta.cache.annotation.CacheInvocationContext#getAllParameters()
    */
   @Override
   public CacheInvocationParameter[] getAllParameters() {
@@ -140,7 +140,7 @@ public abstract class AbstractInternalCacheInvocationContext<I, A extends Annota
   }
 
   /* (non-Javadoc)
-   * @see javax.cache.annotation.CacheInvocationContext#unwrap(java.lang.Class)
+   * @see jakarta.cache.annotation.CacheInvocationContext#unwrap(java.lang.Class)
    */
   @Override
   public <T> T unwrap(Class<T> cls) {
