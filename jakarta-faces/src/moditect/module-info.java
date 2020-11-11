@@ -46,9 +46,8 @@ open module jakarta.faces {
 	provides jakarta.enterprise.inject.spi.Extension with com.sun.faces.application.view.ViewScopeExtension, com.sun.faces.flow.FlowCDIExtension, com.sun.faces.flow.FlowDiscoveryCDIExtension, com.sun.faces.cdi.CdiExtension;
 	provides jakarta.servlet.ServletContainerInitializer with com.sun.faces.config.FacesInitializer;
 	provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.sun.faces.config.configprovider.FacesLocationsScanner;
-
-
 	provides com.guicedee.guicedinjection.interfaces.IGuiceModule with com.guicedee.faces.implementations.GuicedFacesModule;
+
 
 	uses com.sun.faces.util.cdi11.CDIUtil;
 
