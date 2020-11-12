@@ -5,7 +5,7 @@ open module primefaces {
 	requires transitive org.apache.commons.fileupload;
 	requires transitive java.servlet;
 	requires transitive jakarta.el;
-	requires transitive java.validation;
+	requires transitive jakarta.validation;
 
 	requires transitive jakarta.xml.bind;
 	requires transitive com.guicedee.guicedservlets.jsf;

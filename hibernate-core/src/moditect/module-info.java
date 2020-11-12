@@ -22,7 +22,7 @@ module org.hibernate.orm.core {
 	requires java.compiler;
 
 	requires static jakarta.enterprise.cdi;
-	requires transitive java.validation;
+	requires transitive jakarta.validation;
 	requires transitive jakarta.inject;
 
 	requires org.json;

@@ -1,4 +1,4 @@
-module java.validation {
+module jakarta.validation {
 	exports jakarta.validation;
 	exports jakarta.validation.bootstrap;
 	exports jakarta.validation.constraints;

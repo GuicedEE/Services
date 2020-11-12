@@ -10,7 +10,7 @@ module org.apache.cxf {
 	requires java.annotation;
 	requires static java.management;
 	requires java.desktop;
-	requires java.validation;
+	requires jakarta.validation;
 
 	requires java.rmi;
 

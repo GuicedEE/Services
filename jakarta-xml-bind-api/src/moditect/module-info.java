@@ -17,7 +17,7 @@
 module jakarta.xml.bind {
 	requires transitive jakarta.activation;
 	requires transitive java.xml;
-	requires transitive java.validation;
+	requires transitive jakarta.validation;
 	requires transitive java.logging;
 	requires java.desktop;
 	requires java.compiler;

@@ -7,7 +7,7 @@ module net.sf.uadetector.core {
 
 	requires transitive jakarta.activation;
 
-	requires java.validation;
+	requires jakarta.validation;
 	requires java.xml;
 
 	requires transitive java.logging;

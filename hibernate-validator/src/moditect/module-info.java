@@ -1,5 +1,5 @@
 module org.hibernate.validator {
-	requires transitive java.validation;
+	requires transitive jakarta.validation;
 	requires org.jboss.logging;
 	requires transitive java.xml;
 	requires com.fasterxml.classmate;
