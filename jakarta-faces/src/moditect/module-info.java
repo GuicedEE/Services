@@ -47,7 +47,9 @@ open module jakarta.faces {
 	provides jakarta.servlet.ServletContainerInitializer with com.sun.faces.config.FacesInitializer;
 	provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.sun.faces.config.configprovider.FacesLocationsScanner;
 	provides com.guicedee.guicedinjection.interfaces.IGuiceModule with com.guicedee.faces.implementations.GuicedFacesModule;
-
+	provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with com.guicedee.faces.implementations.JakartaFacesConfiguration;
+	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions with com.guicedee.faces.implementations.JakartaFacesModuleInclusion;
+	provides com.guicedee.guicedinjection.interfaces.IGuiceScanJarInclusions with com.guicedee.faces.implementations.JakartaFacesModuleInclusion;
 
 	uses com.sun.faces.util.cdi11.CDIUtil;
 

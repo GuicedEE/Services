@@ -55,6 +55,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
             <optional>true</optional>
@@ -94,6 +100,7 @@
                                             <include>org.glassfish.jaxb:jaxb-runtime:*</include>
                                             <include>javax.xml.bind:jaxb-api:*</include>
                                             <include>org.glassfish.jaxb:txw2:*</include>
+                                            <include>org.glassfish.jaxb:jaxb-core:*</include>
                                             <include>com.sun.istack:istack-commons-runtime:*</include>
                                             <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
                                             <include>com.sun.xml.fastinfoset:FastInfoset:*</include>
@@ -156,6 +163,7 @@
                                         <includes>
                                             <include>jakarta.xml.bind:jakarta.xml.bind-api:*</include>
                                             <include>org.glassfish.jaxb:*</include>
+                                            <include>org.glassfish.jaxb:jaxb-core:*</include>
                                             <include>org.glassfish.jaxb:txw2:*</include>
                                             <include>com.sun.istack:istack-commons-runtime:*</include>
                                             <include>com.sun.xml.fastinfoset:FastInfoset:*</include>

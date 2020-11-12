@@ -1,7 +1,8 @@
 module org.apache.commons.beanutils {
 	exports org.apache.commons.beanutils;
 
-	requires static java.xml;
+	requires java.xml;
+	requires java.desktop;
 
 	requires org.apache.commons.logging;
 	requires org.apache.commons.collections4;

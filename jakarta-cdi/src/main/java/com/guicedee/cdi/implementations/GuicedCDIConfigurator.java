@@ -9,14 +9,9 @@ public class GuicedCDIConfigurator
 	@Override
 	public GuiceConfig<?> configure(GuiceConfig config)
 	{
-		config.setPathScanning(true);
-		config.setExcludePaths(true);
 		config.setClasspathScanning(true);
 		config.setAnnotationScanning(true);
 		config.setMethodInfo(true);
-
-		config.setExcludeModulesAndJars(true);
-
 		return config;
 	}
 }
