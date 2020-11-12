@@ -99,7 +99,7 @@ module org.apache.cxf {
 
 //	opens org.glassfish.jersey.server.wadl.internal  to java.ws.rs;
 
-	opens org.apache.cxf.ws.addressing to java.xml.bind;
+	opens org.apache.cxf.ws.addressing to jakarta.xml.bind;
 
 	provides jakarta.xml.ws.spi.Provider with org.apache.cxf.jaxws22.spi.ProviderImpl;
 

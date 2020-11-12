@@ -1,6 +1,6 @@
 module com.guicedee.services.openapi {
 
-	requires java.xml.bind;
+	requires jakarta.xml.bind;
 	requires java.servlet;
 	requires org.slf4j;
 	requires com.fasterxml.jackson.databind;

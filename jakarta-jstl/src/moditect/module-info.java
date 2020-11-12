@@ -3,7 +3,7 @@ open module jakarta.servlet.jsp.jstl {
 	requires java.xml;
 	requires static java.sql;
 
-	requires static java.xml.bind;
+	requires static jakarta.xml.bind;
 
 	requires java.desktop;
 	requires java.naming;

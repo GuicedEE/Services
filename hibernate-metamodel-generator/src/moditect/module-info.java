@@ -3,7 +3,7 @@ module org.hibernate.orm.jpamodelgen {
 	requires java.compiler;
 	requires java.xml;
 	requires java.sql;
-	requires java.xml.bind;
+	requires jakarta.xml.bind;
 
 	requires java.desktop;
 

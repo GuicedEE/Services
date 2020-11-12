@@ -28,7 +28,7 @@ open module jakarta.faces {
 
 	exports com.sun.faces.config;
 	requires transitive jakarta.servlet.jsp.jstl;
-	requires transitive java.xml.bind;
+	requires transitive jakarta.xml.bind;
 
 	requires java.sql;
 	requires java.naming;

@@ -69,7 +69,7 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.glassfish:javax.security.jacc:*</include>
+                                    <include>jakarta.security.jacc:jakarta.security.jacc-api:*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>

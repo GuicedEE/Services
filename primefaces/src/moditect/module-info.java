@@ -7,7 +7,7 @@ open module primefaces {
 	requires transitive jakarta.el;
 	requires transitive java.validation;
 
-	requires transitive java.xml.bind;
+	requires transitive jakarta.xml.bind;
 	requires transitive com.guicedee.guicedservlets.jsf;
 
 	requires static com.hazelcast.all;

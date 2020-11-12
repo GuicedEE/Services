@@ -1,6 +1,6 @@
 module dom4j {
 	requires transitive java.xml;
-	requires transitive java.xml.bind;
+	requires transitive jakarta.xml.bind;
 
 	requires java.desktop;
 	requires static jaxen;

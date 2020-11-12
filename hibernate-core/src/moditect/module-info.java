@@ -10,7 +10,7 @@ module org.hibernate.orm.core {
 	requires com.fasterxml.classmate;
 	requires javassist;
 	requires static antlr;
-	requires transitive java.xml.bind;
+	requires transitive jakarta.xml.bind;
 	requires java.desktop;
 	requires net.bytebuddy;
 

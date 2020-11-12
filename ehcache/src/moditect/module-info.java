@@ -31,7 +31,7 @@ module org.ehcache  {
 	exports org.ehcache.xml;
 
 	requires transitive cache.api;
-	requires transitive java.xml.bind;
+	requires transitive jakarta.xml.bind;
 	requires org.slf4j;
 	requires jdk.unsupported;
 
@@ -66,6 +66,6 @@ module org.ehcache  {
 
 	uses org.ehcache.xml.CacheResourceConfigurationParser;
 
-	opens org.ehcache.xml.model to java.xml.bind;
+	opens org.ehcache.xml.model to jakarta.xml.bind;
 }
 

@@ -1,5 +1,5 @@
 module jakarta.ws.rs {
-    requires transitive java.xml.bind;
+    requires transitive jakarta.xml.bind;
     requires java.logging;
 
     exports jakarta.ws.rs;

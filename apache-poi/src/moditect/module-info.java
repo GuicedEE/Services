@@ -1,6 +1,6 @@
 module org.apache.poi {
 	requires java.desktop;
-	requires java.xml.bind;
+	requires jakarta.xml.bind;
 	requires static org.apache.commons.math3;
 	requires static org.apache.commons.codec;
 	requires static org.apache.commons.collections4;
