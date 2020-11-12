@@ -39,6 +39,10 @@
                                     <shadedPattern>jakarta.persistence</shadedPattern>
                                 </relocation>
                                 <relocation>
+                                    <pattern>javax.cache</pattern>
+                                    <shadedPattern>jakarta.cache</shadedPattern>
+                                </relocation>
+                                <relocation>
                                     <pattern>javax.xml.bind</pattern>
                                     <shadedPattern>jakarta.xml.bind</shadedPattern>
                                 </relocation>

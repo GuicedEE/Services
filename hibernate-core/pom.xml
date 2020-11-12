@@ -141,6 +141,14 @@
                                     <pattern>javax.transaction</pattern>
                                     <shadedPattern>jakarta.transaction</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>javax.cache</pattern>
+                                    <shadedPattern>jakarta.cache</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.annotation</pattern>
+                                    <shadedPattern>jakarta.annotation</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>

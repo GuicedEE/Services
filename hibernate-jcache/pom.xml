@@ -91,6 +91,10 @@
                                     <pattern>javax.inject</pattern>
                                     <shadedPattern>jakarta.inject</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>javax.cache</pattern>
+                                    <shadedPattern>jakarta.cache</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>

@@ -108,10 +108,13 @@ public class PersistenceByteArrayConsumer
 					ParsedPersistenceXmlDescriptorMixin pp = om.readerForUpdating(descriptor).readValue(persU.toString());
 					for (Field declaredField : pp.getClass().getDeclaredFields()) {
 						try {
-							p.getClass().getField(declaredField.getName()).set(p, declaredField.get(pp));
+							declaredField.setAccessible(true);
+							Field setField = p.getClass().getDeclaredField(declaredField.getName());
+							setField.setAccessible(true);
+							setField.set(p, declaredField.get(pp));
 						}catch (Throwable T)
 						{
-							//ignore field
+							T.printStackTrace();
 						}
 					}
 					units.add(p);
@@ -128,10 +131,13 @@ public class PersistenceByteArrayConsumer
 						ParsedPersistenceXmlDescriptor p =new ParsedPersistenceXmlDescriptor(null);
 						for (Field declaredField : p1.getClass().getDeclaredFields()) {
 							try {
-								p.getClass().getField(declaredField.getName()).set(p, declaredField.get(p1));
+								declaredField.setAccessible(true);
+								Field setField = p.getClass().getDeclaredField(declaredField.getName());
+								setField.setAccessible(true);
+								setField.set(p, declaredField.get(p1));
 							}catch (Throwable T)
 							{
-								//ignore field
+								T.printStackTrace();
 							}
 						}
 						units.add(p);

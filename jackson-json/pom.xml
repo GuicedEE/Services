@@ -1,103 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <!-- This module was also published with a richer model, Gradle metadata,  -->
-  <!-- which should be used instead. Do not delete the following line which  -->
-  <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
-  <!-- that they should prefer consuming it instead. -->
-  <!-- do_not_remove: published-with-gradle-metadata -->
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.guicedee.services</groupId>
-    <artifactId>services-parent</artifactId>
-    <version>0.0.0_0-SNAPSHOT</version>
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- This module was also published with a richer model, Gradle metadata,  -->
+    <!-- which should be used instead. Do not delete the following line which  -->
+    <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
+    <!-- that they should prefer consuming it instead. -->
+    <!-- do_not_remove: published-with-gradle-metadata -->
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
 
 
-  <artifactId>jackson-jaxrs-json-provider</artifactId>
-  <name>Jackson-JAXRS-JSON</name>
-  <packaging>jar</packaging>
+    <artifactId>jackson-jaxrs-json-provider</artifactId>
+    <name>Jackson-JAXRS-JSON</name>
+    <packaging>jar</packaging>
 
-  <description>Functionality to handle JSON input/output for JAX-RS implementations (like Jersey and RESTeasy) using standard Jackson data binding.
-  </description>
+    <description>Functionality to handle JSON input/output for JAX-RS implementations (like Jersey and RESTeasy) using
+        standard Jackson data binding.
+    </description>
 
-  <properties>
-    <!-- Generate PackageVersion.java into this directory. -->
-    <packageVersion.dir>com/fasterxml/jackson/jaxrs/json</packageVersion.dir>
-    <packageVersion.package>${project.groupId}.json</packageVersion.package>
-    <osgi.export>${project.groupId}.json.*;version=${project.version}</osgi.export>
-    <!-- NOTE: JAXB annotations module is optional dependency, need to try to mark
-         as such here.
-      -->
-    <osgi.import>javax.ws.rs;version="${javax.ws.rs.version}"
-,javax.ws.rs.core;version="${javax.ws.rs.version}"
-,javax.ws.rs.ext;version="${javax.ws.rs.version}"
-,com.fasterxml.jackson.module.jaxb;resolution:=optional
-,*
-</osgi.import>
-  </properties>
+    <properties>
+        <!-- Generate PackageVersion.java into this directory. -->
+        <packageVersion.dir>com/fasterxml/jackson/jaxrs/json</packageVersion.dir>
+        <packageVersion.package>${project.groupId}.json</packageVersion.package>
+        <osgi.export>${project.groupId}.json.*;version=${project.version}</osgi.export>
+        <!-- NOTE: JAXB annotations module is optional dependency, need to try to mark
+             as such here.
+          -->
+        <osgi.import>javax.ws.rs;version="${javax.ws.rs.version}"
+            ,javax.ws.rs.core;version="${javax.ws.rs.version}"
+            ,javax.ws.rs.ext;version="${javax.ws.rs.version}"
+            ,com.fasterxml.jackson.module.jaxb;resolution:=optional
+            ,*
+        </osgi.import>
+    </properties>
 
-  <dependencies>
-    <!-- builds on shared base JAX-RS handling code... which depends on core, databind-->
-    <dependency>
-      <groupId>com.guicedee.services</groupId>
-      <artifactId>jakarta.ws.rs-api</artifactId>
-    </dependency>
-    <!-- also need JAXB annotation support -->
-    <dependency>
-      <groupId>com.guicedee.services</groupId>
-      <artifactId>jackson-module-jaxb-annotations</artifactId>
-      <classifier>jakarta</classifier>
-    </dependency>
+    <dependencies>
+        <!-- builds on shared base JAX-RS handling code... which depends on core, databind-->
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+        </dependency>
+        <!-- also need JAXB annotation support -->
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jackson-module-jaxb-annotations</artifactId>
+            <classifier>jakarta</classifier>
+        </dependency>
 
-    <dependency>
-      <groupId>com.guicedee.services</groupId>
-      <artifactId>jackson-jaxrs-base</artifactId>
-      <classifier>jakarta</classifier>
-    </dependency>
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jackson-jaxrs-base</artifactId>
+            <classifier>jakarta</classifier>
+        </dependency>
 
-  </dependencies>
+    </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.moditect</groupId>
-        <artifactId>moditect-maven-plugin</artifactId>
-        <inherited>true</inherited>
-        <configuration>
-          <jvmVersion>11</jvmVersion>
-        </configuration>
-      </plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+                <configuration>
+                    <jvmVersion>11</jvmVersion>
+                </configuration>
+            </plugin>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>jakarta</id>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <shadedArtifactAttached>true</shadedArtifactAttached>
-              <shadedClassifierName>jakarta</shadedClassifierName>
-              <createDependencyReducedPom>false</createDependencyReducedPom>
-              <artifactSet>
-                <includes>
-                  <include>${project.groupId}:${project.artifactId}</include>
-                </includes>
-              </artifactSet>
-              <relocations>
-                <relocation>
-                  <pattern>javax.xml.bind</pattern>
-                  <shadedPattern>jakarta.xml.bind</shadedPattern>
-                </relocation>
-              </relocations>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-    </plugins>
-  </build>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>jakarta</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>jakarta</shadedClassifierName>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <artifactSet>
+                                <includes>
+                                    <include>${project.groupId}:${project.artifactId}</include>
+                                </includes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>${project.groupId}:${project.artifactId}</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/versions/*</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>javax.activation</pattern>
+                                    <shadedPattern>jakarta.activation</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.xml.bind</pattern>
+                                    <shadedPattern>jakarta.xml.bind</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -120,6 +120,18 @@
                                     <pattern>javax.xml.bind</pattern>
                                     <shadedPattern>jakarta.xml.bind</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>javax.cache</pattern>
+                                    <shadedPattern>jakarta.cache</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.inject</pattern>
+                                    <shadedPattern>jakarta.inject</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.annotation</pattern>
+                                    <shadedPattern>jakarta.annotation</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>
