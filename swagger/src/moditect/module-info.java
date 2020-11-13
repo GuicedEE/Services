@@ -4,6 +4,10 @@ module com.guicedee.services.openapi {
 	requires java.servlet;
 	requires org.slf4j;
 	requires com.fasterxml.jackson.databind;
+	requires org.apache.commons.lang3;
+	requires jakarta.ws.rs;
+
+	requires com.guicedee.guicedinjection;
 
 	exports io.swagger.v3.jaxrs2.integration;
 	exports io.swagger.v3.oas.integration;

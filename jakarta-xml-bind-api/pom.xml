@@ -102,7 +102,6 @@
                                             <include>org.glassfish.jaxb:txw2:*</include>
                                             <include>org.glassfish.jaxb:jaxb-core:*</include>
                                             <include>com.sun.istack:istack-commons-runtime:*</include>
-                                            <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
                                             <include>com.sun.xml.fastinfoset:FastInfoset:*</include>
                                             <include>com.sun.xml.bind:jaxb-impl:*</include>
                                         </includes>
@@ -130,6 +129,10 @@
                                         <relocation>
                                             <pattern>META-INF/versions/9/jakarta</pattern>
                                             <shadedPattern>jakarta</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>javax.el</pattern>
+                                            <pattern>jakarta.el</pattern>
                                         </relocation>
                                     </relocations>
                                 </configuration>

@@ -61,6 +61,10 @@
                                     <shadedPattern>jakarta.validation</shadedPattern>
                                 </relocation>
                                 <relocation>
+                                    <pattern>javax.el</pattern>
+                                    <shadedPattern>jakarta.el</shadedPattern>
+                                </relocation>
+                                <relocation>
                                     <pattern>javax.xml.bind</pattern>
                                     <shadedPattern>jakarta.xml.bind</shadedPattern>
                                 </relocation>

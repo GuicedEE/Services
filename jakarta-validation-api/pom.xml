@@ -55,6 +55,12 @@
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
+                            <relocations>
+                                <relocation>
+                                    <pattern>javax.el</pattern>
+                                    <pattern>jakarta.el</pattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

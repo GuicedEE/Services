@@ -114,11 +114,6 @@
             <artifactId>stax-ex</artifactId>
         </dependency>
 
-       <!-- <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>xerces</artifactId>
-        </dependency>-->
-
         <dependency>
             <groupId>com.fasterxml.woodstox</groupId>
             <artifactId>woodstox-core</artifactId>
@@ -553,8 +548,6 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <!--<include>org.codehaus.woodstox:stax2-api:*</include>-->
-                                    <!--<include>org.jvnet.staxex:stax-ex:*</include>-->
                                     <include>org.apache.ws.xmlschema:xmlschema-core:*</include>
 
                                     <include>org.opensaml:opensaml-xmlsec-api:*</include>
@@ -564,14 +557,8 @@
                                     <include>org.cryptacular:cryptacular:*</include>
                                     <include>org.reactivestreams:reactive-streams:*</include>
                                     <include>org.apache.velocity:velocity-engine-core:*</include>
-                                    <!--<include>org.eclipse.jetty:*:*</include>-->
                                     <include>org.objectweb.asm:asm:*</include>
-
                                     <include>org.apache.cxf:*:*</include>
-
-                                    <!--<include>org.eclipse.jetty:*:*</include>
-                                    <include>org.glassfish.jersey*:*:*</include>-->
-
                                     <include>org.apache.wss4j:*:*</include>
 
                                     <include>org.opensaml:*</include>
@@ -593,12 +580,9 @@
                                     <include>org.apache.ws.xmlschema:xmlschema-core:*</include>
                                     <include>org.apache.httpcomponents:httpcore:*</include>
                                     <include>org.apache.httpcomponents:httpcore-nio:*</include>
-                                    <!--<include>org.apache.xmlbeans:*:*</include>
-                                    <include>com.guicedee.services:commons-xmlbeans:*</include>-->
                                     <include>org.opensaml:opensaml:*</include>
                                     <include>org.apache.velocity:velocity:*</include>
                                     <include>org.owasp.esapi:esapi:*</include>
-                                    <!--<include>com.fasterxml.woodstox:woodstox-core:*</include>-->
                                     <include>xalan:xalan:*</include>
                                     <include>org.apache.santuario:xmlsec:*</include>
 
@@ -606,9 +590,7 @@
 
                                     <include>org.apache.wss4j:*</include>
                                     <include>org.jasypt:*</include>
-                                    <!--<include>org.codehaus.woodstox:woodstox-core-asl:*</include>-->
                                     <include>ca.juliusdavies:not-yet-commons-ssl:*</include>
-                                    <!--<include>org.glassfish.jersey*:*:*</include>-->
                                     <include>com.sun.xml.stream.buffer:*</include>
                                     <include>org.jvnet.mimepull:*</include>
                                     <include>com.sun.xml.messaging.saaj:*</include>
@@ -617,7 +599,6 @@
                                     <include>org.cryptacular:*</include>
                                     <include>net.shibboleth.utilities:*</include>
                                     <include>org.apache.cxf.services.sts:*</include>
-                                    <!--<include>jakarta.xml.ws:jakarta.xml.ws-api:*</include>-->
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -680,6 +661,11 @@
                                 </relocation>
 
                                 <relocation>
+                                    <pattern>javax.xml.bind</pattern>
+                                    <shadedPattern>jakarta.xml.bind</shadedPattern>
+                                </relocation>
+
+                                <relocation>
                                     <pattern>javax.ws.rs</pattern>
                                     <shadedPattern>jakarta.ws.rs</shadedPattern>
                                 </relocation>
@@ -697,6 +683,11 @@
                                 <relocation>
                                     <pattern>javax.xml.soap</pattern>
                                     <shadedPattern>jakarta.xml.soap</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.el</pattern>
+                                    <pattern>jakarta.el</pattern>
                                 </relocation>
 
                             </relocations>
