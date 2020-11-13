@@ -119,18 +119,6 @@
                                     </filters>
                                     <relocations>
                                         <relocation>
-                                            <pattern>META-INF/versions/9/com</pattern>
-                                            <shadedPattern>com</shadedPattern>
-                                        </relocation>
-                                        <relocation>
-                                            <pattern>META-INF/versions/9/javax</pattern>
-                                            <shadedPattern>javax</shadedPattern>
-                                        </relocation>
-                                        <relocation>
-                                            <pattern>META-INF/versions/9/jakarta</pattern>
-                                            <shadedPattern>jakarta</shadedPattern>
-                                        </relocation>
-                                        <relocation>
                                             <pattern>javax.el</pattern>
                                             <pattern>jakarta.el</pattern>
                                         </relocation>
