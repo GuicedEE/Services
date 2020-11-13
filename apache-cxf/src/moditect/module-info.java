@@ -18,6 +18,8 @@ module org.apache.cxf {
 
 	requires jakarta.xml.soap;
 
+	//requires org.apache.xerces;
+
 	requires jakarta.ws.rs;
 	requires jakarta.xml.ws;
 	requires jakarta.jws;

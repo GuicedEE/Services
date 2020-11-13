@@ -94,6 +94,11 @@
             <optional>true</optional>
         </dependency>
 
+       <!-- <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>xerces</artifactId>
+        </dependency>-->
+
     </dependencies>
 
     <build>

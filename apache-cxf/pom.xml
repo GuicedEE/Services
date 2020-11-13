@@ -114,6 +114,11 @@
             <artifactId>stax-ex</artifactId>
         </dependency>
 
+       <!-- <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>xerces</artifactId>
+        </dependency>-->
+
         <dependency>
             <groupId>com.fasterxml.woodstox</groupId>
             <artifactId>woodstox-core</artifactId>
@@ -530,6 +535,8 @@
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-beanutils</artifactId>
         </dependency>
+
+
     </dependencies>
 
     <build>
@@ -574,7 +581,6 @@
                                     <include>wsdl4j:wsdl4j:*</include>
                                     <include>com.sun.xml.bind:jaxb-xjc:*</include>
                                     <include>antlr:antlr:*</include>
-                                    <include>xml-resolver:xml-resolver:*</include>
                                     <include>org.apache.httpcomponents:httpasyncclient:*</include>
                                     <include>org.apache.httpcomponents:httpclient:*</include>
                                     <include>org.apache.mina:mina-core:*</include>
@@ -592,7 +598,6 @@
                                     <include>org.opensaml:opensaml:*</include>
                                     <include>org.apache.velocity:velocity:*</include>
                                     <include>org.owasp.esapi:esapi:*</include>
-                                    <include>xerces:xercesImpl:*</include>
                                     <!--<include>com.fasterxml.woodstox:woodstox-core:*</include>-->
                                     <include>xalan:xalan:*</include>
                                     <include>org.apache.santuario:xmlsec:*</include>

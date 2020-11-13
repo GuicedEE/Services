@@ -46,6 +46,10 @@
                                     <pattern>javax.xml.bind</pattern>
                                     <shadedPattern>jakarta.xml.bind</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>javax.inject</pattern>
+                                    <shadedPattern>jakarta.inject</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>

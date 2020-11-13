@@ -79,6 +79,10 @@
                             <pattern>javax.cache</pattern>
                             <shadedPattern>jakarta.cache</shadedPattern>
                         </relocation>
+                        <relocation>
+                            <pattern>javax.inject</pattern>
+                            <shadedPattern>jakarta.inject</shadedPattern>
+                        </relocation>
                     </relocations>
                 </configuration>
             </plugin>
