@@ -33,6 +33,7 @@ module org.ehcache  {
 	requires transitive cache.api;
 	requires transitive jakarta.xml.bind;
 	requires org.slf4j;
+
 	requires jdk.unsupported;
 
 	provides jakarta.cache.spi.CachingProvider with org.ehcache.jsr107.EhcacheCachingProvider;
