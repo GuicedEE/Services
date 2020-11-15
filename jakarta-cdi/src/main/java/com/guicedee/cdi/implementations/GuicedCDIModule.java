@@ -118,7 +118,8 @@ public class GuicedCDIModule
 					}
 					catch (final IllegalAccessException e)
 					{
-						System.out.println("Could not fire PostConstruct - Module does not expose class with a CDI annotation - " + clazz.getCanonicalName());
+						System.out.println("Illegal Access Exception to Class during invoke of @PostConstruct - " + clazz.getCanonicalName());
+						e.printStackTrace();
 					}
 					catch (final Exception e)
 					{
