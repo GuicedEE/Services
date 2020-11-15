@@ -13,7 +13,7 @@ module undertow.websockets.jsr {
 	requires java.servlet;
 
 	requires org.jboss.logging;
-	requires java.annotation;
+	requires jakarta.annotation;
 
 	opens io.undertow.websockets.jsr to org.jboss.logging, undertow.servlet;
 

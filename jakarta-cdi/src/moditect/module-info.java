@@ -6,7 +6,7 @@ module jakarta.enterprise.cdi {
 	requires transitive com.guicedee.guicedinjection;
 	requires transitive com.google.guice.extensions.servlet;
 
-	requires java.annotation;
+	requires jakarta.annotation;
 
 	exports jakarta.decorator;
 	exports jakarta.enterprise.context;

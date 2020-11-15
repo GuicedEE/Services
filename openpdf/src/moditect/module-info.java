@@ -1,6 +1,6 @@
 module com.github.librepdf.openpdf {
 	requires static java.desktop;
-	requires java.annotation;
+	requires jakarta.annotation;
 
 	requires static org.bouncycastle.pkix;
 	requires static org.bouncycastle.provider;

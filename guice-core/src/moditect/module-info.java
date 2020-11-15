@@ -18,5 +18,5 @@ module com.google.guice {
 	requires transitive aopalliance;
 	requires transitive java.xml;
 
-	requires java.annotation;
+	requires jakarta.annotation;
 }

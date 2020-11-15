@@ -1,4 +1,4 @@
-module java.persistence {
+module jakarta.persistence {
 	requires transitive java.logging;
 	requires transitive java.sql;
 

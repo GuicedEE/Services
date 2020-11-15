@@ -36,10 +36,10 @@ open module jakarta.faces {
 
 	requires jakarta.enterprise.cdi;
 
-	requires static java.persistence;
+	requires static jakarta.persistence;
 	requires static jakarta.ejb;
 
-	requires java.annotation;
+	requires jakarta.annotation;
 	requires jakarta.json;
 	requires jakarta.websocket.api;
 

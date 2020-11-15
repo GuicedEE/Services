@@ -2,7 +2,7 @@ module undertow.servlet {
     requires java.servlet;
 
     requires undertow.core;
-    requires java.annotation;
+    requires jakarta.annotation;
 
     requires jdk.unsupported;
 

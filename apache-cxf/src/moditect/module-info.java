@@ -7,7 +7,7 @@ module org.apache.cxf {
 
 	requires transitive com.google.common;
 
-	requires java.annotation;
+	requires jakarta.annotation;
 	requires static java.management;
 	requires java.desktop;
 	requires jakarta.validation;

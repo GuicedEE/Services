@@ -2,7 +2,7 @@ module com.google.guice.extensions.persist {
 	exports com.google.inject.persist;
 
 	requires transitive com.google.guice;
-	requires transitive java.persistence;
+	requires transitive jakarta.persistence;
 
 	requires static java.servlet;
 	requires static hibernate.jpa;
