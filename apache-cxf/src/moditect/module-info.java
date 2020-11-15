@@ -84,8 +84,11 @@ module org.apache.cxf {
 	opens org.apache.cxf.jaxrs.provider to com.google.guice;
 	opens org.apache.cxf.jaxrs.ext.search to com.google.guice;
 	opens org.apache.cxf.jaxrs.validation to com.google.guice;
+	opens org.apache.cxf.rs.security.saml.sso.state to com.google.guice;
+	opens org.apache.cxf.rs.security.saml.sso to com.google.guice;
 
 	opens org.apache.cxf.jaxrs.provider.aegis to com.google.guice;
+	opens org.apache.cxf.jaxrs.provider.atom to com.google.guice;
 
 	uses jakarta.ws.rs.ext.MessageBodyWriter;
 	uses jakarta.ws.rs.ext.MessageBodyReader;
