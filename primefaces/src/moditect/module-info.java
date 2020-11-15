@@ -290,4 +290,6 @@ open module primefaces {
 			                                                               org.primefaces.component.fileupload.CommonsFileUploadDecoder;
 
 	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions with com.guicedee.service.primefaces.PrimeFacesScannerInclusion;
+
+	provides com.guicedee.guicedinjection.interfaces.IGuiceModule with com.guicedee.service.primefaces.PrimeFacesBindings;
 }
