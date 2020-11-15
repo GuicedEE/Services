@@ -70,5 +70,7 @@ open module org.primefaces.extensions {
 	exports org.primefaces.extensions.util.json;
 	exports org.primefaces.extensions.util.visitcallback;
 
+	uses org.primefaces.extensions.component.exporter.ExporterFactory;
+
 	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions with org.primefaces.extensions.implementations.PrimeFacesExtensionsModuleInclusion;
 }

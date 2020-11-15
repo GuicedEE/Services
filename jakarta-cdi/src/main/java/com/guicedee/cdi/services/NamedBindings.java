@@ -18,8 +18,8 @@ public class NamedBindings
 {
 	private static final Set<String> all = new HashSet<>();
 
-	private static final Map<String,Class<?>> converters = new ConcurrentHashMap<>(5,2,1);
-	private static final  Map<String,Class<?>> validators = new ConcurrentHashMap<>(5,2,1);
+	private static final Map<String,Class<?>> converters = new ConcurrentHashMap<>();
+	private static final  Map<String,Class<?>> validators = new ConcurrentHashMap<>();
 
 	/**
 	 * Checks if bound, if not, adds to the list so next call its true

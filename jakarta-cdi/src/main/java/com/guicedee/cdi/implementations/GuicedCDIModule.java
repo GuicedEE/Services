@@ -10,6 +10,7 @@ import com.google.inject.spi.TypeListener;
 import com.guicedee.cdi.services.NamedBindings;
 import com.guicedee.guicedinjection.GuiceContext;
 import com.guicedee.guicedinjection.interfaces.IGuiceModule;
+import com.guicedee.logger.LogFactory;
 import io.github.classgraph.ClassInfo;
 
 import jakarta.annotation.PostConstruct;
@@ -20,7 +21,11 @@ import jakarta.enterprise.context.SessionScoped;
 
 import jakarta.inject.Named;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
 
 import static com.guicedee.guicedinjection.json.StaticStrings.*;
 import static java.lang.String.*;
@@ -99,6 +104,7 @@ public class GuicedCDIModule
 		return 151;
 	}
 
+	private Map<Class<?>, Method> postConstructMethods = new HashMap<>();
 	/**
 	 * Call postconstruct method (if annotation exists).
 	 */
@@ -108,21 +114,38 @@ public class GuicedCDIModule
 		encounter.register((InjectionListener<I>) injectee ->
 		{
 			Class<?> clazz = injectee.getClass();
+			if(postConstructMethods.containsKey(clazz))
+			{
+				try {
+					postConstructMethods.get(clazz).invoke(injectee);
+				} catch (IllegalAccessException e) {
+					LogFactory.getLog(getClass()).log(Level.WARNING,
+							"Illegal Access Exception to Cached Class Method during invoke of @PostConstruct - " + clazz.getCanonicalName(),e);
+				} catch (InvocationTargetException e) {
+					LogFactory.getLog(getClass()).log(Level.WARNING,
+							"Invocation Target Exception to Cached Class Method during invoke of @PostConstruct - " + clazz.getCanonicalName(),e);
+				}
+				return ;
+			}
 			for (Method methodInfo : clazz.getDeclaredMethods())
 			{
 				if (methodInfo.isAnnotationPresent(PostConstruct.class))
 				{
 					try
 					{
+						methodInfo.setAccessible(true);
+						postConstructMethods.put(clazz,methodInfo);
 						methodInfo.invoke(injectee);
 					}
 					catch (final IllegalAccessException e)
 					{
-						System.out.println("Illegal Access Exception to Class during invoke of @PostConstruct - " + clazz.getCanonicalName());
-						e.printStackTrace();
+						LogFactory.getLog(getClass()).log(Level.WARNING,
+								"Illegal Access Exception to Class during invoke of @PostConstruct - " + clazz.getCanonicalName(),e);
 					}
 					catch (final Exception e)
 					{
+						LogFactory.getLog(getClass()).log(Level.WARNING,
+								"Invocation Target Exception to Class Method during invoke of @PostConstruct - " + clazz.getCanonicalName(),e);
 						throw new RuntimeException(format("@PostConstruct %s", methodInfo), e);
 					}
 				}
