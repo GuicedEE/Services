@@ -76,12 +76,6 @@
                 <module>kafka-client</module>
                 <module>mapstruct</module>
                 <module>swagger</module>
-
-
-                <module>jackson-base</module>
-                <module>jackson-datatypes</module>
-                <module>jackson-jaxb</module>
-                <module>jackson-json</module>
             </modules>
         </profile>
 
