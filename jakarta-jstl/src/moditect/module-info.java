@@ -5,6 +5,8 @@ open module jakarta.servlet.jsp.jstl {
 
 	requires static jakarta.xml.bind;
 
+	requires xalan;
+
 	requires java.desktop;
 	requires java.naming;
 	requires jdk.xml.dom;

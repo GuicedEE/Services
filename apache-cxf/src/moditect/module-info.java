@@ -17,6 +17,7 @@ module org.apache.cxf {
 	requires org.slf4j;
 
 	requires jakarta.xml.soap;
+	requires xalan;
 
 	//requires org.apache.xerces;
 

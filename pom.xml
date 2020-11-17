@@ -76,6 +76,7 @@
                 <module>kafka-client</module>
                 <module>mapstruct</module>
                 <module>swagger</module>
+                <module>xalan</module>
             </modules>
         </profile>
 
