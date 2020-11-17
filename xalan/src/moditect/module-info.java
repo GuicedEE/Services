@@ -1,4 +1,6 @@
 module xalan {
+    requires java.xml;
+
     exports org.apache.bcel;
     exports org.apache.bcel.classfile;
     exports org.apache.bcel.generic;
@@ -26,4 +28,14 @@ module xalan {
     exports org.apache.xml.utils;
 
     exports org.apache.xpath;
+
+    provides javax.xml.transform.TransformerFactory with org.apache.xalan.processor.TransformerFactoryImpl;
+    provides javax.xml.xpath.XPathFactory with org.apache.xpath.jaxp.XPathFactoryImpl;
+
+    uses org.apache.xalan.extensions.bsf.BSFManager;
+    provides org.apache.xalan.extensions.bsf.BSFManager with org.apache.bsf.BSFManager;
+
+    uses  org.apache.xml.dtm.DTMManager;
+    provides org.apache.xml.dtm.DTMManager with org.apache.xml.dtm.ref.DTMManagerDefault;
+
 }
