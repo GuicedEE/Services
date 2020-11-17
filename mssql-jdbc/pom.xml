@@ -47,7 +47,7 @@
     </scm>
 
     <dependencies>
-       <!-- <dependency>
+       <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc_auth</artifactId>
             <version>${mssql.jdbc}.x64</version>
@@ -61,7 +61,7 @@
             <version>${mssql.jdbc}.jre11</version>
             <optional>true</optional>
         </dependency>
--->
+
     </dependencies>
 
     <build>
