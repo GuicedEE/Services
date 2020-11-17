@@ -30,183 +30,14 @@ limitations under the License.
 
 
     <artifactId>apache-poi</artifactId>
-
     <name>Apache POI</name>
-    <inceptionYear>2002</inceptionYear>
+
     <description>
         The Apache Commons Codec package contains simple encoder and decoders for
         various formats such as Base64 and Hexadecimal. In addition to these
         widely used encoders and decoders, the codec package also maintains a
         collection of phonetic encoding utilities.
     </description>
-    <url>https://commons.apache.org/proper/commons-codec/</url>
-    <issueManagement>
-        <system>jira</system>
-        <url>https://issues.apache.org/jira/browse/CODEC</url>
-    </issueManagement>
-    <scm>
-        <connection>scm:git:https://gitbox.apache.org/repos/asf?p=commons-codec.git</connection>
-        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf?p=commons-codec.git</developerConnection>
-        <url>https://github.com/apache/commons-codec</url>
-    </scm>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-
-    <developers>
-        <developer>
-            <name>Henri Yandell</name>
-            <id>bayard</id>
-            <email>bayard@apache.org</email>
-        </developer>
-        <developer>
-            <name>Tim OBrien</name>
-            <id>tobrien</id>
-            <email>tobrien@apache.org</email>
-            <timezone>-6</timezone>
-        </developer>
-        <developer>
-            <name>Scott Sanders</name>
-            <id>sanders</id>
-            <email>sanders@totalsync.com</email>
-        </developer>
-        <developer>
-            <name>Rodney Waldhoff</name>
-            <id>rwaldhoff</id>
-            <email>rwaldhoff@apache.org</email>
-        </developer>
-        <developer>
-            <name>Daniel Rall</name>
-            <id>dlr</id>
-            <email>dlr@finemaltcoding.com</email>
-        </developer>
-        <developer>
-            <name>Jon S. Stevens</name>
-            <id>jon</id>
-            <email>jon@collab.net</email>
-        </developer>
-        <developer>
-            <name>Gary Gregory</name>
-            <id>ggregory</id>
-            <email>ggregory@apache.org</email>
-            <url>http://www.garygregory.com</url>
-            <timezone>-5</timezone>
-        </developer>
-        <developer>
-            <name>David Graham</name>
-            <id>dgraham</id>
-            <email>dgraham@apache.org</email>
-        </developer>
-        <developer>
-            <name>Julius Davies</name>
-            <id>julius</id>
-            <email>julius@apache.org</email>
-            <organizationUrl>http://juliusdavies.ca/</organizationUrl>
-            <timezone>-8</timezone>
-        </developer>
-        <developer>
-            <name>Thomas Neidhart</name>
-            <id>tn</id>
-            <email>tn@apache.org</email>
-        </developer>
-        <developer>
-            <name>Rob Tompkins</name>
-            <id>chtompki</id>
-            <email>chtompki@apache.org</email>
-        </developer>
-    </developers>
-    <contributors>
-        <contributor>
-            <name>Christopher O'Brien</name>
-            <email>siege@preoccupied.net</email>
-            <roles>
-                <role>hex</role>
-                <role>md5</role>
-                <role>architecture</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Martin Redington</name>
-            <roles>
-                <role>Representing xml-rpc</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Jeffery Dever</name>
-            <roles>
-                <role>Representing http-client</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Steve Zimmermann</name>
-            <email>steve.zimmermann@heii.com</email>
-            <roles>
-                <role>Documentation</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Benjamin Walstrum</name>
-            <email>ben@walstrum.com</email>
-        </contributor>
-        <contributor>
-            <name>Oleg Kalnichevski</name>
-            <email>oleg@ural.ru</email>
-            <roles>
-                <role>Representing http-client</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Dave Dribin</name>
-            <email>apache@dave.dribin.org</email>
-            <roles>
-                <role>DigestUtil</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Alex Karasulu</name>
-            <email>aok123 at bellsouth.net</email>
-            <roles>
-                <role>Submitted Binary class and test</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Matthew Inger</name>
-            <email>mattinger at yahoo.com</email>
-            <roles>
-                <role>Submitted DIFFERENCE algorithm for Soundex and RefinedSoundex</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Jochen Wiedmann</name>
-            <email>jochen@apache.org</email>
-            <roles>
-                <role>Base64 code [CODEC-69]</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Sebastian Bazley</name>
-            <email>sebb@apache.org</email>
-            <roles>
-                <role>Streaming Base64</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Matthew Pocock</name>
-            <email>turingatemyhamster@gmail.com</email>
-            <roles>
-                <role>Beider-Morse phonetic matching</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Colm Rice</name>
-            <email>colm_rice at hotmail dot com</email>
-            <roles>
-                <role>Submitted Match Rating Approach (MRA) phonetic encoder and tests [CODEC-161]</role>
-            </roles>
-        </contributor>
-    </contributors>
 
     <!-- Codec only has test dependencies ATM -->
     <dependencies>
@@ -276,7 +107,7 @@ limitations under the License.
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
-                                        <exclude>META-INF/services</exclude>
+                                        <exclude>META-INF/services/**</exclude>
                                     </excludes>
                                 </filter>
                             </filters>

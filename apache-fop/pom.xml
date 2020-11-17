@@ -99,7 +99,7 @@ limitations under the License.
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                     <include>org.apache.xmlgraphics</include>
+                                    <include>org.apache.xmlgraphics</include>
 									<include>org.apache.pdfbox</include>
 									<include>com.thoughtworks.qdox</include>
 									<include>com.twelvemonkeys.imageio</include>
@@ -112,9 +112,11 @@ limitations under the License.
                             </artifactSet>
 							<filters>
                                 <filter>
-                                    <artifact>xalan:xalan</artifact>
+                                    <artifact>*:*</artifact>
                                     <excludes>
-                                        <exclude>META-INF/**</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
@@ -122,13 +124,15 @@ limitations under the License.
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
                             </transformers>
-
 							 <relocations>
-								<relocation>
+                                 <relocation>
+                                     <pattern>META-INF.services_</pattern>
+                                     <shadedPattern>META-INF.services</shadedPattern>
+                                 </relocation>
+                                 <relocation>
                                     <pattern>org.apache.xalan</pattern>
                                     <shadedPattern>org.apache.fop.shaded.xalan</shadedPattern>
                                 </relocation>
-			
 							 </relocations>
                         </configuration>
                     </execution>

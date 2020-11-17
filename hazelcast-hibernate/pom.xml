@@ -120,6 +120,19 @@
                                     <include>com.hazelcast:hazelcast-hibernate53:*</include>
                                 </includes>
                             </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>module-info.java</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>META-INF/services/*</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+
                             <relocations>
                                 <relocation>
                                     <pattern>javax.persistence</pattern>
@@ -128,6 +141,10 @@
                                 <relocation>
                                     <pattern>javax.xml.bind</pattern>
                                     <shadedPattern>jakarta.xml.bind</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>META-INF.services_</pattern>
+                                    <shadedPattern>META-INF.services</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

@@ -619,12 +619,22 @@
                                         <exclude>/1*</exclude>
                                         <exclude>*1.class</exclude>
                                         <exclude>/1.class</exclude>
-                                        <exclude>META-INF/services/*</exclude>
                                         <exclude>META-INF/cxf</exclude>
+                                        <exclude>META-INF/services/*</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
+                            </transformers>
                             <relocations>
+                                <relocation>
+                                    <pattern>META-INF.services_</pattern>
+                                    <shadedPattern>META-INF.services</shadedPattern>
+                                </relocation>
+
                                 <relocation>
                                     <pattern>org.owasp.esapi</pattern>
                                     <shadedPattern>org.apache.cxf.common.util.rel.esapi</shadedPattern>
@@ -644,11 +654,6 @@
                                 <relocation>
                                     <pattern>net.sf.saxon</pattern>
                                     <shadedPattern>org.apache.cxf.common.util.rel.saxon</shadedPattern>
-                                </relocation>
-
-                                <relocation>
-                                    <pattern>META-INF/services_</pattern>
-                                    <shadedPattern>META-INF/services</shadedPattern>
                                 </relocation>
 
                                 <relocation>
@@ -697,11 +702,7 @@
                                 </relocation>
 
                             </relocations>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                                <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
-                            </transformers>
+
                         </configuration>
                     </execution>
                 </executions>

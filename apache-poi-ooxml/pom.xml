@@ -33,23 +33,7 @@ limitations under the License.
     <artifactId>apache-poi-ooxml</artifactId>
 
     <name>Apache POI OOXML</name>
-    <inceptionYear>2002</inceptionYear>
-    <description>
-        The Apache Commons Codec package contains simple encoder and decoders for
-        various formats such as Base64 and Hexadecimal. In addition to these
-        widely used encoders and decoders, the codec package also maintains a
-        collection of phonetic encoding utilities.
-    </description>
-    <url>https://commons.apache.org/proper/commons-codec/</url>
-    <issueManagement>
-        <system>jira</system>
-        <url>https://issues.apache.org/jira/browse/CODEC</url>
-    </issueManagement>
-    <scm>
-        <connection>scm:git:https://gitbox.apache.org/repos/asf?p=commons-codec.git</connection>
-        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf?p=commons-codec.git</developerConnection>
-        <url>https://github.com/apache/commons-codec</url>
-    </scm>
+
 
     <!-- Codec only has test dependencies ATM -->
     <dependencies>
@@ -122,7 +106,7 @@ limitations under the License.
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
-                                        <exclude>META-INF/services</exclude>
+                                        <exclude>META-INF/services/*</exclude>
                                     </excludes>
                                 </filter>
                             </filters>

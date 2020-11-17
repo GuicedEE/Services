@@ -37,11 +37,17 @@
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
-                                        <exclude>META-INF/services</exclude>
+                                        <exclude>META-INF/services/*</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
                             <relocations>
+
+                                <relocation>
+                                    <pattern>META-INF.services_</pattern>
+                                    <shadedPattern>META-INF.services</shadedPattern>
+                                </relocation>
+
                                 <relocation>
                                     <pattern>net.sf.ehcache</pattern>
                                     <shadedPattern>org.ehcache</shadedPattern>

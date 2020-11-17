@@ -1,7 +1,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-	
+
     <parent>
         <groupId>com.guicedee.services</groupId>
         <artifactId>services-parent</artifactId>
@@ -12,7 +12,8 @@
     <packaging>jar</packaging>
 
     <name>hibernate-jcache</name>
-    <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by</description>
+    <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by
+    </description>
 
     <dependencies>
         <dependency>
@@ -86,11 +87,16 @@
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
-                                        <exclude>META-INF/services</exclude>
+                                        <exclude>META-INF/services/*</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
                             <relocations>
+                                <relocation>
+                                    <pattern>META-INF.services_</pattern>
+                                    <shadedPattern>META-INF.services</shadedPattern>
+                                </relocation>
+
                                 <relocation>
                                     <pattern>javax.persistence</pattern>
                                     <shadedPattern>jakarta.persistence</shadedPattern>
@@ -104,8 +110,16 @@
                                     <shadedPattern>jakarta.inject</shadedPattern>
                                 </relocation>
                                 <relocation>
+                                    <pattern>javax.transaction</pattern>
+                                    <shadedPattern>jakarta.transaction</shadedPattern>
+                                </relocation>
+                                <relocation>
                                     <pattern>javax.cache</pattern>
                                     <shadedPattern>jakarta.cache</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.annotation</pattern>
+                                    <shadedPattern>jakarta.annotation</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

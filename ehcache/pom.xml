@@ -61,7 +61,7 @@
                     </artifactSet>
                     <filters>
                         <filter>
-                            <artifact>*:*</artifact>
+                            <artifact>org.ehcache:*</artifact>
                             <excludes>
                                 <exclude>module-info.java</exclude>
                                 <exclude>META-INF/*.SF</exclude>
@@ -76,16 +76,32 @@
                     </transformers>
                     <relocations>
                         <relocation>
+                            <pattern>META-INF.services_</pattern>
+                            <shadedPattern>META-INF.services</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>javax.persistence</pattern>
+                            <shadedPattern>jakarta.persistence</shadedPattern>
+                        </relocation>
+                        <relocation>
                             <pattern>javax.xml.bind</pattern>
                             <shadedPattern>jakarta.xml.bind</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>javax.inject</pattern>
+                            <shadedPattern>jakarta.inject</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>javax.transaction</pattern>
+                            <shadedPattern>jakarta.transaction</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>javax.cache</pattern>
                             <shadedPattern>jakarta.cache</shadedPattern>
                         </relocation>
                         <relocation>
-                            <pattern>javax.inject</pattern>
-                            <shadedPattern>jakarta.inject</shadedPattern>
+                            <pattern>javax.annotation</pattern>
+                            <shadedPattern>jakarta.annotation</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
