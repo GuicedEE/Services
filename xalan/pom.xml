@@ -63,6 +63,15 @@ limitations under the License.
                                     <include>xalan:*</include>
                                 </includes>
                             </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>schema/</exclude>
+                                        <exclude>META-INF/services/javax.xml.transform.TransformerFactory</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
                         </configuration>
                     </execution>
                 </executions>
