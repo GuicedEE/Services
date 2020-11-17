@@ -53,16 +53,19 @@
                             </artifactSet>
                             <filters>
                                 <filter>
-                                    <artifact>*:*</artifact>
+                                    <artifact>org.hibernate.validator:*</artifact>
                                     <excludes>
                                         <exclude>module-info.java</exclude>
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
-                                        <exclude>META-INF/services</exclude>
+                                        <exclude>META-INF/services/*</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
                             <relocations>
                                 <relocation>
                                     <pattern>javax.persistence</pattern>
