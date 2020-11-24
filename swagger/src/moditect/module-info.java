@@ -24,6 +24,10 @@ module com.guicedee.services.openapi {
 	exports io.swagger.v3.oas.annotations.servers;
 	exports io.swagger.v3.oas.annotations.security;
 
+	exports io.swagger.v3.jaxrs2.ext;
+	exports io.swagger.v3.core.converter;
+	exports io.swagger.v3.oas.integration.api;
+
 	opens io.swagger.v3.oas.models.examples to com.fasterxml.jackson.databind;
 
 	exports io.swagger.v3.oas.annotations.parameters;
@@ -33,7 +37,7 @@ module com.guicedee.services.openapi {
 	exports io.swagger.v3.oas.annotations.enums;
 	exports io.swagger.v3.oas.models.security;
 
-
+	exports io.swagger.v3.oas.models.parameters;
 
 	opens io.swagger.v3.jaxrs2.integration.resources to com.google.guice, org.apache.cxf;
 	opens io.swagger.v3.jaxrs2 to com.google.guice, org.apache.cxf;

@@ -514,6 +514,20 @@
             <artifactId>xalan</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>swagger</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
+            <version>3.4.1</version>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -579,6 +593,11 @@
                                     <include>org.cryptacular:*</include>
                                     <include>net.shibboleth.utilities:*</include>
                                     <include>org.apache.cxf.services.sts:*</include>
+
+                                    <include>org.apache.cxf:cxf-rt-rs-service-description-openapi-v3</include>
+                                    <include>org.apache.cxf:cxf-rt-rs-service-description-common-openapi</include>
+                                    <!--<include>org.apache.cxf:cxf-rt-rs-service-description-swagger-ui</include>-->
+
                                 </includes>
                             </artifactSet>
                             <filters>

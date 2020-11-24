@@ -67,6 +67,16 @@ module org.apache.cxf {
 	exports org.apache.cxf.rs.security.jose.jws;
 	exports org.apache.cxf.rs.security.jose.jwt;
 
+	exports org.apache.cxf.jaxrs.swagger.ui;
+	exports org.apache.cxf.jaxrs.openapi;
+	exports org.apache.cxf.jaxrs.openapi.parse;
+	exports org.apache.cxf.jaxrs.common.openapi;
+
+	exports org.apache.cxf.feature;
+
+	requires static com.guicedee.services.openapi;
+	requires static org.apache.commons.lang3;
+
 	opens org.apache.cxf.rs.security.oauth2.services;
 	opens org.apache.cxf.rs.security.oauth2.provider to com.google.guice;
 	opens org.apache.cxf.rs.security.oauth2.filters to com.google.guice;
@@ -75,6 +85,11 @@ module org.apache.cxf {
 
 	opens org.apache.cxf.rs.security.oauth.services;
 	opens org.apache.cxf.rs.security.oauth.filters to com.google.guice;
+
+	//opens org.apache.cxf.jaxrs.swagger.ui;
+	opens org.apache.cxf.jaxrs.openapi;
+	opens org.apache.cxf.jaxrs.openapi.parse;
+	opens org.apache.cxf.jaxrs.common.openapi;
 
 //	exports org.apache.cxf.transport.http_undertow;
 //	exports org.glassfish.jersey.internal to java.ws.rs;
@@ -90,6 +105,7 @@ module org.apache.cxf {
 
 	opens org.apache.cxf.jaxrs.provider.aegis to com.google.guice;
 	opens org.apache.cxf.jaxrs.provider.atom to com.google.guice;
+
 
 	uses jakarta.ws.rs.ext.MessageBodyWriter;
 	uses jakarta.ws.rs.ext.MessageBodyReader;
@@ -194,6 +210,8 @@ module org.apache.cxf {
 
 	uses org.opensaml.xmlsec.signature.support.SignerProvider;
 	provides org.opensaml.xmlsec.signature.support.SignerProvider with org.opensaml.xmlsec.signature.support.impl.provider.ApacheSantuarioSignerProviderImpl;
+
+	provides io.swagger.v3.jaxrs2.ext.OpenAPIExtension with org.apache.cxf.jaxrs.openapi.JaxRs2Extension;
 
 }
 
