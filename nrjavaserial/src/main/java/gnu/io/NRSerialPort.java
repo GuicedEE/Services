@@ -65,17 +65,33 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TooManyListenersException;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import gnu.io.factory.RxTxPortCreator;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.*;
+
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
 public class NRSerialPort implements Serializable
 {
 	@SuppressWarnings("MissingSerialAnnotation")
 	private static final long serialVersionUID = 1L;
 	
+	@JsonIgnore
 	private RXTXPort serial;
+	
 	private String port = null;
 	private boolean connected = false;
 	private int baud = 115200;
+	
+	public NRSerialPort()
+	{
+		//no config
+	}
 	
 	/**
 	 * Class Constructor for a NRSerialPort with a given port and baudrate.
@@ -92,7 +108,7 @@ public class NRSerialPort implements Serializable
 	/**
 	 * Attempts to connect
 	 * @return
-	 * @throws NRSerialPortException if cannot connect
+	 * @throws gnu.io.NRSerialPortException if cannot connect
 	 */
 	public boolean connect()
 	{
@@ -131,13 +147,13 @@ public class NRSerialPort implements Serializable
 		return isConnected();
 	}
 	
-	
+	@JsonIgnore
 	public InputStream getInputStream()
 	{
 		return serial.getInputStream();
 	}
 	
-	
+	@JsonIgnore
 	public OutputStream getOutputStream()
 	{
 		return serial.getOutputStream();
@@ -180,7 +196,6 @@ public class NRSerialPort implements Serializable
 			throw new NativeResourceException(e.getMessage());
 		}
 	}
-	
 	
 	public static Set<String> getAvailableSerialPorts()
 	{
@@ -286,6 +301,7 @@ public class NRSerialPort implements Serializable
 	 * This will return null until {@link #connect()} is successfully called.
 	 * @return The {@link SerialPort} instance or null.
 	 */
+	@JsonIgnore
 	public RXTXPort getSerialPortInstance()
 	{
 		return serial;
