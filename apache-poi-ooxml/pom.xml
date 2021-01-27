@@ -55,8 +55,8 @@ limitations under the License.
         </dependency>
 
         <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml-schemas</artifactId>
+           <groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml-full</artifactId>
             <optional>true</optional>
         </dependency>
 
@@ -93,7 +93,7 @@ limitations under the License.
                             <artifactSet>
                                 <includes>
                                     <include>org.apache.poi:poi-ooxml:*</include>
-                                    <include>org.apache.poi:poi-ooxml-schemas:*</include>
+                                    <include>org.apache.poi:poi-ooxml-full:*</include>
                                     <include>org.apache.poi:poi-scratchpad:*</include>
                                     <include>com.github.virtuald:curvesapi:*</include>
                                 </includes>
