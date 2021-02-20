@@ -31,6 +31,7 @@ import com.google.inject.internal.Annotations;
 import com.google.inject.internal.DeclaredMembers;
 import com.google.inject.internal.Errors;
 import com.google.inject.internal.ErrorsException;
+import com.google.inject.internal.KotlinSupport;
 import com.google.inject.internal.Nullability;
 import com.google.inject.internal.util.Classes;
 import java.lang.annotation.Annotation;
@@ -76,22 +77,27 @@ public final class InjectionPoint {
     this.optional = optional;
     this.dependencies =
         forMember(
+            new Errors(method),
             method,
             declaringType,
             method.getParameterAnnotations(),
-            KotlinNullabilitySupport.getInstance().getParameterPredicate(method));
+            KotlinSupport.getInstance().getIsParameterKotlinNullablePredicate(method));
   }
 
   InjectionPoint(TypeLiteral<?> declaringType, Constructor<?> constructor) {
     this.member = constructor;
     this.declaringType = declaringType;
     this.optional = false;
+    Errors errors = new Errors(constructor);
+    KotlinSupport.getInstance().checkConstructorParameterAnnotations(constructor, errors);
+
     this.dependencies =
         forMember(
+            errors,
             constructor,
             declaringType,
             constructor.getParameterAnnotations(),
-            KotlinNullabilitySupport.getInstance().getParameterPredicate(constructor));
+            KotlinSupport.getInstance().getIsParameterKotlinNullablePredicate(constructor));
   }
 
   InjectionPoint(TypeLiteral<?> declaringType, Field field, boolean optional) {
@@ -112,18 +118,18 @@ public final class InjectionPoint {
     }
     errors.throwConfigurationExceptionIfErrorsExist();
 
-    this.dependencies =
-        ImmutableList.<Dependency<?>>of(
-            newDependency(key, Nullability.allowsNull(annotations), -1));
+    boolean allowsNull =
+        Nullability.hasNullableAnnotation(annotations)
+            || KotlinSupport.getInstance().isNullable(field);
+    this.dependencies = ImmutableList.<Dependency<?>>of(newDependency(key, allowsNull, -1));
   }
 
   private ImmutableList<Dependency<?>> forMember(
+      Errors errors,
       Member member,
       TypeLiteral<?> type,
       Annotation[][] parameterAnnotationsPerParameter,
       Predicate<Integer> isParameterKotlinNullable) {
-    Errors errors = new Errors(member);
-
     List<Dependency<?>> dependencies = Lists.newArrayList();
     int index = 0;
 
@@ -132,7 +138,8 @@ public final class InjectionPoint {
         Annotation[] parameterAnnotations = parameterAnnotationsPerParameter[index];
         Key<?> key = Annotations.getKey(parameterType, member, parameterAnnotations, errors);
         boolean isNullable =
-            Nullability.allowsNull(parameterAnnotations) || isParameterKotlinNullable.test(index);
+            Nullability.hasNullableAnnotation(parameterAnnotations)
+                || isParameterKotlinNullable.test(index);
         dependencies.add(newDependency(key, isNullable, index));
         index++;
       } catch (ConfigurationException e) {
@@ -869,7 +876,7 @@ public final class InjectionPoint {
    */
   public static Annotation[] getAnnotations(Field field) {
     Annotation[] javaAnnotations = field.getAnnotations();
-    Annotation[] kotlinAnnotations = KotlinAnnotationSupport.getInstance().getAnnotations(field);
+    Annotation[] kotlinAnnotations = KotlinSupport.getInstance().getAnnotations(field);
 
     if (kotlinAnnotations.length == 0) {
       return javaAnnotations;
