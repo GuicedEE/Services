@@ -1,0 +1,263 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>services-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+    <artifactId>azure-identity</artifactId>
+
+    <name>azure-identity</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>com.azure</include>
+                                    <include>com.nimbusds</include>
+                                    <include>com.microsoft.azure</include>
+                                    <include>com.google.code.gson</include>
+                                    <include>com.microsoft.aad</include>
+                                    <include>org.simpleframework</include>
+                                    <include>io.netty</include>
+                                    <include>io.projectreactor</include>
+                                    <include>org.reactivestreams</include>
+                                    <include>net.minidev</include>
+                                    <include>xpp3</include>
+                                    <include>io.projectreactor.netty</include>
+                                    <include>org.linguafranca.pwdb:*</include>
+                                    <include>com.madgag.spongycastle</include>
+                                    <include>com.github.stephenc.jcip:*</include>
+                                </includes>
+                            </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>javax.faces</pattern>
+                                    <shadedPattern>jakarta.faces</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.el</pattern>
+                                    <shadedPattern>jakarta.el</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.annotation</pattern>
+                                    <shadedPattern>jakarta.annotation</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.servlet</pattern>
+                                    <shadedPattern>jakarta.servlet</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.persistence</pattern>
+                                    <shadedPattern>jakarta.persistence</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.enterprise</pattern>
+                                    <shadedPattern>jakarta.enterprise</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.xml.bind</pattern>
+                                    <shadedPattern>jakarta.xml.bind</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.validation</pattern>
+                                    <shadedPattern>jakarta.validation</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.inject</pattern>
+                                    <shadedPattern>jakarta.inject</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.activation</pattern>
+                                    <shadedPattern>jakarta.activation</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.ws.rs</pattern>
+                                    <shadedPattern>jakarta.ws.rs</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.jws</pattern>
+                                    <shadedPattern>jakarta.jws</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.cache</pattern>
+                                    <shadedPattern>jakarta.cache</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.xml.ws</pattern>
+                                    <shadedPattern>jakarta.xml.ws</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.xml.soap</pattern>
+                                    <shadedPattern>jakarta.xml.soap</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.mail</pattern>
+                                    <shadedPattern>jakarta.mail</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-identity</artifactId>
+            <version>1.2.3</version>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.nimbusds</groupId>
+                    <artifactId>oauth2-oidc-sdk</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.aad</groupId>
+            <artifactId>adal4j</artifactId>
+            <version>0.0.2</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-core</artifactId>
+            <version>1.13.0</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-core-http-netty</artifactId>
+            <version>1.8.0</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>msal4j</artifactId>
+            <version>1.9.1</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>msal4j-persistence-extension</artifactId>
+            <version>1.1.0</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+            <version>2.3</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>net.minidev</groupId>
+            <artifactId>accessors-smart</artifactId>
+            <version>1.2</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.linguafranca.pwdb</groupId>
+            <artifactId>KeePassJava2</artifactId>
+            <version>2.1.4</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <optional>true</optional>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>slf4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.mail</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.activation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>nrjavaserial</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.woodstox</groupId>
+            <artifactId>stax2-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.woodstox</groupId>
+            <artifactId>woodstox-core</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>
