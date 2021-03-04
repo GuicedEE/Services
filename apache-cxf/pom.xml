@@ -524,7 +524,6 @@
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
-            <version>3.4.1</version>
             <optional>true</optional>
         </dependency>
 
