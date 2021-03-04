@@ -1,3 +1,3 @@
-package xml.bind.jaxb.javadoc;
+package jakarta.xml.bind.jaxb.javadoc;
 
 public class JavadocGenerator {}
