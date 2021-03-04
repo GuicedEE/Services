@@ -14,9 +14,7 @@ module com.google.guice {
 
 	requires transitive com.google.common;
 	requires transitive jakarta.inject;
-	requires transitive org.apache.commons.lang3;
 	requires transitive aopalliance;
-	requires transitive java.xml;
 
 	requires jakarta.annotation;
 }

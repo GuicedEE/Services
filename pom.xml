@@ -78,6 +78,7 @@
                 <module>swagger</module>
                 <module>xalan</module>
 				<module>nrjavaserial</module>
+				<module>msal4j</module>
             </modules>
         </profile>
 

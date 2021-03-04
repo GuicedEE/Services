@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <mssql.jdbc>9.2.0</mssql.jdbc>
+        <mssql.jdbc>9.2.1</mssql.jdbc>
     </properties>
 
     <name>mssqljdbc</name>
@@ -96,31 +96,35 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>jdk14</id>
-            <activation>
-                <jdk>[14,)</jdk>
+	
+	<profile>
+            <id>jdk9</id>
+			<activation>
+                <jdk>[9,14]</jdk>
             </activation>
             <dependencyManagement>
                 <dependencies>
                     <dependency>
                         <groupId>com.microsoft.sqlserver</groupId>
                         <artifactId>mssql-jdbc</artifactId>
-                        <version>${mssql.jdbc}.jre14</version>
+                        <version>${mssql.jdbc}.jre11</version>
                         <optional>true</optional>
                     </dependency>
                 </dependencies>
             </dependencyManagement>
         </profile>
-
+		
         <profile>
-            <id>jdk9</id>
+            <id>jdk14</id>
+            <activation>
+                <jdk>[15,)</jdk>
+            </activation>
             <dependencyManagement>
                 <dependencies>
                     <dependency>
                         <groupId>com.microsoft.sqlserver</groupId>
                         <artifactId>mssql-jdbc</artifactId>
-                        <version>${mssql.jdbc}.jre11</version>
+                        <version>${mssql.jdbc}.jre15</version>
                         <optional>true</optional>
                     </dependency>
                 </dependencies>

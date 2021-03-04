@@ -15,10 +15,12 @@
     <name>google.guice.core</name>
 
     <dependencies>
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.inject</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>aopalliance-core</artifactId>
@@ -36,9 +38,11 @@
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <optional>true</optional>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -57,12 +61,21 @@
                             <artifactSet>
                                 <includes>
                                     <include>org.ow2.asm:asm</include>
+                                    <include>com.google.inject:guice</include>
                                 </includes>
                             </artifactSet>
                             <relocations>
                                 <relocation>
                                     <pattern>org.objectweb.asm</pattern>
                                     <shadedPattern>com.google.inject.internal.asm</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.inject</pattern>
+                                    <shadedPattern>jakarta.inject</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.annotation</pattern>
+                                    <shadedPattern>jakarta.annotation</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
