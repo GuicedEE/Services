@@ -1,3 +1,3 @@
-package com.google.inject.servlet.javadoc;
+package com.google.inject.servlet;
 
 public class JavaDocGenerator {}
