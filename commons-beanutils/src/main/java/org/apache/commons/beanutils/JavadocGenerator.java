@@ -1,4 +1,4 @@
-package org.apache.commons.beanutils.javadoc.generator;
+package org.apache.commons.beanutils;
 
 public class JavadocGenerator {
 	/**

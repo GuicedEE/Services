@@ -32,10 +32,10 @@
             <artifactId>jakarta.activation</artifactId>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.activation</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
