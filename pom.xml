@@ -149,6 +149,7 @@
                 <module>jakarta-xml-bind-api</module>
                 <module>jakarta-xml-soap-api</module>
                 <module>jakarta-servlet-api</module>
+                <module>java-servlet-api</module>
                 <module>jakarta-xml-ws-api</module>
                 <module>jakarta-xml-rs-api</module>
                 <module>jakarta-transaction-api</module>

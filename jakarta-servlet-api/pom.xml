@@ -54,7 +54,7 @@
     <artifactId>jakarta.servlet-api</artifactId>
     <packaging>jar</packaging>
 
-    <name>javax.servlet</name>
+    <name>jakarta.servlet</name>
 
     <url>http://servlet-spec.java.net</url>
     <developers>

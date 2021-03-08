@@ -86,6 +86,12 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
     <build>
 
@@ -104,6 +110,7 @@
                             <artifactSet>
                                 <includes>
                                     <include>jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:*</include>
+                                    <include>org.glassfish.web:jakarta.servlet.jsp.jstl:*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
