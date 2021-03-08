@@ -18,8 +18,6 @@ module com.azure.identity {
     requires org.slf4j;
     requires org.apache.commons.lang3;
 
-    requires org.json;
-
     uses com.azure.core.http.HttpClientProvider;
     provides com.azure.core.http.HttpClientProvider with com.azure.core.http.netty.NettyAsyncHttpClientProvider;
   //  uses reactor.blockhound.integration.BlockHoundIntegration;
