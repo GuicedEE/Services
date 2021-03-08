@@ -8,12 +8,12 @@ module com.azure.identity {
     exports com.nimbusds.oauth2.sdk;
     exports com.microsoft.aad.msal4j;
 
-    requires jakarta.mail;
+    requires static jakarta.mail;
+    requires static java.servlet;
 
-    requires jakarta.servlet;
     requires org.json;
 
-    requires java.naming;
+    requires transitive java.naming;
     requires java.sql;
     requires org.slf4j;
     requires org.apache.commons.lang3;
