@@ -209,7 +209,8 @@ open module primefaces {
 	exports org.primefaces.event.data;
 	exports org.primefaces.event.diagram;
 	exports org.primefaces.event.map;
-	exports org.primefaces.event.system;
+	exports org.primefaces.event.organigram;
+	//exports org.primefaces.event.system;
 	exports org.primefaces.event.timeline;
 	exports org.primefaces.expression;
 	exports org.primefaces.expression.impl;
