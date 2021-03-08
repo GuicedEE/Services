@@ -3,7 +3,7 @@ open module primefaces {
 	requires transitive jakarta.faces;
 	requires transitive org.apache.commons.io;
 	requires transitive org.apache.commons.fileupload;
-	requires transitive java.servlet;
+	requires transitive jakarta.servlet;
 	requires transitive jakarta.el;
 	requires transitive jakarta.validation;
 

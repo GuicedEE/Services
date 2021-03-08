@@ -1,5 +1,5 @@
 module undertow.servlet {
-    requires java.servlet;
+    requires jakarta.servlet;
 
     requires undertow.core;
     requires jakarta.annotation;

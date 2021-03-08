@@ -6,7 +6,7 @@ open module jakarta.servlet.jsp {
 	requires java.xml;
 
 	requires transitive jakarta.el;
-	requires transitive java.servlet;
+	requires transitive jakarta.servlet;
 
 	requires java.desktop;
 	requires java.compiler;

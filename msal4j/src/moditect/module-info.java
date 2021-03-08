@@ -9,7 +9,8 @@ module com.azure.identity {
     exports com.microsoft.aad.msal4j;
 
     requires jakarta.mail;
-    requires java.servlet;
+    requires jakarta.servlet;
+    requires jakarta.xml.bind;
 
     requires org.json;
 

@@ -10,7 +10,7 @@ module undertow.websockets.jsr {
 
 	requires undertow.core;
 
-	requires java.servlet;
+	requires jakarta.servlet;
 
 	requires org.jboss.logging;
 	requires jakarta.annotation;
