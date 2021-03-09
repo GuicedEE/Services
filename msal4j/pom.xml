@@ -29,7 +29,6 @@
                                     <include>com.azure</include>
                                     <include>com.nimbusds</include>
                                     <include>com.microsoft.azure</include>
-                                    <include>com.google.code.gson</include>
                                     <include>com.microsoft.aad</include>
                                     <include>org.simpleframework</include>
                                     <include>io.netty</include>
@@ -159,6 +158,11 @@
             <version>1.6.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
         <!--
          <dependency>
              <groupId>com.azure</groupId>
@@ -210,12 +214,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <optional>true</optional>
         </dependency>
 
        <!-- <dependency>

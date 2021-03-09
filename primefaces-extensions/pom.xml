@@ -40,14 +40,12 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.6</version>
-            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.primefaces.extensions</groupId>
             <artifactId>primefaces-extensions</artifactId>
-            <version>9.0-SNAPSHOT</version>
+            <version>10.0.0-RC2</version>
             <optional>true</optional>
             <exclusions>
                 <exclusion>
@@ -75,7 +73,6 @@
                     <artifactSet>
                         <includes>
                             <include>org.primefaces.extensions</include>
-                            <include>com.google.code.gson:gson</include>
                         </includes>
                     </artifactSet>
                     <filters>
@@ -101,10 +98,6 @@
                         </transformer>
                     </transformers>
                     <relocations>
-                        <relocation>
-                            <pattern>com.google.gson</pattern>
-                            <shadedPattern>org.primefaces.extensions.google.gson</shadedPattern>
-                        </relocation>
                         <relocation>
                             <pattern>javax.faces</pattern>
                             <shadedPattern>jakarta.faces</shadedPattern>

@@ -64,13 +64,15 @@ open module org.primefaces.extensions {
 
 
 	exports org.primefaces.extensions.renderer;
-	exports org.primefaces.extensions.renderkit.layout;
+//	exports org.primefaces.extensions.renderkit.layout;
 
 	exports org.primefaces.extensions.util;
 	exports org.primefaces.extensions.util.json;
 	exports org.primefaces.extensions.util.visitcallback;
 
 	uses org.primefaces.extensions.component.exporter.ExporterFactory;
+
+	requires com.google.gson;
 
 	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions with org.primefaces.extensions.implementations.PrimeFacesExtensionsModuleInclusion;
 }

@@ -12,6 +12,8 @@ module com.azure.identity {
     requires jakarta.servlet;
     requires jakarta.xml.bind;
 
+    requires com.google.gson;
+
     requires org.json;
 
     requires transitive java.naming;
