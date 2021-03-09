@@ -72,6 +72,11 @@
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
+            <artifactId>xalan</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
         </dependency>
 

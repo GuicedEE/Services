@@ -19,11 +19,15 @@ open module jakarta.servlet.jsp.jstl {
 	exports jakarta.servlet.jsp.jstl.tlv;
 
 	exports org.apache.taglibs.standard;
-	exports org.apache.taglibs.standard.extra;
+	exports org.apache.taglibs.standard.extra.spath;
 	exports org.apache.taglibs.standard.functions;
-	exports org.apache.taglibs.standard.lang;
+	exports org.apache.taglibs.standard.lang.jstl;
+	exports org.apache.taglibs.standard.lang.jstl.parser;
+	exports org.apache.taglibs.standard.lang.jstl.test;
+	exports org.apache.taglibs.standard.lang.jstl.test.beans;
+	exports org.apache.taglibs.standard.lang.support;
 	exports org.apache.taglibs.standard.resources;
-	exports org.apache.taglibs.standard.tag;
+
 	exports org.apache.taglibs.standard.tag.el.core;
 	exports org.apache.taglibs.standard.tag.el.fmt;
 	exports org.apache.taglibs.standard.tag.el.sql;

@@ -276,7 +276,6 @@ open module primefaces {
 
 	exports org.primefaces.component.organigram;
 	exports org.primefaces.component.organigramnode;
-	exports org.primefaces.event.organigram;
 
 	exports org.primefaces.renderkit;
 	exports org.primefaces.util;
@@ -285,6 +284,8 @@ open module primefaces {
 	exports org.primefaces.visit;
 	exports org.primefaces.webapp;
 	exports org.primefaces.webapp.filter;
+
+	uses java.nio.file.spi.FileTypeDetector;
 
 	uses org.primefaces.component.fileupload.FileUploadDecoder;
 	provides org.primefaces.component.fileupload.FileUploadDecoder with org.primefaces.component.fileupload.NativeFileUploadDecoder,
