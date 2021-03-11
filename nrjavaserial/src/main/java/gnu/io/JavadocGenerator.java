@@ -1,4 +1,4 @@
-package com.sun.jna;
+package gnu.io;
 
 public class JavadocGenerator
 {
