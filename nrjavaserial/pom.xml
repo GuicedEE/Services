@@ -21,39 +21,18 @@
         </dependency>
 
         <dependency>
-            <groupId>net.java.dev.jna</groupId>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>jna-platform</artifactId>
-			<optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jakarta.xml.bind-api</artifactId>
-                    <groupId>jakarta.xml.bind</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jakarta.activation-api</artifactId>
-                    <groupId>jakarta.activation</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jakarta.xml.bind-api</artifactId>
-                    <groupId>jakarta.xml.bind</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jakarta.activation-api</artifactId>
-                    <groupId>jakarta.activation</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>
@@ -68,9 +47,6 @@
                     <artifactSet>
                         <includes>
                             <include>com.neuronrobotics:nrjavaserial</include>
-                            <include>net.java.dev.jna:jna-platform</include>
-                            <include>net.java.dev.jna:jna</include>
-                            <include>commons-net:commons-net</include>
                         </includes>
                     </artifactSet>
                     <filters>
@@ -109,5 +85,50 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>jdk9</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>fasterxml-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+        <profile>
+            <id>jdk8</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>fasterxml-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+    </profiles>
 
 </project>

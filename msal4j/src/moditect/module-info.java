@@ -23,6 +23,7 @@ module com.azure.identity {
     requires transitive java.naming;
     requires java.sql;
     requires org.slf4j;
+    requires com.sun.jna;
     requires org.apache.commons.lang3;
 
     uses com.azure.core.http.HttpClientProvider;

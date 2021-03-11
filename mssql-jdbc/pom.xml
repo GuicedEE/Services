@@ -110,6 +110,14 @@
                         <version>${mssql.jdbc}.jre11</version>
                         <optional>true</optional>
                     </dependency>
+
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
                 </dependencies>
             </dependencyManagement>
         </profile>
@@ -127,6 +135,15 @@
                         <version>${mssql.jdbc}.jre15</version>
                         <optional>true</optional>
                     </dependency>
+
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+
                 </dependencies>
             </dependencyManagement>
         </profile>
@@ -144,6 +161,15 @@
                         <version>${mssql.jdbc}.jre8</version>
                         <optional>true</optional>
                     </dependency>
+
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+
                 </dependencies>
             </dependencyManagement>
         </profile>

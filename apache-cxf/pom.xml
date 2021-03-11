@@ -43,7 +43,6 @@
             <artifactId>jakarta.xml.soap-api</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>slf4j</artifactId>
@@ -63,54 +62,12 @@
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-base</artifactId>
             <classifier>jakarta</classifier>
-			<exclusions>
-                   <exclusion>
-                       <artifactId>jakarta.xml.bind-api</artifactId>
-                       <groupId>jakarta.xml.bind</groupId>
-                   </exclusion>
-                   <exclusion>
-                       <artifactId>jakarta.activation-api</artifactId>
-                       <groupId>jakarta.activation</groupId>
-                   </exclusion>
-                   <exclusion>
-                       <groupId>com.fasterxml.jackson.jaxrs</groupId>
-                       <artifactId>jackson-jaxrs-base</artifactId>
-                   </exclusion>
-                   <exclusion>
-                       <artifactId>javax.ws.rs-api</artifactId>
-                       <groupId>javax.ws.rs</groupId>
-                   </exclusion>
-               </exclusions>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
             <classifier>jakarta</classifier>
-			<exclusions>
-                   <exclusion>
-                       <artifactId>jakarta.xml.bind-api</artifactId>
-                       <groupId>jakarta.xml.bind</groupId>
-                   </exclusion>
-                   <exclusion>
-                       <artifactId>jakarta.activation-api</artifactId>
-                       <groupId>jakarta.activation</groupId>
-                   </exclusion>
-                   <exclusion>
-                       <groupId>com.fasterxml.jackson.jaxrs</groupId>
-                       <artifactId>jackson-jaxrs-base</artifactId>
-                   </exclusion>
-                   <exclusion>
-                       <artifactId>javax.ws.rs-api</artifactId>
-                       <groupId>javax.ws.rs</groupId>
-                   </exclusion>
-               </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -125,17 +82,10 @@
             <optional>true</optional>
         </dependency>
 
-
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.jws-api</artifactId>
         </dependency>
-
-
-        <!--<dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>java.ws.rs</artifactId>
-        </dependency>-->
 
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
@@ -565,6 +515,121 @@
 
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>jdk9</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>apache-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>apache-cxf-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>fasterxml-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>jakarta-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>swagger-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>google-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+        <profile>
+            <id>jdk8</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>apache-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>apache-cxf-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>fasterxml-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>jakarta-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>swagger-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>google-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -625,6 +690,7 @@
                                     <include>com.sun.xml.messaging.saaj:*</include>
                                     <include>com.sun.xml.ws:*</include>
                                     <include>org.opensaml:*</include>
+                                    <include>org.bouncycastle:bcprov-jdk16</include>
                                     <include>org.cryptacular:*</include>
                                     <include>net.shibboleth.utilities:*</include>
                                     <include>org.apache.cxf.services.sts:*</include>

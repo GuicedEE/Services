@@ -87,4 +87,64 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>jdk9</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>apache-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>jboss-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+        <profile>
+            <id>jdk8</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>apache-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>jboss-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+    </profiles>
+
 </project>

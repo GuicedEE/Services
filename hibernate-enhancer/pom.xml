@@ -14,6 +14,7 @@
     <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by</description>
 
     <dependencies>
+
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
@@ -26,6 +27,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-artifact</artifactId>
@@ -38,6 +40,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
@@ -50,6 +53,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.apache.maven.plugin-tools</groupId>
             <artifactId>maven-plugin-annotations</artifactId>
@@ -62,6 +66,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -82,6 +87,7 @@
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.codehaus.plexus</groupId>
             <artifactId>plexus-utils</artifactId>
@@ -94,15 +100,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jboss-logmanager</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.sonatype.plexus</groupId>
             <artifactId>plexus-build-api</artifactId>
             <version>0.0.7</version>
-            <scope>compile</scope>
             <exclusions>
                 <exclusion>
                     <artifactId>xml-apis</artifactId>
@@ -186,6 +193,24 @@
 	<profiles>
 		<profile>
 			<id>jdk8</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>hibernate-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
 			<build>
 				<plugins>
 					<plugin>
@@ -202,6 +227,24 @@
 		</profile>
         <profile>
             <id>jdk9</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>hibernate-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
             <build>
                 <plugins>
                     <plugin>
