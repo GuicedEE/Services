@@ -80,7 +80,7 @@
             <artifactId>javax.transaction</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.javassist</groupId>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>javassist</artifactId>
         </dependency>
         <dependency>
@@ -187,30 +187,60 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.2.5</version>
+                <configuration>
+                </configuration>
+                <executions>
+                    <!-- enable flattening -->
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                        <configuration>
+                            <flattenMode>oss</flattenMode>
+                        </configuration>
+                    </execution>
+                    <!-- ensure proper cleanup -->
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>hibernate-bom</artifactId>
+                <version>${project.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>standalone-bom</artifactId>
+                <version>${project.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 	
 	<profiles>
 		<profile>
 			<id>jdk8</id>
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>hibernate-bom</artifactId>
-                        <version>${project.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                </dependencies>
-            </dependencyManagement>
 			<build>
 				<plugins>
 					<plugin>
@@ -227,24 +257,7 @@
 		</profile>
         <profile>
             <id>jdk9</id>
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>hibernate-bom</artifactId>
-                        <version>${project.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                </dependencies>
-            </dependencyManagement>
+
             <build>
                 <plugins>
                     <plugin>
@@ -256,6 +269,7 @@
                             <compilerArgument>-proc:none</compilerArgument>
                         </configuration>
                     </plugin>
+
                 </plugins>
             </build>
         </profile>
