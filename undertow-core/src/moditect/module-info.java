@@ -90,6 +90,8 @@ module undertow.core {
 
     uses org.xnio.XnioProvider;
 
+    uses io.undertow.protocols.alpn.ALPNEngineManager;
+
     opens io.undertow to org.jboss.logging;
 
     provides io.undertow.attribute.ExchangeAttributeBuilder with io.undertow.attribute.RelativePathAttribute.Builder,
@@ -159,10 +161,8 @@ module undertow.core {
     provides io.undertow.protocols.alpn.ALPNEngineManager with io.undertow.protocols.ssl.SNIAlpnEngineManager,
             io.undertow.protocols.alpn.DefaultAlpnEngineManager;
 
-    provides io.undertow.protocols.alpn.ALPNProvider with io.undertow.protocols.alpn.JDK8HackAlpnProvider,
-            io.undertow.protocols.alpn.JettyAlpnProvider,
-            io.undertow.protocols.alpn.JDK9AlpnProvider,
-            io.undertow.protocols.alpn.OpenSSLAlpnProvider;
+    provides io.undertow.protocols.alpn.ALPNProvider with
+            io.undertow.protocols.alpn.JDK9AlpnProvider;
 
     provides io.undertow.server.handlers.builder.HandlerBuilder with io.undertow.server.handlers.builder.RewriteHandlerBuilder,
             io.undertow.server.handlers.SetAttributeHandler.Builder,
