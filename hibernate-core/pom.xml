@@ -112,6 +112,11 @@
             <artifactId>guiced-log-master</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -153,8 +158,6 @@
                                     <pattern>META-INF.services_</pattern>
                                     <shadedPattern>META-INF.services</shadedPattern>
                                 </relocation>
-
-
                                 <relocation>
                                     <pattern>antlr</pattern>
                                     <shadedPattern>org.hibernate.relocated.antlr</shadedPattern>
