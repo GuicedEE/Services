@@ -1,10 +1,13 @@
 module org.hibernate.orm.core {
 	requires transitive java.sql;
+	
 	requires java.naming;
+	
 	requires transitive java.transaction;
 	requires transitive jakarta.persistence;
-
-	requires org.hibernate.commons.annotations;
+	requires transitive org.hibernate.commons.annotations;
+	
+	
 	requires org.jboss.logging;
 	requires jandex;
 	requires com.fasterxml.classmate;

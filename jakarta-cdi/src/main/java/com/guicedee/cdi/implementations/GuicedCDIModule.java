@@ -95,6 +95,20 @@ public class GuicedCDIModule
 			String name = NamedBindings.cleanName(classInfo, STRING_EMPTY);
 			NamedBindings.bindToScope(binder(), clazz, name);
 		}
+
+		for (ClassInfo classInfo : GuiceContext.instance()
+				.getScanResult()
+				.getClassesWithAnnotation(com.google.inject.name.Named.class.getCanonicalName()))
+		{
+			if (classInfo.isInterfaceOrAnnotation()
+					|| classInfo.hasAnnotation("jakarta.enterprise.context.Dependent"))
+			{
+				continue;
+			}
+			Class<?> clazz = classInfo.loadClass();
+			String name = NamedBindings.cleanName(classInfo, STRING_EMPTY);
+			NamedBindings.bindToScope(binder(), clazz, name);
+		}
 	}
 
 	@Override

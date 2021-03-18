@@ -10,4 +10,6 @@ open module jakarta.servlet.jsp {
 
 	requires java.desktop;
 	requires java.compiler;
+
+	provides jakarta.servlet.ServletContainerInitializer with org.apache.jasper.runtime.TldScanner;
 }

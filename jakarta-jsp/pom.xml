@@ -57,6 +57,25 @@
             <artifactId>jakarta.servlet.jsp-api</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>eclipse</groupId>
+            <artifactId>jdtcore</artifactId>
+            <version>3.2.0.v_658</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.10.9</version>
+        </dependency>
+
     </dependencies>
 
     <licenses>
@@ -90,6 +109,9 @@
                             <artifactSet>
                                 <includes>
                                     <include>jakarta.servlet.jsp:jakarta.servlet.jsp-api:jar:*</include>
+                                    <include>org.glassfish.web:jakarta.servlet.jsp:*</include>
+                                    <include>eclipse:jdtcore:*</include>
+                                    <include>org.apache.ant:*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>

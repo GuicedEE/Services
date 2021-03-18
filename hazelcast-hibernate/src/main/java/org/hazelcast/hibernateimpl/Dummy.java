@@ -1,4 +1,4 @@
-package org.apache.cxf;
+package org.hazelcast.hibernateimpl;
 
 public class Dummy {
 	/**

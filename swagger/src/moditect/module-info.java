@@ -1,12 +1,11 @@
 module com.guicedee.services.openapi {
 
-	requires jakarta.xml.bind;
-	requires jakarta.servlet;
 	requires org.slf4j;
-	requires com.fasterxml.jackson.databind;
-	requires org.apache.commons.lang3;
-	requires jakarta.ws.rs;
 
+	requires static jakarta.ws.rs;
+	requires static jakarta.xml.bind;
+	requires static jakarta.servlet;
+	
 	requires com.guicedee.guicedinjection;
 
 	exports io.swagger.v3.jaxrs2.integration;
