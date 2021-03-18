@@ -26,7 +26,7 @@
                 <configuration>
                     <artifactSet>
                         <includes>
-                            <include>com.github.primefaces:primefaces</include>
+                            <include>org.primefaces:primefaces</include>
                             <include>org.primefaces:primefaces:*</include>
                             <include>com.rometools:rome:*</include>
                             <include>com.rometools:rome-utils:*</include>
@@ -131,16 +131,6 @@
                     </dependency>
                 </dependencies>
             </dependencyManagement>
-			<repositories>
-				<repository>
-					<id>OSS Snapshots</id>
-					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-				</repository>
-				<repository>
-					<id>jitpack.io</id>
-					<url>https://jitpack.io</url>
-				</repository>
-			</repositories>
 		</profile>
 		<profile>
 			<id>jdk9</id>
@@ -155,25 +145,15 @@
                     </dependency>
                 </dependencies>
             </dependencyManagement>
-			<repositories>
-				<repository>
-					<id>OSS Snapshots</id>
-					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-				</repository>
-				<repository>
-					<id>jitpack.io</id>
-					<url>https://jitpack.io</url>
-				</repository>
-			</repositories>
 		</profile>
 	</profiles>
 
     <dependencies>
 
         <dependency>
-            <groupId>com.github.primefaces</groupId>
+            <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>master-SNAPSHOT</version>
+            <version>10.0.0</version>
             <optional>true</optional>
         </dependency>
 
