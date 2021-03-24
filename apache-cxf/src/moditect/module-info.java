@@ -58,7 +58,6 @@ module org.apache.cxf {
 	exports org.apache.cxf.transport.servlet;
 	exports org.apache.cxf.jaxrs.servlet;
 	exports org.apache.cxf.jaxrs.impl;
-	exports org.apache.cxf.jaxrs.validation;
 	exports org.apache.cxf.binding.soap;
 	exports org.apache.cxf.headers;
 	exports org.apache.cxf.ws.security.wss4j;
@@ -72,7 +71,18 @@ module org.apache.cxf {
 	exports org.apache.cxf.rs.security.jose.jwk;
 	exports org.apache.cxf.rs.security.jose.jws;
 	exports org.apache.cxf.rs.security.jose.jwt;
-
+	
+	/*exports org.apache.cxf.rs.security.saml.sso;
+	exports org.apache.cxf.sts.rest;
+	exports org.apache.cxf.jaxrs.ext.search;
+	exports org.apache.cxf.jaxrs.nio;
+	exports org.apache.cxf.jaxrs.provider;
+	exports org.apache.cxf.jaxrs.sse;
+	exports org.apache.cxf.jaxrs.validation;
+	exports org.apache.cxf.rs.security.oauth.filters;
+	exports org.apache.cxf.rs.security.oauth.services;
+	exports org.apache.cxf.rs.security.oauth2.filters;
+	exports org.apache.cxf.rs.security.oauth2.provider;*/
 
 	exports org.apache.cxf.feature;
 
