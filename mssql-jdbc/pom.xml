@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <mssql.jdbc>9.2.1</mssql.jdbc>
+        <mssql.jdbc>9.2.1.jre8</mssql.jdbc>
     </properties>
 
     <name>mssqljdbc</name>
