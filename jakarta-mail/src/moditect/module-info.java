@@ -19,6 +19,8 @@ module jakarta.mail {
 	exports com.sun.mail.imap.protocol;
 
 	uses jakarta.mail.Provider;
+	
+	requires jakarta.activation;
 
 	provides jakarta.mail.Provider with com.sun.mail.imap.IMAPProvider,
 			                             com.sun.mail.imap.IMAPSSLProvider,
