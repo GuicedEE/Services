@@ -180,6 +180,16 @@
                                     <include>org.tukaani:xz</include>
                                 </includes>
                             </artifactSet>
+							
+							<filters>
+								<filter>
+								  <artifact>org.tukaani:xz</artifact>
+								  <excludes>
+									<exclude>META-INF/versions/**</exclude>
+								  </excludes>
+								</filter>
+							  </filters>
+							
                         </configuration>
                     </execution>
                 </executions>

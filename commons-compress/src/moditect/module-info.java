@@ -1,9 +1,4 @@
 module org.apache.commons.compress {
-
-	requires static org.tukaani.xz;
-	requires static com.github.luben.zstd_jni;
-	requires static dec;
-
 	exports org.apache.commons.compress;
 	exports org.apache.commons.compress.archivers;
 	exports org.apache.commons.compress.archivers.ar;
@@ -31,6 +26,4 @@ module org.apache.commons.compress {
 	exports org.apache.commons.compress.compressors.z;
 	exports org.apache.commons.compress.compressors.zstandard;
 	exports org.apache.commons.compress.utils;
-
-
 }
