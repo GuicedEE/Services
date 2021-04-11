@@ -39,6 +39,9 @@
                 <module>commons-text</module>
                 <module>xmlbeans</module>
                 <module>openpdf</module>
+				
+				<module>maven-jmod-plugin</module>
+				
             </modules>
         </profile>
 
