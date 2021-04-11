@@ -55,17 +55,9 @@
     <system>Jenkins</system>
     <url>https://ci-builds.apache.org/job/Maven/job/maven-box/job/jmod-maven-plugin/</url>
   </ciManagement>
-  <distributionManagement>
-    <site>
-      <id>apache.website</id>
-      <url>scm:svn:https://svn.apache.org/repos/asf/maven/website/components/${maven.site.path}</url>
-    </site>
-  </distributionManagement>
 
   <properties>
     <mavenVersion>3.0</mavenVersion>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
     <maven.plugin.tools.version>3.5.1</maven.plugin.tools.version>
     <project.build.outputTimestamp>2020-04-07T21:04:00Z</project.build.outputTimestamp>
   </properties>
