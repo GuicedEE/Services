@@ -83,6 +83,7 @@
 				<module>nrjavaserial</module>
 				<module>jna-platform</module>
 				<module>msal4j</module>
+                <module>WhatsappWeb4J</module>
             </modules>
         </profile>
 
