@@ -78,6 +78,18 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
 
@@ -97,13 +109,14 @@
                     <artifactSet>
                         <includes>
                             <include>com.google.guava:guava:*</include>
-                            <!--<include>com.google.code.findbugs:jsr305:*</include>-->
+                            <include>com.google.protobuf:protobuf-java:*</include>
                             <include>com.google.guava:failureaccess:*</include>
                             <include>com.google.guava:listenablefuture:*</include>
                             <include>org.checkerframework:checker-qual:*</include>
                             <include>com.google.errorprone:error_prone_annotations:*</include>
                             <include>com.google.j2objc:j2objc-annotations:*</include>
                             <include>org.codehaus.mojo:animal-sniffer-annotations:*</include>
+                            <include>com.google.zxing:*</include>
                         </includes>
                     </artifactSet>
                     <filters>

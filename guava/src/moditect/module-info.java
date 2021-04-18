@@ -21,7 +21,12 @@ module com.google.common {
 	exports com.google.common.util.concurrent;
 	exports com.google.common.xml;
 
+	exports com.google.protobuf;
+
+	exports com.google.zxing;
+	exports com.google.zxing.common;
+
 	requires transitive jakarta.activation;
-	//requires jakarta.validation;
+
 	requires jdk.unsupported;
 }

@@ -35,7 +35,6 @@
                             <include>org.owasp.esapi:esapi:*</include>
                             <include>net.glxn:qrgen:*</include>
                             <include>org.jdom:jdom2:*</include>
-                            <include>com.google.zxing:*</include>
                             <include>com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:*</include>
                         </includes>
                     </artifactSet>
