@@ -41,7 +41,6 @@
                 <module>openpdf</module>
 				
 				<module>maven-jmod-plugin</module>
-				
             </modules>
         </profile>
 
@@ -83,7 +82,6 @@
 				<module>nrjavaserial</module>
 				<module>jna-platform</module>
 				<module>msal4j</module>
-                <module>WhatsappWeb4J</module>
             </modules>
         </profile>
 
@@ -190,6 +188,17 @@
                 <module>javax-inject</module>
             </modules>
         </profile>
+		
+		<profile>
+			<id>jdk16</id>
+            <activation>
+                <jdk>[16,)</jdk>
+            </activation>
+			<modules>
+				<module>WhatsappWeb4J</module>
+			</modules>
+		</profile>
+		
     </profiles>
 
     <build>
