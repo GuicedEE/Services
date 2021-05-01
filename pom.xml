@@ -187,18 +187,7 @@
                 <module>javax-jms</module>
                 <module>javax-inject</module>
             </modules>
-        </profile>
-		
-		<profile>
-			<id>jdk16</id>
-            <activation>
-                <jdk>[16,)</jdk>
-            </activation>
-			<modules>
-				<module>WhatsappWeb4J</module>
-			</modules>
-		</profile>
-		
+        </profile>	
     </profiles>
 
     <build>

@@ -76,6 +76,11 @@ limitations under the License.
             <optional>true</optional>
         </dependency>
 
+		<dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -100,6 +105,17 @@ limitations under the License.
                                     <include>net.sf.saxon:Saxon-B</include>
                                 </includes>
                             </artifactSet>
+							<filters>
+								 <filter>
+								  <artifact>org.apache.xmlbeans:xmlbeans</artifact>
+								  <excludes>
+									<exclude>META-INF/versions/9/module-info.class</exclude>
+									<exclude>META-INF/*.SF</exclude>
+									<exclude>META-INF/*.DSA</exclude>
+									<exclude>META-INF/*.RSA</exclude>
+								  </excludes>
+								</filter>
+							</filters>
                             <relocations>
                                 <relocation>
                                     <pattern>org.owasp.esapi</pattern>

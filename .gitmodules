@@ -1,6 +1,3 @@
 [submodule "btm"]
 	path = btm
 	url = https://github.com/GedMarc/jpms-btm.git
-[submodule "WhatsappWeb4J"]
-	path = WhatsappWeb4J
-	url = https://github.com/GedMarc/WhatsappWeb4j.git
