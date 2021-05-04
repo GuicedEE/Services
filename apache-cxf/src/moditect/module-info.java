@@ -20,6 +20,8 @@ module org.apache.cxf {
 	requires xalan;
 
 	//requires org.apache.xerces;
+	
+	requires org.bouncycastle.provider;
 
 	requires transitive jakarta.ws.rs;
 	requires transitive jakarta.xml.ws;
