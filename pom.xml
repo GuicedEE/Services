@@ -173,7 +173,7 @@
                 <jdk>[16,)</jdk>
             </activation>
             <modules>
-                <module>WhatsappWeb4J</module>
+                <module>whatsapp-web-4j</module>
             </modules>
         </profile>
 
