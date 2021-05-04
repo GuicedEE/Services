@@ -168,6 +168,16 @@
         </profile>
 
         <profile>
+            <id>jdk16</id>
+            <activation>
+                <jdk>[16,)</jdk>
+            </activation>
+            <modules>
+                <module>WhatsappWeb4J</module>
+            </modules>
+        </profile>
+
+        <profile>
             <id>enable-guice</id>
             <modules>
                 <module>guice-core</module>
