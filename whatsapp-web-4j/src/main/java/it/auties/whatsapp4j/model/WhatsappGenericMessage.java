@@ -38,9 +38,7 @@ public final class WhatsappGenericMessage extends WhatsappUserMessage {
     @SneakyThrows
     public @NotNull Optional<WhatsappProtobuf.ContextInfo> contextInfo() {
         var methods = findCheckerMethods();
-        var propertyChecker = methods.stream()
-                                     .filter(this::invokeCheckerMethod)
-                                     .findAny();
+        var propertyChecker = methods.stream().filter(this::invokeCheckerMethod).findAny();
         if(propertyChecker.isEmpty()){
             return Optional.empty();
         }
@@ -57,20 +55,13 @@ public final class WhatsappGenericMessage extends WhatsappUserMessage {
 
     private @NotNull List<Method> findCheckerMethods() {
         return Arrays.stream(info.getMessage().getClass().getMethods())
-                .filter(method -> Modifier.isPublic(method.getModifiers()) && method.getName().startsWith("has"))
+                .filter(method -> Modifier.isPublic(method.getModifiers()) && method.getName().startsWith("has") && boolean.class.isAssignableFrom(method.getReturnType()))
                 .toList();
     }
 
     @SneakyThrows
     private boolean invokeCheckerMethod(@NotNull Method method) {
-        try
-        {
-            return (boolean) method.invoke(info.getMessage());
-        }catch (ClassCastException cce)
-        {
-           return false;
-            //invalid return
-        }
+        return (boolean) method.invoke(info.getMessage());
     }
 
     private @NotNull Optional<Method> findContextInfoMethod(@NotNull Object property){

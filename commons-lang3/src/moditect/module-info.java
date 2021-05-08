@@ -7,6 +7,7 @@ module org.apache.commons.lang3 {
 	exports org.apache.commons.lang3.time;
 	exports org.apache.commons.lang3.tuple;
 	exports org.apache.commons.lang3.builder;
+	exports org.apache.commons.lang3.reflect;
 
 	requires java.desktop;
 

@@ -3,7 +3,7 @@ package it.auties.whatsapp4j.request.impl;
 
 import it.auties.whatsapp4j.api.WhatsappConfiguration;
 import it.auties.whatsapp4j.request.model.JsonRequest;
-import it.auties.whatsapp4j.response.model.JsonResponseModel;
+import it.auties.whatsapp4j.response.model.json.JsonResponseModel;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,6 +39,7 @@ public abstract class UserQueryRequest<M extends JsonResponseModel> extends Json
         CHAT_PICTURE(List.of("ProfilePicThumb")),
         GROUP_METADATA(List.of("GroupMetadata")),
         USER_STATUS(List.of("Status")),
+        GROUP_INVITE_CODE(List.of("inviteCode")),
         GROUPS_IN_COMMON(List.of("group","common"));
 
         @Getter

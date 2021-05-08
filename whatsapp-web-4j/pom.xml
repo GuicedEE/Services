@@ -36,50 +36,42 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <curve25519-version>0.5.0</curve25519-version>
-        <vcard-version>0.11.2</vcard-version>
-
         <delombok-version>1.18.18.0</delombok-version>
         <delombok.output>${project.build.directory}\delomboked-sources</delombok.output>
 
+		<bouncy-castle-version>1.68</bouncy-castle-version>
         <!-- @todo pull from BOM -->
         <jackson-version>2.12.1</jackson-version>
         <lombok-version>1.18.20</lombok-version>
         <classgraph.version>4.8.104</classgraph.version>
-        <delombok-plugin-version>1.18.20.0</delombok-plugin-version>
+        <delombok-plugin-version>1.18.20</delombok-plugin-version>
     </properties>
 
     <build>
         <pluginManagement>
             <plugins>
-                <!-- Delombok the project to prepare for compilation -->
-                <plugin>
-                    <groupId>org.projectlombok</groupId>
-                    <artifactId>lombok-maven-plugin</artifactId>
-                    <version>${delombok-plugin-version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok-version}</version>
-                        </dependency>
-                    </dependencies>
-                    <configuration>
-                        <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
-                        <outputDirectory>${delombok.output}</outputDirectory>
-                        <addOutputDirectory>false</addOutputDirectory>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>process-sources</phase>
-                            <goals>
-                                <goal>delombok</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+                 <!-- Delombok the project to prepare for javadoc generation -->
+				<plugin>
+					<groupId>com.github.auties00</groupId>
+					<artifactId>delombok-plugin</artifactId>
+					<version>${delombok-plugin-version}</version>
+					<configuration>
+						<rootDirectory>${project.build.sourceDirectory}</rootDirectory>
+						<outputDirectory>${delombok.output}</outputDirectory>
+						<excludedFiles>
+							<excludedFile>module-info.java</excludedFile>
+							<excludedFile>WhatsappProtobuf.java</excludedFile>
+						</excludedFiles>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>process-sources</phase>
+							<goals>
+								<goal>delombok</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 
                 <!-- Compile the project from the delomboked sources -->
                 <plugin>
@@ -136,10 +128,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <source>${delombok.output}</source>
-                        <attach>true</attach>
-                        <sourcepath>${delombok.output}
-                        </sourcepath>
+                        <sourcepath>${delombok.output}</sourcepath>
                         <release>${jdk.release}</release>
                         <!--  -->
                         <failOnError>false</failOnError>
@@ -162,7 +151,6 @@
                     <configuration>
                         <artifactSet>
                             <includes>
-                                <include>com.googlecode.ez-vcard</include>
                                 <include>org.whispersystems</include>
                             </includes>
                         </artifactSet>
@@ -232,15 +220,6 @@
     </build>
 
     <dependencies>
-        <!-- Shaded Libraries -->
-        <!-- Contact's Vcard Parser library -->
-        <dependency>
-            <groupId>com.googlecode.ez-vcard</groupId>
-            <artifactId>ez-vcard</artifactId>
-            <version>${vcard-version}</version>
-            <optional>true</optional>
-        </dependency>
-
         <!-- Project lombok, used for annotations -->
         <dependency>
             <groupId>org.projectlombok</groupId>

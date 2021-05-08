@@ -11,7 +11,8 @@ import it.auties.whatsapp4j.model.*;
 import it.auties.whatsapp4j.request.impl.SubscribeUserPresenceRequest;
 import it.auties.whatsapp4j.request.impl.UserQueryRequest;
 import it.auties.whatsapp4j.request.model.BinaryRequest;
-import it.auties.whatsapp4j.response.impl.*;
+import it.auties.whatsapp4j.response.impl.json.*;
+import it.auties.whatsapp4j.response.impl.binary.*;
 import it.auties.whatsapp4j.socket.WhatsappWebSocket;
 import it.auties.whatsapp4j.utils.Validate;
 import jakarta.validation.constraints.NotNull;
@@ -214,6 +215,18 @@ public class WhatsappAPI {
     }
 
     /**
+     * Queries the invite code of a group
+     *
+     * @param chat the target group
+     * @return a CompletableFuture that resolves in a GroupInviteCodeResponse wrapping the status of the request and, if the status == 200, the requested data
+     * @throws IllegalArgumentException if the provided chat is not a group
+     */
+    public @NotNull CompletableFuture<GroupInviteCodeResponse> queryGroupInviteCode(@NotNull WhatsappChat chat) {
+        Validate.isTrue(chat.isGroup(), "WhatsappAPI: Cannot query invite code for %s as it's not a group", chat.jid());
+        return new UserQueryRequest<GroupInviteCodeResponse>(configuration, chat.jid(), UserQueryRequest.QueryType.GROUP_INVITE_CODE) {}.send(socket.session());
+    }
+
+    /**
      * Queries the groups in common with a contact
      *
      * @param contact the target contact
@@ -276,7 +289,7 @@ public class WhatsappAPI {
      */
     public @NotNull CompletableFuture<WhatsappChat> loadConversation(@NotNull WhatsappChat chat, int messageCount) {
         return chat.firstUserMessage().map(userMessage -> loadConversation(chat, userMessage, messageCount)).orElseGet(() -> queryChat(chat.jid()).thenApplyAsync(res -> {
-            chat.messages().addAll(res.data().orElseThrow().messages());
+            chat.messages().addAll(res.data().messages());
             return chat;
         }));
     }
@@ -292,7 +305,7 @@ public class WhatsappAPI {
     public @NotNull CompletableFuture<WhatsappChat> loadConversation(@NotNull WhatsappChat chat, @NotNull WhatsappUserMessage lastMessage, int messageCount) {
         var node = new WhatsappNode("query", attributes(attr("owner", lastMessage.sentByMe()), attr("index", lastMessage.id()), attr("type", "message"), attr("epoch", manager.tagAndIncrement()), attr("jid", chat.jid()), attr("kind", "before"), attr("count", messageCount)), null);
         return new BinaryRequest<MessagesResponse>(configuration, node, BinaryFlag.IGNORE, BinaryMetric.QUERY_MESSAGES) {}.send(socket.session()).thenApplyAsync(res -> {
-            chat.messages().addAll(res.data().orElseThrow());
+            chat.messages().addAll(res.data());
             return chat;
         });
     }

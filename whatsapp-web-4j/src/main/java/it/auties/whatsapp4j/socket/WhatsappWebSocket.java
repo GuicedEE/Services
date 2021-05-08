@@ -11,11 +11,12 @@ import it.auties.whatsapp4j.manager.WhatsappKeysManager;
 import it.auties.whatsapp4j.model.*;
 import it.auties.whatsapp4j.request.impl.*;
 import it.auties.whatsapp4j.request.model.BinaryRequest;
-import it.auties.whatsapp4j.response.impl.*;
-import it.auties.whatsapp4j.response.model.BinaryResponse;
-import it.auties.whatsapp4j.response.model.JsonListResponse;
-import it.auties.whatsapp4j.response.model.JsonResponse;
-import it.auties.whatsapp4j.response.model.Response;
+import it.auties.whatsapp4j.response.impl.binary.ChatResponse;
+import it.auties.whatsapp4j.response.impl.json.*;
+import it.auties.whatsapp4j.response.model.binary.BinaryResponse;
+import it.auties.whatsapp4j.response.model.json.JsonListResponse;
+import it.auties.whatsapp4j.response.model.json.JsonResponse;
+import it.auties.whatsapp4j.response.model.common.Response;
 import it.auties.whatsapp4j.utils.Validate;
 import it.auties.whatsapp4j.utils.WhatsappQRCode;
 import jakarta.validation.constraints.NotNull;
@@ -25,14 +26,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.experimental.Accessors;
 
-import javax.net.ssl.SSLContext;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -46,13 +48,11 @@ import static it.auties.whatsapp4j.utils.WhatsappUtils.*;
  * This methods should not be used by any project, excluding obviously WhatsappWeb4j.
  * Instead, {@link WhatsappAPI} should be used.
  */
-@ClientEndpoint(configurator = WhatsappSocketConfiguration.class,
-                decoders = {WhatsappJsonMessageDecoder.class, WhatsappBinaryMessageDecoder.class},
-                encoders = {WhatsappJsonMessageEncoder.class, WhatsappBinaryMessageEncoder.class})
+@ClientEndpoint(configurator = WhatsappSocketConfiguration.class, decoders = {WhatsappJsonMessageDecoder.class, WhatsappBinaryMessageDecoder.class}, encoders = {WhatsappJsonMessageEncoder.class, WhatsappBinaryMessageEncoder.class})
 @RequiredArgsConstructor
 @Data
 @Accessors(fluent = true)
-public class WhatsappWebSocket{
+public class WhatsappWebSocket {
     private Session session;
     private boolean loggedIn;
     private final @NotNull ScheduledExecutorService pingService;
@@ -61,16 +61,7 @@ public class WhatsappWebSocket{
     private final @NotNull WhatsappKeysManager whatsappKeys;
     private final @NotNull WhatsappConfiguration options;
     private final @NotNull WhatsappQRCode qrCode;
-    
-    public WhatsappWebSocket()
-    {
-        this(Executors.newSingleThreadScheduledExecutor(), ContainerProvider.getWebSocketContainer(), WhatsappDataManager.singletonInstance(), WhatsappKeysManager.singletonInstance(),
-                WhatsappConfiguration.builder().build(),
-                new WhatsappQRCode());
-        
-        webSocketContainer.setDefaultMaxSessionIdleTimeout(Duration.ofDays(30).toMillis());
-    }
-    
+
     public WhatsappWebSocket(@NotNull WhatsappConfiguration options) {
         this(Executors.newSingleThreadScheduledExecutor(), ContainerProvider.getWebSocketContainer(), WhatsappDataManager.singletonInstance(), WhatsappKeysManager.singletonInstance(), options, new WhatsappQRCode());
         webSocketContainer.setDefaultMaxSessionIdleTimeout(Duration.ofDays(30).toMillis());
@@ -92,9 +83,12 @@ public class WhatsappWebSocket{
     }
 
     private void generateQrCode(@NotNull InitialResponse response) {
+        if(loggedIn){
+            return;
+        }
+
         Validate.isTrue(response.status() != 429, "Out of attempts to scan the QR code", IllegalStateException.class);
         CompletableFuture.delayedExecutor(response.ttl(), TimeUnit.MILLISECONDS).execute(() -> generateQrCode(response));
-
         Validate.isTrue(response.ref() != null, "Cannot find ref for QR code generation");
         qrCode.generateAndPrint(response.ref(), extractRawPublicKey(whatsappKeys.keyPair().getPublic()), whatsappKeys.clientId());
     }
@@ -203,7 +197,7 @@ public class WhatsappWebSocket{
 
     @SneakyThrows
     private void openConnection() {
-        webSocketContainer.connectToServer(this,URI.create("wss://web.whatsapp.com/ws"));
+        webSocketContainer.connectToServer(this, URI.create(options.whatsappUrl()));
     }
 
     @SneakyThrows
@@ -318,8 +312,7 @@ public class WhatsappWebSocket{
 
     @SneakyThrows
     private void createMediaConnection() {
-        var connection = new MediaConnectionRequest<MediaConnectionResponse>(options) {
-        }.send(session()).get().connection();
+        var connection = new MediaConnectionRequest<MediaConnectionResponse>(options) {}.send(session()).get().connection();
         whatsappManager.mediaConnection(connection);
         scheduleMediaConnection(connection.ttl());
     }
@@ -383,7 +376,7 @@ public class WhatsappWebSocket{
     }
 
     private void handleList(@NotNull JsonListResponse response) {
-        whatsappManager.callOnListenerThread(() -> whatsappManager.listeners().forEach(whatsappListener -> whatsappListener.onListResponse(response)));
+        whatsappManager.callOnListenerThread(() -> whatsappManager.listeners().forEach(whatsappListener -> whatsappListener.onListResponse(response.content())));
     }
 
     public @NotNull Session session() {
@@ -394,18 +387,4 @@ public class WhatsappWebSocket{
         var node = new WhatsappNode("query", attributes(attr("type", "chat"), attr("jid", jid)), null);
         return new BinaryRequest<ChatResponse>(options, node, BinaryFlag.IGNORE, BinaryMetric.QUERY_CHAT) {}.send(session());
     }
- //   @Override
-    public void onOpen(Session session, EndpointConfig config)
-    {
-        System.out.println("Open");
-    }
-    
- //   @Override
-    public void onError(Session session, Throwable thr)
-    {
-        System.out.println("Error");
-        //super.onError(session, thr);
-    }
-    
-    
 }
