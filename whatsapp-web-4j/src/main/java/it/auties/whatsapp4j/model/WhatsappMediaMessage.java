@@ -22,7 +22,8 @@ import java.nio.file.StandardOpenOption;
 @Data
 @Accessors(fluent = true)
 @ToString
-public abstract sealed class WhatsappMediaMessage extends WhatsappUserMessage permits WhatsappImageMessage, WhatsappDocumentMessage, WhatsappAudioMessage, WhatsappVideoMessage, WhatsappStickerMessage {
+public abstract sealed class WhatsappMediaMessage extends WhatsappUserMessage
+        permits WhatsappImageMessage, WhatsappDocumentMessage, WhatsappAudioMessage, WhatsappVideoMessage, WhatsappStickerMessage {
     /**
      * The raw media that this message holds
      */

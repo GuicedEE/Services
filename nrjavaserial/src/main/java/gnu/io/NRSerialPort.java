@@ -82,7 +82,7 @@ public class NRSerialPort implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	@JsonIgnore
-	private RXTXPort serial;
+	private transient RXTXPort serial;
 	
 	private String port = null;
 	private boolean connected = false;
