@@ -133,8 +133,8 @@
                         <!--  -->
                         <failOnError>false</failOnError>
                         <additionalOptions>--enable-preview</additionalOptions>
-                        <debug>true</debug>
-                        <verbose>true</verbose>
+                        <debug>false</debug>
+                        <verbose>false</verbose>
                     </configuration>
                 </plugin>
 
@@ -193,6 +193,11 @@
         </pluginManagement>
 
         <plugins>
+            <plugin>
+                <groupId>com.github.auties00</groupId>
+                <artifactId>delombok-plugin</artifactId>
+            </plugin>
+
             <plugin>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-maven-plugin</artifactId>
