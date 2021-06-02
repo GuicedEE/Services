@@ -73,11 +73,11 @@ limitations under the License.
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-logging</artifactId>
         </dependency>
-
+<!--
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>xalan</artifactId>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 	

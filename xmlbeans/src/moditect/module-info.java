@@ -2,6 +2,8 @@ module org.apache.xmlbeans {
 	requires java.xml;
 	requires static jdk.javadoc;
 	requires jdk.xml.dom;
+	
+	requires org.apache.logging.log4j.core;
 
 	exports org.apache.xmlbeans;
     exports org.apache.xmlbeans.soap;

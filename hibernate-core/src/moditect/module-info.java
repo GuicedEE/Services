@@ -333,6 +333,9 @@ module org.hibernate.orm.core {
 	provides com.guicedee.guicedinjection.interfaces.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
 	provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
 
+	//5.5.0.Final
+	//uses org.hibernate.event.spi.EventEngineContributor;
+
 	uses org.hibernate.action.spi.AfterTransactionCompletionProcess;
 	uses org.hibernate.action.spi.BeforeTransactionCompletionProcess;
 	uses org.hibernate.action.spi.Executable;

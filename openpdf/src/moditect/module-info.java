@@ -3,7 +3,7 @@ module com.github.librepdf.openpdf {
 	requires jakarta.annotation;
 
 	requires static org.bouncycastle.pkix;
-	requires static org.bouncycastle.provider;
+	//requires static org.bouncycastle.provider;
 	requires static com.github.spotbugs.spotbugs;
 	requires static imageio.tiff;
 	requires static org.apache.fop;

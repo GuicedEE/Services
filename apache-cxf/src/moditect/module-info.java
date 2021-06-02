@@ -15,13 +15,12 @@ module org.apache.cxf {
 	requires java.rmi;
 
 	requires org.slf4j;
-
 	
-	requires xalan;
+//	requires xalan;
 
 	//requires org.apache.xerces;
 	
-	requires org.bouncycastle.provider;
+	requires static org.bouncycastle.pkix;
 
 	requires transitive jakarta.ws.rs;
 	requires transitive jakarta.xml.ws;

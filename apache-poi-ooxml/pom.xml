@@ -45,7 +45,18 @@ limitations under the License.
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
+            <artifactId>org.apache.fop</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>commons-xmlbeans</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>slf4j</artifactId>
         </dependency>
 
         <dependency>
@@ -107,6 +118,7 @@ limitations under the License.
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
                                         <exclude>META-INF/services/*</exclude>
+                                        <exclude>META-INF/versions/9/module-info.class</exclude>
                                     </excludes>
                                 </filter>
                             </filters>

@@ -2,7 +2,8 @@
 module org.apache.poi.poi {
 	requires org.apache.commons.collections4;
 	requires org.apache.commons.codec;
-	requires commons.math3;
+	requires org.apache.commons.compress;
+	requires org.apache.commons.math3;
 	//requires SparseBitSet;
 	requires org.slf4j;
 	requires java.logging;

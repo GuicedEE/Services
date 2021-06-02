@@ -51,7 +51,7 @@ limitations under the License.
     </scm>
 
     <dependencies>
-        <dependency>
+     <!--   <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-B</artifactId>
             <optional>true</optional>
@@ -61,7 +61,7 @@ limitations under the License.
             <groupId>net.sf.saxon</groupId>
             <artifactId>saxon-dom</artifactId>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.apache.ant</groupId>
@@ -101,8 +101,8 @@ limitations under the License.
                                 <includes>
                                     <include>org.apache.xmlbeans:xmlbeans</include>
                                     <!--<include>org.apache.ant:ant</include>-->
-                                    <include>net.sf.saxon:saxon-dom</include>
-                                    <include>net.sf.saxon:Saxon-B</include>
+                                    <!--<include>net.sf.saxon:saxon-dom</include>
+                                    <include>net.sf.saxon:Saxon-B</include>-->
                                 </includes>
                             </artifactSet>
 							<filters>

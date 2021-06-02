@@ -34,11 +34,11 @@
 
     <dependencies>
 	
-	<dependency>
+	<!--<dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.68</version>
-        </dependency>
+        </dependency>-->
 		
         <dependency>
             <groupId>com.guicedee.services</groupId>
@@ -496,10 +496,12 @@
             <artifactId>commons-beanutils</artifactId>
         </dependency>
 
+<!--
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>xalan</artifactId>
         </dependency>
+-->
 
     </dependencies>
 

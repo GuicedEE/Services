@@ -82,6 +82,7 @@
 				<module>nrjavaserial</module>
 				<module>jna-platform</module>
 				<module>msal4j</module>
+				<module>bouncycastle</module>
             </modules>
         </profile>
 
@@ -173,7 +174,7 @@
                 <jdk>[16,)</jdk>
             </activation>
             <modules>
-                <module>whatsapp-web-4j</module>
+                <!--<module>whatsapp-web-4j</module>-->
             </modules>
         </profile>
 

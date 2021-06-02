@@ -274,9 +274,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.68</version>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>bouncycastle</artifactId>
         </dependency>
 
         <dependency>
