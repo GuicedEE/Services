@@ -3,6 +3,7 @@ module org.apache.commons.beanutils {
 
 	requires java.xml;
 	requires java.desktop;
+	requires java.sql;
 
 	requires org.apache.commons.logging;
 	requires org.apache.commons.collections4;
