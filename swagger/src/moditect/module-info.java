@@ -2,11 +2,19 @@ module com.guicedee.services.openapi {
 
 	requires org.slf4j;
 
-	requires static jakarta.ws.rs;
-	requires static jakarta.xml.bind;
-	requires static jakarta.servlet;
+	requires jakarta.ws.rs;
+	requires jakarta.xml.bind;
+	requires jakarta.servlet;
+	
+	requires com.fasterxml.jackson.jakarta.rs.json;
+	//requires com.fasterxml.jackson.dataformat.yaml;
+	requires com.fasterxml.jackson.module.jakarta.xmlbind;
+	requires com.fasterxml.jackson.jakarta.rs.base;
 	
 	requires com.guicedee.guicedinjection;
+	
+	exports com.fasterxml.jackson.jakarta.rs.yaml;
+	opens com.fasterxml.jackson.jakarta.rs.yaml;
 
 	exports io.swagger.v3.jaxrs2.integration;
 	exports io.swagger.v3.oas.integration;
@@ -71,4 +79,9 @@ module com.guicedee.services.openapi {
 	uses io.swagger.v3.jaxrs2.ext.OpenAPIExtension;
 	uses io.swagger.v3.core.converter.ModelConverter;
 	uses io.swagger.v3.oas.integration.api.OpenAPIConfigBuilder;
+	
+	provides jakarta.ws.rs.ext.MessageBodyReader with
+			com.fasterxml.jackson.jakarta.rs.yaml.JacksonYAMLProvider;
+	provides jakarta.ws.rs.ext.MessageBodyWriter with
+			com.fasterxml.jackson.jakarta.rs.yaml.JacksonYAMLProvider;
 }

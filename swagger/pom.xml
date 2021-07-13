@@ -19,20 +19,23 @@
         </dependency>
 
         <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-base</artifactId>
-            <classifier>jakarta</classifier>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-json-provider</artifactId>
-            <classifier>jakarta</classifier>
+            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
+            <artifactId>jackson-jakarta-rs-base</artifactId>
         </dependency>
 
         <dependency>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
+            <artifactId>jackson-jakarta-rs-json-provider</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
+            <artifactId>jackson-jakarta-rs-yaml-provider</artifactId>
             <optional>true</optional>
         </dependency>
 
@@ -42,6 +45,7 @@
             <artifactId>swagger-jaxrs2</artifactId>
             <optional>true</optional>
         </dependency>
+
 
         <dependency>
             <groupId>org.yaml</groupId>
@@ -67,11 +71,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>undertow-servlet</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jdk8</artifactId>
         </dependency>
 
         <dependency>
@@ -101,8 +100,9 @@
                             <artifactSet>
                                 <includes>
                                     <include>io.swagger.core.v3:*:*</include>
-                                    <include>com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:*</include>
                                     <include>org.yaml:snakeyaml:*</include>
+                                    <include>com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-yaml-provider</include>
+                                    <include>com.fasterxml.jackson.dataformat:jackson-dataformat-yaml</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -113,6 +113,7 @@
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>META-INF/versions/11/**</exclude>
                                         <!--<exclude>/META-INF/services</exclude>-->
                                     </excludes>
                                 </filter>

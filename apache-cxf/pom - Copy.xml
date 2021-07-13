@@ -65,20 +65,17 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-
         <dependency>
-            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
-            <artifactId>jackson-jakarta-rs-json-provider</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
-            <artifactId>jackson-jakarta-rs-base</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
-            <artifactId>jackson-jakarta-rs-xml-provider</artifactId>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-base</artifactId>
+            <classifier>jakarta</classifier>
         </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <classifier>jakarta</classifier>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -717,10 +714,11 @@
                                 <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
                             </transformers>
                             <relocations>
-                              <relocation>
+                                <relocation>
                                     <pattern>META-INF.services_</pattern>
                                     <shadedPattern>META-INF.services</shadedPattern>
                                 </relocation>
+
                                 <relocation>
                                     <pattern>org.owasp.esapi</pattern>
                                     <shadedPattern>org.apache.cxf.common.util.rel.esapi</shadedPattern>

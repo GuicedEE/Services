@@ -16,9 +16,7 @@ module org.hibernate.orm.core {
 	requires transitive jakarta.xml.bind;
 	requires java.desktop;
 	requires net.bytebuddy;
-
-	requires transitive com.guicedee.guicedinjection;
-
+	
 	requires java.management;
 	requires dom4j;
 
@@ -27,8 +25,6 @@ module org.hibernate.orm.core {
 	requires static jakarta.enterprise.cdi;
 	requires transitive jakarta.validation;
 	requires transitive jakarta.inject;
-
-	requires org.json;
 
 	requires jdk.unsupported;
 
@@ -52,7 +48,7 @@ module org.hibernate.orm.core {
 	opens org.hibernate.cache.spi to org.jboss.logging;
 	opens org.hibernate.bytecode to org.jboss.logging;
 
-	exports com.guicedee.services.hibernate to com.guicedee.guicedpersistence;
+	//exports com.guicedee.services.hibernate to com.guicedee.guicedpersistence;
 	
 	exports org.hibernate;
 	//exports org.hibernate.action.internal;
@@ -73,7 +69,9 @@ module org.hibernate.orm.core {
 	exports org.hibernate.annotations;
 	exports org.hibernate.boot;
 
-	opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
+	//opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
+	
+	
 	exports org.hibernate.jpa.boot.internal;
 	//exports org.hibernate.boot.internal;
 	//exports org.hibernate.boot.archive.internal;
@@ -328,13 +326,13 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.cache.internal;
 	//exports org.hibernate.internal.util;
 
-	provides com.guicedee.guicedinjection.interfaces.IFileContentsScanner with com.guicedee.services.hibernate.PersistenceFileHandler;
-	provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with com.guicedee.services.hibernate.PersistenceGuiceConfigurator;
-	provides com.guicedee.guicedinjection.interfaces.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
-	provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
+//	provides com.guicedee.guicedinjection.interfaces.IFileContentsScanner with com.guicedee.services.hibernate.PersistenceFileHandler;
+//	provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with com.guicedee.services.hibernate.PersistenceGuiceConfigurator;
+//	provides com.guicedee.guicedinjection.interfaces.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
+	//provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
 
 	//5.5.0.Final
-	//uses org.hibernate.event.spi.EventEngineContributor;
+	uses org.hibernate.event.spi.EventEngineContributor;
 
 	uses org.hibernate.action.spi.AfterTransactionCompletionProcess;
 	uses org.hibernate.action.spi.BeforeTransactionCompletionProcess;
@@ -800,4 +798,5 @@ module org.hibernate.orm.core {
 	opens org.hibernate.tuple;
 	opens org.hibernate.tuple.component;
 	opens org.hibernate.tuple.entity;
+	
 }

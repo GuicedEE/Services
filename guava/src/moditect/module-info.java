@@ -25,8 +25,13 @@ module com.google.common {
 
 	exports com.google.zxing;
 	exports com.google.zxing.common;
+	exports com.google.zxing.oned;
+	exports com.google.zxing.client.j2se;
+	exports com.google.zxing.qrcode.decoder;
 
 	requires transitive jakarta.activation;
-
+	
+	
+	requires java.desktop;
 	requires jdk.unsupported;
 }

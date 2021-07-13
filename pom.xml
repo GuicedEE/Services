@@ -83,6 +83,7 @@
 				<module>jna-platform</module>
 				<module>msal4j</module>
 				<module>bouncycastle</module>
+				<module>bytebuddy</module>
             </modules>
         </profile>
 

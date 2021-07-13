@@ -7,9 +7,9 @@
         <artifactId>services-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
-    <artifactId>hibernate-ehcache</artifactId>
+    <artifactId>byte-buddy</artifactId>
 
-    <name>hibernate-ehcache</name>
+    <name>byte-buddy</name>
 
     <build>
         <plugins>
@@ -26,7 +26,8 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.hibernate:hibernate-ehcache</include>
+                                    <include>net.bytebuddy:byte-buddy</include>
+                                    <include>com.google.code.findbugs:jsr305</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -42,31 +43,29 @@
                                 </filter>
                             </filters>
                             <relocations>
-
+                                <relocation>
+                                    <pattern>edu.umd.cs.findbugs</pattern>
+                                    <shadedPattern>net.bytebuddy.shade.findbugs</shadedPattern>
+                                </relocation>
                                 <relocation>
                                     <pattern>META-INF.services_</pattern>
                                     <shadedPattern>META-INF.services</shadedPattern>
-                                </relocation>
-
-                                <relocation>
-                                    <pattern>net.sf.ehcache</pattern>
-                                    <shadedPattern>org.ehcache</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.persistence</pattern>
-                                    <shadedPattern>jakarta.persistence</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.cache</pattern>
-                                    <shadedPattern>jakarta.cache</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>javax.xml.bind</pattern>
                                     <shadedPattern>jakarta.xml.bind</shadedPattern>
                                 </relocation>
                                 <relocation>
+                                    <pattern>javax.cache</pattern>
+                                    <shadedPattern>jakarta.cache</shadedPattern>
+                                </relocation>
+                                <relocation>
                                     <pattern>javax.inject</pattern>
                                     <shadedPattern>jakarta.inject</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.persistence</pattern>
+                                    <shadedPattern>jakarta.persistence</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -81,38 +80,25 @@
     </build>
 
     <dependencies>
-
         <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>hibernate-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>jboss-logmanager</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>ehcache</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
+            <groupId>net.bytebuddy</groupId>
+             <artifactId>byte-buddy</artifactId>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>net.bytebuddy</groupId>
-                    <artifactId>byte-buddy</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>findbugs-annotations</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jna-platform</artifactId>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -122,7 +108,14 @@
                 <dependencies>
                     <dependency>
                         <groupId>com.guicedee</groupId>
-                        <artifactId>hibernate-bom</artifactId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>google-bom</artifactId>
                         <version>${project.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
@@ -136,7 +129,14 @@
                 <dependencies>
                     <dependency>
                         <groupId>com.guicedee</groupId>
-                        <artifactId>hibernate-bom</artifactId>
+                        <artifactId>standalone-bom</artifactId>
+                        <version>${project.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>google-bom</artifactId>
                         <version>${project.version}</version>
                         <scope>import</scope>
                         <type>pom</type>

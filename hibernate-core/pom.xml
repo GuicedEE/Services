@@ -11,6 +11,7 @@
     <packaging>jar</packaging>
 
     <name>hibernate.core</name>
+
     <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
     </description>
 
@@ -21,23 +22,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee</groupId>
-            <artifactId>guiced-injection</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>javax.inject</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>json</artifactId>
         </dependency>
 
         <dependency>
@@ -97,23 +83,13 @@
         </dependency>
 
         <dependency>
-            <groupId>io.github.classgraph</groupId>
-            <artifactId>classgraph</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <optional>true</optional>
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee</groupId>
-            <artifactId>guiced-log-master</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>byte-buddy</artifactId>
         </dependency>
 
