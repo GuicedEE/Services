@@ -30,6 +30,7 @@
     <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 
     <name>jstl</name>
+    <version>${jakarta.servlet.jsp.jstl.api.version}</version>
 
     <description>JavaServer Pages(TM) Standard Tag Library API</description>
     <url>https://projects.eclipse.org/projects/ee4j.jstl</url>
@@ -139,7 +140,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -153,7 +154,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

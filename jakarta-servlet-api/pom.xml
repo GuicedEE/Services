@@ -55,6 +55,7 @@
     <packaging>jar</packaging>
 
     <name>jakarta.servlet</name>
+    <version>${jakarta.servlet.version}</version>
 
     <url>http://servlet-spec.java.net</url>
     <developers>
@@ -156,7 +157,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -170,7 +171,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

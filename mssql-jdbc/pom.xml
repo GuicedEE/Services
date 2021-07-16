@@ -12,11 +12,8 @@
     <artifactId>mssql-jdbc</artifactId>
     <packaging>jar</packaging>
 
-    <properties>
-        <mssql.jdbc>9.2.1</mssql.jdbc>
-    </properties>
-
     <name>mssqljdbc</name>
+    <version>${mssql.jdbc}</version>
 
     <description>
         Microsoft JDBC Driver for SQL Server.
@@ -114,7 +111,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -139,7 +136,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -165,7 +162,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

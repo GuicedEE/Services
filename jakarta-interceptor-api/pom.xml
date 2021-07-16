@@ -28,6 +28,7 @@
     </parent>
 
     <artifactId>interceptor-api</artifactId>
+    <version>${jakarta.interceptor.version}</version>
 
     <description>
         Jakarta Interceptors defines a means of interposing on business method invocations
@@ -113,7 +114,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -127,7 +128,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

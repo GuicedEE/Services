@@ -24,6 +24,7 @@
     <artifactId>java.servlet-api</artifactId>
     <packaging>jar</packaging>
     <name>javax.servlet</name>
+    <version>${jakarta.servlet.version}</version>
 
     <dependencies>
         <dependency>

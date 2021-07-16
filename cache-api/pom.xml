@@ -23,11 +23,6 @@
         </license>
     </licenses>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-
     <scm>
         <connection>scm:git:git@github.com:juven/git-demo.git</connection>
         <developerConnection>scm:git:git@github.com:juven/git-demo.git

@@ -52,6 +52,7 @@
 
     <artifactId>javax.jms-api</artifactId>
     <packaging>jar</packaging>
+    <version>${jms.version}</version>
 
     <name>javax.jms</name>
 
@@ -138,14 +139,14 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-cxf-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -159,14 +160,14 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-cxf-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

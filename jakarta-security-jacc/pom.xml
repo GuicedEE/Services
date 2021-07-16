@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>javax.security.jacc</artifactId>
+    <version>${jakarta.security.sacc.api.version}</version>
 
     <packaging>jar</packaging>
     <name>java.security.jacc</name>
@@ -93,7 +94,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -107,7 +108,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

@@ -8,6 +8,7 @@
     </parent>
 
     <artifactId>primefaces-extensions</artifactId>
+    <version>${primefaces.version}</version>
 
     <name>primefaces-extensions</name>
     <packaging>jar</packaging>
@@ -20,14 +21,14 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -41,14 +42,14 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

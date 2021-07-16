@@ -30,6 +30,7 @@ limitations under the License.
 
 
     <artifactId>commons-xmlbeans</artifactId>
+    <version>${xmlbeans.version}</version>
 
     <name>Apache Commons XML Beans</name>
     <inceptionYear>2002</inceptionYear>
@@ -144,14 +145,14 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -165,14 +166,14 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

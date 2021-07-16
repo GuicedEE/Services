@@ -13,6 +13,7 @@
     <artifactId>guice-grapher</artifactId>
 
     <name>google.guice.extensions.grapher</name>
+    <version>${guice.version}</version>
 
     <dependencies>
 
@@ -77,7 +78,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -91,7 +92,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

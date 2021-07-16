@@ -25,6 +25,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>commons-collections4</artifactId>
+    <version>${collections.version}</version>
 
     <name>Apache Commons Collections</name>
     <packaging>jar</packaging>
@@ -489,7 +490,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -503,7 +504,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

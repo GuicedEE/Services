@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>guice-persist</artifactId>
+    <version>${guice.version}</version>
     <name>google.guice.extensions.persist</name>
 
     <dependencies>
@@ -102,7 +103,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -116,7 +117,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

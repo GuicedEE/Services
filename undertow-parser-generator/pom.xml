@@ -31,6 +31,7 @@
     <artifactId>undertow-parser-generator</artifactId>
 
     <name>io.undertow.parser.generator</name>
+    <version>${undertow.version}</version>
     <description>An annotation processor that is used to generate the HTTP parser</description>
 
     <dependencies>
@@ -95,7 +96,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jboss-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -109,7 +110,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jboss-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

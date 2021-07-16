@@ -10,6 +10,7 @@
     <artifactId>jakarta.jws-api</artifactId>
 
     <name>javax.jws-api</name>
+    <version>${jakarta.jws.version}</version>
 
     <dependencies>
         <dependency>
@@ -58,7 +59,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -72,7 +73,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

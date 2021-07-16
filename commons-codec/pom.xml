@@ -22,7 +22,7 @@ limitations under the License.
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-        <parent>
+    <parent>
         <groupId>com.guicedee.services</groupId>
         <artifactId>services-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
@@ -30,6 +30,7 @@ limitations under the License.
 
 
     <artifactId>commons-codec</artifactId>
+    <version>${codec.version}</version>
 
     <name>Apache Commons Codec</name>
     <inceptionYear>2002</inceptionYear>
@@ -265,7 +266,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -279,7 +280,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

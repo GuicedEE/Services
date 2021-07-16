@@ -31,7 +31,7 @@ limitations under the License.
 
     <artifactId>apache-poi</artifactId>
     <name>Apache POI</name>
-
+    <version>${poi.version}</version>
     <description>
         The Apache Commons Codec package contains simple encoder and decoders for
         various formats such as Base64 and Hexadecimal. In addition to these
@@ -146,7 +146,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -160,7 +160,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

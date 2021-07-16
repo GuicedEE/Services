@@ -26,6 +26,7 @@
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
     <artifactId>javax.transaction</artifactId>
+    <version>${jakarta.transaction.api.version}</version>
 
     <name>javax.transaction API</name>
     <description>Eclipse Project for JTA</description>
@@ -93,7 +94,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -107,7 +108,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

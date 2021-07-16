@@ -10,6 +10,7 @@
     <artifactId>h2</artifactId>
 
     <name>h2</name>
+    <version>${h2.db.api}</version>
 
     <build>
         <plugins>
@@ -90,7 +91,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -104,7 +105,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

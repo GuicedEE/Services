@@ -9,6 +9,8 @@
     <artifactId>json</artifactId>
 
     <name>org.json</name>
+    <version>${org.json.version}</version>
+
     <description>
         JSON is a light-weight, language independent, data interchange format.
         See http://www.JSON.org/
@@ -105,7 +107,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -119,7 +121,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

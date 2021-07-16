@@ -10,12 +10,12 @@
     <artifactId>javax.inject</artifactId>
     <packaging>jar</packaging>
     <name>javax.inject</name>
+    <version>${jakarta.inject.api.version}</version>
 
     <dependencies>
         <dependency>
             <groupId>jakarta.inject</groupId>
             <artifactId>jakarta.inject-api</artifactId>
-            <version>2.0.0</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
@@ -57,7 +57,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -71,7 +71,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

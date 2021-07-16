@@ -29,6 +29,7 @@ limitations under the License.
     </parent>
 
     <artifactId>org.apache.fop</artifactId>
+    <version>${fop.version}</version>
 
     <name>Apache FOP</name>
    
@@ -55,7 +56,7 @@ limitations under the License.
 		<dependency>
 			<groupId>com.thoughtworks.qdox</groupId>
 			<artifactId>qdox</artifactId>
-			<version>2.0.0</version>
+			<version>${qdox.version}</version>
 			<optional>true</optional>
 		</dependency>
 
@@ -165,7 +166,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -179,7 +180,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

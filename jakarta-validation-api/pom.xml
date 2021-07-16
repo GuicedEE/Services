@@ -19,6 +19,8 @@
 
     <packaging>jar</packaging>
     <name>javax.validation</name>
+    <version>${jakarta.validation.version}</version>
+
     <url>https://beanvalidation.org</url>
 
     <description>
@@ -146,7 +148,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -160,7 +162,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

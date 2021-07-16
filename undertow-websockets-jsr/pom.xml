@@ -31,6 +31,7 @@
     <artifactId>undertow-websockets-jsr</artifactId>
 
     <name>io.undertow.websockets.jsr</name>
+    <version>${undertow.version}</version>
 
     <dependencies>
         <dependency>
@@ -110,7 +111,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jboss-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -124,7 +125,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jboss-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

@@ -11,6 +11,7 @@
 
     <artifactId>guava</artifactId>
     <packaging>jar</packaging>
+    <version>${guava.version}</version>
 
     <name>google.guava</name>
     <description>
@@ -229,7 +230,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -243,7 +244,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

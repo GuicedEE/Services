@@ -9,6 +9,7 @@
 
     <artifactId>hibernate-commons-annotations</artifactId>
     <packaging>jar</packaging>
+    <version>${maven.hibernate.annotations.version}</version>
 
     <name>hibernate.commons.annotations</name>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves</description>
@@ -67,7 +68,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>hibernate-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -81,7 +82,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>hibernate-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

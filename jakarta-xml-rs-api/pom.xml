@@ -10,6 +10,7 @@
     <artifactId>jakarta.ws.rs-api</artifactId>
 
     <name>jakarta.xml.rs-api</name>
+    <version>${jakarta.rs.api.version}</version>
 
     <dependencies>
         <dependency>
@@ -73,7 +74,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -87,7 +88,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

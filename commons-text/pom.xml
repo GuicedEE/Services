@@ -27,6 +27,7 @@
 
 
     <artifactId>commons-text</artifactId>
+    <version>${text.version}</version>
 
     
     <name>Apache Commons Text</name>
@@ -175,7 +176,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -189,7 +190,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

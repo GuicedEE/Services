@@ -25,6 +25,7 @@
     <artifactId>jakarta.activation</artifactId>
     <packaging>jar</packaging>
     <name>jakarta.activation</name>
+    <version>${jakarta.activation.version}</version>
 
     <dependencies>
         <dependency>
@@ -81,7 +82,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -95,7 +96,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jakarta-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

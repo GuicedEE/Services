@@ -10,6 +10,7 @@
     <artifactId>hibernate-c3p0</artifactId>
 
     <name>hibernate-c3p0</name>
+    <version>${maven.hibernate.version}</version>
 
     <build>
         <plugins>
@@ -149,7 +150,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>hibernate-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -163,7 +164,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>hibernate-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

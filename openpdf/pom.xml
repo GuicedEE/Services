@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>openpdf</artifactId>
-
+    <version>${openpdf.version}</version>
     <packaging>jar</packaging>
     <name>OpenPDF</name>
 
@@ -41,7 +41,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>org.apache.fop</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
     </dependencies>
@@ -105,7 +104,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -119,7 +118,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

@@ -21,8 +21,6 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-
     <parent>
         <groupId>com.guicedee.services</groupId>
         <artifactId>services-parent</artifactId>
@@ -31,6 +29,7 @@
 
     <artifactId>undertow-servlet</artifactId>
     <name>io.undertow.servlet</name>
+    <version>${undertow.version}</version>
 
     <dependencies>
 
@@ -117,7 +116,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jboss-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -131,7 +130,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>jboss-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

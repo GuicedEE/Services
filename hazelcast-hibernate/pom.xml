@@ -37,7 +37,7 @@
 
     <artifactId>hazelcast-hibernate</artifactId>
     <name>hazelcast-hibernate</name>
-
+    <version>${hazelcast.hibernate.version}</version>
 
     <description>Kubernetes Service Discovery for Hazelcast Discovery SPI</description>
     <url>http://github.com/hazelcast/hazelcast-kubernetes</url>
@@ -167,7 +167,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>hibernate-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -181,7 +181,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>hibernate-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

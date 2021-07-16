@@ -27,7 +27,7 @@
 
 
     <artifactId>commons-fileupload</artifactId>
-
+    <version>${fileupload.version}</version>
     <name>Apache Commons FileUpload</name>
     <description>
         The Apache Commons FileUpload component provides a simple yet flexible means of adding support for multipart
@@ -264,7 +264,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -278,7 +278,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

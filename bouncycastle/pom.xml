@@ -30,6 +30,7 @@ limitations under the License.
 
 
     <artifactId>bouncycastle</artifactId>
+    <version>${bouncycastle.version}</version>
 
     <name>BouncyCastle</name>
     <url>https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-jdk15on/1.68</url>
@@ -43,13 +44,13 @@ limitations under the License.
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcpkix-jdk15on</artifactId>
-			<version>1.68</version>
+			<version>${bouncycastle.version}</version>
 			<optional>true</optional>
 		</dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.68</version>
+            <version>${bouncycastle.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -108,7 +109,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -122,7 +123,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

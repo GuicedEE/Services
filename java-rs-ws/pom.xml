@@ -24,6 +24,7 @@
     <artifactId>java.ws.rs</artifactId>
     <packaging>jar</packaging>
     <name>java.ws.rs</name>
+    <version>${jakarta.rs.api.version}</version>
 
     <dependencies>
         <dependency>

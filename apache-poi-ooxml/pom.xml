@@ -28,9 +28,8 @@ limitations under the License.
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
 
-
-
     <artifactId>apache-poi-ooxml</artifactId>
+    <version>${poi.version}</version>
 
     <name>Apache POI OOXML</name>
 
@@ -153,7 +152,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -167,7 +166,7 @@ limitations under the License.
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>apache-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>

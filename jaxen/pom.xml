@@ -11,7 +11,7 @@
   <artifactId>jaxen</artifactId>
   <packaging>jar</packaging>
   <name>jaxen</name>
-
+  <version>${jaxen.version}</version>
 
   <description>Jaxen is a universal Java XPath engine.</description>
   <url>http://jaxen.codehaus.org/</url>
@@ -260,7 +260,7 @@
           <dependency>
             <groupId>com.guicedee</groupId>
             <artifactId>standalone-bom</artifactId>
-            <version>${project.version}</version>
+            <version>${guicedee.version}</version>
             <scope>import</scope>
             <type>pom</type>
           </dependency>
@@ -274,7 +274,7 @@
           <dependency>
             <groupId>com.guicedee</groupId>
             <artifactId>standalone-bom</artifactId>
-            <version>${project.version}</version>
+            <version>${guicedee.version}</version>
             <scope>import</scope>
             <type>pom</type>
           </dependency>

@@ -11,6 +11,7 @@
     <artifactId>guice-assistedinject</artifactId>
 
     <name>google.guice.extensions.assistedinject</name>
+    <version>${guice.version}</version>
 
     <dependencies>
         <dependency>
@@ -76,7 +77,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
@@ -90,7 +91,7 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>google-bom</artifactId>
-                        <version>${project.version}</version>
+                        <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
