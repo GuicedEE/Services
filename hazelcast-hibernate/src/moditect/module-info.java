@@ -8,6 +8,8 @@ module com.hazelcast.hibernate {
 
 	requires transitive java.xml;
 	requires static org.hibernate.orm.core;
+	
+	requires jdk.unsupported;
 
 	exports com.hazelcast.hibernate to org.hibernate.orm.core;
 

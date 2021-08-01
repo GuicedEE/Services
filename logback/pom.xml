@@ -8,56 +8,46 @@
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>slf4j</artifactId>
+    <artifactId>logback-core</artifactId>
     <packaging>jar</packaging>
 
-    <name>slf4j</name>
-    <version>${slf4j.version}</version>
+    <name>logback</name>
 
     <url>https://github.com/qos-ch/slf4j</url>
 
     <dependencies>
-
-        <!--<dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>log4j-core</artifactId>
-        </dependency>-->
+		 <dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.4-groovyless</version>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>janino</artifactId>
+            <version>3.0.6</version>
             <optional>true</optional>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
             <optional>true</optional>
-        </dependency>-->
-
+        </dependency>
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
-    <licenses>
-        <license>
-            <name>CDDL + GPLv2 with classpath exception</name>
-            <url>https://glassfish.java.net/nonav/public/CDDL+GPL_1_1.html</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <url>http://java.net/projects/jms-spec/pages/Home/</url>
-            <organization>Oracle Corporation</organization>
-        </developer>
-    </developers>
-
-    <scm>
-        <connection>https://github.com/qos-ch/slf4j</connection>
-        <developerConnection>scm:svn:https://svn.java.net/svn/glassfish~svn/trunk/api/javaee-api/javax.jms</developerConnection>
-        <url>http://java.net/projects/glassfish/sources/svn/show/trunk/api/javaee-api/javax.jms</url>
-    </scm>
     <build>
         <plugins>
             <plugin>
@@ -73,8 +63,8 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.slf4j:*:*</include>
-                                    <include>org.apache.logging.log4j:log4j-slf4j-impl:*</include>
+                                    <include>ch.qos.logback:*</include>
+                                    <include>org.codehaus.janino:janino</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -90,8 +80,8 @@
                             </filters>
                             <relocations>
                                 <relocation>
-                                    <pattern>org.apache.logging</pattern>
-                                    <shadedPattern>org.slf4j.shade.log4j2</shadedPattern>
+                                    <pattern>org.slf4j</pattern>
+                                    <shadedPattern>ch.qos.logback.classic.shaded.slf4j</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -118,20 +108,6 @@
                         <scope>import</scope>
                         <type>pom</type>
                     </dependency>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>apache-bom</artifactId>
-                        <version>${guicedee.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>jboss-bom</artifactId>
-                        <version>${guicedee.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
                 </dependencies>
             </dependencyManagement>
         </profile>
@@ -142,20 +118,6 @@
                     <dependency>
                         <groupId>com.guicedee</groupId>
                         <artifactId>standalone-bom</artifactId>
-                        <version>${guicedee.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>apache-bom</artifactId>
-                        <version>${guicedee.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>jboss-bom</artifactId>
                         <version>${guicedee.version}</version>
                         <scope>import</scope>
                         <type>pom</type>

@@ -85,6 +85,11 @@
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>hazelcast-all</artifactId>
         </dependency>
 

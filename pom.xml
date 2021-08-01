@@ -84,6 +84,7 @@
 				<module>msal4j</module>
 				<module>bouncycastle</module>
 				<module>bytebuddy</module>
+				<module>logback</module>
             </modules>
         </profile>
 

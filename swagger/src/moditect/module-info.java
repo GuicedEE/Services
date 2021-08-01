@@ -6,6 +6,8 @@ module com.guicedee.services.openapi {
 	requires jakarta.xml.bind;
 	requires jakarta.servlet;
 	
+	requires org.apache.commons.lang3;
+	
 	requires com.fasterxml.jackson.jakarta.rs.json;
 	//requires com.fasterxml.jackson.dataformat.yaml;
 	requires com.fasterxml.jackson.module.jakarta.xmlbind;
@@ -19,6 +21,7 @@ module com.guicedee.services.openapi {
 	exports io.swagger.v3.jaxrs2.integration;
 	exports io.swagger.v3.oas.integration;
 	exports io.swagger.v3.oas.models;
+	exports io.swagger.v3.jaxrs2.integration.resources;
 
 	exports io.swagger.v3.oas.annotations;
 	exports io.swagger.v3.oas.annotations.media;

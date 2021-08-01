@@ -1,4 +1,4 @@
-package org.hazelcast;
+package com.hazelcast;
 
 public class Dummy {
 	/**

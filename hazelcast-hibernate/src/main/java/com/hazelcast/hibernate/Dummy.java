@@ -1,4 +1,4 @@
-package org.hazelcast.hibernateimpl;
+package com.hazelcast.hibernate;
 
 public class Dummy {
 	/**

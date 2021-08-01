@@ -1,0 +1,24 @@
+# Maven build
+*/target/
+
+
+
+
+*/.tern-project
+
+# IntelliJ IDE
+/.idea
+*/.idea
+*/*.iml
+
+# Netbeans IDE
+/nbactions.xml
+*/nbproject/
+*/nbactions.xml
+*.tlog
+*.log
+rebel.xml
+BFS/nb-configuration.xml
+*.iml
+enterprise-application-parent.iml
+/.metadata/
