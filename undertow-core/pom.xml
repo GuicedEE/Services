@@ -31,7 +31,7 @@
     <artifactId>undertow-core</artifactId>
 
     <name>io.undertow</name>
-    <version>${undertow.version}</version>
+    <!--<version>${undertow.version}</version>-->
 
     <dependencies>
         <dependency>

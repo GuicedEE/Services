@@ -10,7 +10,7 @@
     <artifactId>mapstruct</artifactId>
 
     <name>mapstruct</name>
-    <version>${mapstruct.version}</version>
+    <!--<version>${mapstruct.version}</version>-->
 
     <build>
         <plugins>

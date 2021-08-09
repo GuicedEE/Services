@@ -10,7 +10,7 @@
     <artifactId>jakarta.ws.rs-api</artifactId>
 
     <name>jakarta.xml.rs-api</name>
-    <version>${jakarta.rs.api.version}</version>
+    <!--<version>${jakarta.rs.api.version}</version>-->
 
     <dependencies>
         <dependency>

@@ -27,7 +27,7 @@
 
 
     <artifactId>commons-text</artifactId>
-    <version>${text.version}</version>
+    <!--<version>${text.version}</version>-->
 
     
     <name>Apache Commons Text</name>

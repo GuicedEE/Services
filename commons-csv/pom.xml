@@ -30,7 +30,7 @@ limitations under the License.
 
 
     <artifactId>commons-csv</artifactId>
-    <version>${csv.version}</version>
+    <!--<version>${csv.version}</version>-->
 
     <name>Apache Commons CSV</name>
     <url>http://commons.apache.org/proper/commons-csv/</url>

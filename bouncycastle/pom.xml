@@ -30,7 +30,7 @@ limitations under the License.
 
 
     <artifactId>bouncycastle</artifactId>
-    <version>${bouncycastle.version}</version>
+    <!--<version>${bouncycastle.version}</version>-->
 
     <name>BouncyCastle</name>
     <url>https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-jdk15on/1.68</url>

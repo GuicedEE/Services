@@ -10,7 +10,7 @@
     <artifactId>zstd-jni</artifactId>
 
     <name>zstd-jni</name>
-    <version>${zstdjni.version}</version>
+    <!--<version>${zstdjni.version}</version>-->
 
     <build>
         <plugins>

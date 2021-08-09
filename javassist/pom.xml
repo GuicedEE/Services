@@ -8,7 +8,7 @@
 
     <!--<groupId>org.javassist</groupId>-->
     <artifactId>javassist</artifactId>
-    <version>${javassist.version}</version>
+    <!--<version>${javassist.version}</version>-->
 
     <packaging>jar</packaging>
 

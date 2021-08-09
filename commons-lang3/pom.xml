@@ -30,7 +30,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>commons-lang3</artifactId>
-    <version>${lang.version}</version>
+    <!--<version>${lang.version}</version>-->
     <name>Apache Commons Lang</name>
 
     <inceptionYear>2001</inceptionYear>

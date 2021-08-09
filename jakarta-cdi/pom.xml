@@ -10,7 +10,7 @@
     <artifactId>cdi-api</artifactId>
 
     <description>Parent module for CDI Specification</description>
-    <version>${jakarta.cdi.api.version}</version>
+    <!--<version>${jakarta.cdi.api.version}</version>-->
 
     <dependencies>
 

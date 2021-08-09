@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>guice-persist</artifactId>
-    <version>${guice.version}</version>
+    <!--<version>${guice.version}</version>-->
     <name>google.guice.extensions.persist</name>
 
     <dependencies>

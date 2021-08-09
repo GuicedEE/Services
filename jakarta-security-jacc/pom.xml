@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>javax.security.jacc</artifactId>
-    <version>${jakarta.security.sacc.api.version}</version>
+    <!--<version>${jakarta.security.sacc.api.version}</version>-->
 
     <packaging>jar</packaging>
     <name>java.security.jacc</name>

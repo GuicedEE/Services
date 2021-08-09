@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>interceptor-api</artifactId>
-    <version>${jakarta.interceptor.version}</version>
+    <!--<version>${jakarta.interceptor.version}</version>-->
 
     <description>
         Jakarta Interceptors defines a means of interposing on business method invocations

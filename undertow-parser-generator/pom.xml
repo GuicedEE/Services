@@ -31,7 +31,7 @@
     <artifactId>undertow-parser-generator</artifactId>
 
     <name>io.undertow.parser.generator</name>
-    <version>${undertow.version}</version>
+    <!--<version>${undertow.version}</version>-->
     <description>An annotation processor that is used to generate the HTTP parser</description>
 
     <dependencies>

@@ -52,7 +52,7 @@
 
     <artifactId>javax.jms-api</artifactId>
     <packaging>jar</packaging>
-    <version>${jms.version}</version>
+    <!--<version>${jms.version}</version>-->
 
     <name>javax.jms</name>
 

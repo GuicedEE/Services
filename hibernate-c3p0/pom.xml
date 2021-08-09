@@ -10,7 +10,7 @@
     <artifactId>hibernate-c3p0</artifactId>
 
     <name>hibernate-c3p0</name>
-    <version>${maven.hibernate.version}</version>
+    <!--<version>${maven.hibernate.version}</version>-->
 
     <build>
         <plugins>

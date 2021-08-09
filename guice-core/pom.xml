@@ -11,7 +11,7 @@
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
 
-    <version>${guice.version}</version>
+    <!--<version>${guice.version}</version>-->
     <artifactId>guice</artifactId>
     <name>google.guice.core</name>
 

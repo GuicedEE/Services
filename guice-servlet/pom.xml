@@ -11,7 +11,7 @@
     </parent>
 	
     <artifactId>guice-servlet</artifactId>
-    <version>${guice.version}</version>
+    <!--<version>${guice.version}</version>-->
     <name>google.guice.extensions.servlet</name>
 
     <dependencies>

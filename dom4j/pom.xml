@@ -12,7 +12,7 @@
     <name>dom4j</name>
     <description>The dom4j api for hibernate (1.3.4)</description>
 
-    <version>${dom4j.version}</version>
+    <!--<version>${dom4j.version}</version>-->
 
     <dependencies>
 

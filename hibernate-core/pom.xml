@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
 
     <name>hibernate.core</name>
-    <version>${maven.hibernate.version}</version>
+    <!--<version>${maven.hibernate.version}</version>-->
 
     <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
     </description>

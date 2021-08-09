@@ -37,7 +37,7 @@
 
     <artifactId>hazelcast-all</artifactId>
     <name>hazelcast-all</name>
-    <version>${hazelcast.version}</version>
+    <!--<version>${hazelcast.version}</version>-->
 
     <description>Kubernetes Service Discovery for Hazelcast Discovery SPI</description>
     <url>http://github.com/hazelcast/hazelcast-kubernetes</url>

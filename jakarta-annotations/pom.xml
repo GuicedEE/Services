@@ -30,7 +30,7 @@
     <artifactId>jakarta.annotation-api</artifactId>
     <name>Jakarta Annotations API</name>
     <description>Jakarta Annotations API</description>
-    <version>${jakarta.annotation.version}</version>
+    <!--<version>${jakarta.annotation.version}</version>-->
 
     <url>https://projects.eclipse.org/projects/ee4j.ca</url>
 

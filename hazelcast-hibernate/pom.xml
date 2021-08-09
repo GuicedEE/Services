@@ -37,7 +37,7 @@
 
     <artifactId>hazelcast-hibernate</artifactId>
     <name>hazelcast-hibernate</name>
-    <version>${hazelcast.hibernate.version}</version>
+    <!--<version>${hazelcast.hibernate.version}</version>-->
 
     <description>Kubernetes Service Discovery for Hazelcast Discovery SPI</description>
     <url>http://github.com/hazelcast/hazelcast-kubernetes</url>

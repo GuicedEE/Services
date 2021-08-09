@@ -24,7 +24,7 @@
     <artifactId>javax.activation</artifactId>
     <packaging>jar</packaging>
     <name>javax.activation</name>
-    <version>${jakarta.activation.version}</version>
+    <!--<version>${jakarta.activation.version}</version>-->
 
     <dependencies>
         <dependency>

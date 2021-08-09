@@ -9,7 +9,7 @@
     <artifactId>json</artifactId>
 
     <name>org.json</name>
-    <version>${org.json.version}</version>
+    <!--<version>${org.json.version}</version>-->
 
     <description>
         JSON is a light-weight, language independent, data interchange format.

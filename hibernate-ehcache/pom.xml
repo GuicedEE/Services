@@ -10,7 +10,7 @@
     <artifactId>hibernate-ehcache</artifactId>
 
     <name>hibernate-ehcache</name>
-    <version>${maven.hibernate.version}</version>
+    <!--<version>${maven.hibernate.version}</version>-->
 
     <build>
         <plugins>

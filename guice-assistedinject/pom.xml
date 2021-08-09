@@ -11,7 +11,7 @@
     <artifactId>guice-assistedinject</artifactId>
 
     <name>google.guice.extensions.assistedinject</name>
-    <version>${guice.version}</version>
+    <!--<version>${guice.version}</version>-->
 
     <dependencies>
         <dependency>

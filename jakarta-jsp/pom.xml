@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>jakarta.servlet.jsp-api</artifactId>
-    <version>${jakarta.servlet.jsp.api.version}</version>
+    <!--<version>${jakarta.servlet.jsp.api.version}</version>-->
 
     <name>javax.jsp.impl</name>
     <description>Jakarta Server Pages API</description>

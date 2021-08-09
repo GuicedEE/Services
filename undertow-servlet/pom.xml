@@ -29,7 +29,7 @@
 
     <artifactId>undertow-servlet</artifactId>
     <name>io.undertow.servlet</name>
-    <version>${undertow.version}</version>
+    <!--<version>${undertow.version}</version>-->
 
     <dependencies>
 

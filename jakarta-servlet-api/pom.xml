@@ -55,7 +55,7 @@
     <packaging>jar</packaging>
 
     <name>jakarta.servlet</name>
-    <version>${jakarta.servlet.version}</version>
+    <!--<version>${jakarta.servlet.version}</version>-->
 
     <url>http://servlet-spec.java.net</url>
     <developers>

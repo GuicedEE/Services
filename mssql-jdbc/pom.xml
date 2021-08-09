@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
 
     <name>mssqljdbc</name>
-    <version>${mssql.jdbc}</version>
+    <!--<version>${mssql.jdbc}</version>-->
 
     <description>
         Microsoft JDBC Driver for SQL Server.

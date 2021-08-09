@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>jna-platform</artifactId>
-    <version>${jna.version}</version>
+    <!--<version>${jna.version}</version>-->
 
     <packaging>jar</packaging>
     <name>jna-platform</name>

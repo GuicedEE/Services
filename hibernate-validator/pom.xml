@@ -10,7 +10,7 @@
 
     <artifactId>hibernate-validator</artifactId>
     <packaging>jar</packaging>
-    <version>${maven.hibernate.validator.version}</version>
+    <!--<version>${maven.hibernate.validator.version}</version>-->
 
     <name>hibernate-validator</name>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by

@@ -10,7 +10,7 @@
     <artifactId>swagger</artifactId>
     <packaging>jar</packaging>
     <name>swagger</name>
-    <version>${io.swagger.version}</version>
+    <!--<version>${io.swagger.version}</version>-->
 
     <dependencies>
        

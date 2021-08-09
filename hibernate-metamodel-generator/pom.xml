@@ -9,7 +9,7 @@
 
     <artifactId>hibernate-jpamodelgen</artifactId>
     <packaging>jar</packaging>
-    <version>${maven.hibernate.version}</version>
+    <!--<version>${maven.hibernate.version}</version>-->
 
     <name>hibernate-jpamodelgen</name>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by</description>

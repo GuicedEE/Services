@@ -33,7 +33,7 @@
     <name>javax.websocket-api</name>
     <description>Jakarta WebSocket - Server API</description>
     <url>https://projects.eclipse.org/projects/ee4j.websocket</url>
-    <version>${jakarta.websocket.api.version}</version>
+    <!--<version>${jakarta.websocket.api.version}</version>-->
 
     <dependencies>
         <dependency>

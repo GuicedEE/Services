@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>openpdf</artifactId>
-    <version>${openpdf.version}</version>
+    <!--<version>${openpdf.version}</version>-->
     <packaging>jar</packaging>
     <name>OpenPDF</name>
 

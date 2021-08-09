@@ -10,7 +10,7 @@
     <artifactId>h2</artifactId>
 
     <name>h2</name>
-    <version>${h2.db.api}</version>
+    <!--<version>${h2.db.api}</version>-->
 
     <build>
         <plugins>

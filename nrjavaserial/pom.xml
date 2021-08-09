@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>nrjavaserial</artifactId>
-    <version>${nrjavaserial.version}</version>
+    <!--<version>${nrjavaserial.version}</version>-->
 
     <packaging>jar</packaging>
     <name>nrjavaserial</name>

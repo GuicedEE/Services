@@ -31,7 +31,7 @@
     <artifactId>undertow-websockets-jsr</artifactId>
 
     <name>io.undertow.websockets.jsr</name>
-    <version>${undertow.version}</version>
+    <!--<version>${undertow.version}</version>-->
 
     <dependencies>
         <dependency>

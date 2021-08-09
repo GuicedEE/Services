@@ -30,7 +30,7 @@
     <artifactId>ejb-api</artifactId>
 
     <name>javax.ejb</name>
-    <version>${jakarta.ejb.version}</version>
+    <!--<version>${jakarta.ejb.version}</version>-->
 
     <description>Jakarta Enterprise Beans</description>
     <url>https://github.com/eclipse-ee4j/ejb-api</url>

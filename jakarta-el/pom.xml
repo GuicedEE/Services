@@ -29,7 +29,7 @@
     </parent>
 
     <artifactId>jakarta.el</artifactId>
-    <version>${jakarta.el.version}</version>
+    <!--<version>${jakarta.el.version}</version>-->
 
     <name>javax.el</name>
     <description>

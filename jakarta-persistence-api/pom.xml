@@ -11,7 +11,7 @@
 
     <name>javax.jpa.api</name>
 
-    <version>${jakarta.persistence.api.version}</version>
+    <!--<version>${jakarta.persistence.api.version}</version>-->
 
     <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
     </description>

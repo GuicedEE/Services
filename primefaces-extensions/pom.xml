@@ -8,7 +8,7 @@
     </parent>
 
     <artifactId>primefaces-extensions</artifactId>
-    <version>${primefaces.version}</version>
+    <!--<version>${primefaces.version}</version>-->
 
     <name>primefaces-extensions</name>
     <packaging>jar</packaging>

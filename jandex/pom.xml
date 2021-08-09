@@ -12,7 +12,7 @@
     <name>jandex</name>
     <packaging>jar</packaging>
 
-    <version>${jandex.version}</version>
+    <!--<version>${jandex.version}</version>-->
 
     <licenses>
         <license>

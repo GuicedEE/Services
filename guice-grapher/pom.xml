@@ -13,7 +13,7 @@
     <artifactId>guice-grapher</artifactId>
 
     <name>google.guice.extensions.grapher</name>
-    <version>${guice.version}</version>
+    <!--<version>${guice.version}</version>-->
 
     <dependencies>
 

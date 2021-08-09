@@ -10,7 +10,7 @@
     <artifactId>jakarta.xml.ws-api</artifactId>
 
     <name>jakarta.xml.ws-api</name>
-    <version>${jakarta.xml.jaxws.api.version}</version>
+    <!--<version>${jakarta.xml.jaxws.api.version}</version>-->
 
     <dependencies>
         <dependency>

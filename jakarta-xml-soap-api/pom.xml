@@ -10,7 +10,7 @@
     <artifactId>jakarta.xml.soap-api</artifactId>
 
     <name>jakarta.xml.soap-api</name>
-    <version>${jakarta.xml.soap.api.version}</version>
+    <!--<version>${jakarta.xml.soap.api.version}</version>-->
 
     <dependencies>
         <dependency>

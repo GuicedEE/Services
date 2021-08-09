@@ -19,7 +19,7 @@
 
     <packaging>jar</packaging>
     <name>javax.validation</name>
-    <version>${jakarta.validation.version}</version>
+    <!--<version>${jakarta.validation.version}</version>-->
 
     <url>https://beanvalidation.org</url>
 

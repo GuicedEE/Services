@@ -25,7 +25,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>commons-io</artifactId>
-    <version>${io.version}</version>
+    <!--<version>${io.version}</version>-->
     <name>Apache Commons IO</name>
 
     <inceptionYear>2002</inceptionYear>

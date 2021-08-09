@@ -30,7 +30,7 @@
     <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 
     <name>jstl</name>
-    <version>${jakarta.servlet.jsp.jstl.api.version}</version>
+    <!--<version>${jakarta.servlet.jsp.jstl.api.version}</version>-->
 
     <description>JavaServer Pages(TM) Standard Tag Library API</description>
     <url>https://projects.eclipse.org/projects/ee4j.jstl</url>

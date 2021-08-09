@@ -24,7 +24,7 @@
     </parent>
 
     <artifactId>log4j-core</artifactId>
-    <version>${log4j.version}</version>
+    <!--<version>${log4j.version}</version>-->
 
     <packaging>jar</packaging>
     <name>Apache Log4j2</name>

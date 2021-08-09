@@ -29,7 +29,7 @@ limitations under the License.
     </parent>
 
     <artifactId>apache-poi-ooxml</artifactId>
-    <version>${poi.version}</version>
+    <!--<version>${poi.version}</version>-->
 
     <name>Apache POI OOXML</name>
 

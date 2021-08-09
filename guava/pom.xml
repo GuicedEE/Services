@@ -11,7 +11,7 @@
 
     <artifactId>guava</artifactId>
     <packaging>jar</packaging>
-    <version>${guava.version}</version>
+    <!--<version>${guava.version}</version>-->
 
     <name>google.guava</name>
     <description>

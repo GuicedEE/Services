@@ -30,7 +30,7 @@ limitations under the License.
 
 
     <artifactId>commons-xmlbeans</artifactId>
-    <version>${xmlbeans.version}</version>
+    <!--<version>${xmlbeans.version}</version>-->
 
     <name>Apache Commons XML Beans</name>
     <inceptionYear>2002</inceptionYear>
