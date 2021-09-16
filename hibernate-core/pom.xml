@@ -163,6 +163,10 @@
                                     <pattern>javax.annotation</pattern>
                                     <shadedPattern>jakarta.annotation</shadedPattern>
                                 </relocation>
+								 <relocation>
+                                    <pattern>javax.validation</pattern>
+                                    <shadedPattern>jakarta.validation</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>
