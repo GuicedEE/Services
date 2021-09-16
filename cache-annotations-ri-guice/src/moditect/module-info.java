@@ -7,4 +7,5 @@ module cache.annotations.ri.guice {
 
 	opens org.jsr107.ri.annotations.guice.module to com.google.guice;
 	opens org.jsr107.ri.annotations.guice to com.google.guice;
+	exports org.jsr107.ri.annotations.guice;
 }
