@@ -29,6 +29,8 @@ module com.google.common {
 	exports com.google.zxing.client.j2se;
 	exports com.google.zxing.qrcode.decoder;
 
+	exports com.google.errorprone.annotations;
+	
 	requires transitive jakarta.activation;
 	
 	

@@ -35,20 +35,19 @@
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
-            <optional>true</optional>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <optional>true</optional>
         </dependency>
-
+        -->
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
+         <!--   <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <executions>
@@ -62,7 +61,7 @@
                             <artifactSet>
                                 <includes>
                                     <include>org.ow2.asm:asm</include>
-                                    <include>com.google.inject:guice</include>
+                                    &lt;!&ndash;<include>com.google.inject:guice</include>&ndash;&gt;
                                 </includes>
                             </artifactSet>
                             <relocations>
@@ -82,7 +81,14 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm</artifactId>
+                        <version>${maven.asm.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>-->
 
 
             <plugin>
