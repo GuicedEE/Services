@@ -39,7 +39,7 @@ import jakarta.cache.integration.CacheWriter;
  * Implementations may execute {@link EntryProcessor}s in situ, thus avoiding
  * locking, round-trips and expensive network transfers.
  * 
- * <h3>Effect of {@link MutableEntry} operations</h3>
+ * <strong>Effect of {@link MutableEntry} operations</strong>
  * {@link jakarta.cache.Cache.Entry} access, via a call to
  * {@link jakarta.cache.Cache.Entry#getValue()}, will behave as if
  * {@link Cache#get(Object)} was called for the key.  This includes updating
@@ -63,12 +63,12 @@ import jakarta.cache.integration.CacheWriter;
  * {@link EntryProcessor}s, together with specified parameters and return
  * values, may be required to implement {@link java.io.Serializable}.
  * 
- * <h3>Effect of multiple {@link MutableEntry} operations performed by one {@link
- * EntryProcessor}</h3>
+ * <strong>Effect of multiple {@link MutableEntry} operations performed by one {@link
+ * EntryProcessor}</strong>
  * Only the net effect of multiple operations has visibility outside of the Entry
  * Processor. The entry is locked by the entry processor for the entire scope
  * of the entry processor, so intermediate effects are not visible.
- * <h4>Example 1</h4>
+ * <strong>Example 1</strong>
  * In this example, an {@link EntryProcessor} calls:
  * <ol>
  * <li>{@link MutableEntry#getValue()}</li>
@@ -90,7 +90,7 @@ import jakarta.cache.integration.CacheWriter;
  * ExpiryPolicy: The first get and the second put only are visible to the
  * ExpiryPolicy.<br>
  * 
- * <h4>Example 2</h4>
+ * <strong>Example 2</strong>
  * In this example, an {@link EntryProcessor} calls:
  * <ol>
  * <li>{@link MutableEntry#getValue()}</li>
@@ -112,7 +112,7 @@ import jakarta.cache.integration.CacheWriter;
  * ExpiryPolicy: The first get and the second put only are visible to the
  * ExpiryPolicy.<br>
  * 
- * <h4>Example 3</h4>
+ * <strong>Example 3</strong>
  * In this example, an {@link EntryProcessor} calls:
  * <ol>
  * <li>{@link MutableEntry#getValue()}</li>

@@ -1,9 +1,8 @@
 module dom4j {
 	requires transitive java.xml;
 	requires transitive jakarta.xml.bind;
-
+	
 	requires java.desktop;
-	requires static jaxen;
 
 	exports org.dom4j;
 	exports org.dom4j.bean;

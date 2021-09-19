@@ -24,6 +24,27 @@
     <artifactId>jakarta.xml.bind-api</artifactId>
     <packaging>jar</packaging>
     <name>jaxb</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>prepare</id>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+    </build>
     <!--<version>${jakarta.xml.jaxb.api.version}</version>-->
     <dependencies>
 

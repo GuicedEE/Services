@@ -47,7 +47,12 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>zstd-jni</artifactId>
-            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>${maven.asm.version}</version>
         </dependency>
 
         <dependency>
@@ -162,6 +167,17 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>prepare</id>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

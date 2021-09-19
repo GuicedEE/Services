@@ -217,6 +217,17 @@
 
     <build>
         <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>prepare</id>
+                <phase>verify</phase>
+              </execution>
+            </executions>
+          </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -250,6 +261,10 @@
             <artifactId>jaxen</artifactId>
             <optional>true</optional>
         </dependency>
+      <dependency>
+        <groupId>com.guicedee.services</groupId>
+        <artifactId>dom4j</artifactId>
+      </dependency>
     </dependencies>
 
   <profiles>

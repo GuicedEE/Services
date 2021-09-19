@@ -123,15 +123,15 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
     /**
      * Determines if the {@link Cache} contains an entry for the specified key.
      * <p>
-     * More formally, returns <tt>true</tt> if and only if this cache contains a
-     * mapping for a key <tt>k</tt> such that <tt>key.equals(k)</tt>.
-     * (There can be at most one such mapping.)</p>
+     * More formally, returns <p>true</p> if and only if this cache contains a
+     * mapping for a key <p>k</p> such that <p>key.equals(k)</p>.
+     * <p>(There can be at most one such mapping.)</p>
      * <p>
      * If the cache is configured read-through the associated {@link CacheLoader}
      * is not called. Only the cache is checked.
      * </p>
      * @param key key whose presence in this cache is to be tested.
-     * @return <tt>true</tt> if this map contains a mapping for the specified key
+     * @return <p>true</p> if this map contains a mapping for the specified key
      * @throws NullPointerException  if key is null
      * @throws IllegalStateException if the cache is {@link #isClosed()}
      * @throws CacheException        it there is a problem checking the mapping
@@ -185,9 +185,9 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
      * Associates the specified value with the specified key in the cache.
      * <p>
      * If the {@link Cache} previously contained a mapping for the key, the old
-     * value is replaced by the specified value.  (A cache <tt>c</tt> is said to
-     * contain a mapping for a key <tt>k</tt> if and only if {@link
-     * #containsKey(Object) c.containsKey(k)} would return <tt>true</tt>.)
+     * value is replaced by the specified value.  (A cache <p>c</p> is said to
+     * contain a mapping for a key <p>k</p> if and only if {@link
+     * #containsKey(Object) c.containsKey(k)} would return <p>true</p>.)
      * <p>
      * If the cache is configured write-through the
      * {@link CacheWriter#write(Cache.Entry)} method will be called.
@@ -215,9 +215,9 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
      * <p>
      * If the cache previously contained a mapping for
      * the key, the old value is replaced by the specified value.  (A cache
-     * <tt>c</tt> is said to contain a mapping for a key <tt>k</tt> if and only
+     * <p>c</p> is said to contain a mapping for a key <p>k</p> if and only
      * if {@link #containsKey(Object) c.containsKey(k)} would return
-     * <tt>true</tt>.)
+     * <p>true</p>.)
      * <p>
      * The previous value is returned, or null if there was no value associated
      * with the key previously.</p>
@@ -248,7 +248,7 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
      * <p>
      * The effect of this call is equivalent to that of calling
      * {@link #put(Object, Object) put(k, v)} on this cache once for each mapping
-     * from key <tt>k</tt> to value <tt>v</tt> in the specified map.
+     * from key <p>k</p> to value <p>v</p> in the specified map.
      * <p>
      * The order in which the individual puts occur is undefined.
      * <p>
@@ -312,13 +312,13 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
     /**
      * Removes the mapping for a key from this cache if it is present.
      * <p>
-     * More formally, if this cache contains a mapping from key <tt>k</tt> to
-     * value <tt>v</tt> such that
+     * More formally, if this cache contains a mapping from key <p>k</p> to
+     * value <p>v</p> such that
      * <code>(key==null ?  k==null : key.equals(k))</code>, that mapping is removed.
      * (The cache can contain at most one such mapping.)
      *
-     * <p>Returns <tt>true</tt> if this cache previously associated the key,
-     * or <tt>false</tt> if the cache contained no mapping for the key.
+     * <p>Returns <p>true</p> if this cache previously associated the key,
+     * or <p>false</p> if the cache contained no mapping for the key.
      * <p>
      * The cache will not contain a mapping for the specified key once the
      * call returns.
@@ -425,7 +425,7 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
      * @param key      key with which the specified value is associated
      * @param oldValue value expected to be associated with the specified key
      * @param newValue value to be associated with the specified key
-     * @return <tt>true</tt> if the value was replaced
+     * @return <p>true</p> if the value was replaced
      * @throws NullPointerException  if key is null or if the values are null
      * @throws IllegalStateException if the cache is {@link #isClosed()}
      * @throws CacheException        if there is a problem during the replace
@@ -456,7 +456,7 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
      * </p>
      * @param key  the key with which the specified value is associated
      * @param value the value to be associated with the specified key
-     * @return <tt>true</tt> if the value was replaced
+     * @return <p>true</p> if the value was replaced
      * @throws NullPointerException  if key is null or if value is null
      * @throws IllegalStateException if the cache is {@link #isClosed()}
      * @throws CacheException        if there is a problem during the replace
@@ -491,7 +491,7 @@ public interface Cache<K, V> extends Iterable<Cache.Entry<K, V>>, Closeable {
      * @param key   key with which the specified value is associated
      * @param value value to be associated with the specified key
      * @return the previous value associated with the specified key, or
-     *         <tt>null</tt> if there was no mapping for the key.
+     *         <p>null</p> if there was no mapping for the key.
      * @throws NullPointerException  if key is null or if value is null
      * @throws IllegalStateException if the cache is {@link #isClosed()}
      * @throws CacheException        if there is a problem during the replace

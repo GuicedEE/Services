@@ -1,4 +1,10 @@
 module org.apache.commons.compress {
+	
+	requires static org.objectweb.asm;
+	requires static com.github.luben.zstd_jni;
+	requires static java.logging;
+	requires static java.desktop;
+	
 	exports org.apache.commons.compress;
 	exports org.apache.commons.compress.archivers;
 	exports org.apache.commons.compress.archivers.ar;

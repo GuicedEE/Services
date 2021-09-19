@@ -19,10 +19,11 @@ module jakarta.xml.bind {
 	requires transitive java.xml;
 	requires transitive jakarta.validation;
 	requires transitive java.logging;
-	requires java.desktop;
-	requires java.compiler;
+	requires static java.desktop;
+	requires static java.compiler;
 	requires org.codehaus.stax2;
-
+	
+	
 	exports jakarta.xml.bind;
 	exports jakarta.xml.bind.annotation;
 	exports jakarta.xml.bind.annotation.adapters;

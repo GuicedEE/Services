@@ -34,6 +34,7 @@ limitations under the License.
     <name>Apache POI OOXML</name>
 
 
+
     <!-- Codec only has test dependencies ATM -->
     <dependencies>
 
@@ -89,6 +90,16 @@ limitations under the License.
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>prepare</id>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

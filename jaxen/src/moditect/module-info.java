@@ -1,7 +1,6 @@
 module jaxen {
 	requires java.xml;
-
-
+	
 	exports org.jaxen;
 	exports org.jaxen.dom;
 

@@ -21,7 +21,7 @@
  * whereby Java developers use a {@link jakarta.cache.spi.CachingProvider} to
  * temporarily cache Java objects. It provides a common way for Java programs
  * to create, access, update and remove entries from caches.
- * <h1>Core Concepts</h1>
+ * <strong>Core Concepts</strong>
  * The Java Caching API defines five core interfaces:
  * {@link jakarta.cache.spi.CachingProvider}, {@link jakarta.cache.CacheManager},
  * {@link jakarta.cache.Cache}, {@link jakarta.cache.Cache.Entry} and
@@ -52,7 +52,7 @@
  * entries are no longer available to be accessed, updated or removed, just as if
  * they never existed in a {@link jakarta.cache.Cache}. Expiry is set using an
  * {@link jakarta.cache.expiry.ExpiryPolicy}.
- * <h1>Store-By-Value and Store-By-Reference</h1>
+ * <strong>Store-By-Value and Store-By-Reference</strong>
  * Entries are stored by individual {@link jakarta.cache.Cache}s using one of two
  * mechanisms:
  * store-by-value and store-by-reference.
@@ -75,7 +75,7 @@
  * side-effects of the mutations will be visible to those accessing the entries from
  * the {@link jakarta.cache.Cache}, without an application having to update the
  * {@link jakarta.cache.Cache}.
- * <h1>{@link jakarta.cache.Cache}s and {@link java.util.Map}s</h1>
+ * <strong>{@link jakarta.cache.Cache}s and {@link java.util.Map}s</strong>
  * While {@link jakarta.cache.Cache}s and {@link java.util.Map}s share somewhat similar
  * APIs, {@link jakarta.cache.Cache}s are not Maps and {@link java.util.Map}s are not
  * {@link jakarta.cache.Cache}s.
@@ -129,7 +129,7 @@
  * <li> Implementations may optionally enforce security restrictions. In case of a
  * violation, a {@link java.lang.SecurityException} must be thrown.</li>
  * </ul>
- * <h1>Consistency</h1>
+ * <strong>Consistency</strong>
  * Consistency refers to the behavior of caches and the guarantees that exist when
  * concurrent cache mutation occur together with the visibility of the mutations
  * when multiple threads are accessing a cache.
@@ -163,7 +163,7 @@
  * <h2>Further Consistency Models</h2>
  * An implementation may provide support for different consistency models in
  * addition to the required <em>Default Consistency</em> mode
- * <h1>A Simple Example</h1>
+ * <strong>A Simple Example</strong>
  * <p>This simple example creates a default {@link jakarta.cache.CacheManager},
  * configures a {@link jakarta.cache.Cache} on it called “simpleCache? with a key type
  * of String and a value type of Integer and an expiry of one hour and then performs
