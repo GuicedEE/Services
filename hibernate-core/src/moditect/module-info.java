@@ -1,6 +1,8 @@
 module org.hibernate.orm.core {
 	requires transitive java.sql;
 	
+	requires com.guicedee.guicedinjection;
+	
 	requires java.naming;
 	
 	requires transitive java.transaction;
@@ -313,6 +315,8 @@ module org.hibernate.orm.core {
 	exports org.hibernate.type.descriptor.sql;
 	exports org.hibernate.type.descriptor.sql.spi;
 	exports org.hibernate.usertype;
+	
+	exports org.hibernate.boot.archive.internal;
 
 	opens org.hibernate;
 	opens org.hibernate.jpa;
@@ -326,10 +330,10 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.cache.internal;
 	//exports org.hibernate.internal.util;
 
-//	provides com.guicedee.guicedinjection.interfaces.IFileContentsScanner with com.guicedee.services.hibernate.PersistenceFileHandler;
-//	provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with com.guicedee.services.hibernate.PersistenceGuiceConfigurator;
-//	provides com.guicedee.guicedinjection.interfaces.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
-	//provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
+	//provides com.guicedee.guicedinjection.interfaces.IFileContentsScanner with com.guicedee.services.hibernate.PersistenceFileHandler;
+	provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with com.guicedee.services.hibernate.PersistenceGuiceConfigurator;
+	provides com.guicedee.guicedinjection.interfaces.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
+	provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
 
 	//5.5.0.Final
 	uses org.hibernate.event.spi.EventEngineContributor;

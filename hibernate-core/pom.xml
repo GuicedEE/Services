@@ -94,6 +94,14 @@
             <artifactId>byte-buddy</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.guicedee</groupId>
+            <artifactId>guiced-injection</artifactId>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
@@ -178,6 +186,14 @@
 								 <relocation>
                                     <pattern>javax.validation</pattern>
                                     <shadedPattern>jakarta.validation</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.hibernate.boot.archive.internal.shade</pattern>
+                                    <shadedPattern>org.hibernate.boot.archive.internal</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.hibernate.shade</pattern>
+                                    <shadedPattern>org.hibernate</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

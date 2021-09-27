@@ -286,7 +286,7 @@
             <id>enable-guice</id>
             <modules>
                 <module>guice-core</module>
-                <module>guice-assistedinject</module>
+                <!--<module>guice-assistedinject</module>-->
                 <module>guice-grapher</module>
                 <module>guice-jmx</module>
                 <module>guice-jndi</module>
