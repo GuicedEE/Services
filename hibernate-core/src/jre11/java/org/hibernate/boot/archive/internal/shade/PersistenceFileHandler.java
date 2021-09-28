@@ -1,12 +1,12 @@
 package org.hibernate.boot.archive.internal.shade;
 
-import com.guicedee.guicedinjection.interfaces.IFileContentsScanner;
-import com.guicedee.logger.LogFactory;
-import io.github.classgraph.ResourceList;
 import org.hibernate.jpa.boot.internal.ParsedPersistenceXmlDescriptor;
 import org.hibernate.jpa.boot.internal.PersistenceXmlParser;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -19,7 +19,7 @@ public class PersistenceFileHandler
 	/**
 	 * The logger
 	 */
-	private static final Logger log = LogFactory.getLog("PersistenceFileHandler");
+	private static final Logger log = Logger.getLogger("PersistenceFileHandler");
 	/**
 	 * The property that marks a persistence unit as ignore
 	 */

@@ -1,6 +1,5 @@
 package org.hibernate.boot.archive.internal.shade;
 
-
 import org.hibernate.boot.archive.internal.ArchiveHelper;
 import org.hibernate.boot.archive.spi.ArchiveDescriptor;
 import org.hibernate.boot.archive.spi.ArchiveDescriptorFactory;

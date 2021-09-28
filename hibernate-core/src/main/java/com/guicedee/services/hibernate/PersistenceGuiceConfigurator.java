@@ -9,6 +9,8 @@ public class PersistenceGuiceConfigurator
 	@Override
 	public GuiceConfig configure(GuiceConfig config)
 	{
+		config.setClasspathScanning(true)
+				.setAnnotationScanning(true);
 		return config;
 	}
 }
