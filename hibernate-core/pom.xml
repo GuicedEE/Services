@@ -95,12 +95,12 @@
         </dependency>
 
 
-        <dependency>
+     <!--   <dependency>
             <groupId>com.guicedee</groupId>
             <artifactId>guiced-injection</artifactId>
         </dependency>
 
-
+-->
 
     </dependencies>
 
