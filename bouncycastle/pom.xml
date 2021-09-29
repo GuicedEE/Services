@@ -93,6 +93,7 @@ limitations under the License.
                                     <exclude>META-INF/*.DSA</exclude>
                                     <exclude>META-INF/*.RSA</exclude>
                                     <exclude>META-INF/versions/9/module-info.class</exclude>
+                                    <exclude>**/test/**</exclude>
                                 </excludes>
                             </filter>
                         </filters>

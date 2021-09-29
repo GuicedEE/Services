@@ -1,6 +1,8 @@
 module org.bouncycastle.pkix {
     requires java.logging;
     requires java.naming;
+    
+    requires static java.sql;
 
     exports org.bouncycastle.cert;
     exports org.bouncycastle.cmc;
@@ -28,8 +30,43 @@ module org.bouncycastle.pkix {
     exports org.bouncycastle.cert.ocsp.jcajce;
     exports org.bouncycastle.cert.path;
     exports org.bouncycastle.cert.path.validations;
+    
     exports org.bouncycastle.cert.selector;
     exports org.bouncycastle.cert.selector.jcajce;
+    
+    exports org.bouncycastle.jcajce;
+    exports org.bouncycastle.jcajce.interfaces;
+    exports org.bouncycastle.jcajce.io;
+    exports org.bouncycastle.jcajce.provider;
+    exports org.bouncycastle.jcajce.spec;
+    exports org.bouncycastle.jcajce.util;
+    
+    
+    exports org.bouncycastle.crypto.agreement;
+    exports org.bouncycastle.crypto.agreement.jpake;
+    exports org.bouncycastle.crypto.agreement.kdf;
+    exports org.bouncycastle.crypto.agreement.srp;
+    exports org.bouncycastle.crypto.commitments;
+    exports org.bouncycastle.crypto.digests;
+    exports org.bouncycastle.crypto.ec;
+    exports org.bouncycastle.crypto.engines;
+    exports org.bouncycastle.crypto.encodings;
+    exports org.bouncycastle.crypto.generators;
+    exports org.bouncycastle.crypto.io;
+    exports org.bouncycastle.crypto.kems;
+    exports org.bouncycastle.crypto.macs;
+    exports org.bouncycastle.crypto.modes;
+    exports org.bouncycastle.crypto.modes.gcm;
+    exports org.bouncycastle.crypto.modes.kgcm;
+    exports org.bouncycastle.crypto.paddings;
+    exports org.bouncycastle.crypto.params;
+    exports org.bouncycastle.crypto.parsers;
+    exports org.bouncycastle.crypto.prng;
+    exports org.bouncycastle.crypto.prng.drbg;
+    exports org.bouncycastle.crypto.signers;
+    exports org.bouncycastle.crypto.util;
+    
+    
     exports org.bouncycastle.cms.bc;
     exports org.bouncycastle.cms.jcajce;
     exports org.bouncycastle.eac.jcajce;

@@ -201,11 +201,11 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor {
 						name = name.substring(9);
 						name = name.substring(name.indexOf('/') + 1);
 					}
-
+					
 					final String entryName = name;
 					final String relativeName = basePrefix != null && name.contains(basePrefix)
-					                            ? name.substring(basePrefix.length())
-					                            : name;
+							? name.substring(basePrefix.length())
+							: name;
 					final InputStreamAccess inputStreamAccess;
 					try (InputStream is = Files.newInputStream(a))
 					{
@@ -220,7 +220,7 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor {
 										"Unable to access stream from jrt ref [%s] for entry [%s]",
 										path,
 										a.toString()
-								             )
+								)
 						);
 					}
 					final ArchiveEntry entry = new ArchiveEntry()
@@ -230,20 +230,20 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor {
 						{
 							return entryName;
 						}
-
+						
 						@Override
 						public String getNameWithinArchive()
 						{
 							return relativeName;
 						}
-
+						
 						@Override
 						public InputStreamAccess getStreamAccess()
 						{
 							return inputStreamAccess;
 						}
 					};
-
+					
 					final ArchiveEntryHandler entryHandler = context.obtainArchiveEntryHandler(entry);
 					entryHandler.handleEntry(entry, context);
 					return super.visitFile(a, attrs);
