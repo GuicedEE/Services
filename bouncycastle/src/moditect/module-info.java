@@ -42,8 +42,8 @@ module org.bouncycastle.pkix {
     exports org.bouncycastle.jcajce.provider.asymmetric.dsa;
     exports org.bouncycastle.jcajce.provider.asymmetric.dstu;
     exports org.bouncycastle.jcajce.provider.asymmetric.ec;
-    exports org.bouncycastle.jcajce.provider.asymmetric.ecghost;
-    exports org.bouncycastle.jcajce.provider.asymmetric.ecghost12;
+    exports org.bouncycastle.jcajce.provider.asymmetric.ecgost;
+    exports org.bouncycastle.jcajce.provider.asymmetric.ecgost12;
     exports org.bouncycastle.jcajce.provider.asymmetric.edec;
     exports org.bouncycastle.jcajce.provider.asymmetric.elgamal;
     exports org.bouncycastle.jcajce.provider.asymmetric.gost;
