@@ -151,7 +151,8 @@ final class UnsafeClassDefiner implements ClassDefiner {
     byte[] bytecode = buildDefineClassAccess(loaderClass);
     Class<?> accessClass = UNSAFE_DEFINER.define(loaderClass, bytecode);
     return new GeneratedClassDefiner(
-        (BiFunction<ClassLoader, byte[], Class<?>>) accessClass.newInstance());
+        (BiFunction<ClassLoader, byte[], Class<?>>)
+            accessClass.getDeclaredConstructor().newInstance());
   }
 
   /** {@link ClassLoader} helper that sits in the same package and passes on defineClass requests */

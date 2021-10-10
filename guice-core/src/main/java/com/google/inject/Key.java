@@ -21,6 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.inject.internal.Annotations.generateAnnotation;
 import static com.google.inject.internal.Annotations.isAllDefaultMethods;
 
+import com.google.errorprone.annotations.CheckReturnValue;
 import com.google.inject.internal.Annotations;
 import com.google.inject.internal.MoreTypes;
 import java.lang.annotation.Annotation;
@@ -47,6 +48,7 @@ import java.lang.reflect.Type;
  *
  * @author crazybob@google.com (Bob Lee)
  */
+@CheckReturnValue
 public class Key<T> {
 
   private final AnnotationStrategy annotationStrategy;
@@ -206,7 +208,7 @@ public class Key<T> {
     // method.
     String local = toString;
     if (local == null) {
-      local = "Key[type=" + typeLiteral + ", annotation=" + annotationStrategy + "]";
+      local = "Key[type=" + typeLiteral + ", annotation=" + annotationStrategy + ']';
       toString = local;
     }
     return local;
@@ -511,7 +513,7 @@ public class Key<T> {
 
     @Override
     public String toString() {
-      return "@" + annotationType.getName();
+      return '@' + annotationType.getName();
     }
   }
 }

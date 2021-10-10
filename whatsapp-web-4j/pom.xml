@@ -39,12 +39,6 @@
         <delombok-version>1.18.18.0</delombok-version>
         <delombok.output>${project.build.directory}\delomboked-sources</delombok.output>
 
-		<bouncy-castle-version>1.68</bouncy-castle-version>
-        <!-- @todo pull from BOM -->
-        <jackson-version>2.12.1</jackson-version>
-        <lombok-version>1.18.20</lombok-version>
-        <classgraph.version>4.8.104</classgraph.version>
-        <delombok-plugin-version>1.18.20</delombok-plugin-version>
     </properties>
 
     <build>

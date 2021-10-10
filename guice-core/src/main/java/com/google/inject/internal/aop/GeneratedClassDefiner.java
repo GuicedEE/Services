@@ -32,7 +32,7 @@ final class GeneratedClassDefiner implements ClassDefiner {
   }
 
   @Override
-  public Class<?> define(Class<?> hostClass, byte[] bytecode) throws Exception {
+  public Class<?> define(Class<?> hostClass, byte[] bytecode) {
     return defineAccess.apply(hostClass.getClassLoader(), bytecode);
   }
 }

@@ -73,15 +73,25 @@ final class MethodPartition {
 
     for (Method candidate : candidates) {
       String parametersKey = parametersKey(candidate.getParameterTypes());
-      Method existingLeafMethod = leafMethods.putIfAbsent(parametersKey, candidate);
-      if (existingLeafMethod == null) {
+      Method existingLeafMethod = leafMethods.get(parametersKey);
+      // Record the leaf method, prefer more specific return type if it exists in same class
+      if (existingLeafMethod == null
+          || (existingLeafMethod.getDeclaringClass() == candidate.getDeclaringClass()
+              && existingLeafMethod.getReturnType().isAssignableFrom(candidate.getReturnType()))) {
+        leafMethods.put(parametersKey, candidate);
         if (candidate.isBridge()) {
           // Record that we've started looking for the bridge's delegate
           bridgeTargets.put(parametersKey, null);
         }
       } else if (existingLeafMethod.isBridge() && !candidate.isBridge()) {
-        // Found potential bridge delegate with identical parameters
-        bridgeTargets.putIfAbsent(parametersKey, candidate);
+        // Record the closest bridge delegate with identical parameters to the leaf method
+        // (if a later delegate also has the same return type as the leaf then prefer that)
+        Method existingBridgeTarget = bridgeTargets.get(parametersKey);
+        if (existingBridgeTarget == null
+            || (existingLeafMethod.getReturnType() != existingBridgeTarget.getReturnType()
+                && existingLeafMethod.getReturnType() == candidate.getReturnType())) {
+          bridgeTargets.put(parametersKey, candidate);
+        }
       }
     }
 

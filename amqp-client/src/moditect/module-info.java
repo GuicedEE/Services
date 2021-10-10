@@ -1,5 +1,5 @@
 module com.rabbitmq.client {
-	requires com.codahale.metrics;
+	requires static com.codahale.metrics;
 	
 	
 	requires static java.sql;
