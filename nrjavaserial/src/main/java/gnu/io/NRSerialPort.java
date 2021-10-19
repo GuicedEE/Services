@@ -57,26 +57,18 @@
 --------------------------------------------------------------------------*/
 package gnu.io;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TooManyListenersException;
+import com.fasterxml.jackson.annotation.*;
+import gnu.io.factory.*;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import gnu.io.factory.RxTxPortCreator;
+import java.io.*;
+import java.util.*;
 
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.*;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
-public class NRSerialPort implements Serializable
+public class NRSerialPort<J extends NRSerialPort<J>> implements Serializable
 {
 	@SuppressWarnings("MissingSerialAnnotation")
 	private static final long serialVersionUID = 1L;
@@ -107,6 +99,7 @@ public class NRSerialPort implements Serializable
 	
 	/**
 	 * Attempts to connect
+	 *
 	 * @return
 	 * @throws gnu.io.NRSerialPortException if cannot connect
 	 */
@@ -127,17 +120,17 @@ public class NRSerialPort implements Serializable
 		catch (NativeResourceException e)
 		{
 			setConnected(false);
-			throw new NRSerialPortException("No Port",e);
+			throw new NRSerialPortException("No Port", e);
 		}
 		catch (PortInUseException e)
 		{
 			setConnected(false);
-			throw new NRSerialPortException("Port in Use",e);
+			throw new NRSerialPortException("Port in Use", e);
 		}
 		catch (Exception e)
 		{
 			setConnected(false);
-			throw new NRSerialPortException("General Exception - " + e.getMessage(),e);
+			throw new NRSerialPortException("General Exception - " + e.getMessage(), e);
 		}
 		
 		if (isConnected())
@@ -171,10 +164,13 @@ public class NRSerialPort implements Serializable
 	}
 	
 	
-	public void disconnect()
+	@SuppressWarnings("unchecked")
+	public J disconnect()
 	{
-		if(!connected)
-			return;
+		if (!connected)
+		{
+			return (J)this;
+		}
 		try
 		{
 			try
@@ -195,6 +191,7 @@ public class NRSerialPort implements Serializable
 		{
 			throw new NativeResourceException(e.getMessage());
 		}
+		return (J) this;
 	}
 	
 	public static Set<String> getAvailableSerialPorts()
@@ -230,19 +227,24 @@ public class NRSerialPort implements Serializable
 	}
 	
 	
-	public void setConnected(boolean connected)
+	@SuppressWarnings("unchecked")
+	public J setConnected(boolean connected)
 	{
 		if (this.connected == connected)
-			return;
+		{
+			return (J)this;
+		}
 		this.connected = connected;
+		return (J)this;
 	}
 	
 	
-	public void setBaud(int baud)
+	@SuppressWarnings("unchecked")
+	public J setBaud(int baud)
 	{
 		
 		this.baud = baud;
-		return;
+		return (J)this;
 		
 	}
 	
@@ -255,26 +257,26 @@ public class NRSerialPort implements Serializable
 	/**
 	 * Enables RS485 half-duplex bus communication for Linux. The Linux kernel uses the RTS pin as bus enable. If you use a device that is configured via the Linux
 	 * device tree, take care to add "uart-has-rtscts" and to configure the RTS GPIO correctly.
-	 *
+	 * <p>
 	 * Before enabling RS485, the serial port must be connected/opened.
-	 *
+	 * <p>
 	 * See also:
 	 * <ul>
 	 * <li>https://www.kernel.org/doc/Documentation/serial/serial-rs485.txt
 	 * <li>https://www.kernel.org/doc/Documentation/devicetree/bindings/serial/serial.txt
 	 * </ul>
 	 *
-	 * @param busEnableActiveLow
-	 *            true, if the bus enable signal (RTS) shall be low during transmission
-	 * @param delayBusEnableBeforeSendMs
-	 *            delay of bus enable signal (RTS) edge to first data edge in ms (not supported by all serial drivers)
-	 * @param delayBusEnableAfterSendMs
-	 *            delay of bus enable signal (RTS) edge after end of transmission in ms (not supported by all serial drivers)
+	 * @param busEnableActiveLow         true, if the bus enable signal (RTS) shall be low during transmission
+	 * @param delayBusEnableBeforeSendMs delay of bus enable signal (RTS) edge to first data edge in ms (not supported by all serial drivers)
+	 * @param delayBusEnableAfterSendMs  delay of bus enable signal (RTS) edge after end of transmission in ms (not supported by all serial drivers)
 	 * @return the ioctl() return value
 	 */
-	public int enableRs485(boolean busEnableActiveLow, int delayBusEnableBeforeSendMs, int delayBusEnableAfterSendMs) {
-		if(serial == null)
+	public int enableRs485(boolean busEnableActiveLow, int delayBusEnableBeforeSendMs, int delayBusEnableAfterSendMs)
+	{
+		if (serial == null)
+		{
 			return -1;
+		}
 		
 		return serial.enableRs485(busEnableActiveLow, delayBusEnableBeforeSendMs, delayBusEnableAfterSendMs);
 	}
@@ -299,6 +301,7 @@ public class NRSerialPort implements Serializable
 	/**
 	 * Gets the {@link SerialPort} instance.
 	 * This will return null until {@link #connect()} is successfully called.
+	 *
 	 * @return The {@link SerialPort} instance or null.
 	 */
 	@JsonIgnore
