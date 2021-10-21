@@ -65,7 +65,27 @@ open module org.apache.poi.ooxml {
 	
 	exports org.apache.poi.schemas.ooxml.system.ooxml;
 	
-	exports org.apache.poi.xwpf.converter;
+	exports org.apache.poi.xwpf.converter.pdf;
+	exports org.apache.poi.xwpf.converter.pdf.internal;
+	exports org.apache.poi.xwpf.converter.pdf.internal.elements;
+	exports org.apache.poi.xwpf.converter.core;
+	exports org.apache.poi.xwpf.converter.core.openxmlformats;
+	exports org.apache.poi.xwpf.converter.core.openxmlformats.styles;
+	exports org.apache.poi.xwpf.converter.core.openxmlformats.styles.paragraph;
+	exports org.apache.poi.xwpf.converter.core.openxmlformats.styles.run;
+	exports org.apache.poi.xwpf.converter.core.openxmlformats.styles.table;
+	exports org.apache.poi.xwpf.converter.core.openxmlformats.styles.table.row;
+	exports org.apache.poi.xwpf.converter.core.openxmlformats.styles.table.cell;
+	exports org.apache.poi.xwpf.converter.core.registry;
+	exports org.apache.poi.xwpf.converter.core.styles;
+	exports org.apache.poi.xwpf.converter.core.styles.paragraph;
+	exports org.apache.poi.xwpf.converter.core.styles.run;
+	exports org.apache.poi.xwpf.converter.core.styles.table;
+	exports org.apache.poi.xwpf.converter.core.styles.table.row;
+	exports org.apache.poi.xwpf.converter.core.styles.table.cell;
+	exports org.apache.poi.xwpf.converter.core.utils;
+	
+	
 	
 	/*opens org.apache.poi.openxml4j.opc to
 			org.apache.poi.poi;*/
