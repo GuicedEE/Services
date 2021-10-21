@@ -65,6 +65,8 @@ open module org.apache.poi.ooxml {
 	
 	exports org.apache.poi.schemas.ooxml.system.ooxml;
 	
+	exports org.apache.poi.xwpf.converter;
+	
 	/*opens org.apache.poi.openxml4j.opc to
 			org.apache.poi.poi;*/
 	

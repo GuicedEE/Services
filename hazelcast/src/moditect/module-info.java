@@ -3,6 +3,10 @@ module com.hazelcast.all {
 	requires transitive cache.api;
 	requires java.transaction.xa;
 	requires java.management;
+	
+	requires static  jdk.unsupported;
+	
+	requires static org.apache.logging.log4j.core;
 
 	requires transitive java.xml;
 	requires static org.hibernate.orm.core;
