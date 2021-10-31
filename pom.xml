@@ -16,6 +16,7 @@
     <properties>
         <skipTests>true</skipTests>
         <sonar.skip>true</sonar.skip>
+        <guicedee.version>0.0.0_0_SNAPSHOT</guicedee.version>
     </properties>
 
     <dependencyManagement>
@@ -311,6 +312,7 @@
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
+                <version>${moditect.maven.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>add-module-infos</id>
@@ -356,6 +358,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.version}</version>
             </plugin>
         </plugins>
     </build>
