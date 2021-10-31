@@ -22,8 +22,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.guicedee.services</groupId>
-        <artifactId>services-parent</artifactId>
+        <groupId>com.guicedee</groupId>
+        <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
     <version>0.0.0_0-SNAPSHOT</version>

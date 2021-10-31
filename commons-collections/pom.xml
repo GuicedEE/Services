@@ -15,10 +15,11 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-        <parent>
-        <groupId>com.guicedee.services</groupId>
-        <artifactId>services-parent</artifactId>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>com.guicedee</groupId>
+        <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
 
@@ -31,7 +32,9 @@
     <packaging>jar</packaging>
     <version>0.0.0_0-SNAPSHOT</version>
     <inceptionYear>2001</inceptionYear>
-    <description>The Apache Commons Collections package contains types that extend and augment the Java Collections Framework.</description>
+    <description>The Apache Commons Collections package contains types that extend and augment the Java Collections
+        Framework.
+    </description>
 
     <url>http://commons.apache.org/proper/commons-collections/</url>
 
@@ -42,7 +45,8 @@
 
     <scm>
         <connection>scm:git:http://git-wip-us.apache.org/repos/asf/commons-collections.git</connection>
-        <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/commons-collections.git</developerConnection>
+        <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/commons-collections.git
+        </developerConnection>
         <url>https://git-wip-us.apache.org/repos/asf?p=commons-collections.git</url>
     </scm>
 
