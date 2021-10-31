@@ -152,19 +152,19 @@
   
   <profiles>
         <profile>
-            <id>jwebmp-distribution</id>
+            <id>guicedee-distribution</id>
             <activation>
             </activation>
             <distributionManagement>
                 <snapshotRepository>
                     <id>jwebmp-snapshot</id>
                     <name>JWebMPArtifactory-snapshots</name>
-                    <url>https://jwebmp.com/artifactory/libs-snapshot-local</url>
+                    <url>https://guicedee.com/artifactory/guicedee-snapshots</url>
                 </snapshotRepository>
                 <repository>
                     <id>jwebmp-release</id>
                     <name>JWebMPArtifactory-releases</name>
-                    <url>https://jwebmp.com/artifactory/libs-release-local</url>
+                    <url>https://guicedee.com/artifactory/guicedee-release</url>
                 </repository>
             </distributionManagement>
 
