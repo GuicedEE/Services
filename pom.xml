@@ -4,7 +4,7 @@
 
     <parent>
         <groupId>com.guicedee</groupId>
-        <artifactId>guicedee-group</artifactId>
+        <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
 
@@ -16,7 +16,6 @@
     <properties>
         <skipTests>true</skipTests>
         <sonar.skip>true</sonar.skip>
-        <guicedee.version>0.0.0_0_SNAPSHOT</guicedee.version>
     </properties>
 
     <dependencyManagement>
