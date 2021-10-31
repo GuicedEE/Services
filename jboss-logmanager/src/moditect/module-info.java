@@ -22,6 +22,6 @@ module org.jboss.logging {
 	exports org.jboss.logging;
 	exports org.jboss.logging.annotations;
 	
-	provides java.util.logging.LogManager with org.jboss.logmanager.LogManager;
+	//provides java.util.logging.LogManager with org.jboss.logmanager.LogManager;
 	provides javax.annotation.processing.Processor with org.jboss.logging.processor.apt.LoggingToolsProcessor;
 }

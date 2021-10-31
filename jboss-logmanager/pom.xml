@@ -54,11 +54,11 @@
             <optional>true</optional>
         </dependency>
 
-        <dependency>
+      <!--  <dependency>
             <groupId>org.jboss.logmanager</groupId>
             <artifactId>log4j2-jboss-logmanager</artifactId>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 

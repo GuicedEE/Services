@@ -63,12 +63,21 @@ module org.apache.logging.log4j.core {
 
 	exports org.apache.logging.log4j;
 	exports org.apache.logging.log4j.jul;
-
+	exports org.apache.logging.log4j.jpl;
+	
+	provides java.util.logging.LogManager with org.apache.logging.log4j.LogManager;
 	provides javax.annotation.processing.Processor with org.apache.logging.log4j.core.config.plugins.processor.PluginProcessor;
 	provides org.apache.logging.log4j.spi.Provider with org.apache.logging.log4j.core.impl.Log4jProvider;
 	provides java.lang.System.LoggerFinder with org.apache.logging.log4j.jpl.Log4jSystemLoggerFinder;
+	
+	provides org.apache.logging.log4j.core.util.ContextDataProvider with org.apache.logging.log4j.core.impl.ThreadContextDataProvider;
+	provides org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory with org.apache.logging.log4j.core.message.ExtendedThreadInfoFactory;
+	provides org.apache.logging.log4j.util.PropertySource with org.apache.logging.log4j.util.EnvironmentPropertySource,org.apache.logging.log4j.util.SystemPropertiesPropertySource;
 
 	uses org.apache.logging.log4j.core.util.WatchEventService;
+	uses org.apache.logging.log4j.util.PropertySource;
+	uses org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory;
+	uses org.apache.logging.log4j.core.util.ContextDataProvider;
 	
 	uses org.apache.logging.log4j.spi.Provider;
 }
