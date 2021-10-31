@@ -11,6 +11,7 @@
     <groupId>com.guicedee.services</groupId>
     <artifactId>services-parent</artifactId>
     <packaging>pom</packaging>
+    <version>0.0.0_0-SNAPSHOT</version>
 
     <properties>
         <skipTests>true</skipTests>
