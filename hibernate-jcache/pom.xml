@@ -11,7 +11,7 @@
     <artifactId>hibernate-jcache</artifactId>
     <packaging>jar</packaging>
     <!--<version>${maven.hibernate.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>hibernate-jcache</name>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by
     </description>

@@ -10,6 +10,6 @@
 
     <artifactId>aopalliance-core</artifactId>
     <packaging>jar</packaging>
-    <!--<version>${aop.version}</version>-->
+    <version>0.0.0_0-SNAPSHOT</version>
 
 </project>

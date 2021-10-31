@@ -10,7 +10,7 @@
     <artifactId>kafka-client</artifactId>
 
     <name>kafka-client</name>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>

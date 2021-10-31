@@ -12,7 +12,7 @@
     <artifactId>jboss-logmanager</artifactId>
     <packaging>jar</packaging>
     <!--<version>${jbosslog.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>jboss.logging</name>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
     </description>

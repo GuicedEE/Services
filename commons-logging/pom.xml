@@ -35,7 +35,7 @@ under the License.
     <name>Apache Commons Logging</name>
 
     <!--<version>${logging.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <description>Apache Commons Logging is a thin adapter allowing configurable bridging to other,
         well known logging systems.
     </description>

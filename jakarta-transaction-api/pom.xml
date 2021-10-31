@@ -27,7 +27,7 @@
     </parent>
     <artifactId>javax.transaction</artifactId>
     <!--<version>${jakarta.transaction.api.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>javax.transaction API</name>
     <description>Eclipse Project for JTA</description>
     <url>https://projects.eclipse.org/projects/ee4j.jta</url>

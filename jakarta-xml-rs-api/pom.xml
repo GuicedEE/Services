@@ -11,7 +11,7 @@
 
     <name>jakarta.xml.rs-api</name>
     <!--<version>${jakarta.rs.api.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>jakarta.ws.rs</groupId>

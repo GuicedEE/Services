@@ -30,7 +30,7 @@ limitations under the License.
 
     <artifactId>apache-poi-ooxml</artifactId>
     <!--<version>${poi.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>Apache POI OOXML</name>
 
 

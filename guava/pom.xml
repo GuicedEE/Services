@@ -12,7 +12,7 @@
     <artifactId>guava</artifactId>
     <packaging>jar</packaging>
     <!--<version>${guava.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>google.guava</name>
     <description>
         Guava is a suite of core and expanded libraries that include

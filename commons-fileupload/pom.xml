@@ -28,6 +28,8 @@
 
     <artifactId>commons-fileupload</artifactId>
     <!--<version>${fileupload.version}</version>-->
+    <version>0.0.0_0-SNAPSHOT</version>
+
     <name>Apache Commons FileUpload</name>
     <description>
         The Apache Commons FileUpload component provides a simple yet flexible means of adding support for multipart

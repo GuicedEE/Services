@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    
+    <version>0.0.0_0-SNAPSHOT</version>
     <artifactId>commons-math3</artifactId>
     <name>Apache Commons Math</name>
     <!--<version>${math.version}</version>-->

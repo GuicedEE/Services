@@ -38,6 +38,7 @@ limitations under the License.
         widely used encoders and decoders, the codec package also maintains a
         collection of phonetic encoding utilities.
     </description>
+    <version>0.0.0_0-SNAPSHOT</version>
 
     <!-- Codec only has test dependencies ATM -->
     <dependencies>

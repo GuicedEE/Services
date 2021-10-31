@@ -30,7 +30,7 @@ limitations under the License.
 
     <artifactId>org.apache.fop</artifactId>
     <!--<version>${fop.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>Apache FOP</name>
    
     <!-- Codec only has test dependencies ATM -->

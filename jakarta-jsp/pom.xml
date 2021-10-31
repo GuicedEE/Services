@@ -29,7 +29,7 @@
 
     <artifactId>jakarta.servlet.jsp-api</artifactId>
     <!--<version>${jakarta.servlet.jsp.api.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>javax.jsp.impl</name>
     <description>Jakarta Server Pages API</description>
     <url>https://projects.eclipse.org/projects/ee4j.jsp</url>

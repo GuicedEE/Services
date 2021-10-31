@@ -53,7 +53,7 @@
     <artifactId>javax.jms-api</artifactId>
     <packaging>jar</packaging>
     <!--<version>${jms.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>javax.jms</name>
 
     <dependencies>

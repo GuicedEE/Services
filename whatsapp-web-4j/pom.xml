@@ -11,7 +11,7 @@
 
     <name>WhatsappWeb4j</name>
     <description>Standalone fully-featured Whatsapp Web API for Java and Kotlin</description>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <url>https://github.com/Auties00/WhatsappWeb4j</url>
     <developers>
         <developer>

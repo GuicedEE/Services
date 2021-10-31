@@ -11,7 +11,7 @@
 
     <name>jakarta.xml.soap-api</name>
     <!--<version>${jakarta.xml.soap.api.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>jakarta.xml.soap</groupId>

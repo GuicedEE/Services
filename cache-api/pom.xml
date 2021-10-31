@@ -11,6 +11,7 @@
 
     <artifactId>cache-api</artifactId>
     <packaging>jar</packaging>
+    <version>0.0.0_0-SNAPSHOT</version>
 
     <name>javax.cache.api</name>
     <url>https://github.com/jsr107/jsr107spec</url>

@@ -10,7 +10,7 @@
     </parent>
 	
     <artifactId>uadetector-resources</artifactId>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>net.sf.uadetector.resources</name>
     <description>This package contains a verified version of the data file from http://user-agent-string.info. During the verification process the data are
         checked for ability to run against the current implementation. The goal is to provide frequently updated resources for detection of user agents without

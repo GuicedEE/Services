@@ -12,7 +12,7 @@
   <packaging>jar</packaging>
   <name>jaxen</name>
   <!--<version>${jaxen.version}</version>-->
-
+  <version>0.0.0_0-SNAPSHOT</version>
   <description>Jaxen is a universal Java XPath engine.</description>
   <url>http://jaxen.codehaus.org/</url>
   <licenses>

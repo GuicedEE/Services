@@ -33,7 +33,7 @@
     <name>io.undertow.parser.generator</name>
     <!--<version>${undertow.version}</version>-->
     <description>An annotation processor that is used to generate the HTTP parser</description>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>io.undertow</groupId>

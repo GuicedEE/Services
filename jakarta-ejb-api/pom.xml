@@ -31,7 +31,7 @@
 
     <name>javax.ejb</name>
     <!--<version>${jakarta.ejb.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <description>Jakarta Enterprise Beans</description>
     <url>https://github.com/eclipse-ee4j/ejb-api</url>
 

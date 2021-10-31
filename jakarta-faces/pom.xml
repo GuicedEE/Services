@@ -41,7 +41,7 @@
 
     <name>javax.faces</name>
     <!--<version>${jakarta.faces.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>

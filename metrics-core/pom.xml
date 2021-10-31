@@ -11,7 +11,7 @@
 
     <name>metrics-core</name>
     <packaging>jar</packaging>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <!--<version>${jandex.version}</version>-->
 
     <licenses>

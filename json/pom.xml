@@ -10,7 +10,7 @@
 
     <name>org.json</name>
     <!--<version>${org.json.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <description>
         JSON is a light-weight, language independent, data interchange format.
         See http://www.JSON.org/

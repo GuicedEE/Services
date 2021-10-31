@@ -10,7 +10,7 @@
     <artifactId>hibernate-enhance-maven-plugin</artifactId>
     <packaging>jar</packaging>
     <!--<version>${maven.hibernate.enhance.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>hibernate-enhance-maven-plugin</name>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by</description>
 

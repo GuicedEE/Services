@@ -30,7 +30,7 @@
 
     <artifactId>jakarta.el</artifactId>
     <!--<version>${jakarta.el.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>javax.el</name>
     <description>
         Jakarta Expression Language provides a specification document, API, reference implementation and TCK

@@ -26,7 +26,7 @@
 
     <artifactId>commons-compress</artifactId>
     <!--<version>${compress.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>Apache Commons Compress</name>
     <url>https://commons.apache.org/proper/commons-compress/</url>
     <!-- The description is not indented to make it look better in the release notes -->

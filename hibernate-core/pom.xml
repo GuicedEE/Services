@@ -12,7 +12,7 @@
 
     <name>hibernate.core</name>
     <!--<version>${maven.hibernate.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
     </description>
 

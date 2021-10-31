@@ -21,7 +21,7 @@
         <artifactId>services-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <artifactId>jakarta.activation</artifactId>
     <packaging>jar</packaging>
     <name>jakarta.activation</name>

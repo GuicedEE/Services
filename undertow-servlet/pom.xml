@@ -30,7 +30,7 @@
     <artifactId>undertow-servlet</artifactId>
     <name>io.undertow.servlet</name>
     <!--<version>${undertow.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <dependencies>
 
         <dependency>

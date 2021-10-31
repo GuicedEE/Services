@@ -25,6 +25,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>commons-beanutils</artifactId>
     <!--<version>${beanutils.version}</version>-->
+    <version>0.0.0_0-SNAPSHOT</version>
 
     <name>Apache Commons Bean Utils</name>
     <packaging>jar</packaging>

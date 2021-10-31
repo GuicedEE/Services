@@ -28,7 +28,7 @@
 
     <artifactId>commons-text</artifactId>
     <!--<version>${text.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     
     <name>Apache Commons Text</name>
     <description>Apache Commons Text is a library focused on algorithms working on strings.</description>

@@ -11,7 +11,7 @@
     <name>Apache CXF</name>
     <artifactId>org.apache.cxf</artifactId>
     <!--<version>${cxf.core.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
 
 
     <packaging>jar</packaging>

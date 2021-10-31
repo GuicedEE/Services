@@ -27,7 +27,7 @@ limitations under the License.
         <artifactId>services-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
-
+    <version>0.0.0_0-SNAPSHOT</version>
 
     <artifactId>commons-xmlbeans</artifactId>
     <!--<version>${xmlbeans.version}</version>-->

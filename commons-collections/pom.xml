@@ -29,7 +29,7 @@
 
     <name>Apache Commons Collections</name>
     <packaging>jar</packaging>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <inceptionYear>2001</inceptionYear>
     <description>The Apache Commons Collections package contains types that extend and augment the Java Collections Framework.</description>
 

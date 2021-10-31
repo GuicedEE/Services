@@ -12,7 +12,7 @@
     <packaging>jar</packaging>
 
     <name>logback</name>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <url>https://github.com/qos-ch/slf4j</url>
 
     <dependencies>

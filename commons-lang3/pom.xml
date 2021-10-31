@@ -32,7 +32,7 @@
     <artifactId>commons-lang3</artifactId>
     <!--<version>${lang.version}</version>-->
     <name>Apache Commons Lang</name>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <inceptionYear>2001</inceptionYear>
     <description>
         Apache Commons Lang, a package of Java utility classes for the

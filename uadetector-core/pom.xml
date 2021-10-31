@@ -11,7 +11,7 @@
 
     <artifactId>uadetector-core</artifactId>
     <name>net.sf.uadetector.core</name>
-
+    <version>0.0.0_0-SNAPSHOT</version>
 
     <description>The UADetector core library includes the API and implementation to read the detection information and
         the functions to identify User-Agents, but not the database (also known as UAS data). The UAS data can be found

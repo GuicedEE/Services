@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
 
     <!--<version>${jandex.version}</version>-->
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>

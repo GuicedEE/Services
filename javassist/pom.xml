@@ -19,7 +19,7 @@
 
     <name>javassist</name>
     <url>http://www.javassist.org/</url>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
