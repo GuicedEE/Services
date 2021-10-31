@@ -5,6 +5,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <artifactId>primefaces-extensions</artifactId>
@@ -57,7 +58,7 @@
             </dependencyManagement>
         </profile>
     </profiles>
-	
+
 
     <dependencies>
 
@@ -130,13 +131,16 @@
                         </filter>
                     </filters>
                     <transformers>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                        <transformer
+                                implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                         <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer">
                             <delegates>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
                                     <resource>META-INF/faces-config.xml</resource>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
                                     <resource>META-INF/primefaces-extensions.taglib.xml</resource>
                                 </transformer>
                             </delegates>

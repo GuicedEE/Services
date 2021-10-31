@@ -5,6 +5,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <artifactId>hibernate-core</artifactId>
@@ -95,12 +96,12 @@
         </dependency>
 
 
-     <!--   <dependency>
-            <groupId>com.guicedee</groupId>
-            <artifactId>guiced-injection</artifactId>
-        </dependency>
+        <!--   <dependency>
+               <groupId>com.guicedee</groupId>
+               <artifactId>guiced-injection</artifactId>
+           </dependency>
 
--->
+   -->
 
     </dependencies>
 
@@ -148,7 +149,8 @@
                                 </filter>
                             </filters>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                             <relocations>
                                 <relocation>
@@ -183,7 +185,7 @@
                                     <pattern>javax.annotation</pattern>
                                     <shadedPattern>jakarta.annotation</shadedPattern>
                                 </relocation>
-								 <relocation>
+                                <relocation>
                                     <pattern>javax.validation</pattern>
                                     <shadedPattern>jakarta.validation</shadedPattern>
                                 </relocation>

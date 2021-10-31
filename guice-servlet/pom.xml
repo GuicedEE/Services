@@ -8,8 +8,9 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
-	
+
     <artifactId>guice-servlet</artifactId>
     <!--<version>${guice.version}</version>-->
     <name>google.guice.extensions.servlet</name>

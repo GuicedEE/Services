@@ -6,6 +6,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <artifactId>hibernate-jcache</artifactId>

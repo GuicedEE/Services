@@ -5,6 +5,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
 
@@ -37,13 +38,13 @@
     </properties>
 
     <dependencies>
-	
-	<!--<dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.68</version>
-        </dependency>-->
-		
+
+        <!--<dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>1.68</version>
+            </dependency>-->
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -503,12 +504,12 @@
             <artifactId>commons-beanutils</artifactId>
         </dependency>
 
-<!--
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>xalan</artifactId>
-        </dependency>
--->
+        <!--
+                <dependency>
+                    <groupId>com.guicedee.services</groupId>
+                    <artifactId>xalan</artifactId>
+                </dependency>
+        -->
 
     </dependencies>
 
@@ -721,7 +722,7 @@
                                 <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
                             </transformers>
                             <relocations>
-                              <relocation>
+                                <relocation>
                                     <pattern>META-INF.services_</pattern>
                                     <shadedPattern>META-INF.services</shadedPattern>
                                 </relocation>

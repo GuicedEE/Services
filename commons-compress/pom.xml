@@ -15,12 +15,14 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-       <parent>
+    <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
 
@@ -196,16 +198,16 @@
                                     <include>org.tukaani:xz</include>
                                 </includes>
                             </artifactSet>
-							
-							<filters>
-								<filter>
-								  <artifact>org.tukaani:xz</artifact>
-								  <excludes>
-									<exclude>META-INF/versions/**</exclude>
-								  </excludes>
-								</filter>
-							  </filters>
-							
+
+                            <filters>
+                                <filter>
+                                    <artifact>org.tukaani:xz</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/versions/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+
                         </configuration>
                     </execution>
                 </executions>

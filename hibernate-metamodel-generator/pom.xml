@@ -5,6 +5,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <artifactId>hibernate-jpamodelgen</artifactId>
@@ -12,7 +13,8 @@
     <!--<version>${maven.hibernate.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>
     <name>hibernate-jpamodelgen</name>
-    <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by</description>
+    <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by
+    </description>
 
     <dependencies>
         <dependency>

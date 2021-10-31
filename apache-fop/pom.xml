@@ -22,43 +22,44 @@ limitations under the License.
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-        <parent>
+    <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <artifactId>org.apache.fop</artifactId>
     <!--<version>${fop.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>
     <name>Apache FOP</name>
-   
+
     <!-- Codec only has test dependencies ATM -->
     <dependencies>
-		<dependency>
+        <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>fop</artifactId>
             <optional>true</optional>
         </dependency>
-		
-		<dependency>
+
+        <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>fontbox</artifactId>
             <optional>true</optional>
         </dependency>
-		
-		 <dependency>
+
+        <dependency>
             <groupId>com.twelvemonkeys.imageio</groupId>
             <artifactId>imageio-tiff</artifactId>
             <optional>true</optional>
         </dependency>
-		
-		<dependency>
-			<groupId>com.thoughtworks.qdox</groupId>
-			<artifactId>qdox</artifactId>
-			<version>${qdox.version}</version>
-			<optional>true</optional>
-		</dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.qdox</groupId>
+            <artifactId>qdox</artifactId>
+            <version>${qdox.version}</version>
+            <optional>true</optional>
+        </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
@@ -74,15 +75,15 @@ limitations under the License.
             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-logging</artifactId>
         </dependency>
-<!--
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>xalan</artifactId>
-        </dependency>-->
+        <!--
+                <dependency>
+                    <groupId>com.guicedee.services</groupId>
+                    <artifactId>xalan</artifactId>
+                </dependency>-->
 
     </dependencies>
-	
-	
+
+
     <build>
         <resources>
             <resource>
@@ -104,15 +105,15 @@ limitations under the License.
                             <artifactSet>
                                 <includes>
                                     <include>org.apache.xmlgraphics</include>
-									<include>org.apache.pdfbox</include>
-									<include>com.thoughtworks.qdox</include>
-									<include>com.twelvemonkeys.imageio</include>
-									<include>com.twelvemonkeys.common</include>
-									<include>javax.media:jai-core</include>
-									<include>com.sun.media:jai-codec</include>
+                                    <include>org.apache.pdfbox</include>
+                                    <include>com.thoughtworks.qdox</include>
+                                    <include>com.twelvemonkeys.imageio</include>
+                                    <include>com.twelvemonkeys.common</include>
+                                    <include>javax.media:jai-core</include>
+                                    <include>com.sun.media:jai-codec</include>
                                 </includes>
                             </artifactSet>
-							<filters>
+                            <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
                                     <excludes>
@@ -124,15 +125,16 @@ limitations under the License.
                                 </filter>
                             </filters>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer"/>
                             </transformers>
-							 <relocations>
-                                 <relocation>
-                                     <pattern>META-INF.services_</pattern>
-                                     <shadedPattern>META-INF.services</shadedPattern>
-                                 </relocation>
-							 </relocations>
+                            <relocations>
+                                <relocation>
+                                    <pattern>META-INF.services_</pattern>
+                                    <shadedPattern>META-INF.services</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

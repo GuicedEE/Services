@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -60,25 +62,32 @@
                         </filter>
                     </filters>
                     <transformers>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                        <transformer
+                                implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                         <transformer implementation="io.yupiik.maven.shade.transformer.RelocationTransformer">
                             <delegates>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
                                     <resource>META-INF/faces-config.xml</resource>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
                                     <resource>META-INF/primefaces-p.taglib.xml</resource>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>META-INF/resources/primefaces/core.js</resource>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>META-INF/resources/primefaces/validation/validation.js</resource>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>META-INF/resources/primefaces/validation/validation.bv.js</resource>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>META-INF/resources/primefaces/fileupload/fileupload.js</resource>
                                 </transformer>
                             </delegates>
@@ -128,9 +137,9 @@
         </plugins>
     </build>
 
-	<profiles>
-		<profile>
-			<id>jdk8</id>
+    <profiles>
+        <profile>
+            <id>jdk8</id>
             <dependencyManagement>
                 <dependencies>
                     <dependency>
@@ -142,9 +151,9 @@
                     </dependency>
                 </dependencies>
             </dependencyManagement>
-		</profile>
-		<profile>
-			<id>jdk9</id>
+        </profile>
+        <profile>
+            <id>jdk9</id>
             <dependencyManagement>
                 <dependencies>
                     <dependency>
@@ -156,8 +165,8 @@
                     </dependency>
                 </dependencies>
             </dependencyManagement>
-		</profile>
-	</profiles>
+        </profile>
+    </profiles>
 
     <dependencies>
 

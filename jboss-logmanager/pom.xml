@@ -6,6 +6,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
 
@@ -54,11 +55,11 @@
             <optional>true</optional>
         </dependency>
 
-      <!--  <dependency>
-            <groupId>org.jboss.logmanager</groupId>
-            <artifactId>log4j2-jboss-logmanager</artifactId>
-            <optional>true</optional>
-        </dependency>-->
+        <!--  <dependency>
+              <groupId>org.jboss.logmanager</groupId>
+              <artifactId>log4j2-jboss-logmanager</artifactId>
+              <optional>true</optional>
+          </dependency>-->
 
     </dependencies>
 

@@ -6,6 +6,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
     <artifactId>whatsappweb4j</artifactId>
 
@@ -44,28 +45,28 @@
     <build>
         <pluginManagement>
             <plugins>
-                 <!-- Delombok the project to prepare for javadoc generation -->
-				<plugin>
-					<groupId>com.github.auties00</groupId>
-					<artifactId>delombok-plugin</artifactId>
-					<version>${delombok-plugin-version}</version>
-					<configuration>
-						<rootDirectory>${project.build.sourceDirectory}</rootDirectory>
-						<outputDirectory>${delombok.output}</outputDirectory>
-						<excludedFiles>
-							<excludedFile>module-info.java</excludedFile>
-							<excludedFile>WhatsappProtobuf.java</excludedFile>
-						</excludedFiles>
-					</configuration>
-					<executions>
-						<execution>
-							<phase>process-sources</phase>
-							<goals>
-								<goal>delombok</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+                <!-- Delombok the project to prepare for javadoc generation -->
+                <plugin>
+                    <groupId>com.github.auties00</groupId>
+                    <artifactId>delombok-plugin</artifactId>
+                    <version>${delombok-plugin-version}</version>
+                    <configuration>
+                        <rootDirectory>${project.build.sourceDirectory}</rootDirectory>
+                        <outputDirectory>${delombok.output}</outputDirectory>
+                        <excludedFiles>
+                            <excludedFile>module-info.java</excludedFile>
+                            <excludedFile>WhatsappProtobuf.java</excludedFile>
+                        </excludedFiles>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>process-sources</phase>
+                            <goals>
+                                <goal>delombok</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
 
                 <!-- Compile the project from the delomboked sources -->
                 <plugin>

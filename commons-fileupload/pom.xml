@@ -19,10 +19,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-        <parent>
+    <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
 
@@ -183,7 +184,8 @@
 
     <scm>
         <connection>scm:git:http://git-wip-us.apache.org/repos/asf/commons-fileupload.git</connection>
-        <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/commons-fileupload.git</developerConnection>
+        <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/commons-fileupload.git
+        </developerConnection>
         <url>https://git-wip-us.apache.org/repos/asf?p=commons-fileupload.git</url>
     </scm>
     <issueManagement>

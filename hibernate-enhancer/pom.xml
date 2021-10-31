@@ -5,6 +5,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <artifactId>hibernate-enhance-maven-plugin</artifactId>
@@ -12,7 +13,8 @@
     <!--<version>${maven.hibernate.enhance.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>
     <name>hibernate-enhance-maven-plugin</name>
-    <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by</description>
+    <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by
+    </description>
 
     <dependencies>
 
@@ -163,7 +165,9 @@
                             <goal>replace</goal>
                         </goals>
                         <configuration>
-                            <file>target/classes/META-INF/maven/org.hibernate.orm.tooling/hibernate-enhance-maven-plugin/plugin-help.xml</file>
+                            <file>
+                                target/classes/META-INF/maven/org.hibernate.orm.tooling/hibernate-enhance-maven-plugin/plugin-help.xml
+                            </file>
                             <replacements>
                                 <replacement>
                                     <token>@version@</token>
@@ -205,24 +209,24 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-	
-	<profiles>
-		<profile>
-			<id>jdk8</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
-							<release>8</release>
-							<compilerArgument>-proc:none</compilerArgument>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
+
+    <profiles>
+        <profile>
+            <id>jdk8</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>1.8</source>
+                            <target>1.8</target>
+                            <release>8</release>
+                            <compilerArgument>-proc:none</compilerArgument>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>jdk9</id>
 
@@ -241,6 +245,6 @@
                 </plugins>
             </build>
         </profile>
-	</profiles>
+    </profiles>
 
 </project>

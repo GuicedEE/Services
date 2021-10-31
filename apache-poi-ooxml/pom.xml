@@ -22,17 +22,17 @@ limitations under the License.
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-        <parent>
+    <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <artifactId>apache-poi-ooxml</artifactId>
     <!--<version>${poi.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>
     <name>Apache POI OOXML</name>
-
 
 
     <!-- Codec only has test dependencies ATM -->
@@ -66,8 +66,8 @@ limitations under the License.
         </dependency>
 
         <dependency>
-           <groupId>org.apache.poi</groupId>
-				<artifactId>poi-ooxml-full</artifactId>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-full</artifactId>
             <optional>true</optional>
         </dependency>
 

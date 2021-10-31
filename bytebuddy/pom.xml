@@ -6,6 +6,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
     <artifactId>byte-buddy</artifactId>
 
@@ -94,7 +95,7 @@
     <dependencies>
         <dependency>
             <groupId>net.bytebuddy</groupId>
-             <artifactId>byte-buddy</artifactId>
+            <artifactId>byte-buddy</artifactId>
             <optional>true</optional>
         </dependency>
         <dependency>

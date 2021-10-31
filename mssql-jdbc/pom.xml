@@ -7,6 +7,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <artifactId>mssql-jdbc</artifactId>
@@ -44,7 +45,7 @@
     </scm>
 
     <dependencies>
-       <dependency>
+        <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc_auth</artifactId>
             <version>${mssql.jdbc}.x64</version>
@@ -104,10 +105,10 @@
     </build>
 
     <profiles>
-	
-	<profile>
+
+        <profile>
             <id>jdk9</id>
-			<activation>
+            <activation>
                 <jdk>[9,14]</jdk>
             </activation>
             <dependencyManagement>
@@ -129,7 +130,7 @@
                 </dependencies>
             </dependencyManagement>
         </profile>
-		
+
         <profile>
             <id>jdk14</id>
             <activation>

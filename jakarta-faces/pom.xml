@@ -34,6 +34,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
 
     <artifactId>javax.faces</artifactId>
@@ -126,10 +127,10 @@
         </dependency>
 
         <dependency>
-             <groupId>jakarta.faces</groupId>
-             <artifactId>jakarta.faces-api</artifactId>
-             <optional>true</optional>
-         </dependency>
+            <groupId>jakarta.faces</groupId>
+            <artifactId>jakarta.faces-api</artifactId>
+            <optional>true</optional>
+        </dependency>
 
         <dependency>
             <groupId>com.guicedee</groupId>

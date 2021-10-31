@@ -15,13 +15,14 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
-
 
 
     <modelVersion>4.0.0</modelVersion>
@@ -32,7 +33,10 @@
     <!--<version>${math.version}</version>-->
 
     <inceptionYear>2003</inceptionYear>
-    <description>The Apache Commons Math project is a library of lightweight, self-contained mathematics and statistics components addressing the most common practical problems not immediately available in the Java programming language or commons-lang.</description>
+    <description>The Apache Commons Math project is a library of lightweight, self-contained mathematics and statistics
+        components addressing the most common practical problems not immediately available in the Java programming
+        language or commons-lang.
+    </description>
 
     <url>http://commons.apache.org/proper/commons-math/</url>
 

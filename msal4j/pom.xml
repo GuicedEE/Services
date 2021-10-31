@@ -6,6 +6,7 @@
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
     </parent>
     <artifactId>azure-identity</artifactId>
     <version>0.0.0_0-SNAPSHOT</version>
@@ -227,12 +228,12 @@
             <artifactId>jakarta.servlet-api</artifactId>
         </dependency>
 
-       <!-- <dependency>
-            <groupId>com.nimbusds</groupId>
-            <artifactId>oauth2-oidc-sdk</artifactId>
-            <version>6.5</version>
-            <optional>true</optional>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>com.nimbusds</groupId>
+             <artifactId>oauth2-oidc-sdk</artifactId>
+             <version>6.5</version>
+             <optional>true</optional>
+         </dependency>-->
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
