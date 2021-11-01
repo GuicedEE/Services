@@ -15,6 +15,10 @@
     <name>hibernate-enhance-maven-plugin</name>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by
     </description>
+    <properties>
+        <ignore.moditect>true</ignore.moditect>
+        <flatten.pom>false</flatten.pom>
+    </properties>
 
     <dependencies>
 
