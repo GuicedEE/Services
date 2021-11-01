@@ -168,6 +168,7 @@
             <id>enable-standalone-services</id>
             <modules>
                 <module>btm</module>
+                <module>amqp-client</module>
                 <module>aop</module>
                 <module>guava</module>
                 <module>javassist</module>
