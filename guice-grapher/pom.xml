@@ -11,6 +11,7 @@
         <relativePath>../../../</relativePath>
     </parent>
 
+    <groupId>com.guicedee.services</groupId>
     <artifactId>guice-grapher</artifactId>
     <version>0.0.0_0-SNAPSHOT</version>
     <name>google.guice.extensions.grapher</name>

@@ -9,7 +9,7 @@
         <relativePath>../../../</relativePath>
     </parent>
     <artifactId>jakarta.jws-api</artifactId>
-
+    <groupId>com.guicedee.services</groupId>
     <name>javax.jws-api</name>
     <!--<version>${jakarta.jws.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>

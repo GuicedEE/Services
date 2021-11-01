@@ -24,7 +24,7 @@
         <version>0.0.0_0-SNAPSHOT</version>
         <relativePath>../../../</relativePath>
     </parent>
-
+    <groupId>com.guicedee.services</groupId>
     <artifactId>log4j-core</artifactId>
     <!--<version>${log4j.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>

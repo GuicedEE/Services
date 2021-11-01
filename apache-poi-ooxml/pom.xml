@@ -28,7 +28,7 @@ limitations under the License.
         <version>0.0.0_0-SNAPSHOT</version>
         <relativePath>../../../</relativePath>
     </parent>
-
+    <groupId>com.guicedee.services</groupId>
     <artifactId>apache-poi-ooxml</artifactId>
     <!--<version>${poi.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>

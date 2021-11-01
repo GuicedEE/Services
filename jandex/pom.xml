@@ -8,6 +8,7 @@
         <relativePath>../../../</relativePath>
     </parent>
 
+    <groupId>com.guicedee.services</groupId>
     <artifactId>jandex</artifactId>
 
     <name>jandex</name>

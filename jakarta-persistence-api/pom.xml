@@ -9,7 +9,7 @@
         <relativePath>../../../</relativePath>
     </parent>
     <artifactId>jakarta.persistence-api</artifactId>
-
+    <groupId>com.guicedee.services</groupId>
     <name>javax.jpa.api</name>
 
     <!--<version>${jakarta.persistence.api.version}</version>-->

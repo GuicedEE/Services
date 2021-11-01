@@ -29,7 +29,7 @@ limitations under the License.
         <relativePath>../../../</relativePath>
     </parent>
     <version>0.0.0_0-SNAPSHOT</version>
-
+    <groupId>com.guicedee.services</groupId>
     <artifactId>commons-xmlbeans</artifactId>
     <!--<version>${xmlbeans.version}</version>-->
 

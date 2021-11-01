@@ -15,7 +15,7 @@
         <version>0.0.0_0-SNAPSHOT</version>
         <relativePath>../../../</relativePath>
     </parent>
-
+    <groupId>com.guicedee.services</groupId>
     <artifactId>jakarta.validation-api</artifactId>
 
     <packaging>jar</packaging>

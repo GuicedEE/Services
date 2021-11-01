@@ -8,7 +8,7 @@
         <relativePath>../../../</relativePath>
     </parent>
 
-
+    <groupId>com.guicedee.services</groupId>
     <name>Apache CXF</name>
     <artifactId>org.apache.cxf</artifactId>
     <!--<version>${cxf.core.version}</version>-->

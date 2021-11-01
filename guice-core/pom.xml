@@ -11,6 +11,7 @@
         <version>0.0.0_0-SNAPSHOT</version>
         <relativePath>../../../</relativePath>
     </parent>
+    <groupId>com.guicedee.services</groupId>
     <version>0.0.0_0-SNAPSHOT</version>
     <!--<version>${guice.version}</version>-->
     <artifactId>guice</artifactId>

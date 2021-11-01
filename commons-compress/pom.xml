@@ -25,7 +25,7 @@
         <relativePath>../../../</relativePath>
     </parent>
 
-
+    <groupId>com.guicedee.services</groupId>
     <artifactId>commons-compress</artifactId>
     <!--<version>${compress.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>

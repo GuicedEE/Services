@@ -9,7 +9,7 @@
         <relativePath>../../../</relativePath>
     </parent>
     <artifactId>h2</artifactId>
-
+    <groupId>com.guicedee.services</groupId>
     <name>h2</name>
     <!--<version>${h2.db.api}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>

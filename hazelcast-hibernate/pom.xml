@@ -36,7 +36,7 @@
         <relativePath>../../../</relativePath>
     </parent>
 
-
+    <groupId>com.guicedee.services</groupId>
     <artifactId>hazelcast-hibernate</artifactId>
     <name>hazelcast-hibernate</name>
     <!--<version>${hazelcast.hibernate.version}</version>-->

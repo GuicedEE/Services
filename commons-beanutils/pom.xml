@@ -25,6 +25,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.guicedee.services</groupId>
     <artifactId>commons-beanutils</artifactId>
     <!--<version>${beanutils.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>

@@ -8,6 +8,8 @@
         <relativePath>../../../</relativePath>
     </parent>
 
+    <groupId>com.guicedee.services</groupId>
+
     <artifactId>dom4j</artifactId>
     <packaging>jar</packaging>
     <name>dom4j</name>

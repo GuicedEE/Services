@@ -51,7 +51,7 @@
         <relativePath>../../../</relativePath>
     </parent>
 
-
+    <groupId>com.guicedee.services</groupId>
     <artifactId>jakarta.servlet-api</artifactId>
     <packaging>jar</packaging>
 

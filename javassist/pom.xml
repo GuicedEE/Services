@@ -7,7 +7,7 @@
         <version>0.0.0_0-SNAPSHOT</version>
         <relativePath>../../../</relativePath>
     </parent>
-
+    <groupId>com.guicedee.services</groupId>
     <!--<groupId>org.javassist</groupId>-->
     <artifactId>javassist</artifactId>
     <!--<version>${javassist.version}</version>-->

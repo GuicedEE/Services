@@ -8,7 +8,7 @@
         <relativePath>../../../</relativePath>
     </parent>
 
-
+    <groupId>com.guicedee.services</groupId>
     <name>ehcache</name>
     <artifactId>ehcache</artifactId>
     <packaging>jar</packaging>

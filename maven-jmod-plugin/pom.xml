@@ -30,6 +30,8 @@
     </parent>
 
     <groupId>com.guicedee.services</groupId>
+
+    <groupId>com.guicedee.services</groupId>
     <artifactId>jmod-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
     <version>0.0.0_0-SNAPSHOT</version>

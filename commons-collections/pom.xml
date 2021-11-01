@@ -26,6 +26,7 @@
 
 
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.guicedee.services</groupId>
     <artifactId>commons-collections4</artifactId>
     <!--<version>${collections.version}</version>-->
 

@@ -29,7 +29,7 @@ limitations under the License.
         <relativePath>../../../</relativePath>
     </parent>
 
-
+    <groupId>com.guicedee.services</groupId>
     <artifactId>apache-poi</artifactId>
     <name>Apache POI</name>
     <!--<version>${poi.version}</version>-->

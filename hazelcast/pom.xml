@@ -36,7 +36,7 @@
         <relativePath>../../../</relativePath>
     </parent>
 
-
+    <groupId>com.guicedee.services</groupId>
     <artifactId>hazelcast-all</artifactId>
     <name>hazelcast-all</name>
     <!--<version>${hazelcast.version}</version>-->
