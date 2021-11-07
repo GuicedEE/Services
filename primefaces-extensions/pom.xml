@@ -79,8 +79,21 @@
 
         <dependency>
             <groupId>org.primefaces.extensions</groupId>
+            <artifactId>resources-ckeditor</artifactId>
+            <version>11.0.0-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>resources-monacoeditor</artifactId>
+            <version>11.0.0-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
             <artifactId>primefaces-extensions</artifactId>
-            <version>10.0.0</version>
+            <version>11.0.0-SNAPSHOT</version>
             <optional>true</optional>
             <exclusions>
                 <exclusion>
