@@ -55,6 +55,7 @@
         <mavenVersion>3.0</mavenVersion>
         <maven.plugin.tools.version>3.5.1</maven.plugin.tools.version>
         <project.build.outputTimestamp>2020-04-07T21:04:00Z</project.build.outputTimestamp>
+        <guicedee.version>0.0.0_0-SNAPSHOT</guicedee.version>
     </properties>
 
     <dependencies>
@@ -249,7 +250,7 @@
                         </executions>
                     </plugin>
 
-                    <plugin>
+                   <!-- <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
                         <version>1.6.8</version>
@@ -269,7 +270,7 @@
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                             <stagingProgressTimeoutMinutes>300</stagingProgressTimeoutMinutes>
                         </configuration>
-                    </plugin>
+                    </plugin>-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-deploy-plugin</artifactId>
