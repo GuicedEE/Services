@@ -31,6 +31,7 @@
     <artifactId>interceptor-api</artifactId>
     <!--<version>${jakarta.interceptor.version}</version>-->
     <version>0.0.0_0-SNAPSHOT</version>
+    <name>Jakarta Interceptor API</name>
     <description>
         Jakarta Interceptors defines a means of interposing on business method invocations
         and specific events—such as lifecycle events and timeout events—that occur on instances

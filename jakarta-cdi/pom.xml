@@ -10,6 +10,7 @@
     <groupId>com.guicedee.services</groupId>
     <artifactId>cdi-api</artifactId>
     <version>0.0.0_0-SNAPSHOT</version>
+    <name>Jakarta CDI API</name>
     <description>Parent module for CDI Specification</description>
     <!--<version>${jakarta.cdi.api.version}</version>-->
 
