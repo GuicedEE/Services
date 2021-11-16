@@ -270,8 +270,8 @@
         <profile>
             <id>enable-primefaces</id>
             <modules>
-                <module>primefaces</module>
-                <module>primefaces-extensions</module>
+               <!-- <module>primefaces</module>
+                <module>primefaces-extensions</module>-->
             </modules>
         </profile>
 
