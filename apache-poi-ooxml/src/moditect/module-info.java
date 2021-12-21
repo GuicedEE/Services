@@ -15,6 +15,8 @@ open module org.apache.poi.ooxml {
 	requires static java.xml.crypto;
 	requires static org.bouncycastle.provider;
 	requires static  org.bouncycastle.pkix;
+	requires org.apache.commons.io;
+	requires static org.apache.logging.log4j.core;
 	
 	requires org.apache.commons.compress;
 	

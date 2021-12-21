@@ -9,6 +9,8 @@ module org.apache.poi.poi {
 	requires java.logging;
 	requires java.desktop;
 	requires jdk.unsupported;
+	requires static org.apache.logging.log4j.core;
+	requires org.apache.commons.io;
 	
 	exports org.apache.poi;
 	exports org.apache.poi.common;
