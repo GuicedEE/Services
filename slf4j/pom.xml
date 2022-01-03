@@ -31,11 +31,17 @@
             <optional>true</optional>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
             <optional>true</optional>
-        </dependency>-->
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>1.7.32</version>
+            <optional>true</optional>
+        </dependency>
 
     </dependencies>
 
@@ -103,10 +109,10 @@
                                 </filter>
                             </filters>
                             <relocations>
-                                <relocation>
+                                <!--<relocation>
                                     <pattern>org.apache.logging</pattern>
                                     <shadedPattern>org.slf4j.shade.log4j2</shadedPattern>
-                                </relocation>
+                                </relocation>-->
                             </relocations>
                         </configuration>
                     </execution>

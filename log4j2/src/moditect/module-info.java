@@ -18,7 +18,7 @@ module org.apache.logging.log4j.core {
 	requires static org.apache.commons.compress;
 	requires static org.apache.commons.csv;
 	requires static org.codehaus.stax2;
-	requires static org.slf4j;
+//	requires static org.slf4j;
 
 	exports org.apache.logging.log4j.core;
 	exports org.apache.logging.log4j.core.async;
@@ -62,13 +62,16 @@ module org.apache.logging.log4j.core {
 	exports org.apache.logging.log4j.core.config.builder.impl;
 
 	exports org.apache.logging.log4j;
-	exports org.apache.logging.log4j.jul;
-	exports org.apache.logging.log4j.jpl;
 	
-	provides java.util.logging.LogManager with org.apache.logging.log4j.LogManager;
+//	exports org.apache.logging.log4j.jul;
+//	exports org.apache.logging.log4j.jpl;
+	
+	//provides java.util.logging.LogManager with org.apache.logging.log4j.LogManager;
+	//provides java.lang.System.LoggerFinder with org.apache.logging.log4j.jpl.Log4jSystemLoggerFinder;
+	
 	provides javax.annotation.processing.Processor with org.apache.logging.log4j.core.config.plugins.processor.PluginProcessor;
 	provides org.apache.logging.log4j.spi.Provider with org.apache.logging.log4j.core.impl.Log4jProvider;
-	provides java.lang.System.LoggerFinder with org.apache.logging.log4j.jpl.Log4jSystemLoggerFinder;
+	
 	
 	provides org.apache.logging.log4j.core.util.ContextDataProvider with org.apache.logging.log4j.core.impl.ThreadContextDataProvider;
 	provides org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory with org.apache.logging.log4j.core.message.ExtendedThreadInfoFactory;
