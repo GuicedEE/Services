@@ -22,7 +22,7 @@ module org.apache.poi.poi {
 	exports org.apache.poi.hpsf.extractor;
 	exports org.apache.poi.hpsf.wellknown;
 	exports org.apache.poi.hssf;
-	exports org.apache.poi.hssf.dev;
+	//exports org.apache.poi.hssf.dev;
 	exports org.apache.poi.hssf.eventmodel;
 	exports org.apache.poi.hssf.eventusermodel;
 	exports org.apache.poi.hssf.eventusermodel.dummyrecord;
