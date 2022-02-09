@@ -1,4 +1,4 @@
-package javax.servlet.api;
+package jakarta.servlet.api;
 
 /**
  * This class designates a class holder to generate sources and javadoc to upload into Maven Central
