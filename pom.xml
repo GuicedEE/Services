@@ -189,6 +189,7 @@
                 <module>bouncycastle</module>
                 <module>bytebuddy</module>
                 <module>logback</module>
+				<module>typescript4j</module>
                 <!--<module>amqp-client</module>-->
             </modules>
         </profile>
