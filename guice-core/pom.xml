@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
-            <version>${asm.version}</version>
+            <version>${maven.asm.version}</version>
         </dependency>
 
         <dependency>
@@ -116,7 +116,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.2.7</version>
+                <version>${flatten-maven-plugin.version}</version>
                 <configuration>
                     <flattenMode>ossrh</flattenMode>
                     <flattenDependencyMode>direct</flattenDependencyMode>

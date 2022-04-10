@@ -29,12 +29,12 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-jcache</artifactId>
             <optional>true</optional>
             <exclusions>
                 <exclusion>
-                    <groupId>org.hibernate</groupId>
+                    <groupId>org.hibernate.orm</groupId>
                     <artifactId>hibernate-core</artifactId>
                 </exclusion>
             </exclusions>
@@ -96,7 +96,7 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.hibernate:hibernate-jcache:*</include>
+                                    <include>org.hibernate.orm:hibernate-jcache:*</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -156,7 +156,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.2.7</version>
+                <version>${flatten-maven-plugin.version}</version>
                 <configuration>
                     <flattenMode>ossrh</flattenMode>
                     <flattenDependencyMode>direct</flattenDependencyMode>

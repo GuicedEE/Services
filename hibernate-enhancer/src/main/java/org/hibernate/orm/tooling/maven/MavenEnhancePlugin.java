@@ -50,40 +50,40 @@ import org.sonatype.plexus.build.incremental.BuildContext;
  */
 @Mojo(name = "enhance", defaultPhase = LifecyclePhase.COMPILE, requiresDependencyResolution = ResolutionScope.COMPILE_PLUS_RUNTIME)
 public class MavenEnhancePlugin extends AbstractMojo {
-
+	
 	/**
 	 * The contexts to use during enhancement.
 	 */
 	private List<File> sourceSet = new ArrayList<File>();
-
+	
 	@Component
 	private BuildContext buildContext;
-
+	
 	@Parameter(property = "base", defaultValue = "${project.build.outputDirectory}")
 	private String base;
-
+	
 	@Parameter(property = "dir", defaultValue = "${project.build.outputDirectory}")
 	private String dir;
-
+	
 	@Parameter(property = "failOnError", defaultValue = "true")
 	private boolean failOnError = true;
-
+	
 	@Parameter(property = "enableLazyInitialization", defaultValue = "false")
 	private boolean enableLazyInitialization;
-
+	
 	@Parameter(property = "enableDirtyTracking", defaultValue = "false")
 	private boolean enableDirtyTracking;
-
+	
 	@Parameter(property = "enableAssociationManagement", defaultValue = "false")
 	private boolean enableAssociationManagement;
-
+	
 	@Parameter(property = "enableExtendedEnhancement", defaultValue = "false")
 	private boolean enableExtendedEnhancement;
-
+	
 	private boolean shouldApply() {
 		return enableLazyInitialization || enableDirtyTracking || enableAssociationManagement || enableExtendedEnhancement;
 	}
-
+	
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		final Log log = getLog();
@@ -91,11 +91,11 @@ public class MavenEnhancePlugin extends AbstractMojo {
 			log.warn( "Skipping Hibernate bytecode enhancement plugin execution since no feature is enabled" );
 			return;
 		}
-
+		
 		if ( !dir.startsWith( base ) ) {
 			throw new MojoExecutionException( "The enhancement directory 'dir' (" + dir + ") is no subdirectory of 'base' (" + base + ")" );
 		}
-
+		
 		// Perform a depth first search for sourceSet
 		File root = new File( this.dir );
 		if ( !root.exists() ) {
@@ -107,63 +107,63 @@ public class MavenEnhancePlugin extends AbstractMojo {
 			log.info( "Skipping Hibernate enhancement plugin execution since there are no classes to enhance on " + dir );
 			return;
 		}
-
+		
 		log.info( "Starting Hibernate enhancement for classes on " + dir );
 		final ClassLoader classLoader = toClassLoader( Collections.singletonList( new File( base ) ) );
-
+		
 		EnhancementContext enhancementContext = new DefaultEnhancementContext() {
 			@Override
 			public ClassLoader getLoadingClassLoader() {
 				return classLoader;
 			}
-
+			
 			@Override
 			public boolean doBiDirectionalAssociationManagement(UnloadedField field) {
 				return enableAssociationManagement;
 			}
-
+			
 			@Override
 			public boolean doDirtyCheckingInline(UnloadedClass classDescriptor) {
 				return enableDirtyTracking;
 			}
-
+			
 			@Override
 			public boolean hasLazyLoadableAttributes(UnloadedClass classDescriptor) {
 				return enableLazyInitialization;
 			}
-
+			
 			@Override
 			public boolean isLazyLoadable(UnloadedField field) {
 				return enableLazyInitialization;
 			}
-
+			
 			@Override
 			public boolean doExtendedEnhancement(UnloadedClass classDescriptor) {
 				return enableExtendedEnhancement;
 			}
 		};
-
+		
 		if ( enableExtendedEnhancement ) {
 			log.warn( "Extended enhancement is enabled. Classes other than entities may be modified. You should consider access the entities using getter/setter methods and disable this property. Use at your own risk." );
 		}
-
+		
 		final Enhancer enhancer = Environment.getBytecodeProvider().getEnhancer( enhancementContext );
-
+		
 		for ( File file : sourceSet ) {
-
+			
 			final byte[] enhancedBytecode = doEnhancement( file, enhancer );
-
+			
 			if ( enhancedBytecode == null ) {
 				continue;
 			}
-
+			
 			writeOutEnhancedClass( enhancedBytecode, file );
 			if ( log.isDebugEnabled() ) {
 				log.debug( "Successfully enhanced class [" + file + "]" );
 			}
 		}
 	}
-
+	
 	private ClassLoader toClassLoader(List<File> runtimeClasspath) throws MojoExecutionException {
 		List<URL> urls = new ArrayList<URL>( runtimeClasspath.size() );
 		final Log log = getLog();
@@ -182,7 +182,7 @@ public class MavenEnhancePlugin extends AbstractMojo {
 				log.warn( msg );
 			}
 		}
-
+		
 		// HHH-10145 Add dependencies to classpath as well - all but the ones used for testing purposes
 		MavenProject project = ( (MavenProject) getPluginContext().get( "project" ) );
 		Set<Artifact> artifacts = project.getArtifacts();
@@ -203,10 +203,10 @@ public class MavenEnhancePlugin extends AbstractMojo {
 				}
 			}
 		}
-
+		
 		return new URLClassLoader( urls.toArray( new URL[urls.size()] ), Enhancer.class.getClassLoader() );
 	}
-
+	
 	private byte[] doEnhancement(File javaClassFile, Enhancer enhancer) throws MojoExecutionException {
 		try {
 			String className = javaClassFile.getAbsolutePath().substring(
@@ -236,7 +236,7 @@ public class MavenEnhancePlugin extends AbstractMojo {
 			return null;
 		}
 	}
-
+	
 	/**
 	 * Expects a directory.
 	 */
@@ -246,7 +246,7 @@ public class MavenEnhancePlugin extends AbstractMojo {
 				new FileFilter() {
 					@Override
 					public boolean accept(File pathname) {
-						return ( pathname.isFile() && pathname.getName().endsWith( ".class" ) && !pathname.getName().startsWith("module-info") );
+						return ( pathname.isFile() && pathname.getName().endsWith( ".class" ) );
 					}
 				},
 				new FileFilter() {
@@ -257,7 +257,7 @@ public class MavenEnhancePlugin extends AbstractMojo {
 				}
 		);
 	}
-
+	
 	private void walkDir(File dir, FileFilter classesFilter, FileFilter dirFilter) {
 		File[] dirs = dir.listFiles( dirFilter );
 		for ( File dir1 : dirs ) {
@@ -266,7 +266,7 @@ public class MavenEnhancePlugin extends AbstractMojo {
 		File[] files = dir.listFiles( classesFilter );
 		Collections.addAll( this.sourceSet, files );
 	}
-
+	
 	private void writeOutEnhancedClass(byte[] enhancedBytecode, File file) throws MojoExecutionException {
 		try {
 			if ( file.delete() ) {
@@ -281,7 +281,7 @@ public class MavenEnhancePlugin extends AbstractMojo {
 		catch (IOException e) {
 			buildContext.addMessage( file, 0, 0, "Problem preparing class file for writing out enhancements", BuildContext.SEVERITY_WARNING, e );
 		}
-
+		
 		OutputStream outputStream = null;
 		try {
 			outputStream = buildContext.newFileOutputStream( file );

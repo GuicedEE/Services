@@ -41,7 +41,7 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.hibernate:hibernate-c3p0</include>
+                                    <include>org.hibernate.orm:hibernate-c3p0</include>
                                     <include>com.mchange:c3p0</include>
                                     <include>com.mchange:mchange-commons-java</include>
                                     <include>com.typesafe:config</include>
@@ -102,7 +102,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.2.7</version>
+                <version>${flatten-maven-plugin.version}</version>
                 <configuration>
                     <flattenMode>ossrh</flattenMode>
                     <flattenDependencyMode>direct</flattenDependencyMode>
@@ -164,7 +164,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-c3p0</artifactId>
             <optional>true</optional>
             <exclusions>

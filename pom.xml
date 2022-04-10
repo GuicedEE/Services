@@ -213,7 +213,7 @@
                 <module>hibernate-validator</module>
                 <module>hibernate-metamodel-generator</module>
                 <module>hibernate-c3p0</module>
-                <module>hibernate-ehcache</module>
+                <!--<module>hibernate-ehcache</module>-->
             </modules>
         </profile>
 

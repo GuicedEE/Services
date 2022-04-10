@@ -218,7 +218,7 @@
                             <dependency>
                                 <groupId>io.yupiik.maven</groupId>
                                 <artifactId>maven-shade-transformers</artifactId>
-                                <version>0.0.1</version>
+                                <version>${maven-shade-transformers}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
@@ -229,7 +229,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>flatten-maven-plugin</artifactId>
-                        <version>1.2.7</version>
+                        <version>${flatten-maven-plugin.version}</version>
                         <configuration>
                             <flattenMode>ossrh</flattenMode>
                             <flattenDependencyMode>direct</flattenDependencyMode>
@@ -482,7 +482,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>flatten-maven-plugin</artifactId>
-                        <version>1.2.7</version>
+                        <version>${flatten-maven-plugin.version}</version>
                         <configuration>
                             <flattenMode>ossrh</flattenMode>
                             <flattenDependencyMode>direct</flattenDependencyMode>

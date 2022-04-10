@@ -42,7 +42,7 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.hibernate:hibernate-ehcache</include>
+                                    <include>org.hibernate.orm:hibernate-ehcache</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -96,7 +96,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.2.7</version>
+                <version>${flatten-maven-plugin.version}</version>
                 <configuration>
                     <flattenMode>ossrh</flattenMode>
                     <flattenDependencyMode>direct</flattenDependencyMode>
@@ -163,12 +163,12 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-ehcache</artifactId>
             <optional>true</optional>
             <exclusions>
                 <exclusion>
-                    <groupId>org.hibernate</groupId>
+                    <groupId>org.hibernate.orm</groupId>
                     <artifactId>hibernate-core</artifactId>
                 </exclusion>
                 <exclusion>

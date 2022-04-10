@@ -28,15 +28,15 @@
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
 
-        <dependency>
+     <!--   <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-        </dependency>
+        </dependency>-->
 
-        <dependency>
+      <!--  <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
@@ -63,29 +63,31 @@
             <artifactId>classmate</artifactId>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javassist</artifactId>
-        </dependency>
+        </dependency>-->
 
-        <dependency>
+    <!--    <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>dom4j</artifactId>
         </dependency>
-
+-->
+<!--
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.security.jacc</artifactId>
         </dependency>
+-->
 
         <dependency>
-            <groupId>org.apache.ant</groupId>
-            <artifactId>ant</artifactId>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
             <optional>true</optional>
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <optional>true</optional>
         </dependency>
@@ -132,8 +134,8 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>antlr:antlr:*</include>
-                                    <include>org.hibernate:hibernate-core:*</include>
+                                    <include>org.antlr:antlr4-runtime:*</include>
+                                    <include>org.hibernate.orm:hibernate-core:*</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -158,7 +160,7 @@
                                     <shadedPattern>META-INF.services</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>antlr</pattern>
+                                    <pattern>org.antlr</pattern>
                                     <shadedPattern>org.hibernate.relocated.antlr</shadedPattern>
                                 </relocation>
                                 <relocation>
@@ -193,10 +195,10 @@
                                     <pattern>org.hibernate.boot.archive.internal.shade</pattern>
                                     <shadedPattern>org.hibernate.boot.archive.internal</shadedPattern>
                                 </relocation>
-                                <relocation>
+                              <!--  <relocation>
                                     <pattern>org.hibernate.shade</pattern>
                                     <shadedPattern>org.hibernate</shadedPattern>
-                                </relocation>
+                                </relocation>-->
                             </relocations>
                         </configuration>
                     </execution>
@@ -211,7 +213,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.2.7</version>
+                <version>${flatten-maven-plugin.version}</version>
                 <configuration>
                     <flattenMode>ossrh</flattenMode>
                     <flattenDependencyMode>direct</flattenDependencyMode>
