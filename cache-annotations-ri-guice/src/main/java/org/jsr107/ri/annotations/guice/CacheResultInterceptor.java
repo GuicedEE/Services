@@ -21,12 +21,15 @@ import jakarta.inject.*;
 import org.aopalliance.intercept.*;
 import org.jsr107.ri.annotations.*;
 
+import java.util.logging.*;
+
 /**
  * @author Michael Stachel
  * @version $Revision$
  */
 public class CacheResultInterceptor extends AbstractCacheResultInterceptor<MethodInvocation> implements CacheMethodInterceptor
 {
+	private static final Logger log = Logger.getLogger(CacheResultInterceptor.class.getCanonicalName());
 	private CacheContextSource<MethodInvocation> cacheContextSource;
 	
 	/**
@@ -53,8 +56,7 @@ public class CacheResultInterceptor extends AbstractCacheResultInterceptor<Metho
 		}
 		catch (Throwable T)
 		{
-			System.out.println("Caching system down, System exit (1)");
-			System.exit(1);
+			log.log(Level.SEVERE, "Error reported from caching interceptor-ri-guice", T);
             throw T;
 		}
 	}

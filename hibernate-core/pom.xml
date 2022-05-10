@@ -28,6 +28,11 @@
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>commons-compress</artifactId>
+        </dependency>
+
      <!--   <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>

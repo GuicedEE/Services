@@ -1,5 +1,6 @@
 module cache.annotations.ri.guice {
 	requires com.google.guice;
+	requires java.logging;
 
 	requires transitive cache.annotations.ri.common;
 	
