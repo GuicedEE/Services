@@ -8,5 +8,5 @@ module org.slf4j {
 	
 	requires java.logging;
 	
-	requires static org.apache.logging.log4j.core;
+	requires org.apache.logging.log4j.core;
 }

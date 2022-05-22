@@ -82,11 +82,11 @@
             <artifactId>jakarta.el-api</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>jakarta.el</artifactId>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>
@@ -116,7 +116,7 @@
                             <artifactSet>
                                 <includes>
                                     <include>jakarta.el:jakarta.el-api</include>
-                                    <include>org.glassfish:jakarta.el</include>
+                                   <!-- <include>org.glassfish:jakarta.el</include>-->
                                 </includes>
                             </artifactSet>
                         </configuration>
