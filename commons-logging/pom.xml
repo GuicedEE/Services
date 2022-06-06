@@ -238,7 +238,7 @@ under the License.
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>${flatten-maven-plugin.version}</version>
+
                 <configuration>
                     <flattenMode>ossrh</flattenMode>
                     <flattenDependencyMode>direct</flattenDependencyMode>
