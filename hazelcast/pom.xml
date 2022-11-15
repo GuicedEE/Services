@@ -152,6 +152,8 @@
                                         <exclude>META-INF/*.RSA</exclude>
                                         <exclude>com/hazelcast/hibernate/</exclude>
                                         <exclude>META-INF/services/*</exclude>
+                                        <exclude>*-default*.xml</exclude>
+                                        <exclude>*-default*.yaml</exclude>
                                     </excludes>
                                 </filter>
                             </filters>

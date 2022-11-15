@@ -65,7 +65,7 @@
 
     <build>
         <plugins>
-            <plugin>
+          <!--  <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
@@ -74,7 +74,7 @@
                         <phase>verify</phase>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -95,6 +95,7 @@
                                     <include>org.jboss.logging:jboss-logging-annotations:*</include>
                                     <include>org.jboss.jdeparser:jdeparser:*</include>
                                     <include>org.jboss.logging:jboss-logging-processor:*</include>
+                                    <include>org.wildfly.common:wildfly-common:*</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -109,11 +110,35 @@
                             <relocations>
                                 <relocation>
                                     <pattern>META-INF.versions.9.org</pattern>
-                                    <shadedPattern>org</shadedPattern>
+                                    <shadedPattern>org.jboss.shade.org</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>META-INF.versions.11.org</pattern>
+                                    <shadedPattern>org.jboss.shade.org</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>javax.json</pattern>
                                     <shadedPattern>jakarta.json</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly.common.cpu</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly.common.cpu</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly.common.os</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly.common.os</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly.common.lock</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly.common.lock</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly.common.archive</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly.common.archive</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

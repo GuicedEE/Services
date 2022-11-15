@@ -1,4 +1,4 @@
-module com.hazelcast.all {
+open module com.hazelcast.all {
 	requires transitive java.logging;
 	requires transitive cache.api;
 	requires java.transaction.xa;
@@ -80,8 +80,9 @@ module com.hazelcast.all {
 
 	provides jakarta.cache.spi.CachingProvider with com.hazelcast.cache.HazelcastCachingProvider;
 
-	opens com.hazelcast.nio to com.hazelcast.hibernate;
+	//opens com.hazelcast.nio to com.hazelcast.hibernate;
 
+	exports com.hazelcast.nio;
 	exports com.hazelcast.client.config;
 	exports com.hazelcast.client.cache.impl;
 

@@ -143,7 +143,7 @@
                 <module>xmlbeans</module>
                 <module>openpdf</module>
 
-                <module>maven-jmod-plugin</module>
+                <!--<module>maven-jmod-plugin</module>-->
             </modules>
         </profile>
 
@@ -247,7 +247,7 @@
                 <module>jakarta-cdi</module>
                 <module>jakarta-ejb-api</module>
                 <module>jakarta-el</module>
-                <module>jakarta-faces</module>
+                <!--<module>jakarta-faces</module>-->
                 <module>jakarta-interceptor-api</module>
                 <module>jakarta-persistence-api</module>
                 <module>jakarta-jsp</module>

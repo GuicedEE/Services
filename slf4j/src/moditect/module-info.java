@@ -9,4 +9,6 @@ module org.slf4j {
 	requires java.logging;
 	
 	requires org.apache.logging.log4j.core;
+	
+	uses org.slf4j.spi.SLF4JServiceProvider;
 }

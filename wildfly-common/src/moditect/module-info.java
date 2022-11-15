@@ -1,0 +1,3 @@
+module org.wildfly.common {
+
+}

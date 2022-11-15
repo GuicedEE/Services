@@ -158,7 +158,7 @@ public class NRSerialPort<J extends NRSerialPort<J>> implements Serializable
 	 *
 	 * @param port the serial port to use
 	 */
-	private void setPort(String port)
+	public void setPort(String port)
 	{
 		this.port = port;
 	}
