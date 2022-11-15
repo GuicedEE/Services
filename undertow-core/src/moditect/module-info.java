@@ -162,7 +162,7 @@ module undertow.core {
             io.undertow.protocols.alpn.DefaultAlpnEngineManager;
 
     provides io.undertow.protocols.alpn.ALPNProvider with
-            io.undertow.protocols.alpn.JDK9AlpnProvider;
+		    io.undertow.protocols.alpn.ModularJdkAlpnProvider;
 
     provides io.undertow.server.handlers.builder.HandlerBuilder with io.undertow.server.handlers.builder.RewriteHandlerBuilder,
             io.undertow.server.handlers.SetAttributeHandler.Builder,
