@@ -22,6 +22,8 @@ module org.hibernate.orm.core {
 	requires java.desktop;
 	requires net.bytebuddy;
 	
+	requires static com.fasterxml.jackson.dataformat.xml;
+	
 //	requires java.management;
 //	requires dom4j;
 
@@ -41,6 +43,8 @@ module org.hibernate.orm.core {
 	uses org.hibernate.boot.registry.selector.StrategyRegistrationProvider;
 	uses org.hibernate.boot.registry.selector.spi.StrategyCreator;
 	uses org.hibernate.boot.registry.selector.spi.StrategySelector;
+	uses org.hibernate.engine.transaction.jta.platform.spi.JtaPlatformProvider;
+	
 
 	uses org.hibernate.boot.model.TypeContributor;
 	uses org.hibernate.boot.model.IdGeneratorStrategyInterpreter;

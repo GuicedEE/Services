@@ -67,6 +67,14 @@
                                     <include>jakarta.xml.ws:jakarta.xml.ws-api:*</include>
                                 </includes>
                             </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*</artifact>
+                                    <excludes>
+                                        <exclude>jakarta/jws/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
                         </configuration>
                     </execution>
                 </executions>

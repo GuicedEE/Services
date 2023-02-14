@@ -24,4 +24,6 @@ module org.jboss.logging {
 	
 	//provides java.util.logging.LogManager with org.jboss.logmanager.LogManager;
 	provides javax.annotation.processing.Processor with org.jboss.logging.processor.apt.LoggingToolsProcessor;
+	
+	uses org.jboss.logging.LoggerProvider;
 }

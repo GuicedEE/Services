@@ -177,7 +177,7 @@
                 <module>log4j2</module>
                 <module>h2</module>
                 <module>mssql-jdbc</module>
-                <module>jfreechart</module>
+                <!--<module>jfreechart</module>-->
                 <module>zstd_jni</module>
                 <module>kafka-client</module>
                 <module>mapstruct</module>
@@ -189,7 +189,8 @@
                 <module>bouncycastle</module>
                 <module>bytebuddy</module>
                 <module>logback</module>
-				<module>typescript4j</module>
+				<module>postgresql</module>
+				<!--<module>typescript4j</module>-->
                 <!--<module>amqp-client</module>-->
             </modules>
         </profile>

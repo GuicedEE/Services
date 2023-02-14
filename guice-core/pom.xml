@@ -22,16 +22,19 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>javax.inject</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>aopalliance-core</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guava</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
