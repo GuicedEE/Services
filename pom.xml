@@ -341,11 +341,11 @@
                         <id>prepare</id>
                         <phase>none</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <echo message="prepare sources "/>
                                 <unzip src="target/${project.artifactId}-${project.version}-sources.jar"
                                        dest="target/source-output/"/>
-                            </tasks>
+                            </target>
                             <failOnError>false</failOnError>
                         </configuration>
                         <goals>

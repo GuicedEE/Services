@@ -1,6 +1,5 @@
 module org.hibernate.orm.core {
 	requires transitive java.sql;
-	
 	//requires com.guicedee.guicedinjection;
 	
 	requires java.naming;
@@ -44,7 +43,11 @@ module org.hibernate.orm.core {
 	uses org.hibernate.boot.registry.selector.spi.StrategyCreator;
 	uses org.hibernate.boot.registry.selector.spi.StrategySelector;
 	uses org.hibernate.engine.transaction.jta.platform.spi.JtaPlatformProvider;
-	
+
+	//6.2
+	//uses org.hibernate.boot.spi.MetadataBuilderContributor;
+	//uses org.hibernate.boot.spi.AdditionalMappingContributor;
+	//uses org.hibernate.query.criteria.spi.CriteriaBuilderExtension;
 
 	uses org.hibernate.boot.model.TypeContributor;
 	uses org.hibernate.boot.model.IdGeneratorStrategyInterpreter;
@@ -65,7 +68,10 @@ module org.hibernate.orm.core {
 	exports org.hibernate.sql.results to org.jboss.logging;
 	
 	exports org.hibernate.bytecode.enhance.internal.tracker;
-	
+
+//	exports org.hibernate.engine.jdbc.env.internal to org.jboss.logging;
+//	exports org.hibernate.engine.jdbc.batch to org.jboss.logging;
+
 	exports org.hibernate;
 	//exports org.hibernate.action.internal;
 	exports org.hibernate.action.spi;
@@ -86,7 +92,8 @@ module org.hibernate.orm.core {
 	exports org.hibernate.boot;
 
 	//opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
-	
+
+	exports org.hibernate.bytecode.enhance.internal.bytebuddy;
 	
 	exports org.hibernate.jpa.boot.internal;
 	//exports org.hibernate.boot.internal;
@@ -147,9 +154,9 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.cache.cfg.internal;
 
 	exports org.hibernate.cfg;
-	exports org.hibernate.cfg.annotations;
-	exports org.hibernate.cfg.annotations.reflection;
-	exports org.hibernate.cfg.beanvalidation;
+	//exports org.hibernate.cfg.annotations;
+	//exports org.hibernate.cfg.annotations.reflection;
+	//exports org.hibernate.cfg.beanvalidation;
 	exports org.hibernate.classic;
 
 	exports org.hibernate.collection.spi;

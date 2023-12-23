@@ -29,6 +29,7 @@
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-servlet</artifactId>
+            <version>${guice.version}</version>
             <optional>true</optional>
         </dependency>
 

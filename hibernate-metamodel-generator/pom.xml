@@ -26,14 +26,21 @@
             <groupId>com.guicedee.services</groupId>
             <artifactId>jakarta.activation</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>jboss-logmanager</artifactId>
         </dependency>
 
         <dependency>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <groupId>com.guicedee.services</groupId>
+        </dependency>
+
+        <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>6.2.9.Final</version>
             <optional>true</optional>
             <exclusions>
                 <exclusion>
