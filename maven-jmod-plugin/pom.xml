@@ -52,7 +52,7 @@
     </ciManagement>
 
     <properties>
-        <mavenVersion>3.0</mavenVersion>
+        <mavenVersion>3.8.1</mavenVersion>
         <maven.plugin.tools.version>3.5.1</maven.plugin.tools.version>
         <project.build.outputTimestamp>2020-04-07T21:04:00Z</project.build.outputTimestamp>
         <guicedee.version>2.0.0-SNAPSHOT</guicedee.version>
