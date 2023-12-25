@@ -1,0 +1,109 @@
+name: Maven Package (BOM)
+on:
+  workflow_dispatch:
+jobs:
+  AOP:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'Google/aop/'
+      name: 'AOP Alliance'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Guava:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'Google/guava/'
+      name: 'Guava'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Guice:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Guava
+      - AOP
+    with:
+      baseDir: 'Google/guice-core/'
+      name: 'Guice'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Guice-Persist:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Guice
+    with:
+      baseDir: 'Google/guice-persist/'
+      name: 'Guice Persist'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Guice-Servlet:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Guice
+    with:
+      baseDir: 'Google/guice-servlet/'
+      name: 'Guice Servlet'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Guice-AssistedInject:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Guice
+    with:
+      baseDir: 'Google/guice-assistedinject/'
+      name: 'Guice Assisted Inject'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Guice-Grapher:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Guice
+    with:
+      baseDir: 'Google/guice-grapher/'
+      name: 'Guice Grapher'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Guice-JMX:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Guice
+    with:
+      baseDir: 'Google/guice-jmx/'
+      name: 'Guice JMX'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Guice-JNDI:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Guice
+    with:
+      baseDir: 'Google/guice-jndi/'
+      name: 'Guice JNDI'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
