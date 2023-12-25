@@ -25,13 +25,13 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
-        <version>0.0.0_0-SNAPSHOT</version>
+        <version>2.0.0-SNAPSHOT</version>
         <relativePath>../../../</relativePath>
     </parent>
     <groupId>com.guicedee.services</groupId>
     <artifactId>jakarta.el</artifactId>
     <!--<version>${jakarta.el.version}</version>-->
-    <version>0.0.0_0-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <name>javax.el</name>
     <description>
         Jakarta Expression Language provides a specification document, API, reference implementation and TCK

@@ -32,7 +32,7 @@
     <groupId>com.guicedee.services</groupId>
     <artifactId>jmod-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>0.0.0_0-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
 
     <name>Apache Maven JMod Plugin</name>
     <description>Create JMod files http://openjdk.java.net/jeps/261</description>
@@ -55,7 +55,7 @@
         <mavenVersion>3.0</mavenVersion>
         <maven.plugin.tools.version>3.5.1</maven.plugin.tools.version>
         <project.build.outputTimestamp>2020-04-07T21:04:00Z</project.build.outputTimestamp>
-        <guicedee.version>0.0.0_0-SNAPSHOT</guicedee.version>
+        <guicedee.version>2.0.0-SNAPSHOT</guicedee.version>
     </properties>
 
     <dependencies>

@@ -32,7 +32,7 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
-        <version>0.0.0_0-SNAPSHOT</version>
+        <version>2.0.0-SNAPSHOT</version>
         <relativePath>../../../</relativePath>
     </parent>
 
@@ -40,7 +40,7 @@
     <artifactId>hazelcast-hibernate</artifactId>
     <name>hazelcast-hibernate</name>
     <!--<version>${hazelcast.hibernate.version}</version>-->
-    <version>0.0.0_0-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <description>Kubernetes Service Discovery for Hazelcast Discovery SPI</description>
     <url>http://github.com/hazelcast/hazelcast-kubernetes</url>
     <inceptionYear>2015</inceptionYear>

@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>dev-kit</artifactId>
-        <version>0.0.0_0-SNAPSHOT</version>
+        <version>2.0.0-SNAPSHOT</version>
         <relativePath>../../../</relativePath>
     </parent>
     <artifactId>jakarta.persistence-api</artifactId>
@@ -13,7 +13,7 @@
     <name>javax.jpa.api</name>
 
     <!--<version>${jakarta.persistence.api.version}</version>-->
-    <version>0.0.0_0-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
     </description>
 
