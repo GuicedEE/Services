@@ -110,7 +110,7 @@ jobs:
   Commons-Collections:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     with:
-      baseDir: 'Apache/Commons/commons-collections'
+      baseDir: 'Apache/Commons/commons-collections/'
       name: 'Commons Collections'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
@@ -121,7 +121,7 @@ jobs:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     needs: Commons-Collections
     with:
-      baseDir: 'Apache/Commons/commons-beanutils'
+      baseDir: 'Apache/Commons/commons-beanutils/'
       name: 'Commons Bean Utilities'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
@@ -131,7 +131,7 @@ jobs:
   Commons-Codec:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     with:
-      baseDir: 'Apache/Commons/commons-codec'
+      baseDir: 'Apache/Commons/commons-codec/'
       name: 'Commons Codec'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
@@ -141,7 +141,7 @@ jobs:
   Commons-CSV:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     with:
-      baseDir: 'Apache/Commons/commons-csv'
+      baseDir: 'Apache/Commons/commons-csv/'
       name: 'Commons CSV'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
@@ -151,7 +151,7 @@ jobs:
   Commons-FileUpload:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     with:
-      baseDir: 'Apache/Commons/commons-fileupload'
+      baseDir: 'Apache/Commons/commons-fileupload/'
       name: 'Commons File Upload'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
@@ -161,7 +161,7 @@ jobs:
   Commons-Math:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     with:
-      baseDir: 'Apache/Commons/commons-math'
+      baseDir: 'Apache/Commons/commons-math/'
       name: 'Commons Math'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
