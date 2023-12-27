@@ -1,3 +1,3 @@
-package org.apache.bcel;
+package org.jacc;
 
 public class JavadocGenerator {}
