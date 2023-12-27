@@ -4,9 +4,8 @@
 
     <parent>
         <groupId>com.guicedee</groupId>
-        <artifactId>dev-kit</artifactId>
+        <artifactId>parent</artifactId>
         <version>2.0.0-SNAPSHOT</version>
-        <relativePath>../../../</relativePath>
     </parent>
     <groupId>com.guicedee.services</groupId>
     <artifactId>json</artifactId>
@@ -14,6 +13,12 @@
     <name>org.json</name>
     <!--<version>${org.json.version}</version>-->
     <version>2.0.0-SNAPSHOT</version>
+
+    <properties>
+        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+    </properties>
+
+
     <description>
         JSON is a light-weight, language independent, data interchange format.
         See http://www.JSON.org/
@@ -30,13 +35,6 @@
         not evil." If your conscience cannot live with that, then choose a different
         package.
     </description>
-    <url>https://github.com/douglascrockford/JSON-java</url>
-
-    <scm>
-        <url>https://github.com/douglascrockford/JSON-java.git</url>
-        <connection>scm:git:git://github.com/douglascrockford/JSON-java.git</connection>
-        <developerConnection>scm:git:git@github.com:douglascrockford/JSON-java.git</developerConnection>
-    </scm>
 
     <licenses>
         <license>
@@ -69,17 +67,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>prepare</id>
-                        <phase>verify</phase>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <executions>
                     <execution>
@@ -99,58 +86,30 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+
+            <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-
-                <configuration>
-                    <flattenMode>ossrh</flattenMode>
-                    <flattenDependencyMode>direct</flattenDependencyMode>
-                    <detail>true</detail>
-                    <updatePomFile>true</updatePomFile>
-                    <flattenedPomFilename>flatter.pom</flattenedPomFilename>
-                </configuration>
-                <executions>
-                    <!-- enable flattening -->
-                    <execution>
-                        <id>flatten</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>flatten</goal>
-                        </goals>
-                    </execution>
-                    <!-- ensure proper cleanup -->
-                    <execution>
-                        <id>flatten.clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
                 <groupId>com.coderplus.maven.plugins</groupId>
                 <artifactId>copy-rename-maven-plugin</artifactId>
-                <version>1.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-file</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <sourceFile>flatter.pom</sourceFile>
-                            <destinationFile>dependency-reduced-pom.xml</destinationFile>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -162,35 +121,16 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>jdk9</id>
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>standalone-bom</artifactId>
-                        <version>${guicedee.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                </dependencies>
-            </dependencyManagement>
-        </profile>
-        <profile>
-            <id>jdk8</id>
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.guicedee</groupId>
-                        <artifactId>standalone-bom</artifactId>
-                        <version>${guicedee.version}</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                </dependencies>
-            </dependencyManagement>
-        </profile>
-    </profiles>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>standalone-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
