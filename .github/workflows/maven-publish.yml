@@ -1,4 +1,4 @@
-name: Maven Package (BOM)
+name: Maven Package
 on:
   workflow_dispatch:
   push:
@@ -460,6 +460,16 @@ jobs:
     with:
       baseDir: 'Hibernate/hibernate-metamodel-generator/'
       name: 'Hibernate Metamodel Generator'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Hibernate-Core:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'Hibernate/hibernate-core/'
+      name: 'Hibernate Core'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}

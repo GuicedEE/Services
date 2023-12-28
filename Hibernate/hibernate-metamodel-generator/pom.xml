@@ -7,6 +7,10 @@
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+    </properties>
+
     <groupId>com.guicedee.services</groupId>
     <artifactId>hibernate-jpamodelgen</artifactId>
     <packaging>jar</packaging>
@@ -49,7 +53,6 @@
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
-            <version>3.26.0</version>
             <optional>true</optional>
         </dependency>
 
@@ -144,6 +147,13 @@
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>standalone-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>google-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
