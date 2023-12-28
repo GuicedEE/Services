@@ -368,3 +368,50 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Undertow-Parser-Generator:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+    with:
+      baseDir: 'JBoss/undertow-parser-generator/'
+      name: 'Undertow Generator'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Undertow-Core:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Undertow-Parser-Generator
+    with:
+      baseDir: 'JBoss/undertow-core/'
+      name: 'Undertow Core'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Undertow-Servlet:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Undertow-Core
+    with:
+      baseDir: 'JBoss/undertow-servlet/'
+      name: 'Undertow Servlet'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Undertow-Web-Sockets:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Undertow-Servlet
+    with:
+      baseDir: 'JBoss/undertow-websockets-jsr/'
+      name: 'Undertow Web Sockets'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
