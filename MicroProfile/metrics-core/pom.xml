@@ -115,7 +115,7 @@
             </dependency>
             <dependency>
                 <groupId>com.guicedee</groupId>
-                <artifactId>fas-bom</artifactId>
+                <artifactId>fasterxml-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
