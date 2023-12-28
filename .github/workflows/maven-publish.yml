@@ -529,7 +529,6 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
   Kafka-Client:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
-    needs:
     with:
       baseDir: 'Libraries/kafka-client/'
       name: 'Kafka Client'
