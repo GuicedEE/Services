@@ -561,6 +561,7 @@ jobs:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     needs:
       - JCache-Annotations-Guice
+      - Hibernate-Core
     with:
       baseDir: 'JCache/hazelcast/'
       name: 'Hazelcast'
@@ -574,7 +575,7 @@ jobs:
     needs:
       - JCache-Annotations-Guice
       - Hazelcast
-      - Hibernate-Core
+      - Hibernate-JCache
     with:
       baseDir: 'JCache/hazelcast-hibernate/'
       name: 'Hazelcast Hibernate'

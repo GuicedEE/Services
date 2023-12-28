@@ -73,6 +73,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
             <version>${hazelcast.version}</version>
@@ -99,6 +105,14 @@
             <version>3.25.0</version>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>4.2.23</version>
+            <optional>true</optional>
+        </dependency>
+
 
         <dependency>
             <groupId>com.github.spotbugs</groupId>
@@ -137,6 +151,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>ch.randelshofer</groupId>
             <artifactId>fastdoubleparser</artifactId>
             <version>1.0.0</version>
@@ -168,6 +187,14 @@
             <optional>true</optional>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -193,6 +220,7 @@
                                     <include>org.jline:*</include>
                                     <include>net.openhft:*</include>
                                     <include>com.github.spotbugs:*</include>
+                                    <include>io.dropwizard.metrics:*</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -296,6 +324,22 @@
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>fasterxml-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>google-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>jboss-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
