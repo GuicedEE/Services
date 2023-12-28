@@ -244,3 +244,25 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  UA-Detector:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'Libraries/uadetector-core/'
+      name: 'UA Detector Core'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  UA-Detector-Resources:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - UA-Detector
+    with:
+      baseDir: 'Libraries/uadetector-resources/'
+      name: 'UA Detector Resources'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
