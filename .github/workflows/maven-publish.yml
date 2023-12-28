@@ -314,8 +314,53 @@ jobs:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     needs: JNA-Platform
     with:
-      baseDir: 'JNI/nrjavaserial'
+      baseDir: 'JNI/nrjavaserial/'
       name: 'Java NR Serial Port'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  JCache:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'JCache/cache-api/'
+      name: 'JCache JSR-107'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  JCache-Annotations-Common:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs: JCache
+    with:
+      baseDir: 'JCache/cache-annotations-ri-common/'
+      name: 'JCache Common Annotations'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  JCache-Annotations-Guice:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - JCache-Annotations-Common
+    with:
+      baseDir: 'JCache/cache-annotations-ri-guice/'
+      name: 'JCache Guice'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Guiced-Inject-Client:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - JCache-Annotations-Common
+    with:
+      baseDir: 'guice-inject-client/'
+      name: 'Guice Inject Client'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
