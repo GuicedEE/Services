@@ -467,6 +467,8 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
   Hibernate-Metamodel-Generator:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - JBoss-LogManager
     with:
       baseDir: 'Hibernate/hibernate-metamodel-generator/'
       name: 'Hibernate Metamodel Generator'
@@ -477,6 +479,8 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
   Hibernate-Core:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - JBoss-LogManager
     with:
       baseDir: 'Hibernate/hibernate-core/'
       name: 'Hibernate Core'
@@ -487,6 +491,8 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
   Hibernate-Validator:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - JBoss-LogManager
     with:
       baseDir: 'Hibernate/hibernate-validator/'
       name: 'Hibernate Validator'
