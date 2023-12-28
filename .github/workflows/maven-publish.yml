@@ -370,7 +370,6 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
   Undertow-Parser-Generator:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
-    needs:
     with:
       baseDir: 'JBoss/undertow-parser-generator/'
       name: 'Undertow Generator'
