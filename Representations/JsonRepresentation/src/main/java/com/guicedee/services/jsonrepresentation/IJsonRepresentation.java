@@ -160,6 +160,15 @@ public interface IJsonRepresentation<J> extends Serializable
 						.readValue(file);
 	}
 	
+	/**
+	 * Returns the mapped object mapper
+	 * @return
+	 */
+	static ObjectMapper getObjectMapper()
+	{
+		return ObjectMapperBinder.getObjectMapper();
+	}
+	
 	static ObjectReader getJsonObjectReader()
 	{
 		return ObjectMapperBinder.getObjectMapper().reader()

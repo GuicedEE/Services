@@ -584,4 +584,40 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Json-Representation:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Guiced-Inject-Client
+    with:
+      baseDir: 'Representations/JsonRepresentation/'
+      name: 'JSON Representation'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  XML-Representation:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Json-Representation
+    with:
+      baseDir: 'Representations/XmlRepresentation/'
+      name: 'XML Representation'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Excel-Representation:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Json-Representation
+    with:
+      baseDir: 'Representations/ExcelRepresentation/'
+      name: 'Excel Representation'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
 
