@@ -7,9 +7,11 @@ open module com.hazelcast.all {
 	requires static  jdk.unsupported;
 	
 	requires static org.apache.logging.log4j.core;
+	requires static org.sl4fj;
 
 	requires transitive java.xml;
 	requires static org.hibernate.orm.core;
+	requires static com.sun.jna;
 
 	uses com.hazelcast.client.ClientExtension;
 

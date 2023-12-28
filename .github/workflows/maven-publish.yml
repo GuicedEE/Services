@@ -557,4 +557,30 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Hazelcast:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - JCache-Annotations-Guice
+    with:
+      baseDir: 'JCache/hazelcast/'
+      name: 'Hazelcast'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Hazelcast-Hibernate:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - JCache-Annotations-Guice
+      - Hazelcast
+      - Hibernate-Core
+    with:
+      baseDir: 'JCache/hazelcast-hibernate/'
+      name: 'Hazelcast Hibernate'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
 
