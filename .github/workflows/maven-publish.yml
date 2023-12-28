@@ -548,7 +548,7 @@ jobs:
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
   BTM:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/bom-submodules.yml@master
     with:
       baseDir: 'Libraries/BitronixTransactionManager/'
       name: 'BTM'
