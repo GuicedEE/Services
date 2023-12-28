@@ -445,6 +445,16 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  JBoss-LogManager:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'JBoss/jboss-logmanager/'
+      name: 'JBoss Log Manager'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
   RabbitMQ:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     with:
@@ -485,5 +495,30 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-
+  Hibernate-JCache:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - JCache-Annotations-Guice
+      - Hibernate-Core
+    with:
+      baseDir: 'Hibernate/hibernate-jcache/'
+      name: 'Hibernate JCache'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Hibernate-C3PO:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - JCache-Annotations-Guice
+      - Hibernate-Core
+    with:
+      baseDir: 'Hibernate/hibernate-c3p0/'
+      name: 'Hibernate C3P0'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
 

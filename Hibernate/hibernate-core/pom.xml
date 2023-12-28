@@ -24,7 +24,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.jboss.logmanager</groupId>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>jboss-logmanager</artifactId>
         </dependency>
 

@@ -1,0 +1,264 @@
+<!--
+  ~ Copyright (c) 2008-2018, Hazelcast, Inc. All Rights Reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  --><!--
+  - Licensed under the Apache License, Version 2.0 (the "License");
+  - you may not use this file except in compliance with the License.
+  - You may obtain a copy of the License at
+  -
+  - http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software
+  - distributed under the License is distributed on an "AS IS" BASIS,
+  - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  - See the License for the specific language governing permissions and
+  - limitations under the License.
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.guicedee</groupId>
+        <artifactId>dev-kit</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+        <relativePath>../../../</relativePath>
+    </parent>
+
+    <groupId>com.guicedee.services</groupId>
+    <artifactId>hazelcast-hibernate</artifactId>
+    <name>hazelcast-hibernate</name>
+    <!--<version>${hazelcast.hibernate.version}</version>-->
+    <version>2.0.0-SNAPSHOT</version>
+    <description>Kubernetes Service Discovery for Hazelcast Discovery SPI</description>
+    <url>http://github.com/hazelcast/hazelcast-kubernetes</url>
+    <inceptionYear>2015</inceptionYear>
+    <packaging>jar</packaging>
+
+    <scm>
+        <connection>scm:git:git://github.com/hazelcast/hazelcast-kubernetes.git</connection>
+        <developerConnection>scm:git:git@github.com:hazelcast/hazelcast-kubernetes.git</developerConnection>
+        <url>https://github.com/hazelcast/hazelcast-kubernetes/</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>cengelbert</id>
+            <name>Christoph Engelbert (@noctarius2k)</name>
+            <email>noctarius@apache.org</email>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>APACHE LICENSE 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/hazelcast/hazelcast-kubernetes/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>https://hazelcast-l337.ci.cloudbees.com/job/Kubernetes-pr-builder/</url>
+    </ciManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>cache-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>hazelcast-all</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-hibernate53</artifactId>
+            <optional>true</optional>
+            <version>${hazelcast.hibernate.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>prepare</id>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>com.hazelcast:hazelcast-hibernate53:*</include>
+                                </includes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>module-info.java</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>META-INF/services/*</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+
+                            <relocations>
+                                <relocation>
+                                    <pattern>javax.persistence</pattern>
+                                    <shadedPattern>jakarta.persistence</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.xml.bind</pattern>
+                                    <shadedPattern>jakarta.xml.bind</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>META-INF.services_</pattern>
+                                    <shadedPattern>META-INF.services</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+
+                <configuration>
+                    <flattenMode>ossrh</flattenMode>
+                    <flattenDependencyMode>direct</flattenDependencyMode>
+                    <detail>true</detail>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenedPomFilename>flatter.pom</flattenedPomFilename>
+                </configuration>
+                <executions>
+                    <!-- enable flattening -->
+                    <execution>
+                        <id>flatten</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <!-- ensure proper cleanup -->
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.coderplus.maven.plugins</groupId>
+                <artifactId>copy-rename-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-file</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <sourceFile>flatter.pom</sourceFile>
+                            <destinationFile>dependency-reduced-pom.xml</destinationFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>jdk9</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>hibernate-bom</artifactId>
+                        <version>${guicedee.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+        <profile>
+            <id>jdk8</id>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guicedee</groupId>
+                        <artifactId>hibernate-bom</artifactId>
+                        <version>${guicedee.version}</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+    </profiles>
+
+
+</project>

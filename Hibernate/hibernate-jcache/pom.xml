@@ -1,43 +1,48 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
-    </properties>
-
     <groupId>com.guicedee.services</groupId>
-    <artifactId>hibernate-jpamodelgen</artifactId>
+    <artifactId>hibernate-jcache</artifactId>
     <packaging>jar</packaging>
     <!--<version>${maven.hibernate.version}</version>-->
     <version>2.0.0-SNAPSHOT</version>
-    <name>hibernate-jpamodelgen</name>
-    <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by</description>
+    <name>hibernate-jcache</name>
+    <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by
+    </description>
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>jakarta.activation</groupId>
-            <artifactId>jakarta.activation-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>hibernate-core</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
-            <artifactId>jboss-logmanager</artifactId>
+            <artifactId>cache-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>cache-annotations-ri-guice</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate.orm</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -46,30 +51,33 @@
         </dependency>
 
         <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>checker-qual</artifactId>
-            <optional>true</optional>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-jpamodelgen</artifactId>
-            <version>${maven.hibernate.version}</version>
-            <optional>true</optional>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+        </dependency>
+
     </dependencies>
+
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <inherited>true</inherited>
                 <executions>
                     <execution>
                         <id>shade</id>
@@ -80,13 +88,13 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.hibernate.orm:hibernate-jpamodelgen:*</include>
+                                    <include>org.hibernate.orm:hibernate-jcache:*</include>
                                 </includes>
                             </artifactSet>
                             <relocations>
                                 <relocation>
-                                    <pattern>jakarta.annotation.processing.</pattern>
-                                    <shadedPattern>jakarta.annotation.</shadedPattern>
+                                    <pattern>META-INF.services_</pattern>
+                                    <shadedPattern>META-INF.services</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -139,21 +147,7 @@
             </dependency>
             <dependency>
                 <groupId>com.guicedee</groupId>
-                <artifactId>jboss-bom</artifactId>
-                <version>${guicedee.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>com.guicedee</groupId>
                 <artifactId>standalone-bom</artifactId>
-                <version>${guicedee.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>com.guicedee</groupId>
-                <artifactId>google-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>

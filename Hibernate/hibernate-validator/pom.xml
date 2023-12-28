@@ -28,9 +28,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging-annotations</artifactId>
-            <scope>provided</scope>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jboss-logmanager</artifactId>
         </dependency>
 
         <dependency>
