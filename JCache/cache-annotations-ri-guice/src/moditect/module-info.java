@@ -1,10 +1,9 @@
 module cache.annotations.ri.guice {
-	requires com.google.guice;
 	requires java.logging;
 
 	requires transitive cache.annotations.ri.common;
 	
-	requires com.guicedee.guicedinjection;
+	requires com.guicedee.client;
 
 	provides com.guicedee.guicedinjection.interfaces.IGuiceModule with org.jsr107.ri.annotations.guice.module.CacheAnnotationsModule;
 	

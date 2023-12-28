@@ -418,7 +418,7 @@ jobs:
   OpenPDF:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     with:
-      baseDir: 'Libraries/openpdf'
+      baseDir: 'Libraries/openpdf/'
       name: 'Open PDF'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
