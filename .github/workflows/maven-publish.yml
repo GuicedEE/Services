@@ -357,7 +357,9 @@ jobs:
   Guiced-Inject-Client:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     needs:
-      - JCache-Annotations-Common
+      - AOP
+      - Guava
+      - Guice
     with:
       baseDir: 'guice-inject-client/'
       name: 'Guice Inject Client'
