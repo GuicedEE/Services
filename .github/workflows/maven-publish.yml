@@ -310,3 +310,14 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  JavaNRSerialPort:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs: JNA-Platform
+    with:
+      baseDir: 'JNI/nrjavaserial'
+      name: 'Java NR Serial Port'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}

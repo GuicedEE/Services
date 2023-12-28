@@ -1,4 +1,5 @@
-package org.dom4j;
+package gnu.io;
 
 public class JavadocGenerator
-{}
+{
+}
