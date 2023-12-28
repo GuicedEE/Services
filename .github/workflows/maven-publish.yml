@@ -1,6 +1,7 @@
 name: Maven Package (BOM)
 on:
   workflow_dispatch:
+  push:
 jobs:
   AOP:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
@@ -261,6 +262,49 @@ jobs:
     with:
       baseDir: 'Libraries/uadetector-resources/'
       name: 'UA Detector Resources'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  JNA-Platform:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'JNI/jna-platform/'
+      name: 'JNA Platform'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Azure-Identity:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'Database/msal4j/'
+      name: 'Microsoft Azure Identity'
+    needs: JNA-Platform
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  MSSQL-JDBC:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Azure-Identity
+    with:
+      baseDir: 'Database/mssql-jdbc/'
+      name: 'SQL Server JDBC'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Postgres-SQL:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'Database/postgresql/'
+      name: 'Postgres SQL'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}

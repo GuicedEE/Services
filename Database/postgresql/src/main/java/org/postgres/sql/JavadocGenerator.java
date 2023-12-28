@@ -1,3 +1,3 @@
-package org.apache.xalan;
+package org.postgres.sql;
 
 public class JavadocGenerator {}
