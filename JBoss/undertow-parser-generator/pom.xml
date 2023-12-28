@@ -35,6 +35,11 @@
     <!--<version>${undertow.version}</version>-->
     <description>An annotation processor that is used to generate the HTTP parser</description>
     <version>2.0.0-SNAPSHOT</version>
+    <properties>
+        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+    </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>io.undertow</groupId>
