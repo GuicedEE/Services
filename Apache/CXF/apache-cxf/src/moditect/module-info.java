@@ -1,8 +1,8 @@
 module org.apache.cxf {
 
 	requires transitive com.fasterxml.jackson.databind;
-	requires transitive com.fasterxml.jackson.jakarta.rs.json;
-	requires transitive com.fasterxml.jackson.jakarta.rs.xml;
+//	requires transitive com.fasterxml.jackson.jakarta.rs.json;
+//	requires transitive com.fasterxml.jackson.jakarta.rs.xml;
 	requires transitive jakarta.servlet;
 	requires transitive org.apache.commons.io;
 
@@ -10,25 +10,22 @@ module org.apache.cxf {
 
 	requires jakarta.annotation;
 	requires static java.management;
-	requires java.desktop;
-	
-
-	requires java.rmi;
-
+	//requires java.desktop;
+//	requires java.rmi;
 	requires org.slf4j;
 	
 //	requires xalan;
 
 	//requires org.apache.xerces;
 	
-	requires static org.bouncycastle.pkix;
+//	requires static org.bouncycastle.pkix;
 
-	requires transitive jakarta.ws.rs;
-	requires transitive jakarta.xml.ws;
-	requires transitive jakarta.jws;
-	requires transitive jakarta.xml.soap;
+//	requires transitive jakarta.ws.rs;
+//	requires transitive jakarta.xml.ws;
+//	requires transitive jakarta.jws;
+//	requires transitive jakarta.xml.soap;
 	
-	requires transitive com.guicedee.services.openapi;
+//	requires transitive com.guicedee.services.openapi;
 	requires transitive org.apache.commons.lang3;
 	requires transitive jakarta.validation;
 
@@ -68,11 +65,11 @@ module org.apache.cxf {
 
 	exports org.apache.cxf.transport.servlet.servicelist;
 
-	exports org.apache.cxf.rs.security.jose.common;
+	/*exports org.apache.cxf.rs.security.jose.common;
 	exports org.apache.cxf.rs.security.jose.jwa;
 	exports org.apache.cxf.rs.security.jose.jwk;
 	exports org.apache.cxf.rs.security.jose.jws;
-	exports org.apache.cxf.rs.security.jose.jwt;
+	exports org.apache.cxf.rs.security.jose.jwt;*/
 	
 	/*exports org.apache.cxf.rs.security.saml.sso;
 	exports org.apache.cxf.sts.rest;
@@ -90,41 +87,41 @@ module org.apache.cxf {
 
 	
 
-	opens org.apache.cxf.rs.security.oauth2.services;
+/*	opens org.apache.cxf.rs.security.oauth2.services;
 	opens org.apache.cxf.rs.security.oauth2.provider to com.google.guice;
 	opens org.apache.cxf.rs.security.oauth2.filters to com.google.guice;
 	opens org.apache.cxf.rs.security.oauth2.common;
-	opens org.apache.cxf.rs.security.oauth2.client;
+	opens org.apache.cxf.rs.security.oauth2.client;*/
 
-	opens org.apache.cxf.rs.security.oauth.services;
-	opens org.apache.cxf.rs.security.oauth.filters to com.google.guice;
+/*	opens org.apache.cxf.rs.security.oauth.services;
+	opens org.apache.cxf.rs.security.oauth.filters to com.google.guice;*/
 
 
 //	exports org.apache.cxf.transport.http_undertow;
 //	exports org.glassfish.jersey.internal to java.ws.rs;
 
 	//Filters and Providers
-	opens org.apache.cxf.jaxrs.provider.json to com.google.guice;
+	//opens org.apache.cxf.jaxrs.provider.json to com.google.guice;
 	//opens org.apache.cxf.jaxrs.provider.xmlbeans to com.google.guice;
-	opens org.apache.cxf.jaxrs.provider to com.google.guice;
-	opens org.apache.cxf.jaxrs.ext.search to com.google.guice;
-	opens org.apache.cxf.jaxrs.validation to com.google.guice;
-	opens org.apache.cxf.rs.security.saml.sso.state to com.google.guice;
-	opens org.apache.cxf.rs.security.saml.sso to com.google.guice;
+//	opens org.apache.cxf.jaxrs.provider to com.google.guice;
+//	opens org.apache.cxf.jaxrs.ext.search to com.google.guice;
+//opens org.apache.cxf.jaxrs.validation to com.google.guice;
+	//opens org.apache.cxf.rs.security.saml.sso.state to com.google.guice;
+//	opens org.apache.cxf.rs.security.saml.sso to com.google.guice;
 
-	opens org.apache.cxf.jaxrs.provider.aegis to com.google.guice;
-	opens org.apache.cxf.jaxrs.provider.atom to com.google.guice;
+//	opens org.apache.cxf.jaxrs.provider.aegis to com.google.guice;
+//	opens org.apache.cxf.jaxrs.provider.atom to com.google.guice;
 	
-	exports org.apache.cxf.jaxrs.provider.json ;
+	//exports org.apache.cxf.jaxrs.provider.json ;
 	//exports org.apache.cxf.jaxrs.provider.xmlbeans ;
-	exports org.apache.cxf.jaxrs.provider ;
-	exports org.apache.cxf.jaxrs.ext.search ;
-	exports org.apache.cxf.jaxrs.validation ;
-	exports org.apache.cxf.rs.security.saml.sso.state ;
-	exports org.apache.cxf.rs.security.saml.sso ;
+//	exports org.apache.cxf.jaxrs.provider ;
+//	exports org.apache.cxf.jaxrs.ext.search ;
+//	exports org.apache.cxf.jaxrs.validation ;
+//	exports org.apache.cxf.rs.security.saml.sso.state ;
+// exports org.apache.cxf.rs.security.saml.sso ;
 	
-	exports org.apache.cxf.jaxrs.provider.aegis ;
-	exports org.apache.cxf.jaxrs.provider.atom ;
+//	exports org.apache.cxf.jaxrs.provider.aegis ;
+//	exports org.apache.cxf.jaxrs.provider.atom ;
 
 
 	uses jakarta.ws.rs.ext.MessageBodyWriter;
@@ -141,33 +138,33 @@ module org.apache.cxf {
 
 //	opens org.glassfish.jersey.server.wadl.internal  to java.ws.rs;
 
-	opens org.apache.cxf.ws.addressing to jakarta.xml.bind;
+//	opens org.apache.cxf.ws.addressing to jakarta.xml.bind;
 
-	provides jakarta.xml.ws.spi.Provider with org.apache.cxf.jaxws22.spi.ProviderImpl;
+//	provides jakarta.xml.ws.spi.Provider with org.apache.cxf.jaxws22.spi.ProviderImpl;
 
 	//provides org.apache.cxf.jaxrs.openapi.JaxRs2Extension with org.apache.cxf.jaxrs.openapi.JaxRs2Extension;
-	provides jakarta.ws.rs.sse.SseEventSource.Builder with org.apache.cxf.jaxrs.sse.client.SseEventSourceBuilderImpl;
+//	provides jakarta.ws.rs.sse.SseEventSource.Builder with org.apache.cxf.jaxrs.sse.client.SseEventSourceBuilderImpl;
 
-	uses org.apache.cxf.jaxrs.ext.JAXRSServerFactoryCustomizationExtension;
-	provides org.apache.cxf.jaxrs.ext.JAXRSServerFactoryCustomizationExtension with org.apache.cxf.jaxrs.sse.ext.SseTransportCustomizationExtension;
+//	uses org.apache.cxf.jaxrs.ext.JAXRSServerFactoryCustomizationExtension;
+//	provides org.apache.cxf.jaxrs.ext.JAXRSServerFactoryCustomizationExtension with org.apache.cxf.jaxrs.sse.ext.SseTransportCustomizationExtension;
 
-	provides com.sun.xml.ws.spi.db.BindingContextFactory with com.sun.xml.ws.db.glassfish.JAXBRIContextFactory;
-	provides jakarta.ws.rs.client.ClientBuilder with org.apache.cxf.jaxrs.client.spec.ClientBuilderImpl;
+//	provides com.sun.xml.ws.spi.db.BindingContextFactory with com.sun.xml.ws.db.glassfish.JAXBRIContextFactory;
+//	provides jakarta.ws.rs.client.ClientBuilder with org.apache.cxf.jaxrs.client.spec.ClientBuilderImpl;
 
-	provides jakarta.ws.rs.ext.RuntimeDelegate with org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl;
+//	provides jakarta.ws.rs.ext.RuntimeDelegate with org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl;
 
-	provides jakarta.xml.soap.MessageFactory with com.sun.xml.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl,
-			                                       com.sun.xml.messaging.saaj.soap.ver1_2.SOAPMessageFactory1_2Impl;
-	provides jakarta.xml.soap.SAAJMetaFactory with com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl;
-	provides jakarta.xml.soap.SOAPConnectionFactory with com.sun.xml.messaging.saaj.client.p2p.HttpSOAPConnectionFactory;
-	provides jakarta.xml.soap.SOAPFactory with com.sun.xml.messaging.saaj.soap.ver1_1.SOAPFactory1_1Impl,
-			                                    com.sun.xml.messaging.saaj.soap.ver1_2.SOAPFactory1_2Impl;
+// provides jakarta.xml.soap.MessageFactory with com.sun.xml.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl,
+//			                                       com.sun.xml.messaging.saaj.soap.ver1_2.SOAPMessageFactory1_2Impl;
+//	provides jakarta.xml.soap.SAAJMetaFactory with com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl;
+//	provides jakarta.xml.soap.SOAPConnectionFactory with com.sun.xml.messaging.saaj.client.p2p.HttpSOAPConnectionFactory;
+//	provides jakarta.xml.soap.SOAPFactory with com.sun.xml.messaging.saaj.soap.ver1_1.SOAPFactory1_1Impl,
+//			                                    com.sun.xml.messaging.saaj.soap.ver1_2.SOAPFactory1_2Impl;
 
 	//uses org.eclipse.jetty.http.HttpFieldPreEncoder;
 	//provides org.eclipse.jetty.http.HttpFieldPreEncoder with org.eclipse.jetty.http.Http1FieldPreEncoder;
 
-	uses org.opensaml.core.config.Initializer;
-	provides org.opensaml.core.config.Initializer with org.opensaml.saml.config.XMLObjectProviderInitializer,
+//	uses org.opensaml.core.config.Initializer;
+/*	provides org.opensaml.core.config.Initializer with org.opensaml.saml.config.XMLObjectProviderInitializer,
 			org.opensaml.saml.config.SAMLConfigurationInitializer,
 			org.opensaml.security.config.impl.ClientTLSValidationConfiguratonInitializer,
 			org.opensaml.xmlsec.config.JavaCryptoValidationInitializer,
@@ -229,6 +226,6 @@ module org.apache.cxf {
 	provides org.opensaml.xmlsec.signature.support.SignatureValidationProvider with org.opensaml.xmlsec.signature.support.impl.provider.ApacheSantuarioSignatureValidationProviderImpl;
 
 	uses org.opensaml.xmlsec.signature.support.SignerProvider;
-	provides org.opensaml.xmlsec.signature.support.SignerProvider with org.opensaml.xmlsec.signature.support.impl.provider.ApacheSantuarioSignerProviderImpl;
+	provides org.opensaml.xmlsec.signature.support.SignerProvider with org.opensaml.xmlsec.signature.support.impl.provider.ApacheSantuarioSignerProviderImpl;*/
 }
 
