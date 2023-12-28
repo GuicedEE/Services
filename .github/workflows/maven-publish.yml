@@ -425,3 +425,24 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  Metrics:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'MicroProfile/metrics-core/'
+      name: 'MicroProfile Metrics'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  OpenAPI:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    with:
+      baseDir: 'Libraries/swagger/'
+      name: 'Open API'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+
