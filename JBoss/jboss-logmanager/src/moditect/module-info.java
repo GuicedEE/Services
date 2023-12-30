@@ -8,13 +8,15 @@ module org.jboss.logging {
 	requires java.xml;
 	requires java.desktop;
 	requires jakarta.json;
+	//for jdeparser in jboss logging
+	requires jdk.unsupported;
 	
 	requires static org.apache.logging.log4j.core;
 	
 	requires java.compiler;
 	
 	exports org.jboss.logmanager;
-	exports org.jboss.logmanager.config;
+	//exports org.jboss.logmanager.config;
 	exports org.jboss.logmanager.errormanager;
 	exports org.jboss.logmanager.filters;
 	exports org.jboss.logmanager.formatters;

@@ -5,7 +5,7 @@ module org.hibernate.orm.core {
 	requires java.naming;
 	
 	requires transitive jakarta.xml.bind;
-	requires transitive java.transaction;
+	requires transitive jakarta.transaction;
 	requires transitive jakarta.persistence;
 	requires transitive org.hibernate.commons.annotations;
 	requires transitive com.fasterxml.jackson.databind;
@@ -71,8 +71,8 @@ module org.hibernate.orm.core {
 	
 	exports org.hibernate.bytecode.enhance.internal.tracker;
 
-//	exports org.hibernate.engine.jdbc.env.internal to org.jboss.logging;
-//	exports org.hibernate.engine.jdbc.batch to org.jboss.logging;
+	exports org.hibernate.engine.jdbc.env.internal to org.jboss.logging;
+	exports org.hibernate.engine.jdbc.batch to org.jboss.logging;
 
 	exports org.hibernate;
 	//exports org.hibernate.action.internal;
@@ -353,8 +353,8 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.cache.internal;
 	//exports org.hibernate.internal.util;
 
-	//provides com.guicedee.guicedinjection.interfaces.IFileContentsScanner with com.guicedee.services.hibernate.PersistenceFileHandler;
-	//provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with com.guicedee.services.hibernate.PersistenceGuiceConfigurator;
+	//provides com.guicedee.guicedinjection.interfaces.IFileContentsScanner with org.hibernate.boot.archive.internal.PersistenceFileHandler;
+	provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with org.hibernate.boot.archive.internal.GuicedConfigurator;
 	//provides com.guicedee.guicedinjection.interfaces.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
 	//provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
 
@@ -373,6 +373,13 @@ module org.hibernate.orm.core {
 	uses org.hibernate.boot.spi.SessionFactoryBuilderFactory;
 	uses org.hibernate.service.spi.SessionFactoryServiceContributor;
 	uses org.hibernate.boot.model.FunctionContributor;
+	
+	uses org.hibernate.boot.spi.MetadataBuilderContributor;
+	uses org.hibernate.boot.spi.AdditionalMappingContributor;
+	uses org.hibernate.boot.spi.CriteriaBuilderExtension;
+	uses org.hibernate.event.spi.EventManager;
+	
+	uses org.hibernate.query.criteria.spi.CriteriaBuilderExtension;
 
 	provides jakarta.persistence.spi.PersistenceProvider with org.hibernate.jpa.HibernatePersistenceProvider;
 

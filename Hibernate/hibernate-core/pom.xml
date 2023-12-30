@@ -193,10 +193,6 @@
                             </filters>
                             <relocations>
                                 <relocation>
-                                    <pattern>META-INF.services_</pattern>
-                                    <shadedPattern>META-INF.services</shadedPattern>
-                                </relocation>
-                                <relocation>
                                     <pattern>org.antlr</pattern>
                                     <shadedPattern>org.hibernate.relocated.antlr</shadedPattern>
                                 </relocation>
