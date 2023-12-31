@@ -4,8 +4,10 @@ module undertow.websockets.jsr {
 	//exports io.undertow.websockets.jsr.util;
 	exports io.undertow.websockets.jsr.annotated;
 	//exports io.undertow.websockets.jsr.handshake;
-
-	requires jakarta.websocket.api;
+	
+	requires jakarta.websocket;
+	requires jakarta.websocket.client;
+	
 	requires undertow.servlet;
 
 	requires undertow.core;
