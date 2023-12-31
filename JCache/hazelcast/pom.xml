@@ -93,6 +93,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline-terminal</artifactId>
             <version>3.25.0</version>
@@ -210,7 +217,6 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
-
                         <configuration>
                             <artifactSet>
                                 <includes>
@@ -223,48 +229,6 @@
                                     <include>io.dropwizard.metrics:*</include>
                                 </includes>
                             </artifactSet>
-                            <filters>
-                                <filter>
-                                    <artifact>*:*</artifact>
-                                    <excludes>
-                                        <exclude>**/module-info.java</exclude>
-                                        <exclude>module-info.java</exclude>
-                                        <exclude>META-INF/*.SF</exclude>
-                                        <exclude>META-INF/*.DSA</exclude>
-                                        <exclude>META-INF/*.RSA</exclude>
-                                        <exclude>com/hazelcast/hibernate/</exclude>
-                                        <exclude>META-INF/services/*</exclude>
-                                        <exclude>*-default*.xml</exclude>
-                                        <exclude>*-default*.yaml</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
-                            <relocations>
-                                <relocation>
-                                    <pattern>META-INF.services_</pattern>
-                                    <shadedPattern>META-INF.services</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.xml.bind</pattern>
-                                    <shadedPattern>jakarta.xml.bind</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.cache</pattern>
-                                    <shadedPattern>jakarta.cache</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.jms</pattern>
-                                    <shadedPattern>jakarta.jms</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.inject</pattern>
-                                    <shadedPattern>jakarta.inject</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.annotation</pattern>
-                                    <shadedPattern>jakarta.annotation</shadedPattern>
-                                </relocation>
-                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
