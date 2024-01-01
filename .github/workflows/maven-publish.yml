@@ -455,6 +455,59 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  CXF-Security:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - CXF-Core
+    with:
+      baseDir: 'Apache/CXF/apache-cxf-rt-security/'
+      name: 'CXF Security'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  CXF-Http-Transport:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - CXF-Core
+      - CXF-Security
+    with:
+      baseDir: 'Apache/CXF/apache-cxf-rt-transports-http/'
+      name: 'CXF Http Transport'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  CXF-Core:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - Json-Representation
+    with:
+      baseDir: 'Apache/CXF/apache-cxf/'
+      name: 'CXF'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  CXF-Rest:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - CXF-Http-Transport
+    with:
+      baseDir: 'Apache/CXF/apache-cxf-rest/'
+      name: 'CXF Rest'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+
+
+
+
   RabbitMQ:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     with:

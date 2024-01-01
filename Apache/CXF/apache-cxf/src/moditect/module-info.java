@@ -4,8 +4,10 @@ module org.apache.cxf {
 //	requires transitive com.fasterxml.jackson.jakarta.rs.json;
 //	requires transitive com.fasterxml.jackson.jakarta.rs.xml;
 	requires transitive jakarta.servlet;
+	
 	requires transitive org.apache.commons.io;
-
+	requires transitive org.apache.commons.lang3;
+	
 	requires transitive com.google.common;
 
 	requires jakarta.annotation;
@@ -26,44 +28,66 @@ module org.apache.cxf {
 //	requires transitive jakarta.xml.soap;
 	
 //	requires transitive com.guicedee.services.openapi;
-	requires transitive org.apache.commons.lang3;
+
 	requires transitive jakarta.validation;
 
 	requires org.codehaus.stax2;
 	
-
-	exports org.apache.cxf.transports.http.configuration;
-	exports org.apache.cxf.transport.http;
-	exports org.apache.cxf.configuration.jsse;
-
-	exports org.apache.cxf.annotations;
-	exports org.apache.cxf.phase;
-	exports org.apache.cxf.interceptor;
-	exports org.apache.cxf.message;
-	exports org.apache.cxf.jaxws;
-	exports org.apache.cxf.service;
-	exports org.apache.cxf.binding.soap.saaj;
-	exports org.apache.wss4j.common;
-	exports org.apache.cxf.endpoint;
-	exports org.apache.cxf.service.invoker;
-	exports org.apache.cxf.jaxrs.ext;
-	exports org.apache.cxf.jaxrs;
-	exports org.apache.cxf.jaxrs.utils;
+	
 	exports org.apache.cxf;
-	exports org.apache.cxf.frontend;
+	
+	exports org.apache.cxf.common.util;
+	
+	exports org.apache.cxf.annotations;
+/*	exports org.apache.cxf.attachment;
 	exports org.apache.cxf.binding;
-	exports org.apache.cxf.jaxrs.client;
-	exports org.apache.cxf.jaxrs.lifecycle;
-	exports org.apache.cxf.transport.servlet;
-	exports org.apache.cxf.jaxrs.servlet;
-	exports org.apache.cxf.jaxrs.impl;
-	exports org.apache.cxf.binding.soap;
-	exports org.apache.cxf.headers;
-	exports org.apache.cxf.ws.security.wss4j;
-	exports org.apache.wss4j.dom.handler;
-	exports org.apache.wss4j.common.ext;
+	exports org.apache.cxf.bus;
+	exports org.apache.cxf.bus.extension;
+	exports org.apache.cxf.bus.managers;
+	exports org.apache.cxf.bus.resource;
+	
+	exports org.apache.cxf.buslifecycle;
+	*/
+	
+	exports org.apache.cxf.transport;
+	exports org.apache.cxf.transport.common;
+	
+/*	exports org.apache.cxf.configuration;
+	exports org.apache.cxf.configuration.security;
+	exports org.apache.cxf.configuration.jsse;*/
+	
+	exports org.apache.cxf.endpoint;
 
-	exports org.apache.cxf.transport.servlet.servicelist;
+/*	exports org.apache.cxf.phase; */
+	exports org.apache.cxf.interceptor;
+	exports org.apache.cxf.interceptor.security;
+	exports org.apache.cxf.interceptor.security.callback;
+	exports org.apache.cxf.interceptor.transform;
+	exports org.apache.cxf.message;
+	//exports org.apache.cxf.jaxws;
+	exports org.apache.cxf.service;
+
+	exports org.apache.cxf.service.factory;
+	exports org.apache.cxf.service.model;
+	exports org.apache.cxf.service.invoker;
+/*	exports org.apache.cxf.jaxrs.ext;
+	exports org.apache.cxf.jaxrs;
+	exports org.apache.cxf.jaxrs.utils;*/
+	
+	//exports org.apache.cxf.frontend;
+	
+	/*exports org.apache.cxf.jaxrs.client;
+	exports org.apache.cxf.jaxrs.lifecycle;*/
+	/*exports org.apache.cxf.transport.servlet;*/
+	/*exports org.apache.cxf.jaxrs.servlet;
+	exports org.apache.cxf.jaxrs.impl;*/
+	//exports org.apache.cxf.binding.soap;
+//	exports org.apache.cxf.headers;
+	//exports org.apache.cxf.ws.security.wss4j;
+	//exports org.apache.wss4j.dom.handler;
+	//exports org.apache.wss4j.common.ext;
+
+	//exports org.apache.cxf.transport.servlet.servicelist;
 
 	/*exports org.apache.cxf.rs.security.jose.common;
 	exports org.apache.cxf.rs.security.jose.jwa;
@@ -83,7 +107,7 @@ module org.apache.cxf {
 	exports org.apache.cxf.rs.security.oauth2.filters;
 	exports org.apache.cxf.rs.security.oauth2.provider;*/
 
-	exports org.apache.cxf.feature;
+	//exports org.apache.cxf.feature;
 
 	
 
@@ -134,7 +158,7 @@ module org.apache.cxf {
 	uses jakarta.ws.rs.container.ContainerRequestFilter;
 	uses jakarta.ws.rs.container.ContainerResponseFilter;
 	uses jakarta.ws.rs.container.DynamicFeature;
-	uses org.apache.cxf.jaxrs.ext.ContextResolver;
+
 
 //	opens org.glassfish.jersey.server.wadl.internal  to java.ws.rs;
 
