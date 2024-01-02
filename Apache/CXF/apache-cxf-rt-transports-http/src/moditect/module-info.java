@@ -1,6 +1,8 @@
 module org.apache.cxf.rt.transports.http {
 	requires org.apache.cxf;
 	
+	requires java.desktop;
+	
 	requires jakarta.servlet;
 	requires jakarta.xml.bind;
 	
@@ -14,6 +16,7 @@ module org.apache.cxf.rt.transports.http {
 	exports org.apache.cxf.transport.https.httpclient;
 	
 	exports org.apache.cxf.transport.servlet;
+	opens org.apache.cxf.transport.servlet;
 	exports org.apache.cxf.transport.servlet.servicelist;
 	
 	exports org.apache.cxf.transports.http.configuration;

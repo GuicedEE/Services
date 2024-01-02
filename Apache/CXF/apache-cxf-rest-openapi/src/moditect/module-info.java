@@ -9,5 +9,7 @@ module org.apache.cxf.rest.openapi {
 	exports org.apache.cxf.jaxrs.swagger.ui;
 	exports org.apache.cxf.jaxrs.openapi.parse;
 	
+	provides io.swagger.v3.jaxrs2.ext.OpenAPIExtension with org.apache.cxf.jaxrs.openapi.JaxRs2Extension;
+	
 }
 

@@ -26,8 +26,25 @@ module org.apache.cxf {
 
 	requires org.codehaus.stax2;
 	exports org.apache.cxf;
-	//exports org.apache.cxf.common.classloader;
+	exports org.apache.cxf.common.classloader;
+	exports org.apache.cxf.common.annotation;
+	exports org.apache.cxf.common.injection;
+	exports org.apache.cxf.common.logging;
+	exports org.apache.cxf.common.security;
+	exports org.apache.cxf.common.jaxb;
+	exports org.apache.cxf.common.spi;
 	exports org.apache.cxf.common.util;
+	exports org.apache.cxf.common.xmlschema;
+	exports org.apache.cxf.common.i18n;
+	
+	exports org.apache.cxf.resource;
+	exports org.apache.cxf.helpers;
+	exports org.apache.cxf.io;
+	exports org.apache.cxf.ws.addressing;
+	exports org.apache.cxf.security;
+	exports org.apache.cxf.version;
+	exports org.apache.cxf.policy;
+	exports org.apache.cxf.continuations;
 	
 	exports org.apache.cxf.annotations;
 	exports org.apache.cxf.attachment;
@@ -50,7 +67,7 @@ module org.apache.cxf {
 	
 
 
-/*	exports org.apache.cxf.phase; */
+	exports org.apache.cxf.phase;
 	exports org.apache.cxf.interceptor;
 	exports org.apache.cxf.interceptor.security;
 	exports org.apache.cxf.interceptor.security.callback;
