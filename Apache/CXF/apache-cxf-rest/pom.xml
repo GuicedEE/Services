@@ -213,6 +213,12 @@
                                     <include>org.apache.ws.xmlschema</include>
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>schemas</pattern>
+                                    <shadedPattern>schemas.rest</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

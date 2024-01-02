@@ -99,27 +99,6 @@
                                     <include>com.fasterxml.jackson.dataformat:jackson-dataformat-yaml</include>
                                 </includes>
                             </artifactSet>
-                            <filters>
-                                <filter>
-                                    <artifact>*:*</artifact>
-                                    <excludes>
-                                        <exclude>module-info.java</exclude>
-                                        <exclude>META-INF/*.SF</exclude>
-                                        <exclude>META-INF/*.DSA</exclude>
-                                        <exclude>META-INF/*.RSA</exclude>
-                                        <exclude>META-INF/versions/11/**</exclude>
-                                        <exclude>META-INF/versions/9/module-info*</exclude>
-                                        <exclude>META-INF/versions/11/module-info*</exclude>
-                                        <!--<exclude>/META-INF/services</exclude>-->
-                                    </excludes>
-                                </filter>
-                            </filters>
-                            <relocations>
-                                <relocation>
-                                    <pattern>com.guicedee.swagger.jsonoverrides</pattern>
-                                    <shadedPattern>io.swagger.v3.core.util</shadedPattern>
-                                </relocation>
-                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

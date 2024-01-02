@@ -182,6 +182,12 @@
                                     <include>org.apache.cxf:cxf-rt-transports-http</include>
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>schemas</pattern>
+                                    <shadedPattern>schemas.transport.http</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

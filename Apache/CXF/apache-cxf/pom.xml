@@ -214,6 +214,12 @@
                                     <include>org.xmlresolver</include>
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern> org.apache.ws.commons</pattern>
+                                    <shadedPattern>org.apache.shaded.ws.commons</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>

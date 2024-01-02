@@ -145,6 +145,12 @@
                                     <include>org.apache.cxf:cxf-rt-rs-service-description-common-openapi</include>
                                     <include>org.apache.cxf:cxf-rt-rs-service-description-swagger-ui</include>
                                 </includes>
+                                <relocations>
+                                    <relocation>
+                                        <pattern>schemas</pattern>
+                                        <shadedPattern>schemas.openapi</shadedPattern>
+                                    </relocation>
+                                </relocations>
                             </artifactSet>
                         </configuration>
                     </execution>
