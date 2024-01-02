@@ -74,6 +74,7 @@
             <groupId>org.xmlresolver</groupId>
             <artifactId>xmlresolver</artifactId>
             <version>5.2.2</version>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -210,6 +211,7 @@
                                     <include>org.apache.ws.xmlschema</include>
                                     <include>com.sun.msv</include>
                                     <include>xml-resolver</include>
+                                    <include>org.xmlresolver</include>
                                 </includes>
                             </artifactSet>
                         </configuration>

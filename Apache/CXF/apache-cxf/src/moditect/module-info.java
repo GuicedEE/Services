@@ -42,7 +42,7 @@ module org.apache.cxf {
 	exports org.apache.cxf.endpoint;
 	
 	exports org.apache.cxf.transport;
-	exports org.apache.cxf.transport.common;
+	exports org.apache.cxf.transport.common.gzip;
 	
 	exports org.apache.cxf.configuration;
 	exports org.apache.cxf.configuration.security;
