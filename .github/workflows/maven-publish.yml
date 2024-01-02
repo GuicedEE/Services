@@ -482,8 +482,6 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
   CXF-Core:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
-    needs:
-      - Json-Representation
     with:
       baseDir: 'Apache/CXF/apache-cxf/'
       name: 'CXF'
@@ -499,6 +497,19 @@ jobs:
     with:
       baseDir: 'Apache/CXF/apache-cxf-rest/'
       name: 'CXF Rest'
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+  CXF-Rest-OpenAPI:
+    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    needs:
+      - CXF-Rest
+      - OpenAPI
+    with:
+      baseDir: 'Apache/CXF/apache-cxf-rest-openapi/'
+      name: 'CXF OpenAPI'
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}

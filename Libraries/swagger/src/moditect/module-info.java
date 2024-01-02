@@ -13,8 +13,7 @@ module com.guicedee.services.openapi {
 	requires com.fasterxml.jackson.module.jakarta.xmlbind;
 	requires com.fasterxml.jackson.jakarta.rs.base;
 	requires com.fasterxml.jackson.datatype.jsr310;
-	requires com.guicedee.guicedinjection;
-	
+
 	exports com.fasterxml.jackson.jakarta.rs.yaml;
 	opens com.fasterxml.jackson.jakarta.rs.yaml;
 

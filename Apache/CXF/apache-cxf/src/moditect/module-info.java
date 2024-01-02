@@ -9,37 +9,28 @@ module org.apache.cxf {
 	requires transitive org.apache.commons.lang3;
 	
 	requires transitive com.google.common;
-
+	requires transitive jakarta.xml.ws;
+	requires transitive jakarta.ws.rs;
+	requires transitive jakarta.validation;
+	
 	requires jakarta.annotation;
 	requires static java.management;
-	//requires java.desktop;
-//	requires java.rmi;
 	requires org.slf4j;
-	
-//	requires xalan;
-
-	//requires org.apache.xerces;
 	
 //	requires static org.bouncycastle.pkix;
 
-//	requires transitive jakarta.ws.rs;
-//	requires transitive jakarta.xml.ws;
-//	requires transitive jakarta.jws;
-//	requires transitive jakarta.xml.soap;
-	
+
 //	requires transitive com.guicedee.services.openapi;
 
-	requires transitive jakarta.validation;
+
 
 	requires org.codehaus.stax2;
-	
-	
 	exports org.apache.cxf;
-	
+	//exports org.apache.cxf.common.classloader;
 	exports org.apache.cxf.common.util;
 	
 	exports org.apache.cxf.annotations;
-/*	exports org.apache.cxf.attachment;
+	exports org.apache.cxf.attachment;
 	exports org.apache.cxf.binding;
 	exports org.apache.cxf.bus;
 	exports org.apache.cxf.bus.extension;
@@ -47,29 +38,39 @@ module org.apache.cxf {
 	exports org.apache.cxf.bus.resource;
 	
 	exports org.apache.cxf.buslifecycle;
-	*/
+	
+	exports org.apache.cxf.endpoint;
 	
 	exports org.apache.cxf.transport;
 	exports org.apache.cxf.transport.common;
 	
-/*	exports org.apache.cxf.configuration;
+	exports org.apache.cxf.configuration;
 	exports org.apache.cxf.configuration.security;
-	exports org.apache.cxf.configuration.jsse;*/
+	exports org.apache.cxf.configuration.jsse;
 	
-	exports org.apache.cxf.endpoint;
+
 
 /*	exports org.apache.cxf.phase; */
 	exports org.apache.cxf.interceptor;
 	exports org.apache.cxf.interceptor.security;
 	exports org.apache.cxf.interceptor.security.callback;
 	exports org.apache.cxf.interceptor.transform;
+	exports org.apache.cxf.feature;
+	exports org.apache.cxf.feature.validation;
+	exports org.apache.cxf.feature.transform;
+	
+	
 	exports org.apache.cxf.message;
 	//exports org.apache.cxf.jaxws;
 	exports org.apache.cxf.service;
-
 	exports org.apache.cxf.service.factory;
 	exports org.apache.cxf.service.model;
 	exports org.apache.cxf.service.invoker;
+	
+	
+	
+	
+	
 /*	exports org.apache.cxf.jaxrs.ext;
 	exports org.apache.cxf.jaxrs;
 	exports org.apache.cxf.jaxrs.utils;*/

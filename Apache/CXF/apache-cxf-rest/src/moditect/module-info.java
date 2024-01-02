@@ -4,8 +4,6 @@ module org.apache.cxf.rest {
 	requires org.apache.cxf.rt.transports.http;
 	requires org.apache.cxf.rt.security;
 	
-	requires transitive jakarta.ws.rs;
-	
 	requires com.fasterxml.jackson.jakarta.rs.json;
 	
 	exports org.apache.cxf.jaxrs;
