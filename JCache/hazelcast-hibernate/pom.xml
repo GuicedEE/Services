@@ -86,6 +86,14 @@
             <version>${hazelcast.hibernate.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
