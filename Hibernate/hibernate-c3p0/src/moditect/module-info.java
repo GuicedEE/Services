@@ -3,6 +3,8 @@ module org.hibernate.orm.c3p0 {
     exports com.mchange.v2.c3p0;
 
     requires java.sql;
+    requires java.naming;
+    requires java.desktop;
 
     requires transitive org.hibernate.orm.core;
     requires org.jboss.logging;
