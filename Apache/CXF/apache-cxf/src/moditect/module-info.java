@@ -12,8 +12,9 @@ module org.apache.cxf {
 	requires transitive jakarta.xml.ws;
 	requires transitive jakarta.ws.rs;
 	requires transitive jakarta.validation;
+	requires transitive jakarta.annotation;
 	
-	requires jakarta.annotation;
+	
 	requires static java.management;
 	requires org.slf4j;
 	
