@@ -17,16 +17,16 @@
 package org.jsr107.ri.annotations;
 
 
-import jakarta.cache.Cache;
-import jakarta.cache.annotation.CacheKeyGenerator;
-import jakarta.cache.annotation.CacheRemove;
-import jakarta.cache.annotation.CacheResolver;
-import jakarta.cache.annotation.GeneratedCacheKey;
+import javax.cache.Cache;
+import javax.cache.annotation.CacheKeyGenerator;
+import javax.cache.annotation.CacheRemove;
+import javax.cache.annotation.CacheResolver;
+import javax.cache.annotation.GeneratedCacheKey;
 import java.lang.annotation.Annotation;
 
 
 /**
- * Interceptor for {@link jakarta.cache.annotation.CacheRemove}
+ * Interceptor for {@link javax.cache.annotation.CacheRemove}
  *
  * @param <I> The intercepted method invocation
  * @author Rick Hightower
@@ -36,7 +36,7 @@ import java.lang.annotation.Annotation;
 public abstract class AbstractCacheRemoveEntryInterceptor<I> extends AbstractKeyedCacheInterceptor<I, CacheRemoveEntryMethodDetails> {
 
   /**
-   * Handles the {@link Cache#remove(Object)} as specified for the {@link jakarta.cache.annotation.CacheRemove} annotation
+   * Handles the {@link Cache#remove(Object)} as specified for the {@link javax.cache.annotation.CacheRemove} annotation
    *
    * @param cacheContextSource The intercepted invocation
    * @param invocation         The intercepted invocation

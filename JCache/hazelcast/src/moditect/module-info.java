@@ -138,7 +138,7 @@ open module com.hazelcast.all {
 			com.hazelcast.cp.internal.datastructures.RaftDataServiceDescriptorProvider,
 			com.hazelcast.internal.longregister.LongRegisterServiceDescriptorProvider;
 
-	provides jakarta.cache.spi.CachingProvider with com.hazelcast.cache.HazelcastCachingProvider;
+	provides javax.cache.spi.CachingProvider with com.hazelcast.cache.HazelcastCachingProvider;
 
 	//opens com.hazelcast.nio to com.hazelcast.hibernate;
 

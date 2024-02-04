@@ -27,9 +27,9 @@ import java.lang.reflect.Method;
 /**
  * Guice specific cache key invocation context using {@link MethodInvocation}
  *
- * @param <A> The type of annotation this context information is for. One of {@link jakarta.cache.annotation.CacheResult},
- *            {@link jakarta.cache.annotation.CachePut}, {@link jakarta.cache.annotation.CacheRemove}, or
- *            {@link jakarta.cache.annotation.CacheRemoveAll}.
+ * @param <A> The type of annotation this context information is for. One of {@link javax.cache.annotation.CacheResult},
+ *            {@link javax.cache.annotation.CachePut}, {@link javax.cache.annotation.CacheRemove}, or
+ *            {@link javax.cache.annotation.CacheRemoveAll}.
  * @author Michael Stachel
  * @version $Revision$
  */

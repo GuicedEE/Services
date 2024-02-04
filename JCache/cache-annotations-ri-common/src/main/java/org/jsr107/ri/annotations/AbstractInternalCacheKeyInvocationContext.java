@@ -16,7 +16,7 @@
  */
 package org.jsr107.ri.annotations;
 
-import jakarta.cache.annotation.CacheInvocationParameter;
+import javax.cache.annotation.CacheInvocationParameter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -30,9 +30,9 @@ import java.util.List;
  * than creating new immutable Lists.
  * </p>
  * @param <I> The intercepted method invocation
- * @param <A> The type of annotation this context information is for. One of {@link jakarta.cache.annotation.CacheResult},
- *            {@link jakarta.cache.annotation.CachePut}, {@link jakarta.cache.annotation.CacheRemove}, or
- *            {@link jakarta.cache.annotation.CacheRemoveAll}.
+ * @param <A> The type of annotation this context information is for. One of {@link javax.cache.annotation.CacheResult},
+ *            {@link javax.cache.annotation.CachePut}, {@link javax.cache.annotation.CacheRemove}, or
+ *            {@link javax.cache.annotation.CacheRemoveAll}.
  * @author Eric Dalquist
  * @since 1.0
  */
@@ -117,7 +117,7 @@ public abstract class AbstractInternalCacheKeyInvocationContext<I, A extends Ann
 
 
   /* (non-Javadoc)
-   * @see jakarta.cache.annotation.CacheKeyInvocationContext#getKeyParameters()
+   * @see javax.cache.annotation.CacheKeyInvocationContext#getKeyParameters()
    */
   @Override
   public CacheInvocationParameter[] getKeyParameters() {
@@ -125,7 +125,7 @@ public abstract class AbstractInternalCacheKeyInvocationContext<I, A extends Ann
   }
 
   /* (non-Javadoc)
-   * @see jakarta.cache.annotation.CacheKeyInvocationContext#getValueParameter()
+   * @see javax.cache.annotation.CacheKeyInvocationContext#getValueParameter()
    */
   @Override
   public CacheInvocationParameter getValueParameter() {

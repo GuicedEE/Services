@@ -66,7 +66,7 @@ open module org.apache.poi.ooxml {
 
     exports org.apache.poi.schemas.ooxml.system.ooxml;
 
-    exports org.apache.poi.xwpf.converter.pdf;
+/*    exports org.apache.poi.xwpf.converter.pdf;
     exports org.apache.poi.xwpf.converter.pdf.internal;
     exports org.apache.poi.xwpf.converter.pdf.internal.elements;
     exports org.apache.poi.xwpf.converter.core;
@@ -84,7 +84,7 @@ open module org.apache.poi.ooxml {
     exports org.apache.poi.xwpf.converter.core.styles.table;
     exports org.apache.poi.xwpf.converter.core.styles.table.row;
     exports org.apache.poi.xwpf.converter.core.styles.table.cell;
-    exports org.apache.poi.xwpf.converter.core.utils;
+    exports org.apache.poi.xwpf.converter.core.utils;*/
 
 
 

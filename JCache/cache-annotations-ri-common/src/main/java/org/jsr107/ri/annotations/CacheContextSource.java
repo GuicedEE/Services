@@ -31,8 +31,8 @@ import java.lang.reflect.Method;
 public interface CacheContextSource<I> {
 
   /**
-   * Get information about an invocation annotated {@link jakarta.cache.annotation.CacheResult},
-   * {@link jakarta.cache.annotation.CachePut}, or {@link jakarta.cache.annotation.CacheRemove}
+   * Get information about an invocation annotated {@link javax.cache.annotation.CacheResult},
+   * {@link javax.cache.annotation.CachePut}, or {@link javax.cache.annotation.CacheRemove}
    *
    * @param invocation The intercepted invocation
    * @return Information about the invocation
@@ -40,9 +40,9 @@ public interface CacheContextSource<I> {
   InternalCacheKeyInvocationContext<? extends Annotation> getCacheKeyInvocationContext(I invocation);
 
   /**
-   * Get information about an invocation annotated {@link jakarta.cache.annotation.CacheResult},
-   * {@link jakarta.cache.annotation.CachePut}, {@link jakarta.cache.annotation.CacheRemove},
-   * or {@link jakarta.cache.annotation.CacheRemoveAll}
+   * Get information about an invocation annotated {@link javax.cache.annotation.CacheResult},
+   * {@link javax.cache.annotation.CachePut}, {@link javax.cache.annotation.CacheRemove},
+   * or {@link javax.cache.annotation.CacheRemoveAll}
    *
    * @param invocation The intercepted invocation
    * @return Information about the invocation
@@ -50,9 +50,9 @@ public interface CacheContextSource<I> {
   InternalCacheInvocationContext<? extends Annotation> getCacheInvocationContext(I invocation);
 
   /**
-   * Get static information about a method annotated with {@link jakarta.cache.annotation.CacheResult},
-   * {@link jakarta.cache.annotation.CachePut}, {@link jakarta.cache.annotation.CacheRemove},
-   * or {@link jakarta.cache.annotation.CacheRemoveAll}
+   * Get static information about a method annotated with {@link javax.cache.annotation.CacheResult},
+   * {@link javax.cache.annotation.CachePut}, {@link javax.cache.annotation.CacheRemove},
+   * or {@link javax.cache.annotation.CacheRemoveAll}
    *
    * @param method      The annotated method
    * @param targetClass The Class that will be targeted with invocations

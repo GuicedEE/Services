@@ -51,6 +51,9 @@ module org.hibernate.orm.core {
 	//uses org.hibernate.boot.spi.AdditionalMappingContributor;
 	//uses org.hibernate.query.criteria.spi.CriteriaBuilderExtension;
 
+	//6.4
+	uses org.hibernate.bytecode.spi.BytecodeProvider;
+	
 	uses org.hibernate.boot.model.TypeContributor;
 	uses org.hibernate.boot.model.IdGeneratorStrategyInterpreter;
 
@@ -382,6 +385,8 @@ module org.hibernate.orm.core {
 	uses org.hibernate.query.criteria.spi.CriteriaBuilderExtension;
 
 	provides jakarta.persistence.spi.PersistenceProvider with org.hibernate.jpa.HibernatePersistenceProvider;
+	provides org.hibernate.bytecode.spi.BytecodeProvider with org.hibernate.bytecode.internal.bytebuddy.BytecodeProviderImpl;
+
 
 	opens org.hibernate.cache.spi.entry;
 //	opens org.hibernate.query.criteria.internal.path;

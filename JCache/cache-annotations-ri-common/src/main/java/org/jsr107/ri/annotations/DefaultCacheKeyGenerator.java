@@ -16,10 +16,10 @@
  */
 package org.jsr107.ri.annotations;
 
-import jakarta.cache.annotation.CacheInvocationParameter;
-import jakarta.cache.annotation.CacheKeyGenerator;
-import jakarta.cache.annotation.CacheKeyInvocationContext;
-import jakarta.cache.annotation.GeneratedCacheKey;
+import javax.cache.annotation.CacheInvocationParameter;
+import javax.cache.annotation.CacheKeyGenerator;
+import javax.cache.annotation.CacheKeyInvocationContext;
+import javax.cache.annotation.GeneratedCacheKey;
 import java.lang.annotation.Annotation;
 
 /**
@@ -32,7 +32,7 @@ import java.lang.annotation.Annotation;
 public class DefaultCacheKeyGenerator implements CacheKeyGenerator {
 
   /* (non-Javadoc)
-   * @see jakarta.cache.annotation.CacheKeyGenerator#generateCacheKey(jakarta.cache.annotation.CacheInvocationContext)
+   * @see javax.cache.annotation.CacheKeyGenerator#generateCacheKey(javax.cache.annotation.CacheInvocationContext)
    */
   @Override
   public GeneratedCacheKey generateCacheKey(CacheKeyInvocationContext<? extends Annotation> cacheKeyInvocationContext) {

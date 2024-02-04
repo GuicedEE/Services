@@ -42,21 +42,21 @@ public class CacheParameterDetails {
   }
 
   /**
-   * @see jakarta.cache.annotation.CacheInvocationParameter#getRawType()
+   * @see javax.cache.annotation.CacheInvocationParameter#getRawType()
    */
   public Class<?> getRawType() {
     return this.rawType;
   }
 
   /**
-   * @see jakarta.cache.annotation.CacheInvocationParameter#getAnnotations()
+   * @see javax.cache.annotation.CacheInvocationParameter#getAnnotations()
    */
   public Set<Annotation> getAnnotations() {
     return this.annotations;
   }
 
   /**
-   * @see jakarta.cache.annotation.CacheInvocationParameter#getParameterPosition()
+   * @see javax.cache.annotation.CacheInvocationParameter#getParameterPosition()
    */
   public int getParameterPosition() {
     return this.parameterPosition;

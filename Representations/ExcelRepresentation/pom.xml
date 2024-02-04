@@ -21,7 +21,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>apache-poi-ooxml</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -37,7 +36,6 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>json</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <dependency>

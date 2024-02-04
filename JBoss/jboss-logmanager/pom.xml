@@ -204,7 +204,7 @@
 
                                 <relocation>
                                     <pattern>javax.cache</pattern>
-                                    <shadedPattern>jakarta.cache</shadedPattern>
+                                    <shadedPattern>javax.cache</shadedPattern>
                                 </relocation>
 
                                 <relocation>

@@ -1,6 +1,7 @@
 package com.guicedee.guicedservlets.websockets.options;
 
 import com.fasterxml.jackson.annotation.*;
+import jakarta.websocket.Session;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +27,7 @@ public class WebSocketMessageReceiver<J extends WebSocketMessageReceiver<J>>
 	private String broadcastGroup;
 	private Map<String, Object> data = new HashMap<>();
 	private String webSocketSessionId;
+	private Session session;
 	
 	public WebSocketMessageReceiver()
 	{

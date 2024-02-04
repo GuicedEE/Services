@@ -17,9 +17,9 @@
 
 package org.jsr107.ri.annotations;
 
-import jakarta.cache.Cache;
-import jakarta.cache.annotation.CacheInvocationContext;
-import jakarta.cache.annotation.CacheResolver;
+import javax.cache.Cache;
+import javax.cache.annotation.CacheInvocationContext;
+import javax.cache.annotation.CacheResolver;
 import java.lang.annotation.Annotation;
 
 /**
@@ -43,7 +43,7 @@ public class DefaultCacheResolver implements CacheResolver {
   }
 
   /* (non-Javadoc)
-   * @see jakarta.cache.annotation.CacheResolver#resolveCache(jakarta.cache.annotation.CacheInvocationContext)
+   * @see javax.cache.annotation.CacheResolver#resolveCache(javax.cache.annotation.CacheInvocationContext)
    */
   @Override
   @SuppressWarnings("unchecked")

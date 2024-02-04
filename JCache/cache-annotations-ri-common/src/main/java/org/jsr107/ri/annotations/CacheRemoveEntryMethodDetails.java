@@ -16,14 +16,14 @@
  */
 package org.jsr107.ri.annotations;
 
-import jakarta.cache.annotation.CacheKeyGenerator;
-import jakarta.cache.annotation.CacheMethodDetails;
-import jakarta.cache.annotation.CacheRemove;
-import jakarta.cache.annotation.CacheResolver;
+import javax.cache.annotation.CacheKeyGenerator;
+import javax.cache.annotation.CacheMethodDetails;
+import javax.cache.annotation.CacheRemove;
+import javax.cache.annotation.CacheResolver;
 import java.util.List;
 
 /**
- * Details for a method annotated with {@link jakarta.cache.annotation.CacheRemove}
+ * Details for a method annotated with {@link javax.cache.annotation.CacheRemove}
  *
  * @author Eric Dalquist
  * @since 1.0

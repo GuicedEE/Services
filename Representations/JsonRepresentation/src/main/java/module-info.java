@@ -1,5 +1,6 @@
 module com.guicedee.jsonrepresentation {
 	exports com.guicedee.services.jsonrepresentation;
+	exports com.guicedee.services.jsonrepresentation.json;
 	
 	requires com.fasterxml.jackson.databind;
 	

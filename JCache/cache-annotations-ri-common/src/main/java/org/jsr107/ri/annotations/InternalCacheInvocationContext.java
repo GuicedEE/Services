@@ -16,16 +16,16 @@
  */
 package org.jsr107.ri.annotations;
 
-import jakarta.cache.annotation.CacheInvocationContext;
+import javax.cache.annotation.CacheInvocationContext;
 import java.lang.annotation.Annotation;
 
 /**
  * RI Internal extension of {@link CacheInvocationContext} that provides access to
  * an {@link AbstractStaticCacheInvocationContext}.
  *
- * @param <A> The type of annotation this context information is for. One of {@link jakarta.cache.annotation.CacheResult},
- *            {@link jakarta.cache.annotation.CachePut}, {@link jakarta.cache.annotation.CacheRemove}, or
- *            {@link jakarta.cache.annotation.CacheRemoveAll}.
+ * @param <A> The type of annotation this context information is for. One of {@link javax.cache.annotation.CacheResult},
+ *            {@link javax.cache.annotation.CachePut}, {@link javax.cache.annotation.CacheRemove}, or
+ *            {@link javax.cache.annotation.CacheRemoveAll}.
  * @author Eric Dalquist
  * @since 1.0
  */

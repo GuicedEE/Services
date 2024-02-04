@@ -16,9 +16,9 @@
  */
 package org.jsr107.ri.annotations;
 
-import jakarta.cache.annotation.CacheKeyGenerator;
-import jakarta.cache.annotation.CacheMethodDetails;
-import jakarta.cache.annotation.CacheResolver;
+import javax.cache.annotation.CacheKeyGenerator;
+import javax.cache.annotation.CacheMethodDetails;
+import javax.cache.annotation.CacheResolver;
 import java.lang.annotation.Annotation;
 import java.util.List;
 
@@ -26,9 +26,9 @@ import java.util.List;
 /**
  * Details common to all annotated methods that generate a cache key
  *
- * @param <A> The type of annotation this context information is for. One of {@link jakarta.cache.annotation.CacheResult},
- *            {@link jakarta.cache.annotation.CachePut}, {@link jakarta.cache.annotation.CacheRemove}, or
- *            {@link jakarta.cache.annotation.CacheRemoveAll}.
+ * @param <A> The type of annotation this context information is for. One of {@link javax.cache.annotation.CacheResult},
+ *            {@link javax.cache.annotation.CachePut}, {@link javax.cache.annotation.CacheRemove}, or
+ *            {@link javax.cache.annotation.CacheRemoveAll}.
  * @author Eric Dalquist
  * @since 1.0
  */

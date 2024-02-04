@@ -16,7 +16,7 @@
  */
 package org.jsr107.ri.annotations;
 
-import jakarta.cache.annotation.CacheInvocationParameter;
+import javax.cache.annotation.CacheInvocationParameter;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
@@ -42,7 +42,7 @@ public class CacheInvocationParameterImpl implements CacheInvocationParameter {
   }
 
   /* (non-Javadoc)
-   * @see jakarta.cache.annotation.CacheInvocationParameter#getRawType()
+   * @see javax.cache.annotation.CacheInvocationParameter#getRawType()
    */
   @Override
   public Class<?> getRawType() {
@@ -50,7 +50,7 @@ public class CacheInvocationParameterImpl implements CacheInvocationParameter {
   }
 
   /* (non-Javadoc)
-   * @see jakarta.cache.annotation.CacheInvocationParameter#getValue()
+   * @see javax.cache.annotation.CacheInvocationParameter#getValue()
    */
   @Override
   public Object getValue() {
@@ -58,7 +58,7 @@ public class CacheInvocationParameterImpl implements CacheInvocationParameter {
   }
 
   /* (non-Javadoc)
-   * @see jakarta.cache.annotation.CacheInvocationParameter#getAnnotations()
+   * @see javax.cache.annotation.CacheInvocationParameter#getAnnotations()
    */
   @Override
   public Set<Annotation> getAnnotations() {
@@ -66,7 +66,7 @@ public class CacheInvocationParameterImpl implements CacheInvocationParameter {
   }
 
   /* (non-Javadoc)
-   * @see jakarta.cache.annotation.CacheInvocationParameter#getParameterPosition()
+   * @see javax.cache.annotation.CacheInvocationParameter#getParameterPosition()
    */
   @Override
   public int getParameterPosition() {

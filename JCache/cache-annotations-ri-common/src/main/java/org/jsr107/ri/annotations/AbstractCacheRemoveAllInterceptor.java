@@ -17,9 +17,9 @@
 package org.jsr107.ri.annotations;
 
 
-import jakarta.cache.Cache;
-import jakarta.cache.annotation.CacheRemoveAll;
-import jakarta.cache.annotation.CacheResolver;
+import javax.cache.Cache;
+import javax.cache.annotation.CacheRemoveAll;
+import javax.cache.annotation.CacheResolver;
 import java.lang.annotation.Annotation;
 
 

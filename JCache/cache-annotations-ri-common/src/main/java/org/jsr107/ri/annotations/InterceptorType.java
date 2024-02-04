@@ -25,19 +25,19 @@ package org.jsr107.ri.annotations;
  */
 public enum InterceptorType {
   /**
-   * {@link jakarta.cache.annotation.CacheResult} advice
+   * {@link javax.cache.annotation.CacheResult} advice
    */
   CACHE_RESULT,
   /**
-   * {@link jakarta.cache.annotation.CachePut} advice
+   * {@link javax.cache.annotation.CachePut} advice
    */
   CACHE_PUT,
   /**
-   * {@link jakarta.cache.annotation.CacheRemove} advice
+   * {@link javax.cache.annotation.CacheRemove} advice
    */
   CACHE_REMOVE_ENTRY,
   /**
-   * {@link jakarta.cache.annotation.CacheRemoveAll} advice
+   * {@link javax.cache.annotation.CacheRemoveAll} advice
    */
   CACHE_REMOVE_ALL;
 }
