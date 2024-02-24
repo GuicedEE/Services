@@ -1,8 +1,6 @@
 module com.google.common {
 	requires transitive java.logging;
-
-	requires java.compiler;
-
+	
 	exports com.google.common.annotations;
 	exports com.google.common.base;
 	exports com.google.common.base.internal;
@@ -23,17 +21,19 @@ module com.google.common {
 
 	exports com.google.protobuf;
 
+/*
 	exports com.google.zxing;
 	exports com.google.zxing.common;
 	exports com.google.zxing.oned;
 	exports com.google.zxing.client.j2se;
 	exports com.google.zxing.qrcode.decoder;
+*/
 
-	exports com.google.errorprone.annotations;
+	// exports com.google.errorprone.annotations;
 	
 	requires transitive jakarta.activation;
 	
-	
-	requires java.desktop;
-	requires jdk.unsupported;
+	requires static java.desktop;
+	requires static jdk.unsupported;
+	requires static java.compiler;
 }

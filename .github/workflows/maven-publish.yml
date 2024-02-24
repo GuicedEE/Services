@@ -129,16 +129,6 @@ jobs:
       USER_TOKEN: ${{secrets.USER_TOKEN}}
       SONA_USERNAME: ${{secrets.SONA_USERNAME}}
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-  Commons-Codec:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
-    with:
-      baseDir: 'Apache/Commons/commons-codec/'
-      name: 'Commons Codec'
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
   Commons-CSV:
     uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
     with:
@@ -176,7 +166,6 @@ jobs:
       name: 'Apache POI'
     needs:
       - Commons-Math
-      - Commons-Codec
       - Commons-Collections
     secrets:
       USERNAME: ${{secrets.USERNAME}}
