@@ -1,14 +1,18 @@
 name: Maven Package
 on:
   workflow_dispatch:
-  push:
+    inputs:
+      centralRelease:
+        type: boolean
+        description: Run a release to maven central
+        default: false
 jobs:
   AOP:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Google/aop/'
       name: 'AOP Alliance'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -21,7 +25,7 @@ jobs:
     with:
       baseDir: 'Google/guava/'
       name: 'Guava'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -37,7 +41,7 @@ jobs:
     with:
       baseDir: 'Google/guice-core/'
       name: 'Guice'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -52,7 +56,7 @@ jobs:
     with:
       baseDir: 'Google/guice-persist/'
       name: 'Guice Persist'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -67,7 +71,7 @@ jobs:
     with:
       baseDir: 'Google/guice-servlet/'
       name: 'Guice Servlet'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -82,7 +86,7 @@ jobs:
     with:
       baseDir: 'Google/guice-assistedinject/'
       name: 'Guice Assisted Inject'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -97,7 +101,7 @@ jobs:
     with:
       baseDir: 'Google/guice-grapher/'
       name: 'Guice Grapher'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -112,7 +116,7 @@ jobs:
     with:
       baseDir: 'Google/guice-jmx/'
       name: 'Guice JMX'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -127,7 +131,7 @@ jobs:
     with:
       baseDir: 'Google/guice-jndi/'
       name: 'Guice JNDI'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -140,7 +144,7 @@ jobs:
     with:
       baseDir: 'Apache/Commons/commons-collections/'
       name: 'Commons Collections'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -154,7 +158,7 @@ jobs:
     with:
       baseDir: 'Apache/Commons/commons-beanutils/'
       name: 'Commons Bean Utilities'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -167,7 +171,7 @@ jobs:
     with:
       baseDir: 'Apache/Commons/commons-csv/'
       name: 'Commons CSV'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -180,7 +184,7 @@ jobs:
     with:
       baseDir: 'Apache/Commons/commons-fileupload/'
       name: 'Commons File Upload'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -193,7 +197,7 @@ jobs:
     with:
       baseDir: 'Apache/Commons/commons-math/'
       name: 'Commons Math'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -206,7 +210,7 @@ jobs:
     with:
       baseDir: 'Apache/POI/apache-poi/'
       name: 'Apache POI'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     needs:
       - Commons-Math
       - Commons-Collections
@@ -222,7 +226,7 @@ jobs:
     with:
       baseDir: 'Apache/POI/apache-poi-ooxml/'
       name: 'Apache POI OOXML'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     needs:
       - Apache-POI
     secrets:
@@ -237,7 +241,7 @@ jobs:
     with:
       baseDir: 'Libraries/jandex/'
       name: 'Jandex'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -250,7 +254,7 @@ jobs:
     with:
       baseDir: 'Libraries/javassist/'
       name: 'JavAssist'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -263,7 +267,7 @@ jobs:
     with:
       baseDir: 'Libraries/json/'
       name: 'json'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -276,7 +280,7 @@ jobs:
     with:
       baseDir: 'Libraries/mapstruct/'
       name: 'mapstruct'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -289,7 +293,7 @@ jobs:
     with:
       baseDir: 'Jakarta/jakarta-security-jacc/'
       name: 'JACC'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -302,7 +306,7 @@ jobs:
     with:
       baseDir: 'Libraries/uadetector-core/'
       name: 'UA Detector Core'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -317,7 +321,7 @@ jobs:
     with:
       baseDir: 'Libraries/uadetector-resources/'
       name: 'UA Detector Resources'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -330,7 +334,7 @@ jobs:
     with:
       baseDir: 'JNI/jna-platform/'
       name: 'JNA Platform'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -343,7 +347,7 @@ jobs:
     with:
       baseDir: 'Database/msal4j/'
       name: 'Microsoft Azure Identity'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     needs: JNA-Platform
     secrets:
       USERNAME: ${{secrets.USERNAME}}
@@ -359,7 +363,7 @@ jobs:
     with:
       baseDir: 'Database/mssql-jdbc/'
       name: 'SQL Server JDBC'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -372,7 +376,7 @@ jobs:
     with:
       baseDir: 'Database/postgresql/'
       name: 'Postgres SQL'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -386,7 +390,7 @@ jobs:
     with:
       baseDir: 'JNI/nrjavaserial/'
       name: 'Java NR Serial Port'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -399,7 +403,7 @@ jobs:
     with:
       baseDir: 'JCache/cache-api/'
       name: 'JCache JSR-107'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -413,7 +417,7 @@ jobs:
     with:
       baseDir: 'JCache/cache-annotations-ri-common/'
       name: 'JCache Common Annotations'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -429,7 +433,7 @@ jobs:
     with:
       baseDir: 'JCache/cache-annotations-ri-guice/'
       name: 'JCache Guice'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -446,7 +450,7 @@ jobs:
     with:
       baseDir: 'guice-inject-client/'
       name: 'Guice Inject Client'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -459,7 +463,7 @@ jobs:
     with:
       baseDir: 'JBoss/undertow-parser-generator/'
       name: 'Undertow Generator'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -474,7 +478,7 @@ jobs:
     with:
       baseDir: 'JBoss/undertow-core/'
       name: 'Undertow Core'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -489,7 +493,7 @@ jobs:
     with:
       baseDir: 'JBoss/undertow-servlet/'
       name: 'Undertow Servlet'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -504,7 +508,7 @@ jobs:
     with:
       baseDir: 'JBoss/undertow-websockets-jsr/'
       name: 'Undertow Web Sockets'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -517,7 +521,7 @@ jobs:
     with:
       baseDir: 'Libraries/openpdf/'
       name: 'Open PDF'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -530,7 +534,7 @@ jobs:
     with:
       baseDir: 'MicroProfile/metrics-core/'
       name: 'MicroProfile Metrics'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -543,7 +547,7 @@ jobs:
     with:
       baseDir: 'Libraries/swagger/'
       name: 'Open API'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -556,7 +560,7 @@ jobs:
     with:
       baseDir: 'JBoss/jboss-logmanager/'
       name: 'JBoss Log Manager'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -571,7 +575,7 @@ jobs:
     with:
       baseDir: 'Apache/CXF/apache-cxf-rt-security/'
       name: 'CXF Security'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -587,7 +591,7 @@ jobs:
     with:
       baseDir: 'Apache/CXF/apache-cxf-rt-transports-http/'
       name: 'CXF Http Transport'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -600,7 +604,7 @@ jobs:
     with:
       baseDir: 'Apache/CXF/apache-cxf/'
       name: 'CXF'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -615,7 +619,7 @@ jobs:
     with:
       baseDir: 'Apache/CXF/apache-cxf-rest/'
       name: 'CXF Rest'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -631,7 +635,7 @@ jobs:
     with:
       baseDir: 'Apache/CXF/apache-cxf-rest-openapi/'
       name: 'CXF OpenAPI'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -644,7 +648,7 @@ jobs:
     with:
       baseDir: 'Libraries/rabbitmq-client/'
       name: 'RabbitMQ AMQP Client'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -659,7 +663,7 @@ jobs:
     with:
       baseDir: 'Hibernate/hibernate-core/'
       name: 'Hibernate Core'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -674,7 +678,7 @@ jobs:
     with:
       baseDir: 'Hibernate/hibernate-validator/'
       name: 'Hibernate Validator'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -690,7 +694,7 @@ jobs:
     with:
       baseDir: 'Hibernate/hibernate-jcache/'
       name: 'Hibernate JCache'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -706,7 +710,7 @@ jobs:
     with:
       baseDir: 'Hibernate/hibernate-c3p0/'
       name: 'Hibernate C3P0'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -719,7 +723,7 @@ jobs:
     with:
       baseDir: 'Libraries/kafka-client/'
       name: 'Kafka Client'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -732,7 +736,7 @@ jobs:
     with:
       baseDir: 'Apache/CXF/apache-cxf/'
       name: 'Apache CXF'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -745,7 +749,7 @@ jobs:
     with:
       baseDir: 'Libraries/BitronixTransactionManager/'
       name: 'BTM'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -761,7 +765,7 @@ jobs:
     with:
       baseDir: 'JCache/hazelcast/'
       name: 'Hazelcast'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -778,7 +782,7 @@ jobs:
     with:
       baseDir: 'JCache/hazelcast-hibernate/'
       name: 'Hazelcast Hibernate'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -793,7 +797,7 @@ jobs:
     with:
       baseDir: 'Representations/JsonRepresentation/'
       name: 'JSON Representation'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -808,7 +812,7 @@ jobs:
     with:
       baseDir: 'Representations/XmlRepresentation/'
       name: 'XML Representation'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
@@ -823,7 +827,7 @@ jobs:
     with:
       baseDir: 'Representations/ExcelRepresentation/'
       name: 'Excel Representation'
-      publishToCentral: true
+      publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
       USER_TOKEN: ${{secrets.USER_TOKEN}}
