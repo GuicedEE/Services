@@ -4,7 +4,7 @@ on:
   push:
 jobs:
   AOP:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Google/aop/'
       name: 'AOP Alliance'
@@ -17,7 +17,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guava:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Google/guava/'
       name: 'Guava'
@@ -30,7 +30,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guice:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Guava
       - AOP
@@ -46,7 +46,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guice-Persist:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Guice
     with:
@@ -61,7 +61,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guice-Servlet:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Guice
     with:
@@ -76,7 +76,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guice-AssistedInject:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Guice
     with:
@@ -91,7 +91,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guice-Grapher:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Guice
     with:
@@ -106,7 +106,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guice-JMX:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Guice
     with:
@@ -121,7 +121,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guice-JNDI:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Guice
     with:
@@ -136,7 +136,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Commons-Collections:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/Commons/commons-collections/'
       name: 'Commons Collections'
@@ -149,7 +149,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Commons-BeanUtils:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs: Commons-Collections
     with:
       baseDir: 'Apache/Commons/commons-beanutils/'
@@ -163,7 +163,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Commons-CSV:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/Commons/commons-csv/'
       name: 'Commons CSV'
@@ -176,7 +176,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Commons-FileUpload:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/Commons/commons-fileupload/'
       name: 'Commons File Upload'
@@ -189,7 +189,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Commons-Math:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/Commons/commons-math/'
       name: 'Commons Math'
@@ -202,7 +202,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Apache-POI:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/POI/apache-poi/'
       name: 'Apache POI'
@@ -218,7 +218,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Apache-POI-OOXML:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/POI/apache-poi-ooxml/'
       name: 'Apache POI OOXML'
@@ -233,7 +233,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Jandex:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/jandex/'
       name: 'Jandex'
@@ -246,7 +246,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   JavAssist:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/javassist/'
       name: 'JavAssist'
@@ -259,7 +259,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   JSON:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/json/'
       name: 'json'
@@ -272,7 +272,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Mapstruct:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/mapstruct/'
       name: 'mapstruct'
@@ -285,7 +285,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   JACC:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Jakarta/jakarta-security-jacc/'
       name: 'JACC'
@@ -298,7 +298,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   UA-Detector:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/uadetector-core/'
       name: 'UA Detector Core'
@@ -311,7 +311,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   UA-Detector-Resources:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - UA-Detector
     with:
@@ -326,7 +326,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   JNA-Platform:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'JNI/jna-platform/'
       name: 'JNA Platform'
@@ -339,7 +339,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Azure-Identity:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Database/msal4j/'
       name: 'Microsoft Azure Identity'
@@ -353,7 +353,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   MSSQL-JDBC:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Azure-Identity
     with:
@@ -368,7 +368,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Postgres-SQL:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Database/postgresql/'
       name: 'Postgres SQL'
@@ -381,7 +381,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   JavaNRSerialPort:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs: JNA-Platform
     with:
       baseDir: 'JNI/nrjavaserial/'
@@ -395,7 +395,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   JCache:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'JCache/cache-api/'
       name: 'JCache JSR-107'
@@ -408,7 +408,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   JCache-Annotations-Common:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs: JCache
     with:
       baseDir: 'JCache/cache-annotations-ri-common/'
@@ -422,7 +422,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   JCache-Annotations-Guice:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - JCache-Annotations-Common
       - Guiced-Inject-Client
@@ -438,7 +438,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guiced-Inject-Client:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - AOP
       - Guava
@@ -455,7 +455,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Undertow-Parser-Generator:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'JBoss/undertow-parser-generator/'
       name: 'Undertow Generator'
@@ -468,7 +468,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Undertow-Core:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Undertow-Parser-Generator
     with:
@@ -483,7 +483,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Undertow-Servlet:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Undertow-Core
     with:
@@ -498,7 +498,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Undertow-Web-Sockets:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Undertow-Servlet
     with:
@@ -513,7 +513,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   OpenPDF:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/openpdf/'
       name: 'Open PDF'
@@ -526,7 +526,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Metrics:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'MicroProfile/metrics-core/'
       name: 'MicroProfile Metrics'
@@ -539,7 +539,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   OpenAPI:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/swagger/'
       name: 'Open API'
@@ -552,7 +552,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   JBoss-LogManager:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'JBoss/jboss-logmanager/'
       name: 'JBoss Log Manager'
@@ -565,7 +565,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   CXF-Security:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - CXF-Core
     with:
@@ -580,7 +580,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   CXF-Http-Transport:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - CXF-Core
       - CXF-Security
@@ -596,7 +596,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   CXF-Core:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/CXF/apache-cxf/'
       name: 'CXF'
@@ -609,7 +609,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   CXF-Rest:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - CXF-Http-Transport
     with:
@@ -624,7 +624,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   CXF-Rest-OpenAPI:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - CXF-Rest
       - OpenAPI
@@ -644,7 +644,7 @@ jobs:
 
 
   RabbitMQ:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/rabbitmq-client/'
       name: 'RabbitMQ AMQP Client'
@@ -657,7 +657,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-Metamodel-Generator:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - JBoss-LogManager
     with:
@@ -672,7 +672,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-Core:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - JBoss-LogManager
     with:
@@ -687,7 +687,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-Validator:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - JBoss-LogManager
     with:
@@ -702,7 +702,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-JCache:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - JCache-Annotations-Guice
       - Hibernate-Core
@@ -718,7 +718,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-C3PO:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - JCache-Annotations-Guice
       - Hibernate-Core
@@ -734,7 +734,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Kafka-Client:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/kafka-client/'
       name: 'Kafka Client'
@@ -747,7 +747,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Apache-CXF:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/CXF/apache-cxf/'
       name: 'Apache CXF'
@@ -773,7 +773,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hazelcast:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - JCache-Annotations-Guice
       - Hibernate-Core
@@ -789,7 +789,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hazelcast-Hibernate:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - JCache-Annotations-Guice
       - Hazelcast
@@ -806,7 +806,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Json-Representation:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Guiced-Inject-Client
     with:
@@ -821,7 +821,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   XML-Representation:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Json-Representation
     with:
@@ -836,7 +836,7 @@ jobs:
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Excel-Representation:
-    uses: GuicedEE/Workflows/.github/workflows/bom.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Json-Representation
     with:
