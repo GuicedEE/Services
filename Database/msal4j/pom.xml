@@ -158,7 +158,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
 
