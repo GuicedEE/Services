@@ -836,4 +836,20 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+  MicroProfileConfig:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - JBoss-LogManager
+    with:
+      baseDir: 'MicroProfile/config-core/'
+      name: 'MicroProfile Config'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+
 
