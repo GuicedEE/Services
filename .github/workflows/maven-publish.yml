@@ -6,6 +6,7 @@ on:
         type: boolean
         description: Run a release to maven central
         default: false
+  push:
 jobs:
   AOP:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
