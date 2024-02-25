@@ -639,30 +639,11 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-
-
-
-
   RabbitMQ:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/rabbitmq-client/'
       name: 'RabbitMQ AMQP Client'
-      publishToCentral: true
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Hibernate-Metamodel-Generator:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - JBoss-LogManager
-    with:
-      baseDir: 'Hibernate/hibernate-metamodel-generator/'
-      name: 'Hibernate Metamodel Generator'
       publishToCentral: true
     secrets:
       USERNAME: ${{secrets.USERNAME}}
