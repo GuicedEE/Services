@@ -1,7 +1,0 @@
-# Project exclude paths
-target/
-.idea/
-*.iml
-*.versionsBackup
-/dependency-reduced-pom.xml
-/.test/

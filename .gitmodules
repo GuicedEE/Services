@@ -1,0 +1,4 @@
+[submodule "Libraries/BitronixTransactionManager"]
+	path = Libraries/BitronixTransactionManager
+	url = https://github.com/GuicedEE/BitronixTransactionManager.git
+    branch = v2.0.0

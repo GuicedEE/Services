@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.guicedee</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.guicedee.services</groupId>
+    <artifactId>uadetector-resources</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <name>net.sf.uadetector.resources</name>
+    <description>This package contains a verified version of the data file from http://user-agent-string.info. During
+        the verification process the data are
+        checked for ability to run against the current implementation. The goal is to provide frequently updated
+        resources for detection of user agents without
+        having to release a new implementation.
+    </description>
+
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+    </properties>
+
+
+    <dependencies>
+        <!-- internal -->
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>uadetector-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>jakarta-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

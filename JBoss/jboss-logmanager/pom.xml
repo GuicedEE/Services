@@ -1,0 +1,292 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.guicedee</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.guicedee.services</groupId>
+    <artifactId>jboss-logmanager</artifactId>
+    <packaging>jar</packaging>
+    <!--<version>${jbosslog.version}</version>-->
+    <version>2.0.0-SNAPSHOT</version>
+    <name>jboss.logging</name>
+    <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.json</groupId>
+            <artifactId>jakarta.json-api</artifactId>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>log4j2-jboss-logmanager</artifactId>
+            <version>1.1.2.Final</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>jboss-logmanager</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.jdeparser</groupId>
+            <artifactId>jdeparser</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-annotations</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+        </dependency>
+
+        <!--  <dependency>
+              <groupId>org.jboss.logmanager</groupId>
+              <artifactId>log4j2-jboss-logmanager</artifactId>
+              <optional>true</optional>
+          </dependency>-->
+
+    </dependencies>
+
+    <build>
+        <plugins>
+          <!--  <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>prepare</id>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.jboss.logmanager:jboss-logmanager:*</include>
+                                    <include>org.jboss.logmanager:log4j2-jboss-logmanager:*</include>
+                                    <include>org.jboss.logging:jboss-logging:*</include>
+                                    <include>org.jboss.logging:jboss-logging-annotations:*</include>
+                                    <include>org.jboss.jdeparser:jdeparser:*</include>
+                                    <include>org.jboss.logging:jboss-logging-processor:*</include>
+                                    <include>org.wildfly.common:wildfly-common:*</include>
+                                </includes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>schema/</exclude>
+                                        <exclude>org/jboss/logging/Log4jLogger*</exclude>
+                                        <!--<exclude>META-INF/services/*</exclude>-->
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>META-INF.versions.9.org</pattern>
+                                    <shadedPattern>org.jboss.shade.org</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>META-INF.versions.11.org</pattern>
+                                    <shadedPattern>org.jboss.shade.org</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly.common.cpu</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly.common.cpu</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly.common.os</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly.common.os</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly.common.lock</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly.common.lock</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.wildfly.common.archive</pattern>
+                                    <shadedPattern>org.jboss.shade.org.wildfly.common.archive</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.el</pattern>
+                                    <shadedPattern>jakarta.el</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.annotation</pattern>
+                                    <shadedPattern>jakarta.annotation</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.servlet</pattern>
+                                    <shadedPattern>jakarta.servlet</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.persistence</pattern>
+                                    <shadedPattern>jakarta.persistence</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.enterprise</pattern>
+                                    <shadedPattern>jakarta.enterprise</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.xml.bind</pattern>
+                                    <shadedPattern>jakarta.xml.bind</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.validation</pattern>
+                                    <shadedPattern>jakarta.validation</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.inject</pattern>
+                                    <shadedPattern>jakarta.inject</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.activation</pattern>
+                                    <shadedPattern>jakarta.activation</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.ws.rs</pattern>
+                                    <shadedPattern>jakarta.ws.rs</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.jws</pattern>
+                                    <shadedPattern>jakarta.jws</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.cache</pattern>
+                                    <shadedPattern>javax.cache</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.xml.ws</pattern>
+                                    <shadedPattern>jakarta.xml.ws</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>javax.xml.soap</pattern>
+                                    <shadedPattern>jakarta.xml.soap</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.mail</pattern>
+                                    <shadedPattern>jakarta.mail</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.json</pattern>
+                                    <shadedPattern>jakarta.json</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>jakarta.annotation.processing.</pattern>
+                                    <shadedPattern>javax.annotation.processing.</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.coderplus.maven.plugins</groupId>
+                <artifactId>copy-rename-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>jboss-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>jakarta-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>standalone-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>
