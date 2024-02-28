@@ -107,11 +107,11 @@
                             <include>com.google.guava:guava:*</include>
                             <include>com.google.protobuf:protobuf-java:*</include>
                             <include>com.google.guava:failureaccess:*</include>
-                            <include>com.google.guava:listenablefuture:*</include>
-                            <include>org.checkerframework:checker-qual:*</include>
+                            <!--<include>com.google.guava:listenablefuture:*</include>-->
+                            <!--<include>org.checkerframework:checker-qual:*</include>-->
                             <!--<include>com.google.errorprone:error_prone_annotations:*</include>-->
                             <include>com.google.j2objc:j2objc-annotations:*</include>
-                            <include>org.codehaus.mojo:animal-sniffer-annotations:*</include>
+                            <!--<include>org.codehaus.mojo:animal-sniffer-annotations:*</include>-->
                             <!--<include>com.google.zxing:*</include>-->
                         </includes>
                     </artifactSet>
