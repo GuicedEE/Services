@@ -76,7 +76,13 @@ module org.hibernate.orm.core {
 
 	exports org.hibernate.engine.jdbc.env.internal to org.jboss.logging;
 	exports org.hibernate.engine.jdbc.batch to org.jboss.logging;
-
+	
+	exports org.hibernate.service.spi;
+	exports org.hibernate.engine.jdbc.connections.internal;
+	exports org.hibernate.internal.log;
+	exports org.hibernate.internal.util.config;
+	
+	
 	exports org.hibernate;
 	//exports org.hibernate.action.internal;
 	exports org.hibernate.action.spi;
@@ -351,7 +357,7 @@ module org.hibernate.orm.core {
 
 	//opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
 
-	exports org.hibernate.internal.util.config to com.hazelcast.all, com.hazelcast.hibernate;
+//	exports org.hibernate.internal.util.config to com.hazelcast.all, com.hazelcast.hibernate;
 
 	//exports org.hibernate.cache.internal;
 	//exports org.hibernate.internal.util;

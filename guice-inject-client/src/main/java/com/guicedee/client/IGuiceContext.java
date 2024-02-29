@@ -278,6 +278,8 @@ public interface IGuiceContext
 	
 	<T> Set<T> getLoader(Class<T> loaderType, @SuppressWarnings("unused") boolean dontInject, ServiceLoader<T> serviceLoader);
 	
+	boolean isBuildingInjector();
+	
 	/**
 	 * Registers a module for scanning when filtering is enabled
 	 *
