@@ -108,4 +108,6 @@ public interface IJobService
 	 * Shutdowns
 	 */
 	void destroy();
+
+	ExecutorService removeJobNoWait(String pool);
 }
