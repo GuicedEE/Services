@@ -201,7 +201,7 @@ public class GlobalProperties
 			}
 			catch (Throwable T)
 			{
-				log.log(Level.WARNING, "Couldn't set system property value [" + name + "] - [" + defaultValue + "]");
+				log.log(Level.WARNING, "Couldn't set system property value [" + name + "]");
 				return System.getenv(name);
 			}
 		}
@@ -211,7 +211,7 @@ public class GlobalProperties
 			{
 				return null;
 			}
-			log.log(Level.WARNING, "Return default value for property [" + name + "] - [" + defaultValue + "]");
+			log.log(Level.WARNING, "Return default value for property [" + name + "]");
 			try
 			{
 				System.setProperty(name, defaultValue);
@@ -219,7 +219,7 @@ public class GlobalProperties
 			}
 			catch (Throwable T)
 			{
-				log.log(Level.WARNING, "Couldn't set system property value [" + name + "] - [" + defaultValue + "]");
+				log.log(Level.WARNING, "Couldn't set system property value [" + name + "]");
 				return defaultValue;
 			}
 		}
