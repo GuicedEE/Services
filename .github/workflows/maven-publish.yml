@@ -871,7 +871,7 @@ jobs:
     needs:
       - VertxCore
     with:
-      baseDir: 'Vert.x/rest-vertx/'
+      baseDir: 'Vert.x/rest.vertx/'
       name: 'Vert.x Rest'
       publishToCentral: ${{inputs.centralRelease}}
     secrets:
