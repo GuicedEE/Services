@@ -31,11 +31,13 @@
             <groupId>jakarta.activation</groupId>
             <artifactId>jakarta.activation-api</artifactId>
         </dependency>
+<!--
 
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
+-->
 
         <dependency>
             <groupId>jakarta.annotation</groupId>
@@ -46,33 +48,17 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>checker-qual</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.errorprone</groupId>
-            <artifactId>error_prone_annotations</artifactId>
-            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.j2objc</groupId>
+                    <artifactId>j2objc-annotations</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>listenablefuture</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.j2objc</groupId>
-            <artifactId>j2objc-annotations</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>animal-sniffer-annotations</artifactId>
         </dependency>
 
         <dependency>
@@ -84,9 +70,14 @@
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.protobuf.nano</groupId>
+            <artifactId>protobuf-javanano</artifactId>
+            <version>3.2.0rc2</version>
+            <optional>true</optional>
+        </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>
@@ -107,10 +98,11 @@
                             <include>com.google.guava:guava:*</include>
                             <include>com.google.protobuf:protobuf-java:*</include>
                             <include>com.google.guava:failureaccess:*</include>
+                            <include>com.google.protobuf.nano:*</include>
                             <!--<include>com.google.guava:listenablefuture:*</include>-->
                             <!--<include>org.checkerframework:checker-qual:*</include>-->
                             <!--<include>com.google.errorprone:error_prone_annotations:*</include>-->
-                            <include>com.google.j2objc:j2objc-annotations:*</include>
+                            <!--<include>com.google.j2objc:j2objc-annotations:*</include>-->
                             <!--<include>org.codehaus.mojo:animal-sniffer-annotations:*</include>-->
                             <!--<include>com.google.zxing:*</include>-->
                         </includes>
@@ -124,6 +116,7 @@
                                 <exclude>META-INF/*.DSA</exclude>
                                 <exclude>META-INF/*.RSA</exclude>
                                 <exclude>META-INF/services</exclude>
+								<exclude>META-INF/versions</exclude>
                             </excludes>
                         </filter>
                     </filters>
@@ -153,6 +146,44 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <force>true</force>
+                    <additionalDependencies>
+
+                        <dependency>
+                            <groupId>com.google.j2objc</groupId>
+                            <artifactId>j2objc-annotations</artifactId>
+                            <version>${j2obc.version}</version>
+                        </dependency>
+
+                        <dependency>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>animal-sniffer-annotations</artifactId>
+                            <version>${animalsniffer.version}</version>
+                        </dependency>
+
+                        <dependency>
+                            <groupId>org.checkerframework</groupId>
+                            <artifactId>checker-qual</artifactId>
+                            <optional>true</optional>
+                            <version>${checkerqual.version}</version>
+                        </dependency>
+
+                        <dependency>
+                            <groupId>com.google.errorprone</groupId>
+                            <artifactId>error_prone_annotations</artifactId>
+                            <optional>true</optional>
+                            <version>${errorprone.version}</version>
+                        </dependency>
+
+                        <dependency>
+                            <groupId>com.google.code.findbugs</groupId>
+                            <artifactId>jsr305</artifactId>
+                            <version>${jsr305.version}</version>
+                        </dependency>
+
+                    </additionalDependencies>
+                </configuration>
             </plugin>
 
         </plugins>

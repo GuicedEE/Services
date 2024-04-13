@@ -99,43 +99,6 @@
             <optional>true</optional>
         </dependency>
 
-
-
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
-
-
-
-
     </dependencies>
 
     <dependencyManagement>
@@ -247,6 +210,38 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+						<version>${spring.version}</version>
+						<optional>true</optional>
+		
+					</dependency>
+
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+						<version>${spring.version}</version>
+						<optional>true</optional>
+					
+					</dependency>
+
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-context</artifactId>
+						<version>${spring.version}</version>
+						<optional>true</optional>
+					
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-web</artifactId>
+						<version>${spring.version}</version>
+						<optional>true</optional>
+					
+					</dependency>
+			</dependencies>
             </plugin>
         </plugins>
     </build>

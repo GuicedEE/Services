@@ -7,31 +7,28 @@ module org.hibernate.orm.core {
 	requires transitive jakarta.xml.bind;
 	requires transitive jakarta.transaction;
 	requires transitive jakarta.persistence;
+	requires transitive jakarta.validation;
 	requires transitive org.hibernate.commons.annotations;
 	requires transitive com.fasterxml.jackson.databind;
-	
-	requires com.guicedee.client;
-	
+
 	
 	requires org.jboss.logging;
 	requires jandex;
 	requires com.fasterxml.classmate;
-	requires org.apache.commons.compress;
+//	requires org.apache.commons.compress;
 //	requires javassist;
 	requires static antlr;
 	
 	requires java.desktop;
 	requires net.bytebuddy;
-	
-	requires static com.fasterxml.jackson.dataformat.xml;
-	
+
 //	requires java.management;
 //	requires dom4j;
 
 	//requires java.compiler;
 
 //	requires static jakarta.enterprise.cdi;
-	requires transitive jakarta.validation;
+	//requires transitive jakarta.validation;
 	requires transitive jakarta.inject;
 
 //	requires jdk.unsupported;
@@ -363,7 +360,7 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.internal.util;
 
 	//provides com.guicedee.guicedinjection.interfaces.IFileContentsScanner with org.hibernate.boot.archive.internal.PersistenceFileHandler;
-	provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with org.hibernate.boot.archive.internal.GuicedConfigurator;
+	//provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with org.hibernate.boot.archive.internal.GuicedConfigurator;
 	//provides com.guicedee.guicedinjection.interfaces.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
 	//provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
 

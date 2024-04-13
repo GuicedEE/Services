@@ -19,4 +19,6 @@ module com.google.guice {
 	
 	requires jdk.unsupported;
 	requires org.objectweb.asm;
+
+	uses com.google.inject.InjectionPointProvider;
 }

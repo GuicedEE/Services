@@ -7,7 +7,7 @@ module org.jboss.logging {
 	requires transitive java.logging;
 	requires java.xml;
 	requires java.desktop;
-	requires jakarta.json;
+	//requires jakarta.json;
 	//for jdeparser in jboss logging
 	requires jdk.unsupported;
 	

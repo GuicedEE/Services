@@ -16,6 +16,13 @@
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>guice-servlet</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>guice</artifactId>
         </dependency>
 
         <dependency>
@@ -31,17 +38,34 @@
             <groupId>com.guicedee.services</groupId>
             <artifactId>undertow-core</artifactId>
             <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>undertow-servlet</artifactId>
             <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>undertow-websockets-jsr</artifactId>
             <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- Push all logs except log4j2 to SL4J-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
 
     </dependencies>
@@ -51,6 +75,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

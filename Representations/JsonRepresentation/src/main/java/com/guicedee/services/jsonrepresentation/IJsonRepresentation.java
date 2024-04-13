@@ -1,20 +1,42 @@
 package com.guicedee.services.jsonrepresentation;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 import com.guicedee.guicedinjection.interfaces.ObjectBinderKeys;
 import com.guicedee.services.jsonrepresentation.implementations.ObjectMapperBinder;
+import com.guicedee.services.jsonrepresentation.json.LaxJsonModule;
 
 import java.io.*;
 import java.net.URL;
 import java.util.*;
 
+import static com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS;
 import static com.guicedee.guicedinjection.interfaces.ObjectBinderKeys.*;
 
 @SuppressWarnings("unused")
 public interface IJsonRepresentation<J> extends Serializable
 {
+	static void configureObjectMapper(ObjectMapper mapper)
+	{
+		mapper.registerModule(new LaxJsonModule())
+			  .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+			  .configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, false)
+			  .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+			  .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+			  .configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true)
+			  .configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true)
+			  .configure(JsonGenerator.Feature.QUOTE_FIELD_NAMES, false)
+			  .enable(ALLOW_UNQUOTED_CONTROL_CHARS)
+			  .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
+			  .setVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.NONE)
+			  .setVisibility(PropertyAccessor.IS_GETTER, JsonAutoDetect.Visibility.NONE)
+			  .setVisibility(PropertyAccessor.SETTER, JsonAutoDetect.Visibility.NONE);
+	}
+
 	/**
 	 * Serializes this object as JSON
 	 *

@@ -1,7 +1,5 @@
 package com.guicedee.guicedinjection.interfaces;
 
-import jakarta.validation.constraints.NotNull;
-
 import java.util.Comparator;
 /**
  * Supplies standard set changer and comparable's for services
@@ -43,7 +41,7 @@ public interface IDefaultService<J extends IDefaultService<J>>
      * @return int
      */
     @Override
-    default int compareTo(@NotNull J o) {
+    default int compareTo( J o) {
         int sort = sortOrder().compareTo(o.sortOrder());
         if (sort == 0) {
             return -1;

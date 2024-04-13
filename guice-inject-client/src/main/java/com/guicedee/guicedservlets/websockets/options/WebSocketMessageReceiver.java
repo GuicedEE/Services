@@ -1,12 +1,13 @@
 package com.guicedee.guicedservlets.websockets.options;
 
-import com.fasterxml.jackson.annotation.*;
-import jakarta.websocket.Session;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
@@ -27,8 +28,7 @@ public class WebSocketMessageReceiver<J extends WebSocketMessageReceiver<J>>
 	private String broadcastGroup;
 	private Map<String, Object> data = new HashMap<>();
 	private String webSocketSessionId;
-	private Session session;
-	
+
 	public WebSocketMessageReceiver()
 	{
 		//No Config Required

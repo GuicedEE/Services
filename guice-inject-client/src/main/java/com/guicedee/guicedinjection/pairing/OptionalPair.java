@@ -1,8 +1,6 @@
 package com.guicedee.guicedinjection.pairing;
 
-import jakarta.validation.constraints.*;
-
-import java.util.*;
+import java.util.Optional;
 
 /**
  * Specifies a generic pair
@@ -54,7 +52,7 @@ public class OptionalPair<K, V>
 	 * @return The optional pair
 	 */
 	@Override
-	public OptionalPair<K, V> setKey(@NotNull K key) {
+	public OptionalPair<K, V> setKey(K key) {
 		super.setKey(key);
 		return this;
 	}

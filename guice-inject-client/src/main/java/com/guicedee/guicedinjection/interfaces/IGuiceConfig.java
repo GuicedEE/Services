@@ -1,7 +1,5 @@
 package com.guicedee.guicedinjection.interfaces;
 
-import jakarta.validation.constraints.NotNull;
-
 public interface IGuiceConfig<J extends IGuiceConfig<J>> {
     /**
      * Enable classpath scanning for service sets loaded via GuiceContext.getLoader()
@@ -37,7 +35,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return Mandatory field scanning
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setFieldScanning(boolean fieldScanning);
 
     /**
@@ -54,7 +52,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return the field annotation scanning
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setAnnotationScanning(boolean annotationScanning);
 
     /**
@@ -71,7 +69,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return always this
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setMethodInfo(boolean methodInfo);
 
     /**
@@ -88,7 +86,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return always this
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setIgnoreFieldVisibility(boolean ignoreFieldVisibility);
 
     /**
@@ -105,7 +103,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return always This
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setIgnoreMethodVisibility(boolean ignoreMethodVisibility);
 
     /**
@@ -126,7 +124,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return Always this
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setIncludePackages(boolean includePackages);
 
     /**
@@ -143,7 +141,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return always this object
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setFieldInfo(boolean fieldInfo);
 
     /**
@@ -164,7 +162,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return J
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setVerbose(boolean verbose);
 
     /**
@@ -185,7 +183,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return J
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setClasspathScanning(boolean classpathScanning);
 
     /**
@@ -202,7 +200,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return J
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setExcludeModulesAndJars(boolean excludeModulesAndJars);
 
     /**
@@ -219,7 +217,7 @@ public interface IGuiceConfig<J extends IGuiceConfig<J>> {
      * @return J
      */
     @SuppressWarnings("unchecked")
-    @NotNull
+    
     J setExcludePaths(boolean excludePaths);
 
     /**

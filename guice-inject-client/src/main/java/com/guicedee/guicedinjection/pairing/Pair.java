@@ -1,8 +1,6 @@
 package com.guicedee.guicedinjection.pairing;
 
-import jakarta.validation.constraints.*;
-
-import java.util.*;
+import java.util.Objects;
 
 /**
  * Specifies a generic pair
@@ -36,7 +34,7 @@ public class Pair<K, V>
 	 * @param key   The key for the pair
 	 * @param value The value for the pair
 	 */
-	public Pair(@NotNull K key, V value) {
+	public Pair( K key, V value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -81,13 +79,13 @@ public class Pair<K, V>
 	 * @param key Sets this pairs key
 	 * @return The pair
 	 */
-	public Pair<K, V> setKey(@NotNull K key) {
+	public Pair<K, V> setKey( K key) {
 		this.key = key;
 		return this;
 	}
 
 	@Override
-	public int compareTo(@NotNull Pair<K, V> o) {
+	public int compareTo( Pair<K, V> o) {
 		return getKey().toString()
 					   .compareTo(o.getKey()
 								   .toString());

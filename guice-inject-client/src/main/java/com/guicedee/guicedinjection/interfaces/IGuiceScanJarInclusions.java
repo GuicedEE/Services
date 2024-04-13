@@ -1,7 +1,5 @@
 package com.guicedee.guicedinjection.interfaces;
 
-import jakarta.validation.constraints.NotNull;
-
 import java.util.Set;
 
 /**
@@ -15,7 +13,7 @@ public interface IGuiceScanJarInclusions<J extends IGuiceScanJarInclusions<J>>
 	 *
 	 * @return
 	 */
-	@NotNull Set<String> includeJars();
+	 Set<String> includeJars();
 
 
 }

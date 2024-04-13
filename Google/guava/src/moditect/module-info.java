@@ -20,6 +20,7 @@ module com.google.common {
 	exports com.google.common.xml;
 
 	exports com.google.protobuf;
+	exports com.google.protobuf.nano;
 
 /*
 	exports com.google.zxing;

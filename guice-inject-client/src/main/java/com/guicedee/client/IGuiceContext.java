@@ -1,15 +1,19 @@
 package com.guicedee.client;
 
-import com.google.inject.*;
-import com.guicedee.guicedinjection.interfaces.*;
-import com.guicedee.guicedinjection.interfaces.annotations.*;
-import io.github.classgraph.*;
-import jakarta.validation.constraints.*;
+import com.google.inject.Injector;
+import com.google.inject.Key;
+import com.guicedee.guicedinjection.interfaces.IGuiceConfig;
+import com.guicedee.guicedinjection.interfaces.IGuiceProvider;
+import com.guicedee.guicedinjection.interfaces.annotations.INotEnhanceable;
+import com.guicedee.guicedinjection.interfaces.annotations.INotInjectable;
+import io.github.classgraph.ClassInfo;
+import io.github.classgraph.ScanResult;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Annotation;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.logging.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public interface IGuiceContext
 {
@@ -50,7 +54,7 @@ public interface IGuiceContext
 	
 	void destroy();
 	
-	static <T> T get(@NotNull Key<T> type)
+	static <T> T get(Key<T> type)
 	{
 		@SuppressWarnings("unchecked")
 		Class<T> clazz = (Class<T>) type
@@ -119,7 +123,7 @@ public interface IGuiceContext
 		return false;
 	}
 	
-	static <T> T get(@NotNull Class<T> type, Class<? extends Annotation> annotation)
+	static <T> T get(Class<T> type, Class<? extends Annotation> annotation)
 	{
 		if (annotation == null)
 		{
@@ -128,7 +132,7 @@ public interface IGuiceContext
 		return get(Key.get(type, annotation));
 	}
 	
-	static <T> T get(@NotNull Class<T> type)
+	static <T> T get(Class<T> type)
 	{
 		return get(type, null);
 	}
@@ -180,8 +184,7 @@ public interface IGuiceContext
 		}
 		return outcomes;
 	}
-	
-	@NotNull
+
 	static <T> Set<T> loaderToSetNoInjection(ServiceLoader<T> loader)
 	{
 		Set<Class<T>> loadeds = new HashSet<>();

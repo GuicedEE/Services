@@ -6,6 +6,8 @@ module io.smallrye.config.core {
 	
 	requires io.smallrye.common.classloader;
 	requires org.jboss.logging;
+	requires io.smallrye.common.constraint;
+
 	
 	exports io.smallrye.config._private to org.jboss.logging;
 	opens io.smallrye.config._private to org.jboss.logging;

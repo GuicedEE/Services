@@ -1,10 +1,14 @@
-import com.guicedee.guicedinjection.interfaces.*;
+import com.guicedee.client.implementations.GuicedEEClientStartup;
+import com.guicedee.guicedinjection.interfaces.IGuicePreStartup;
+import com.guicedee.guicedinjection.interfaces.IGuiceProvider;
+import com.guicedee.guicedinjection.interfaces.IJobServiceProvider;
 
 module com.guicedee.client {
     requires transitive com.google.guice;
     requires transitive io.github.classgraph;
     requires transitive com.fasterxml.jackson.databind;
-    requires transitive jakarta.validation;
+
+    //requires transitive jakarta.validation;
 
 	exports com.guicedee.client;
 	
@@ -22,7 +26,7 @@ module com.guicedee.client {
     exports com.guicedee.guicedservlets.servlets.services.scopes;
     
     exports com.guicedee.guicedservlets.rest.annotations;
-    opens com.guicedee.guicedservlets.rest.annotations to com.google.guice, org.apache.cxf;
+    opens com.guicedee.guicedservlets.rest.annotations to com.google.guice;
     
     requires static com.google.guice.extensions.servlet;
     requires static lombok;
@@ -31,6 +35,11 @@ module com.guicedee.client {
     requires static undertow.websockets.jsr;
     requires static jakarta.websocket;
     requires static jakarta.servlet;
+
+    //slf4j config
+    requires org.apache.commons.logging;
+    requires jul.to.slf4j;
+
     
 	uses IGuiceProvider;
 	uses IJobServiceProvider;
@@ -42,5 +51,7 @@ module com.guicedee.client {
 	
 	opens com.guicedee.guicedinjection.properties to com.fasterxml.jackson.databind;
 	opens com.guicedee.guicedinjection.pairing to com.fasterxml.jackson.databind;
+
+    provides IGuicePreStartup with GuicedEEClientStartup;
 	
 }

@@ -1,5 +1,7 @@
 module com.google.guice.extensions.persist {
 	exports com.google.inject.persist;
+	exports com.google.inject.persist.jpa;
+	exports com.google.inject.persist.finder;
 
 	requires transitive com.google.guice;
 	requires transitive jakarta.persistence;

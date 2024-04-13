@@ -2,9 +2,11 @@ package com.guicedee.services.jsonrepresentation.implementations;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.*;
 import com.google.inject.AbstractModule;
 import com.guicedee.guicedinjection.interfaces.*;
+import com.guicedee.services.jsonrepresentation.IJsonRepresentation;
 import com.guicedee.services.jsonrepresentation.json.LaxJsonModule;
 import jakarta.inject.*;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -32,22 +34,7 @@ public class ObjectMapperBinder
 	
 	static
 	{
-		objectMapper
-						.registerModule(new JavaTimeModule())
-						//.registerModule(new LaxJsonModule())
-						.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-						.configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, true)
-						.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-						.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-						.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true)
-						.configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true)
-						.enable(ALLOW_UNQUOTED_CONTROL_CHARS)
-						.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING)
-						.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
-						.setVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.NONE)
-						.setVisibility(PropertyAccessor.IS_GETTER, JsonAutoDetect.Visibility.NONE)
-						.setVisibility(PropertyAccessor.SETTER, JsonAutoDetect.Visibility.NONE);
-		
+		//IJsonRepresentation.configureObjectMapper(objectMapper);
 		javaScriptObjectMapper
 						.registerModule(new LaxJsonModule())
 						.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
@@ -64,7 +51,13 @@ public class ObjectMapperBinder
 						.setVisibility(PropertyAccessor.SETTER, JsonAutoDetect.Visibility.NONE);
 		
 	}
-	
+
+	/**
+	 * Applies a default set of configurations for jackson mapper
+	 * @param mapper The mapper to configure
+	 */
+
+
 	/**
 	 * Method onBind ...
 	 */
