@@ -1,11 +1,12 @@
 package com.guicedee.services.jsonrepresentation.json;
 
-import com.fasterxml.jackson.core.*;
-import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
 
-import java.io.*;
-import java.time.*;
-import java.time.format.*;
+import java.io.IOException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class LocalTimeSerializer
 		extends JsonSerializer<LocalTime>

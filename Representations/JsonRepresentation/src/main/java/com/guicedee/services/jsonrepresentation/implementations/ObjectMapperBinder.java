@@ -1,20 +1,23 @@
 package com.guicedee.services.jsonrepresentation.implementations;
 
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.inject.AbstractModule;
-import com.guicedee.guicedinjection.interfaces.*;
-import com.guicedee.services.jsonrepresentation.IJsonRepresentation;
+import com.guicedee.guicedinjection.interfaces.IGuiceModule;
+import com.guicedee.guicedinjection.interfaces.ObjectBinderKeys;
 import com.guicedee.services.jsonrepresentation.json.LaxJsonModule;
-import jakarta.inject.*;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import jakarta.inject.Provider;
+import jakarta.inject.Singleton;
 import lombok.Getter;
 import lombok.extern.java.Log;
 
-import static com.fasterxml.jackson.core.JsonParser.Feature.*;
-import static com.guicedee.guicedinjection.interfaces.ObjectBinderKeys.*;
+import static com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS;
+import static com.guicedee.guicedinjection.interfaces.ObjectBinderKeys.DefaultObjectMapper;
+import static com.guicedee.guicedinjection.interfaces.ObjectBinderKeys.JavaScriptObjectWriter;
 
 @Log
 public class ObjectMapperBinder

@@ -1,4 +1,5 @@
 package com.guicedee.services.jsonrepresentation.json;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -7,7 +8,7 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.Duration;
 
-import static com.guicedee.services.jsonrepresentation.json.StaticStrings.*;
+import static com.guicedee.services.jsonrepresentation.json.StaticStrings.STRING_EMPTY;
 import static java.time.temporal.ChronoUnit.*;
 
 /**

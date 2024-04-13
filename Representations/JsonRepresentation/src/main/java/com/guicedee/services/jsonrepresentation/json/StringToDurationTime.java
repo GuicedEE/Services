@@ -1,12 +1,11 @@
 package com.guicedee.services.jsonrepresentation.json;
+
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.google.common.base.Strings;
 import org.apache.commons.lang3.StringUtils;
 
-import jakarta.validation.constraints.NotNull;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.Duration;
@@ -29,7 +28,7 @@ public class StringToDurationTime extends JsonDeserializer<Duration> {
         return convert(name);
     }
 
-    public Duration convert(@NotNull String value)
+    public Duration convert( String value)
     {
         if (Strings.isNullOrEmpty(value) || STRING_NULL.equals(value) || STRING_0.equals(value)) {
             return null;

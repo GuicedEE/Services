@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.*;
-import com.guicedee.guicedinjection.interfaces.ObjectBinderKeys;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.guicedee.services.jsonrepresentation.implementations.ObjectMapperBinder;
 import com.guicedee.services.jsonrepresentation.json.LaxJsonModule;
 
@@ -15,7 +17,6 @@ import java.net.URL;
 import java.util.*;
 
 import static com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS;
-import static com.guicedee.guicedinjection.interfaces.ObjectBinderKeys.*;
 
 @SuppressWarnings("unused")
 public interface IJsonRepresentation<J> extends Serializable

@@ -1,6 +1,8 @@
 package com.guicedee.services.jsonrepresentation.json;
 
-import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
