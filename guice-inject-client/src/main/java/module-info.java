@@ -1,4 +1,6 @@
+import com.guicedee.client.implementations.GuicedEEClientModule;
 import com.guicedee.client.implementations.GuicedEEClientStartup;
+import com.guicedee.guicedinjection.interfaces.IGuiceModule;
 import com.guicedee.guicedinjection.interfaces.IGuicePreStartup;
 import com.guicedee.guicedinjection.interfaces.IGuiceProvider;
 import com.guicedee.guicedinjection.interfaces.IJobServiceProvider;
@@ -43,7 +45,9 @@ module com.guicedee.client {
     
 	uses IGuiceProvider;
 	uses IJobServiceProvider;
-    
+    uses com.guicedee.guicedservlets.servlets.services.IOnCallScopeEnter;
+    uses com.guicedee.guicedservlets.servlets.services.IOnCallScopeExit;
+
     opens com.guicedee.guicedservlets.websockets.options to com.fasterxml.jackson.databind;
     opens com.guicedee.guicedservlets.undertow.services to com.google.guice;
     opens com.guicedee.guicedservlets.websockets.services to com.google.guice;
@@ -53,5 +57,5 @@ module com.guicedee.client {
 	opens com.guicedee.guicedinjection.pairing to com.fasterxml.jackson.databind;
 
     provides IGuicePreStartup with GuicedEEClientStartup;
-	
+    provides IGuiceModule with GuicedEEClientModule;
 }
