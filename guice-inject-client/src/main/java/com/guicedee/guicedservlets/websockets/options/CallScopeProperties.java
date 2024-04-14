@@ -19,9 +19,9 @@ public class CallScopeProperties implements Serializable
 	@Serial
 	private static final long serialVersionUID = 1L;
 	/**
-	 * If this call scope is from a web request call
+	 * The source of the call scope entry
 	 */
-	private boolean webCall;
+	private CallScopeSource source;
 	/**
 	 * Any properties to carry within the call scope
 	 */
