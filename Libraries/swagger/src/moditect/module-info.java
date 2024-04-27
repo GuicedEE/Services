@@ -2,15 +2,18 @@ module com.guicedee.services.openapi {
 
 	requires org.slf4j;
 
+	requires transitive com.fasterxml.jackson.databind;
+	requires io.github.classgraph;
+
 	requires jakarta.ws.rs;
 	requires jakarta.xml.bind;
 	requires jakarta.servlet;
 	
 	requires org.apache.commons.lang3;
 	
-	requires com.fasterxml.jackson.jakarta.rs.json;
+	requires static com.fasterxml.jackson.jakarta.rs.json;
 	//requires com.fasterxml.jackson.dataformat.yaml;
-	requires com.fasterxml.jackson.module.jakarta.xmlbind;
+	requires static com.fasterxml.jackson.module.jakarta.xmlbind;
 	requires com.fasterxml.jackson.jakarta.rs.base;
 	requires com.fasterxml.jackson.datatype.jsr310;
 
@@ -47,11 +50,14 @@ module com.guicedee.services.openapi {
 	exports io.swagger.v3.oas.models.security;
 
 	exports io.swagger.v3.oas.models.parameters;
-
+	exports io.swagger.v3.jaxrs2;
+	exports io.swagger.v3.core.jackson;
 	opens io.swagger.v3.jaxrs2.integration.resources to com.google.guice, org.apache.cxf;
 	opens io.swagger.v3.jaxrs2 to com.google.guice, org.apache.cxf;
 
 	opens io.swagger.v3.oas.integration to com.fasterxml.jackson.databind;
+	opens io.swagger.v3.core.jackson to com.fasterxml.jackson.databind;
+	opens io.swagger.v3.core.jackson.mixin to com.fasterxml.jackson.databind;
 	opens io.swagger.v3.oas.annotations to com.fasterxml.jackson.databind;
 	opens io.swagger.v3.oas.annotations.media to com.fasterxml.jackson.databind;
 	opens io.swagger.v3.oas.annotations.responses to com.fasterxml.jackson.databind;
@@ -65,7 +71,6 @@ module com.guicedee.services.openapi {
 	opens io.swagger.v3.oas.annotations.parameters to com.fasterxml.jackson.databind;
 	opens io.swagger.v3.oas.annotations.enums to com.fasterxml.jackson.databind;
 
-	opens io.swagger.v3.core.jackson to com.fasterxml.jackson.databind;
 	opens io.swagger.v3.oas.models to com.fasterxml.jackson.databind;
 	opens io.swagger.v3.oas.models.parameters to com.fasterxml.jackson.databind;
 	opens io.swagger.v3.oas.models.media to com.fasterxml.jackson.databind;

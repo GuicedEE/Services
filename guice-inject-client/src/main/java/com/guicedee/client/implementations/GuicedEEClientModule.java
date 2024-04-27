@@ -5,7 +5,9 @@ import com.guicedee.client.CallScoper;
 import com.guicedee.guicedinjection.interfaces.IGuiceModule;
 import com.guicedee.guicedservlets.servlets.services.scopes.CallScope;
 import com.guicedee.guicedservlets.websockets.options.CallScopeProperties;
+import lombok.extern.java.Log;
 
+@Log
 public class GuicedEEClientModule extends AbstractModule implements IGuiceModule<GuicedEEClientModule>
 {
     @Override
@@ -13,5 +15,6 @@ public class GuicedEEClientModule extends AbstractModule implements IGuiceModule
     {
         bindScope(CallScope.class, new CallScoper());
         bind(CallScopeProperties.class).in(CallScope.class);
+
     }
 }
