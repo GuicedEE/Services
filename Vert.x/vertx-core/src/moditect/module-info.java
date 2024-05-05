@@ -60,4 +60,6 @@ module io.vertx {
 	uses io.vertx.core.spi.VertxServiceProvider;
 	uses io.vertx.core.spi.VerticleFactory;
 
+	opens io.vertx.core.impl.logging to io.vertx.rabbitmq;
+	opens io.vertx.core.impl to io.vertx.rabbitmq;
 }

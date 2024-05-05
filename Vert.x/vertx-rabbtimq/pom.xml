@@ -8,16 +8,15 @@
     </parent>
 
     <groupId>com.guicedee.services</groupId>
-    <artifactId>vertx-core</artifactId>
+    <artifactId>vertx-rabbitmq</artifactId>
 
-    <name>vertx-core</name>
+    <name>Vert.x RabbitMQ</name>
     <packaging>jar</packaging>
 
     <properties>
-        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+        <project.scm.nameUrl>/GuicedEE/Services/Vert.x/vertx-rabbitmq</project.scm.nameUrl>
     </properties>
 
-    <!--<version>${jandex.version}</version>-->
     <version>2.0.0-SNAPSHOT</version>
 
     <licenses>
@@ -41,16 +40,11 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
+                            <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
                             <artifactSet>
                                 <includes>
-                                    <include>io.netty:*</include>
-                                    <include>io.vertx:*</include>
-                                    <include>com.ning:*</include>
-                                    <include>io.projectreactor*:*</include>
-                                    <include>org.jboss.modules:*</include>
-                                    <include>org.b1.pack:*</include>
-                                    <include>com.jcraft.jzlib:*</include>
-                                    <include>org.jboss.marshalling:*</include>
+                                    <include>io.vertx:vertx-rabbitmq-client:*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
@@ -87,107 +81,25 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.vertx</groupId>
+            <groupId>com.guicedee.services</groupId>
             <artifactId>vertx-core</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>io.vertx</groupId>
-            <artifactId>vertx-web</artifactId>
+            <artifactId>vertx-rabbitmq-client</artifactId>
+            <version>${vertx.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.projectreactor.tools</groupId>
-            <artifactId>blockhound</artifactId>
-            <version>1.0.8.RELEASE</version>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.marshalling</groupId>
-            <artifactId>jboss-marshalling</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk18on</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk18on</artifactId>
-            <optional>true</optional>
+            <artifactId>amqp-client</artifactId>
+            <groupId>com.guicedee.services</groupId>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.luben</groupId>
-            <artifactId>zstd-jni</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-tcnative</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>com.jcraft</groupId>
-            <artifactId>jzlib</artifactId>
-            <version>1.1.3</version>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>com.ning</groupId>
-            <artifactId>compress-lzf</artifactId>
-            <version>1.1.2</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.b1.pack</groupId>
-            <artifactId>lzma-sdk-4j</artifactId>
-            <version>9.22.0</version>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.modules</groupId>
-            <artifactId>jboss-modules</artifactId>
-            <version>2.1.4.Final</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <optional>true</optional>
         </dependency>
 
     </dependencies>
@@ -211,13 +123,6 @@
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>versioner</artifactId>
-                <version>${guicedee.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>com.guicedee</groupId>
-                <artifactId>apache-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
