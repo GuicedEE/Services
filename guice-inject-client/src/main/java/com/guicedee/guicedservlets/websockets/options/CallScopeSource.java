@@ -5,5 +5,6 @@ public enum CallScopeSource
     Http,
     WebSocket,
     RabbitMQ,
-    Timer
+    Timer,
+    SerialPort
 }

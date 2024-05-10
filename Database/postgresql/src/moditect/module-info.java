@@ -1,6 +1,8 @@
 module org.postgresql.jdbc {
 	
 	exports org.postgresql;
+	exports org.postgresql.xa;
+	exports org.postgresql.ds.common;
 	exports org.postgresql.util to org.hibernate.orm.core;
 	
 	requires java.sql;
