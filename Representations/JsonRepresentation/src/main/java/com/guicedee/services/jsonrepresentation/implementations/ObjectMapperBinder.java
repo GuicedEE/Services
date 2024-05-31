@@ -52,6 +52,19 @@ public class ObjectMapperBinder
 						.setVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.NONE)
 						.setVisibility(PropertyAccessor.IS_GETTER, JsonAutoDetect.Visibility.NONE)
 						.setVisibility(PropertyAccessor.SETTER, JsonAutoDetect.Visibility.NONE);
+
+		objectMapper.registerModule(new LaxJsonModule())
+					.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+					.configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, false)
+					.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+					.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+					.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true)
+					.configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true)
+					.enable(ALLOW_UNQUOTED_CONTROL_CHARS)
+					.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
+					.setVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.NONE)
+					.setVisibility(PropertyAccessor.IS_GETTER, JsonAutoDetect.Visibility.NONE)
+					.setVisibility(PropertyAccessor.SETTER, JsonAutoDetect.Visibility.NONE);
 		
 	}
 
