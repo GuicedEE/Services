@@ -54,6 +54,8 @@ module io.vertx {
 
 	exports io.vertx.core.http.impl;
 
+	exports io.vertx.core.streams.impl to io.vertx.rabbitmq;
+
 	uses io.vertx.core.spi.launcher.CommandFactory;
 	uses reactor.blockhound.integration.BlockHoundIntegration;
 

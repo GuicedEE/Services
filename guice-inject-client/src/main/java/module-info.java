@@ -38,6 +38,8 @@ module com.guicedee.client {
     requires static jakarta.websocket;
     requires static jakarta.servlet;
 
+    requires org.apache.commons.lang3;
+
     //slf4j config
     requires org.apache.commons.logging;
     requires jul.to.slf4j;

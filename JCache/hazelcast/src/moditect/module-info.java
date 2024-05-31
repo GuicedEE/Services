@@ -165,5 +165,7 @@ open module com.hazelcast.all {
 	exports com.hazelcast.logging to com.hazelcast.hibernate;
 	exports com.hazelcast.internal.util to com.hazelcast.hibernate;
 
+	exports com.hazelcast.jet.config;
+
 	exports com.hazelcast.instance;
 }

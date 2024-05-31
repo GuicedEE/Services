@@ -219,6 +219,37 @@ public class NRSerialPort<J extends NRSerialPort<J>> implements Serializable
 		
 		return available;
 	}
+
+	public static Set<String> getAllWindowsPorts()
+	{
+		Set<String> available = new HashSet<>();
+		try
+		{
+			RXTXCommDriver d = new RXTXCommDriver();
+			Set<String> av = new HashSet<>(Arrays.asList(d.windowsGetSerialPortsFromRegistry()));
+			ArrayList<String> strs = new ArrayList<>();
+			for (String s : av)
+			{
+				strs.add(0, s);
+			}
+			for (String s : strs)
+			{
+				available.add(s);
+			}
+		}
+		catch (UnsatisfiedLinkError e)
+		{
+			e.printStackTrace();
+			throw new NativeResourceException(e.getMessage());
+		}
+        catch (Exception e)
+        {
+			e.printStackTrace();
+			throw new NativeResourceException(e.getMessage());
+        }
+
+        return available;
+	}
 	
 	
 	public boolean isConnected()

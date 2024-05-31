@@ -17,7 +17,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
-import org.jboss.logging.Logger;
+import java.util.logging.Logger;
+
 
 /**
  * An ArchiveDescriptor implementation leveraging the {@link java.util.jar.JarFile} API for processing - specifically meant to support the new URL format for JRT and modules
@@ -27,7 +28,7 @@ import org.jboss.logging.Logger;
  */
 public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
 {
-	private static final Logger log = Logger.getLogger( JarFileBasedArchiveDescriptor.class );
+	private static final Logger log = Logger.getLogger(JarFileBasedArchiveDescriptor.class.getCanonicalName());
 	
 	private ArchiveContext context;
 	

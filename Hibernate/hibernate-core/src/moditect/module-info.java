@@ -12,7 +12,7 @@ module org.hibernate.orm.core {
 	requires transitive com.fasterxml.jackson.databind;
 
 	
-	requires org.jboss.logging;
+	requires static org.jboss.logging;
 	requires jandex;
 	requires com.fasterxml.classmate;
 //	requires org.apache.commons.compress;

@@ -16,6 +16,13 @@
  */
 package com.guicedee.guicedinjection.interfaces;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Executes immediately after Guice has been initialized
  *
@@ -23,25 +30,33 @@ package com.guicedee.guicedinjection.interfaces;
  * @since 15 May 2017
  */
 public interface IGuicePostStartup<J extends IGuicePostStartup<J>>
-		extends IDefaultService<J>, Runnable {
+        extends IDefaultService<J>
+{
 
-	/**
-	 * Runs immediately after the post load
-	 */
-	void postLoad();
+    Map<Integer, ExecutorService> executors = new HashMap<>();
 
-	/**
-	 * Sets the order in which this must run, default 100.
-	 *
-	 * @return the sort order to return
-	 */
-	@Override
-	default Integer sortOrder() {
-		return 50;
-	}
+    /**
+     * Runs immediately after the post load
+     */
+    List<CompletableFuture<Boolean>> postLoad();
 
-	default void run() {
-		postLoad();
-	}
+    /**
+     * Sets the order in which this must run, default 100.
+     *
+     * @return the sort order to return
+     */
+    @Override
+    default Integer sortOrder()
+    {
+        return 50;
+    }
 
+    default ExecutorService getExecutorService()
+    {
+        if (!executors.containsKey(sortOrder()))
+        {
+            executors.put(sortOrder(), Executors.newVirtualThreadPerTaskExecutor());
+        }
+        return executors.get(sortOrder());
+    }
 }

@@ -54,6 +54,10 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
 
         <!-- Push all logs except log4j2 to SL4J-->
         <dependency>
