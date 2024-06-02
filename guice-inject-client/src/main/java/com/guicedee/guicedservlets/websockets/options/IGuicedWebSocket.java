@@ -1,5 +1,7 @@
 package com.guicedee.guicedservlets.websockets.options;
 
+import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
+
 public interface IGuicedWebSocket
 {
     String EveryoneGroup = "Everyone";
@@ -8,4 +10,7 @@ public interface IGuicedWebSocket
     void removeFromGroup(String groupName);
     void broadcastMessage(String groupName, String message);
     void broadcastMessageSync(String groupName, String message);
+    void addWebSocketMessageReceiver(IWebSocketMessageReceiver receiver);
+    void addReceiver(IWebSocketMessageReceiver messageReceiver, String action);
+    boolean isWebSocketReceiverRegistered(String name);
 }
