@@ -1,9 +1,7 @@
 import com.guicedee.client.implementations.GuicedEEClientModule;
+import com.guicedee.client.implementations.GuicedEEClientPostStartup;
 import com.guicedee.client.implementations.GuicedEEClientStartup;
-import com.guicedee.guicedinjection.interfaces.IGuiceModule;
-import com.guicedee.guicedinjection.interfaces.IGuicePreStartup;
-import com.guicedee.guicedinjection.interfaces.IGuiceProvider;
-import com.guicedee.guicedinjection.interfaces.IJobServiceProvider;
+import com.guicedee.guicedinjection.interfaces.*;
 
 module com.guicedee.client {
     requires transitive com.google.guice;
@@ -21,22 +19,14 @@ module com.guicedee.client {
     
     exports com.guicedee.guicedservlets.websockets.services;
     exports com.guicedee.guicedservlets.websockets.options;
-    
-    exports com.guicedee.guicedservlets.undertow.services;
-    
+
     exports com.guicedee.guicedservlets.servlets.services;
     exports com.guicedee.guicedservlets.servlets.services.scopes;
     
     exports com.guicedee.guicedservlets.rest.annotations;
     opens com.guicedee.guicedservlets.rest.annotations to com.google.guice;
-    
-    requires static com.google.guice.extensions.servlet;
+
     requires static lombok;
-    requires static undertow.core;
-    requires static undertow.servlet;
-    requires static undertow.websockets.jsr;
-    requires static jakarta.websocket;
-    requires static jakarta.servlet;
 
     requires org.apache.commons.lang3;
 
@@ -44,20 +34,22 @@ module com.guicedee.client {
     requires org.apache.commons.logging;
     requires jul.to.slf4j;
 
-    
 	uses IGuiceProvider;
 	uses IJobServiceProvider;
     uses com.guicedee.guicedservlets.servlets.services.IOnCallScopeEnter;
     uses com.guicedee.guicedservlets.servlets.services.IOnCallScopeExit;
+    uses com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
 
     opens com.guicedee.guicedservlets.websockets.options to com.fasterxml.jackson.databind;
-    opens com.guicedee.guicedservlets.undertow.services to com.google.guice;
     opens com.guicedee.guicedservlets.websockets.services to com.google.guice;
     opens com.guicedee.guicedservlets.servlets.services to com.google.guice;
 	
 	opens com.guicedee.guicedinjection.properties to com.fasterxml.jackson.databind;
 	opens com.guicedee.guicedinjection.pairing to com.fasterxml.jackson.databind;
 
+    opens com.guicedee.client.implementations to com.google.guice;
+
     provides IGuicePreStartup with GuicedEEClientStartup;
+    provides IGuicePostStartup with GuicedEEClientPostStartup;
     provides IGuiceModule with GuicedEEClientModule;
 }

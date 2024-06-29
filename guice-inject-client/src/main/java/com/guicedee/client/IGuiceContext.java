@@ -3,6 +3,8 @@ package com.guicedee.client;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.guicedee.guicedinjection.interfaces.IGuiceConfig;
+import com.guicedee.guicedinjection.interfaces.IGuicePreDestroy;
+import com.guicedee.guicedinjection.interfaces.IGuicePreStartup;
 import com.guicedee.guicedinjection.interfaces.IGuiceProvider;
 import com.guicedee.guicedinjection.interfaces.annotations.INotEnhanceable;
 import com.guicedee.guicedinjection.interfaces.annotations.INotInjectable;
@@ -11,6 +13,7 @@ import io.github.classgraph.ScanResult;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +25,9 @@ public interface IGuiceContext
 	Set<String> registerModuleForScanning = new LinkedHashSet<>();
 	List<com.google.inject.Module> modules = new ArrayList<>();
 	Map<Class, Set> allLoadedServices = new LinkedHashMap<>();
-	
+
+	CompletableFuture<Boolean> startup = new CompletableFuture<>().newIncompleteFuture();
+
 	static IGuiceContext getContext()
 	{
 		if (context.get() == null)
@@ -298,9 +303,16 @@ public interface IGuiceContext
 				.getConfig()
 				.setIncludeModuleAndJars(true);
 	}
-	
+
+	/**
+	 * Adds a guice module to the injector for processing
+	 * @param module
+	 */
 	static void registerModule(com.google.inject.Module module)
 	{
 		modules.add(module);
 	}
+
+	Set<IGuicePreDestroy> loadPreDestroyServices();
+	Set<IGuicePreStartup> loadPreStartupServices();
 }

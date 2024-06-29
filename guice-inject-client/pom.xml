@@ -13,12 +13,6 @@
     <artifactId>guice-inject-client</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>guice-servlet</artifactId>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
@@ -32,26 +26,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>undertow-core</artifactId>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>undertow-servlet</artifactId>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>undertow-websockets-jsr</artifactId>
-            <optional>true</optional>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>

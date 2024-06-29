@@ -459,64 +459,64 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Undertow-Parser-Generator:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    with:
-      baseDir: 'JBoss/undertow-parser-generator/'
-      name: 'Undertow Generator'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Undertow-Core:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - Undertow-Parser-Generator
-    with:
-      baseDir: 'JBoss/undertow-core/'
-      name: 'Undertow Core'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Undertow-Servlet:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - Undertow-Core
-    with:
-      baseDir: 'JBoss/undertow-servlet/'
-      name: 'Undertow Servlet'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Undertow-Web-Sockets:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - Undertow-Servlet
-    with:
-      baseDir: 'JBoss/undertow-websockets-jsr/'
-      name: 'Undertow Web Sockets'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+#  Undertow-Parser-Generator:
+#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+#    with:
+##      baseDir: 'JBoss/undertow-parser-generator/'
+ #     name: 'Undertow Generator'
+ #     publishToCentral: ${{inputs.centralRelease}}
+ #   secrets:
+ #     USERNAME: ${{secrets.USERNAME}}
+ #     USER_TOKEN: ${{secrets.USER_TOKEN}}
+ #     SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+ #     SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+ #     GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+ #     GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+ # Undertow-Core:
+ #   uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+ #   needs:
+ #     - Undertow-Parser-Generator
+ #   with:
+ #     baseDir: 'JBoss/undertow-core/'
+ #     name: 'Undertow Core'
+ #     publishToCentral: ${{inputs.centralRelease}}
+ #   secrets:
+ #     USERNAME: ${{secrets.USERNAME}}
+ #     USER_TOKEN: ${{secrets.USER_TOKEN}}
+ #     SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+ #     SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+ #     GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+ #     GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+ # Undertow-Servlet:
+ #   uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+ #   needs:
+#      - Undertow-Core
+#    with:
+#      baseDir: 'JBoss/undertow-servlet/'
+#      name: 'Undertow Servlet'
+#      publishToCentral: ${{inputs.centralRelease}}
+#    secrets:
+#      USERNAME: ${{secrets.USERNAME}}
+#      USER_TOKEN: ${{secrets.USER_TOKEN}}
+#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+#  Undertow-Web-Sockets:
+#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+#    needs:
+#      - Undertow-Servlet
+#    with:
+#      baseDir: 'JBoss/undertow-websockets-jsr/'
+#      name: 'Undertow Web Sockets'
+#      publishToCentral: ${{inputs.centralRelease}}
+#    secrets:
+#      USERNAME: ${{secrets.USERNAME}}
+#      USER_TOKEN: ${{secrets.USER_TOKEN}}
+#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   OpenPDF:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
