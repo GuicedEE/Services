@@ -31,7 +31,7 @@ module com.guicedee.client {
     requires org.apache.commons.lang3;
 
     //slf4j config
-    requires org.apache.commons.logging;
+    //requires org.apache.commons.logging;
     requires jul.to.slf4j;
 
 	uses IGuiceProvider;

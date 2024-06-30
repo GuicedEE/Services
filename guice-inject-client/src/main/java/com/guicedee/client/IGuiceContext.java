@@ -26,8 +26,6 @@ public interface IGuiceContext
 	List<com.google.inject.Module> modules = new ArrayList<>();
 	Map<Class, Set> allLoadedServices = new LinkedHashMap<>();
 
-	CompletableFuture<Boolean> startup = new CompletableFuture<>().newIncompleteFuture();
-
 	static IGuiceContext getContext()
 	{
 		if (context.get() == null)
@@ -52,7 +50,9 @@ public interface IGuiceContext
 	{
 		return allLoadedServices;
 	}
-	
+
+	CompletableFuture<Void> getLoadingFinished();
+
 	Injector inject();
 	
 	IGuiceConfig<?> getConfig();
