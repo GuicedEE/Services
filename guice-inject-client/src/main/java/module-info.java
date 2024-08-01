@@ -29,12 +29,16 @@ module com.guicedee.client {
     requires static lombok;
 
     requires org.apache.commons.lang3;
+   // requires org.apache.logging.log4j;
+    //requires org.apache.logging.log4j.slf4j2.impl;
 
     //slf4j config
     //requires org.apache.commons.logging;
-    requires jul.to.slf4j;
+    //requires jul.to.slf4j;
+    requires org.apache.logging.log4j.core;
+    requires org.apache.logging.log4j.jul;
 
-	uses IGuiceProvider;
+    uses IGuiceProvider;
 	uses IJobServiceProvider;
     uses com.guicedee.guicedservlets.servlets.services.IOnCallScopeEnter;
     uses com.guicedee.guicedservlets.servlets.services.IOnCallScopeExit;

@@ -2,12 +2,9 @@ package com.guicedee.client.implementations;
 
 import com.guicedee.client.IGuiceContext;
 import com.guicedee.guicedinjection.interfaces.IGuicePreStartup;
-import com.guicedee.guicedservlets.websockets.options.IGuicedWebSocket;
 import lombok.extern.java.Log;
-import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 
 @Log
 public class GuicedEEClientStartup implements IGuicePreStartup<GuicedEEClientStartup>
@@ -15,10 +12,6 @@ public class GuicedEEClientStartup implements IGuicePreStartup<GuicedEEClientSta
     @Override
     public void onStartup()
     {
-        System.setProperty("org.jboss.logging.provider", "slf4j");
-        LogManager.getLogManager()
-                  .getLogger("")
-                  .addHandler(new SLF4JBridgeHandler());
         try
         {
             IGuiceContext.instance()
