@@ -7,7 +7,7 @@ import java.util.*;
 
 public interface IGuicedWebSocket
 {
-    Map<String, Set<IWebSocketMessageReceiver>> messageListeners = new HashMap<>();
+    Map<String, IWebSocketMessageReceiver> messageListeners = new HashMap<>();
 
     String EveryoneGroup = "Everyone";
 
@@ -47,21 +47,13 @@ public interface IGuicedWebSocket
                          .add(messageReceiver);
             loadWebSocketReceivers();
         }
-        if (!messageListeners
-                .containsKey(action))
-        {
-            messageListeners
-                    .put(action, new HashSet<>());
-        }
         messageListeners
-                .get(action)
-                .add(messageReceiver);
-
+                .put(action,messageReceiver);
         Set<Class<IWebSocketMessageReceiver>> classes = IGuiceContext.loadClassSet(ServiceLoader.load(IWebSocketMessageReceiver.class));
         classes.add((Class<IWebSocketMessageReceiver>) messageReceiver.getClass());
     }
 
-    static Map<String, Set<IWebSocketMessageReceiver>> getMessagesListeners()
+    static Map<String, IWebSocketMessageReceiver> getMessagesListeners()
     {
         if (messageListeners
                 .isEmpty() && !loadingReceivers.get())
