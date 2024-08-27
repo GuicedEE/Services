@@ -21,6 +21,8 @@ public interface IGuicedWebSocket
 
     void broadcastMessageSync(String groupName, String message);
 
+
+
     static void addWebSocketMessageReceiver(IWebSocketMessageReceiver receiver)
     {
         for (String messageName : receiver.messageNames())
