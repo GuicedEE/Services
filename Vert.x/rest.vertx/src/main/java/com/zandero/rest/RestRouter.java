@@ -10,8 +10,9 @@ import com.zandero.rest.events.*;
 import com.zandero.rest.exception.*;
 import com.zandero.rest.injection.*;
 import com.zandero.rest.reader.*;
+import com.zandero.rest.utils.Assert;
 import com.zandero.rest.writer.*;
-import com.zandero.utils.*;
+
 import io.vertx.core.*;
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.http.*;
@@ -21,9 +22,9 @@ import io.vertx.ext.web.*;
 import io.vertx.ext.web.handler.*;
 import org.slf4j.*;
 
-import javax.validation.*;
-import javax.validation.executable.*;
-import javax.ws.rs.core.*;
+import jakarta.validation.*;
+import jakarta.validation.executable.*;
+import jakarta.ws.rs.core.*;
 import java.lang.reflect.*;
 import java.util.*;
 
@@ -82,7 +83,6 @@ public class RestRouter {
 
         Assert.notNull(router, "Missing vertx router!");
         Assert.isTrue(restApi != null && restApi.length > 0, "Missing REST API class object!");
-        assert restApi != null;
 
         for (Object api : restApi) {
 
@@ -128,7 +128,7 @@ public class RestRouter {
                     route = router.route(definition.getMethod(), definition.getRoutePath());
                 }
                 //
-                log.debug("Registering route: " + definition);
+                log.info("Registering route: " + definition);
 
                 if (definition.getOrder() != 0) {
                     route.order(definition.getOrder());
@@ -138,10 +138,10 @@ public class RestRouter {
                 if (definition.requestHasBody()) {
                     if (bodyHandler == null) {
                         route.handler(BodyHandler.create());
-                        log.trace("Adding default body handler to route!");
+                        log.debug("Adding default body handler to route!");
                     } else {
                         route.handler(bodyHandler);
-                        log.trace("Adding provided body handler to route!");
+                        log.debug("Adding provided body handler to route!");
                     }
                 }
                 // check body and reader compatibility beforehand
@@ -345,8 +345,8 @@ public class RestRouter {
                                   HttpMethod... methods) {
 
         CorsHandler handler = CorsHandler.create(allowedOriginPattern)
-                                         .allowCredentials(allowCredentials)
-                                         .maxAgeSeconds(maxAge);
+                                  .allowCredentials(allowCredentials)
+                                  .maxAgeSeconds(maxAge);
 
         if (methods == null || methods.length == 0) { // if not given than all
             methods = HttpMethod.values().toArray(new HttpMethod[]{});
@@ -412,8 +412,8 @@ public class RestRouter {
 
             checkIfCompatibleType(bodyParameter.getDataType(), readerType,
                                   definition.toString().trim() + " - Parameter type: '" +
-                                          bodyParameter.getDataType() + "' not matching reader type: '" +
-                                          readerType + "' in: '" + bodyReader.getClass() + "'!");
+                                      bodyParameter.getDataType() + "' not matching reader type: '" +
+                                      readerType + "' in: '" + bodyReader.getClass() + "'!");
         }
     }
 
@@ -422,14 +422,14 @@ public class RestRouter {
         return context -> {
             try {
                 RestAuthenticationProvider authenticator = authenticatorProviderClass != null ?
-                        getAuthenticationProviders().provide(authenticatorProviderClass, getInjectionProvider(), context) :
-                        defaultAuthenticationProvider;
+                                                               getAuthenticationProviders().provide(authenticatorProviderClass, getInjectionProvider(), context) :
+                                                               defaultAuthenticationProvider;
 
                 authenticator.authenticate(context, userAsyncResult -> {
                     if (userAsyncResult.failed()) {
                         Throwable ex = (userAsyncResult.cause() != null ?
-                                userAsyncResult.cause() :
-                                new UnauthorizedException(context.user()));
+                                            userAsyncResult.cause() :
+                                            new UnauthorizedException(context.user()));
                         handleException(ex, context, definition);
                     } else {
                         context.setUser(userAsyncResult.result());
@@ -448,14 +448,14 @@ public class RestRouter {
 
             try {
                 AuthorizationProvider provider = providerClass != null ?
-                        getAuthorizationProviders().provide(providerClass, getInjectionProvider(), context) :
-                        defaultAuthorizationProvider;
+                                                     getAuthorizationProviders().provide(providerClass, getInjectionProvider(), context) :
+                                                     defaultAuthorizationProvider;
 
                 provider.getAuthorizations(context.user(), userAuthorizationResult -> {
                     if (userAuthorizationResult.failed()) {
                         Throwable ex = (userAuthorizationResult.cause() != null ?
-                                userAuthorizationResult.cause() :
-                                new ForbiddenException(context.user()));
+                                            userAuthorizationResult.cause() :
+                                            new ForbiddenException(context.user()));
                         handleException(ex, context, definition);
                     } else {
                         context.next();
@@ -471,45 +471,45 @@ public class RestRouter {
     private static Handler<RoutingContext> getHandler(final Object toInvoke, final RouteDefinition definition, final Method method) {
 
         return context -> context.vertx().executeBlocking(
-                fut -> {
-                    try {
-                        log.debug(definition.getMethod().name() + " " + definition.getPath());
-                        Object[] args = ArgumentProvider.getArguments(method,
-                                                                      definition,
-                                                                      context,
-                                                                      getReaders(),
-                                                                      getContextProviders(),
-                                                                      getInjectionProvider(),
-                                                                      beanProvider);
+            fut -> {
+                try {
+                    log.info(definition.getMethod().name() + " " + definition.getPath());
+                    Object[] args = ArgumentProvider.getArguments(method,
+                                                                  definition,
+                                                                  context,
+                                                                  getReaders(),
+                                                                  getContextProviders(),
+                                                                  getInjectionProvider(),
+                                                                  beanProvider);
 
-                        validate(method, definition, validator, toInvoke, args);
+                    validate(method, definition, validator, toInvoke, args);
 
-                        fut.complete(method.invoke(toInvoke, args));
-                    } catch (Throwable e) {
-                        fut.fail(e);
-                    }
-                },
-                definition.executeBlockingOrdered(), // false by default
-                res -> {
-                    if (res.succeeded()) {
-                        try {
-                            Object result = res.result();
-
-                            Class returnType = result != null ? result.getClass() : definition.getReturnType();
-
-                            HttpResponseWriter writer = forge.getResponseWriter(returnType,
-                                                                                definition,
-                                                                                context);
-
-                            validateResult(result, method, definition, validator, toInvoke);
-                            produceResponse(result, context, definition, writer);
-                        } catch (Throwable e) {
-                            handleException(e, context, definition);
-                        }
-                    } else {
-                        handleException(res.cause(), context, definition);
-                    }
+                    fut.complete(method.invoke(toInvoke, args));
+                } catch (Throwable e) {
+                    fut.fail(e);
                 }
+            },
+            definition.executeBlockingOrdered(), // false by default
+            res -> {
+                if (res.succeeded()) {
+                    try {
+                        Object result = res.result();
+
+                        Class returnType = result != null ? result.getClass() : definition.getReturnType();
+
+                        HttpResponseWriter writer = forge.getResponseWriter(returnType,
+                                                                            definition,
+                                                                            context);
+
+                        validateResult(result, method, definition, validator, toInvoke);
+                        produceResponse(result, context, definition, writer);
+                    } catch (Throwable e) {
+                        handleException(e, context, definition);
+                    }
+                } else {
+                    handleException(res.cause(), context, definition);
+                }
+            }
         );
     }
 
@@ -518,7 +518,7 @@ public class RestRouter {
         return context -> {
 
             try {
-                log.debug(definition.getMethod().name() + " " + definition.getPath());
+                log.info(definition.getMethod().name() + " " + definition.getPath());
 
                 Object[] args = ArgumentProvider.getArguments(method, definition, context, getReaders(), getContextProviders(), getInjectionProvider(), beanProvider);
                 validate(method, definition, validator, toInvoke, args);
@@ -782,7 +782,7 @@ public class RestRouter {
         Assert.notNull(provider, "Missing provider class type!!");
 
         getContextProviders().register(clazz, provider);
-        log.debug("Registering '" + clazz + "' provider '" + provider.getName() + "'");
+        log.info("Registering '" + clazz + "' provider '" + provider.getName() + "'");
     }
 
     public static void addProvider(ContextProvider<?> provider) {
@@ -797,10 +797,10 @@ public class RestRouter {
         Assert.notNull(provider, "Missing provider instance!");
 
         getContextProviders().register(clazz, provider);
-        log.debug("Registering '" + clazz + "' provider '" + provider.getClass().getName() + "'");
+        log.info("Registering '" + clazz + "' provider '" + provider.getClass().getName() + "'");
     }
 
-    static void pushContext(RoutingContext context, Object object) {
+    public static void pushContext(RoutingContext context, Object object) {
 
         Assert.notNull(context, "Missing context!");
         Assert.notNull(object, "Can't push null into context!");
@@ -817,9 +817,9 @@ public class RestRouter {
 
         forge.setInjectionProvider(provider);
         if (getInjectionProvider() != null) {
-            log.debug("Registered injection provider: " + getInjectionProvider().getClass().getName());
+            log.info("Registered injection provider: " + getInjectionProvider().getClass().getName());
         } else {
-            log.warn("No injection provider specified!");
+            log.info("No injection provider specified!");
         }
     }
 
@@ -832,7 +832,7 @@ public class RestRouter {
 
         try {
             forge.setInjectionProvider((InjectionProvider) ClassFactory.newInstanceOf(provider));
-            log.debug("Registered injection provider: " + getInjectionProvider().getClass().getName());
+            log.info("Registered injection provider: " + getInjectionProvider().getClass().getName());
         } catch (ClassFactoryException e) {
             log.error("Failed to instantiate injection provider: ", e);
             throw new IllegalArgumentException(e);
@@ -849,7 +849,7 @@ public class RestRouter {
 
         beanProvider = provider;
         if (beanProvider != null) {
-            log.debug("Registered bean provider: " + beanProvider.getClass().getName());
+            log.info("Registered bean provider: " + beanProvider.getClass().getName());
         } else {
             log.info("No bean provider specified!");
         }
@@ -864,7 +864,7 @@ public class RestRouter {
 
         try {
             beanProvider = (BeanProvider) ClassFactory.newInstanceOf(provider);
-            log.debug("Registered bean provider: " + beanProvider.getClass().getName());
+            log.info("Registered bean provider: " + beanProvider.getClass().getName());
         } catch (ClassFactoryException e) {
             log.error("Failed to instantiate bean provider: ", e);
             throw new IllegalArgumentException(e);
@@ -880,9 +880,9 @@ public class RestRouter {
 
         validator = provider;
         if (validator != null) {
-            log.debug("Registered validation provider: " + validator.getClass().getName());
+            log.info("Registered validation provider: " + validator.getClass().getName());
         } else {
-            log.warn("No validation provider specified!");
+            log.info("No validation provider specified!");
         }
     }
 

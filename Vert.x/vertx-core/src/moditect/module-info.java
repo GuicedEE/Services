@@ -1,9 +1,13 @@
-module io.vertx {
+module io.vertx.core {
 	requires java.logging;
 	requires jdk.unsupported;
 
 	requires transitive com.fasterxml.jackson.databind;
 	requires transitive com.fasterxml.jackson.core;
+
+	exports io.vertx.ext.auth.authorization;
+	exports io.vertx.ext.auth.authentication;
+	exports io.vertx.core.cli.impl;
 
 	exports io.vertx.core;
 	exports io.vertx.core.buffer;

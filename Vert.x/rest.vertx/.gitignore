@@ -1,0 +1,16 @@
+.project
+.classpath
+.settings/
+.idea/
+*/.idea/
+*.iml
+*.ipr
+*.iws
+*.bin
+*/*.iml
+*/*.ipr
+*/*.iws
+target/
+.vertx/
+file-uploads/
+my_upload_folder/

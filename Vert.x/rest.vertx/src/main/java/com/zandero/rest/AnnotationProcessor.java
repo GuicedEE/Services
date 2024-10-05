@@ -1,7 +1,7 @@
 package com.zandero.rest;
 
 import com.zandero.rest.data.*;
-import com.zandero.utils.Assert;
+import com.zandero.rest.utils.Assert;
 
 import java.lang.reflect.*;
 import java.util.*;
@@ -10,7 +10,7 @@ import java.util.*;
  * Collects all JAX-RS annotations to be transformed into routes
  */
 public final class AnnotationProcessor {
-    public static String context = "";
+
     /**
      * Methods names of Object that will be ignored when binding RESTs
      */
@@ -55,15 +55,15 @@ public final class AnnotationProcessor {
                 if (bodyParamCount > 0 && (ParameterType.body.equals(param.getType()) || ParameterType.unknown.equals(param.getType()))) {
                     // OK we have to body params ...
                     throw new IllegalArgumentException(getClassMethod(clazz, method) + " - to many body arguments given. " +
-                                                               "Missing argument annotation (@PathParam, @QueryParam, @FormParam, @HeaderParam, @CookieParam or @Context) for: " +
-                                                               param.getType() + " " + param.getName() + "!");
+                                                           "Missing argument annotation (@PathParam, @QueryParam, @FormParam, @HeaderParam, @CookieParam or @Context) for: " +
+                                                           param.getType() + " " + param.getName() + "!");
                 }
 
                 if (ParameterType.unknown.equals(param.getType())) { // proclaim as body param
                     // check if method allows for a body param
                     Assert.isTrue(definition.requestCanHaveBody(), getClassMethod(clazz, method) + " - " +
-                            "Missing argument annotation (@PathParam, @QueryParam, @FormParam, @HeaderParam, @CookieParam or @Context) for: " +
-                            param.getName() + "!");
+                                                                   "Missing argument annotation (@PathParam, @QueryParam, @FormParam, @HeaderParam, @CookieParam or @Context) for: " +
+                                                                   param.getName() + "!");
 
                     param.setType(ParameterType.body);
                 }
@@ -262,8 +262,8 @@ public final class AnnotationProcessor {
     private static boolean isRestCompatible(Method method) {
 
         return (!method.getDeclaringClass().isInstance(Object.class) &&
-                !isNative(method) && !isObjectMethod(method) &&
-                (isPublic(method) || isInterface(method) || isAbstract(method)));
+                    !isNative(method) && !isObjectMethod(method) &&
+                    (isPublic(method) || isInterface(method) || isAbstract(method)));
     }
 
     private static boolean isObjectMethod(Method method) {

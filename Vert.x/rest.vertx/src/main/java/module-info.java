@@ -1,10 +1,14 @@
-module io.vertx.rest {
-    requires io.vertx;
+module com.zandero.rest.vertx {
+    requires transitive io.vertx.core;
 
     requires jakarta.validation;
     requires jakarta.annotation;
     requires jakarta.ws.rs;
     requires org.slf4j;
+
+   // requires java.annotation;
+    requires com.fasterxml.jackson.databind;
+
 
     exports com.zandero.rest;
     exports com.zandero.rest.authentication;
@@ -15,5 +19,7 @@ module io.vertx.rest {
     exports com.zandero.rest.bean;
     exports com.zandero.rest.reader;
     exports com.zandero.rest.writer;
+
+    exports com.zandero.rest.events;
 
 }
