@@ -80,10 +80,12 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
 		public java.nio.file.FileVisitResult visitFile(java.nio.file.Path path, java.nio.file.attribute.BasicFileAttributes attrs) throws java.io.IOException
 		{
 			String name = path.toString();
+		//	System.out.println("visiting - " + name);
 			if (name.startsWith("/modules/"))
 			{
 				name = name.substring(9);
 				name = name.substring(name.indexOf('/') + 1);
+		//		System.out.println("visiting clean - " + name);
 			}
 			java.nio.file.Path lateralPath = null;
 			try
@@ -92,6 +94,8 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
 			}
 			catch (java.net.URISyntaxException e)
 			{
+	//			System.err.println("Cannot walk tree - " + e.getMessage());
+	//			e.printStackTrace(System.err);
 				visitFileFailed(path, new java.io.IOException("Unable to walk file", e));
 			}
 			String basePrefix = getEntryBasePrefix();

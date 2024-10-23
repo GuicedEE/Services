@@ -18,35 +18,29 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public interface IGuiceContext
-{
-    ThreadLocal<IGuiceContext> context = ThreadLocal.withInitial(() -> null);
+public interface IGuiceContext {
+    Map<String, IGuiceContext> contexts = new HashMap<>();
     Set<String> registerModuleForScanning = new LinkedHashSet<>();
     List<com.google.inject.Module> modules = new ArrayList<>();
     Map<Class, Set> allLoadedServices = new LinkedHashMap<>();
 
-    static IGuiceContext getContext()
-    {
-        if (context.get() == null)
-        {
+    static IGuiceContext getContext() {
+        if (contexts.isEmpty()) {
             ServiceLoader<IGuiceProvider> load = ServiceLoader.load(IGuiceProvider.class);
-            for (IGuiceProvider iGuiceProvider : load)
-            {
+            for (IGuiceProvider iGuiceProvider : load) {
                 IGuiceContext iGuiceContext = iGuiceProvider.get();
-                context.set(iGuiceContext);
+                contexts.put("default", iGuiceContext);
                 break;
             }
         }
-        return context.get();
+        return contexts.get("default");
     }
 
-    static IGuiceContext instance()
-    {
+    static IGuiceContext instance() {
         return getContext();
     }
 
-    static Map<Class, Set> getAllLoadedServices()
-    {
+    static Map<Class, Set> getAllLoadedServices() {
         return allLoadedServices;
     }
 
@@ -58,36 +52,28 @@ public interface IGuiceContext
 
     void destroy();
 
-    static <T> T get(Key<T> type)
-    {
+    static <T> T get(Key<T> type) {
         @SuppressWarnings("unchecked")
         Class<T> clazz = (Class<T>) type
                 .getTypeLiteral()
                 .getRawType();
         T instance;
         boolean isEntityType = isEntityType(clazz);
-        if (isNotEnhanceable(clazz) || isEntityType)
-        {
-            try
-            {
+        if (isNotEnhanceable(clazz) || isEntityType) {
+            try {
                 instance = clazz
                         .getDeclaredConstructor()
                         .newInstance();
-                if (!isNotInjectable(clazz))
-                {
+                if (!isNotInjectable(clazz)) {
                     getContext()
                             .inject()
                             .injectMembers(instance);
                 }
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Logger.getLogger("IGuiceContext").log(Level.SEVERE, "Unable to construct [" + clazz.getCanonicalName() + "]. Not Enhanceable or an Entity.", e);
                 throw new RuntimeException(e);
             }
-        }
-        else
-        {
+        } else {
             instance = getContext()
                     .inject()
                     .getInstance(type);
@@ -95,49 +81,38 @@ public interface IGuiceContext
         return instance;
     }
 
-    private static boolean isNotEnhanceable(Class<?> clazz)
-    {
+    private static boolean isNotEnhanceable(Class<?> clazz) {
         return clazz.isAnnotationPresent(INotEnhanceable.class);
     }
 
-    private static boolean isNotInjectable(Class<?> clazz)
-    {
+    private static boolean isNotInjectable(Class<?> clazz) {
         return clazz.isAnnotationPresent(INotInjectable.class);
     }
 
-    private static boolean isEntityType(Class<?> clazz)
-    {
-        try
-        {
-            for (Annotation annotation : clazz.getAnnotations())
-            {
+    private static boolean isEntityType(Class<?> clazz) {
+        try {
+            for (Annotation annotation : clazz.getAnnotations()) {
                 if (annotation
                         .annotationType()
                         .getCanonicalName()
-                        .equalsIgnoreCase("jakarta.persistence.Entity"))
-                {
+                        .equalsIgnoreCase("jakarta.persistence.Entity")) {
                     return true;
                 }
             }
-        }
-        catch (NullPointerException npe)
-        {
+        } catch (NullPointerException npe) {
             return false;
         }
         return false;
     }
 
-    static <T> T get(Class<T> type, Class<? extends Annotation> annotation)
-    {
-        if (annotation == null)
-        {
+    static <T> T get(Class<T> type, Class<? extends Annotation> annotation) {
+        if (annotation == null) {
             return get(Key.get(type));
         }
         return get(Key.get(type, annotation));
     }
 
-    static <T> T get(Class<T> type)
-    {
+    static <T> T get(Class<T> type) {
         return get(type, null);
     }
 
@@ -145,8 +120,7 @@ public interface IGuiceContext
 
     Map<String, Set<Class>> loaderClasses = new ConcurrentHashMap<>();
 
-    static <T extends Comparable<T>> Set<T> loaderToSet(ServiceLoader<T> loader)
-    {
+    static <T extends Comparable<T>> Set<T> loaderToSet(ServiceLoader<T> loader) {
         @SuppressWarnings("rawtypes")
         Set<Class> loadeds = new HashSet<>();
 
@@ -154,125 +128,95 @@ public interface IGuiceContext
         type = type.replace("java.util.ServiceLoader[", "");
         type = type.substring(0, type.length() - 1);
 
-        if (!loaderClasses.containsKey(type))
-        {
+        if (!loaderClasses.containsKey(type)) {
             IGuiceConfig<?> config = getContext().getConfig();
-            if (config.isServiceLoadWithClassPath())
-            {
+            if (config.isServiceLoadWithClassPath()) {
                 for (ClassInfo classInfo : instance()
                         .getScanResult()
-                        .getClassesImplementing(type))
-                {
+                        .getClassesImplementing(type)) {
                     Class<T> load = (Class<T>) classInfo.loadClass();
                     loadeds.add(load);
                 }
             }
-            try
-            {
-                for (T newInstance : loader)
-                {
+            try {
+                for (T newInstance : loader) {
                     loadeds.add(newInstance.getClass());
                 }
-            }
-            catch (Throwable T)
-            {
+            } catch (Throwable T) {
                 Logger.getLogger("IGuiceContext").log(Level.SEVERE, "Unable to provide instance of " + type + " to TreeSet", T);
             }
             loaderClasses.put(type, loadeds);
         }
 
         Set<T> outcomes = new TreeSet<>();
-        for (Class<?> aClass : loaderClasses.get(type))
-        {
+        for (Class<?> aClass : loaderClasses.get(type)) {
             outcomes.add((T) IGuiceContext.get(aClass));
         }
         return outcomes;
     }
 
-    static <T> Set<T> loaderToSetNoInjection(ServiceLoader<T> loader)
-    {
+    static <T> Set<T> loaderToSetNoInjection(ServiceLoader<T> loader) {
         Set<Class<T>> loadeds = new HashSet<>();
         IGuiceConfig<?> config = getContext().getConfig();
         String type = loader.toString();
         type = type.replace("java.util.ServiceLoader[", "");
         type = type.substring(0, type.length() - 1);
-        if (config.isServiceLoadWithClassPath() && instance().getScanResult() != null)
-        {
+        if (config.isServiceLoadWithClassPath() && instance().getScanResult() != null) {
             for (ClassInfo classInfo : instance()
                     .getScanResult()
-                    .getClassesImplementing(type))
-            {
+                    .getClassesImplementing(type)) {
                 Class<T> load = (Class<T>) classInfo.loadClass();
                 loadeds.add(load);
             }
         }
         Set<Class<T>> completed = new LinkedHashSet<>();
         Set<T> output = new LinkedHashSet<>();
-        try
-        {
-            for (T newInstance : loader)
-            {
+        try {
+            for (T newInstance : loader) {
                 output.add(newInstance);
                 completed.add((Class<T>) newInstance.getClass());
             }
-        }
-        catch (java.util.ServiceConfigurationError T)
-        {
+        } catch (java.util.ServiceConfigurationError T) {
             Logger.getLogger("IGuiceContext").log(Level.WARNING, "Cannot load services - ", T);
-        }
-        catch (Throwable T)
-        {
+        } catch (Throwable T) {
             Logger.getLogger("IGuiceContext").log(Level.SEVERE, "Cannot load services - ", T);
         }
-        for (Class<T> newInstance : loadeds)
-        {
-            if (completed.contains(newInstance))
-            {
+        for (Class<T> newInstance : loadeds) {
+            if (completed.contains(newInstance)) {
                 continue;
             }
-            try
-            {
+            try {
                 output.add((T) newInstance.getDeclaredConstructor());
-            }
-            catch (NoSuchMethodException e)
-            {
+            } catch (NoSuchMethodException e) {
                 Logger.getLogger("IGuiceContext").log(Level.SEVERE, "Cannot load a service through default constructor", e);
             }
         }
         return output;
     }
 
-    static <T extends Comparable<T>> Set<Class<T>> loadClassSet(ServiceLoader<T> loader)
-    {
+    static <T extends Comparable<T>> Set<Class<T>> loadClassSet(ServiceLoader<T> loader) {
         String type = loader.toString();
         type = type.replace("java.util.ServiceLoader[", "");
         type = type.substring(0, type.length() - 1);
 
-        if (!loaderClasses.containsKey(type))
-        {
+        if (!loaderClasses.containsKey(type)) {
             Set<Class> loadeds = new HashSet<>();
             IGuiceConfig<?> config = getContext().getConfig();
-            if (config.isServiceLoadWithClassPath())
-            {
+            if (config.isServiceLoadWithClassPath()) {
                 for (ClassInfo classInfo : instance()
                         .getScanResult()
-                        .getClassesImplementing(type))
-                {
+                        .getClassesImplementing(type)) {
                     @SuppressWarnings("unchecked")
                     Class<T> load = (Class<T>) classInfo.loadClass();
                     loadeds.add(load);
                 }
             }
-            try
-            {
-                for (T newInstance : loader)
-                {
+            try {
+                for (T newInstance : loader) {
                     //noinspection unchecked
                     loadeds.add((Class<T>) newInstance.getClass());
                 }
-            }
-            catch (Throwable T)
-            {
+            } catch (Throwable T) {
                 Logger.getLogger("IGuiceContext").log(Level.SEVERE, "Unable to provide instance of " + type + " to TreeSet", T);
             }
             loaderClasses.put(type, loadeds);
@@ -294,8 +238,7 @@ public interface IGuiceContext
      * @return This instance
      */
     @SuppressWarnings("unchecked")
-    static void registerModule(String javaModuleName)
-    {
+    static void registerModule(String javaModuleName) {
         registerModuleForScanning.add(javaModuleName);
         instance()
                 .getConfig()
@@ -307,8 +250,7 @@ public interface IGuiceContext
      *
      * @param module
      */
-    static void registerModule(com.google.inject.Module module)
-    {
+    static void registerModule(com.google.inject.Module module) {
         modules.add(module);
     }
 
