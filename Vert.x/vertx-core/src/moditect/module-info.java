@@ -2,6 +2,8 @@ module io.vertx.core {
 	requires java.logging;
 	requires jdk.unsupported;
 
+	requires static java.naming;
+
 	requires transitive com.fasterxml.jackson.databind;
 	requires transitive com.fasterxml.jackson.core;
 
