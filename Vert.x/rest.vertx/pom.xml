@@ -36,16 +36,6 @@
 
     <version>2.0.0-SNAPSHOT</version>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
-
-
     <developers>
         <developer>
             <name>Andrej Završnik</name>
@@ -60,8 +50,6 @@
             <email>marc.magon@gmail.com</email>
         </contributor>
     </contributors>
-
-
 
     <licenses>
         <license>
