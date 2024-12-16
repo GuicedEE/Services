@@ -16,11 +16,31 @@
     <version>2.0.0-SNAPSHOT</version>
     <!--<version>${guice.version}</version>-->
 
-    <name>Guice</name>
+    <name>Google Guice</name>
+
+    <description>
+        Guice is a lightweight dependency injection framework for Java 11 and above
+    </description>
+
+    <url>https://github.com/google/guice</url>
+    <inceptionYear>2006</inceptionYear>
+
+    <organization>
+        <name>Google, Inc.</name>
+        <url>http://www.google.com</url>
+    </organization>
+
 
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
     </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
     <dependencies>
         <dependency>

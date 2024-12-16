@@ -18,6 +18,13 @@
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
     </properties>
 
+    <licenses>
+        <license>
+            <name>JSON License</name>
+            <url>https://www.json.org/license.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <description>
         JSON is a light-weight, language independent, data interchange format.

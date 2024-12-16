@@ -13,6 +13,13 @@
     <name>com.ibm.mq.jakarta.client</name>
     <packaging>jar</packaging>
 
+    <licenses>
+        <license>
+            <name>IBM International Program License Agreement (IPLA)</name>
+            <url>https://www.ibm.com/docs/en/ibm-mq</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
     </properties>

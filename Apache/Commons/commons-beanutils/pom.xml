@@ -33,8 +33,24 @@
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
     </properties>
 
+    <name>Apache Commons BeanUtils</name>
+    <inceptionYear>2000</inceptionYear>
+    <description>Apache Commons BeanUtils provides an easy-to-use but flexible wrapper around reflection and
+        introspection.
+    </description>
+    <url>https://commons.apache.org/proper/commons-beanutils/</url>
+    <issueManagement>
+        <system>jira</system>
+        <url>https://issues.apache.org/jira/browse/BEANUTILS</url>
+    </issueManagement>
 
-    <name>Apache Commons Bean Utils</name>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
     <packaging>jar</packaging>
 
     <dependencies>

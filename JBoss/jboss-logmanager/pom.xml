@@ -17,6 +17,13 @@
     <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
     </description>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>

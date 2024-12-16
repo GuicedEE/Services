@@ -54,6 +54,10 @@
             <name>APACHE LICENSE 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
+        <license>
+            <name>Hazelcast Community License</name>
+            <url>http://hazelcast.com/hazelcast-community-license</url>
+        </license>
     </licenses>
 
     <dependencies>

@@ -21,6 +21,28 @@
     </properties>
 
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+
+        <license>
+            <name>Mozilla Public License 2.0</name>
+            <url>https://www.mozilla.org/en-US/MPL/2.0/</url>
+            <distribution>repo</distribution>
+        </license>
+
+        <license>
+            <name>GNU Lesser General Public License, Version 2.1</name>
+            <url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</url>
+            <distribution>repo</distribution>
+        </license>
+
+    </licenses>
+
+
     <dependencies>
         <dependency>
             <groupId>com.github.librepdf</groupId>
