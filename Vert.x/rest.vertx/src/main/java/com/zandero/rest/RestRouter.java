@@ -25,6 +25,7 @@ import org.slf4j.*;
 import jakarta.validation.*;
 import jakarta.validation.executable.*;
 import jakarta.ws.rs.core.*;
+
 import java.lang.reflect.*;
 import java.util.*;
 
@@ -167,19 +168,19 @@ public class RestRouter {
                 // Authentication
                 if (definition.getAuthenticationProvider() != null || defaultAuthenticationProvider != null) {
                     route.handler(getAuthenticationProvider(definition.getAuthenticationProvider(),
-                                                            definition));
+                            definition));
                 }
 
                 // Authorization
                 if (definition.getAuthorizationProvider() != null || defaultAuthorizationProvider != null) {
                     route.handler(getAuthorizationHandler(definition.getAuthorizationProvider(),
-                                                          definition));
+                            definition));
                 } else if (definition.checkSecurity()) {
                     // for back compatibility purposes
                     // add security check handler in front of regular route handler
                     // (in case @PermitAll, @DenyAll or @RolesAllowed is used)
                     route.handler(getAuthorizationHandler(RoleBasedUserAuthorizationProvider.class,
-                                                          definition));
+                            definition));
                 }
 
                 // bind handler // blocking or async
@@ -213,9 +214,9 @@ public class RestRouter {
         try {
             Class<?> clazz = (Class<?>) getGenericType(provider);
             ContextProvider<?> instance = getContextProviders().getContextProvider(getInjectionProvider(),
-                                                                                   clazz,
-                                                                                   provider,
-                                                                                   null);
+                    clazz,
+                    provider,
+                    null);
             // set before other routes ...
             output.route().order(ORDER_PROVIDER_HANDLER).handler(getContextHandler(instance));
         } catch (Throwable e) {
@@ -235,14 +236,6 @@ public class RestRouter {
             if (instance != null) {
                 try {
                     Object provided = instance.provide(context.request());
-
-                    if (provided instanceof User) {
-                        context.setUser((User) provided);
-                    }
-
-                    if (provided instanceof Session) {
-                        context.setSession((Session) provided);
-                    }
 
                     if (provided != null) { // push provided context into request data
                         context.data().put(ContextProviderCache.getContextDataKey(provided), provided);
@@ -338,15 +331,16 @@ public class RestRouter {
      * @param methods              list of methods or empty for all
      */
     public static void enableCors(Router router,
-                                  String allowedOriginPattern,
+                                  List<String> allowedOriginPattern,
                                   boolean allowCredentials,
                                   int maxAge,
                                   Set<String> allowedHeaders,
                                   HttpMethod... methods) {
 
-        CorsHandler handler = CorsHandler.create(allowedOriginPattern)
-                                  .allowCredentials(allowCredentials)
-                                  .maxAgeSeconds(maxAge);
+        CorsHandler handler = CorsHandler.create()
+                .addOrigins(allowedOriginPattern)
+                .allowCredentials(allowCredentials)
+                .maxAgeSeconds(maxAge);
 
         if (methods == null || methods.length == 0) { // if not given than all
             methods = HttpMethod.values().toArray(new HttpMethod[]{});
@@ -400,10 +394,10 @@ public class RestRouter {
         }
 
         ValueReader<?> bodyReader = getReaders().get(definition.getBodyParameter(),
-                                                     definition.getReader(),
-                                                     getInjectionProvider(),
-                                                     null,
-                                                     definition.getConsumes());
+                definition.getReader(),
+                getInjectionProvider(),
+                null,
+                definition.getConsumes());
 
         if (bodyReader != null && definition.checkCompatibility()) {
 
@@ -411,9 +405,9 @@ public class RestRouter {
             MethodParameter bodyParameter = definition.getBodyParameter();
 
             checkIfCompatibleType(bodyParameter.getDataType(), readerType,
-                                  definition.toString().trim() + " - Parameter type: '" +
-                                      bodyParameter.getDataType() + "' not matching reader type: '" +
-                                      readerType + "' in: '" + bodyReader.getClass() + "'!");
+                    definition.toString().trim() + " - Parameter type: '" +
+                            bodyParameter.getDataType() + "' not matching reader type: '" +
+                            readerType + "' in: '" + bodyReader.getClass() + "'!");
         }
     }
 
@@ -422,20 +416,10 @@ public class RestRouter {
         return context -> {
             try {
                 RestAuthenticationProvider authenticator = authenticatorProviderClass != null ?
-                                                               getAuthenticationProviders().provide(authenticatorProviderClass, getInjectionProvider(), context) :
-                                                               defaultAuthenticationProvider;
+                        getAuthenticationProviders().provide(authenticatorProviderClass, getInjectionProvider(), context) :
+                        defaultAuthenticationProvider;
 
-                authenticator.authenticate(context, userAsyncResult -> {
-                    if (userAsyncResult.failed()) {
-                        Throwable ex = (userAsyncResult.cause() != null ?
-                                            userAsyncResult.cause() :
-                                            new UnauthorizedException(context.user()));
-                        handleException(ex, context, definition);
-                    } else {
-                        context.setUser(userAsyncResult.result());
-                        context.next();
-                    }
-                });
+                authenticator.authenticate(context);
             } catch (Throwable e) {
                 log.error("Authentication failed: " + e.getMessage(), e);
                 handleException(e, context, definition);
@@ -448,19 +432,10 @@ public class RestRouter {
 
             try {
                 AuthorizationProvider provider = providerClass != null ?
-                                                     getAuthorizationProviders().provide(providerClass, getInjectionProvider(), context) :
-                                                     defaultAuthorizationProvider;
+                        getAuthorizationProviders().provide(providerClass, getInjectionProvider(), context) :
+                        defaultAuthorizationProvider;
 
-                provider.getAuthorizations(context.user(), userAuthorizationResult -> {
-                    if (userAuthorizationResult.failed()) {
-                        Throwable ex = (userAuthorizationResult.cause() != null ?
-                                            userAuthorizationResult.cause() :
-                                            new ForbiddenException(context.user()));
-                        handleException(ex, context, definition);
-                    } else {
-                        context.next();
-                    }
-                });
+                provider.getAuthorizations(context.user().get());
             } catch (Throwable e) {
                 log.error("Authorization failed: " + e.getMessage(), e);
                 handleException(e, context, definition);
@@ -471,45 +446,25 @@ public class RestRouter {
     private static Handler<RoutingContext> getHandler(final Object toInvoke, final RouteDefinition definition, final Method method) {
 
         return context -> context.vertx().executeBlocking(
-            fut -> {
-                try {
+                () -> {
                     log.info(definition.getMethod().name() + " " + definition.getPath());
-                    Object[] args = ArgumentProvider.getArguments(method,
-                                                                  definition,
-                                                                  context,
-                                                                  getReaders(),
-                                                                  getContextProviders(),
-                                                                  getInjectionProvider(),
-                                                                  beanProvider);
+                    Object[] args = null;
+                    try {
+                        args = ArgumentProvider.getArguments(method,
+                                definition,
+                                context,
+                                getReaders(),
+                                getContextProviders(),
+                                getInjectionProvider(),
+                                beanProvider);
+                    } catch (Throwable e) {
+                        throw new RuntimeException(e);
+                    }
 
                     validate(method, definition, validator, toInvoke, args);
-
-                    fut.complete(method.invoke(toInvoke, args));
-                } catch (Throwable e) {
-                    fut.fail(e);
-                }
-            },
-            definition.executeBlockingOrdered(), // false by default
-            res -> {
-                if (res.succeeded()) {
-                    try {
-                        Object result = res.result();
-
-                        Class returnType = result != null ? result.getClass() : definition.getReturnType();
-
-                        HttpResponseWriter writer = forge.getResponseWriter(returnType,
-                                                                            definition,
-                                                                            context);
-
-                        validateResult(result, method, definition, validator, toInvoke);
-                        produceResponse(result, context, definition, writer);
-                    } catch (Throwable e) {
-                        handleException(e, context, definition);
-                    }
-                } else {
-                    handleException(res.cause(), context, definition);
-                }
-            }
+                    return method.invoke(toInvoke, args);
+                },
+                definition.executeBlockingOrdered()
         );
     }
 
@@ -545,8 +500,8 @@ public class RestRouter {
                                 HttpResponseWriter writer;
                                 if (futureResult != null) { // get writer from result type otherwise we don't know
                                     writer = forge.getResponseWriter(futureResult.getClass(),
-                                                                     definition,
-                                                                     context);
+                                            definition,
+                                            context);
                                 } else { // due to limitations of Java generics we can't tell the type if response is null
                                     Class<?> writerClass = definition.getWriter() == null ? GenericResponseWriter.class : definition.getWriter();
                                     writer = (HttpResponseWriter) ClassFactory.newInstanceOf(writerClass);
@@ -665,7 +620,7 @@ public class RestRouter {
             handler.write(ex.getCause(), request, response);
 
             eventExecutor.triggerEvents(ex.getCause(), response.getStatusCode(), definition, context,
-                                        getInjectionProvider());
+                    getInjectionProvider());
         } catch (Throwable handlerException) {
             // this should not happen
             log.error("Failed to write out handled exception: " + e.getMessage(), e);

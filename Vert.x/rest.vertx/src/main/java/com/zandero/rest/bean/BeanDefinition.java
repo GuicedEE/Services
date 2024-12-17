@@ -11,9 +11,11 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.*;
 
-import static io.vertx.core.cli.impl.ReflectionUtils.isSetter;
-
 public class BeanDefinition {
+
+    public static boolean isSetter(Method method) {
+        return method.getName().startsWith("set") && method.getParameterCount() == 1;
+    }
 
     private final static Logger log = LoggerFactory.getLogger(BeanDefinition.class);
 
@@ -43,7 +45,7 @@ public class BeanDefinition {
         }
 
         for (Method method : methods) {
-            if (isSetter(method)) {
+            if (BeanDefinition.isSetter(method)) {
                 MethodParameter paramValues = getValueFromAnnotations(method.getAnnotations(), method.getParameterTypes()[0], 0);
                 if (paramValues != null) {
                     parameters.put(METHOD_PREFIX + method.getName(), paramValues);

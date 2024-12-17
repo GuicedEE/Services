@@ -30,43 +30,44 @@ public class RoleBasedUserAuthorizationProvider implements AuthorizationProvider
     }
 
     @Override
-    public void getAuthorizations(User user, Handler<AsyncResult<Void>> handler) {
-
-        if (definition.getPermitAll() != null) {
-            if (definition.getPermitAll()) {
-                handler.handle(Future.succeededFuture());
-            } else {
-                handler.handle(Future.failedFuture(new ForbiddenException(user)));
-            }
-        } else {
-            try {
-                if (user != null && user.authorizations() != null && definition.getRoles() != null) {
-                    Optional<String> found = Arrays.stream(definition.getRoles())
-                                                 .filter(role -> RoleBasedAuthorization.create(role).match(user))
-                                                 .findFirst();
-
-                    if (found.isPresent()) {
-                        handler.handle(Future.succeededFuture());
-                    } else {
-                        log.trace("User authorization failed: '" + user.principal() + "', not authorized to access: " + definition.toString());
-                        handler.handle(Future.failedFuture(new ForbiddenException(user)));
-                    }
+    public Future<Void> getAuthorizations(User user) {
+        return Future.future(handler ->{
+            if (definition.getPermitAll() != null) {
+                if (definition.getPermitAll()) {
+                    handler.handle(Future.succeededFuture());
                 } else {
-                    if (definition.getRoles() == null) {
-                        log.trace("User authorization failed: " + definition.toString() + ", is missing @RolesAllowed annotation. " +
-                                      "Either provide @RolesAllowed annotation or use different AuthorizationProvider");
-                    } else if (user != null) {
-                        log.trace("User authorization failed: '" + user.principal() + "', not authorized to access: " + definition.toString());
-                    } else {
-                        log.trace("User authorization failed: no user was provided, for: " + definition.toString());
-                    }
-
                     handler.handle(Future.failedFuture(new ForbiddenException(user)));
                 }
-            } catch (Throwable e) {
-                log.error("Failed to provide user authorization: " + e.getMessage(), e);
-                handler.handle(Future.failedFuture(e));
+            } else {
+                try {
+                    if (user != null && user.authorizations() != null && definition.getRoles() != null) {
+                        Optional<String> found = Arrays.stream(definition.getRoles())
+                                .filter(role -> RoleBasedAuthorization.create(role).match(user))
+                                .findFirst();
+
+                        if (found.isPresent()) {
+                            handler.handle(Future.succeededFuture());
+                        } else {
+                            log.trace("User authorization failed: '" + user.principal() + "', not authorized to access: " + definition.toString());
+                            handler.handle(Future.failedFuture(new ForbiddenException(user)));
+                        }
+                    } else {
+                        if (definition.getRoles() == null) {
+                            log.trace("User authorization failed: " + definition.toString() + ", is missing @RolesAllowed annotation. " +
+                                    "Either provide @RolesAllowed annotation or use different AuthorizationProvider");
+                        } else if (user != null) {
+                            log.trace("User authorization failed: '" + user.principal() + "', not authorized to access: " + definition.toString());
+                        } else {
+                            log.trace("User authorization failed: no user was provided, for: " + definition.toString());
+                        }
+
+                        handler.handle(Future.failedFuture(new ForbiddenException(user)));
+                    }
+                } catch (Throwable e) {
+                    log.error("Failed to provide user authorization: " + e.getMessage(), e);
+                    handler.handle(Future.failedFuture(e));
+                }
             }
-        }
+        });
     }
 }

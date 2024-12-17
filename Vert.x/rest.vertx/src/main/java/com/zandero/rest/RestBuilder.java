@@ -167,7 +167,7 @@ public class RestBuilder {
         allowedHeaders.add("Access-Control-Request-Method");
         allowedHeaders.add("Access-Control-Request-Headers");
         //allowedHeaders.add("Access-Control-Max-Age");
-        return enableCors("*", false, -1, allowedHeaders);
+        return enableCors(List.of("*"), false, -1, allowedHeaders);
     }
 
     /**
@@ -180,13 +180,14 @@ public class RestBuilder {
      * @param methods              list of methods ... if empty all methods are allowed  @return self
      * @return self
      */
-    public RestBuilder enableCors(String allowedOriginPattern,
+    public RestBuilder enableCors(List<String> allowedOriginPattern,
                                   boolean allowCredentials,
                                   int maxAge,
                                   Set<String> allowedHeaders,
                                   HttpMethod... methods) {
 
-        corsHandler = CorsHandler.create(allowedOriginPattern)
+        corsHandler = CorsHandler.create()
+                .addOrigins(allowedOriginPattern)
                           .allowCredentials(allowCredentials)
                           .maxAgeSeconds(maxAge);
 

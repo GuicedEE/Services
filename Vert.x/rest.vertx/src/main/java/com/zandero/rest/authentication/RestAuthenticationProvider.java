@@ -7,8 +7,8 @@ import io.vertx.ext.web.RoutingContext;
 
 public interface RestAuthenticationProvider extends AuthenticationProvider {
 
-    default void authenticate(RoutingContext context, Handler<AsyncResult<User>> resultHandler) {
-        authenticate(provideCredentials(context), resultHandler);
+    default void authenticate(RoutingContext context) {
+        authenticate(provideCredentials(context));
     }
 
     Credentials provideCredentials(RoutingContext context);
