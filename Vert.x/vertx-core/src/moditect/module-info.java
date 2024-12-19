@@ -9,13 +9,13 @@ module io.vertx.core {
 
 	exports io.vertx.ext.auth.authorization;
 	exports io.vertx.ext.auth.authentication;
-	exports io.vertx.core.cli.impl;
+	//exports io.vertx.core.cli.impl;
 
 	exports io.vertx.core;
 	exports io.vertx.core.buffer;
-	exports io.vertx.core.cli;
-	exports io.vertx.core.cli.annotations;
-	exports io.vertx.core.cli.converters;
+	//exports io.vertx.core.cli;
+	//exports io.vertx.core.cli.annotations;
+	//exports io.vertx.core.cli.converters;
 	exports io.vertx.core.datagram;
 	exports io.vertx.core.dns;
 	exports io.vertx.core.eventbus;
@@ -35,10 +35,10 @@ module io.vertx.core {
 	exports io.vertx.core.spi.context.storage;
 	exports io.vertx.core.spi.file;
 	exports io.vertx.core.spi.json;
-	exports io.vertx.core.spi.launcher;
+	//exports io.vertx.core.spi.launcher;
 	exports io.vertx.core.spi.metrics;
 	exports io.vertx.core.spi.observability;
-	exports io.vertx.core.spi.resolver;
+	//exports io.vertx.core.spi.resolver;
 	exports io.vertx.core.spi.tls;
 	exports io.vertx.core.spi.tracing;
 	exports io.vertx.core.spi.transport;
@@ -62,12 +62,25 @@ module io.vertx.core {
 
 	exports io.vertx.core.streams.impl to io.vertx.rabbitmq;
 
-	uses io.vertx.core.spi.launcher.CommandFactory;
+	//uses io.vertx.core.spi.launcher.CommandFactory;
 	uses reactor.blockhound.integration.BlockHoundIntegration;
 
 	uses io.vertx.core.spi.VertxServiceProvider;
 	uses io.vertx.core.spi.VerticleFactory;
 
-	opens io.vertx.core.impl.logging to io.vertx.rabbitmq;
+	provides reactor.blockhound.integration.BlockHoundIntegration with io.netty.util.internal.Hidden.NettyBlockHoundIntegration,
+	reactor.blockhound.integration.LoggingIntegration,
+		reactor.blockhound.integration.ReactorIntegration,
+		reactor.blockhound.integration.RxJava2Integration,
+		reactor.blockhound.integration.StandardOutputIntegration;
+
+	provides io.vertx.ext.auth.hashing.HashingAlgorithm with io.vertx.ext.auth.impl.hash.SHA1,
+		io.vertx.ext.auth.impl.hash.SHA256,
+		io.vertx.ext.auth.impl.hash.SHA512,
+		io.vertx.ext.auth.impl.hash.PBKDF2;
+
+	opens io.vertx.core.internal.logging to io.vertx.rabbitmq;
+
 	opens io.vertx.core.impl to io.vertx.rabbitmq;
+	exports io.vertx.core.internal to io.vertx.rabbitmq;
 }
