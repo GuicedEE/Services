@@ -2405,8 +2405,7 @@ public class SerialPort
                                     }
                                 }
                             }
-                            //if (bytesRemaining >= startIndex)
-                                messageBytes.write(newBytes, startIndex, bytesRemaining - startIndex);
+                            messageBytes.write(newBytes, startIndex, bytesRemaining - startIndex);
                         } else if (dataPacket.length == 0)
                             userDataListener.serialEvent(new SerialPortEvent(SerialPort.this, SerialPort.LISTENING_EVENT_DATA_RECEIVED, newBytes.clone()));
                         else
