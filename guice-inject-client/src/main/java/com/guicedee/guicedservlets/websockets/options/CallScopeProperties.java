@@ -1,5 +1,7 @@
 package com.guicedee.guicedservlets.websockets.options;
 
+import com.guicedee.client.CallScoper;
+import com.guicedee.client.IGuiceContext;
 import com.guicedee.guicedservlets.servlets.services.scopes.CallScope;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,4 +28,5 @@ public class CallScopeProperties implements Serializable
 	 * Any properties to carry within the call scope
 	 */
 	private Map<Object, Object> properties = new HashMap<>();
+
 }
