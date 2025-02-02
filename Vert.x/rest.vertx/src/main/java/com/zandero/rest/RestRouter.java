@@ -28,6 +28,8 @@ import jakarta.ws.rs.core.*;
 
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import static com.zandero.rest.data.ClassUtils.*;
 
@@ -51,6 +53,9 @@ public class RestRouter {
 
     private static BodyHandler bodyHandler;
 
+    private static int timeout = 20;
+    private static TimeUnit timeoutUnit = TimeUnit.SECONDS;
+
     /**
      * Default authentication / credential and authorization providers
      * Used in case no other provider is defined
@@ -71,6 +76,14 @@ public class RestRouter {
 
         Router router = Router.router(vertx);
         return register(router, restApi);
+    }
+
+    public static void setTimeout(int timeout) {
+        RestRouter.timeout = timeout;
+    }
+
+    public static void setTimeoutUnit(TimeUnit timeoutUnit) {
+        RestRouter.timeoutUnit = timeoutUnit;
     }
 
     /**
@@ -435,7 +448,7 @@ public class RestRouter {
                         getAuthorizationProviders().provide(providerClass, getInjectionProvider(), context) :
                         defaultAuthorizationProvider;
 
-                provider.getAuthorizations(context.user().get());
+                provider.getAuthorizations(context.user());
             } catch (Throwable e) {
                 log.error("Authorization failed: " + e.getMessage(), e);
                 handleException(e, context, definition);
@@ -462,7 +475,17 @@ public class RestRouter {
                     }
 
                     validate(method, definition, validator, toInvoke, args);
-                    return method.invoke(toInvoke, args);
+                    Object[] finalArgs = args;
+                    CompletableFuture<Object> future = CompletableFuture.supplyAsync(()->{
+                        try {
+                            return method.invoke(toInvoke, finalArgs);
+                        } catch (IllegalAccessException e) {
+                            throw new RuntimeException(e);
+                        } catch (InvocationTargetException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+                    return future.get(timeout, timeoutUnit);
                 },
                 definition.executeBlockingOrdered()
         );
