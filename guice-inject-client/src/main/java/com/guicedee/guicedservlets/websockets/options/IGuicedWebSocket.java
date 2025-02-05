@@ -11,15 +11,15 @@ public interface IGuicedWebSocket
 
     String EveryoneGroup = "Everyone";
 
-    void addToGroup(String groupName);
+    void addToGroup(String groupName) throws Exception;
 
-    void removeFromGroup(String groupName);
+    void removeFromGroup(String groupName) throws Exception;
 
     void broadcastMessage(String groupName, String message);
 
     void broadcastMessage(String message);
 
-    void broadcastMessageSync(String groupName, String message);
+    void broadcastMessageSync(String groupName, String message) throws Exception;
 
 
 
