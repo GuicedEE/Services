@@ -128,6 +128,9 @@ public class CallScoper implements Scope {
      * Sets the current value of the state
      */
     public void setValues(Map<Key<?>, Object> values) {
+        if (CallScoper.values.get() == null) {
+            enter();
+        }
         CallScoper.values.get().putAll(values);
     }
 
