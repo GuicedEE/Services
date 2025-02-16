@@ -81,7 +81,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>io.vertx</groupId>
             <artifactId>vertx-core</artifactId>
         </dependency>
 
