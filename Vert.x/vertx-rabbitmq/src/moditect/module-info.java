@@ -1,5 +1,8 @@
 module io.vertx.rabbitmq {
 	requires transitive io.vertx.core;
+
+	requires io.vertx.core.logging;
+
 	requires com.rabbitmq.client;
 
 	exports io.vertx.rabbitmq;
