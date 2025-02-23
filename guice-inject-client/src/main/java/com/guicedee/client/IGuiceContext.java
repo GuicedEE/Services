@@ -10,6 +10,7 @@ import com.guicedee.guicedinjection.interfaces.annotations.INotEnhanceable;
 import com.guicedee.guicedinjection.interfaces.annotations.INotInjectable;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ScanResult;
+import io.vertx.core.Future;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
@@ -44,7 +45,7 @@ public interface IGuiceContext {
         return allLoadedServices;
     }
 
-    CompletableFuture<Void> getLoadingFinished();
+    Future<Void> getLoadingFinished();
 
     Injector inject();
 

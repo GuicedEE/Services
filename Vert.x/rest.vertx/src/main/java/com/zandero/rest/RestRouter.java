@@ -46,6 +46,7 @@ public class RestRouter {
     private static final ClassForge forge = new ClassForge();
 
     private static final RestEventExecutor eventExecutor = new RestEventExecutor();
+    private static WorkerExecutor workerExecutor;
 
     private static BeanProvider beanProvider = new DefaultBeanProvider();
 
@@ -73,6 +74,9 @@ public class RestRouter {
     public static Router register(Vertx vertx, Object... restApi) {
 
         Assert.notNull(vertx, "Missing vertx!");
+        if(workerExecutor == null) {
+            workerExecutor = vertx.createSharedWorkerExecutor("rest-router-worker-pool",60);
+        }
 
         Router router = Router.router(vertx);
         return register(router, restApi);
@@ -458,7 +462,7 @@ public class RestRouter {
 
     private static Handler<RoutingContext> getHandler(final Object toInvoke, final RouteDefinition definition, final Method method) {
 
-        return context -> context.vertx().executeBlocking(
+        return context -> workerExecutor.executeBlocking(
                 () -> {
                     log.info(definition.getMethod().name() + " " + definition.getPath());
                     Object[] args = null;

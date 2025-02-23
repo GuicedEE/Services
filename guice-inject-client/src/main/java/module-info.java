@@ -12,6 +12,7 @@ module com.guicedee.client {
     //requires transitive jakarta.validation;
 
 	exports com.guicedee.client;
+    requires transitive io.vertx.core;
 	
     exports com.guicedee.guicedinjection.properties;
     exports com.guicedee.guicedinjection.pairing;

@@ -16,9 +16,15 @@
  */
 package com.guicedee.guicedinjection.interfaces;
 
+import com.guicedee.client.IGuiceContext;
+import io.vertx.core.Future;
+import io.vertx.core.Promise;
+import io.vertx.core.Vertx;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -40,6 +46,35 @@ public interface IGuicePostStartup<J extends IGuicePostStartup<J>>
      */
     List<CompletableFuture<Boolean>> postLoad();
 
+    default Future<Boolean> executeSingle(List<Boolean> callable, boolean grouped)
+    {
+        Promise<Boolean> promise = Promise.promise();
+
+        execute(() -> {
+            try
+            {
+                promise.complete();
+                return callable;
+            }catch (Throwable t)
+            {
+                promise.fail(t);
+            }   return null;
+        }, grouped);
+
+        return promise.future();
+    }
+
+    default Future<List<Boolean>> execute(Callable<List<Boolean>> callable, boolean grouped)
+    {
+        Promise<List<Boolean>> promise = Promise.promise();
+        var executor = getVertx().createSharedWorkerExecutor("startup.worker.pool");
+        executor.executeBlocking(callable, grouped)
+                .onComplete(((result, failure) -> {
+                    promise.complete(result, failure);
+                }));
+        return promise.future();
+    }
+
     /**
      * Sets the order in which this must run, default 100.
      *
@@ -51,12 +86,9 @@ public interface IGuicePostStartup<J extends IGuicePostStartup<J>>
         return 50;
     }
 
-    default ExecutorService getExecutorService()
+    default Vertx getVertx()
     {
-        if (!executors.containsKey(sortOrder()))
-        {
-            executors.put(sortOrder(), Executors.newVirtualThreadPerTaskExecutor());
-        }
-        return executors.get(sortOrder());
+        return IGuiceContext.get(Vertx.class);
     }
+
 }
