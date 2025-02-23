@@ -1,5 +1,7 @@
 module com.zandero.rest.vertx {
     requires transitive io.vertx.core;
+    requires transitive io.vertx.auth.common;
+    requires transitive io.vertx.web;
 
     requires transitive jakarta.ws.rs;
 

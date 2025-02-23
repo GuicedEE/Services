@@ -38,8 +38,9 @@ import java.util.concurrent.Executors;
 public interface IGuicePostStartup<J extends IGuicePostStartup<J>>
         extends IDefaultService<J>
 {
-
     Map<Integer, ExecutorService> executors = new HashMap<>();
+
+
 
     /**
      * Runs immediately after the post load
@@ -62,6 +63,15 @@ public interface IGuicePostStartup<J extends IGuicePostStartup<J>>
         }, grouped);
 
         return promise.future();
+    }
+
+    default ExecutorService getExecutorService()
+    {
+        if (!executors.containsKey(sortOrder()))
+        {
+            executors.put(sortOrder(), Executors.newVirtualThreadPerTaskExecutor());
+        }
+        return executors.get(sortOrder());
     }
 
     default Future<List<Boolean>> execute(Callable<List<Boolean>> callable, boolean grouped)
