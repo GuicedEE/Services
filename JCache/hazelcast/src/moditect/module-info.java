@@ -59,7 +59,7 @@ open module com.hazelcast.all {
 				com.hazelcast.flakeidgen.impl.FlakeIdGeneratorDataSerializerHook,
 				com.hazelcast.spi.impl.merge.SplitBrainDataSerializerHook,
 				com.hazelcast.internal.crdt.CRDTDataSerializerHook,
-				com.hazelcast.cp.event.impl.CpEventDataSerializerHook,
+			//	com.hazelcast.cp.event.impl.CpEventDataSerializerHook,
 				com.hazelcast.cp.internal.raft.impl.RaftDataSerializerHook,
 				com.hazelcast.cp.internal.RaftServiceDataSerializerHook,
 				com.hazelcast.cp.internal.session.RaftSessionServiceDataSerializerHook,
