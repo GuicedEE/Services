@@ -16,18 +16,20 @@
  */
 package com.guicedee.guicedinjection.properties;
 
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.core.*;
-import com.fasterxml.jackson.databind.*;
-import com.google.inject.*;
-import com.guicedee.client.*;
-import lombok.extern.java.Log;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.inject.Singleton;
+import com.guicedee.client.IGuiceContext;
+import lombok.extern.log4j.Log4j2;
 
-import java.util.*;
-import java.util.logging.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.*;
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 /**
  * A pretty class for containing EAR or Container level global properties.
@@ -41,7 +43,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
 @Singleton
 @JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
 @JsonInclude(NON_NULL)
-@Log
+@Log4j2
 public class GlobalProperties
 {
 	private final Map<String, Map<Object, Object>> globalProperties;
@@ -181,7 +183,7 @@ public class GlobalProperties
 		}
 		catch (JsonProcessingException e)
 		{
-			log.log(Level.SEVERE, "Non-Mappable character in GlobalProperties Map, Can't toString()", e);
+			log.error("Non-Mappable character in GlobalProperties Map, Can't toString()", e);
 			return super.toString();
 		}
 	}
@@ -201,7 +203,7 @@ public class GlobalProperties
 			}
 			catch (Throwable T)
 			{
-				log.log(Level.WARNING, "Couldn't set system property value [" + name + "]");
+                log.error("Couldn't set system property value [{}]", name);
 				return System.getenv(name);
 			}
 		}
@@ -211,7 +213,7 @@ public class GlobalProperties
 			{
 				return null;
 			}
-			log.log(Level.WARNING, "Return default value for property [" + name + "]");
+            log.debug("Return default value for property [{}]", name);
 			try
 			{
 				System.setProperty(name, defaultValue);
@@ -219,7 +221,7 @@ public class GlobalProperties
 			}
 			catch (Throwable T)
 			{
-				log.log(Level.WARNING, "Couldn't set system property value [" + name + "]");
+                log.error("Couldn't set system property value [{}]", name);
 				return defaultValue;
 			}
 		}
