@@ -38,45 +38,22 @@ import java.util.concurrent.Executors;
 public interface IGuicePostStartup<J extends IGuicePostStartup<J>>
         extends IDefaultService<J>
 {
-    Map<Integer, ExecutorService> executors = new HashMap<>();
-
-
-
     /**
      * Runs immediately after the post load
      */
-    List<CompletableFuture<Boolean>> postLoad();
+    List<Future<Boolean>> postLoad();
 
-    default Future<Boolean> executeSingle(List<Boolean> callable, boolean grouped)
+    default Future<Boolean> executeSingle(Callable<Boolean> callable, boolean grouped)
     {
         Promise<Boolean> promise = Promise.promise();
-
-        execute(() -> {
-            try
-            {
-                promise.complete();
-                return callable;
-            }catch (Throwable t)
-            {
-                promise.fail(t);
-            }   return null;
-        }, grouped);
-
+        execute(callable, grouped)
+                .onComplete(promise::complete, promise::fail);
         return promise.future();
     }
 
-    default ExecutorService getExecutorService()
+    default Future<Boolean> execute(Callable<Boolean> callable, boolean grouped)
     {
-        if (!executors.containsKey(sortOrder()))
-        {
-            executors.put(sortOrder(), Executors.newVirtualThreadPerTaskExecutor());
-        }
-        return executors.get(sortOrder());
-    }
-
-    default Future<List<Boolean>> execute(Callable<List<Boolean>> callable, boolean grouped)
-    {
-        Promise<List<Boolean>> promise = Promise.promise();
+        Promise<Boolean> promise = Promise.promise();
         var executor = getVertx().createSharedWorkerExecutor("startup.worker.pool");
         executor.executeBlocking(callable, grouped)
                 .onComplete(((result, failure) -> {

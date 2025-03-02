@@ -2,6 +2,7 @@ package com.guicedee.guicedservlets.websockets.options;
 
 import com.guicedee.client.IGuiceContext;
 import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.*;
 
