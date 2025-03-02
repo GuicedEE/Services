@@ -17,6 +17,9 @@
 package com.guicedee.guicedinjection.interfaces;
 
 import com.guicedee.guicedinjection.interfaces.annotations.INotInjectable;
+import io.vertx.core.Future;
+
+import java.util.List;
 
 /**
  * Initializes before Guice has been injected
@@ -31,7 +34,7 @@ public interface IGuicePreStartup<J extends IGuicePreStartup<J>>
 	/**
 	 * Runs on startup
 	 */
-	void onStartup();
+	List<Future<Boolean>> onStartup();
 
 	/**
 	 * Sort order for startup, Default 100.
