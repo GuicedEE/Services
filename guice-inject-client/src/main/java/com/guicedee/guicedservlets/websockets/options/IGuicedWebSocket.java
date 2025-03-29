@@ -5,10 +5,11 @@ import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver
 import lombok.extern.log4j.Log4j2;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public interface IGuicedWebSocket
 {
-    Map<String, IWebSocketMessageReceiver> messageListeners = new HashMap<>();
+    Map<String, IWebSocketMessageReceiver> messageListeners = new ConcurrentHashMap<>();
 
     String EveryoneGroup = "Everyone";
 
@@ -26,10 +27,12 @@ public interface IGuicedWebSocket
 
     static void addWebSocketMessageReceiver(IWebSocketMessageReceiver receiver)
     {
+        synchronized ("Websocket"){
         for (String messageName : receiver.messageNames())
         {
             addReceiver(receiver, messageName);
         }
+    }
     }
 
     static boolean isWebSocketReceiverRegistered(String name)
