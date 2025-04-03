@@ -51,7 +51,7 @@ public class CallScoper implements Scope {
 
     public void exit() {
         try {
-            checkState(values.get() != null, "No scoping block in progress");
+           // checkState(values.get() != null, "No scoping block in progress");
             Set<IOnCallScopeExit> scopeEnters = IGuiceContext.loaderToSet(ServiceLoader.load(IOnCallScopeExit.class));
             for (IOnCallScopeExit<?> scopeEnter : scopeEnters) {
                 try {
