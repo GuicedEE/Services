@@ -49,6 +49,11 @@ public class CallScoper implements Scope {
         }
     }
 
+    public boolean isStartedScope()
+    {
+        return startedScope;
+    }
+
     public void exit() {
         try {
            // checkState(values.get() != null, "No scoping block in progress");
@@ -62,6 +67,7 @@ public class CallScoper implements Scope {
                 }
             }
             values.remove();
+            startedScope = false;
         } catch (IllegalStateException T) {
             Logger.getLogger("CallScoper")
                     .log(Level.WARNING, "NOT IN SCOPE ", T);

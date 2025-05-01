@@ -71,7 +71,7 @@ module org.hibernate.orm.core {
 	
 	exports org.hibernate.bytecode.enhance.internal.tracker;
 
-	exports org.hibernate.engine.jdbc.env.internal to org.jboss.logging;
+	exports org.hibernate.engine.jdbc.env.internal to org.jboss.logging,org.hibernate.reactive;
 	exports org.hibernate.engine.jdbc.batch to org.jboss.logging;
 	
 	exports org.hibernate.service.spi;
@@ -98,6 +98,7 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.internal.util.xml;
 	exports org.hibernate.annotations;
 	exports org.hibernate.boot;
+	exports org.hibernate.resource.transaction.spi;
 
 	//opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
 
@@ -233,7 +234,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate.id.factory.internal;
 	exports org.hibernate.id.insert;
 	exports org.hibernate.id.uuid;
-	//exports org.hibernate.integrator.spi;
+	exports org.hibernate.integrator.spi;
 	//exports org.hibernate.integrator.internal;
 	exports org.hibernate.jdbc;
 //	exports org.hibernate.jmx.spi;
@@ -396,8 +397,57 @@ module org.hibernate.orm.core {
 	exports org.hibernate.cache.internal;
 	exports org.hibernate.internal.util;
 
+	exports org.hibernate.jpa.internal.util to org.hibernate.reactive;
+	exports org.hibernate.boot.cfgxml.internal to org.hibernate.reactive;
+	exports org.hibernate.bytecode.internal to org.hibernate.reactive;
+	exports org.hibernate.engine.config.internal to org.hibernate.reactive;
+	exports org.hibernate.property.access.internal to org.hibernate.reactive;
+	exports org.hibernate.tool.schema.internal.script to org.hibernate.reactive;
+	exports org.hibernate.engine.jndi.internal to org.hibernate.reactive;
+	exports org.hibernate.persister.internal to org.hibernate.reactive;
+	exports org.hibernate.engine.jdbc.dialect.internal to org.hibernate.reactive;
+	exports org.hibernate.engine.jdbc.batch.internal to org.hibernate.reactive;
+	exports org.hibernate.engine.jdbc.internal to org.hibernate.reactive;
+	exports org.hibernate.engine.jdbc.cursor.internal to org.hibernate.reactive;
+	exports org.hibernate.service.internal to org.hibernate.reactive;
+	exports org.hibernate.resource.transaction.internal to org.hibernate.reactive;
+	exports org.hibernate.event.internal to org.hibernate.reactive;
+
+	exports org.hibernate.service to org.hibernate.reactive;
+	exports org.hibernate.query.named to org.hibernate.reactive;
+	exports org.hibernate.internal to org.hibernate.reactive;
+	exports org.hibernate.type.descriptor.jdbc.internal to org.hibernate.reactive;
+	exports org.hibernate.action.internal to org.hibernate.reactive;
+	exports org.hibernate.boot.internal to org.hibernate.reactive;
+	exports org.hibernate.type.descriptor.jdbc.spi to org.hibernate.reactive;
+	exports org.hibernate.type.descriptor.jdbc to org.hibernate.reactive;
+	exports org.hibernate.type.descriptor.java.spi to org.hibernate.reactive;
+	exports org.hibernate.type.descriptor.sql.spi to org.hibernate.reactive;
+	exports org.hibernate.type.spi to org.hibernate.reactive;
+	exports org.hibernate.loader.ast.spi to org.hibernate.reactive;
+	exports org.hibernate.sql.ast.spi to org.hibernate.reactive;
+	exports org.hibernate.query.sqm.mutation.spi to org.hibernate.reactive;
+	exports org.hibernate.sql.results.jdbc.spi to org.hibernate.reactive;
+	exports org.hibernate.resource.beans.spi to org.hibernate.reactive;
+	exports org.hibernate.tool.schema.spi to org.hibernate.reactive;
+	exports org.hibernate.engine.jdbc.mutation.spi to org.hibernate.reactive;
+
+
+	exports org.hibernate.shaded.jboss.logging to org.hibernate.reactive;
+	exports org.hibernate.query.spi to org.hibernate.reactive;
+	exports org.hibernate.engine.internal to org.hibernate.reactive;
+	exports org.hibernate.query.sqm.internal to org.hibernate.reactive;
+
+	//
+	uses org.hibernate.shaded.jboss.logging.LoggerProvider;
+
+	//erg ugly
 	opens org.hibernate.tuple;
 	opens org.hibernate.tuple.component;
 	opens org.hibernate.tuple.entity;
+
+
 	
 }
+
+

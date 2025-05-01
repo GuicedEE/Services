@@ -1,6 +1,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
@@ -8,14 +9,12 @@
     </parent>
 
     <groupId>com.guicedee.services</groupId>
-    <artifactId>hibernate-core</artifactId>
+    <artifactId>hibernate-reactive</artifactId>
     <packaging>jar</packaging>
-
-    <name>hibernate.core</name>
     <!--<version>${maven.hibernate.version}</version>-->
     <version>2.0.0-SNAPSHOT</version>
-    <description>JPMS Module-Info's for a few of the Jakarta Libraries just until they add them in themselves
-    </description>
+    <name>hibernate-reactive</name>
+    <description>JPMS Module-Info's for Hibernate Reactive</description>
 
     <licenses>
         <license>
@@ -28,107 +27,58 @@
         </license>
     </licenses>
 
-
-
-    <properties>
-        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
-    </properties>
-
     <dependencies>
-     <!--   <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>jboss-logmanager</artifactId>
-        </dependency>
--->
-        <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>jakarta.transaction</groupId>
-            <artifactId>jakarta.transaction-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate.common</groupId>
-            <artifactId>hibernate-commons-annotations</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.guicedee.services</groupId>
-            <artifactId>jandex</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml</groupId>
-            <artifactId>classmate</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee</groupId>
-            <artifactId>guice-inject-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>jakarta.enterprise</groupId>
-            <artifactId>jakarta.enterprise.cdi-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgres.version}</version>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc11</artifactId>
-            <optional>true</optional>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.antlr</groupId>
-            <artifactId>antlr4-runtime</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.reactive</groupId>
+            <artifactId>hibernate-reactive-core</artifactId>
+            <version>2.4.6.Final</version>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-sql-client</artifactId>
+            <version>${vertx.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
         </dependency>
-
-<!--
+        <!-- https://mvnrepository.com/artifact/org.lz4/lz4-java -->
         <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging-annotations</artifactId>
-            <scope>provided</scope>
+            <groupId>org.lz4</groupId>
+            <artifactId>lz4-java</artifactId>
+            <optional>true</optional>
         </dependency>
--->
 
         <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>io.smallrye.reactive</groupId>
+            <artifactId>vertx-mutiny-generator</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>io.smallrye.reactive</groupId>
+            <artifactId>mutiny</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -137,7 +87,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <inherited>true</inherited>
                 <executions>
                     <execution>
                         <id>shade</id>
@@ -148,28 +97,27 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.antlr:antlr4-runtime:*</include>
-                                    <include>org.hibernate.orm:hibernate-core:*</include>
+                                    <include>org.hibernate.reactive:hibernate-reactive-core:*</include>
+                                    <include>org.lz4:*:*</include>
                                     <include>org.jboss.logging:*:*</include>
                                 </includes>
                             </artifactSet>
-                            <filters>
-                                <filter>
-                                    <artifact>org.hibernate.orm:hibernate-core</artifact>
-                                </filter>
-                            </filters>
                             <relocations>
                                 <relocation>
-                                    <pattern>org.antlr</pattern>
-                                    <shadedPattern>org.hibernate.relocated.antlr</shadedPattern>
+                                    <pattern>META-INF.services_</pattern>
+                                    <shadedPattern>META-INF.services</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.jboss.logging</pattern>
-                                    <shadedPattern>org.hibernate.shaded.jboss.logging</shadedPattern>
+                                    <shadedPattern>org.hibernate.reactive.shaded.jboss.logging</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>org.hibernate.boot.archive.internal.shade</pattern>
-                                    <shadedPattern>org.hibernate.boot.archive.internal</shadedPattern>
+                                    <pattern>org.hibernate.reactive.pool.up.impl</pattern>
+                                    <shadedPattern>org.hibernate.reactive.pool.impl</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>io.vertx.core.impl.ContextInternal</pattern>
+                                    <shadedPattern>io.vertx.core.internal.ContextInternal</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -201,7 +149,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
-
         </plugins>
     </build>
 
@@ -216,20 +163,6 @@
             </dependency>
             <dependency>
                 <groupId>com.guicedee</groupId>
-                <artifactId>standalone-bom</artifactId>
-                <version>${guicedee.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>com.guicedee</groupId>
-                <artifactId>fasterxml-bom</artifactId>
-                <version>${guicedee.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>com.guicedee</groupId>
                 <artifactId>jakarta-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
@@ -237,21 +170,14 @@
             </dependency>
             <dependency>
                 <groupId>com.guicedee</groupId>
+                <artifactId>standalone-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
                 <artifactId>jboss-bom</artifactId>
-                <version>${guicedee.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>com.guicedee</groupId>
-                <artifactId>apache-bom</artifactId>
-                <version>${guicedee.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>com.guicedee</groupId>
-                <artifactId>google-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>

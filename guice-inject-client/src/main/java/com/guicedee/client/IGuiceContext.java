@@ -34,7 +34,12 @@ public interface IGuiceContext {
                 break;
             }
         }
-        return contexts.get("default");
+        var out = contexts.get("default");
+        if (out == null)
+        {
+            throw new RuntimeException("No Guice Contexts have been registered. Please add com.guicedee:guice-injection to the dependencies");
+        }
+        return out;
     }
 
     static IGuiceContext instance() {
