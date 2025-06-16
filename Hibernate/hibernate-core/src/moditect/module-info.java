@@ -8,11 +8,11 @@ module org.hibernate.orm.core {
 	requires transitive jakarta.transaction;
 	requires transitive jakarta.persistence;
 	requires transitive jakarta.validation;
-	requires transitive org.hibernate.commons.annotations;
+	//requires transitive org.hibernate.commons.annotations;
 	requires transitive com.fasterxml.jackson.databind;
 
 	
-	requires static org.jboss.logging;
+	requires org.jboss.logging;
 	requires jandex;
 	requires com.fasterxml.classmate;
 //	requires org.apache.commons.compress;
@@ -64,11 +64,14 @@ module org.hibernate.orm.core {
 
 	//exports com.guicedee.services.hibernate to com.guicedee.guicedpersistence;
 	
-	exports org.hibernate.metamodel.mapping to org.jboss.logging;
+	exports org.hibernate.metamodel.mapping to org.jboss.logging,org.hibernate.reactive;
 	exports org.hibernate.sql.ast.tree to org.jboss.logging;
-	exports org.hibernate.sql.exec to org.jboss.logging;
-	exports org.hibernate.sql.results to org.jboss.logging;
-	
+	opens org.hibernate.sql.ast.tree to org.jboss.logging,org.hibernate.reactive;
+	exports org.hibernate.sql.exec to org.jboss.logging,org.hibernate.reactive;
+	opens org.hibernate.sql.exec to org.jboss.logging;
+	exports org.hibernate.sql.results to org.jboss.logging,org.hibernate.reactive;
+	opens org.hibernate.sql.results to org.jboss.logging;
+
 	exports org.hibernate.bytecode.enhance.internal.tracker;
 
 	exports org.hibernate.engine.jdbc.env.internal to org.jboss.logging,org.hibernate.reactive;
@@ -105,6 +108,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate.bytecode.enhance.internal.bytebuddy;
 	
 	exports org.hibernate.jpa.boot.internal;
+	//exports org.hibernate.jpa.boot.spi;
 	//exports org.hibernate.boot.internal;
 	//exports org.hibernate.boot.archive.internal;
 	exports org.hibernate.boot.archive.scan.spi;
@@ -166,7 +170,7 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.cfg.annotations;
 	//exports org.hibernate.cfg.annotations.reflection;
 	//exports org.hibernate.cfg.beanvalidation;
-	exports org.hibernate.classic;
+	//exports org.hibernate.classic;
 
 	exports org.hibernate.collection.spi;
 	//exports org.hibernate.collection.internal;
@@ -229,9 +233,9 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.hql.internal.ast.util;
 	exports org.hibernate.id;
 	exports org.hibernate.id.enhanced;
-	exports org.hibernate.id.factory;
-	exports org.hibernate.id.factory.spi;
-	exports org.hibernate.id.factory.internal;
+	//exports org.hibernate.id.factory;
+	//exports org.hibernate.id.factory.spi;
+	//exports org.hibernate.id.factory.internal;
 	exports org.hibernate.id.insert;
 	exports org.hibernate.id.uuid;
 	exports org.hibernate.integrator.spi;
@@ -275,7 +279,7 @@ module org.hibernate.orm.core {
 
 //	exports org.hibernate.lob;
 	opens org.hibernate.mapping;
-	exports org.hibernate.metadata;
+	//exports org.hibernate.metadata;
 //	exports org.hibernate.metamodel.spi;
 	//exports org.hibernate.metamodel.internal;
 	//exports org.hibernate.metamodel.model.convert.spi;
@@ -352,6 +356,7 @@ module org.hibernate.orm.core {
 	opens org.hibernate.jpa;
 	opens org.hibernate.xsd.cfg;
 	opens org.hibernate.xsd.mapping;
+	opens org.hibernate.boot.jaxb.configuration.spi;
 
 	//opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
 
@@ -370,7 +375,7 @@ module org.hibernate.orm.core {
 	uses org.hibernate.integrator.spi.Integrator;
 	uses org.hibernate.boot.registry.selector.spi.DialectSelector;
 	uses org.hibernate.service.spi.ServiceContributor;
-	uses org.hibernate.id.factory.spi.GenerationTypeStrategyRegistration;
+	//uses org.hibernate.id.factory.spi.GenerationTypeStrategyRegistration;
 	uses org.hibernate.boot.spi.MetadataSourcesContributor;
 	uses org.hibernate.boot.spi.MetadataBuilderInitializer;
 	uses org.hibernate.boot.spi.MetadataBuilderFactory;
@@ -415,7 +420,7 @@ module org.hibernate.orm.core {
 
 	exports org.hibernate.service to org.hibernate.reactive;
 	exports org.hibernate.query.named to org.hibernate.reactive;
-	exports org.hibernate.internal to org.hibernate.reactive;
+	exports org.hibernate.internal to org.hibernate.reactive,org.jboss.logging;
 	exports org.hibernate.type.descriptor.jdbc.internal to org.hibernate.reactive;
 	exports org.hibernate.action.internal to org.hibernate.reactive;
 	exports org.hibernate.boot.internal to org.hibernate.reactive;
@@ -433,21 +438,75 @@ module org.hibernate.orm.core {
 	exports org.hibernate.engine.jdbc.mutation.spi to org.hibernate.reactive;
 
 
-	exports org.hibernate.shaded.jboss.logging to org.hibernate.reactive;
 	exports org.hibernate.query.spi to org.hibernate.reactive;
 	exports org.hibernate.engine.internal to org.hibernate.reactive;
 	exports org.hibernate.query.sqm.internal to org.hibernate.reactive;
 
-	//
-	uses org.hibernate.shaded.jboss.logging.LoggerProvider;
+	exports org.hibernate.generator to org.hibernate.reactive;
+	exports org.hibernate.sql.model to org.hibernate.reactive;
+	exports org.hibernate.metamodel.spi to org.hibernate.reactive;
+
+	exports org.hibernate.metamodel.mapping.internal to org.hibernate.reactive;
+	exports org.hibernate.persister.collection.mutation to org.hibernate.reactive;
+	exports org.hibernate.persister.entity.mutation to org.hibernate.reactive;
+	exports org.hibernate.sql.model.ast.builder to org.hibernate.reactive;
+	exports org.hibernate.sql.model.ast to org.hibernate.reactive;
+	exports org.hibernate.sql.model.jdbc to org.hibernate.reactive;
+	exports org.hibernate.sql.model.internal to org.hibernate.reactive;
+	exports org.hibernate.loader.ast.internal to org.hibernate.reactive;
+	exports org.hibernate.sql.exec.spi to org.hibernate.reactive;
+	exports org.hibernate.sql.ast.tree.expression to org.hibernate.reactive;
+	exports org.hibernate.sql.results.graph.entity.internal to org.hibernate.reactive;
+	exports org.hibernate.sql.results.graph.embeddable.internal to org.hibernate.reactive;
+	exports org.hibernate.sql.results.graph to org.hibernate.reactive;
+	exports org.hibernate.sql.results.jdbc.internal to org.hibernate.reactive;
+	exports org.hibernate.sql.ast.tree.select to org.hibernate.reactive;
+	exports org.hibernate.sql.exec.internal to org.hibernate.reactive;
+	exports org.hibernate.sql.results.internal.domain to org.hibernate.reactive;
+	exports org.hibernate.sql.results.graph.collection.internal to org.hibernate.reactive;
+	exports org.hibernate.query.sqm.tree to org.hibernate.reactive;
+	exports org.hibernate.sql.results.internal to org.hibernate.reactive;
+	exports org.hibernate.query.sqm.tree.select to org.hibernate.reactive;
+	exports org.hibernate.query.hql.internal to org.hibernate.reactive;
+	exports org.hibernate.query.sqm.sql to org.hibernate.reactive;
+	exports org.hibernate.sql.ast to org.hibernate.reactive;
+	exports org.hibernate.spi to org.hibernate.reactive;
+	exports org.hibernate.query.sqm.spi to org.hibernate.reactive;
+	exports org.hibernate.sql.ast.tree.from to org.hibernate.reactive;
+	exports org.hibernate.sql.results.spi to org.hibernate.reactive;
+	exports org.hibernate.stat.spi to org.hibernate.reactive;
+	exports org.hibernate.resource.jdbc.spi to org.hibernate.reactive;
+	exports org.hibernate.tool.schema.internal to org.hibernate.reactive;
+	exports org.hibernate.tool.schema.internal.exec to org.hibernate.reactive;
+	exports org.hibernate.tool.schema.extract.spi to org.hibernate.reactive;
+	exports org.hibernate.tool.schema.extract.internal to org.hibernate.reactive;
+	exports org.hibernate.generator.values to org.hibernate.reactive;
+	exports org.hibernate.engine.jdbc.mutation to org.hibernate.reactive;
+	exports org.hibernate.engine.jdbc.mutation.internal to org.hibernate.reactive;
+	exports org.hibernate.engine.jdbc.mutation.group to org.hibernate.reactive;
+
 
 	//erg ugly
 	opens org.hibernate.tuple;
 	opens org.hibernate.tuple.component;
 	opens org.hibernate.tuple.entity;
 
+	opens org.hibernate.dialect to org.jboss.logging;
+	opens org.hibernate.engine.jdbc.env.internal to org.jboss.logging;
+	opens org.hibernate.query to org.jboss.logging;
+	opens org.hibernate.engine.jdbc.batch to org.jboss.logging;
+	opens org.hibernate.bytecode.enhance.spi.interceptor to org.jboss.logging;
+	opens org.hibernate.metamodel.mapping to org.jboss.logging;
+	opens org.hibernate.query.hql to org.jboss.logging;
 
-	
+	//hibernate 7
+	uses org.hibernate.boot.registry.selector.spi.NamedStrategyContributor;
+	uses org.hibernate.resource.beans.container.spi.BeanContainer;
+	uses org.hibernate.models.spi.ModelsContextProvider;
+	uses org.hibernate.boot.archive.scan.spi.ScannerFactory;
+
+	provides org.hibernate.engine.transaction.jta.platform.spi.JtaPlatformProvider with org.hibernate.service.jta.platform.internal.BitronixJtaPlatform;
+	uses org.hibernate.event.monitor.spi.EventMonitor;
 }
 
 

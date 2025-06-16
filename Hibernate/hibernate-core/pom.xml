@@ -55,10 +55,10 @@
             <artifactId>jakarta.transaction-api</artifactId>
         </dependency>
 
-        <dependency>
+    <!--    <dependency>
             <groupId>org.hibernate.common</groupId>
             <artifactId>hibernate-commons-annotations</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
@@ -117,13 +117,10 @@
             <artifactId>byte-buddy</artifactId>
         </dependency>
 
-<!--
         <dependency>
             <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging-annotations</artifactId>
-            <scope>provided</scope>
+            <artifactId>jboss-logging</artifactId>
         </dependency>
--->
 
         <dependency>
             <groupId>jakarta.validation</groupId>
@@ -150,7 +147,7 @@
                                 <includes>
                                     <include>org.antlr:antlr4-runtime:*</include>
                                     <include>org.hibernate.orm:hibernate-core:*</include>
-                                    <include>org.jboss.logging:*:*</include>
+                                    <include>org.hibernate.models:*:*</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -162,10 +159,6 @@
                                 <relocation>
                                     <pattern>org.antlr</pattern>
                                     <shadedPattern>org.hibernate.relocated.antlr</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>org.jboss.logging</pattern>
-                                    <shadedPattern>org.hibernate.shaded.jboss.logging</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.hibernate.boot.archive.internal.shade</pattern>
