@@ -3,7 +3,7 @@ module org.hibernate.reactive {
     requires transitive io.vertx.core;
     requires transitive io.vertx.sql.client;
 
-    requires static org.jboss.logging;
+    requires org.jboss.logging;
 
     requires transitive io.smallrye.mutiny;
 
@@ -19,7 +19,7 @@ module org.hibernate.reactive {
     exports org.hibernate.reactive.common.spi;
     exports org.hibernate.reactive.context;
     exports org.hibernate.reactive.context.impl;
-    exports org.hibernate.reactive.dialect;
+    //exports org.hibernate.reactive.dialect;
     exports org.hibernate.reactive.engine;
     exports org.hibernate.reactive.engine.impl;
     exports org.hibernate.reactive.engine.jdbc;
@@ -29,12 +29,12 @@ module org.hibernate.reactive {
     exports org.hibernate.reactive.generator.values;
     exports org.hibernate.reactive.id;
     exports org.hibernate.reactive.id.enhanced;
-    exports org.hibernate.reactive.id.factory.spi;
+    //exports org.hibernate.reactive.id.factory.spi;
     exports org.hibernate.reactive.id.impl;
     exports org.hibernate.reactive.id.insert;
     exports org.hibernate.reactive.loader.ast.internal;
     exports org.hibernate.reactive.loader.ast.spi;
-    exports org.hibernate.reactive.loader.entity;
+    //exports org.hibernate.reactive.loader.entity;
     exports org.hibernate.reactive.logging.impl;
     exports org.hibernate.reactive.metamodel.mapping.internal;
 
@@ -78,75 +78,79 @@ module org.hibernate.reactive {
     exports org.hibernate.reactive.util.impl;
     exports org.hibernate.reactive.vertx;
     exports org.hibernate.reactive.vertx.impl;
+    exports org.hibernate.reactive.shaded.hibernate;
+
+    exports org.hibernate.reactive.persister.entity.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
 
     //opens org.hibernate.reactive.adapter.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection;
 
-    opens org.hibernate.reactive.mutiny.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
+    opens org.hibernate.reactive.mutiny.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
 
-    opens org.hibernate.reactive.boot.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.common to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.common.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.context to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.context.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.dialect to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.engine to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.engine.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.engine.jdbc to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.engine.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.event to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.event.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.generator.values to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.id to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.id.enhanced to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.id.factory.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.id.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.id.insert to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.loader.ast.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.loader.ast.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.loader.entity to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.logging.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.metamodel.mapping.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
+    opens org.hibernate.reactive.boot.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.common to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.common.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.context to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.context.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    //opens org.hibernate.reactive.dialect to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.engine to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.engine.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.engine.jdbc to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.engine.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.event to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.event.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.generator.values to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.id to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.id.enhanced to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    //opens org.hibernate.reactive.id.factory.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.id.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.id.insert to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.loader.ast.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.loader.ast.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    //opens org.hibernate.reactive.loader.entity to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.logging.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.metamodel.mapping.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
 
-   // opens org.hibernate.reactive.persister.collection to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.persister.collection.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.persister.collection.mutation to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-   // opens org.hibernate.reactive.persister.entity to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.pool to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.pool.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.provider to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.provider.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.provider.service to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    //opens org.hibernate.reactive.query.sql to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.sql.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.sql.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.sqm to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.sqm.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.sqm.mutation.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.sqm.mutation.internal.cte to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.sqm.mutation.internal.temptable to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.sqm.mutation.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.query.sqm.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.service.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.session to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.session.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.sql.exec.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.sql.exec.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.sql.model to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.sql.results to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.sql.results.graph to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.sql.results.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.sql.results.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.stage to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.stage.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.tuple to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.type.descriptor.jdbc to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.util.async.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.util.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.vertx to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
-    opens org.hibernate.reactive.vertx.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny;
+   // opens org.hibernate.reactive.persister.collection to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.persister.collection.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.persister.collection.mutation to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+   // opens org.hibernate.reactive.persister.entity to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.pool to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.pool.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.provider to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.provider.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.provider.service to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    //opens org.hibernate.reactive.query.sql to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.sql.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.sql.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.sqm to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.sqm.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.sqm.mutation.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.sqm.mutation.internal.cte to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.sqm.mutation.internal.temptable to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.sqm.mutation.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.query.sqm.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.service.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.session to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.session.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.sql.exec.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.sql.exec.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.sql.model to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.sql.results to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.sql.results.graph to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.sql.results.internal to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.sql.results.spi to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.stage to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.stage.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.tuple to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.type.descriptor.jdbc to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.util.async.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.util.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.vertx to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.vertx.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    opens org.hibernate.reactive.shaded.hibernate to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
 
  //   provides io.vertx.core.spi.VertxServiceProvider with org.hibernate.reactive.context.impl.ContextualDataStorage;
     provides jakarta.persistence.spi.PersistenceProvider with org.hibernate.reactive.provider.ReactivePersistenceProvider;
@@ -155,6 +159,13 @@ module org.hibernate.reactive {
     provides org.hibernate.integrator.spi.Integrator with org.hibernate.reactive.provider.impl.ReactiveIntegrator;
     provides org.hibernate.service.spi.SessionFactoryServiceContributor with org.hibernate.reactive.service.internal.ReactiveSessionFactoryServiceContributor;
 
-    uses org.hibernate.reactive.shaded.jboss.logging.LoggerProvider;
     uses io.vertx.sqlclient.spi.Driver;
+
+    //Hibernate Reactive 4.0.0.Beta1
+    //opens org.hibernate.reactive.vertx.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+    //opens org.hibernate.reactive.logging.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+
 }
+
+
+//java.lang.IllegalArgumentException: This library does not have private access to interface org.hibernate.reactive.logging.impl.Log

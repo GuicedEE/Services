@@ -1,10 +1,8 @@
 package com.guicedee.client;
 
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
-import java.util.logging.Level;
-
-@Log
+@Log4j2
 public class Environment {
     public static String getProperty(String key, String defaultValue) {
         if (System.getProperty(key) == null) {
@@ -35,8 +33,7 @@ public class Environment {
                 System.setProperty(name, System.getenv(name));
                 return System.getProperty(name);
             } catch (Exception T) {
-                log.log(Level.CONFIG,
-                        "Couldn't set system property value from environment [" + name + "] - [" + defaultValue + "]",
+                log.debug("Couldn't set system property value from environment [" + name + "] - [" + defaultValue + "]",
                         T);
                 return System.getenv(name);
             }
@@ -44,13 +41,12 @@ public class Environment {
             if (defaultValue == null) {
                 return "";
             }
-            log.log(Level.CONFIG, "Return default value for default property [" + name + "] - [" + defaultValue + "]");
+            log.debug("Return default value for default property [" + name + "] - [" + defaultValue + "]");
             try {
                 System.setProperty(name, defaultValue);
                 return System.getProperty(name);
             } catch (Exception T) {
-                log.log(Level.CONFIG,
-                        "Couldn't set system property value to the default specified [" + name + "] - [" + defaultValue + "]",
+                log.debug("Couldn't set system property value to the default specified [" + name + "] - [" + defaultValue + "]",
                         T);
                 return defaultValue;
             }

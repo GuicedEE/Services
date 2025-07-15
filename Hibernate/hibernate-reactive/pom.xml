@@ -36,7 +36,6 @@
         <dependency>
             <groupId>org.hibernate.reactive</groupId>
             <artifactId>hibernate-reactive-core</artifactId>
-            <version>2.4.6.Final</version>
             <optional>true</optional>
         </dependency>
 
@@ -48,14 +47,13 @@
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-sql-client</artifactId>
-            <version>${vertx.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.lz4/lz4-java -->
+
         <dependency>
             <groupId>org.lz4</groupId>
             <artifactId>lz4-java</artifactId>
@@ -76,7 +74,6 @@
         <dependency>
             <groupId>io.smallrye.reactive</groupId>
             <artifactId>mutiny</artifactId>
-            <version>2.8.0</version>
         </dependency>
 
 
@@ -99,26 +96,48 @@
                                 <includes>
                                     <include>org.hibernate.reactive:hibernate-reactive-core:*</include>
                                     <include>org.lz4:*:*</include>
-                                    <include>org.jboss.logging:*:*</include>
                                 </includes>
                             </artifactSet>
                             <relocations>
-                                <relocation>
+                               <!-- <relocation>
                                     <pattern>META-INF.services_</pattern>
                                     <shadedPattern>META-INF.services</shadedPattern>
+                                </relocation>-->
+                               <relocation>
+                                    <pattern>org.hibernate.engine.internal</pattern>
+                                    <shadedPattern>org.hibernate.reactive.shaded.hibernate</shadedPattern>
+                                    <includes>
+                                        <include>org.hibernate.engine.internal.Reactive*</include>
+                                    </includes>
                                 </relocation>
-                                <relocation>
-                                    <pattern>org.jboss.logging</pattern>
-                                    <shadedPattern>org.hibernate.reactive.shaded.jboss.logging</shadedPattern>
-                                </relocation>
-                                <relocation>
+                            <!--     <relocation>
                                     <pattern>org.hibernate.reactive.pool.up.impl</pattern>
                                     <shadedPattern>org.hibernate.reactive.pool.impl</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>io.vertx.core.impl.ContextInternal</pattern>
                                     <shadedPattern>io.vertx.core.internal.ContextInternal</shadedPattern>
+                                </relocation>-->
+                               <!-- <relocation>
+                                    <pattern>org.jboss.logging</pattern>
+                                    <shadedPattern>org.hibernate.reactive.shaded.jboss.logging</shadedPattern>
+                                </relocation>-->
+                              <!--  <relocation>
+                                    <pattern>org.hibernate.reactive.shaded.jboss.logging</pattern>
+                                    <shadedPattern>org.hibernate.shaded.jboss.logging</shadedPattern>
+                                </relocation>-->
+                                <!--<relocation>
+                                    <pattern>org.hibernate.reactive.shaded.jboss.logging</pattern>
+                                    <shadedPattern>org.hibernate.shaded.jboss.logging</shadedPattern>
+                                </relocation>-->
+                                <!--<relocation>
+                                    <pattern>org.hibernate.reactive.pool.up.impl</pattern>
+                                    <shadedPattern>org.hibernate.reactive.pool.impl</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>io.vertx.core.impl.ContextInternal</pattern>
+                                    <shadedPattern>io.vertx.core.internal.ContextInternal</shadedPattern>
+                                </relocation>-->
                             </relocations>
                         </configuration>
                     </execution>

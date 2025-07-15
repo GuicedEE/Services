@@ -7,13 +7,13 @@ module com.guicedee.services.openapi {
 
 	requires jakarta.ws.rs;
 	requires jakarta.xml.bind;
-	requires jakarta.servlet;
-	
+
 	requires org.apache.commons.lang3;
 	
 	requires static com.fasterxml.jackson.jakarta.rs.json;
 	//requires com.fasterxml.jackson.dataformat.yaml;
 	requires static com.fasterxml.jackson.module.jakarta.xmlbind;
+
 	requires com.fasterxml.jackson.jakarta.rs.base;
 	requires com.fasterxml.jackson.datatype.jsr310;
 

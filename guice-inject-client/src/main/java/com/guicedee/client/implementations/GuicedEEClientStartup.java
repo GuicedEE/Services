@@ -3,12 +3,11 @@ package com.guicedee.client.implementations;
 import com.guicedee.client.IGuiceContext;
 import com.guicedee.guicedinjection.interfaces.IGuicePreStartup;
 import io.vertx.core.Future;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
-import java.util.logging.Level;
 
-@Log
+@Log4j2
 public class GuicedEEClientStartup implements IGuicePreStartup<GuicedEEClientStartup>
 {
     @Override
@@ -26,7 +25,7 @@ public class GuicedEEClientStartup implements IGuicePreStartup<GuicedEEClientSta
                          .setAnnotationScanning(true);
         }catch (Throwable T)
         {
-            log.log(Level.SEVERE,"No Guice Client Instantiation Found. Please add guiced-injection to the classpath");
+            log.error("No Guice Client Instantiation Found. Please add guiced-injection to the classpath");
         }
         return List.of(Future.succeededFuture(true));
     }

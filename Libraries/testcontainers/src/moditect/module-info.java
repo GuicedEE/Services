@@ -5,6 +5,8 @@ open module org.testcontainers {
 
 	requires java.sql;
 
+	requires com.sun.jna;
+
 	requires org.slf4j;
 	requires java.logging;
 

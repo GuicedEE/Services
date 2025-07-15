@@ -37,7 +37,10 @@ module com.guicedee.client {
     requires org.apache.logging.log4j.jul;
     requires org.apache.logging.log4j;
     requires org.apache.logging.log4j.slf4j2.impl;
+    requires java.logging;
     //requires io.vertx;
+
+    requires static jakarta.inject;
 
     uses IGuiceProvider;
 	uses IJobServiceProvider;
@@ -53,6 +56,7 @@ module com.guicedee.client {
 	opens com.guicedee.guicedinjection.pairing to com.fasterxml.jackson.databind;
 
     opens com.guicedee.client.implementations to com.google.guice;
+    opens com.guicedee.client to com.fasterxml.jackson.databind;
 
     provides IGuicePreStartup with GuicedEEClientStartup;
     provides IGuicePostStartup with GuicedEEClientPostStartup;

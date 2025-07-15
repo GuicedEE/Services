@@ -11,6 +11,8 @@ module com.guicedee.jsonrepresentation {
 	requires static lombok;
 	requires java.logging;
 	requires com.fasterxml.jackson.datatype.jsr310;
+
+	requires static jakarta.inject;
 	
 	provides com.guicedee.guicedinjection.interfaces.IGuiceModule with com.guicedee.services.jsonrepresentation.implementations.ObjectMapperBinder;
 }

@@ -45,6 +45,8 @@
                             <artifactSet>
                                 <includes>
                                     <include>io.smallrye.reactive:*vertx*:*</include>
+                                    <include>io.smallrye.reactive:mutiny-smallrye-context-propagation:*</include>
+                                    <include>io.smallrye:smallrye-context-propagation*:*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
@@ -103,10 +105,28 @@
 
 
     <dependencies>
+
+        <dependency>
+            <groupId>io.smallrye.reactive</groupId>
+            <artifactId>mutiny-smallrye-context-propagation</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-pg-client</artifactId>
             <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.ongres.scram</groupId>
+                    <artifactId>scram-client</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -134,7 +154,6 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>io.smallrye.reactive</groupId>
             <artifactId>smallrye-mutiny-vertx-core</artifactId>
@@ -147,10 +166,10 @@
             <optional>true</optional>
         </dependency>
 
+
         <dependency>
             <groupId>io.smallrye.reactive</groupId>
             <artifactId>mutiny</artifactId>
-            <version>2.8.0</version>
         </dependency>
 
 
@@ -171,9 +190,11 @@
             <optional>true</optional>
         </dependency>
 
-
-
-
+        <dependency>
+            <groupId>io.smallrye.reactive</groupId>
+            <artifactId>smallrye-mutiny-vertx-web</artifactId>
+            <optional>true</optional>
+        </dependency>
 
 
         <dependency>
@@ -251,6 +272,7 @@
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-codegen-api</artifactId>
+            <scope>provided</scope>
         </dependency>
 
 

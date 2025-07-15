@@ -17,7 +17,7 @@
 
 package org.jsr107.ri.annotations.guice;
 
-import jakarta.inject.*;
+import com.google.inject.*;
 import org.aopalliance.intercept.*;
 import org.jsr107.ri.annotations.*;
 

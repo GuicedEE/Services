@@ -153,7 +153,7 @@
          </dependency>-->
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
         </dependency>
 

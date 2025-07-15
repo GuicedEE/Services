@@ -48,6 +48,8 @@ module org.hibernate.orm.core {
 	//uses org.hibernate.boot.spi.AdditionalMappingContributor;
 	//uses org.hibernate.query.criteria.spi.CriteriaBuilderExtension;
 
+	exports org.hibernate.query.criteria;
+
 	//6.4
 	uses org.hibernate.bytecode.spi.BytecodeProvider;
 	
@@ -440,6 +442,7 @@ module org.hibernate.orm.core {
 
 	exports org.hibernate.query.spi to org.hibernate.reactive;
 	exports org.hibernate.engine.internal to org.hibernate.reactive;
+	opens org.hibernate.engine.internal to org.hibernate.reactive;
 	exports org.hibernate.query.sqm.internal to org.hibernate.reactive;
 
 	exports org.hibernate.generator to org.hibernate.reactive;
@@ -484,6 +487,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate.engine.jdbc.mutation to org.hibernate.reactive;
 	exports org.hibernate.engine.jdbc.mutation.internal to org.hibernate.reactive;
 	exports org.hibernate.engine.jdbc.mutation.group to org.hibernate.reactive;
+	exports org.hibernate.query.sql.internal to org.hibernate.reactive;
 
 
 	//erg ugly

@@ -87,8 +87,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
-            <artifactId>jboss-logmanager</artifactId>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
         </dependency>
 
         <dependency>
@@ -145,6 +145,13 @@
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>jakarta-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>jboss-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>

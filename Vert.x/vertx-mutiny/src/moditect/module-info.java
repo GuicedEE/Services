@@ -3,10 +3,50 @@ module io.vertx.mutiny {
 
     requires io.smallrye.common.ref;
     requires io.smallrye.mutiny;
+
+    exports io.smallrye.context;
+    exports io.smallrye.context.impl;
+    exports io.smallrye.context.impl.cdi;
+    exports io.smallrye.context.impl.wrappers;
+
+
+
+    requires jakarta.cdi;
+
+    requires static io.vertx.web;
+
     requires static io.vertx.codegen.api;
     //requires io.smallrye.mutiny.vertx.core;
     //requires vertx.mutiny.generator;
     //requires io.smallrye.mutiny.vertx.runtime;
+
+    exports io.vertx.mutiny.core;
+    exports io.vertx.mutiny.core.http;
+    //exports io.vertx.mutiny.core.eventbus;
+/*    exports io.vertx.mutiny.core.file;
+
+    exports io.vertx.mutiny.core.net;
+    exports io.vertx.mutiny.core.shareddata;
+    exports io.vertx.mutiny.core.spi;
+    exports io.vertx.mutiny.core.streams;
+    exports io.vertx.mutiny.core.workerpool;
+    exports io.vertx.mutiny.ext.auth;
+    exports io.vertx.mutiny.ext.auth.authentication;
+    exports io.vertx.mutiny.ext.auth.authorization;
+    exports io.vertx.mutiny.ext.auth.oauth2;
+    exports io.vertx.mutiny.ext.auth.shiro;
+    exports io.vertx.mutiny.ext.mongo;
+    exports io.vertx.mutiny.ext.sql;
+    exports io.vertx.mutiny.ext.stomp;*/
+
+    exports io.vertx.mutiny.ext.web;
+    exports io.vertx.mutiny.ext.web.client;
+    exports io.vertx.mutiny.ext.web.codec;
+    exports io.vertx.mutiny.ext.web.handler;
+    exports io.vertx.mutiny.ext.web.multipart;
+    exports io.vertx.mutiny.ext.web.sstore;
+
+
 
     exports io.smallrye.mutiny.vertx;
     exports io.smallrye.mutiny.vertx.codegen;
@@ -21,6 +61,7 @@ module io.vertx.mutiny {
     opens io.smallrye.mutiny.vertx.codegen.methods to io.vertx.core;
     opens io.smallrye.mutiny.vertx.core to io.vertx.core;
     opens io.smallrye.mutiny.vertx.impl to io.vertx.core;
+
 
 /*
 

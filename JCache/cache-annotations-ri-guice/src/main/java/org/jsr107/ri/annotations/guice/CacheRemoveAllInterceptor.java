@@ -22,7 +22,7 @@ import org.jsr107.ri.annotations.AbstractCacheRemoveAllInterceptor;
 import org.jsr107.ri.annotations.CacheContextSource;
 import org.jsr107.ri.annotations.InterceptorType;
 
-import jakarta.inject.Inject;
+import com.google.inject.Inject;
 
 /**
  * @author Michael Stachel

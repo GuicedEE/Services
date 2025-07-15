@@ -187,16 +187,6 @@ public interface IGuiceContext {
         } catch (Throwable T) {
             Logger.getLogger("IGuiceContext").log(Level.SEVERE, "Cannot load services - ", T);
         }
-        for (Class<T> newInstance : loadeds) {
-            if (completed.contains(newInstance)) {
-                continue;
-            }
-            try {
-                output.add((T) newInstance.getDeclaredConstructor());
-            } catch (NoSuchMethodException e) {
-                Logger.getLogger("IGuiceContext").log(Level.SEVERE, "Cannot load a service through default constructor", e);
-            }
-        }
         return output;
     }
 

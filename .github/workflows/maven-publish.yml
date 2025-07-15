@@ -21,11 +21,11 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Guava:
+  BCrypt:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
-      baseDir: 'Google/guava/'
-      name: 'Guava'
+      baseDir: 'Libraries/bcrypt/'
+      name: 'BCrypt'
       publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
@@ -37,7 +37,6 @@ jobs:
   Guice:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
-      - Guava
       - AOP
     with:
       baseDir: 'Google/guice-core/'
@@ -446,7 +445,6 @@ jobs:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - AOP
-      - Guava
       - Guice
     with:
       baseDir: 'guice-inject-client/'
@@ -847,19 +845,6 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  jSerialComm:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    with:
-      baseDir: 'Libraries/jSerialComm/'
-      name: 'jSerialComm'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   XML-Representation:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -905,18 +890,6 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  VertxRest:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    with:
-      baseDir: 'Vert.x/rest.vertx/'
-      name: 'Vert.x Rest'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   VertxMutiny:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master

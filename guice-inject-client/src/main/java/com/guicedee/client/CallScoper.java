@@ -13,95 +13,110 @@ import java.util.logging.Logger;
 
 import static com.google.common.base.Preconditions.checkState;
 
+@Singleton
+public class CallScoper implements Scope
+{
 
-public class CallScoper implements Scope {
     private static final Provider<Object> SEEDED_KEY_PROVIDER =
-            new Provider<Object>() {
-                public Object get() {
+            new Provider<Object>()
+            {
+                public Object get()
+                {
                     throw new IllegalStateException("If you got here then it means that" +
-                            " your code asked for scoped object which should have been" +
-                            " explicitly seeded in this scope by calling" +
-                            " CallScoper.seed(), but was not.");
+                                                            " your code asked for scoped object which should have been" +
+                                                            " explicitly seeded in this scope by calling" +
+                                                            " SimpleScope.seed(), but was not.");
                 }
             };
     private static final ThreadLocal<Map<Key<?>, Object>> values
             = new ThreadLocal<Map<Key<?>, Object>>();
 
-    private boolean startedScope;
-
-    public void enter() {
-        try {
-            checkState(values.get() == null, "A scoping block is already in progress");
-            values.set(Maps.<Key<?>, Object>newHashMap());
-            startedScope = true;
-            @SuppressWarnings("rawtypes")
-            Set<IOnCallScopeEnter> scopeEnters = IGuiceContext.loaderToSet(ServiceLoader.load(IOnCallScopeEnter.class));
-            for (IOnCallScopeEnter<?> scopeEnter : scopeEnters) {
-                try {
-                    scopeEnter.onScopeEnter(this);
-                } catch (Throwable T) {
-                    Logger.getLogger("CallScoper")
-                            .log(Level.WARNING, "Exception on scope entry - " + scopeEnter, T);
-                }
-            }
-        } catch (Throwable T) {
-            startedScope = false;
-        }
-    }
-
     public boolean isStartedScope()
     {
-        return startedScope;
+        return values.get() != null;
     }
 
-    public void exit() {
-        try {
-           // checkState(values.get() != null, "No scoping block in progress");
-            Set<IOnCallScopeExit> scopeEnters = IGuiceContext.loaderToSet(ServiceLoader.load(IOnCallScopeExit.class));
-            for (IOnCallScopeExit<?> scopeEnter : scopeEnters) {
-                try {
-                    scopeEnter.onScopeExit();
-                } catch (Throwable T) {
-                    Logger.getLogger("CallScoper")
-                            .log(Level.WARNING, "Exception on call scope exit", T);
-                }
+    public void enter()
+    {
+        checkState(values.get() == null, "A scoping block is already in progress");
+        values.set(Maps.<Key<?>, Object>newHashMap());
+        seed(CallScopeProperties.class, new CallScopeProperties());
+        @SuppressWarnings("rawtypes")
+        Set<IOnCallScopeEnter> scopeEnters = IGuiceContext.loaderToSet(ServiceLoader.load(IOnCallScopeEnter.class));
+        for (IOnCallScopeEnter<?> scopeEnter : scopeEnters)
+        {
+            try
+            {
+                scopeEnter.onScopeEnter(this);
             }
-            values.remove();
-            startedScope = false;
-        } catch (IllegalStateException T) {
-            Logger.getLogger("CallScoper")
-                    .log(Level.WARNING, "NOT IN SCOPE ", T);
-
-        } catch (Throwable T) {
-            Logger.getLogger("CallScoper")
-                    .log(Level.WARNING, "Cannot perform close scope", T);
+            catch (Throwable T)
+            {
+                Logger.getLogger("CallScoper")
+                        .log(Level.WARNING, "Exception on scope entry - " + scopeEnter, T);
+            }
         }
     }
 
-    public <T> void seed(Key<T> key, T value) {
+    public Map<Key<?>, Object> getValues()
+    {
+        return values.get();
+    }
+
+    public void setValues(Map<Key<?>, Object> values)
+    {
+        this.values.get().putAll(values);
+    }
+
+    public void exit()
+    {
+        checkState(values.get() != null, "No scoping block in progress");
+        Set<IOnCallScopeExit> scopeExits = IGuiceContext.loaderToSet(ServiceLoader.load(IOnCallScopeExit.class));
+        for (IOnCallScopeExit<?> scopeExit : scopeExits)
+        {
+            try
+            {
+                scopeExit.onScopeExit();
+            }
+            catch (Throwable T)
+            {
+                Logger.getLogger("CallScoper")
+                        .log(Level.WARNING, "Exception on call scope exit - " + scopeExit, T);
+            }
+        }
+        values.remove();
+    }
+
+    public <T> void seed(Key<T> key, T value)
+    {
         Map<Key<?>, Object> scopedObjects = getScopedObjectMap(key);
         checkState(!scopedObjects.containsKey(key), "A value for the key %s was " +
-                        "already seeded in this scope. Old value: %s New value: %s", key,
+                                                            "already seeded in this scope. Old value: %s New value: %s", key,
                 scopedObjects.get(key), value);
         scopedObjects.put(key, value);
     }
 
-    public <T> void seed(Class<T> clazz, T value) {
+    public <T> void seed(Class<T> clazz, T value)
+    {
         seed(Key.get(clazz), value);
     }
 
-    public <T> Provider<T> scope(final Key<T> key, final Provider<T> unscoped) {
-        return new Provider<T>() {
-            public T get() {
+    public <T> Provider<T> scope(final Key<T> key, final Provider<T> unscoped)
+    {
+        return new Provider<T>()
+        {
+            public T get()
+            {
                 Map<Key<?>, Object> scopedObjects = getScopedObjectMap(key);
 
                 @SuppressWarnings("unchecked")
                 T current = (T) scopedObjects.get(key);
-                if (current == null && !scopedObjects.containsKey(key)) {
+                if (current == null && !scopedObjects.containsKey(key))
+                {
                     current = unscoped.get();
 
                     // don't remember proxies; these exist only to serve circular dependencies
-                    if (Scopes.isCircularProxy(current)) {
+                    if (Scopes.isCircularProxy(current))
+                    {
                         return current;
                     }
 
@@ -112,32 +127,15 @@ public class CallScoper implements Scope {
         };
     }
 
-    private <T> Map<Key<?>, Object> getScopedObjectMap(Key<T> key) {
+    private <T> Map<Key<?>, Object> getScopedObjectMap(Key<T> key)
+    {
         Map<Key<?>, Object> scopedObjects = values.get();
-        if (scopedObjects == null) {
-            //enter();
-            //	scopedObjects = values.get();
+        if (scopedObjects == null)
+        {
             throw new OutOfScopeException("Cannot access " + key
-                    + " outside of a scoping block - " + key.toString());
+                                                  + " outside of a scoping block");
         }
         return scopedObjects;
-    }
-
-    /**
-     * Returns the current value set and state
-     */
-    public Map<Key<?>, Object> getValues() {
-        return values.get();
-    }
-
-    /**
-     * Sets the current value of the state
-     */
-    public void setValues(Map<Key<?>, Object> values) {
-        if (CallScoper.values.get() == null) {
-            enter();
-        }
-        CallScoper.values.get().putAll(values);
     }
 
     /**
@@ -147,8 +145,8 @@ public class CallScoper implements Scope {
      * @return typed provider
      */
     @SuppressWarnings({"unchecked"})
-    public static <T> Provider<T> seededKeyProvider() {
+    public static <T> Provider<T> seededKeyProvider()
+    {
         return (Provider<T>) SEEDED_KEY_PROVIDER;
     }
-
 }

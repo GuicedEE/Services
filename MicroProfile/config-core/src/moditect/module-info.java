@@ -19,6 +19,11 @@ module io.smallrye.config.core {
 	uses io.smallrye.config.ConfigSourceInterceptor;
 	uses io.smallrye.config.ConfigSourceInterceptorFactory;
 	uses org.eclipse.microprofile.config.spi.Converter;
+	uses io.smallrye.config.SmallRyeConfigFactory;
+	uses io.smallrye.config.SmallRyeConfigBuilderCustomizer;
+	uses io.smallrye.config.SecretKeysHandler;
+	uses io.smallrye.config.SecretKeysHandlerFactory;
+	uses io.smallrye.config.ConfigValidator;
 	
 	provides io.smallrye.config.ConfigSourceFactory with io.smallrye.config.PropertiesLocationConfigSourceFactory;
 	provides org.eclipse.microprofile.config.spi.ConfigProviderResolver with io.smallrye.config.SmallRyeConfigProviderResolver;
