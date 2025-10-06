@@ -112,6 +112,13 @@
             <artifactId>jboss-logging</artifactId>
         </dependency>
 
+<!--
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jboss-logmanager</artifactId>
+        </dependency>
+-->
+
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>

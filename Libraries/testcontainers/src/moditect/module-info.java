@@ -13,10 +13,13 @@ open module org.testcontainers {
 	requires org.junit.jupiter.api;
 	requires com.fasterxml.jackson.annotation;
 
+	requires static org.apache.commons.compress;
+
 	requires junit;
 
 	exports org.testcontainers.containers;
 	exports org.testcontainers.junit.jupiter;
+	exports org.testcontainers.utility;
 
 	provides java.sql.Driver with org.testcontainers.jdbc.ContainerDatabaseDriver;
 

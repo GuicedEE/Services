@@ -66,6 +66,8 @@ module org.hibernate.orm.core {
 
 	//exports com.guicedee.services.hibernate to com.guicedee.guicedpersistence;
 	
+	exports org.hibernate.metamodel to org.jboss.logging,org.hibernate.reactive;
+	exports org.hibernate.metamodel.internal to org.jboss.logging,org.hibernate.reactive;
 	exports org.hibernate.metamodel.mapping to org.jboss.logging,org.hibernate.reactive;
 	exports org.hibernate.sql.ast.tree to org.jboss.logging;
 	opens org.hibernate.sql.ast.tree to org.jboss.logging,org.hibernate.reactive;
@@ -401,6 +403,8 @@ module org.hibernate.orm.core {
 
 	opens org.hibernate.cache.spi.entry;
 //	opens org.hibernate.query.criteria.internal.path;
+
+
 	exports org.hibernate.cache.internal;
 	exports org.hibernate.internal.util;
 
@@ -488,9 +492,24 @@ module org.hibernate.orm.core {
 	exports org.hibernate.engine.jdbc.mutation.internal to org.hibernate.reactive;
 	exports org.hibernate.engine.jdbc.mutation.group to org.hibernate.reactive;
 	exports org.hibernate.query.sql.internal to org.hibernate.reactive;
+	exports org.hibernate.query.results to org.hibernate.reactive;
+	exports org.hibernate.query.results.internal to org.hibernate.reactive;
+	exports org.hibernate.sql.results.graph.internal to org.hibernate.reactive;
+	exports org.hibernate.sql.ast.tree.predicate to org.hibernate.reactive;
+	//exports org.hibernate.reactive.loader.ast.internal to org.hibernate.reactive;
+	exports org.hibernate.query.sqm to org.hibernate.reactive;
+	exports org.hibernate.internal.util.collections to org.hibernate.reactive;
+	exports org.hibernate.loader.internal to org.hibernate.reactive;
+	exports org.hibernate.query.internal to org.hibernate.reactive;
+	exports org.hibernate.sql.results.graph.entity to org.hibernate.reactive;
+	exports org.hibernate.graph to org.hibernate.reactive;
+	exports org.hibernate.event.monitor.spi to org.hibernate.reactive;
+	exports org.hibernate.proxy.map to org.hibernate.reactive;
+	exports org.hibernate.query.sql.spi to org.hibernate.reactive;
+  exports org.hibernate.internal.util.cache to org.hibernate.reactive;
+	//exports org.hibernate.reactive.loader.ast.internal to org.hibernate.reactive;
 
 
-	//erg ugly
 	opens org.hibernate.tuple;
 	opens org.hibernate.tuple.component;
 	opens org.hibernate.tuple.entity;

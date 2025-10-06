@@ -8,7 +8,9 @@ module io.smallrye.config.core {
 	requires org.jboss.logging;
 	requires io.smallrye.common.constraint;
 
-	
+  exports org.eclipse.microprofile.context;
+  exports org.eclipse.microprofile.context.spi;
+
 	exports io.smallrye.config._private to org.jboss.logging;
 	opens io.smallrye.config._private to org.jboss.logging;
 	

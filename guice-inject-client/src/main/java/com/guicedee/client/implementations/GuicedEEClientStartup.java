@@ -13,8 +13,10 @@ public class GuicedEEClientStartup implements IGuicePreStartup<GuicedEEClientSta
     @Override
     public List<Future<Boolean>> onStartup()
     {
+        log.trace("🚀 Starting GuicedEE Client initialization");
         try
         {
+            log.debug("📋 Configuring GuicedEE scanning options");
             IGuiceContext.instance()
                          .getConfig()
                          .setFieldScanning(true)
@@ -23,10 +25,14 @@ public class GuicedEEClientStartup implements IGuicePreStartup<GuicedEEClientSta
                          .setIgnoreMethodVisibility(true)
                          .setIgnoreFieldVisibility(true)
                          .setAnnotationScanning(true);
+            log.debug("✅ GuicedEE scanning options configured successfully");
+            log.trace("✅ GuicedEE Client initialized successfully");
         }catch (Throwable T)
         {
-            log.error("No Guice Client Instantiation Found. Please add guiced-injection to the classpath");
+            log.error("❌ No Guice Client Instantiation Found: {}", T.getMessage(), T);
+            log.error("💥 Please add guiced-injection to the classpath to resolve this issue");
         }
+        log.debug("📤 Returning startup result");
         return List.of(Future.succeededFuture(true));
     }
 

@@ -33,21 +33,21 @@ public class Environment {
                 System.setProperty(name, System.getenv(name));
                 return System.getProperty(name);
             } catch (Exception T) {
-                log.debug("Couldn't set system property value from environment [" + name + "] - [" + defaultValue + "]",
-                        T);
+                log.debug("⚠️ Couldn't set system property value from environment - Name: '{}', Default: '{}'", 
+                        name, defaultValue, T);
                 return System.getenv(name);
             }
         } else {
             if (defaultValue == null) {
                 return "";
             }
-            log.debug("Return default value for default property [" + name + "] - [" + defaultValue + "]");
+            log.debug("📋 Using default value for property - Name: '{}', Value: '{}'", name, defaultValue);
             try {
                 System.setProperty(name, defaultValue);
                 return System.getProperty(name);
             } catch (Exception T) {
-                log.debug("Couldn't set system property value to the default specified [" + name + "] - [" + defaultValue + "]",
-                        T);
+                log.debug("⚠️ Couldn't set system property to default value - Name: '{}', Value: '{}'", 
+                        name, defaultValue, T);
                 return defaultValue;
             }
         }

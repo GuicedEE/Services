@@ -55,6 +55,7 @@ import org.hibernate.event.spi.PostLoadEvent;
 import org.hibernate.event.spi.PostLoadEventListener;
 import org.hibernate.internal.CoreMessageLogger;
 import org.hibernate.internal.util.collections.InstanceIdentityMap;
+import org.hibernate.metamodel.MappingMetamodel;
 import org.hibernate.metamodel.spi.MappingMetamodelImplementor;
 import org.hibernate.persister.collection.CollectionPersister;
 import org.hibernate.persister.entity.EntityPersister;
@@ -655,30 +656,18 @@ public class StatefulPersistenceContext implements PersistenceContext {
 			final boolean disableVersionIncrement) {
 		assert lockMode != null;
 		final EntityEntry entityEntry =
-				persister.isMutable()
-						? new MutableEntityEntry(
-								status,
-								loadedState,
-								rowId,
-								id,
-								version,
-								lockMode,
-								existsInDatabase,
-								persister,
-								disableVersionIncrement,
-								this
-						)
-						: new ImmutableEntityEntry(
-								status,
-								loadedState,
-								rowId,
-								id,
-								version,
-								lockMode,
-								existsInDatabase,
-								persister,
-								disableVersionIncrement
-						);
+				new EntityEntryImpl(
+						status,
+						loadedState,
+						rowId,
+						id,
+						version,
+						lockMode,
+						existsInDatabase,
+						persister,
+						disableVersionIncrement,
+						this
+				);
 		entityEntryContext.addEntityEntry( entity, entityEntry );
 		setHasNonReadOnlyEnties( status );
 		return entityEntry;
@@ -744,7 +733,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 	public void reassociateProxy(Object value, Object id) throws MappingException {
 		final LazyInitializer lazyInitializer = extractLazyInitializer( value );
 		if ( lazyInitializer != null ) {
-			LOG.debugf( "Setting proxy identifier: %s", id );
+			LOG.tracef( "Setting proxy identifier: %s", id );
 			lazyInitializer.setIdentifier( id );
 			reassociateProxy( lazyInitializer, asHibernateProxy( value ) );
 		}
@@ -757,15 +746,14 @@ public class StatefulPersistenceContext implements PersistenceContext {
 	 * @param proxy The proxy to reassociate.
 	 */
 	private void reassociateProxy(LazyInitializer li, HibernateProxy proxy) {
-		if ( li.getSession() != this.getSession() ) {
+		if ( li.getSession() != session ) {
 			final EntityPersister persister =
 					session.getFactory().getMappingMetamodel()
 							.getEntityDescriptor( li.getEntityName() );
 			final EntityKey key = session.generateEntityKey( li.getInternalIdentifier(), persister );
-			// any earlier proxy takes precedence
-			final Map<EntityKey, EntityHolderImpl> entityHolderMap = getOrInitializeEntitiesByKey();
 			final EntityHolderImpl holder = getOrInitializeNewHolder().withProxy( key, persister, proxy );
-			final EntityHolderImpl oldHolder = entityHolderMap.putIfAbsent( key, holder );
+			// any earlier proxy takes precedence
+			final EntityHolderImpl oldHolder = getOrInitializeEntitiesByKey().putIfAbsent( key, holder );
 			if ( oldHolder != null ) {
 				if ( oldHolder.proxy == null ) {
 					oldHolder.proxy = proxy;
@@ -976,7 +964,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 			//					probably changes to how the sql for collection initializers are generated
 			//
 			//			We could also possibly see if the referenced property is a natural id since we already have caching
-			//			in place of natural id snapshots.  BUt really its better to just do it the right way ^^ if we start
+			//			in place of natural id snapshots.  But really it's better to just do it the right way ^^ if we start
 			// 			going that route
 			final Object ownerId = ownerPersister.getIdByUniqueKey( key, collectionType.getLHSPropertyName(), session );
 			return getEntity( session.generateEntityKey( ownerId, ownerPersister ) );
@@ -1161,7 +1149,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 	@Override
 	public void initializeNonLazyCollections(Consumer<PersistentCollection<?>> initializeAction ) {
 		if ( loadCounter == 0 ) {
-			LOG.trace( "Initializing non-lazy collections" );
+//			LOG.trace( "Initializing non-lazy collections" );
 			// do this work only at the very highest level of the load
 			// don't let this method be called recursively
 			loadCounter++;
@@ -1488,7 +1476,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 	public Object getOwnerId(String entityName, String propertyName, Object childEntity, Map mergeMap) {
 		final String collectionRole = entityName + '.' + propertyName;
 
-		final MappingMetamodelImplementor mappingMetamodel = session.getFactory().getMappingMetamodel();
+		final MappingMetamodel mappingMetamodel = session.getFactory().getMappingMetamodel();
 		final EntityPersister persister = mappingMetamodel.getEntityDescriptor( entityName );
 		final CollectionPersister collectionPersister = mappingMetamodel.getCollectionDescriptor( collectionRole );
 
@@ -1509,7 +1497,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 
 		//not found in case, proceed
 		// iterate all the entities currently associated with the persistence context.
-		for ( Entry<Object,EntityEntry> me : reentrantSafeEntityEntries() ) {
+		for ( var me : reentrantSafeEntityEntries() ) {
 			final EntityEntry entityEntry = me.getValue();
 			// does this entity entry pertain to the entity persister in which we are interested (owner)?
 			if ( persister.isSubclassEntityName( entityEntry.getEntityName() ) ) {
@@ -1536,8 +1524,8 @@ public class StatefulPersistenceContext implements PersistenceContext {
 								collectionPersister,
 								unmergedInstance
 						);
-						LOG.debugf(
-								"Detached object being merged (corresponding with a managed entity) has a collection that [%s] the detached child.",
+						LOG.tracef(
+								"Detached object being merged (corresponding with a managed entity) has a collection that [%s] the detached child",
 								( found ? "contains" : "does not contain" )
 						);
 					}
@@ -1568,7 +1556,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 								mergeMap.get( proxy )
 						);
 						LOG.debugf(
-								"Detached proxy being merged has a collection that [%s] the managed child.",
+								"Detached proxy being merged has a collection that [%s] the managed child",
 								(found ? "contains" : "does not contain")
 						);
 						if ( !found ) {
@@ -1580,7 +1568,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 									mergeMap.get( proxy )
 							);
 							LOG.debugf(
-									"Detached proxy being merged has a collection that [%s] the detached child being merged..",
+									"Detached proxy being merged has a collection that [%s] the detached child being merged",
 									(found ? "contains" : "does not contain")
 							);
 						}
@@ -1655,7 +1643,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 		}
 
 		//Not found in cache, proceed
-		for ( Entry<Object, EntityEntry> me : reentrantSafeEntityEntries() ) {
+		for ( var me : reentrantSafeEntityEntries() ) {
 			final EntityEntry ee = me.getValue();
 			if ( persister.isSubclassEntityName( ee.getEntityName() ) ) {
 				final Object instance = me.getKey();
@@ -1719,27 +1707,26 @@ public class StatefulPersistenceContext implements PersistenceContext {
 	@Override
 	public boolean isReadOnly(Object entityOrProxy) {
 		if ( entityOrProxy == null ) {
-			throw new IllegalArgumentException( "Null entity instance" );
+			throw new IllegalArgumentException( "Entity may not be null" );
 		}
-		boolean isReadOnly;
+
 		final LazyInitializer lazyInitializer = extractLazyInitializer( entityOrProxy );
 		if ( lazyInitializer != null ) {
-			isReadOnly = lazyInitializer.isReadOnly();
+			return lazyInitializer.isReadOnly();
 		}
 		else {
-			final EntityEntry ee =  getEntry( entityOrProxy );
+			final EntityEntry ee = getEntry( entityOrProxy );
 			if ( ee == null ) {
-				throw new IllegalArgumentException( "Instance is not associated with this persistence context" );
+				throw new IllegalArgumentException( "Given entity is not associated with the persistence context" );
 			}
-			isReadOnly = ee.isReadOnly();
+			return ee.isReadOnly();
 		}
-		return isReadOnly;
 	}
 
 	@Override
 	public void setReadOnly(Object object, boolean readOnly) {
 		if ( object == null ) {
-			throw new IllegalArgumentException( "Null entity instance" );
+			throw new IllegalArgumentException( "Entity may not be null" );
 		}
 		if ( isReadOnly( object ) == readOnly ) {
 			return;
@@ -1777,7 +1764,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 	private void setEntityReadOnly(Object entity, boolean readOnly) {
 		final EntityEntry entry = getEntry( entity );
 		if ( entry == null ) {
-			throw new IllegalArgumentException( "Instance was not associated with this persistence context" );
+			throw new IllegalArgumentException( "Given entity is not associated with the persistence context" );
 		}
 		entry.setReadOnly( readOnly, entity );
 		hasNonReadOnlyEntities = hasNonReadOnlyEntities || ! readOnly;
@@ -1833,7 +1820,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 	 * @throws IOException serialization errors.
 	 */
 	public void serialize(ObjectOutputStream oos) throws IOException {
-		LOG.trace( "Serializing persistence-context" );
+		LOG.trace( "Serializing persistence context" );
 
 		oos.writeBoolean( defaultReadOnly );
 		oos.writeBoolean( hasNonReadOnlyEntities );
@@ -1938,7 +1925,7 @@ public class StatefulPersistenceContext implements PersistenceContext {
 	public static StatefulPersistenceContext deserialize(
 			ObjectInputStream ois,
 			SessionImplementor session) throws IOException, ClassNotFoundException {
-		LOG.trace( "Deserializing persistence-context" );
+		LOG.trace( "Deserializing persistence context" );
 		final StatefulPersistenceContext rtn = new StatefulPersistenceContext( session );
 		SessionFactoryImplementor sfi = session.getFactory();
 

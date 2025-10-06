@@ -13,6 +13,8 @@ module com.guicedee.client {
 
 	exports com.guicedee.client;
     requires transitive io.vertx.core;
+
+    requires transitive org.jspecify;
 	
     exports com.guicedee.guicedinjection.properties;
     exports com.guicedee.guicedinjection.pairing;
