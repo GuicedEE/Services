@@ -554,19 +554,19 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  JBoss-LogManager:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    with:
-      baseDir: 'JBoss/jboss-logmanager/'
-      name: 'JBoss Log Manager'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+#  JBoss-LogManager:
+#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+#    with:
+#      baseDir: 'JBoss/jboss-logmanager/'
+#      name: 'JBoss Log Manager'
+#      publishToCentral: ${{inputs.centralRelease}}
+#    secrets:
+#      USERNAME: ${{secrets.USERNAME}}
+#      USER_TOKEN: ${{secrets.USER_TOKEN}}
+#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   CXF-Security:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -657,8 +657,6 @@ jobs:
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-Core:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - JBoss-LogManager
     with:
       baseDir: 'Hibernate/hibernate-core/'
       name: 'Hibernate Core'
@@ -672,8 +670,6 @@ jobs:
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-Validator:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - JBoss-LogManager
     with:
       baseDir: 'Hibernate/hibernate-validator/'
       name: 'Hibernate Validator'
@@ -687,8 +683,6 @@ jobs:
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-Reactive:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - JBoss-LogManager
     with:
       baseDir: 'Hibernate/hibernate-reactive/'
       name: 'Hibernate Reactive'
@@ -877,8 +871,6 @@ jobs:
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   MicroProfileConfig:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - JBoss-LogManager
     with:
       baseDir: 'MicroProfile/config-core/'
       name: 'MicroProfile Config'
