@@ -11,6 +11,7 @@ module org.apache.poi.poi {
     requires jdk.unsupported;
 
     exports org.apache.poi;
+    exports org.apache.poi.logging;
     exports org.apache.poi.common;
     exports org.apache.poi.common.usermodel;
     exports org.apache.poi.common.usermodel.fonts;
