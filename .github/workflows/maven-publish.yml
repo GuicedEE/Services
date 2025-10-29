@@ -457,64 +457,6 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-#  Undertow-Parser-Generator:
-#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-#    with:
-##      baseDir: 'JBoss/undertow-parser-generator/'
- #     name: 'Undertow Generator'
- #     publishToCentral: ${{inputs.centralRelease}}
- #   secrets:
- #     USERNAME: ${{secrets.USERNAME}}
- #     USER_TOKEN: ${{secrets.USER_TOKEN}}
- #     SONA_USERNAME: ${{secrets.SONA_USERNAME}}
- #     SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
- #     GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
- #     GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
- # Undertow-Core:
- #   uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
- #   needs:
- #     - Undertow-Parser-Generator
- #   with:
- #     baseDir: 'JBoss/undertow-core/'
- #     name: 'Undertow Core'
- #     publishToCentral: ${{inputs.centralRelease}}
- #   secrets:
- #     USERNAME: ${{secrets.USERNAME}}
- #     USER_TOKEN: ${{secrets.USER_TOKEN}}
- #     SONA_USERNAME: ${{secrets.SONA_USERNAME}}
- #     SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
- #     GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
- #     GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
- # Undertow-Servlet:
- #   uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
- #   needs:
-#      - Undertow-Core
-#    with:
-#      baseDir: 'JBoss/undertow-servlet/'
-#      name: 'Undertow Servlet'
-#      publishToCentral: ${{inputs.centralRelease}}
-#    secrets:
-#      USERNAME: ${{secrets.USERNAME}}
-#      USER_TOKEN: ${{secrets.USER_TOKEN}}
-#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-#  Undertow-Web-Sockets:
-#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-#    needs:
-#      - Undertow-Servlet
-#    with:
-#      baseDir: 'JBoss/undertow-websockets-jsr/'
-#      name: 'Undertow Web Sockets'
-#      publishToCentral: ${{inputs.centralRelease}}
-#    secrets:
-#      USERNAME: ${{secrets.USERNAME}}
-#      USER_TOKEN: ${{secrets.USER_TOKEN}}
-#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   OpenPDF:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
@@ -554,19 +496,6 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-#  JBoss-LogManager:
-#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-#    with:
-#      baseDir: 'JBoss/jboss-logmanager/'
-#      name: 'JBoss Log Manager'
-#      publishToCentral: ${{inputs.centralRelease}}
-#    secrets:
-#      USERNAME: ${{secrets.USERNAME}}
-#      USER_TOKEN: ${{secrets.USER_TOKEN}}
-#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   CXF-Security:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -778,19 +707,6 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-#  BTM:
-#    uses: GuicedEE/Workflows/.github/workflows/bom-submodules.yml@master
-#    with:
-#      baseDir: 'Libraries/BitronixTransactionManager/'
-#      name: 'BTM'
-#      publishToCentral: ${{inputs.centralRelease}}
-#    secrets:
-#      USERNAME: ${{secrets.USERNAME}}
-#      USER_TOKEN: ${{secrets.USER_TOKEN}}
-#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hazelcast:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
