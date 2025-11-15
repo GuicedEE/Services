@@ -507,6 +507,11 @@ module org.hibernate.orm.core {
 	exports org.hibernate.proxy.map to org.hibernate.reactive;
 	exports org.hibernate.query.sql.spi to org.hibernate.reactive;
   exports org.hibernate.internal.util.cache to org.hibernate.reactive;
+  
+		exports org.hibernate.query.sqm.tree.update to org.hibernate.reactive;
+		exports org.hibernate.query.sqm.tree.delete to org.hibernate.reactive;
+		exports org.hibernate.query.sqm.tree.from to org.hibernate.reactive;
+		exports org.hibernate.query.sqm.tree.domain to org.hibernate.reactive;
 	//exports org.hibernate.reactive.loader.ast.internal to org.hibernate.reactive;
 
 

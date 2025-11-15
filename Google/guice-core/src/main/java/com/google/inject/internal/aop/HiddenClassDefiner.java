@@ -16,9 +16,9 @@
 
 package com.google.inject.internal.aop;
 
+import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodHandles.Lookup;
 import java.lang.reflect.Array;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
@@ -28,18 +28,11 @@ import java.lang.reflect.Method;
  */
 final class HiddenClassDefiner implements ClassDefiner {
 
-  private static final sun.misc.Unsafe THE_UNSAFE;
-  private static final Object TRUSTED_LOOKUP_BASE;
-  private static final long TRUSTED_LOOKUP_OFFSET;
   private static final Object HIDDEN_CLASS_OPTIONS;
   private static final Method HIDDEN_DEFINE_METHOD;
 
   static {
     try {
-      THE_UNSAFE = UnsafeGetter.getUnsafe();
-      Field trustedLookupField = Lookup.class.getDeclaredField("IMPL_LOOKUP");
-      TRUSTED_LOOKUP_BASE = THE_UNSAFE.staticFieldBase(trustedLookupField);
-      TRUSTED_LOOKUP_OFFSET = THE_UNSAFE.staticFieldOffset(trustedLookupField);
       HIDDEN_CLASS_OPTIONS = classOptions("NESTMATE");
       HIDDEN_DEFINE_METHOD =
           Lookup.class.getMethod(
@@ -51,12 +44,11 @@ final class HiddenClassDefiner implements ClassDefiner {
 
   @Override
   public Class<?> define(Class<?> hostClass, byte[] bytecode) throws Exception {
-    Lookup trustedLookup =
-        (Lookup) THE_UNSAFE.getObject(TRUSTED_LOOKUP_BASE, TRUSTED_LOOKUP_OFFSET);
+    Lookup lookup = MethodHandles.privateLookupIn(hostClass, MethodHandles.lookup());
     Lookup definedLookup =
         (Lookup)
             HIDDEN_DEFINE_METHOD.invoke(
-                trustedLookup.in(hostClass), bytecode, false, HIDDEN_CLASS_OPTIONS);
+                lookup, bytecode, false, HIDDEN_CLASS_OPTIONS);
     return definedLookup.lookupClass();
   }
 

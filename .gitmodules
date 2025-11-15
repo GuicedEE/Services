@@ -2,6 +2,3 @@
 	path = Libraries/BitronixTransactionManager
 	url = https://github.com/GuicedEE/BitronixTransactionManager.git
     branch = v2.0.0
-[submodule "guice-inject-client/rules"]
-	path = guice-inject-client/rules
-	url = https://github.com/GuicedEE/junie-guides.git

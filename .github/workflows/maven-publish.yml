@@ -49,36 +49,6 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Guice-Persist:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - Guice
-    with:
-      baseDir: 'Google/guice-persist/'
-      name: 'Guice Persist'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Guice-Servlet:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - Guice
-    with:
-      baseDir: 'Google/guice-servlet/'
-      name: 'Guice Servlet'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Guice-AssistedInject:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -441,22 +411,22 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Guiced-Inject-Client:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - AOP
-      - Guice
-    with:
-      baseDir: 'guice-inject-client/'
-      name: 'Guice Inject Client'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+#  Guiced-Inject-Client:
+#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+#    needs:
+#      - AOP
+#      - Guice
+#    with:
+#      baseDir: 'guice-inject-client/'
+#      name: 'Guice Inject Client'
+#      publishToCentral: ${{inputs.centralRelease}}
+#    secrets:
+#      USERNAME: ${{secrets.USERNAME}}
+#      USER_TOKEN: ${{secrets.USER_TOKEN}}
+#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   OpenPDF:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
