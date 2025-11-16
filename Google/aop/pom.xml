@@ -16,6 +16,7 @@
 
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+        <ignore.moditect>true</ignore.moditect>
     </properties>
 
     <build>
