@@ -710,51 +710,51 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Json-Representation:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - Guiced-Inject-Client
-    with:
-      baseDir: 'Representations/JsonRepresentation/'
-      name: 'JSON Representation'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  XML-Representation:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - Json-Representation
-    with:
-      baseDir: 'Representations/XmlRepresentation/'
-      name: 'XML Representation'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Excel-Representation:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - Json-Representation
-    with:
-      baseDir: 'Representations/ExcelRepresentation/'
-      name: 'Excel Representation'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+#  Json-Representation:
+#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+#    needs:
+#      - Guiced-Inject-Client
+#    with:
+#      baseDir: 'Representations/JsonRepresentation/'
+#      name: 'JSON Representation'
+#      publishToCentral: ${{inputs.centralRelease}}
+#    secrets:
+#      USERNAME: ${{secrets.USERNAME}}
+#      USER_TOKEN: ${{secrets.USER_TOKEN}}
+#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+#  XML-Representation:
+#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+#    needs:
+#      - Json-Representation
+#    with:
+#      baseDir: 'Representations/XmlRepresentation/'
+#      name: 'XML Representation'
+#      publishToCentral: ${{inputs.centralRelease}}
+#    secrets:
+#      USERNAME: ${{secrets.USERNAME}}
+#      USER_TOKEN: ${{secrets.USER_TOKEN}}
+#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+#  Excel-Representation:
+#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+#    needs:
+#      - Json-Representation
+#    with:
+#      baseDir: 'Representations/ExcelRepresentation/'
+#      name: 'Excel Representation'
+#      publishToCentral: ${{inputs.centralRelease}}
+#    secrets:
+#      USERNAME: ${{secrets.USERNAME}}
+#      USER_TOKEN: ${{secrets.USER_TOKEN}}
+#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   MicroProfileConfig:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
