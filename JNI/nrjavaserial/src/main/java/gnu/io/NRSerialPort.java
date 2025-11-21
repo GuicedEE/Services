@@ -259,7 +259,7 @@ public class NRSerialPort<J extends NRSerialPort<J>> implements Serializable
 	
 	
 	@SuppressWarnings("unchecked")
-	public J setConnected(boolean connected)
+	public @org.jspecify.annotations.NonNull J setConnected(boolean connected)
 	{
 		if (this.connected == connected)
 		{
@@ -271,7 +271,7 @@ public class NRSerialPort<J extends NRSerialPort<J>> implements Serializable
 	
 	
 	@SuppressWarnings("unchecked")
-	public J setBaud(int baud)
+	public @org.jspecify.annotations.NonNull J setBaud(int baud)
 	{
 		
 		this.baud = baud;

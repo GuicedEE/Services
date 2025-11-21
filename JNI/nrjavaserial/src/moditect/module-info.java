@@ -2,6 +2,8 @@ module com.neuronrobotics.nrjavaserial {
 	exports gnu.io;
 	
 	requires com.fasterxml.jackson.core;
+	requires transitive org.jspecify;
+	
 	requires com.fasterxml.jackson.annotation;
 
 	requires com.sun.jna;
