@@ -5,7 +5,7 @@ module cache.annotations.ri.guice {
 	
 	requires com.guicedee.client;
 
-	provides com.guicedee.guicedinjection.interfaces.IGuiceModule with org.jsr107.ri.annotations.guice.module.CacheAnnotationsModule;
+	provides com.guicedee.client.services.lifecycle.IGuiceModule with org.jsr107.ri.annotations.guice.module.CacheAnnotationsModule;
 	
 	exports org.jsr107.ri.annotations.guice.module;
 

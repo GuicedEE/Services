@@ -121,12 +121,6 @@
             <groupId>io.vertx</groupId>
             <artifactId>vertx-pg-client</artifactId>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.ongres.scram</groupId>
-                    <artifactId>scram-client</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>

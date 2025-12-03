@@ -369,10 +369,10 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.cache.internal;
 	//exports org.hibernate.internal.util;
 
-	//provides com.guicedee.guicedinjection.interfaces.IFileContentsScanner with org.hibernate.boot.archive.internal.PersistenceFileHandler;
-	//provides com.guicedee.guicedinjection.interfaces.IGuiceConfigurator with org.hibernate.boot.archive.internal.GuicedConfigurator;
-	//provides com.guicedee.guicedinjection.interfaces.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
-	//provides com.guicedee.guicedinjection.interfaces.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
+	//provides com.guicedee.client.services.config.IFileContentsScanner with org.hibernate.boot.archive.internal.PersistenceFileHandler;
+	//provides com.guicedee.client.services.lifecycle.IGuiceConfigurator with org.hibernate.boot.archive.internal.GuicedConfigurator;
+	//provides com.guicedee.client.services.config.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
+	//provides com.guicedee.client.services.config.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
 
 	//6.0.1.Final
 	uses org.hibernate.event.spi.EventEngineContributor;
