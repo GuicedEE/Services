@@ -83,6 +83,7 @@
             <artifactId>mapstruct</artifactId>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
 
     <dependencyManagement>
