@@ -78,7 +78,7 @@ module org.hibernate.reactive {
     exports org.hibernate.reactive.util.impl;
     exports org.hibernate.reactive.vertx;
     exports org.hibernate.reactive.vertx.impl;
-    exports org.hibernate.reactive.shaded.hibernate;
+    //exports org.hibernate.reactive.shaded.hibernate;
 
     exports org.hibernate.reactive.persister.entity.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
 
@@ -150,7 +150,7 @@ module org.hibernate.reactive {
     opens org.hibernate.reactive.util.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
     opens org.hibernate.reactive.vertx to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
     opens org.hibernate.reactive.vertx.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
-    opens org.hibernate.reactive.shaded.hibernate to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+  //  opens org.hibernate.reactive.shaded.hibernate to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
 
  //   provides io.vertx.core.spi.VertxServiceProvider with org.hibernate.reactive.context.impl.ContextualDataStorage;
     provides jakarta.persistence.spi.PersistenceProvider with org.hibernate.reactive.provider.ReactivePersistenceProvider;

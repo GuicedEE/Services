@@ -103,13 +103,17 @@
                                     <pattern>META-INF.services_</pattern>
                                     <shadedPattern>META-INF.services</shadedPattern>
                                 </relocation>-->
-                               <relocation>
+
+
+                          <!--     <relocation>
                                     <pattern>org.hibernate.engine.internal</pattern>
                                     <shadedPattern>org.hibernate.reactive.shaded.hibernate</shadedPattern>
                                     <includes>
                                         <include>org.hibernate.engine.internal.Reactive*</include>
                                     </includes>
                                 </relocation>
+                                -->
+
                             <!--     <relocation>
                                     <pattern>org.hibernate.reactive.pool.up.impl</pattern>
                                     <shadedPattern>org.hibernate.reactive.pool.impl</shadedPattern>

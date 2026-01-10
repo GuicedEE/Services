@@ -90,7 +90,7 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
                                 String name = extractName(subZipEntry);
                                 final String relativeName = extractRelativeName(subZipEntry);
                                 String nameAdjust = relativeName;
-                                	System.out.println("visiting - " + name);
+                                	//System.out.println("visiting - " + name);
                                 if (nameAdjust.startsWith("/modules/"))
                                 {
                                     nameAdjust = name.substring(9);

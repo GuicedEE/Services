@@ -62,7 +62,7 @@ module org.hibernate.orm.core {
 	opens org.hibernate.internal.util.xml to org.jboss.logging;
 	opens org.hibernate.engine.jdbc.spi to org.jboss.logging;
 	opens org.hibernate.cache.spi to org.jboss.logging;
-	opens org.hibernate.bytecode to org.jboss.logging;
+	//opens org.hibernate.bytecode to org.jboss.logging;
 
 	//exports com.guicedee.services.hibernate to com.guicedee.guicedpersistence;
 	
@@ -146,7 +146,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate.boot.registry.selector.spi;
 	exports org.hibernate.boot.spi;
 	exports org.hibernate.boot.xsd;
-	exports org.hibernate.bytecode;
+	//exports org.hibernate.bytecode;
 	exports org.hibernate.bytecode.spi;
 /*	exports org.hibernate.bytecode.internal.bytebuddy;
 	exports org.hibernate.bytecode.internal.javassist;*/
@@ -515,6 +515,9 @@ module org.hibernate.orm.core {
 	//exports org.hibernate.reactive.loader.ast.internal to org.hibernate.reactive;
 
 
+	exports org.hibernate.engine.creation.internal to org.hibernate.reactive;
+	opens org.hibernate.engine.creation.internal to org.hibernate.reactive;
+
 	opens org.hibernate.tuple;
 	opens org.hibernate.tuple.component;
 	opens org.hibernate.tuple.entity;
@@ -533,7 +536,7 @@ module org.hibernate.orm.core {
 	uses org.hibernate.models.spi.ModelsContextProvider;
 	uses org.hibernate.boot.archive.scan.spi.ScannerFactory;
 
-	provides org.hibernate.engine.transaction.jta.platform.spi.JtaPlatformProvider with org.hibernate.service.jta.platform.internal.BitronixJtaPlatform;
+	//provides org.hibernate.engine.transaction.jta.platform.spi.JtaPlatformProvider with org.hibernate.service.jta.platform.internal.BitronixJtaPlatform;
 	uses org.hibernate.event.monitor.spi.EventMonitor;
 }
 
