@@ -19,6 +19,7 @@ package com.google.inject.internal.aop;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodHandles.Lookup;
 import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -44,12 +45,41 @@ final class HiddenClassDefiner implements ClassDefiner {
 
   @Override
   public Class<?> define(Class<?> hostClass, byte[] bytecode) throws Exception {
-    Lookup lookup = MethodHandles.privateLookupIn(hostClass, MethodHandles.lookup());
-    Lookup definedLookup =
-        (Lookup)
-            HIDDEN_DEFINE_METHOD.invoke(
-                lookup, bytecode, false, HIDDEN_CLASS_OPTIONS);
-    return definedLookup.lookupClass();
+    Module guiceModule = HiddenClassDefiner.class.getModule();
+    Module hostModule = hostClass.getModule();
+    if (guiceModule.isNamed() && hostModule.isNamed()) {
+      if (!guiceModule.canRead(hostModule)) {
+        guiceModule.addReads(hostModule);
+      }
+      if (!hostModule.isOpen(hostClass.getPackageName(), guiceModule)) {
+        hostModule.addOpens(hostClass.getPackageName(), guiceModule);
+      }
+    }
+    try {
+      Lookup lookup = MethodHandles.privateLookupIn(hostClass, MethodHandles.lookup());
+      Lookup definedLookup =
+          (Lookup)
+              HIDDEN_DEFINE_METHOD.invoke(
+                  lookup, bytecode, false, HIDDEN_CLASS_OPTIONS);
+      return definedLookup.lookupClass();
+    } catch (InvocationTargetException t) {
+      Throwable cause = t.getTargetException();
+      if (cause instanceof IllegalAccessException) {
+        try {
+          Method getModuleLookup = hostClass.getMethod("getModuleLookup");
+          Lookup lookup = (Lookup) getModuleLookup.invoke(null);
+          Lookup definedLookup =
+              (Lookup)
+                  HIDDEN_DEFINE_METHOD.invoke(
+                      lookup, bytecode, false, HIDDEN_CLASS_OPTIONS);
+          return definedLookup.lookupClass();
+        } catch (Throwable ignored) {
+        }
+      }
+      throw cause instanceof Exception ? (Exception) cause : new RuntimeException(cause);
+    } catch (Throwable t) {
+      throw t instanceof Exception ? (Exception) t : new RuntimeException(t);
+    }
   }
 
   /** Creates {@link MethodHandles.Lookup.ClassOption} array with the named options. */
