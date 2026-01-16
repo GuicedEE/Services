@@ -8,12 +8,11 @@
     </parent>
 
     <groupId>com.guicedee.services</groupId>
-    <artifactId>metrics-core</artifactId>
+    <artifactId>telemetry-core</artifactId>
 
-    <name>metrics-core</name>
+    <name>telemetry-core</name>
     <packaging>jar</packaging>
     <version>2.0.0-SNAPSHOT</version>
-    <!--<version>${jandex.version}</version>-->
 
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
@@ -43,10 +42,8 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>io.dropwizard.metrics:metrics-core</include>
-                                    <include>io.dropwizard.metrics:metrics-graphite</include>
-                                    <!--<include>io.smallrye:smallrye-metrics</include>-->
-                                    <include>org.eclipse.microprofile.metrics</include>
+                                    <include>io.opentelemetry</include>
+                                    <include>io.opentelemetry.instrumentation</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
@@ -88,35 +85,46 @@
         </dependency>
 
         <dependency>
-            <groupId>io.dropwizard.metrics</groupId>
-            <artifactId>metrics-core</artifactId>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-api</artifactId>
             <optional>true</optional>
         </dependency>
 
         <dependency>
-            <groupId>io.dropwizard.metrics</groupId>
-            <artifactId>metrics-graphite</artifactId>
-            <version>${dropwizard.metrics-core.version}</version>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-context</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk</artifactId>
             <optional>true</optional>
         </dependency>
 
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-<!--
-        <dependency>
-            <groupId>io.smallrye</groupId>
-            <artifactId>smallrye-metrics</artifactId>
-            <version>${smallrye.metrics.version}</version>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk-testing</artifactId>
             <optional>true</optional>
         </dependency>
--->
 
         <dependency>
-            <groupId>org.eclipse.microprofile.metrics</groupId>
-            <artifactId>microprofile-metrics-api</artifactId>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-otlp</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-log4j-appender-2.17</artifactId>
+            <version>2.23.0-alpha</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
             <optional>true</optional>
         </dependency>
 
