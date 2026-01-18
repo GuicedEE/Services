@@ -5,11 +5,13 @@ module com.guicedee.services.opentelemetry {
 	requires java.logging;
 
 	requires io.vertx.core;
+	requires com.google.common;
 
+	requires java.net.http;
+	requires com.fasterxml.jackson.core;
 
 
 	uses io.opentelemetry.context.ContextStorageProvider;
-	uses io.opentelemetry.exporter.internal.grpc.GrpcSenderProvider;
 	uses io.opentelemetry.exporter.internal.http.HttpSenderProvider;
 
 	uses io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
@@ -20,7 +22,6 @@ module com.guicedee.services.opentelemetry {
 	uses io.opentelemetry.sdk.autoconfigure.spi.traces.ConfigurableSpanExporterProvider;
 	uses io.opentelemetry.sdk.autoconfigure.spi.internal.ComponentProvider;
 
-
 	provides io.opentelemetry.context.ContextStorageProvider with
 			io.vertx.tracing.opentelemetry.VertxContextStorageProvider;
 	provides io.vertx.core.spi.VertxServiceProvider with
@@ -30,19 +31,14 @@ module com.guicedee.services.opentelemetry {
 	provides io.opentelemetry.api.metrics.MeterProvider with io.opentelemetry.sdk.metrics.SdkMeterProvider;
 	provides io.opentelemetry.api.logs.LoggerProvider with io.opentelemetry.sdk.logs.SdkLoggerProvider;
 
-	provides io.opentelemetry.exporter.internal.grpc.GrpcSenderProvider with
-			io.opentelemetry.exporter.sender.grpc.managedchannel.internal.ManagedChannelGrpcSenderProvider;
 	provides io.opentelemetry.exporter.internal.http.HttpSenderProvider with
-			io.opentelemetry.exporter.sender.okhttp.internal.OkHttpHttpSenderProvider;
+			io.opentelemetry.exporter.sender.jdk.internal.JdkHttpSenderProvider;
 
 	exports io.opentelemetry.api;
 	exports io.opentelemetry.api.baggage;
 	exports io.opentelemetry.api.baggage.propagation;
 	exports io.opentelemetry.api.common;
-	exports io.opentelemetry.api.incubator;
-	exports io.opentelemetry.api.incubator.common;
 	exports io.opentelemetry.api.incubator.config;
-	exports io.opentelemetry.api.incubator.internal;
 	exports io.opentelemetry.api.incubator.logs;
 	exports io.opentelemetry.api.incubator.metrics;
 	exports io.opentelemetry.api.incubator.propagation;
@@ -52,14 +48,10 @@ module com.guicedee.services.opentelemetry {
 	exports io.opentelemetry.api.metrics;
 	exports io.opentelemetry.api.trace;
 	exports io.opentelemetry.api.trace.propagation;
-	exports io.opentelemetry.api.trace.propagation.internal;
 	exports io.opentelemetry.context;
 	exports io.opentelemetry.context.propagation;
-	exports io.opentelemetry.context.propagation.internal;
-
 	exports io.opentelemetry.exporter.internal;
 	exports io.opentelemetry.exporter.internal.compression;
-	exports io.opentelemetry.exporter.internal.grpc;
 	exports io.opentelemetry.exporter.internal.http;
 	exports io.opentelemetry.exporter.internal.marshal;
 	exports io.opentelemetry.exporter.internal.metrics;
@@ -67,40 +59,12 @@ module com.guicedee.services.opentelemetry {
 	exports io.opentelemetry.exporter.internal.otlp.logs;
 	exports io.opentelemetry.exporter.internal.otlp.metrics;
 	exports io.opentelemetry.exporter.internal.otlp.traces;
-	exports io.opentelemetry.exporter.otlp.all.internal;
-	exports io.opentelemetry.exporter.otlp.http.logs;
-	exports io.opentelemetry.exporter.otlp.http.metrics;
-	exports io.opentelemetry.exporter.otlp.http.trace;
-	exports io.opentelemetry.exporter.otlp.internal;
-	exports io.opentelemetry.exporter.otlp.logs;
-	exports io.opentelemetry.exporter.otlp.metrics;
 	exports io.opentelemetry.exporter.otlp.trace;
-	exports io.opentelemetry.exporter.sender.grpc.managedchannel.internal;
 	exports io.opentelemetry.exporter.sender.jdk.internal;
-	exports io.opentelemetry.exporter.sender.okhttp.internal;
+	//exports io.opentelemetry.exporter.sender.okhttp.internal;
 
 	exports io.opentelemetry.instrumentation.api;
-	exports io.opentelemetry.instrumentation.api.incubator.builder.internal;
-	exports io.opentelemetry.instrumentation.api.incubator.config.internal;
-	exports io.opentelemetry.instrumentation.api.incubator.instrumenter;
-	exports io.opentelemetry.instrumentation.api.incubator.instrumenter.internal;
-	exports io.opentelemetry.instrumentation.api.incubator.log;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.code;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.db;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.db.internal;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.genai;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.http;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.http.internal;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.messaging;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.net;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.net.internal;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.rpc;
-	exports io.opentelemetry.instrumentation.api.incubator.semconv.util;
 	exports io.opentelemetry.instrumentation.api.instrumenter;
-	exports io.opentelemetry.instrumentation.api.internal;
-	exports io.opentelemetry.instrumentation.api.internal.cache;
-	exports io.opentelemetry.instrumentation.api.internal.cache.concurrentlinkedhashmap;
-	exports io.opentelemetry.instrumentation.api.internal.cache.weaklockfree;
 	exports io.opentelemetry.instrumentation.api.semconv;
 	exports io.opentelemetry.instrumentation.api.semconv.http;
 	exports io.opentelemetry.instrumentation.api.semconv.http.internal;
@@ -182,6 +146,8 @@ module com.guicedee.services.opentelemetry {
 	opens io.opentelemetry.exporter.otlp.logs to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
 	opens io.opentelemetry.exporter.otlp.metrics to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
 	opens io.opentelemetry.exporter.otlp.http.trace to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
+	exports io.opentelemetry.exporter.otlp.http.trace;
+	exports io.opentelemetry.exporter.otlp.http.logs;
 	opens io.opentelemetry.exporter.otlp.http.logs to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
 	opens io.opentelemetry.exporter.otlp.http.metrics to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
 

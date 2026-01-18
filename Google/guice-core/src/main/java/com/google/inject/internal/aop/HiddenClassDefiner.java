@@ -29,20 +29,6 @@ import java.lang.reflect.Method;
  */
 final class HiddenClassDefiner implements ClassDefiner {
 
-  private static final Object HIDDEN_CLASS_OPTIONS;
-  private static final Method HIDDEN_DEFINE_METHOD;
-
-  static {
-    try {
-      HIDDEN_CLASS_OPTIONS = classOptions("NESTMATE");
-      HIDDEN_DEFINE_METHOD =
-          Lookup.class.getMethod(
-              "defineHiddenClass", byte[].class, boolean.class, HIDDEN_CLASS_OPTIONS.getClass());
-    } catch (ReflectiveOperationException e) {
-      throw new ExceptionInInitializerError(e);
-    }
-  }
-
   @Override
   public Class<?> define(Class<?> hostClass, byte[] bytecode) throws Exception {
     Module guiceModule = HiddenClassDefiner.class.getModule();
@@ -56,41 +42,52 @@ final class HiddenClassDefiner implements ClassDefiner {
       }
     }
     try {
-      Lookup lookup = MethodHandles.privateLookupIn(hostClass, MethodHandles.lookup());
-      Lookup definedLookup =
-          (Lookup)
-              HIDDEN_DEFINE_METHOD.invoke(
-                  lookup, bytecode, false, HIDDEN_CLASS_OPTIONS);
-      return definedLookup.lookupClass();
-    } catch (InvocationTargetException t) {
-      Throwable cause = t.getTargetException();
-      if (cause instanceof IllegalAccessException) {
-        try {
-          Method getModuleLookup = hostClass.getMethod("getModuleLookup");
-          Lookup lookup = (Lookup) getModuleLookup.invoke(null);
-          Lookup definedLookup =
-              (Lookup)
-                  HIDDEN_DEFINE_METHOD.invoke(
-                      lookup, bytecode, false, HIDDEN_CLASS_OPTIONS);
-          return definedLookup.lookupClass();
-        } catch (Throwable ignored) {
-        }
+      Lookup lookup;
+      if (guiceModule.equals(hostModule)) {
+        lookup = MethodHandles.privateLookupIn(hostClass, MethodHandles.lookup());
+      } else {
+        lookup = MethodHandles.lookup().in(hostClass);
       }
-      throw cause instanceof Exception ? (Exception) cause : new RuntimeException(cause);
+      return defineHiddenClass(lookup, bytecode, hostClass);
     } catch (Throwable t) {
       throw t instanceof Exception ? (Exception) t : new RuntimeException(t);
     }
   }
 
-  /** Creates {@link MethodHandles.Lookup.ClassOption} array with the named options. */
-  @SuppressWarnings("unchecked")
-  private static Object classOptions(String... options) throws ClassNotFoundException {
-    @SuppressWarnings("rawtypes") // Unavoidable, only way to use Enum.valueOf
-    Class optionClass = Class.forName(Lookup.class.getName() + "$ClassOption");
-    Object classOptions = Array.newInstance(optionClass, options.length);
-    for (int i = 0; i < options.length; i++) {
-      Array.set(classOptions, i, Enum.valueOf(optionClass, options[i]));
+  private Class<?> defineHiddenClass(Lookup lookup, byte[] bytecode, Class<?> hostClass) throws Exception {
+    try {
+      return lookup.defineHiddenClass(bytecode, false, Lookup.ClassOption.NESTMATE).lookupClass();
+    } catch (IllegalAccessException e) {
+      // 1. Try getModuleLookup()
+      try {
+        Method getModuleLookup = hostClass.getDeclaredMethod("getModuleLookup");
+        getModuleLookup.setAccessible(true);
+        Lookup nextLookup = (Lookup) getModuleLookup.invoke(null);
+        if (nextLookup != null && !nextLookup.equals(lookup)) {
+          return nextLookup.defineHiddenClass(bytecode, false, Lookup.ClassOption.NESTMATE).lookupClass();
+        }
+      } catch (Throwable ignored) {
+      }
+
+      // 2. Try privateLookupIn
+      try {
+        Lookup nextLookup = MethodHandles.privateLookupIn(hostClass, MethodHandles.lookup());
+        if (nextLookup != null && !nextLookup.equals(lookup)) {
+          return nextLookup.defineHiddenClass(bytecode, false, Lookup.ClassOption.NESTMATE).lookupClass();
+        }
+      } catch (IllegalAccessException ignored) {
+      }
+
+      // 3. Try lookup().in()
+      Lookup fallbackLookup = MethodHandles.lookup().in(hostClass);
+      if (!fallbackLookup.equals(lookup)) {
+        try {
+          return fallbackLookup.defineHiddenClass(bytecode, false, Lookup.ClassOption.NESTMATE).lookupClass();
+        } catch (IllegalAccessException ignored) {
+        }
+      }
+
+      throw e;
     }
-    return classOptions;
   }
 }

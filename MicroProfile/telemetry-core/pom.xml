@@ -42,13 +42,22 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>io.opentelemetry</include>
-                                    <include>io.opentelemetry.instrumentation</include>
-                                    <include>io.opentelemetry:opentelemetry-exporter-sender-okhttp</include>
-                                    <include>io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel</include>
+                                    <include>io.opentelemetry:*</include>
+                                    <include>io.opentelemetry.instrumentation:*</include>
                                     <include>io.vertx:vertx-opentelemetry</include>
                                 </includes>
+                                <excludes>
+                                    <exclude>io.opentelemetry:opentelemetry-exporter-sender-okhttp</exclude>
+                                    <exclude>io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel</exclude>
+                                    <exclude>io.opentelemetry:opentelemetry-exporter-sender-grpc-okhttp</exclude>
+                                    <exclude>io.grpc:*</exclude>
+                                    <exclude>com.squareup.okhttp3:*</exclude>
+                                    <exclude>org.jetbrains.kotlin:*</exclude>
+                                </excludes>
                             </artifactSet>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
@@ -162,25 +171,20 @@
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-exporter-otlp</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-otlp-common</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-sender-okhttp</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-sender-grpc-managed-channel</artifactId>
-            <version>${opentelemetry.version}</version>
-            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.opentelemetry</groupId>
+                    <artifactId>opentelemetry-exporter-sender-okhttp</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.opentelemetry</groupId>
+                    <artifactId>opentelemetry-exporter-sender-grpc-managed-channel</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

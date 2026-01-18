@@ -12,8 +12,9 @@ module com.google.guice {
 	exports com.google.inject.internal;
 	exports com.google.inject.internal.util;
 	exports com.google.inject.gee;
+    exports com.google.inject.internal.aop;
 
-	requires java.logging;
+    requires java.logging;
 
 	requires transitive com.google.common;
 
