@@ -165,7 +165,7 @@ module org.hibernate.reactive {
 
     //Hibernate Reactive 4.0.0.Beta1
     //opens org.hibernate.reactive.vertx.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
-    //opens org.hibernate.reactive.logging.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
+   // opens org.hibernate.reactive.logging.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
 
 }
 
