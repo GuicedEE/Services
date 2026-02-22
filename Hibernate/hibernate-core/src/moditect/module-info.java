@@ -498,7 +498,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate.sql.ast.tree.predicate to org.hibernate.reactive;
 	//exports org.hibernate.reactive.loader.ast.internal to org.hibernate.reactive;
 	exports org.hibernate.query.sqm to org.hibernate.reactive;
-	exports org.hibernate.internal.util.collections to org.hibernate.reactive;
+	exports org.hibernate.internal.util.collections;
 	exports org.hibernate.loader.internal to org.hibernate.reactive;
 	exports org.hibernate.query.internal to org.hibernate.reactive;
 	exports org.hibernate.sql.results.graph.entity to org.hibernate.reactive;
@@ -538,6 +538,9 @@ module org.hibernate.orm.core {
 
 	//provides org.hibernate.engine.transaction.jta.platform.spi.JtaPlatformProvider with org.hibernate.service.jta.platform.internal.BitronixJtaPlatform;
 	uses org.hibernate.event.monitor.spi.EventMonitor;
+
+
+	exports org.hibernate.bytecode.enhance.internal to org.hibernate.reactive;
 }
 
 
