@@ -8,7 +8,7 @@
     </parent>
 
     <artifactId>amqp-client</artifactId>
-    <groupId>com.guicedee.services</groupId>
+    <groupId>com.guicedee.modules.services</groupId>
     <name>RabbitMQ AMQP Client</name>
     <packaging>jar</packaging>
     <version>2.0.0-SNAPSHOT</version>

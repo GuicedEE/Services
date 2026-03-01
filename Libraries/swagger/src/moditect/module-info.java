@@ -1,4 +1,4 @@
-module com.guicedee.services.openapi {
+module com.guicedee.modules.services.openapi {
 
 	requires org.slf4j;
 

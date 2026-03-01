@@ -7,7 +7,7 @@
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.guicedee.services</groupId>
+    <groupId>com.guicedee.modules.services</groupId>
     <artifactId>openapi</artifactId>
 
     <packaging>jar</packaging>
@@ -69,7 +69,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>javassist</artifactId>
         </dependency>
 

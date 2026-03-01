@@ -334,7 +334,7 @@ To use GuicedEE Inject Client in your project, add the following dependency to y
 ```xml
 <dependency>
     <groupId>com.guicedee</groupId>
-    <artifactId>guice-inject-client</artifactId>
+    <artifactId>client</artifactId>
     <version>${guicedee.version}</version>
 </dependency>
 ```

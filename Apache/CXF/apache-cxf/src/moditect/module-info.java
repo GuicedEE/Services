@@ -21,7 +21,7 @@ module org.apache.cxf {
 //	requires static org.bouncycastle.pkix;
 
 
-//	requires transitive com.guicedee.services.openapi;
+//	requires transitive com.guicedee.modules.services.openapi;
 
 
 

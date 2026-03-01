@@ -7,7 +7,7 @@
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.guicedee.services</groupId>
+    <groupId>com.guicedee.modules.services</groupId>
     <artifactId>apache-cxf-rt-transports-http</artifactId>
     <name>Apache CXF HTTP Transport</name>
     <!--<version>${cxf.core.version}</version>-->
@@ -49,7 +49,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>org.apache.cxf</artifactId>
         </dependency>
 

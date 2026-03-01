@@ -1,4 +1,4 @@
-module com.guicedee.services.opentelemetry {
+module com.guicedee.modules.services.opentelemetry {
 	requires org.slf4j;
 	requires org.apache.logging.log4j;
 	requires org.apache.logging.log4j.core;

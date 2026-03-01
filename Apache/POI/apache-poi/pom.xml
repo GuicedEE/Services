@@ -28,7 +28,7 @@ limitations under the License.
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.guicedee.services</groupId>
+    <groupId>com.guicedee.modules.services</groupId>
     <artifactId>apache-poi</artifactId>
     <name>Apache POI</name>
     <!--<version>${poi.version}</version>-->
@@ -63,12 +63,12 @@ limitations under the License.
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>commons-math3</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>commons-collections4</artifactId>
         </dependency>
 

@@ -7,7 +7,7 @@
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.guicedee.services</groupId>
+    <groupId>com.guicedee.modules.services</groupId>
     <artifactId>scram</artifactId>
     <name>scram</name>
     <version>2.0.0-SNAPSHOT</version>

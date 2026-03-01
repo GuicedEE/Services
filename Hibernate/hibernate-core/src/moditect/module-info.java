@@ -64,7 +64,7 @@ module org.hibernate.orm.core {
 	opens org.hibernate.cache.spi to org.jboss.logging;
 	//opens org.hibernate.bytecode to org.jboss.logging;
 
-	//exports com.guicedee.services.hibernate to com.guicedee.guicedpersistence;
+	//exports com.guicedee.modules.services.hibernate to com.guicedee.guicedpersistence;
 	
 	exports org.hibernate.metamodel to org.jboss.logging,org.hibernate.reactive;
 	exports org.hibernate.metamodel.internal to org.jboss.logging,org.hibernate.reactive;
@@ -371,8 +371,8 @@ module org.hibernate.orm.core {
 
 	//provides com.guicedee.client.services.config.IFileContentsScanner with org.hibernate.boot.archive.internal.PersistenceFileHandler;
 	//provides com.guicedee.client.services.lifecycle.IGuiceConfigurator with org.hibernate.boot.archive.internal.GuicedConfigurator;
-	//provides com.guicedee.client.services.config.IPathContentsRejectListScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
-	//provides com.guicedee.client.services.config.IPathContentsScanner with com.guicedee.services.hibernate.GuiceInjectionMetaInfScanner;
+	//provides com.guicedee.client.services.config.IPathContentsRejectListScanner with com.guicedee.modules.services.hibernate.GuiceInjectionMetaInfScannerExclusions;
+	//provides com.guicedee.client.services.config.IPathContentsScanner with com.guicedee.modules.services.hibernate.GuiceInjectionMetaInfScanner;
 
 	//6.0.1.Final
 	uses org.hibernate.event.spi.EventEngineContributor;

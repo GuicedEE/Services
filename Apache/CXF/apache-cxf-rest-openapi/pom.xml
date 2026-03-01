@@ -7,7 +7,7 @@
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.guicedee.services</groupId>
+    <groupId>com.guicedee.modules.services</groupId>
     <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
     <name>Apache CXF JAX RS Service Description OpenAPI V3</name>
     <!--<version>${cxf.core.version}</version>-->
@@ -39,18 +39,18 @@
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>openapi</artifactId>
         </dependency>
 
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>org.apache.cxf</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>cxf-rt-frontend-jaxrs</artifactId>
         </dependency>
 

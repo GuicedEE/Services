@@ -35,7 +35,7 @@
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.guicedee.services</groupId>
+    <groupId>com.guicedee.modules.services</groupId>
     <artifactId>hazelcast-hibernate</artifactId>
     <name>hazelcast-hibernate</name>
     <!--<version>${hazelcast.hibernate.version}</version>-->
@@ -65,17 +65,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>cache-api</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>hibernate-core</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.services</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>hazelcast-all</artifactId>
         </dependency>
 

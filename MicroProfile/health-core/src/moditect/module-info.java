@@ -1,4 +1,4 @@
-module com.guicedee.services.health {
+module com.guicedee.modules.services.health {
 
     requires java.logging;
 
