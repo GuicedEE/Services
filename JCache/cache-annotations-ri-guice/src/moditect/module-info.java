@@ -2,8 +2,6 @@ module cache.annotations.ri.guice {
 	requires java.logging;
 
 	requires transitive cache.annotations.ri.common;
-	
-	requires com.guicedee.client;
 
 	provides com.guicedee.client.services.lifecycle.IGuiceModule with org.jsr107.ri.annotations.guice.module.CacheAnnotationsModule;
 	

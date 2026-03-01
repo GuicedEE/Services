@@ -34,14 +34,10 @@
             <groupId>com.guicedee.modules.services</groupId>
             <artifactId>cache-annotations-ri-common</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.guicedee.modules.services</groupId>
             <artifactId>guice</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee</groupId>
-            <artifactId>client</artifactId>
         </dependency>
 
     </dependencies>

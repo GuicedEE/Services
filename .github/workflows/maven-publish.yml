@@ -44,6 +44,7 @@ jobs:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - Guice
+      - Guice-AssistedInject
     with:
       baseDir: 'Google/guice-grapher/'
       name: 'Guice Grapher'
@@ -252,6 +253,7 @@ jobs:
     secrets: inherit
   OpenAPI:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: JavAssist
     with:
       baseDir: 'Libraries/swagger/'
       name: 'Open API'
@@ -362,6 +364,7 @@ jobs:
     secrets: inherit
   TestContainers:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: JNA-Platform
     with:
       baseDir: 'Libraries/testcontainers/'
       name: 'Test Containers'
@@ -455,6 +458,7 @@ jobs:
     secrets: inherit
   VertxRabbit:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: RabbitMQ
     with:
       baseDir: 'Vert.x/vertx-rabbitmq/'
       name: 'Vert.x RabbitMQ'
@@ -478,6 +482,7 @@ jobs:
     secrets: inherit
   IBM-MQ:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    if: false
     with:
       baseDir: 'Libraries/ibm-mq/'
       name: 'IBM MQ Jakarta Client'

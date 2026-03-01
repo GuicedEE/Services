@@ -22,7 +22,6 @@ import com.google.inject.TypeLiteral;
 import com.google.inject.matcher.AbstractMatcher;
 import com.google.inject.matcher.Matcher;
 import com.google.inject.matcher.Matchers;
-import com.guicedee.client.services.lifecycle.IGuiceModule;
 import org.aopalliance.intercept.MethodInvocation;
 import org.jsr107.ri.annotations.CacheContextSource;
 import org.jsr107.ri.annotations.DefaultCacheKeyGenerator;
@@ -42,7 +41,7 @@ import java.lang.reflect.Method;
  * @version $Revision$
  */
 public class CacheAnnotationsModule
-		extends AbstractModule implements IGuiceModule<CacheAnnotationsModule>
+		extends AbstractModule
 {
 
 	@SuppressWarnings("unchecked")
