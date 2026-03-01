@@ -76,8 +76,8 @@ module com.ibm.mq.jakarta {
 	opens com.ibm.msg.client.commonservices.tools;
 	exports com.ibm.msg.client.commonservices.trace;
 	opens com.ibm.msg.client.commonservices.trace;
-	export com.ibm.msg.client.commonservices.util;
-	export com.ibm.msg.client.commonservices.workspace;
+	exports com.ibm.msg.client.commonservices.util;
+	exports com.ibm.msg.client.commonservices.workspace;
 	exports com.ibm.msg.client.jakarta.jms;
 	exports com.ibm.msg.client.jakarta.jms.admin;
 	exports com.ibm.msg.client.jakarta.jms.admin.internal;

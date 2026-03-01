@@ -231,20 +231,9 @@ jobs:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
       - JCache-Annotations-Common
-      - Guiced-Inject-Client
     with:
       baseDir: 'JCache/cache-annotations-ri-guice/'
       name: 'JCache Guice'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets: inherit
-  Guiced-Inject-Client:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - AOP
-      - Guice
-    with:
-      baseDir: 'guice-inject-client/'
-      name: 'Guice Inject Client'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
   OpenPDF:
