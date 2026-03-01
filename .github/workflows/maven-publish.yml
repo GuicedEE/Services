@@ -411,22 +411,22 @@ jobs:
       SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
       GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-#  Guiced-Inject-Client:
-#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-#    needs:
-#      - AOP
-#      - Guice
-#    with:
-#      baseDir: 'guice-inject-client/'
-#      name: 'Guice Inject Client'
-#      publishToCentral: ${{inputs.centralRelease}}
-#    secrets:
-#      USERNAME: ${{secrets.USERNAME}}
-#      USER_TOKEN: ${{secrets.USER_TOKEN}}
-#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+  Guiced-Inject-Client:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - AOP
+      - Guice
+    with:
+      baseDir: 'guice-inject-client/'
+      name: 'Guice Inject Client'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   OpenPDF:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
@@ -556,6 +556,8 @@ jobs:
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-Core:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - Jandex
     with:
       baseDir: 'Hibernate/hibernate-core/'
       name: 'Hibernate Core'
@@ -582,6 +584,8 @@ jobs:
       GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
   Hibernate-Reactive:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - Hibernate-Core
     with:
       baseDir: 'Hibernate/hibernate-reactive/'
       name: 'Hibernate Reactive'
@@ -612,7 +616,6 @@ jobs:
   Hibernate-C3PO:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
-      - JCache-Annotations-Guice
       - Hibernate-Core
     with:
       baseDir: 'Hibernate/hibernate-c3p0/'
@@ -630,19 +633,6 @@ jobs:
     with:
       baseDir: 'Libraries/kafka-client/'
       name: 'Kafka Client'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-  Apache-CXF:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    with:
-      baseDir: 'Apache/CXF/apache-cxf/'
-      name: 'Apache CXF'
       publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
@@ -680,7 +670,7 @@ jobs:
   Hazelcast:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
-      - JCache-Annotations-Guice
+      - JCache
       - Hibernate-Core
     with:
       baseDir: 'JCache/hazelcast/'
@@ -696,7 +686,6 @@ jobs:
   Hazelcast-Hibernate:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
-      - JCache-Annotations-Guice
       - Hazelcast
       - Hibernate-JCache
     with:
@@ -786,6 +775,73 @@ jobs:
     with:
       baseDir: 'Vert.x/vertx-rabbitmq/'
       name: 'Vert.x RabbitMQ'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+  EhCache:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - JCache
+    with:
+      baseDir: 'JCache/ehcache/'
+      name: 'EhCache'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+  CloudEvents:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    with:
+      baseDir: 'Libraries/cloudevents/'
+      name: 'CloudEvents'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+  IBM-MQ:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    with:
+      baseDir: 'Libraries/ibm-mq/'
+      name: 'IBM MQ Jakarta Client'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+  MicroProfileHealth:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    with:
+      baseDir: 'MicroProfile/health-core/'
+      name: 'MicroProfile Health'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets:
+      USERNAME: ${{secrets.USERNAME}}
+      USER_TOKEN: ${{secrets.USER_TOKEN}}
+      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
+      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
+      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+  MicroProfileTelemetry:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    with:
+      baseDir: 'MicroProfile/telemetry-core/'
+      name: 'MicroProfile Telemetry'
       publishToCentral: ${{inputs.centralRelease}}
     secrets:
       USERNAME: ${{secrets.USERNAME}}
