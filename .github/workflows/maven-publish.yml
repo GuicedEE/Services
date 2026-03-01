@@ -1,4 +1,4 @@
-name: Maven Package
+name: Build GuicedEE Modular Services
 on:
   workflow_dispatch:
     inputs:
@@ -14,26 +14,14 @@ jobs:
       baseDir: 'Google/aop/'
       name: 'AOP Alliance'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   BCrypt:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/bcrypt/'
       name: 'BCrypt'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Guice:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -42,13 +30,7 @@ jobs:
       baseDir: 'Google/guice-core/'
       name: 'Guice'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Guice-AssistedInject:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -57,13 +39,7 @@ jobs:
       baseDir: 'Google/guice-assistedinject/'
       name: 'Guice Assisted Inject'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Guice-Grapher:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -72,13 +48,7 @@ jobs:
       baseDir: 'Google/guice-grapher/'
       name: 'Guice Grapher'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Guice-JMX:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -87,13 +57,7 @@ jobs:
       baseDir: 'Google/guice-jmx/'
       name: 'Guice JMX'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Guice-JNDI:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -102,26 +66,14 @@ jobs:
       baseDir: 'Google/guice-jndi/'
       name: 'Guice JNDI'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Commons-Collections:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/Commons/commons-collections/'
       name: 'Commons Collections'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Commons-BeanUtils:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs: Commons-Collections
@@ -129,52 +81,28 @@ jobs:
       baseDir: 'Apache/Commons/commons-beanutils/'
       name: 'Commons Bean Utilities'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Commons-CSV:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/Commons/commons-csv/'
       name: 'Commons CSV'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Commons-FileUpload:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/Commons/commons-fileupload/'
       name: 'Commons File Upload'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Commons-Math:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/Commons/commons-math/'
       name: 'Commons Math'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Apache-POI:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
@@ -184,13 +112,7 @@ jobs:
     needs:
       - Commons-Math
       - Commons-Collections
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Apache-POI-OOXML:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
@@ -199,91 +121,49 @@ jobs:
       publishToCentral: ${{inputs.centralRelease}}
     needs:
       - Apache-POI
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Jandex:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/jandex/'
       name: 'Jandex'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   JavAssist:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/javassist/'
       name: 'JavAssist'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   JSON:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/json/'
       name: 'json'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Mapstruct:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/mapstruct/'
       name: 'mapstruct'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   JACC:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Jakarta/jakarta-security-jacc/'
       name: 'JACC'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   UA-Detector:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/uadetector-core/'
       name: 'UA Detector Core'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   UA-Detector-Resources:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -292,26 +172,14 @@ jobs:
       baseDir: 'Libraries/uadetector-resources/'
       name: 'UA Detector Resources'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   JNA-Platform:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'JNI/jna-platform/'
       name: 'JNA Platform'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Azure-Identity:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
@@ -319,13 +187,7 @@ jobs:
       name: 'Microsoft Azure Identity'
       publishToCentral: ${{inputs.centralRelease}}
     needs: JNA-Platform
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   MSSQL-JDBC:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -334,26 +196,14 @@ jobs:
       baseDir: 'Database/mssql-jdbc/'
       name: 'SQL Server JDBC'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Postgres-SQL:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Database/postgresql/'
       name: 'Postgres SQL'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   JavaNRSerialPort:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs: JNA-Platform
@@ -361,26 +211,14 @@ jobs:
       baseDir: 'JNI/nrjavaserial/'
       name: 'Java NR Serial Port'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   JCache:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'JCache/cache-api/'
       name: 'JCache JSR-107'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   JCache-Annotations-Common:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs: JCache
@@ -388,13 +226,7 @@ jobs:
       baseDir: 'JCache/cache-annotations-ri-common/'
       name: 'JCache Common Annotations'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   JCache-Annotations-Guice:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -404,13 +236,7 @@ jobs:
       baseDir: 'JCache/cache-annotations-ri-guice/'
       name: 'JCache Guice'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Guiced-Inject-Client:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -420,52 +246,28 @@ jobs:
       baseDir: 'guice-inject-client/'
       name: 'Guice Inject Client'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   OpenPDF:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/openpdf/'
       name: 'Open PDF'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Metrics:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'MicroProfile/metrics-core/'
       name: 'MicroProfile Metrics'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   OpenAPI:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/swagger/'
       name: 'Open API'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   CXF-Security:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -474,13 +276,7 @@ jobs:
       baseDir: 'Apache/CXF/apache-cxf-rt-security/'
       name: 'CXF Security'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   CXF-Http-Transport:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -490,26 +286,14 @@ jobs:
       baseDir: 'Apache/CXF/apache-cxf-rt-transports-http/'
       name: 'CXF Http Transport'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   CXF-Core:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Apache/CXF/apache-cxf/'
       name: 'CXF'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   CXF-Rest:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -518,13 +302,7 @@ jobs:
       baseDir: 'Apache/CXF/apache-cxf-rest/'
       name: 'CXF Rest'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   CXF-Rest-OpenAPI:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -534,26 +312,14 @@ jobs:
       baseDir: 'Apache/CXF/apache-cxf-rest-openapi/'
       name: 'CXF OpenAPI'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   RabbitMQ:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/rabbitmq-client/'
       name: 'RabbitMQ AMQP Client'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Hibernate-Core:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -562,26 +328,14 @@ jobs:
       baseDir: 'Hibernate/hibernate-core/'
       name: 'Hibernate Core'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Hibernate-Validator:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Hibernate/hibernate-validator/'
       name: 'Hibernate Validator'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Hibernate-Reactive:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -590,13 +344,7 @@ jobs:
       baseDir: 'Hibernate/hibernate-reactive/'
       name: 'Hibernate Reactive'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Hibernate-JCache:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -606,13 +354,7 @@ jobs:
       baseDir: 'Hibernate/hibernate-jcache/'
       name: 'Hibernate JCache'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Hibernate-C3PO:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -621,52 +363,28 @@ jobs:
       baseDir: 'Hibernate/hibernate-c3p0/'
       name: 'Hibernate C3P0'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Kafka-Client:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/kafka-client/'
       name: 'Kafka Client'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   TestContainers:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/testcontainers/'
       name: 'Test Containers'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Scram:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/scram/'
       name: 'Scram'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Hazelcast:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -676,13 +394,7 @@ jobs:
       baseDir: 'JCache/hazelcast/'
       name: 'Hazelcast'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   Hazelcast-Hibernate:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -692,13 +404,7 @@ jobs:
       baseDir: 'JCache/hazelcast-hibernate/'
       name: 'Hazelcast Hibernate'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
 #  Json-Representation:
 #    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
 #    needs:
@@ -750,39 +456,21 @@ jobs:
       baseDir: 'MicroProfile/config-core/'
       name: 'MicroProfile Config'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   VertxMutiny:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Vert.x/vertx-mutiny/'
       name: 'Vert.x Mutiny'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   VertxRabbit:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Vert.x/vertx-rabbitmq/'
       name: 'Vert.x RabbitMQ'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   EhCache:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
@@ -791,65 +479,35 @@ jobs:
       baseDir: 'JCache/ehcache/'
       name: 'EhCache'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   CloudEvents:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/cloudevents/'
       name: 'CloudEvents'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   IBM-MQ:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'Libraries/ibm-mq/'
       name: 'IBM MQ Jakarta Client'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   MicroProfileHealth:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'MicroProfile/health-core/'
       name: 'MicroProfile Health'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
   MicroProfileTelemetry:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: 'MicroProfile/telemetry-core/'
       name: 'MicroProfile Telemetry'
       publishToCentral: ${{inputs.centralRelease}}
-    secrets:
-      USERNAME: ${{secrets.USERNAME}}
-      USER_TOKEN: ${{secrets.USER_TOKEN}}
-      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+    secrets: inherit
 
 
 
