@@ -34,3 +34,4 @@ flatter.pom
 
 .idea/
 **.iml
+/Libraries/scram/effective-pom

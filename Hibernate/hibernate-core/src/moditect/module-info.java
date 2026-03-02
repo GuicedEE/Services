@@ -541,6 +541,8 @@ module org.hibernate.orm.core {
 
 
 	exports org.hibernate.bytecode.enhance.internal to org.hibernate.reactive;
+	exports org.hibernate.dialect.lock.spi to org.hibernate.reactive;
+	exports org.hibernate.loader to org.hibernate.reactive;
 }
 
 

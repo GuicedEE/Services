@@ -146,8 +146,8 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.opentest4j:*</include>
-                                    <include>org.apiguardian:*</include>
+                                    <!--<include>org.opentest4j:*</include>-->
+                                    <!--<include>org.apiguardian:*</include>-->
                                     <include>org.reactivestreams:*</include>
 
                                     <!--<include>org.junit.platform:*</include>
@@ -161,19 +161,6 @@
                                     <include>com.github.docker-java:*</include>
                                 </includes>
                             </artifactSet>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <manifestEntries>
-                                        <Automatic-Module-Name>org.testcontainers</Automatic-Module-Name>
-                                        <Implementation-Title>${project.name}</Implementation-Title>
-                                        <Implementation-Version>${project.version}</Implementation-Version>
-                                        <Implementation-Vendor>${project.groupId}</Implementation-Vendor>
-                                        <Built-By>${project.organization.name}</Built-By>
-                                        <Built-Date>${maven.build.timestamp}</Built-Date>
-                                    </manifestEntries>
-                                </transformer>
-                                <!--<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>-->
-                            </transformers>
                         </configuration>
                     </execution>
                 </executions>
