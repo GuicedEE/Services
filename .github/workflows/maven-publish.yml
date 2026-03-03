@@ -7,479 +7,787 @@ on:
         description: Run a release to maven central
         default: false
   push:
+    branches:
+      - main
+      - master
+
 jobs:
+
+  # ──────────────────────────────────────────────
+  # Detect which service directories have changes
+  # ──────────────────────────────────────────────
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      aop: ${{ steps.filter.outputs.aop }}
+      bcrypt: ${{ steps.filter.outputs.bcrypt }}
+      guice-core: ${{ steps.filter.outputs.guice-core }}
+      guice-assistedinject: ${{ steps.filter.outputs.guice-assistedinject }}
+      guice-grapher: ${{ steps.filter.outputs.guice-grapher }}
+      guice-jmx: ${{ steps.filter.outputs.guice-jmx }}
+      guice-jndi: ${{ steps.filter.outputs.guice-jndi }}
+      commons-collections: ${{ steps.filter.outputs.commons-collections }}
+      commons-beanutils: ${{ steps.filter.outputs.commons-beanutils }}
+      commons-csv: ${{ steps.filter.outputs.commons-csv }}
+      commons-fileupload: ${{ steps.filter.outputs.commons-fileupload }}
+      commons-math: ${{ steps.filter.outputs.commons-math }}
+      apache-poi: ${{ steps.filter.outputs.apache-poi }}
+      apache-poi-ooxml: ${{ steps.filter.outputs.apache-poi-ooxml }}
+      jandex: ${{ steps.filter.outputs.jandex }}
+      javassist: ${{ steps.filter.outputs.javassist }}
+      json: ${{ steps.filter.outputs.json }}
+      mapstruct: ${{ steps.filter.outputs.mapstruct }}
+      jacc: ${{ steps.filter.outputs.jacc }}
+      uadetector-core: ${{ steps.filter.outputs.uadetector-core }}
+      uadetector-resources: ${{ steps.filter.outputs.uadetector-resources }}
+      jna-platform: ${{ steps.filter.outputs.jna-platform }}
+      msal4j: ${{ steps.filter.outputs.msal4j }}
+      mssql-jdbc: ${{ steps.filter.outputs.mssql-jdbc }}
+      postgresql: ${{ steps.filter.outputs.postgresql }}
+      nrjavaserial: ${{ steps.filter.outputs.nrjavaserial }}
+      cache-api: ${{ steps.filter.outputs.cache-api }}
+      cache-annotations-common: ${{ steps.filter.outputs.cache-annotations-common }}
+      cache-annotations-guice: ${{ steps.filter.outputs.cache-annotations-guice }}
+      openpdf: ${{ steps.filter.outputs.openpdf }}
+      metrics-core: ${{ steps.filter.outputs.metrics-core }}
+      swagger: ${{ steps.filter.outputs.swagger }}
+      cxf-core: ${{ steps.filter.outputs.cxf-core }}
+      cxf-security: ${{ steps.filter.outputs.cxf-security }}
+      cxf-http-transport: ${{ steps.filter.outputs.cxf-http-transport }}
+      cxf-rest: ${{ steps.filter.outputs.cxf-rest }}
+      cxf-rest-openapi: ${{ steps.filter.outputs.cxf-rest-openapi }}
+      rabbitmq-client: ${{ steps.filter.outputs.rabbitmq-client }}
+      hibernate-core: ${{ steps.filter.outputs.hibernate-core }}
+      hibernate-validator: ${{ steps.filter.outputs.hibernate-validator }}
+      hibernate-reactive: ${{ steps.filter.outputs.hibernate-reactive }}
+      hibernate-jcache: ${{ steps.filter.outputs.hibernate-jcache }}
+      hibernate-c3p0: ${{ steps.filter.outputs.hibernate-c3p0 }}
+      kafka-client: ${{ steps.filter.outputs.kafka-client }}
+      testcontainers: ${{ steps.filter.outputs.testcontainers }}
+      scram: ${{ steps.filter.outputs.scram }}
+      hazelcast: ${{ steps.filter.outputs.hazelcast }}
+      hazelcast-hibernate: ${{ steps.filter.outputs.hazelcast-hibernate }}
+      config-core: ${{ steps.filter.outputs.config-core }}
+      vertx-mutiny: ${{ steps.filter.outputs.vertx-mutiny }}
+      vertx-rabbitmq: ${{ steps.filter.outputs.vertx-rabbitmq }}
+      ehcache: ${{ steps.filter.outputs.ehcache }}
+      cloudevents: ${{ steps.filter.outputs.cloudevents }}
+      health-core: ${{ steps.filter.outputs.health-core }}
+      telemetry-core: ${{ steps.filter.outputs.telemetry-core }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect changed paths
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            aop:
+              - 'Google/aop/**'
+            bcrypt:
+              - 'Libraries/bcrypt/**'
+            guice-core:
+              - 'Google/guice-core/**'
+            guice-assistedinject:
+              - 'Google/guice-assistedinject/**'
+            guice-grapher:
+              - 'Google/guice-grapher/**'
+            guice-jmx:
+              - 'Google/guice-jmx/**'
+            guice-jndi:
+              - 'Google/guice-jndi/**'
+            commons-collections:
+              - 'Apache/Commons/commons-collections/**'
+            commons-beanutils:
+              - 'Apache/Commons/commons-beanutils/**'
+            commons-csv:
+              - 'Apache/Commons/commons-csv/**'
+            commons-fileupload:
+              - 'Apache/Commons/commons-fileupload/**'
+            commons-math:
+              - 'Apache/Commons/commons-math/**'
+            apache-poi:
+              - 'Apache/POI/apache-poi/**'
+            apache-poi-ooxml:
+              - 'Apache/POI/apache-poi-ooxml/**'
+            jandex:
+              - 'Libraries/jandex/**'
+            javassist:
+              - 'Libraries/javassist/**'
+            json:
+              - 'Libraries/json/**'
+            mapstruct:
+              - 'Libraries/mapstruct/**'
+            jacc:
+              - 'Jakarta/jakarta-security-jacc/**'
+            uadetector-core:
+              - 'Libraries/uadetector-core/**'
+            uadetector-resources:
+              - 'Libraries/uadetector-resources/**'
+            jna-platform:
+              - 'JNI/jna-platform/**'
+            msal4j:
+              - 'Database/msal4j/**'
+            mssql-jdbc:
+              - 'Database/mssql-jdbc/**'
+            postgresql:
+              - 'Database/postgresql/**'
+            nrjavaserial:
+              - 'JNI/nrjavaserial/**'
+            cache-api:
+              - 'JCache/cache-api/**'
+            cache-annotations-common:
+              - 'JCache/cache-annotations-ri-common/**'
+            cache-annotations-guice:
+              - 'JCache/cache-annotations-ri-guice/**'
+            openpdf:
+              - 'Libraries/openpdf/**'
+            metrics-core:
+              - 'MicroProfile/metrics-core/**'
+            swagger:
+              - 'Libraries/swagger/**'
+            cxf-core:
+              - 'Apache/CXF/apache-cxf/**'
+            cxf-security:
+              - 'Apache/CXF/apache-cxf-rt-security/**'
+            cxf-http-transport:
+              - 'Apache/CXF/apache-cxf-rt-transports-http/**'
+            cxf-rest:
+              - 'Apache/CXF/apache-cxf-rest/**'
+            cxf-rest-openapi:
+              - 'Apache/CXF/apache-cxf-rest-openapi/**'
+            rabbitmq-client:
+              - 'Libraries/rabbitmq-client/**'
+            hibernate-core:
+              - 'Hibernate/hibernate-core/**'
+            hibernate-validator:
+              - 'Hibernate/hibernate-validator/**'
+            hibernate-reactive:
+              - 'Hibernate/hibernate-reactive/**'
+            hibernate-jcache:
+              - 'Hibernate/hibernate-jcache/**'
+            hibernate-c3p0:
+              - 'Hibernate/hibernate-c3p0/**'
+            kafka-client:
+              - 'Libraries/kafka-client/**'
+            testcontainers:
+              - 'Libraries/testcontainers/**'
+            scram:
+              - 'Libraries/scram/**'
+            hazelcast:
+              - 'JCache/hazelcast/**'
+            hazelcast-hibernate:
+              - 'JCache/hazelcast-hibernate/**'
+            config-core:
+              - 'MicroProfile/config-core/**'
+            vertx-mutiny:
+              - 'Vert.x/vertx-mutiny/**'
+            vertx-rabbitmq:
+              - 'Vert.x/vertx-rabbitmq/**'
+            ehcache:
+              - 'JCache/ehcache/**'
+            cloudevents:
+              - 'Libraries/cloudevents/**'
+            health-core:
+              - 'MicroProfile/health-core/**'
+            telemetry-core:
+              - 'MicroProfile/telemetry-core/**'
+
+  # ──────────────────────────────────────────────
+  # Service builds – only run when changed
+  # ──────────────────────────────────────────────
   AOP:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.aop == 'true' }}
     with:
       baseDir: 'Google/aop/'
       name: 'AOP Alliance'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   BCrypt:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.bcrypt == 'true' }}
     with:
       baseDir: 'Libraries/bcrypt/'
       name: 'BCrypt'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Guice:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - AOP
+    if: ${{ !cancelled() && (needs.AOP.result == 'success' || needs.AOP.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.guice-core == 'true' || needs.detect-changes.outputs.aop == 'true') }}
     with:
       baseDir: 'Google/guice-core/'
       name: 'Guice'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Guice-AssistedInject:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - Guice
+    if: ${{ !cancelled() && (needs.Guice.result == 'success' || needs.Guice.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.guice-assistedinject == 'true' || needs.detect-changes.outputs.guice-core == 'true' || needs.detect-changes.outputs.aop == 'true') }}
     with:
       baseDir: 'Google/guice-assistedinject/'
       name: 'Guice Assisted Inject'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Guice-Grapher:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - Guice
       - Guice-AssistedInject
+    if: ${{ !cancelled() && (needs.Guice.result == 'success' || needs.Guice.result == 'skipped') && (needs.Guice-AssistedInject.result == 'success' || needs.Guice-AssistedInject.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.guice-grapher == 'true' || needs.detect-changes.outputs.guice-core == 'true' || needs.detect-changes.outputs.guice-assistedinject == 'true') }}
     with:
       baseDir: 'Google/guice-grapher/'
       name: 'Guice Grapher'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Guice-JMX:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - Guice
+    if: ${{ !cancelled() && (needs.Guice.result == 'success' || needs.Guice.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.guice-jmx == 'true' || needs.detect-changes.outputs.guice-core == 'true') }}
     with:
       baseDir: 'Google/guice-jmx/'
       name: 'Guice JMX'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Guice-JNDI:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - Guice
+    if: ${{ !cancelled() && (needs.Guice.result == 'success' || needs.Guice.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.guice-jndi == 'true' || needs.detect-changes.outputs.guice-core == 'true') }}
     with:
       baseDir: 'Google/guice-jndi/'
       name: 'Guice JNDI'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Commons-Collections:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.commons-collections == 'true' }}
     with:
       baseDir: 'Apache/Commons/commons-collections/'
       name: 'Commons Collections'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Commons-BeanUtils:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs: Commons-Collections
+    needs:
+      - detect-changes
+      - Commons-Collections
+    if: ${{ !cancelled() && (needs.Commons-Collections.result == 'success' || needs.Commons-Collections.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.commons-beanutils == 'true' || needs.detect-changes.outputs.commons-collections == 'true') }}
     with:
       baseDir: 'Apache/Commons/commons-beanutils/'
       name: 'Commons Bean Utilities'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Commons-CSV:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.commons-csv == 'true' }}
     with:
       baseDir: 'Apache/Commons/commons-csv/'
       name: 'Commons CSV'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Commons-FileUpload:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.commons-fileupload == 'true' }}
     with:
       baseDir: 'Apache/Commons/commons-fileupload/'
       name: 'Commons File Upload'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Commons-Math:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.commons-math == 'true' }}
     with:
       baseDir: 'Apache/Commons/commons-math/'
       name: 'Commons Math'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Apache-POI:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - detect-changes
+      - Commons-Math
+      - Commons-Collections
+    if: ${{ !cancelled() && (needs.Commons-Math.result == 'success' || needs.Commons-Math.result == 'skipped') && (needs.Commons-Collections.result == 'success' || needs.Commons-Collections.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.apache-poi == 'true' || needs.detect-changes.outputs.commons-math == 'true' || needs.detect-changes.outputs.commons-collections == 'true') }}
     with:
       baseDir: 'Apache/POI/apache-poi/'
       name: 'Apache POI'
       publishToCentral: ${{inputs.centralRelease}}
-    needs:
-      - Commons-Math
-      - Commons-Collections
     secrets: inherit
+
   Apache-POI-OOXML:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - detect-changes
+      - Apache-POI
+    if: ${{ !cancelled() && (needs.Apache-POI.result == 'success' || needs.Apache-POI.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.apache-poi-ooxml == 'true' || needs.detect-changes.outputs.apache-poi == 'true' || needs.detect-changes.outputs.commons-math == 'true' || needs.detect-changes.outputs.commons-collections == 'true') }}
     with:
       baseDir: 'Apache/POI/apache-poi-ooxml/'
       name: 'Apache POI OOXML'
       publishToCentral: ${{inputs.centralRelease}}
-    needs:
-      - Apache-POI
     secrets: inherit
+
   Jandex:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.jandex == 'true' }}
     with:
       baseDir: 'Libraries/jandex/'
       name: 'Jandex'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   JavAssist:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.javassist == 'true' }}
     with:
       baseDir: 'Libraries/javassist/'
       name: 'JavAssist'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   JSON:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.json == 'true' }}
     with:
       baseDir: 'Libraries/json/'
       name: 'json'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Mapstruct:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.mapstruct == 'true' }}
     with:
       baseDir: 'Libraries/mapstruct/'
       name: 'mapstruct'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   JACC:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.jacc == 'true' }}
     with:
       baseDir: 'Jakarta/jakarta-security-jacc/'
       name: 'JACC'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   UA-Detector:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.uadetector-core == 'true' }}
     with:
       baseDir: 'Libraries/uadetector-core/'
       name: 'UA Detector Core'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   UA-Detector-Resources:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - UA-Detector
+    if: ${{ !cancelled() && (needs.UA-Detector.result == 'success' || needs.UA-Detector.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.uadetector-resources == 'true' || needs.detect-changes.outputs.uadetector-core == 'true') }}
     with:
       baseDir: 'Libraries/uadetector-resources/'
       name: 'UA Detector Resources'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   JNA-Platform:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.jna-platform == 'true' }}
     with:
       baseDir: 'JNI/jna-platform/'
       name: 'JNA Platform'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Azure-Identity:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - detect-changes
+      - JNA-Platform
+    if: ${{ !cancelled() && (needs.JNA-Platform.result == 'success' || needs.JNA-Platform.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.msal4j == 'true' || needs.detect-changes.outputs.jna-platform == 'true') }}
     with:
       baseDir: 'Database/msal4j/'
       name: 'Microsoft Azure Identity'
       publishToCentral: ${{inputs.centralRelease}}
-    needs: JNA-Platform
     secrets: inherit
+
   MSSQL-JDBC:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - Azure-Identity
+    if: ${{ !cancelled() && (needs.Azure-Identity.result == 'success' || needs.Azure-Identity.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.mssql-jdbc == 'true' || needs.detect-changes.outputs.msal4j == 'true' || needs.detect-changes.outputs.jna-platform == 'true') }}
     with:
       baseDir: 'Database/mssql-jdbc/'
       name: 'SQL Server JDBC'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Postgres-SQL:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.postgresql == 'true' }}
     with:
       baseDir: 'Database/postgresql/'
       name: 'Postgres SQL'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   JavaNRSerialPort:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs: JNA-Platform
+    needs:
+      - detect-changes
+      - JNA-Platform
+    if: ${{ !cancelled() && (needs.JNA-Platform.result == 'success' || needs.JNA-Platform.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.nrjavaserial == 'true' || needs.detect-changes.outputs.jna-platform == 'true') }}
     with:
       baseDir: 'JNI/nrjavaserial/'
       name: 'Java NR Serial Port'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   JCache:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cache-api == 'true' }}
     with:
       baseDir: 'JCache/cache-api/'
       name: 'JCache JSR-107'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   JCache-Annotations-Common:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs: JCache
+    needs:
+      - detect-changes
+      - JCache
+    if: ${{ !cancelled() && (needs.JCache.result == 'success' || needs.JCache.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cache-annotations-common == 'true' || needs.detect-changes.outputs.cache-api == 'true') }}
     with:
       baseDir: 'JCache/cache-annotations-ri-common/'
       name: 'JCache Common Annotations'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   JCache-Annotations-Guice:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - JCache-Annotations-Common
+    if: ${{ !cancelled() && (needs.JCache-Annotations-Common.result == 'success' || needs.JCache-Annotations-Common.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cache-annotations-guice == 'true' || needs.detect-changes.outputs.cache-annotations-common == 'true' || needs.detect-changes.outputs.cache-api == 'true') }}
     with:
       baseDir: 'JCache/cache-annotations-ri-guice/'
       name: 'JCache Guice'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   OpenPDF:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.openpdf == 'true' }}
     with:
       baseDir: 'Libraries/openpdf/'
       name: 'Open PDF'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Metrics:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.metrics-core == 'true' }}
     with:
       baseDir: 'MicroProfile/metrics-core/'
       name: 'MicroProfile Metrics'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   OpenAPI:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs: JavAssist
+    needs:
+      - detect-changes
+      - JavAssist
+    if: ${{ !cancelled() && (needs.JavAssist.result == 'success' || needs.JavAssist.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.swagger == 'true' || needs.detect-changes.outputs.javassist == 'true') }}
     with:
       baseDir: 'Libraries/swagger/'
       name: 'Open API'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
-  CXF-Security:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - CXF-Core
-    with:
-      baseDir: 'Apache/CXF/apache-cxf-rt-security/'
-      name: 'CXF Security'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets: inherit
-  CXF-Http-Transport:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - CXF-Core
-      - CXF-Security
-    with:
-      baseDir: 'Apache/CXF/apache-cxf-rt-transports-http/'
-      name: 'CXF Http Transport'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets: inherit
+
   CXF-Core:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cxf-core == 'true' }}
     with:
       baseDir: 'Apache/CXF/apache-cxf/'
       name: 'CXF'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
+  CXF-Security:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - detect-changes
+      - CXF-Core
+    if: ${{ !cancelled() && (needs.CXF-Core.result == 'success' || needs.CXF-Core.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cxf-security == 'true' || needs.detect-changes.outputs.cxf-core == 'true') }}
+    with:
+      baseDir: 'Apache/CXF/apache-cxf-rt-security/'
+      name: 'CXF Security'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets: inherit
+
+  CXF-Http-Transport:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs:
+      - detect-changes
+      - CXF-Core
+      - CXF-Security
+    if: ${{ !cancelled() && (needs.CXF-Core.result == 'success' || needs.CXF-Core.result == 'skipped') && (needs.CXF-Security.result == 'success' || needs.CXF-Security.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cxf-http-transport == 'true' || needs.detect-changes.outputs.cxf-security == 'true' || needs.detect-changes.outputs.cxf-core == 'true') }}
+    with:
+      baseDir: 'Apache/CXF/apache-cxf-rt-transports-http/'
+      name: 'CXF Http Transport'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets: inherit
+
   CXF-Rest:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - CXF-Http-Transport
+    if: ${{ !cancelled() && (needs.CXF-Http-Transport.result == 'success' || needs.CXF-Http-Transport.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cxf-rest == 'true' || needs.detect-changes.outputs.cxf-http-transport == 'true' || needs.detect-changes.outputs.cxf-security == 'true' || needs.detect-changes.outputs.cxf-core == 'true') }}
     with:
       baseDir: 'Apache/CXF/apache-cxf-rest/'
       name: 'CXF Rest'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   CXF-Rest-OpenAPI:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - CXF-Rest
       - OpenAPI
+    if: ${{ !cancelled() && (needs.CXF-Rest.result == 'success' || needs.CXF-Rest.result == 'skipped') && (needs.OpenAPI.result == 'success' || needs.OpenAPI.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cxf-rest-openapi == 'true' || needs.detect-changes.outputs.cxf-rest == 'true' || needs.detect-changes.outputs.swagger == 'true' || needs.detect-changes.outputs.cxf-core == 'true') }}
     with:
       baseDir: 'Apache/CXF/apache-cxf-rest-openapi/'
       name: 'CXF OpenAPI'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   RabbitMQ:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.rabbitmq-client == 'true' }}
     with:
       baseDir: 'Libraries/rabbitmq-client/'
       name: 'RabbitMQ AMQP Client'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Hibernate-Core:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - Jandex
+    if: ${{ !cancelled() && (needs.Jandex.result == 'success' || needs.Jandex.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.hibernate-core == 'true' || needs.detect-changes.outputs.jandex == 'true') }}
     with:
       baseDir: 'Hibernate/hibernate-core/'
       name: 'Hibernate Core'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Hibernate-Validator:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.hibernate-validator == 'true' }}
     with:
       baseDir: 'Hibernate/hibernate-validator/'
       name: 'Hibernate Validator'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Hibernate-Reactive:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - Hibernate-Core
+    if: ${{ !cancelled() && (needs.Hibernate-Core.result == 'success' || needs.Hibernate-Core.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.hibernate-reactive == 'true' || needs.detect-changes.outputs.hibernate-core == 'true' || needs.detect-changes.outputs.jandex == 'true') }}
     with:
       baseDir: 'Hibernate/hibernate-reactive/'
       name: 'Hibernate Reactive'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Hibernate-JCache:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - JCache-Annotations-Guice
       - Hibernate-Core
+    if: ${{ !cancelled() && (needs.JCache-Annotations-Guice.result == 'success' || needs.JCache-Annotations-Guice.result == 'skipped') && (needs.Hibernate-Core.result == 'success' || needs.Hibernate-Core.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.hibernate-jcache == 'true' || needs.detect-changes.outputs.cache-annotations-guice == 'true' || needs.detect-changes.outputs.hibernate-core == 'true') }}
     with:
       baseDir: 'Hibernate/hibernate-jcache/'
       name: 'Hibernate JCache'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Hibernate-C3PO:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - Hibernate-Core
+    if: ${{ !cancelled() && (needs.Hibernate-Core.result == 'success' || needs.Hibernate-Core.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.hibernate-c3p0 == 'true' || needs.detect-changes.outputs.hibernate-core == 'true') }}
     with:
       baseDir: 'Hibernate/hibernate-c3p0/'
       name: 'Hibernate C3P0'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Kafka-Client:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.kafka-client == 'true' }}
     with:
       baseDir: 'Libraries/kafka-client/'
       name: 'Kafka Client'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   TestContainers:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs: JNA-Platform
+    needs:
+      - detect-changes
+      - JNA-Platform
+    if: ${{ !cancelled() && (needs.JNA-Platform.result == 'success' || needs.JNA-Platform.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.testcontainers == 'true' || needs.detect-changes.outputs.jna-platform == 'true') }}
     with:
       baseDir: 'Libraries/testcontainers/'
       name: 'Test Containers'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Scram:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.scram == 'true' }}
     with:
       baseDir: 'Libraries/scram/'
       name: 'Scram'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Hazelcast:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - JCache
       - Hibernate-Core
+    if: ${{ !cancelled() && (needs.JCache.result == 'success' || needs.JCache.result == 'skipped') && (needs.Hibernate-Core.result == 'success' || needs.Hibernate-Core.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.hazelcast == 'true' || needs.detect-changes.outputs.cache-api == 'true' || needs.detect-changes.outputs.hibernate-core == 'true') }}
     with:
       baseDir: 'JCache/hazelcast/'
       name: 'Hazelcast'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   Hazelcast-Hibernate:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - Hazelcast
       - Hibernate-JCache
+    if: ${{ !cancelled() && (needs.Hazelcast.result == 'success' || needs.Hazelcast.result == 'skipped') && (needs.Hibernate-JCache.result == 'success' || needs.Hibernate-JCache.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.hazelcast-hibernate == 'true' || needs.detect-changes.outputs.hazelcast == 'true' || needs.detect-changes.outputs.hibernate-jcache == 'true') }}
     with:
       baseDir: 'JCache/hazelcast-hibernate/'
       name: 'Hazelcast Hibernate'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
-#  Json-Representation:
-#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-#    needs:
-#      - Guiced-Inject-Client
-#    with:
-#      baseDir: 'Representations/JsonRepresentation/'
-#      name: 'JSON Representation'
-#      publishToCentral: ${{inputs.centralRelease}}
-#    secrets:
-#      USERNAME: ${{secrets.USERNAME}}
-#      USER_TOKEN: ${{secrets.USER_TOKEN}}
-#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-#  XML-Representation:
-#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-#    needs:
-#      - Json-Representation
-#    with:
-#      baseDir: 'Representations/XmlRepresentation/'
-#      name: 'XML Representation'
-#      publishToCentral: ${{inputs.centralRelease}}
-#    secrets:
-#      USERNAME: ${{secrets.USERNAME}}
-#      USER_TOKEN: ${{secrets.USER_TOKEN}}
-#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-#  Excel-Representation:
-#    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-#    needs:
-#      - Json-Representation
-#    with:
-#      baseDir: 'Representations/ExcelRepresentation/'
-#      name: 'Excel Representation'
-#      publishToCentral: ${{inputs.centralRelease}}
-#    secrets:
-#      USERNAME: ${{secrets.USERNAME}}
-#      USER_TOKEN: ${{secrets.USER_TOKEN}}
-#      SONA_USERNAME: ${{secrets.SONA_USERNAME}}
-#      SONA_PASSWORD: ${{secrets.SONA_PASSWORD}}
-#      GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-#      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
+
   MicroProfileConfig:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.config-core == 'true' }}
     with:
       baseDir: 'MicroProfile/config-core/'
       name: 'MicroProfile Config'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   VertxMutiny:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.vertx-mutiny == 'true' }}
     with:
       baseDir: 'Vert.x/vertx-mutiny/'
       name: 'Vert.x Mutiny'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   VertxRabbit:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs: RabbitMQ
+    needs:
+      - detect-changes
+      - RabbitMQ
+    if: ${{ !cancelled() && (needs.RabbitMQ.result == 'success' || needs.RabbitMQ.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.vertx-rabbitmq == 'true' || needs.detect-changes.outputs.rabbitmq-client == 'true') }}
     with:
       baseDir: 'Vert.x/vertx-rabbitmq/'
       name: 'Vert.x RabbitMQ'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   EhCache:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     needs:
+      - detect-changes
       - JCache
+    if: ${{ !cancelled() && (needs.JCache.result == 'success' || needs.JCache.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.ehcache == 'true' || needs.detect-changes.outputs.cache-api == 'true') }}
     with:
       baseDir: 'JCache/ehcache/'
       name: 'EhCache'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   CloudEvents:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cloudevents == 'true' }}
     with:
       baseDir: 'Libraries/cloudevents/'
       name: 'CloudEvents'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   IBM-MQ:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     if: false
@@ -488,20 +796,24 @@ jobs:
       name: 'IBM MQ Jakarta Client'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   MicroProfileHealth:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.health-core == 'true' }}
     with:
       baseDir: 'MicroProfile/health-core/'
       name: 'MicroProfile Health'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
+
   MicroProfileTelemetry:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.telemetry-core == 'true' }}
     with:
       baseDir: 'MicroProfile/telemetry-core/'
       name: 'MicroProfile Telemetry'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
-
-
 
