@@ -544,7 +544,10 @@ public final class InjectionPoint {
       List<Class<? extends Annotation>> annotations = new ArrayList<>();
       ServiceLoader<InjectionPointProvider> load = ServiceLoader.load(InjectionPointProvider.class);
       load.forEach(iPoint -> {
-        annotations.add(iPoint.injectionPoint(member));
+        Class<? extends Annotation> ip = iPoint.injectionPoint(member);
+        if (ip != null) {
+          annotations.add(ip);
+        }
       });
       for (Class<? extends Annotation> annotation : annotations) {
           //noinspection ConstantValue
