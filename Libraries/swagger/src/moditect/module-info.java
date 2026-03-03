@@ -51,6 +51,7 @@ module com.guicedee.modules.services.openapi {
 
 	exports io.swagger.v3.oas.models.parameters;
 	exports io.swagger.v3.jaxrs2;
+	exports io.swagger.v3.core.util;
 	exports io.swagger.v3.core.jackson;
 	opens io.swagger.v3.jaxrs2.integration.resources to com.google.guice, org.apache.cxf;
 	opens io.swagger.v3.jaxrs2 to com.google.guice, org.apache.cxf;
