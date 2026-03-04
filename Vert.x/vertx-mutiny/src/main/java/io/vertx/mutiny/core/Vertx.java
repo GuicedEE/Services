@@ -62,23 +62,34 @@ import io.vertx.core.Handler;
  * <p>
  * Please see the user manual for more detailed usage information.
  *
- * <p/>
+ * <p>
  * NOTE: This class has been automatically generated from the {@link io.vertx.core.Vertx original} non Mutiny-ified interface using Vert.x codegen.
  */
 
 @io.smallrye.mutiny.vertx.MutinyGen(io.vertx.core.Vertx.class)
 public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.mutiny.core.metrics.Measured {
 
+  /** Type argument for Vertx. */
   public static final io.smallrye.mutiny.vertx.TypeArg<Vertx> __TYPE_ARG = new io.smallrye.mutiny.vertx.TypeArg<>(    obj -> new Vertx((io.vertx.core.Vertx) obj),
     Vertx::getDelegate
   );
 
   private final io.vertx.core.Vertx delegate;
 
+  /**
+   * Creates a new Vertx wrapper.
+   *
+   * @param delegate the underlying Vert.x instance
+   */
   public Vertx(io.vertx.core.Vertx delegate) {
     this.delegate = delegate;
   }
 
+  /**
+   * Creates a new Vertx wrapper from an untyped delegate.
+   *
+   * @param delegate the underlying Vert.x instance
+   */
   public Vertx(Object delegate) {
     this.delegate = (io.vertx.core.Vertx)delegate;
   }
@@ -121,12 +132,19 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
     return ret;
   }
 
+  /**
+   * Returns a builder for creating a Vert.x instance.
+   *
+   * @return a new Vert.x builder
+   */
   public static io.vertx.mutiny.core.VertxBuilder builder() {
     io.vertx.mutiny.core.VertxBuilder ret = io.vertx.mutiny.core.VertxBuilder.newInstance((io.vertx.core.VertxBuilder)io.vertx.core.Vertx.builder());
     return ret;
   }
 
   /**
+   * Creates a non-clustered Vert.x instance.
+   *
    * @return the instance
    */
   public static io.vertx.mutiny.core.Vertx vertx() {
@@ -135,6 +153,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a non-clustered Vert.x instance with the given options.
+   *
    * @param options the options to use
    * @return the instance
    */
@@ -188,6 +208,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Gets the current context, or null if there is no current context.
+   *
    * @return The current context or <code>null</code> if there is no current context
    */
   public static io.vertx.mutiny.core.Context currentContext() {
@@ -196,6 +218,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Gets the current context, or creates one if there is none.
+   *
    * @return The current context (created if didn't exist)
    */
   public io.vertx.mutiny.core.Context getOrCreateContext() {
@@ -204,6 +228,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a TCP server using the specified options.
+   *
    * @param options the options to use
    * @return the server
    */
@@ -213,6 +239,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a TCP server using default options.
+   *
    * @return the server
    */
   public io.vertx.mutiny.core.net.NetServer createNetServer() {
@@ -221,6 +249,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a TCP client using the specified options.
+   *
    * @param options the options to use
    * @return the client
    */
@@ -230,6 +260,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a TCP client using default options.
+   *
    * @return the client
    */
   public io.vertx.mutiny.core.net.NetClient createNetClient() {
@@ -238,6 +270,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates an HTTP server using the specified options.
+   *
    * @param options the options to use
    * @return the server
    */
@@ -247,6 +281,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates an HTTP server using default options.
+   *
    * @return the server
    */
   public io.vertx.mutiny.core.http.HttpServer createHttpServer() {
@@ -255,6 +291,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a WebSocket client using default options.
+   *
    * @return the client
    */
   public io.vertx.mutiny.core.http.WebSocketClient createWebSocketClient() {
@@ -263,6 +301,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a WebSocket client using the specified options.
+   *
    * @param options the options to use
    * @return the client
    */
@@ -272,7 +312,9 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
-   * @return
+   * Returns an HTTP client builder.
+   *
+   * @return the HTTP client builder
    */
   public io.vertx.mutiny.core.http.HttpClientBuilder httpClientBuilder() {
     io.vertx.mutiny.core.http.HttpClientBuilder ret = io.vertx.mutiny.core.http.HttpClientBuilder.newInstance((io.vertx.core.http.HttpClientBuilder)delegate.httpClientBuilder());
@@ -280,6 +322,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates an HTTP client using the specified client and pool options.
+   *
    * @param clientOptions the client options to use
    * @param poolOptions the pool options to use
    * @return the client
@@ -290,6 +334,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates an HTTP client using the specified client options.
+   *
    * @param clientOptions the options to use
    * @return the client
    */
@@ -299,6 +345,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates an HTTP client using the specified pool options.
+   *
    * @param poolOptions the pool options to use
    * @return the client
    */
@@ -308,6 +356,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates an HTTP client using default options.
+   *
    * @return the client
    */
   public io.vertx.mutiny.core.http.HttpClient createHttpClient() {
@@ -316,6 +366,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a datagram socket using the specified options.
+   *
    * @param options the options to use
    * @return the socket
    */
@@ -325,6 +377,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a datagram socket using default options.
+   *
    * @return the socket
    */
   public io.vertx.mutiny.core.datagram.DatagramSocket createDatagramSocket() {
@@ -333,6 +387,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Returns the file system object. There is a single instance per Vertx instance.
+   *
    * @return the filesystem object
    */
   public io.vertx.mutiny.core.file.FileSystem fileSystem() {
@@ -345,6 +401,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Returns the event bus object. There is a single instance per Vertx instance.
+   *
    * @return the event bus object
    */
   public io.vertx.mutiny.core.eventbus.EventBus eventBus() {
@@ -357,6 +415,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a DNS client to connect to a DNS server at the specified host and port.
+   *
    * @param port the port
    * @param host the host
    * @return the DNS client
@@ -367,6 +427,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a DNS client using default options.
+   *
    * @return the DNS client
    */
   public io.vertx.mutiny.core.dns.DnsClient createDnsClient() {
@@ -375,6 +437,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a DNS client using the specified options.
+   *
    * @param options the client options
    * @return the DNS client
    */
@@ -384,6 +448,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Returns the shared data object. There is a single instance per Vertx instance.
+   *
    * @return the shared data object
    */
   public io.vertx.mutiny.core.shareddata.SharedData sharedData() {
@@ -396,8 +462,10 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
-   * @param delay
-   * @return
+   * Creates a timer with the specified delay.
+   *
+   * @param delay the delay in milliseconds
+   * @return the timer object
    */
   public io.vertx.mutiny.core.Timer timer(long delay) {
     io.vertx.mutiny.core.Timer ret = io.vertx.mutiny.core.Timer.newInstance((io.vertx.core.Timer)delegate.timer(delay));
@@ -405,6 +473,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a timer with the specified delay and time unit.
+   *
    * @param delay the delay
    * @param unit the delay unit
    * @return the timer object
@@ -415,6 +485,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Sets a one-shot timer that fires after a given delay.
+   *
    * @param delay the delay in milliseconds, after which the timer will fire
    * @param handler the handler that will be called with the timer ID when the timer fires
    * @return the unique ID of the timer
@@ -425,15 +497,19 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Sets a one-shot timer using a consumer callback.
+   *
    * @param delay the delay in milliseconds, after which the timer will fire
    * @param handler the handler that will be called with the timer ID when the timer fires
-   * @return
+   * @return the unique ID of the timer
    */
   public long setTimer(long delay, java.util.function.Consumer<Long> handler) {
     return __setTimer(delay, io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
   }
 
   /**
+   * Sets a periodic timer that fires every given delay.
+   *
    * @param delay the delay in milliseconds, after which the timer will fire
    * @param handler the handler that will be called with the timer ID when the timer fires
    * @return the unique ID of the timer
@@ -444,15 +520,19 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Sets a periodic timer using a consumer callback.
+   *
    * @param delay the delay in milliseconds, after which the timer will fire
    * @param handler the handler that will be called with the timer ID when the timer fires
-   * @return
+   * @return the unique ID of the timer
    */
   public long setPeriodic(long delay, java.util.function.Consumer<Long> handler) {
     return __setPeriodic(delay, io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
   }
 
   /**
+   * Sets a periodic timer with an initial delay that fires every given delay.
+   *
    * @param initialDelay the initial delay in milliseconds
    * @param delay the delay in milliseconds, after which the timer will fire
    * @param handler the handler that will be called with the timer ID when the timer fires
@@ -464,16 +544,20 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Sets a periodic timer with an initial delay using a consumer callback.
+   *
    * @param initialDelay the initial delay in milliseconds
    * @param delay the delay in milliseconds, after which the timer will fire
    * @param handler the handler that will be called with the timer ID when the timer fires
-   * @return
+   * @return the unique ID of the timer
    */
   public long setPeriodic(long initialDelay, long delay, java.util.function.Consumer<Long> handler) {
     return __setPeriodic(initialDelay, delay, io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
   }
 
   /**
+   * Cancels the timer with the specified ID.
+   *
    * @param id The id of the timer to cancel
    * @return true if the timer was successfully cancelled, or false if the timer does not exist.
    */
@@ -483,6 +567,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Puts the handler on the event bus queue for the current context so it will be run asynchronously.
+   *
    * @param action - a handler representing the action to execute
    */
   private void __runOnContext(Handler<Void> action) {
@@ -490,6 +576,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Puts the action on the event bus queue for the current context so it will be run asynchronously.
+   *
    * @param action - a handler representing the action to execute
    */
   public void runOnContext(java.lang.Runnable action) {
@@ -665,6 +753,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Returns the set of deployment IDs of the currently deployed verticles.
+   *
    * @return Set of deployment IDs
    */
   public Set<String> deploymentIDs() {
@@ -673,6 +763,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Returns whether the Vert.x instance is clustered.
+   *
    * @return true if clustered
    */
   public boolean isClustered() {
@@ -708,6 +800,7 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * Unlike the <em>bare</em> Vert.x variant, this method returns a {@link io.smallrye.mutiny.Uni Uni}.
    * Don't forget to <em>subscribe</em> on it to trigger the operation.
+   * @param <T> the result type
    * @param blockingCodeHandler handler representing the blocking code to run
    * @param ordered if true then if executeBlocking is called several times on the same context, the executions for that context will be executed serially, not in parallel. if false then they will be no ordering guarantees
    * @return the {@link io.smallrye.mutiny.Uni uni} firing the result of the operation when completed, or a failure if the operation failed.
@@ -737,6 +830,7 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method waits for the completion of the underlying asynchronous operation.
    * If the operation completes successfully, the result is returned, otherwise the failure is thrown (potentially wrapped in a RuntimeException).
+   * @param <T> the result type
    * @param blockingCodeHandler handler representing the blocking code to run
    * @param ordered if true then if executeBlocking is called several times on the same context, the executions for that context will be executed serially, not in parallel. if false then they will be no ordering guarantees
    * @return the T instance produced by the operation.
@@ -750,6 +844,7 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method subscribes on the result of {@link io.vertx.mutiny.core.Vertx#executeBlocking(Uni,boolean)}, but discards the outcome (item or failure).
    * This method is useful to trigger the asynchronous operation from {@link io.vertx.mutiny.core.Vertx#executeBlocking(Uni,boolean)} but you don't need to compose it with other operations.
+   * @param <T> the result type
    * @param blockingCodeHandler handler representing the blocking code to run
    * @param ordered if true then if executeBlocking is called several times on the same context, the executions for that context will be executed serially, not in parallel. if false then they will be no ordering guarantees
    */
@@ -762,7 +857,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * Unlike the <em>bare</em> Vert.x variant, this method returns a {@link io.smallrye.mutiny.Uni Uni}.
    * Don't forget to <em>subscribe</em> on it to trigger the operation.
-   * @param blockingCodeHandler
+   * @param <T> the result type
+   * @param blockingCodeHandler handler representing the blocking code to run
    * @return the {@link io.smallrye.mutiny.Uni uni} firing the result of the operation when completed, or a failure if the operation failed.
    */
   @CheckReturnValue
@@ -790,7 +886,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method waits for the completion of the underlying asynchronous operation.
    * If the operation completes successfully, the result is returned, otherwise the failure is thrown (potentially wrapped in a RuntimeException).
-   * @param blockingCodeHandler
+   * @param <T> the result type
+   * @param blockingCodeHandler handler representing the blocking code to run
    * @return the T instance produced by the operation.
    */
   public <T> T executeBlockingAndAwait(io.smallrye.mutiny.Uni<T> blockingCodeHandler) {
@@ -802,15 +899,18 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method subscribes on the result of {@link io.vertx.mutiny.core.Vertx#executeBlocking(Uni)}, but discards the outcome (item or failure).
    * This method is useful to trigger the asynchronous operation from {@link io.vertx.mutiny.core.Vertx#executeBlocking(Uni)} but you don't need to compose it with other operations.
-   * @param blockingCodeHandler
+   * @param <T> the result type
+   * @param blockingCodeHandler handler representing the blocking code to run
    */
   public <T> void executeBlockingAndForget(io.smallrye.mutiny.Uni<T> blockingCodeHandler) {
     executeBlocking(blockingCodeHandler).subscribe().with(io.smallrye.mutiny.vertx.UniHelper.NOOP);
   }
 
   /**
-   * @param name
-   * @return
+   * Creates a named worker executor with default pool size.
+   *
+   * @param name the name of the worker executor
+   * @return the named worker executor
    */
   public io.vertx.mutiny.core.WorkerExecutor createSharedWorkerExecutor(String name) {
     io.vertx.mutiny.core.WorkerExecutor ret = io.vertx.mutiny.core.WorkerExecutor.newInstance((io.vertx.core.WorkerExecutor)delegate.createSharedWorkerExecutor(name));
@@ -818,9 +918,11 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
-   * @param name
-   * @param poolSize
-   * @return
+   * Creates a named worker executor with the specified pool size.
+   *
+   * @param name the name of the worker executor
+   * @param poolSize the size of the pool
+   * @return the named worker executor
    */
   public io.vertx.mutiny.core.WorkerExecutor createSharedWorkerExecutor(String name, int poolSize) {
     io.vertx.mutiny.core.WorkerExecutor ret = io.vertx.mutiny.core.WorkerExecutor.newInstance((io.vertx.core.WorkerExecutor)delegate.createSharedWorkerExecutor(name, poolSize));
@@ -828,10 +930,12 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
-   * @param name
-   * @param poolSize
-   * @param maxExecuteTime
-   * @return
+   * Creates a named worker executor with the specified pool size and max execute time.
+   *
+   * @param name the name of the worker executor
+   * @param poolSize the size of the pool
+   * @param maxExecuteTime the value of max worker execute time in nanoseconds
+   * @return the named worker executor
    */
   public io.vertx.mutiny.core.WorkerExecutor createSharedWorkerExecutor(String name, int poolSize, long maxExecuteTime) {
     io.vertx.mutiny.core.WorkerExecutor ret = io.vertx.mutiny.core.WorkerExecutor.newInstance((io.vertx.core.WorkerExecutor)delegate.createSharedWorkerExecutor(name, poolSize, maxExecuteTime));
@@ -839,6 +943,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Creates a named worker executor with the specified pool size, max execute time, and time unit.
+   *
    * @param name the name of the worker executor
    * @param poolSize the size of the pool
    * @param maxExecuteTime the value of max worker execute time
@@ -851,6 +957,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Returns whether the native transport is being used.
+   *
    * @return whether the native transport is used
    */
   public boolean isNativeTransportEnabled() {
@@ -863,6 +971,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Returns the cause of native transport unavailability when applicable.
+   *
    * @return the error (if any) that cause the unavailability of native transport when {@link io.vertx.mutiny.core.Vertx#isNativeTransportEnabled} returns <code>false</code>.
    */
   public java.lang.Throwable unavailableNativeTransportCause() {
@@ -875,6 +985,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Sets an exception handler called when an unhandled exception occurs.
+   *
    * @param handler the exception handler
    * @return a reference to this, so the API can be used fluently
    */
@@ -885,8 +997,10 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Sets an exception handler using a consumer.
+   *
    * @param handler the exception handler
-   * @return
+   * @return this Vertx instance
    */
   public io.vertx.mutiny.core.Vertx exceptionHandler(java.util.function.Consumer<java.lang.Throwable> handler) {
     return __exceptionHandler(io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
@@ -994,8 +1108,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * Unlike the <em>bare</em> Vert.x variant, this method returns a {@link io.smallrye.mutiny.Uni Uni}.
    * Don't forget to <em>subscribe</em> on it to trigger the operation.
-   * @param verticleSupplier
-   * @param options
+   * @param verticleSupplier the supplier of verticle instances
+   * @param options the deployment options
    * @return the {@link io.smallrye.mutiny.Uni uni} firing the result of the operation when completed, or a failure if the operation failed.
    */
   @CheckReturnValue
@@ -1013,8 +1127,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method waits for the completion of the underlying asynchronous operation.
    * If the operation completes successfully, the result is returned, otherwise the failure is thrown (potentially wrapped in a RuntimeException).
-   * @param verticleSupplier
-   * @param options
+   * @param verticleSupplier the supplier of verticle instances
+   * @param options the deployment options
    * @return the String instance produced by the operation.
    */
   public String deployVerticleAndAwait(java.util.function.Supplier<io.vertx.core.Verticle> verticleSupplier, io.vertx.core.DeploymentOptions options) {
@@ -1026,14 +1140,16 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method subscribes on the result of {@link io.vertx.mutiny.core.Vertx#deployVerticle(Supplier,DeploymentOptions)}, but discards the outcome (item or failure).
    * This method is useful to trigger the asynchronous operation from {@link io.vertx.mutiny.core.Vertx#deployVerticle(Supplier,DeploymentOptions)} but you don't need to compose it with other operations.
-   * @param verticleSupplier
-   * @param options
+   * @param verticleSupplier the supplier of verticle instances
+   * @param options the deployment options
    */
   public void deployVerticleAndForget(java.util.function.Supplier<io.vertx.core.Verticle> verticleSupplier, io.vertx.core.DeploymentOptions options) {
     deployVerticle(verticleSupplier, options).subscribe().with(io.smallrye.mutiny.vertx.UniHelper.NOOP);
   }
 
   /**
+   * Registers a {@link io.vertx.core.spi.VerticleFactory} that can be used to deploy verticles.
+   *
    * @param factory the factory to register
    */
   public void registerVerticleFactory(io.vertx.core.spi.VerticleFactory factory) {
@@ -1041,6 +1157,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Unregisters a {@link io.vertx.core.spi.VerticleFactory}.
+   *
    * @param factory the factory to unregister
    */
   public void unregisterVerticleFactory(io.vertx.core.spi.VerticleFactory factory) {
@@ -1048,6 +1166,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   }
 
   /**
+   * Returns the set of registered verticle factories.
+   *
    * @return the set of verticle factories
    */
   public Set<io.vertx.core.spi.VerticleFactory> verticleFactories() {
@@ -1060,7 +1180,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * Unlike the <em>bare</em> Vert.x variant, this method returns a {@link io.smallrye.mutiny.Uni Uni}.
    * Don't forget to <em>subscribe</em> on it to trigger the operation.
-   * @param blockingCodeHandler
+   * @param <T> the result type
+   * @param blockingCodeHandler the blocking code handler
    * @return the {@link io.smallrye.mutiny.Uni uni} firing the result of the operation when completed, or a failure if the operation failed.
    */
   @CheckReturnValue
@@ -1078,7 +1199,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method waits for the completion of the underlying asynchronous operation.
    * If the operation completes successfully, the result is returned, otherwise the failure is thrown (potentially wrapped in a RuntimeException).
-   * @param blockingCodeHandler
+   * @param <T> the result type
+   * @param blockingCodeHandler the blocking code handler
    * @return the T instance produced by the operation.
    */
   public <T> T executeBlockingAndAwait(java.util.concurrent.Callable<T> blockingCodeHandler) {
@@ -1090,7 +1212,8 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method subscribes on the result of {@link io.vertx.mutiny.core.Vertx#executeBlocking(Callable)}, but discards the outcome (item or failure).
    * This method is useful to trigger the asynchronous operation from {@link io.vertx.mutiny.core.Vertx#executeBlocking(Callable)} but you don't need to compose it with other operations.
-   * @param blockingCodeHandler
+   * @param <T> the result type
+   * @param blockingCodeHandler the blocking code handler
    */
   public <T> void executeBlockingAndForget(java.util.concurrent.Callable<T> blockingCodeHandler) {
     executeBlocking(blockingCodeHandler).subscribe().with(io.smallrye.mutiny.vertx.UniHelper.NOOP);
@@ -1101,8 +1224,9 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * Unlike the <em>bare</em> Vert.x variant, this method returns a {@link io.smallrye.mutiny.Uni Uni}.
    * Don't forget to <em>subscribe</em> on it to trigger the operation.
-   * @param blockingCodeHandler
-   * @param ordered
+   * @param <T> the result type
+   * @param blockingCodeHandler the blocking code handler
+   * @param ordered if true then executions are serialized
    * @return the {@link io.smallrye.mutiny.Uni uni} firing the result of the operation when completed, or a failure if the operation failed.
    */
   @CheckReturnValue
@@ -1120,8 +1244,9 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method waits for the completion of the underlying asynchronous operation.
    * If the operation completes successfully, the result is returned, otherwise the failure is thrown (potentially wrapped in a RuntimeException).
-   * @param blockingCodeHandler
-   * @param ordered
+   * @param <T> the result type
+   * @param blockingCodeHandler the blocking code handler
+   * @param ordered if true then executions are serialized
    * @return the T instance produced by the operation.
    */
   public <T> T executeBlockingAndAwait(java.util.concurrent.Callable<T> blockingCodeHandler, boolean ordered) {
@@ -1133,8 +1258,9 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
    * <p>
    * This method subscribes on the result of {@link io.vertx.mutiny.core.Vertx#executeBlocking(Callable,boolean)}, but discards the outcome (item or failure).
    * This method is useful to trigger the asynchronous operation from {@link io.vertx.mutiny.core.Vertx#executeBlocking(Callable,boolean)} but you don't need to compose it with other operations.
-   * @param blockingCodeHandler
-   * @param ordered
+   * @param <T> the result type
+   * @param blockingCodeHandler the blocking code handler
+   * @param ordered if true then executions are serialized
    */
   public <T> void executeBlockingAndForget(java.util.concurrent.Callable<T> blockingCodeHandler, boolean ordered) {
     executeBlocking(blockingCodeHandler, ordered).subscribe().with(io.smallrye.mutiny.vertx.UniHelper.NOOP);
@@ -1147,6 +1273,12 @@ public class Vertx implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.
   private io.vertx.mutiny.core.shareddata.SharedData cached_2;
   private java.lang.Boolean cached_3;
   private java.lang.Throwable cached_4;
+  /**
+   * Creates a new Vertx instance wrapping the given delegate, or returns null if the argument is null.
+   *
+   * @param arg the delegate to wrap
+   * @return a new Vertx instance, or null
+   */
   public static  Vertx newInstance(io.vertx.core.Vertx arg) {
     return arg != null ? new Vertx(arg) : null;
   }

@@ -29,23 +29,34 @@ import io.vertx.core.net.TrafficShapingOptions;
  * You receive WebSockets by providing a {@link io.vertx.mutiny.core.http.HttpServer#webSocketHandler}. As WebSocket connections arrive on the server, the
  * WebSocket is passed to the handler.
  *
- * <p/>
+ * <p>
  * NOTE: This class has been automatically generated from the {@link io.vertx.core.http.HttpServer original} non Mutiny-ified interface using Vert.x codegen.
  */
 
 @io.smallrye.mutiny.vertx.MutinyGen(io.vertx.core.http.HttpServer.class)
 public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.vertx.mutiny.core.metrics.Measured {
 
+  /** Type argument for HttpServer. */
   public static final io.smallrye.mutiny.vertx.TypeArg<HttpServer> __TYPE_ARG = new io.smallrye.mutiny.vertx.TypeArg<>(    obj -> new HttpServer((io.vertx.core.http.HttpServer) obj),
     HttpServer::getDelegate
   );
 
   private final io.vertx.core.http.HttpServer delegate;
-  
+
+  /**
+   * Creates a new HttpServer wrapper.
+   *
+   * @param delegate the underlying Vert.x HTTP server
+   */
   public HttpServer(io.vertx.core.http.HttpServer delegate) {
     this.delegate = delegate;
   }
 
+  /**
+   * Creates a new HttpServer wrapper from an untyped delegate.
+   *
+   * @param delegate the underlying Vert.x HTTP server
+   */
   public HttpServer(Object delegate) {
     this.delegate = (io.vertx.core.http.HttpServer)delegate;
   }
@@ -91,7 +102,9 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
-   * @param handler 
+   * Sets the request handler for this server.
+   *
+   * @param handler the request handler
    * @return a reference to this, so the API can be used fluently
    */
   @Fluent
@@ -101,15 +114,19 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
-   * @param handler 
-   * @return 
+   * Sets the request handler using a consumer.
+   *
+   * @param handler the request handler consumer
+   * @return this HTTP server instance
    */
   public io.vertx.mutiny.core.http.HttpServer requestHandler(java.util.function.Consumer<io.vertx.mutiny.core.http.HttpServerRequest> handler) {
     return __requestHandler(io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
   }
 
   /**
-   * @param handler 
+   * Sets the invalid request handler for this server.
+   *
+   * @param handler the invalid request handler
    * @return a reference to this, so the API can be used fluently
    */
   private io.vertx.mutiny.core.http.HttpServer __invalidRequestHandler(Handler<io.vertx.mutiny.core.http.HttpServerRequest> handler) { 
@@ -118,15 +135,19 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
-   * @param handler 
-   * @return 
+   * Sets the invalid request handler using a consumer.
+   *
+   * @param handler the invalid request handler consumer
+   * @return this HTTP server instance
    */
   public io.vertx.mutiny.core.http.HttpServer invalidRequestHandler(java.util.function.Consumer<io.vertx.mutiny.core.http.HttpServerRequest> handler) {
     return __invalidRequestHandler(io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
   }
 
   /**
-   * @param handler 
+   * Sets the connection handler for this server.
+   *
+   * @param handler the connection handler
    * @return a reference to this, so the API can be used fluently
    */
   @Fluent
@@ -136,14 +157,18 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
-   * @param handler 
-   * @return 
+   * Sets the connection handler using a consumer.
+   *
+   * @param handler the connection handler consumer
+   * @return this HTTP server instance
    */
   public io.vertx.mutiny.core.http.HttpServer connectionHandler(java.util.function.Consumer<io.vertx.mutiny.core.http.HttpConnection> handler) {
     return __connectionHandler(io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
   }
 
   /**
+   * Sets the exception handler for this server.
+   *
    * @param handler the handler to set
    * @return a reference to this, so the API can be used fluently
    */
@@ -154,15 +179,19 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
+   * Sets the exception handler using a consumer.
+   *
    * @param handler the handler to set
-   * @return 
+   * @return this HTTP server instance
    */
   public io.vertx.mutiny.core.http.HttpServer exceptionHandler(java.util.function.Consumer<java.lang.Throwable> handler) {
     return __exceptionHandler(io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
   }
 
   /**
-   * @param handler 
+   * Sets the WebSocket handler for this server.
+   *
+   * @param handler the WebSocket handler
    * @return a reference to this, so the API can be used fluently
    */
   @Fluent
@@ -172,15 +201,19 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
-   * @param handler 
-   * @return 
+   * Sets the WebSocket handler using a consumer.
+   *
+   * @param handler the WebSocket handler consumer
+   * @return this HTTP server instance
    */
   public io.vertx.mutiny.core.http.HttpServer webSocketHandler(java.util.function.Consumer<io.vertx.mutiny.core.http.ServerWebSocket> handler) {
     return __webSocketHandler(io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
   }
 
   /**
-   * @param handler 
+   * Sets the WebSocket handshake handler for this server.
+   *
+   * @param handler the WebSocket handshake handler
    * @return the instance of HttpServer to chain method calls.
    */
   @Fluent
@@ -190,8 +223,10 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
-   * @param handler 
-   * @return 
+   * Sets the WebSocket handshake handler using a consumer.
+   *
+   * @param handler the WebSocket handshake handler consumer
+   * @return this HTTP server instance
    */
   public io.vertx.mutiny.core.http.HttpServer webSocketHandshakeHandler(java.util.function.Consumer<io.vertx.mutiny.core.http.ServerWebSocketHandshake> handler) {
     return __webSocketHandshakeHandler(io.smallrye.mutiny.vertx.MutinyHelper.convertConsumer(handler));
@@ -287,6 +322,8 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
+   * Updates the traffic shaping options of this server.
+   *
    * @param options the new traffic shaping options
    */
   public void updateTrafficShapingOptions(io.vertx.core.net.TrafficShapingOptions options) { 
@@ -520,6 +557,9 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
+   * Returns the actual port the server is listening on. When the server is listening on a wildcard port
+   * {@code 0}, the actual port can be queried with this method.
+   *
    * @return the actual port the server is listening on.
    */
   public int actualPort() { 
@@ -529,8 +569,16 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
 
   private io.vertx.mutiny.core.streams.ReadStream<io.vertx.mutiny.core.http.HttpServerRequest> cached_0;
   private io.vertx.mutiny.core.streams.ReadStream<io.vertx.mutiny.core.http.ServerWebSocket> cached_1;
+
+  /**
+   * Creates a new HttpServer instance wrapping the given delegate, or returns null if the argument is null.
+   *
+   * @param arg the delegate to wrap
+   * @return a new HttpServer instance, or null
+   */
   public static  HttpServer newInstance(io.vertx.core.http.HttpServer arg) {
     return arg != null ? new HttpServer(arg) : null;
   }
 
 }
+
