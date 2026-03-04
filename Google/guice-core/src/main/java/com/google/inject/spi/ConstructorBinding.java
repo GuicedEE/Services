@@ -29,6 +29,7 @@ import org.aopalliance.intercept.MethodInterceptor;
  * A binding to the constructor of a concrete class. To resolve injections, an instance is
  * instantiated by invoking the constructor.
  *
+ * @param <T> the bound type
  * @author jessewilson@google.com (Jesse Wilson)
  * @since 2.0
  */

@@ -83,7 +83,8 @@ public final class InternalInjectorCreator {
 
   /**
    * Sets the parent of the injector to-be-constructed. As a side effect, this sets this injector's
-   * stage to the stage of {@code parent} and sets {@link #requireExplicitBindings()} if the parent
+   * stage to the stage of {@code parent} and sets
+   * {@link com.google.inject.Binder#requireExplicitBindings() requireExplicitBindings} if the parent
    * injector also required them.
    */
   public InternalInjectorCreator parentInjector(InjectorImpl parent) {

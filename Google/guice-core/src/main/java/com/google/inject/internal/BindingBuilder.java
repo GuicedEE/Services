@@ -37,6 +37,7 @@ import java.util.Set;
 /**
  * Bind a non-constant key.
  *
+ * @param <T> the bound type
  * @author jessewilson@google.com (Jesse Wilson)
  */
 public class BindingBuilder<T> extends AbstractBindingBuilder<T>

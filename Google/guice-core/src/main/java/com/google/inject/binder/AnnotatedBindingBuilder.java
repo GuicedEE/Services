@@ -21,13 +21,24 @@ import java.lang.annotation.Annotation;
 /**
  * See the EDSL examples at {@link com.google.inject.Binder}.
  *
+ * @param <T> the bound type
  * @author crazybob@google.com (Bob Lee)
  */
 public interface AnnotatedBindingBuilder<T> extends LinkedBindingBuilder<T> {
 
-  /** See the EDSL examples at {@link com.google.inject.Binder}. */
+  /**
+   * See the EDSL examples at {@link com.google.inject.Binder}.
+   *
+   * @param annotationType the binding annotation type
+   * @return a linked binding builder
+   */
   LinkedBindingBuilder<T> annotatedWith(Class<? extends Annotation> annotationType);
 
-  /** See the EDSL examples at {@link com.google.inject.Binder}. */
+  /**
+   * See the EDSL examples at {@link com.google.inject.Binder}.
+   *
+   * @param annotation the binding annotation instance
+   * @return a linked binding builder
+   */
   LinkedBindingBuilder<T> annotatedWith(Annotation annotation);
 }

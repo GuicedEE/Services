@@ -22,6 +22,7 @@ import com.google.inject.Binding;
  * An untargetted binding. This binding indicates that the injector should use its implicit binding
  * strategies to resolve injections.
  *
+ * @param <T> the bound type
  * @author jessewilson@google.com (Jesse Wilson)
  * @since 2.0
  */

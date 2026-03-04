@@ -34,6 +34,7 @@ import java.util.Set;
  * <pre>
  *     requestInjection(serviceInstance);</pre>
  *
+ * @param <T> the type of the instance to be injected
  * @author mikeward@google.com (Mike Ward)
  * @since 2.0
  */

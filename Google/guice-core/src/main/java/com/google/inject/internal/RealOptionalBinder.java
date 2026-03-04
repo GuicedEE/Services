@@ -51,6 +51,8 @@ import jakarta.inject.Qualifier;
 /**
  * The actual OptionalBinder plays several roles. It implements Module to hide that fact from the
  * public API, and installs the various bindings that are exposed to the user.
+ *
+ * @param <T> the bound type
  */
 public final class RealOptionalBinder<T> implements Module {
   public static <T> RealOptionalBinder<T> newRealOptionalBinder(Binder binder, Key<T> type) {

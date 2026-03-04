@@ -19,12 +19,17 @@ package com.google.inject.matcher;
 /**
  * Implements {@code and()} and {@code or()}.
  *
+ * @param <T> the type to match
  * @author crazybob@google.com (Bob Lee)
  * @deprecated This class used to be useful to avoid implementing {@code and()} and {@code or()}
  *     yourself, but is no longer necessary now that {@link Matcher} implements these methods.
  */
 @Deprecated
 public abstract class AbstractMatcher<T> implements Matcher<T> {
+
+  /** Creates a new abstract matcher. */
+  protected AbstractMatcher() {}
+
   // FYI: AbstractMatcher explicitly implements `and` and `or` in order
   // to reduce binary compatibility issues, despite their impls directly
   // delegating to the Matcher impl.

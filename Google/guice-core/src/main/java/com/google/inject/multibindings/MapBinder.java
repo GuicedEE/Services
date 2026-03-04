@@ -88,6 +88,8 @@ import java.util.Map;
  * <p><strong>Values must be non-null to use map injection.</strong> If any value is null, map
  * injection will fail (although injecting a map of providers will not).
  *
+ * @param <K> the map key type
+ * @param <V> the map value type
  * @author dpb@google.com (David P. Baker)
  */
 public class MapBinder<K, V> {

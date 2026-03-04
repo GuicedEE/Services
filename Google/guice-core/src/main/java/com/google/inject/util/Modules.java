@@ -427,11 +427,12 @@ public final class Modules {
   }
 
   /**
-   * Returns a module that will configure the injector to require {@literal @}{@link Inject} on
+   * Returns a module that will configure the injector to require
+   * {@literal @}{@link com.google.inject.Inject Inject} on
    * constructors.
    *
    * @since 4.2.3
-   * @see Binder#requireAtInjectOnConstructors
+   * @see Binder#requireAtInjectOnConstructors()
    */
   public static Module requireAtInjectOnConstructorsModule() {
     return new RequireAtInjectOnConstructorsModule();

@@ -25,6 +25,7 @@ import java.lang.reflect.Method;
  * An {@literal @}{@link Provides} binding or binding produced by a {@link
  * ModuleAnnotatedMethodScanner}.
  *
+ * @param <T> the provided type
  * @since 4.0
  * @author sameb@google.com (Sam Berlin)
  */

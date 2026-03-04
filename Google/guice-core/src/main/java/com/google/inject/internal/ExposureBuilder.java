@@ -22,7 +22,11 @@ import com.google.inject.Key;
 import com.google.inject.binder.AnnotatedElementBuilder;
 import java.lang.annotation.Annotation;
 
-/** For private binder's expose() method. */
+/**
+ * For private binder's expose() method.
+ *
+ * @param <T> the exposed type
+ */
 public class ExposureBuilder<T> implements AnnotatedElementBuilder {
   private final Binder binder;
   private final Object source;

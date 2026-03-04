@@ -33,6 +33,7 @@ import java.util.Set;
  * <p>Use {@link #get} to build a freestanding dependency, or {@link com.google.inject.gee.InjectionPoint} to build one
  * that's attached to a constructor, method or field.
  *
+ * @param <T> the dependency type
  * @author crazybob@google.com (Bob Lee)
  * @author jessewilson@google.com (Jesse Wilson)
  * @since 2.0

@@ -36,7 +36,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/** @author jessewilson@google.com (Jesse Wilson) */
+/**
+ * Implementation of {@link PrivateElements}.
+ *
+ * @author jessewilson@google.com (Jesse Wilson)
+ */
 public final class PrivateElementsImpl implements PrivateElements {
 
   /*

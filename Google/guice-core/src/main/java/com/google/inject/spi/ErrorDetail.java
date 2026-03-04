@@ -14,6 +14,7 @@ import java.util.Optional;
  *
  * <p>WARNING: The class and its APIs are still experimental and subject to change.
  *
+ * @param <SelfT> the self-referential type for subclass chaining
  * @since 5.0
  */
 public abstract class ErrorDetail<SelfT extends ErrorDetail<SelfT>> implements Serializable {

@@ -48,6 +48,8 @@ import java.util.function.Function;
  * <p>As a Provider, this constructs the set instances.
  *
  * <p>We use a subclass to hide 'implements Module, Provider' from the public API.
+ *
+ * @param <T> the element type of the set
  */
 public final class RealMultibinder<T> implements Module {
 

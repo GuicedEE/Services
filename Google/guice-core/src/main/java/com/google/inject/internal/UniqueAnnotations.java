@@ -23,7 +23,11 @@ import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/** @author jessewilson@google.com (Jesse Wilson) */
+/**
+ * Utility for creating unique binding annotations.
+ *
+ * @author jessewilson@google.com (Jesse Wilson)
+ */
 public class UniqueAnnotations {
   private UniqueAnnotations() {}
 

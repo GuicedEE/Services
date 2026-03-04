@@ -48,6 +48,7 @@ public interface ProvisionListener {
   /**
    * Encapsulates a single act of provisioning.
    *
+   * @param <T> the type being provisioned
    * @since 4.0
    */
   public abstract static class ProvisionInvocation<T> {

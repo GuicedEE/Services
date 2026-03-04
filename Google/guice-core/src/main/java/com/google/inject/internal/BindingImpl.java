@@ -24,7 +24,12 @@ import com.google.inject.spi.BindingScopingVisitor;
 import com.google.inject.spi.ElementVisitor;
 import com.google.inject.spi.InstanceBinding;
 
-/** @author crazybob@google.com (Bob Lee) */
+/**
+ * Abstract base class for {@link Binding} implementations.
+ *
+ * @param <T> the bound type
+ * @author crazybob@google.com (Bob Lee)
+ */
 public abstract class BindingImpl<T> implements Binding<T> {
 
   private final InjectorImpl injector;

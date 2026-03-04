@@ -19,6 +19,7 @@ package com.google.inject.spi;
 /**
  * Visits each of the strategies used to find an instance to satisfy an injection.
  *
+ * @param <T> the bound type
  * @param <V> any type to be returned by the visit method. Use {@link Void} with {@code return null}
  *     if no return type is needed.
  * @since 2.0

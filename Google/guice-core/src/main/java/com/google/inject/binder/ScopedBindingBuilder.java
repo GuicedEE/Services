@@ -26,10 +26,18 @@ import java.lang.annotation.Annotation;
  */
 public interface ScopedBindingBuilder {
 
-  /** See the EDSL examples at {@link com.google.inject.Binder}. */
+  /**
+   * See the EDSL examples at {@link com.google.inject.Binder}.
+   *
+   * @param scopeAnnotation the scope annotation
+   */
   void in(Class<? extends Annotation> scopeAnnotation);
 
-  /** See the EDSL examples at {@link com.google.inject.Binder}. */
+  /**
+   * See the EDSL examples at {@link com.google.inject.Binder}.
+   *
+   * @param scope the scope
+   */
   void in(Scope scope);
 
   /**

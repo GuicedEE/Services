@@ -79,6 +79,7 @@ import java.util.Set;
  * <p><strong>Elements must be non-null.</strong> If any set element is null, set injection will
  * fail.
  *
+ * @param <T> the element type of the set
  * @author jessewilson@google.com (Jesse Wilson)
  */
 public class Multibinder<T> {

@@ -13,7 +13,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Error reported by Guice when duplicate elements are found in a {@link Multibinder} that does not
+ * Error reported by Guice when duplicate elements are found in a
+ * {@link com.google.inject.multibindings.Multibinder Multibinder} that does not
  * permit duplicates.
  */
 final class DuplicateElementError<T> extends InternalErrorDetail<DuplicateElementError<T>> {

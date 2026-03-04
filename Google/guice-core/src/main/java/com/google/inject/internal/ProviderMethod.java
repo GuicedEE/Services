@@ -42,6 +42,7 @@ import java.util.function.BiFunction;
 /**
  * A provider that invokes a method and returns its result.
  *
+ * @param <T> the provided type
  * @author jessewilson@google.com (Jesse Wilson)
  */
 public abstract class ProviderMethod<T> extends InternalProviderInstanceBindingImpl.CyclicFactory<T>

@@ -62,6 +62,9 @@ import java.util.Set;
  *
  * <p>Rather than binding a single Map.Entry&lt;K, V&gt;, the map binder binds keys and values
  * independently. This allows the values to be properly scoped.
+ *
+ * @param <K> the map key type
+ * @param <V> the map value type
  */
 public final class RealMapBinder<K, V> implements Module {
 

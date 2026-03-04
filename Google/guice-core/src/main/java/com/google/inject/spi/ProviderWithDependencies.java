@@ -22,6 +22,7 @@ import com.google.inject.Provider;
  * A provider with dependencies on other injected types. If a {@link Provider} has dependencies that
  * aren't specified in injections, this interface should be used to expose all dependencies.
  *
+ * @param <T> the provided type
  * @since 2.0
  */
 public interface ProviderWithDependencies<T> extends Provider<T>, HasDependencies {}

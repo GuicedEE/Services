@@ -29,6 +29,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * Lazily creates (and caches) values for keys. If creating the value fails (with errors), an
  * exception is thrown on retrieval.
  *
+ * @param <K> the key type
+ * @param <V> the value type
  * @author jessewilson@google.com (Jesse Wilson)
  */
 public abstract class FailableCache<K, V> {

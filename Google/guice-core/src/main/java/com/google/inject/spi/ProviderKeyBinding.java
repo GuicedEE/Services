@@ -24,6 +24,7 @@ import com.google.inject.Provider;
  * A binding to a provider key. To resolve injections, the provider key is first resolved, then that
  * provider's {@code get} method is invoked.
  *
+ * @param <T> the bound type
  * @author jessewilson@google.com (Jesse Wilson)
  * @since 2.0
  */

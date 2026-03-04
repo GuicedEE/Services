@@ -50,7 +50,11 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Keep
 public @interface ProvidesIntoOptional {
-  /** @since 4.0 */
+  /**
+   * Specifies whether the binding is a default or actual binding.
+   *
+   * @since 4.0
+   */
   enum Type {
     /** Corresponds to {@link OptionalBinder#setBinding}. */
     ACTUAL,

@@ -19,16 +19,25 @@ package com.google.inject.matcher;
 /**
  * Returns {@code true} or {@code false} for a given input.
  *
+ * @param <T> the type of the input to match
  * @author crazybob@google.com (Bob Lee)
  */
 public interface Matcher<T> {
 
-  /** Returns {@code true} if this matches {@code t}, {@code false} otherwise. */
+  /**
+   * Returns {@code true} if this matches {@code t}, {@code false} otherwise.
+   *
+   * @param t the value to match against
+   * @return {@code true} if matched
+   */
   boolean matches(T t);
 
   /**
    * Returns a new matcher which returns {@code true} if both this and the given matcher return
    * {@code true}.
+   *
+   * @param other the other matcher to combine with
+   * @return a new combined matcher
    */
   default Matcher<T> and(Matcher<? super T> other) {
     return new Matchers.AndMatcher<T>(this, other);
@@ -37,6 +46,9 @@ public interface Matcher<T> {
   /**
    * Returns a new matcher which returns {@code true} if either this or the given matcher return
    * {@code true}.
+   *
+   * @param other the other matcher to combine with
+   * @return a new combined matcher
    */
   default Matcher<T> or(Matcher<? super T> other) {
     return new Matchers.OrMatcher<T>(this, other);

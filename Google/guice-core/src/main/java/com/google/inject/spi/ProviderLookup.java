@@ -37,6 +37,7 @@ import java.util.Set;
  *     Provider&lt;PaymentService&gt; paymentServiceProvider
  *         = getProvider(PaymentService.class);</pre>
  *
+ * @param <T> the provided type
  * @author jessewilson@google.com (Jesse Wilson)
  * @since 2.0
  */

@@ -22,6 +22,7 @@ import com.google.inject.Binding;
 /**
  * A binding to a key exposed from an enclosed private environment.
  *
+ * @param <T> the bound type
  * @author jessewilson@google.com (Jesse Wilson)
  * @since 2.0
  */

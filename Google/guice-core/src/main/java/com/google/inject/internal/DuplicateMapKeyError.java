@@ -11,7 +11,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Error reported by Guice when a duplicate key is found in a {@link MapBinder} that does not permit
+ * Error reported by Guice when a duplicate key is found in a
+ * {@link com.google.inject.multibindings.MapBinder MapBinder} that does not permit
  * duplicates.
  */
 final class DuplicateMapKeyError<K, V> extends InternalErrorDetail<DuplicateMapKeyError<K, V>> {

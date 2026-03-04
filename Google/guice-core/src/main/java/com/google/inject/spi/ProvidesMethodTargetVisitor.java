@@ -24,6 +24,8 @@ import com.google.inject.Provides;
  * <p>If your {@link BindingTargetVisitor} implements this interface, bindings
  * created by using {@code @Provides} will be visited through this interface.
  *
+ * @param <T> the bound type
+ * @param <V> the visitor's return type
  * @since 4.0
  * @author sameb@google.com (Sam Berlin)
  */

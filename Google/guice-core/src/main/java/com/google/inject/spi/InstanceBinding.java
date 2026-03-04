@@ -24,6 +24,7 @@ import java.util.Set;
 /**
  * A binding to a single instance. The same instance is returned for every injection.
  *
+ * @param <T> the bound type
  * @author jessewilson@google.com (Jesse Wilson)
  * @since 2.0
  */

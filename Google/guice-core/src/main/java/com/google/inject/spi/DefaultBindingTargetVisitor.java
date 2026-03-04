@@ -22,6 +22,7 @@ import com.google.inject.Binding;
  * No-op visitor for subclassing. All interface methods simply delegate to {@link
  * #visitOther(Binding)}, returning its result.
  *
+ * @param <T> the bound type
  * @param <V> any type to be returned by the visit method. Use {@link Void} with {@code return null}
  *     if no return type is needed.
  * @author jessewilson@google.com (Jesse Wilson)

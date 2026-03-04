@@ -43,6 +43,7 @@ import com.google.inject.Provider;
  * users can implement in order to be notified of custom extension information. These visitor
  * interfaces must extend from BindingTargetVisitor.
  *
+ * @param <T> the provided type
  * @since 3.0
  * @author sameb@google.com (Sam Berlin)
  */

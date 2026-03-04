@@ -222,7 +222,7 @@ public interface Injector {
    * injector to itself.
    *
    * <p>When using hierarchical injectors (via {@link Binder#newPrivateBinder}, {@link
-   * Binder#PrivateModule}, or {@link Injector#createChildInjector}), extra care is required to
+   * PrivateModule}, or {@link Injector#createChildInjector}), extra care is required to
    * ensure that bindings are associated with the correct injector. Statements that are otherwise
    * unnecessary - such as {code bind(ServiceImpl.class);} - become critical to associate the
    * binding with <i>this particular injector</i>, otherwise Guice may promote the binding to an

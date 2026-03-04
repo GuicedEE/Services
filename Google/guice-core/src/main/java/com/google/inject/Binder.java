@@ -35,7 +35,7 @@ import org.aopalliance.intercept.MethodInterceptor;
  * {@link Injector}. Guice provides this object to your application's {@link Module} implementors so
  * they may each contribute their own bindings and other registrations.
  *
- * <h3>The Guice Binding EDSL</h3>
+ * <h2>The Guice Binding EDSL</h2>
  *
  * Guice uses an <i>embedded domain-specific language</i>, or EDSL, to help you create bindings
  * simply and readably. This approach is great for overall usability, but it does come with a small
@@ -53,7 +53,7 @@ import org.aopalliance.intercept.MethodInterceptor;
  * binding at injector creation time unless it is given explicitly. When using hierarchical
  * injectors (via {@code Binder.newPrivateBinder}, {@code Binder.PrivateModule}, or {@code
  * Injector.createChildInjector}), this guidance changes: see the note on hierarchical injectors in
- * {@link Injector.createChildInjector}.
+ * {@link Injector#createChildInjector}.
  *
  * <pre>
  *     bind(Service.class).to(ServiceImpl.class);</pre>
@@ -211,25 +211,53 @@ public interface Binder {
       Matcher<? super Method> methodMatcher,
       MethodInterceptor... interceptors);
 
-  /** Binds a scope to an annotation. */
+  /**
+   * Binds a scope to an annotation.
+   *
+   * @param annotationType the scope annotation type
+   * @param scope the scope
+   */
   void bindScope(Class<? extends Annotation> annotationType, Scope scope);
 
-  /** See the EDSL examples at {@link Binder}. */
+  /**
+   * See the EDSL examples at {@link Binder}.
+   *
+   * @param <T> the bound type
+   * @param key the key to bind
+   * @return a binding builder
+   */
   <T> LinkedBindingBuilder<T> bind(Key<T> key);
 
-  /** See the EDSL examples at {@link Binder}. */
+  /**
+   * See the EDSL examples at {@link Binder}.
+   *
+   * @param <T> the bound type
+   * @param typeLiteral the type literal to bind
+   * @return a binding builder
+   */
   <T> AnnotatedBindingBuilder<T> bind(TypeLiteral<T> typeLiteral);
 
-  /** See the EDSL examples at {@link Binder}. */
+  /**
+   * See the EDSL examples at {@link Binder}.
+   *
+   * @param <T> the bound type
+   * @param type the class to bind
+   * @return a binding builder
+   */
   <T> AnnotatedBindingBuilder<T> bind(Class<T> type);
 
-  /** See the EDSL examples at {@link Binder}. */
+  /**
+   * See the EDSL examples at {@link Binder}.
+   *
+   * @return a constant binding builder
+   */
   AnnotatedConstantBindingBuilder bindConstant();
 
   /**
    * Upon successful creation, the {@link Injector} will inject instance fields and methods of the
    * given object.
    *
+   * @param <T> the instance type
    * @param type of instance
    * @param instance for which members will be injected
    * @since 2.0
@@ -253,16 +281,27 @@ public interface Binder {
    */
   void requestStaticInjection(Class<?>... types);
 
-  /** Uses the given module to configure more bindings. */
+  /**
+   * Uses the given module to configure more bindings.
+   *
+   * @param module the module to install
+   */
   void install(Module module);
 
-  /** Gets the current stage. */
+  /**
+   * Gets the current stage.
+   *
+   * @return the current stage
+   */
   Stage currentStage();
 
   /**
    * Records an error message which will be presented to the user at a later time. Unlike throwing
    * an exception, this enable us to continue configuring the Injector and discover more errors.
    * Uses {@link String#format(String, Object[])} to insert the arguments into the message.
+   *
+   * @param message the error message format string
+   * @param arguments the format arguments
    */
   void addError(String message, Object... arguments);
 
@@ -270,12 +309,15 @@ public interface Binder {
    * Records an exception, the full details of which will be logged, and the message of which will
    * be presented to the user at a later time. If your Module calls something that you worry may
    * fail, you should catch the exception and pass it into this.
+   *
+   * @param t the exception to record
    */
   void addError(Throwable t);
 
   /**
    * Records an error message to be presented to the user at a later time.
    *
+   * @param message the error message
    * @since 2.0
    */
   void addError(Message message);
@@ -285,6 +327,9 @@ public interface Binder {
    * provider will not be valid until the {@link Injector} has been created. The provider will throw
    * an {@code IllegalStateException} if you try to use it beforehand.
    *
+   * @param <T> the provided type
+   * @param key the injection key
+   * @return the provider
    * @since 2.0
    */
   <T> Provider<T> getProvider(Key<T> key);
@@ -296,6 +341,9 @@ public interface Binder {
    * Injector} has been created. The provider will throw an {@code IllegalStateException} if you try
    * to use it beforehand.
    *
+   * @param <T> the provided type
+   * @param dependency the dependency
+   * @return the provider
    * @since 4.0
    */
   <T> Provider<T> getProvider(Dependency<T> dependency);
@@ -305,6 +353,9 @@ public interface Binder {
    * provider will not be valid until the {@link Injector} has been created. The provider will throw
    * an {@code IllegalStateException} if you try to use it beforehand.
    *
+   * @param <T> the provided type
+   * @param type the injection type
+   * @return the provider
    * @since 2.0
    */
   <T> Provider<T> getProvider(Class<T> type);
@@ -315,7 +366,9 @@ public interface Binder {
    * {@link Injector} has been created. The members injector will throw an {@code
    * IllegalStateException} if you try to use it beforehand.
    *
+   * @param <T> the type
    * @param typeLiteral type to get members injector for
+   * @return the members injector
    * @since 2.0
    */
   <T> MembersInjector<T> getMembersInjector(TypeLiteral<T> typeLiteral);
@@ -326,7 +379,9 @@ public interface Binder {
    * {@link Injector} has been created. The members injector will throw an {@code
    * IllegalStateException} if you try to use it beforehand.
    *
+   * @param <T> the type
    * @param type type to get members injector for
+   * @return the members injector
    * @since 2.0
    */
   <T> MembersInjector<T> getMembersInjector(Class<T> type);
@@ -467,6 +522,7 @@ public interface Binder {
    * siblings or parents, however scanners installed in parents do apply to all child injectors and
    * private modules.
    *
+   * @param scanner the scanner to add
    * @since 4.0
    */
   void scanModulesForAnnotatedMethods(ModuleAnnotatedMethodScanner scanner);

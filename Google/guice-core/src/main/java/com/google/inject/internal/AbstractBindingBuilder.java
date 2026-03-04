@@ -31,21 +31,29 @@ import java.util.List;
  * Constructing an AbstractBindingBuilder will create a new binding and add it into the {@link
  * Binder}.
  *
+ * @param <T> the bound type
  * @author jessewilson@google.com (Jesse Wilson)
  */
 public abstract class AbstractBindingBuilder<T> {
 
+  /** Error message for when implementation is set more than once. */
   public static final String IMPLEMENTATION_ALREADY_SET = "Implementation is set more than once.";
+  /** Error message for when scope is set on a single instance binding. */
   public static final String SINGLE_INSTANCE_AND_SCOPE =
       "Setting the scope is not permitted when binding to a single instance.";
+  /** Error message for when scope is set more than once. */
   public static final String SCOPE_ALREADY_SET = "Scope is set more than once.";
+  /** Error message for when binding to null. */
   public static final String BINDING_TO_NULL =
       "Binding to null instances is not allowed. "
           + "Use toProvider(Providers.of(null)) if this is your intended behaviour.";
+  /** Error message for when constant value is set more than once. */
   public static final String CONSTANT_VALUE_ALREADY_SET = "Constant value is set more than once.";
+  /** Error message for when more than one annotation is specified. */
   public static final String ANNOTATION_ALREADY_SPECIFIED =
       "More than one annotation is specified for this binding.";
 
+  /** A null key placeholder used for constant bindings before the type is known. */
   protected static final Key<?> NULL_KEY = Key.get(Void.class);
 
   /** The binder that the new binding will be added to. */
@@ -63,6 +71,14 @@ public abstract class AbstractBindingBuilder<T> {
   /** The new binding being added to the {@link #binder}'s {@link #elements} list */
   private BindingImpl<T> binding;
 
+  /**
+   * Constructs a new binding builder.
+   *
+   * @param binder the binder
+   * @param elements the elements list to add the binding to
+   * @param source the source location
+   * @param key the binding key
+   */
   public AbstractBindingBuilder(Binder binder, List<Element> elements, Object source, Key<T> key) {
     this.binder = binder;
     this.elements = elements;
@@ -71,63 +87,109 @@ public abstract class AbstractBindingBuilder<T> {
     elements.add(position, this.binding);
   }
 
+  /**
+   * Returns the current binding.
+   *
+   * @return the binding
+   */
   protected BindingImpl<T> getBinding() {
     return binding;
   }
 
+  /**
+   * Sets the current binding and updates the elements list.
+   *
+   * @param binding the new binding
+   * @return the binding that was set
+   */
   protected BindingImpl<T> setBinding(BindingImpl<T> binding) {
     this.binding = binding;
     elements.set(position, binding);
     return binding;
   }
 
-  /** Sets the binding to a copy with the specified annotation on the bound key */
+  /**
+   * Sets the binding to a copy with the specified annotation on the bound key.
+   *
+   * @param annotationType the annotation type
+   * @return the updated binding
+   */
   protected BindingImpl<T> annotatedWithInternal(Class<? extends Annotation> annotationType) {
     checkNotNull(annotationType, "annotationType");
     checkNotAnnotated();
     return setBinding(binding.withKey(this.binding.getKey().withAnnotation(annotationType)));
   }
 
-  /** Sets the binding to a copy with the specified annotation on the bound key */
+  /**
+   * Sets the binding to a copy with the specified annotation on the bound key.
+   *
+   * @param annotation the annotation instance
+   * @return the updated binding
+   */
   protected BindingImpl<T> annotatedWithInternal(Annotation annotation) {
     checkNotNull(annotation, "annotation");
     checkNotAnnotated();
     return setBinding(binding.withKey(this.binding.getKey().withAnnotation(annotation)));
   }
 
+  /**
+   * Binds in the given scope annotation.
+   *
+   * @param scopeAnnotation the scope annotation class
+   */
   public void in(final Class<? extends Annotation> scopeAnnotation) {
     checkNotNull(scopeAnnotation, "scopeAnnotation");
     checkNotScoped();
     setBinding(getBinding().withScoping(Scoping.forAnnotation(scopeAnnotation)));
   }
 
+  /**
+   * Binds in the given scope.
+   *
+   * @param scope the scope
+   */
   public void in(final Scope scope) {
     checkNotNull(scope, "scope");
     checkNotScoped();
     setBinding(getBinding().withScoping(Scoping.forInstance(scope)));
   }
 
+  /** Binds as an eager singleton. */
   public void asEagerSingleton() {
     checkNotScoped();
     setBinding(getBinding().withScoping(Scoping.EAGER_SINGLETON));
   }
 
+  /**
+   * Returns {@code true} if the key type has been set.
+   *
+   * @return whether the key type is set
+   */
   protected boolean keyTypeIsSet() {
     return !Void.class.equals(binding.getKey().getTypeLiteral().getType());
   }
 
+  /**
+   * Checks that the binding has not already been targeted.
+   */
   protected void checkNotTargetted() {
     if (!(binding instanceof UntargettedBindingImpl)) {
       binder.addError(IMPLEMENTATION_ALREADY_SET);
     }
   }
 
+  /**
+   * Checks that the binding has not already been annotated.
+   */
   protected void checkNotAnnotated() {
     if (binding.getKey().getAnnotationType() != null) {
       binder.addError(ANNOTATION_ALREADY_SPECIFIED);
     }
   }
 
+  /**
+   * Checks that the binding has not already been scoped.
+   */
   protected void checkNotScoped() {
     // Scoping isn't allowed when we have only one instance.
     if (binding instanceof InstanceBinding) {

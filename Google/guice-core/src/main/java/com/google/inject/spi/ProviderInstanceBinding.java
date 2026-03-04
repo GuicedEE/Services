@@ -26,6 +26,7 @@ import java.util.Set;
  * A binding to a provider instance. The provider's {@code get} method is invoked to resolve
  * injections.
  *
+ * @param <T> the bound type
  * @author jessewilson@google.com (Jesse Wilson)
  * @since 2.0
  */

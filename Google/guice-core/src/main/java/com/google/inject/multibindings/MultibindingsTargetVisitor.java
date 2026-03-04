@@ -25,6 +25,8 @@ import com.google.inject.spi.BindingTargetVisitor;
  * {@link Multibinder}, {@link MapBinder} or {@link OptionalBinderBinding} will be visited through
  * this interface.
  *
+ * @param <T> the bound type
+ * @param <V> the visitor's return type
  * @since 3.0
  * @author sameb@google.com (Sam Berlin)
  */

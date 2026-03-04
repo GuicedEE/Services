@@ -133,6 +133,7 @@ import com.google.inject.internal.RealOptionalBinder;
  * ... would generate an error, because both the framework and the user are trying to bind
  * {@code @LookupUrl String}.
  *
+ * @param <T> the bound type
  * @author sameb@google.com (Sam Berlin)
  * @since 4.0
  */

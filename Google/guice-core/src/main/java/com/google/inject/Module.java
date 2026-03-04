@@ -36,6 +36,8 @@ public interface Module {
    * <p><strong>Do not invoke this method directly</strong> to install submodules. Instead use
    * {@link Binder#install(Module)}, which ensures that {@link Provides provider methods} are
    * discovered.
+   *
+   * @param binder the binder to contribute bindings to
    */
   void configure(Binder binder);
 }

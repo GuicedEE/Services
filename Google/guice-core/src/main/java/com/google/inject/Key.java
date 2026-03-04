@@ -46,6 +46,7 @@ import java.lang.reflect.Type;
  * wrapper types (Integer, Character, etc.). Primitive types will be replaced with their wrapper
  * types when keys are created.
  *
+ * @param <T> the type of the key
  * @author crazybob@google.com (Bob Lee)
  */
 @CheckReturnValue

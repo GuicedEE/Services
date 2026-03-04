@@ -55,6 +55,7 @@ import java.util.List;
  * System.out.println(keySetType); // prints "Set<Integer>"
  * }</pre>
  *
+ * @param <T> the type
  * @author crazybob@google.com (Bob Lee)
  * @author jessewilson@google.com (Jesse Wilson)
  */

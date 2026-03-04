@@ -36,6 +36,7 @@ import java.util.Set;
  *     MembersInjector&lt;PaymentService&gt; membersInjector
  *         = getMembersInjector(PaymentService.class);</pre>
  *
+ * @param <T> the type to inject members of
  * @author crazybob@google.com (Bob Lee)
  * @since 2.0
  */
