@@ -102,7 +102,26 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>prepare</id>
+                        <phase>verify</phase>
+                        <configuration>
+                            <target>
+                                <echo message="prepare sources for javadoc "/>
+                                <unzip src="target/${project.artifactId}-${project.version}-sources.jar"
+                                       dest="target/source-output/"/>
+                                <delete file="target/source-output/org/ehcache/impl/internal/concurrent/ConcurrentHashMap.java" failonerror="true"/>
+                            </target>
+                            <failOnError>false</failOnError>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
 
             <plugin>
                 <groupId>org.moditect</groupId>
@@ -122,6 +141,43 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <additionalOptions>
+                        <additionalOption>-Xdoclint:none</additionalOption>
+                    </additionalOptions>
+                    <additionalDependencies>
+                        <additionalDependency>
+                            <groupId>org.terracotta</groupId>
+                            <artifactId>offheap-store</artifactId>
+                            <version>2.5.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.service.component.annotations</artifactId>
+                            <version>1.5.1</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.terracotta</groupId>
+                            <artifactId>statistics</artifactId>
+                            <version>2.1.3</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-api</artifactId>
+                            <version>2.0.13</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>jakarta.xml.bind</groupId>
+                            <artifactId>jakarta.xml.bind-api</artifactId>
+                            <version>4.0.2</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.terracotta</groupId>
+                            <artifactId>terracotta-utilities-tools</artifactId>
+                            <version>0.0.19</version>
+                        </additionalDependency>
+                    </additionalDependencies>
+                </configuration>
             </plugin>
 
         </plugins>

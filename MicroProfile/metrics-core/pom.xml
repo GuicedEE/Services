@@ -76,6 +76,31 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <inherited>true</inherited>
+                <configuration>
+                    <additionalDependencies>
+                        <additionalDependency>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging-processor</artifactId>
+                            <version>2.2.1.Final</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging</artifactId>
+                            <version>3.6.1.Final</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging-annotations</artifactId>
+                            <version>2.2.1.Final</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>jakarta.interceptor</groupId>
+                            <artifactId>jakarta.interceptor-api</artifactId>
+                            <version>2.2.0</version>
+                        </additionalDependency>
+                    </additionalDependencies>
+                </configuration>
             </plugin>
         </plugins>
     </build>

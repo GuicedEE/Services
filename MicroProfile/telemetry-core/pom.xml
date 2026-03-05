@@ -64,6 +64,7 @@
                                     <excludes>
                                         <exclude>module-info.class</exclude>
                                         <exclude>META-INF/versions/*/module-info.class</exclude>
+                                        <exclud>module-info.java</exclud>
                                     </excludes>
                                 </filter>
                             </filters>
@@ -74,6 +75,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>prepare</id>
+                        <phase>verify</phase>
+                        <configuration>
+                            <target>
+                                <echo message="prepare sources for javadoc "/>
+                                <unzip src="target/${project.artifactId}-${project.version}-sources.jar"
+                                       dest="target/source-output/"/>
+                                <delete file="target/source-output/module-info.java" failonerror="true"/>
+                                <delete file="target/source-output/io/opentelemetry/instrumentation/log4j/contextdata/v2_17/OpenTelemetryContextDataProvider.java" failonerror="true"/>
+                            </target>
+                            <failOnError>false</failOnError>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -94,6 +114,106 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <inherited>true</inherited>
+                <configuration>
+                    <additionalDependencies>
+                        <additionalDependency>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging-processor</artifactId>
+                            <version>2.2.1.Final</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging</artifactId>
+                            <version>3.6.1.Final</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging-annotations</artifactId>
+                            <version>2.2.1.Final</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-api</artifactId>
+                            <version>1.38.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-sdk</artifactId>
+                            <version>1.38.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-sdk-trace</artifactId>
+                            <version>1.38.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-sdk-trace</artifactId>
+                            <version>1.38.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-api</artifactId>
+                            <version>1.38.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-sdk</artifactId>
+                            <version>1.38.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-sdk-trace</artifactId>
+                            <version>1.38.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>com.google.auto.value</groupId>
+                            <artifactId>auto-value-annotations</artifactId>
+                            <version>1.10.4</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>jakarta.annotation</groupId>
+                            <artifactId>jakarta.annotation-api</artifactId>
+                            <version>2.1.1</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.assertj</groupId>
+                            <artifactId>assertj-core</artifactId>
+                            <version>3.26.3</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.junit.jupiter</groupId>
+                            <artifactId>junit-jupiter-api</artifactId>
+                            <version>5.11.4</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>junit</groupId>
+                            <artifactId>junit</artifactId>
+                            <version>4.13.2</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.grpc</groupId>
+                            <artifactId>grpc-api</artifactId>
+                            <version>1.64.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>com.google.guava</groupId>
+                            <artifactId>guava</artifactId>
+                            <version>33.2.1-jre</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>com.fasterxml.jackson.core</groupId>
+                            <artifactId>jackson-databind</artifactId>
+                            <version>2.17.2</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.grpc</groupId>
+                            <artifactId>grpc-stub</artifactId>
+                            <version>1.64.0</version>
+                        </additionalDependency>
+                    </additionalDependencies>
+                </configuration>
             </plugin>
         </plugins>
     </build>
