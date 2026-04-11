@@ -4,13 +4,13 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC3</version>
+        <version>2.0.0-RC4</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>testcontainers</artifactId>
     <name>testcontainers</name>
-    <version>2.0.0-RC3</version>
+    <version>2.0.0-RC4</version>
     <packaging>jar</packaging>
 
     <description>
