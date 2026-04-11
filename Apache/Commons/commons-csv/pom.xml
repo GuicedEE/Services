@@ -25,13 +25,13 @@ limitations under the License.
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC1</version>
+        <version>2.0.0-RC2</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>commons-csv</artifactId>
     <!--<version>${csv.version}</version>-->
-    <version>2.0.0-RC1</version>
+    <version>2.0.0-RC2</version>
 
 
     <issueManagement>

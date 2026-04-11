@@ -5,14 +5,14 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC1</version>
+        <version>2.0.0-RC2</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>hibernate-jcache</artifactId>
     <packaging>jar</packaging>
     <!--<version>${maven.hibernate.version}</version>-->
-    <version>2.0.0-RC1</version>
+    <version>2.0.0-RC2</version>
     <name>hibernate-jcache</name>
     <description>JPMS Module-Info's for a few of the Jakarta Libraries. These will be removed as time goes by
     </description>
