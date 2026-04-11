@@ -75,7 +75,7 @@ jobs:
       health-core: ${{ steps.filter.outputs.health-core }}
       telemetry-core: ${{ steps.filter.outputs.telemetry-core }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
       - name: Detect changed paths
         uses: dorny/paths-filter@v3
         id: filter
