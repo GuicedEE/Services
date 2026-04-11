@@ -21,14 +21,14 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC2</version>
+        <version>2.0.0-RC3</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>postgresql</artifactId>
     <!--<version>${io.version}</version>-->
-    <version>2.0.0-RC2</version>
+    <version>2.0.0-RC3</version>
     <name>PostgreSQL</name>
 
     <description>
