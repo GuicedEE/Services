@@ -19,6 +19,7 @@
 
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+        <ignore.moditect>true</ignore.moditect>
     </properties>
 
     <licenses>
@@ -32,11 +33,6 @@
 
     <build>
         <plugins>
-      <!--      <plugin>
-                <groupId>org.moditect</groupId>
-                <artifactId>moditect-maven-plugin</artifactId>
-            </plugin>-->
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>

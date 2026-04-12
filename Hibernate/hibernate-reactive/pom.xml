@@ -11,7 +11,7 @@
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>hibernate-reactive</artifactId>
     <packaging>jar</packaging>
-    <!--<version>${maven.hibernate.version}</version>-->
+
     <version>2.0.0-RC4</version>
     <name>hibernate-reactive</name>
     <description>JPMS Module-Info's for Hibernate Reactive</description>
@@ -98,59 +98,9 @@
                                     <include>org.lz4:*:*</include>
                                 </includes>
                             </artifactSet>
-                            <relocations>
-                               <!-- <relocation>
-                                    <pattern>META-INF.services_</pattern>
-                                    <shadedPattern>META-INF.services</shadedPattern>
-                                </relocation>-->
-
-
-                          <!--     <relocation>
-                                    <pattern>org.hibernate.engine.internal</pattern>
-                                    <shadedPattern>org.hibernate.reactive.shaded.hibernate</shadedPattern>
-                                    <includes>
-                                        <include>org.hibernate.engine.internal.Reactive*</include>
-                                    </includes>
-                                </relocation>
-                                -->
-
-                            <!--     <relocation>
-                                    <pattern>org.hibernate.reactive.pool.up.impl</pattern>
-                                    <shadedPattern>org.hibernate.reactive.pool.impl</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>io.vertx.core.impl.ContextInternal</pattern>
-                                    <shadedPattern>io.vertx.core.internal.ContextInternal</shadedPattern>
-                                </relocation>-->
-                               <!-- <relocation>
-                                    <pattern>org.jboss.logging</pattern>
-                                    <shadedPattern>org.hibernate.reactive.shaded.jboss.logging</shadedPattern>
-                                </relocation>-->
-                              <!--  <relocation>
-                                    <pattern>org.hibernate.reactive.shaded.jboss.logging</pattern>
-                                    <shadedPattern>org.hibernate.shaded.jboss.logging</shadedPattern>
-                                </relocation>-->
-                                <!--<relocation>
-                                    <pattern>org.hibernate.reactive.shaded.jboss.logging</pattern>
-                                    <shadedPattern>org.hibernate.shaded.jboss.logging</shadedPattern>
-                                </relocation>-->
-                                <!--<relocation>
-                                    <pattern>org.hibernate.reactive.pool.up.impl</pattern>
-                                    <shadedPattern>org.hibernate.reactive.pool.impl</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>io.vertx.core.impl.ContextInternal</pattern>
-                                    <shadedPattern>io.vertx.core.internal.ContextInternal</shadedPattern>
-                                </relocation>-->
-                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
             </plugin>
 
             <plugin>
@@ -171,6 +121,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <additionalDependencies>
+                        <additionalDependency>
+                            <groupId>org.jboss.logging</groupId>
+                            <artifactId>jboss-logging-annotations</artifactId>
+                            <version>2.2.1.Final</version>
+                        </additionalDependency>
+                    </additionalDependencies>
+                </configuration>
             </plugin>
         </plugins>
     </build>

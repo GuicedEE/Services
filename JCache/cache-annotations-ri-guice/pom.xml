@@ -16,6 +16,7 @@
 
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+        <ignore.moditect>true</ignore.moditect>
     </properties>
 
 
@@ -40,6 +41,11 @@
             <artifactId>guice</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.guicedee</groupId>
+            <artifactId>inject</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -58,6 +64,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <!-- module-info.java references modules (com.google.guice, aopalliance) that
+                         the javadoc plugin puts on the classpath instead of the module path,
+                         causing "named and unnamed modules" errors. Skip until resolved. -->
+                    <skip>true</skip>
+                </configuration>
             </plugin>
         </plugins>
     </build>

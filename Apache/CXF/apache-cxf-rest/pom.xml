@@ -226,6 +226,24 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>remove-corrupted-schema-source</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <!-- XmlSchemaCollection.java gets corrupted by the schemas→schemas.rest
+                                     shade relocation mangling Java source code. Delete before javadoc. -->
+                                <delete failonerror="false"
+                                        file="target/source-output/org/apache/ws/commons/schema/XmlSchemaCollection.java"/>
+                            </target>
+                            <failOnError>false</failOnError>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>

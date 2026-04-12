@@ -233,6 +233,28 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>create-checkreturnvalue-stub</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <!-- Hazelcast sources use jakarta.annotation.CheckReturnValue which
+                                     doesn't exist in jakarta.annotation-api 3.0.x. Create a stub. -->
+                                <mkdir dir="target/source-output/jakarta/annotation"/>
+                                <echo file="target/source-output/jakarta/annotation/CheckReturnValue.java">package jakarta.annotation;
+import java.lang.annotation.*;
+@Documented @Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.TYPE, ElementType.PACKAGE})
+@Retention(RetentionPolicy.RUNTIME) public @interface CheckReturnValue {}
+</echo>
+                            </target>
+                            <failOnError>false</failOnError>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -253,6 +275,82 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <additionalDependencies>
+                        <!-- picocli -->
+                        <additionalDependency>
+                            <groupId>info.picocli</groupId>
+                            <artifactId>picocli</artifactId>
+                            <version>4.7.6</version>
+                        </additionalDependency>
+                        <!-- com.codahale.metrics.health -->
+                        <additionalDependency>
+                            <groupId>io.dropwizard.metrics</groupId>
+                            <artifactId>metrics-healthchecks</artifactId>
+                            <version>4.2.25</version>
+                        </additionalDependency>
+                        <!-- io.micrometer.core.instrument -->
+                        <additionalDependency>
+                            <groupId>io.micrometer</groupId>
+                            <artifactId>micrometer-core</artifactId>
+                            <version>1.12.5</version>
+                        </additionalDependency>
+                        <!-- io.prometheus.client -->
+                        <additionalDependency>
+                            <groupId>io.prometheus</groupId>
+                            <artifactId>simpleclient</artifactId>
+                            <version>0.16.0</version>
+                        </additionalDependency>
+                        <!-- org.apache.log4j -->
+                        <additionalDependency>
+                            <groupId>log4j</groupId>
+                            <artifactId>log4j</artifactId>
+                            <version>1.2.17</version>
+                        </additionalDependency>
+                        <!-- org.apache.logging.log4j.core.config -->
+                        <additionalDependency>
+                            <groupId>org.apache.logging.log4j</groupId>
+                            <artifactId>log4j-core</artifactId>
+                            <version>2.23.1</version>
+                        </additionalDependency>
+                        <!-- com.damnhandy.uri.template -->
+                        <additionalDependency>
+                            <groupId>com.damnhandy</groupId>
+                            <artifactId>handy-uri-templates</artifactId>
+                            <version>2.1.8</version>
+                        </additionalDependency>
+                        <!-- com.google.re2j -->
+                        <additionalDependency>
+                            <groupId>com.google.re2j</groupId>
+                            <artifactId>re2j</artifactId>
+                            <version>1.7</version>
+                        </additionalDependency>
+                        <!-- com.sun.jna -->
+                        <additionalDependency>
+                            <groupId>net.java.dev.jna</groupId>
+                            <artifactId>jna</artifactId>
+                            <version>5.14.0</version>
+                        </additionalDependency>
+                        <!-- com.sun.jna.platform -->
+                        <additionalDependency>
+                            <groupId>net.java.dev.jna</groupId>
+                            <artifactId>jna-platform</artifactId>
+                            <version>5.14.0</version>
+                        </additionalDependency>
+                        <!-- javassist -->
+                        <additionalDependency>
+                            <groupId>org.javassist</groupId>
+                            <artifactId>javassist</artifactId>
+                            <version>3.30.2-GA</version>
+                        </additionalDependency>
+                        <!-- org.apache.commons.validator.routines -->
+                        <additionalDependency>
+                            <groupId>commons-validator</groupId>
+                            <artifactId>commons-validator</artifactId>
+                            <version>1.8.0</version>
+                        </additionalDependency>
+                    </additionalDependencies>
+                </configuration>
             </plugin>
 
         </plugins>
