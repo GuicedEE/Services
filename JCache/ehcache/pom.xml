@@ -32,14 +32,14 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC4</version>
+        <version>2.0.0-RC5</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>ehcache</artifactId>
     <name>ehcache</name>
     <!--<version>${hazelcast.version}</version>-->
-    <version>2.0.0-RC4</version>
+    <version>2.0.0-RC5</version>
     <description>Kubernetes Service Discovery for Hazelcast Discovery SPI</description>
     <url>http://github.com/hazelcast/hazelcast-kubernetes</url>
     <inceptionYear>2015</inceptionYear>
