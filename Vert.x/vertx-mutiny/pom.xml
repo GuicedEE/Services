@@ -98,6 +98,36 @@
                         <artifactId>vertx-core</artifactId>
                         <version>${vertx.version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-web-client</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-web</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-sql-client</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-auth-common</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-bridge-common</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-rabbitmq-client</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
                 </dependencies>
             </plugin>
         </plugins>
