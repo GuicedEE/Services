@@ -4,14 +4,14 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC5</version>
+        <version>2.0.0-RC6</version>
     </parent>
 
     <artifactId>amqp-client</artifactId>
     <groupId>com.guicedee.modules.services</groupId>
     <name>RabbitMQ AMQP Client</name>
     <packaging>jar</packaging>
-    <version>2.0.0-RC5</version>
+    <version>2.0.0-RC6</version>
 
     <licenses>
         <license>

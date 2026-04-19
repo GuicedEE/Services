@@ -7,13 +7,13 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC5</version>
+        <version>2.0.0-RC6</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>javax.security.jacc</artifactId>
     <!--<version>${jakarta.security.sacc.api.version}</version>-->
-    <version>2.0.0-RC5</version>
+    <version>2.0.0-RC6</version>
     <packaging>jar</packaging>
     <name>java.security.jacc</name>
     <description>JSR-000115 Java(TM) Authorization Contract for Containers API</description>

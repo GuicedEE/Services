@@ -6,13 +6,13 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC5</version>
+        <version>2.0.0-RC6</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>nrjavaserial</artifactId>
     <!--<version>${nrjavaserial.version}</version>-->
-    <version>2.0.0-RC5</version>
+    <version>2.0.0-RC6</version>
     <packaging>jar</packaging>
     <name>nrjavaserial</name>
 
