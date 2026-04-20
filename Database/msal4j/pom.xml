@@ -58,6 +58,42 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>remove-broken-shaded-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <!-- Netty optional codec/compression deps -->
+                                <delete file="target/source-output/io/netty/handler/codec/compression/LzfDecoder.java" failonerror="false"/>
+                                <delete file="target/source-output/io/netty/handler/codec/compression/LzfEncoder.java" failonerror="false"/>
+                                <delete file="target/source-output/io/netty/handler/codec/compression/LzmaFrameEncoder.java" failonerror="false"/>
+                                <delete file="target/source-output/io/netty/handler/codec/compression/ZstdConstants.java" failonerror="false"/>
+                                <delete file="target/source-output/io/netty/handler/codec/compression/ZstdDecoder.java" failonerror="false"/>
+                                <delete file="target/source-output/io/netty/handler/codec/compression/ZstdEncoder.java" failonerror="false"/>
+                                <!-- Netty optional SSL/SVM/logging -->
+                                <delete file="target/source-output/io/netty/handler/ssl/util/CertificateBuilderCertGenerator.java" failonerror="false"/>
+                                <delete file="target/source-output/io/netty/util/internal/Hidden.java" failonerror="false"/>
+                                <delete dir="target/source-output/io/netty/util/internal/logging" failonerror="false"/>
+                                <delete dir="target/source-output/io/netty/util/internal/svm" failonerror="false"/>
+                                <delete file="target/source-output/io/netty/util/NetUtilSubstitutions.java" failonerror="false"/>
+                                <!-- Reactor optional deps -->
+                                <delete file="target/source-output/reactor/core/publisher/Traces.java" failonerror="false"/>
+                                <delete file="target/source-output/reactor/core/scheduler/ReactorBlockHoundIntegration.java" failonerror="false"/>
+                                <delete file="target/source-output/reactor/netty/contextpropagation/ChannelContextAccessor.java" failonerror="false"/>
+                                <delete file="target/source-output/reactor/netty/http/server/NonSslRedirectDetector.java" failonerror="false"/>
+                                <delete file="target/source-output/reactor/netty/http/server/NonSslRedirectHandler.java" failonerror="false"/>
+                                <delete file="target/source-output/reactor/netty/resources/DefaultLoopIOUring.java" failonerror="false"/>
+                                <delete file="target/source-output/reactor/util/package-info.java" failonerror="false"/>
+                                <!-- OpenSAML -->
+                                <delete file="target/source-output/com/nimbusds/oauth2/sdk/assertions/saml2/SAML2AssertionValidator.java" failonerror="false"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -157,6 +193,16 @@
                             <groupId>org.cryptomator</groupId>
                             <artifactId>siv-mode</artifactId>
                             <version>1.5.2</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.opensaml</groupId>
+                            <artifactId>opensaml-saml-impl</artifactId>
+                            <version>4.3.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>jakarta.annotation</groupId>
+                            <artifactId>jakarta.annotation-api</artifactId>
+                            <version>3.0.0</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>
@@ -319,6 +365,14 @@
         </dependency>
 
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>shibboleth-repo</id>
+            <name>Shibboleth Repository</name>
+            <url>https://build.shibboleth.net/nexus/content/repositories/releases/</url>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>

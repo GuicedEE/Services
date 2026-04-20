@@ -169,6 +169,34 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>remove-broken-shaded-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <!-- docker-java transport/shaded sources -->
+                                <delete dir="target/source-output/com/github/dockerjava/transport" failonerror="false"/>
+                                <delete dir="target/source-output/com/github/dockerjava/zerodep" failonerror="false"/>
+                                <delete file="target/source-output/com/github/dockerjava/api/command/PushImageCmd.java" failonerror="false"/>
+                                <!-- jib sources -->
+                                <delete dir="target/source-output/org/testcontainers/jib" failonerror="false"/>
+                                <!-- r2dbc sources -->
+                                <delete dir="target/source-output/org/testcontainers/r2dbc" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/containers/PostgreSQLR2DBCDatabaseContainerProvider.java" failonerror="false"/>
+                                <!-- Network uses @Value from immutables generating inner classes -->
+                                <delete file="target/source-output/org/testcontainers/containers/Network.java" failonerror="false"/>
+                                <!-- JUnit Jupiter extension sources -->
+                                <delete dir="target/source-output/org/testcontainers/junit" failonerror="false"/>
+                                <!-- PostgreSQL R2DBC -->
+                                <delete dir="target/source-output/org/testcontainers/postgresql" failonerror="false"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -189,6 +217,50 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <additionalDependencies>
+                        <additionalDependency>
+                            <groupId>com.github.docker-java</groupId>
+                            <artifactId>docker-java-core</artifactId>
+                            <version>3.4.1</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>com.google.guava</groupId>
+                            <artifactId>guava</artifactId>
+                            <version>33.4.0-jre</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.yaml</groupId>
+                            <artifactId>snakeyaml</artifactId>
+                            <version>2.3</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>com.trilead</groupId>
+                            <artifactId>trilead-ssh2</artifactId>
+                            <version>1.0.0-build222</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.zeroturnaround</groupId>
+                            <artifactId>zt-exec</artifactId>
+                            <version>1.12</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.awaitility</groupId>
+                            <artifactId>awaitility</artifactId>
+                            <version>4.2.2</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>jakarta.annotation</groupId>
+                            <artifactId>jakarta.annotation-api</artifactId>
+                            <version>3.0.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.immutables</groupId>
+                            <artifactId>value</artifactId>
+                            <version>2.10.1</version>
+                        </additionalDependency>
+                    </additionalDependencies>
+                </configuration>
             </plugin>
         </plugins>
     </build>

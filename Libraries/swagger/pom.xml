@@ -136,6 +136,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <additionalDependencies>
+                        <additionalDependency>
+                            <groupId>jakarta.servlet</groupId>
+                            <artifactId>jakarta.servlet-api</artifactId>
+                            <version>6.1.0</version>
+                        </additionalDependency>
+                    </additionalDependencies>
+                </configuration>
             </plugin>
 
         </plugins>

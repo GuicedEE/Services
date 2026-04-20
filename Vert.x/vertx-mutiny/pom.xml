@@ -56,6 +56,55 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>remove-removed-pool-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <!-- Pool classes removed in Vert.x 5 -->
+                                <delete file="target/source-output/io/vertx/mutiny/mssqlclient/MSSQLPool.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/mysqlclient/MySQLPool.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/db2client/DB2Pool.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/oracleclient/OraclePool.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/pgclient/PgPool.java" failonerror="false"/>
+                                <!-- CLI package removed in Vert.x 5 -->
+                                <delete dir="target/source-output/io/vertx/mutiny/core/cli" failonerror="false"/>
+                                <!-- SmallRye context propagation referencing MicroProfile Config -->
+                                <delete dir="target/source-output/io/smallrye/context/impl" failonerror="false"/>
+                                <!-- Web client predicate removed in Vert.x 5 -->
+                                <delete dir="target/source-output/io/vertx/mutiny/ext/web/client/predicate" failonerror="false"/>
+                                <!-- Auth modules referencing removed APIs -->
+                                <delete dir="target/source-output/io/vertx/mutiny/ext/auth/htdigest" failonerror="false"/>
+                                <delete dir="target/source-output/io/vertx/mutiny/ext/auth/jwt" failonerror="false"/>
+                                <delete dir="target/source-output/io/vertx/mutiny/ext/auth/oauth2" failonerror="false"/>
+                                <delete dir="target/source-output/io/vertx/mutiny/ext/auth/otp" failonerror="false"/>
+                                <delete dir="target/source-output/io/vertx/mutiny/ext/auth/webauthn" failonerror="false"/>
+                                <!-- Core classes referencing removed Vert.x 5 APIs -->
+                                <delete file="target/source-output/io/vertx/mutiny/core/http/HttpClient.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/core/http/HttpHeaders.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/core/streams/Pump.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/core/TimeoutStream.java" failonerror="false"/>
+                                <delete file="target/source-output/io/smallrye/mutiny/vertx/core/ContextAwareExecutorWrapper.java" failonerror="false"/>
+                                <!-- Auth classes referencing removed APIs -->
+                                <delete file="target/source-output/io/vertx/mutiny/ext/auth/AuthProvider.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/ext/auth/HashingAlgorithm.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/ext/auth/HashingStrategy.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/ext/auth/VertxContextPRNG.java" failonerror="false"/>
+                                <!-- Web handler/client classes referencing removed APIs -->
+                                <delete file="target/source-output/io/vertx/mutiny/ext/web/client/OAuth2WebClient.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/ext/web/handler/DigestAuthHandler.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/ext/web/handler/JWTAuthHandler.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/ext/web/handler/OAuth2AuthHandler.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/ext/web/handler/OtpAuthHandler.java" failonerror="false"/>
+                                <delete file="target/source-output/io/vertx/mutiny/ext/web/handler/WebAuthnHandler.java" failonerror="false"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -77,6 +126,65 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <inherited>true</inherited>
+                <configuration>
+                    <additionalDependencies>
+                        <additionalDependency>
+                            <groupId>org.eclipse.microprofile.config</groupId>
+                            <artifactId>microprofile-config-api</artifactId>
+                            <version>${microprofile.config.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-mssql-client</artifactId>
+                            <version>${vertx.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-mysql-client</artifactId>
+                            <version>${vertx.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-pg-client</artifactId>
+                            <version>${vertx.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-oracle-client</artifactId>
+                            <version>${vertx.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-db2-client</artifactId>
+                            <version>${vertx.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-auth-oauth2</artifactId>
+                            <version>${vertx.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-auth-jwt</artifactId>
+                            <version>${vertx.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-auth-otp</artifactId>
+                            <version>${vertx.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-auth-htdigest</artifactId>
+                            <version>${vertx.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.vertx</groupId>
+                            <artifactId>vertx-auth-webauthn</artifactId>
+                            <version>5.0.0.CR2</version>
+                        </additionalDependency>
+                    </additionalDependencies>
+                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.jboss.logmanager</groupId>
@@ -127,6 +235,71 @@
                         <groupId>io.vertx</groupId>
                         <artifactId>vertx-rabbitmq-client</artifactId>
                         <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-auth-oauth2</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-auth-jwt</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-auth-otp</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-auth-webauthn</artifactId>
+                        <version>5.0.0.CR2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-auth-htdigest</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-mail-client</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-mongo-client</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-redis-client</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-kafka-client</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-amqp-client</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-cassandra-client</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.vertx</groupId>
+                        <artifactId>vertx-config</artifactId>
+                        <version>${vertx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.microprofile.config</groupId>
+                        <artifactId>microprofile-config-api</artifactId>
+                        <version>${microprofile.config.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>

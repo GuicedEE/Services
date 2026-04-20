@@ -73,6 +73,37 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <additionalDependencies>
+                        <additionalDependency>
+                            <groupId>io.opentelemetry</groupId>
+                            <artifactId>opentelemetry-api</artifactId>
+                            <version>${opentelemetry.version}</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.opentelemetry.proto</groupId>
+                            <artifactId>opentelemetry-proto</artifactId>
+                            <version>1.5.0-alpha</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>com.google.protobuf</groupId>
+                            <artifactId>protobuf-java</artifactId>
+                            <version>4.29.3</version>
+                        </additionalDependency>
+                    </additionalDependencies>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>io.opentelemetry</groupId>
+                        <artifactId>opentelemetry-api</artifactId>
+                        <version>${opentelemetry.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.opentelemetry.proto</groupId>
+                        <artifactId>opentelemetry-proto</artifactId>
+                        <version>1.5.0-alpha</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

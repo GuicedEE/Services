@@ -188,6 +188,13 @@
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jboss.logging</groupId>
+                        <artifactId>jboss-logging-annotations</artifactId>
+                        <version>2.2.1.Final</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

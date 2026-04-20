@@ -113,7 +113,7 @@
                                        dest="target/source-output/"/>
                                 <delete file="target/source-output/org/ehcache/impl/internal/concurrent/ConcurrentHashMap.java" failonerror="true"/>
                             </target>
-                            <failOnError>false</failOnError>
+                            <failOnError>true</failOnError>
                         </configuration>
                         <goals>
                             <goal>run</goal>

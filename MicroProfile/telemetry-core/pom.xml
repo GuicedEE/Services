@@ -87,7 +87,7 @@
                                 <delete file="target/source-output/module-info.java" failonerror="true"/>
                                 <delete file="target/source-output/io/opentelemetry/instrumentation/log4j/contextdata/v2_17/OpenTelemetryContextDataProvider.java" failonerror="true"/>
                             </target>
-                            <failOnError>false</failOnError>
+                            <failOnError>true</failOnError>
                         </configuration>
                         <goals>
                             <goal>run</goal>

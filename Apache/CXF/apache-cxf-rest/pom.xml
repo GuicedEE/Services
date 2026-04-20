@@ -240,7 +240,7 @@
                                 <delete failonerror="false"
                                         file="target/source-output/org/apache/ws/commons/schema/XmlSchemaCollection.java"/>
                             </target>
-                            <failOnError>false</failOnError>
+                            <failOnError>true</failOnError>
                         </configuration>
                     </execution>
                 </executions>

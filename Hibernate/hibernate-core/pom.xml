@@ -192,7 +192,6 @@
                             <artifactId>jboss-logging-annotations</artifactId>
                             <version>2.2.1.Final</version>
                         </additionalDependency>
-                        <!-- oracle OSON provider (oracle.jdbc.provider.oson) -->
                         <additionalDependency>
                             <groupId>com.oracle.database.jdbc</groupId>
                             <artifactId>ojdbc-provider-jackson-oson</artifactId>
@@ -200,6 +199,18 @@
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jboss.logging</groupId>
+                        <artifactId>jboss-logging-annotations</artifactId>
+                        <version>2.2.1.Final</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.oracle.database.jdbc</groupId>
+                        <artifactId>ojdbc-provider-jackson-oson</artifactId>
+                        <version>1.0.6</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
         </plugins>
