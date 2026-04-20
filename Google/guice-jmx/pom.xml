@@ -7,13 +7,13 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC7</version>
+        <version>2.0.0-RC8</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>guice-jmx</artifactId>
     <!--<version>${guice.version}</version>-->
     <name>Guice JMX</name>
-    <version>2.0.0-RC7</version>
+    <version>2.0.0-RC8</version>
 
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
