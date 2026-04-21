@@ -64,7 +64,7 @@
                                     <excludes>
                                         <exclude>module-info.class</exclude>
                                         <exclude>META-INF/versions/*/module-info.class</exclude>
-                                        <exclude>module-info.java</exclude>
+                                        <exclud>module-info.java</exclud>
                                     </excludes>
                                 </filter>
                             </filters>
