@@ -51,7 +51,7 @@ public final class ClassDefining {
 
   /** Returns true if it's possible to load by name proxies defined from the given host. */
   public static boolean canLoadProxyByName(Class<?> hostClass) {
-    return !ClassDefinerHolder.IS_UNSAFE || LookupClassDefiner.canLoadProxyByName(hostClass);
+    return true;
   }
 
   /** Binds the preferred {@link ClassDefiner} instance. */

@@ -28,6 +28,6 @@ final class HiddenClassDefiner implements ClassDefiner {
   @Override
   public Class<?> define(Class<?> hostClass, byte[] bytecode) throws Exception {
     Lookup hostLookup = MethodHandles.privateLookupIn(hostClass, MethodHandles.lookup());
-    return hostLookup.defineClass(bytecode);
-    }
+    return hostLookup.defineHiddenClass(bytecode, false).lookupClass();
+  }
 }

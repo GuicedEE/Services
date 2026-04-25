@@ -47,7 +47,7 @@ final class LookupClassDefiner implements ClassDefiner {
   @Override
   public Class<?> define(Class<?> hostClass, byte[] bytecode) throws Exception {
     if (HIDDEN_DEFINER == null) {
-            throw new IllegalStateException("No class definer available");
+      throw new IllegalStateException("HiddenClassDefiner could not be initialized");
     }
     return HIDDEN_DEFINER.define(hostClass, bytecode);
   }
