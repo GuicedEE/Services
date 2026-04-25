@@ -42,7 +42,7 @@ GuicedEE modular version (recommended for most libraries):
 <dependency>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>library-name</artifactId>
-    <version>2.0.0-RC8</version>
+    <version>2.0.0-RC9</version>
 </dependency>
 ```
 
