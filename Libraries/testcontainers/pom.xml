@@ -47,6 +47,91 @@
 
         <dependency>
             <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-mysql</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-mariadb</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-mssqlserver</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-oracle-free</artifactId>
+            <version>${testcontainers.oraclefree.version}</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-mongodb</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-cassandra</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-clickhouse</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-cockroachdb</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-rabbitmq</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-kafka</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-elasticsearch</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-nginx</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers-jdbc</artifactId>
             <scope>compile</scope>
             <optional>true</optional>
@@ -90,13 +175,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>26.0.2</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
             <groupId>com.github.docker-java</groupId>
             <artifactId>docker-java-api</artifactId>
             <version>3.3.3</version>
@@ -127,6 +205,16 @@
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
 
     </dependencies>
@@ -181,18 +269,34 @@
                                 <!-- docker-java transport/shaded sources -->
                                 <delete dir="target/source-output/com/github/dockerjava/transport" failonerror="false"/>
                                 <delete dir="target/source-output/com/github/dockerjava/zerodep" failonerror="false"/>
-                                <delete file="target/source-output/com/github/dockerjava/api/command/PushImageCmd.java" failonerror="false"/>
+                                <delete file="target/source-output/com/github/dockerjava/api/command/PushImageCmd.java"
+                                        failonerror="false"/>
                                 <!-- jib sources -->
                                 <delete dir="target/source-output/org/testcontainers/jib" failonerror="false"/>
                                 <!-- r2dbc sources -->
                                 <delete dir="target/source-output/org/testcontainers/r2dbc" failonerror="false"/>
-                                <delete file="target/source-output/org/testcontainers/containers/PostgreSQLR2DBCDatabaseContainerProvider.java" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/containers/PostgreSQLR2DBCDatabaseContainerProvider.java"
+                                        failonerror="false"/>
                                 <!-- Network uses @Value from immutables generating inner classes -->
-                                <delete file="target/source-output/org/testcontainers/containers/Network.java" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/containers/Network.java"
+                                        failonerror="false"/>
                                 <!-- JUnit Jupiter extension sources -->
                                 <delete dir="target/source-output/org/testcontainers/junit" failonerror="false"/>
                                 <!-- PostgreSQL R2DBC -->
                                 <delete dir="target/source-output/org/testcontainers/postgresql" failonerror="false"/>
+                                <!-- Additional database module sources that may break -->
+                                <delete file="target/source-output/org/testcontainers/containers/MySQLR2DBCDatabaseContainerProvider.java" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/containers/MariaDBR2DBCDatabaseContainerProvider.java" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/containers/MSSQLServerR2DBCDatabaseContainerProvider.java" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/containers/OracleR2DBCDatabaseContainerProvider.java" failonerror="false"/>
+                                <delete dir="target/source-output/org/testcontainers/elasticsearch" failonerror="false"/>
+                                <delete dir="target/source-output/org/testcontainers/kafka" failonerror="false"/>
+                                <!-- R2DBC sources that import vendor-specific R2DBC drivers not on classpath -->
+                                <delete file="target/source-output/org/testcontainers/clickhouse/ClickHouseR2DBCDatabaseContainerProvider.java" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/containers/MSSQLR2DBCDatabaseContainerProvider.java" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/mariadb/MariaDBR2DBCDatabaseContainer.java" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/mssqlserver/MSSQLR2DBCDatabaseContainer.java" failonerror="false"/>
+                                <delete file="target/source-output/org/testcontainers/mysql/MySQLR2DBCDatabaseContainer.java" failonerror="false"/>
                             </target>
                         </configuration>
                     </execution>
@@ -225,11 +329,6 @@
                             <version>3.4.1</version>
                         </additionalDependency>
                         <additionalDependency>
-                            <groupId>com.google.guava</groupId>
-                            <artifactId>guava</artifactId>
-                            <version>33.4.0-jre</version>
-                        </additionalDependency>
-                        <additionalDependency>
                             <groupId>org.yaml</groupId>
                             <artifactId>snakeyaml</artifactId>
                             <version>2.3</version>
@@ -250,14 +349,14 @@
                             <version>4.2.2</version>
                         </additionalDependency>
                         <additionalDependency>
-                            <groupId>jakarta.annotation</groupId>
-                            <artifactId>jakarta.annotation-api</artifactId>
-                            <version>3.0.0</version>
-                        </additionalDependency>
-                        <additionalDependency>
                             <groupId>org.immutables</groupId>
                             <artifactId>value</artifactId>
                             <version>2.10.1</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>org.jetbrains</groupId>
+                            <artifactId>annotations</artifactId>
+                            <version>26.0.2</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>

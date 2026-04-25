@@ -1,0 +1,12 @@
+org.testcontainers.containers.PostgreSQLContainerProvider
+org.testcontainers.containers.PostgisContainerProvider
+org.testcontainers.containers.TimescaleDBContainerProvider
+org.testcontainers.containers.PgVectorContainerProvider
+org.testcontainers.containers.MySQLContainerProvider
+org.testcontainers.containers.MariaDBContainerProvider
+org.testcontainers.containers.MSSQLServerContainerProvider
+org.testcontainers.containers.OracleContainerProvider
+org.testcontainers.containers.CassandraContainerProvider
+org.testcontainers.containers.ClickHouseContainerProvider
+org.testcontainers.containers.CockroachContainerProvider
+

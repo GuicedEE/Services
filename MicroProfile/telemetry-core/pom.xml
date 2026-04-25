@@ -40,6 +40,8 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <createSourcesJar>true</createSourcesJar>
+                            <shadeSourcesContent>true</shadeSourcesContent>
                             <artifactSet>
                                 <includes>
                                     <include>io.opentelemetry:*</include>

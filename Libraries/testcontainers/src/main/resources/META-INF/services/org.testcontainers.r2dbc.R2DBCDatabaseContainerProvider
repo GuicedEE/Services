@@ -1,0 +1,5 @@
+org.testcontainers.containers.PostgreSQLR2DBCDatabaseContainerProvider
+org.testcontainers.containers.MySQLR2DBCDatabaseContainerProvider
+org.testcontainers.containers.MariaDBR2DBCDatabaseContainerProvider
+org.testcontainers.containers.MSSQLServerR2DBCDatabaseContainerProvider
+
