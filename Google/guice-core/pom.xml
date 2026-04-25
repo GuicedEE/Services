@@ -58,12 +58,7 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
@@ -105,17 +100,7 @@
             <artifactId>jsr305</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava-testlib</artifactId>
-            <version>33.0.0-jre</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.google.truth</groupId>
-            <artifactId>truth</artifactId>
-            <version>1.4.0</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -130,34 +115,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
-                    <!--<argLine>-Dguice_include_stack_traces=OFF</argLine>-->
-                    <trimStackTrace>false</trimStackTrace>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>stack-traces-off</id>
-                        <phase>test</phase>
-                        <goals><goal>test</goal></goals>
-                        <configuration>
-                            <argLine>-Dguice_include_stack_traces=OFF</argLine>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>default-test</id>
-                        <phase>test</phase>
-                        <goals><goal>test</goal></goals>
-                        <configuration>
-                            <argLine>-Dguice_include_stack_traces=ONLY_FOR_DECLARING_SOURCE</argLine>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
@@ -198,13 +155,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <repository>
-            <id>guicedee-github</id>
-            <url>https://maven.pkg.github.com/GuicedEE/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>
