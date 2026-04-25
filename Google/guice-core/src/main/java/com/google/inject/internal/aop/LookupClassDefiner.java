@@ -33,7 +33,7 @@ final class LookupClassDefiner implements ClassDefiner {
   private static final ClassDefiner HIDDEN_DEFINER;
 
   static {
-    HIDDEN_DEFINER = tryPrivileged(HiddenClassDefiner::new, "Cannot bind MethodHandles.Lookup.defineHiddenClass");
+    HIDDEN_DEFINER = tryPrivileged(HiddenClassDefiner::new, "Cannot bind HiddenClassDefiner");
   }
 
   public static boolean isAccessible() {
