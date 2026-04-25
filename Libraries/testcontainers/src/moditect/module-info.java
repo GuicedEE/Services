@@ -14,6 +14,8 @@ open module org.testcontainers {
 	requires com.fasterxml.jackson.annotation;
 
 	requires static org.apache.commons.compress;
+	requires static org.apache.commons.lang3;
+	requires static org.apache.commons.io;
 
 	requires junit;
 

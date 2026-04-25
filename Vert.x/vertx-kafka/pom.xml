@@ -1,17 +1,22 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
         <version>2.0.0-RC9</version>
-
     </parent>
-    <groupId>com.guicedee.modules.services</groupId>
-    <artifactId>kafka-client</artifactId>
 
-    <name>kafka-client</name>
+    <groupId>com.guicedee.modules.services</groupId>
+    <artifactId>vertx-kafka</artifactId>
+
+    <name>Vert.x Kafka</name>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.scm.nameUrl>/GuicedEE/Services/Vert.x/vertx-kafka</project.scm.nameUrl>
+    </properties>
+
     <version>2.0.0-RC9</version>
 
     <licenses>
@@ -27,7 +32,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <inherited>true</inherited>
                 <executions>
                     <execution>
                         <id>shade</id>
@@ -36,20 +40,17 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
+                            <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
                             <artifactSet>
                                 <includes>
-                                    <include>org.apache.kafka</include>
-                                    <include>com.github.luben</include>
-                                    <include>org.xerial.snappy</include>
-                                    <include>org.lz4</include>
-                                    <include>org.bitbucket.b_c</include>
+                                    <include>io.vertx:vertx-kafka-client:*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -73,37 +74,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <additionalDependencies>
-                        <additionalDependency>
-                            <groupId>io.opentelemetry</groupId>
-                            <artifactId>opentelemetry-api</artifactId>
-                            <version>${opentelemetry.version}</version>
-                        </additionalDependency>
-                        <additionalDependency>
-                            <groupId>io.opentelemetry.proto</groupId>
-                            <artifactId>opentelemetry-proto</artifactId>
-                            <version>1.5.0-alpha</version>
-                        </additionalDependency>
-                        <additionalDependency>
-                            <groupId>com.google.protobuf</groupId>
-                            <artifactId>protobuf-java</artifactId>
-                            <version>4.29.3</version>
-                        </additionalDependency>
-                    </additionalDependencies>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>io.opentelemetry</groupId>
-                        <artifactId>opentelemetry-api</artifactId>
-                        <version>${opentelemetry.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>io.opentelemetry.proto</groupId>
-                        <artifactId>opentelemetry-proto</artifactId>
-                        <version>1.5.0-alpha</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -111,32 +81,26 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <optional>true</optional>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-kafka-client</artifactId>
+            <version>${vertx.version}</version>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka-clients</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
-            <groupId>com.github.luben</groupId>
-            <artifactId>zstd-jni</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.xerial.snappy</groupId>
-            <artifactId>snappy-java</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.lz4</groupId>
-            <artifactId>lz4-java</artifactId>
-            <optional>true</optional>
+            <groupId>com.guicedee.modules.services</groupId>
+            <artifactId>kafka-client</artifactId>
         </dependency>
 
         <dependency>
@@ -144,18 +108,17 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.bitbucket.b_c</groupId>
-            <artifactId>jose4j</artifactId>
-            <version>${jose4j.version}</version>
-            <optional>true</optional>
-        </dependency>
-
-
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>fasterxml-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>standalone-bom</artifactId>
@@ -165,14 +128,14 @@
             </dependency>
             <dependency>
                 <groupId>com.guicedee</groupId>
-                <artifactId>apache-bom</artifactId>
+                <artifactId>versioner</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
             <dependency>
                 <groupId>com.guicedee</groupId>
-                <artifactId>fasterxml-bom</artifactId>
+                <artifactId>google-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
@@ -181,3 +144,4 @@
     </dependencyManagement>
 
 </project>
+

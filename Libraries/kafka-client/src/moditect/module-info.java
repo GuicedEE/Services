@@ -10,8 +10,8 @@ module org.apache.kafka.client {
 	
 	exports  org.apache.kafka.common.serialization;
 	
-	requires com.github.luben.zstd_jni;
 	requires org.slf4j;
-	
+	requires java.management;
+
 	provides org.apache.kafka.common.config.provider.ConfigProvider with org.apache.kafka.common.config.provider.FileConfigProvider;
 }
