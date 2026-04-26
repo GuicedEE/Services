@@ -43,7 +43,15 @@ public final class CachingXmlDataStore
 	/**
 	 * The default temporary-file directory
 	 */
-	private static final String CACHE_DIR = System.getProperty("java.io.tmpdir");
+	private static final String CACHE_DIR;
+
+	static {
+		try {
+			CACHE_DIR = java.nio.file.Files.createTempDirectory("uadetector-cache").toString();
+		} catch (java.io.IOException e) {
+			throw new ExceptionInInitializerError(e);
+		}
+	}
 	/**
 	 * Corresponding default logger of this class
 	 */

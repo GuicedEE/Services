@@ -35,7 +35,7 @@ public final class RegularExpressionConverter
 	/**
 	 * Pattern for PERL style regular expression strings with more fault-tolerance to the modifiers
 	 */
-	private static final Pattern PERL_STYLE_TOLERANT = Pattern.compile("^/.*/(([A-z])*)?$");
+	private static final Pattern PERL_STYLE_TOLERANT = Pattern.compile("^/.*/([A-Za-z]*)?$");
 
 	/**
 	 * <strong>Attention:</strong> This class is not intended to create objects from it.
