@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC10</version>
+        <version>2.0.0-RC11</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>azure-identity</artifactId>
-    <version>2.0.0-RC10</version>
+    <version>2.0.0-RC11</version>
     <name>azure-identity</name>
 
     <properties>

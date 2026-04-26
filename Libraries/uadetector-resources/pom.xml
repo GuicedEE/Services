@@ -6,12 +6,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-RC10</version>
+        <version>2.0.0-RC11</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>uadetector-resources</artifactId>
-    <version>2.0.0-RC10</version>
+    <version>2.0.0-RC11</version>
     <name>net.sf.uadetector.resources</name>
     <description>This package contains a verified version of the data file from http://user-agent-string.info. During
         the verification process the data are

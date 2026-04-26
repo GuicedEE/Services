@@ -1,5 +1,6 @@
 module org.apache.cxf {
 
+	requires transitive java.logging;
 	requires transitive com.fasterxml.jackson.databind;
 //	requires transitive com.fasterxml.jackson.jakarta.rs.json;
 //	requires transitive com.fasterxml.jackson.jakarta.rs.xml;
@@ -16,6 +17,7 @@ module org.apache.cxf {
 	
 	
 	requires static java.management;
+	requires static java.desktop;
 	requires org.slf4j;
 	
 //	requires static org.bouncycastle.pkix;
@@ -42,14 +44,28 @@ module org.apache.cxf {
 	exports org.apache.cxf.helpers;
 	exports org.apache.cxf.io;
 	exports org.apache.cxf.ws.addressing;
+	exports org.apache.cxf.ws.addressing.wsdl;
 	exports org.apache.cxf.security;
 	exports org.apache.cxf.version;
+
+	exports javax.wsdl;
+	exports javax.wsdl.extensions;
+	exports javax.wsdl.extensions.http;
+	exports javax.wsdl.extensions.mime;
+	exports javax.wsdl.extensions.schema;
+	exports javax.wsdl.extensions.soap;
+	exports javax.wsdl.extensions.soap12;
+	exports javax.wsdl.factory;
+	exports javax.wsdl.xml;
 	exports org.apache.cxf.policy;
 	exports org.apache.cxf.continuations;
 	
 	exports org.apache.cxf.annotations;
 	exports org.apache.cxf.attachment;
 	exports org.apache.cxf.binding;
+	exports org.apache.cxf.binding.soap;
+	exports org.apache.cxf.binding.xml;
+	exports org.apache.cxf.bindings.xformat;
 	exports org.apache.cxf.bus;
 	exports org.apache.cxf.bus.extension;
 	exports org.apache.cxf.bus.managers;
@@ -79,12 +95,18 @@ module org.apache.cxf {
 	
 	
 	exports org.apache.cxf.message;
-	//exports org.apache.cxf.jaxws;
+	exports org.apache.cxf.jaxws;
+	exports org.apache.cxf.jaxws.spi;
+	exports org.apache.cxf.jaxws.support;
+	exports org.apache.cxf.jaxws.context;
+	exports org.apache.cxf.jaxws.interceptors;
 	exports org.apache.cxf.service;
 	exports org.apache.cxf.service.factory;
 	exports org.apache.cxf.service.model;
 	exports org.apache.cxf.service.invoker;
-	
+	exports org.apache.cxf.wsdl.service.factory;
+	exports org.apache.cxf.jaxb;
+
 	
 	
 	
