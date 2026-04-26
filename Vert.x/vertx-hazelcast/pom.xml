@@ -1,4 +1,4 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -8,50 +8,30 @@
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
-    <artifactId>scram</artifactId>
-    <name>scram</name>
-    <version>2.0.0-RC10</version>
+    <artifactId>vertx-hazelcast</artifactId>
+
+    <name>Vert.x Hazelcast</name>
     <packaging>jar</packaging>
 
-    <description>
-        A modularized test containers implementation
-    </description>
-
-
     <properties>
-        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+        <project.scm.nameUrl>/GuicedEE/Services/Vert.x/vertx-hazelcast</project.scm.nameUrl>
     </properties>
+
+    <version>2.0.0-RC10</version>
 
     <licenses>
         <license>
-            <name>Mozilla Public License 2.0</name>
-            <url>https://www.mozilla.org/MPL/2.0/</url>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <dependencies>
-
-        <dependency>
-            <groupId>com.ongres.scram</groupId>
-            <artifactId>scram-client</artifactId>
-            <version>3.1</version>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-
-    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <inherited>false</inherited>
                 <executions>
                     <execution>
                         <id>shade</id>
@@ -60,17 +40,17 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
+                            <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
                             <artifactSet>
                                 <includes>
-                                    <include>com.ongres.scram:*</include>
-                                    <include>com.ongres.stringprep:*</include>
+                                    <include>io.vertx:vertx-hazelcast:*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -98,8 +78,36 @@
         </plugins>
     </build>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-hazelcast</artifactId>
+            <version>${vertx.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.modules.services</groupId>
+            <artifactId>hazelcast-all</artifactId>
+        </dependency>
+
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>fasterxml-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>standalone-bom</artifactId>
@@ -107,10 +115,16 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-
             <dependency>
                 <groupId>com.guicedee</groupId>
-                <artifactId>tests-bom</artifactId>
+                <artifactId>versioner</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>google-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
@@ -119,3 +133,4 @@
     </dependencyManagement>
 
 </project>
+
