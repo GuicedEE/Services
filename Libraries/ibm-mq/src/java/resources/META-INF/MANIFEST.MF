@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.15
+Created-By: 21.0.4+7-LTS (Eclipse OpenJ9)
+Copyright-Notice: Licensed Materials - Property of IBM       5724-H72 
+          (c) Copyright IBM Corp. 2008, 2026 All Rights Reserved.     
+      US Government Users Restricted Rights -          Use,duplication
+  or disclosure restricted by GSA ADP Schedule Contract          with 
+ IBM Corp.
+Sealed: false
+Specification-Title: Jakarta Messaging
+Specification-Version: 3.0
+Specification-Vendor: Eclipse Foundation
+Implementation-Title: IBM MQ classes for JMS
+Implementation-Version: 9.4.5.0 - p945-L260120
+Implementation-Vendor: IBM Corporation
+Main-Class: com.ibm.msg.client.commonservices.tools.JakartaMainControl
+ ler
+Automatic-Module-name: com.ibm.mq.jakarta
+Class-Path: jakarta.jms-api.jar fscontext.jar providerutil.jar bcpkix-
+ jdk18on.jar bcprov-jdk18on.jar bcutil-jdk18on.jar org.json.jar
+
