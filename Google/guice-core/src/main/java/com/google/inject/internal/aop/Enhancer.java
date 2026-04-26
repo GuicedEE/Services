@@ -167,9 +167,9 @@ final class Enhancer extends AbstractGlueGenerator {
     super(hostClass, ENHANCER_BY_GUICE_MARKER);
     this.bridgeDelegates = bridgeDelegates;
 
-    // The enhancer now always generates a named proxy class, so emitted bytecode can safely
-    // downcast `this` and other proxy instances to that generated proxy type.
-    this.checkcastToProxy = proxyName;
+    // Generated proxy classes are not always safely resolvable by name (for example, when
+    // defined as hidden classes), so emitted bytecode must use the host type for downcasts.
+    this.checkcastToProxy = hostName;
   }
 
   @Override
