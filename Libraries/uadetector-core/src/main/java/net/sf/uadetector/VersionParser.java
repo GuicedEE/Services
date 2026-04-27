@@ -76,8 +76,8 @@ final class VersionParser
 	{
 		VersionNumber version = VersionNumber.UNKNOWN;
 		List<Pattern> patterns = new ArrayList<>();
-		patterns.add(Pattern.compile("Android\\s?((\\d+)(\\.\\d+)*?(\\-(\\w|\\d)+)?);"));
-		patterns.add(Pattern.compile("Android\\-((\\d+)(\\.\\d+)*?(\\-(\\w|\\d)+)?);"));
+		patterns.add(Pattern.compile("Android\\s?((\\d+)(\\.\\d+)*+(?:\\-[\\w\\d]+)?);"));
+		patterns.add(Pattern.compile("Android\\-((\\d+)(\\.\\d+)*+(?:\\-[\\w\\d]+)?);"));
 		for (Pattern pattern : patterns)
 		{
 			Matcher m = pattern.matcher(userAgent);
