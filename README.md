@@ -5,7 +5,6 @@
 
 ![Java 25+](https://img.shields.io/badge/Java-25%2B-green)
 ![Modular](https://img.shields.io/badge/Modular-Level3-green)
-![Maven 4](https://img.shields.io/badge/Maven-4-green)
 
 A collection of popular third-party libraries repackaged with full **JPMS `module-info.java`** descriptors so they can participate in [GuicedEE](https://github.com/GuicedEE) Level 3 modularization.
 

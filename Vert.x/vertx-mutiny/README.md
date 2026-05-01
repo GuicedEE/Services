@@ -5,7 +5,6 @@
 ![Java 25+](https://img.shields.io/badge/Java-25%2B-green)
 ![Vert.x 5](https://img.shields.io/badge/Vert.x-5%2B-green)
 ![Modular](https://img.shields.io/badge/Modular-Level3-green)
-![Maven 4](https://img.shields.io/badge/Maven-4-green)
 
 A **modular repackage** of the [SmallRye Mutiny Vert.x bindings](https://github.com/smallrye/smallrye-mutiny-vertx-bindings) with a proper **JPMS `module-info.java`** descriptor (`module io.vertx.mutiny`), Vert.x 5 compatibility fixes, and SmallRye Context Propagation shaded in so the entire reactive Vert.x stack works cleanly on the module path.
 
