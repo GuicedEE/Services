@@ -132,12 +132,11 @@ These are shaded versions of third-party libraries with added module-info.java d
 | org.aopalliance:aopalliance | com.guicedee.modules.services:aop | org.aopalliance |
 
 #### Hibernate
-- **ORM**: hibernate-core, hibernate-c3p0, hibernate-jcache, hibernate-reactive, hibernate-validator
+- **ORM**: hibernate-core, hibernate-jcache, hibernate-reactive, hibernate-validator
 
 | Original Coordinates | GuicedEE Coordinates | Module Name |
 |----------------------|----------------------|-------------|
 | org.hibernate:hibernate-core | com.guicedee.modules.services:hibernate-core | org.hibernate.core |
-| org.hibernate:hibernate-c3p0 | com.guicedee.modules.services:hibernate-c3p0 | org.hibernate.c3p0 |
 | org.hibernate:hibernate-jcache | com.guicedee.modules.services:hibernate-jcache | org.hibernate.jcache |
 | org.hibernate.reactive:hibernate-reactive-core | com.guicedee.modules.services:hibernate-reactive | org.hibernate.reactive |
 | org.hibernate.validator:hibernate-validator | com.guicedee.modules.services:hibernate-validator | org.hibernate.validator |

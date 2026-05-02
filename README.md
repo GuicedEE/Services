@@ -17,7 +17,7 @@ Each service module provides proper `exports`, `requires`, `opens`, and `provide
 | **Apache** | `Commons`, `CXF`, `POI` | Apache foundation libraries |
 | **Database** | `msal4j`, `mssql-jdbc`, `postgresql` | JDBC drivers and database clients |
 | **Google** | `guice-core`, `guice-assistedinject`, `guice-grapher`, `guice-jmx`, `guice-jndi`, `aop` | Google Guice and AOP |
-| **Hibernate** | `hibernate-core`, `hibernate-c3p0`, `hibernate-jcache`, `hibernate-reactive`, `hibernate-validator` | Hibernate ORM and extensions |
+| **Hibernate** | `hibernate-core`, `hibernate-jcache`, `hibernate-reactive`, `hibernate-validator` | Hibernate ORM and extensions |
 | **Jakarta** | `jakarta-security-jacc` | Jakarta EE specifications |
 | **JCache** | `cache-api`, `ehcache`, `hazelcast`, `hazelcast-hibernate`, `cache-annotations-ri-common`, `cache-annotations-ri-guice` | JSR 107 / JCache providers |
 | **JNI** | `jna-platform`, `nrjavaserial` | Native interface libraries |

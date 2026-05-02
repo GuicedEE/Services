@@ -68,7 +68,6 @@ jobs:
       hibernate-validator: ${{ steps.filter.outputs.hibernate-validator }}
       hibernate-reactive: ${{ steps.filter.outputs.hibernate-reactive }}
       hibernate-jcache: ${{ steps.filter.outputs.hibernate-jcache }}
-      hibernate-c3p0: ${{ steps.filter.outputs.hibernate-c3p0 }}
       kafka-client: ${{ steps.filter.outputs.kafka-client }}
       testcontainers: ${{ steps.filter.outputs.testcontainers }}
       scram: ${{ steps.filter.outputs.scram }}
@@ -172,8 +171,6 @@ jobs:
               - 'Hibernate/hibernate-reactive/**'
             hibernate-jcache:
               - 'Hibernate/hibernate-jcache/**'
-            hibernate-c3p0:
-              - 'Hibernate/hibernate-c3p0/**'
             kafka-client:
               - 'Libraries/kafka-client/**'
             testcontainers:
@@ -668,18 +665,6 @@ jobs:
     with:
       baseDir: 'Hibernate/hibernate-jcache/'
       name: 'Hibernate JCache'
-      publishToCentral: ${{inputs.centralRelease}}
-    secrets: inherit
-
-  Hibernate-C3PO:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
-    needs:
-      - detect-changes
-      - Hibernate-Core
-    if: ${{ !cancelled() && (needs.Hibernate-Core.result == 'success' || needs.Hibernate-Core.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.hibernate-c3p0 == 'true' || needs.detect-changes.outputs.hibernate-core == 'true') }}
-    with:
-      baseDir: 'Hibernate/hibernate-c3p0/'
-      name: 'Hibernate C3P0'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
 
