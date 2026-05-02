@@ -18,6 +18,7 @@ open module org.testcontainers {
 	requires static org.apache.commons.io;
 
 	requires junit;
+	requires org.reactivestreams;
 
 	exports org.testcontainers.containers;
 	exports org.testcontainers.containers.wait.strategy;
