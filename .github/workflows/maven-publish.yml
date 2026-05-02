@@ -76,6 +76,7 @@ jobs:
       config-core: ${{ steps.filter.outputs.config-core }}
       vertx-mutiny: ${{ steps.filter.outputs.vertx-mutiny }}
       vertx-rabbitmq: ${{ steps.filter.outputs.vertx-rabbitmq }}
+      vertx-cassandra: ${{ steps.filter.outputs.vertx-cassandra }}
       ehcache: ${{ steps.filter.outputs.ehcache }}
       cloudevents: ${{ steps.filter.outputs.cloudevents }}
       health-core: ${{ steps.filter.outputs.health-core }}
@@ -187,6 +188,8 @@ jobs:
               - 'Vert.x/vertx-mutiny/**'
             vertx-rabbitmq:
               - 'Vert.x/vertx-rabbitmq/**'
+            vertx-cassandra:
+              - 'Vert.x/vertx-cassandra/**'
             ehcache:
               - 'JCache/ehcache/**'
             cloudevents:
@@ -755,6 +758,16 @@ jobs:
     with:
       baseDir: 'Vert.x/vertx-rabbitmq/'
       name: 'Vert.x RabbitMQ'
+      publishToCentral: ${{inputs.centralRelease}}
+    secrets: inherit
+
+  VertxCassandra:
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    needs: detect-changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.vertx-cassandra == 'true' }}
+    with:
+      baseDir: 'Vert.x/vertx-cassandra/'
+      name: 'Vert.x Cassandra'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
 

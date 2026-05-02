@@ -235,13 +235,14 @@ These are shaded versions of third-party libraries with added module-info.java d
 | com.guicedee.modules.services:xml-representation | com.guicedee.modules.services:XmlRepresentation | com.guicedee.modules.services.xmlrepresentation |
 
 #### Vert.x
-- **Reactive**: vertx-mutiny, vertx-pg-client, vertx-rabbitmq
+- **Reactive**: vertx-mutiny, vertx-pg-client, vertx-rabbitmq, vertx-cassandra
 
 | Original Coordinates | GuicedEE Coordinates | Module Name |
 |----------------------|----------------------|-------------|
 | io.smallrye.reactive:smallrye-mutiny-vertx-core | com.guicedee.modules.services:vertx-mutiny | io.smallrye.mutiny.vertx.core |
 | io.vertx:vertx-pg-client | com.guicedee.modules.services:vertx-pg-client | io.vertx.pgclient |
 | io.vertx:vertx-rabbitmq-client | com.guicedee.modules.services:vertx-rabbitmq | io.vertx.rabbitmq |
+| io.vertx:vertx-cassandra-client | com.guicedee.modules.services:vertx-cassandra | io.vertx.cassandra.client |
 
 
 ## Module Information

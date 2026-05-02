@@ -477,6 +477,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate.query.hql.internal to org.hibernate.reactive;
 	exports org.hibernate.query.sqm.sql to org.hibernate.reactive;
 	exports org.hibernate.sql.ast to org.hibernate.reactive;
+	exports org.hibernate.sql.ast.internal to org.hibernate.reactive;
 	exports org.hibernate.spi to org.hibernate.reactive;
 	exports org.hibernate.query.sqm.spi to org.hibernate.reactive;
 	exports org.hibernate.sql.ast.tree.from to org.hibernate.reactive;
@@ -542,6 +543,7 @@ module org.hibernate.orm.core {
 
 	exports org.hibernate.bytecode.enhance.internal to org.hibernate.reactive;
 	exports org.hibernate.dialect.lock.spi to org.hibernate.reactive;
+	exports org.hibernate.dialect.type to org.hibernate.reactive;
 	exports org.hibernate.loader to org.hibernate.reactive;
 }
 

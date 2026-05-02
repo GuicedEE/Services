@@ -8,13 +8,13 @@
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
-    <artifactId>vertx-hazelcast</artifactId>
+    <artifactId>vertx-cassandra</artifactId>
 
-    <name>Vert.x Hazelcast</name>
+    <name>Vert.x Cassandra</name>
     <packaging>jar</packaging>
 
     <properties>
-        <project.scm.nameUrl>/GuicedEE/Services/Vert.x/vertx-hazelcast</project.scm.nameUrl>
+        <project.scm.nameUrl>/GuicedEE/Services/Vert.x/vertx-cassandra</project.scm.nameUrl>
     </properties>
 
     <version>2.0.1-SNAPSHOT</version>
@@ -44,7 +44,7 @@
                             <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
                             <artifactSet>
                                 <includes>
-                                    <include>io.vertx:vertx-hazelcast:*</include>
+                                    <include>io.vertx:vertx-cassandra-client:*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
@@ -74,15 +74,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <additionalDependencies>
-                        <additionalDependency>
-                            <groupId>io.vertx</groupId>
-                            <artifactId>vertx-health-check</artifactId>
-                            <version>${vertx.version}</version>
-                        </additionalDependency>
-                    </additionalDependencies>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -96,14 +87,20 @@
 
         <dependency>
             <groupId>io.vertx</groupId>
-            <artifactId>vertx-hazelcast</artifactId>
+            <artifactId>vertx-cassandra-client</artifactId>
             <version>${vertx.version}</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.modules.services</groupId>
-            <artifactId>hazelcast-all</artifactId>
+            <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-core</artifactId>
+            <version>4.15.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
 
     </dependencies>
@@ -142,4 +139,7 @@
     </dependencyManagement>
 
 </project>
+
+
+
 
