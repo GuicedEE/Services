@@ -6,7 +6,6 @@
  */
 package org.hibernate.boot.archive.internal.shade;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hibernate.boot.archive.spi.*;
 
 import java.io.BufferedInputStream;
@@ -194,7 +193,7 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
     }
 
     @Override
-    public @Nullable ArchiveEntry findEntry(String path)
+    public ArchiveEntry findEntry(String path)
     {
         final JarFile jarFile = resolveJarFileReference();
         if (jarFile == null)

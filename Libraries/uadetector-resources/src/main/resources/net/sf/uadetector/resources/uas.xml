@@ -901,7 +901,7 @@
             </robot>
             <robot>
                 <id>9389</id>
-                <useragent><![CDATA[Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.1-SNAPSHOT.6 Ara.com.tr AraBot 1.0]]></useragent>
+                <useragent><![CDATA[Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.1.6 Ara.com.tr AraBot 1.0]]></useragent>
                 <family>AraBot</family>
                 <name>AraBot 1.0</name>
                 <company><![CDATA[ ARA ?letişim Telekomünikasyon ?nternet Al?şveriş Reklam Tic. Ltd. Şti.]]></company>
@@ -2351,9 +2351,9 @@
             </robot>
             <robot>
                 <id>2170</id>
-                <useragent><![CDATA[CorpusCrawler 2.0.1-SNAPSHOT (http://corpora.fi.muni.cz/crawler/)]]></useragent>
+                <useragent><![CDATA[CorpusCrawler 2.0.1 (http://corpora.fi.muni.cz/crawler/)]]></useragent>
                 <family>CorpusCrawler</family>
-                <name>CorpusCrawler 2.0.1-SNAPSHOT</name>
+                <name>CorpusCrawler 2.0.1</name>
                 <company><![CDATA[NLP - at the Faculty of Informatics, Masaryk University, Brno]]></company>
                 <url_company><![CDATA[http://nlp.fi.muni.cz/en/nlplab]]></url_company>
                 <icon>bot_CorpusCrawler.png</icon>
@@ -4651,7 +4651,7 @@
             </robot>
             <robot>
                 <id>1872</id>
-                <useragent><![CDATA[Mozilla/5.0 (X11; U; Linux i686 (x86_64); en-US; rv:1.8.1.20) Gecko/20090429 HeartRails_Capture/0.6 (+http://capture.heartrails.com/) BonEcho/2.0.1-SNAPSHOT.20]]></useragent>
+                <useragent><![CDATA[Mozilla/5.0 (X11; U; Linux i686 (x86_64); en-US; rv:1.8.1.20) Gecko/20090429 HeartRails_Capture/0.6 (+http://capture.heartrails.com/) BonEcho/2.0.1.20]]></useragent>
                 <family>HeartRailsBot</family>
                 <name>HeartRails_Capture/0.6</name>
                 <company><![CDATA[HeartRails Inc.]]></company>
@@ -5471,7 +5471,7 @@
             </robot>
             <robot>
                 <id>14755</id>
-                <useragent><![CDATA[Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.1-SNAPSHOT.6 - James BOT - WebCrawler http://cognitiveseo.com/bot.html]]></useragent>
+                <useragent><![CDATA[Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.1.6 - James BOT - WebCrawler http://cognitiveseo.com/bot.html]]></useragent>
                 <family>JamesBOT</family>
                 <name>JamesBOT</name>
                 <company><![CDATA[GESKIMO SRL.]]></company>
@@ -7561,9 +7561,9 @@
             </robot>
             <robot>
                 <id>341</id>
-                <useragent><![CDATA[Mozilla/5.0 (Windows;) NimbleCrawler 2.0.1-SNAPSHOT obeys UserAgent NimbleCrawler For problems contact: crawler@healthline.com]]></useragent>
+                <useragent><![CDATA[Mozilla/5.0 (Windows;) NimbleCrawler 2.0.1 obeys UserAgent NimbleCrawler For problems contact: crawler@healthline.com]]></useragent>
                 <family>NimbleCrawler</family>
-                <name>NimbleCrawler/2.0.1-SNAPSHOT</name>
+                <name>NimbleCrawler/2.0.1</name>
                 <company><![CDATA[Healthline Networks, Inc.]]></company>
                 <url_company><![CDATA[http://www.healthline.com/]]></url_company>
                 <icon>bot.png</icon>
@@ -11241,7 +11241,7 @@
             </robot>
             <robot>
                 <id>6146</id>
-                <useragent><![CDATA[Mozilla/5.0 (Windows; U; Windows NT 6.0; en-GB; rv:1.0; trendictionbot0.4.2; trendiction media ssppiiddeerr; http://www.trendiction.com/bot/; please let us know of any problems; ssppiiddeerr at trendiction.com) Gecko/20071127 Firefox/2.0.1-SNAPSHOT.11]]></useragent>
+                <useragent><![CDATA[Mozilla/5.0 (Windows; U; Windows NT 6.0; en-GB; rv:1.0; trendictionbot0.4.2; trendiction media ssppiiddeerr; http://www.trendiction.com/bot/; please let us know of any problems; ssppiiddeerr at trendiction.com) Gecko/20071127 Firefox/2.0.1.11]]></useragent>
                 <family>trendictionbot</family>
                 <name>trendictionbot0.4.2</name>
                 <company><![CDATA[Trendiction S.A.]]></company>

@@ -39,10 +39,10 @@ The following example demonstrates indexing hibernate core, followed by the enti
 JDK using Jandex on the CLI:
  
  ```
-$ java -jar target/jandex-2.0.1-SNAPSHOT.Alpha1.jar hibernate-core-4.0.0.Final.jar
+$ java -jar target/jandex-2.0.1.Alpha1.jar hibernate-core-4.0.0.Final.jar
    Wrote /Users/jason/devel/jandex/hibernate-core-4.0.0.Final-jar.idx in 0.9020 seconds
          (2722 classes, 20 annotations, 1696 instances, 621565 bytes)
-$ java -jar target/jandex-2.0.1-SNAPSHOT.Alpha1.jar rt.jar
+$ java -jar target/jandex-2.0.1.Alpha1.jar rt.jar
    Wrote /Users/jason/devel/jandex/rt-jar.idx in 4.2870 seconds
          (19831 classes, 41 annotations, 1699 instances, 4413790 bytes)
 ```
