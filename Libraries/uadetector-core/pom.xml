@@ -6,12 +6,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.2-SNAPSHOT</version>
+        <version>2.0.3-SNAPSHOT</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>uadetector-core</artifactId>
     <name>net.sf.uadetector.core</name>
-    <version>2.0.2-SNAPSHOT</version>
+    <version>2.0.3-SNAPSHOT</version>
 
     <description>The UADetector core library includes the API and implementation to read the detection information and
         the functions to identify User-Agents, but not the database (also known as UAS data). The UAS data can be found
