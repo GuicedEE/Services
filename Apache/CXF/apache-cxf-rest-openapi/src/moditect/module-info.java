@@ -3,7 +3,7 @@ module org.apache.cxf.rest.openapi {
 	requires org.apache.cxf;
 	
 	requires transitive com.guicedee.modules.services.openapi;
-	
+
 	exports org.apache.cxf.jaxrs.openapi;
 	exports org.apache.cxf.jaxrs.common.openapi;
 	exports org.apache.cxf.jaxrs.swagger.ui;

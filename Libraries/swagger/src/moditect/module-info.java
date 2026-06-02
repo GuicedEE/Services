@@ -35,6 +35,7 @@ module com.guicedee.modules.services.openapi {
 	exports io.swagger.v3.oas.annotations.links;
 	exports io.swagger.v3.oas.annotations.servers;
 	exports io.swagger.v3.oas.annotations.security;
+	exports io.swagger.v3.oas.models.tags;
 
 	exports io.swagger.v3.jaxrs2.ext;
 	exports io.swagger.v3.core.converter;
