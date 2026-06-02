@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2008-2018, Hazelcast, Inc. All Rights Reserved.
   ~
@@ -12,7 +13,8 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  --><!--
+  -->
+<!--
   - Licensed under the Apache License, Version 2.0 (the "License");
   - you may not use this file except in compliance with the License.
   - You may obtain a copy of the License at
@@ -25,52 +27,37 @@
   - See the License for the specific language governing permissions and
   - limitations under the License.
 -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
+        <version>2.1.1-SNAPSHOT</version>
     </parent>
-
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>ehcache</artifactId>
     <name>ehcache</name>
     <!--<version>${hazelcast.version}</version>-->
-    <version>2.1.0-SNAPSHOT</version>
+    <version>2.1.1-SNAPSHOT</version>
     <description>Kubernetes Service Discovery for Hazelcast Discovery SPI</description>
-    <url>http://github.com/hazelcast/hazelcast-kubernetes</url>
     <inceptionYear>2015</inceptionYear>
     <packaging>jar</packaging>
-
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
     </properties>
-
-    <licenses>
-        <license>
-            <name>APACHE LICENSE 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-    </licenses>
-
+    <url>https://guicedee.com</url>
     <dependencies>
         <dependency>
             <groupId>com.guicedee.modules.services</groupId>
             <artifactId>cache-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
             <version>3.10.8</version>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -94,7 +81,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -104,10 +90,9 @@
                         <phase>verify</phase>
                         <configuration>
                             <target>
-                                <echo message="prepare sources for javadoc "/>
-                                <unzip src="target/${project.artifactId}-${project.version}-sources.jar"
-                                       dest="target/source-output/"/>
-                                <delete file="target/source-output/org/ehcache/impl/internal/concurrent/ConcurrentHashMap.java" failonerror="true"/>
+                                <echo message="prepare sources for javadoc " />
+                                <unzip src="target/${project.artifactId}-${project.version}-sources.jar" dest="target/source-output/" />
+                                <delete file="target/source-output/org/ehcache/impl/internal/concurrent/ConcurrentHashMap.java" failonerror="true" />
                             </target>
                             <failOnError>true</failOnError>
                         </configuration>
@@ -117,23 +102,18 @@
                     </execution>
                 </executions>
             </plugin>
-
-
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.coderplus.maven.plugins</groupId>
                 <artifactId>copy-rename-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -175,10 +155,8 @@
                     </additionalDependencies>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -209,7 +187,6 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>google-bom</artifactId>
@@ -217,7 +194,6 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>jboss-bom</artifactId>
@@ -227,5 +203,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>

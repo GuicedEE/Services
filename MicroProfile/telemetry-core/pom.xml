@@ -1,31 +1,19 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
+        <version>2.1.1-SNAPSHOT</version>
     </parent>
-
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>telemetry-core</artifactId>
-
     <name>telemetry-core</name>
     <packaging>jar</packaging>
-    <version>2.1.0-SNAPSHOT</version>
-
+    <version>2.1.1-SNAPSHOT</version>
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
     </properties>
-
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
     <build>
         <plugins>
             <plugin>
@@ -58,7 +46,7 @@
                                 </excludes>
                             </artifactSet>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                             </transformers>
                             <filters>
                                 <filter>
@@ -83,11 +71,10 @@
                         <phase>verify</phase>
                         <configuration>
                             <target>
-                                <echo message="prepare sources for javadoc "/>
-                                <unzip src="target/${project.artifactId}-${project.version}-sources.jar"
-                                       dest="target/source-output/"/>
-                                <delete file="target/source-output/module-info.java" failonerror="true"/>
-                                <delete file="target/source-output/io/opentelemetry/instrumentation/log4j/contextdata/v2_17/OpenTelemetryContextDataProvider.java" failonerror="true"/>
+                                <echo message="prepare sources for javadoc " />
+                                <unzip src="target/${project.artifactId}-${project.version}-sources.jar" dest="target/source-output/" />
+                                <delete file="target/source-output/module-info.java" failonerror="true" />
+                                <delete file="target/source-output/io/opentelemetry/instrumentation/log4j/contextdata/v2_17/OpenTelemetryContextDataProvider.java" failonerror="true" />
                             </target>
                             <failOnError>true</failOnError>
                         </configuration>
@@ -97,22 +84,18 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.coderplus.maven.plugins</groupId>
                 <artifactId>copy-rename-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -219,76 +202,63 @@
             </plugin>
         </plugins>
     </build>
-
+    <url>https://guicedee.com</url>
     <dependencies>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-api</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-context</artifactId>
             <optional>true</optional>
         </dependency>
-
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk-trace</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk-common</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk-metrics</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk-logs</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk-extension-autoconfigure-spi</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
             <version>${opentelemetry.version}</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk-testing</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-exporter-otlp</artifactId>
@@ -308,43 +278,34 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-exporter-sender-jdk</artifactId>
             <version>${opentelemetry.version}</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-exporter-common</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
             <artifactId>opentelemetry-log4j-appender-2.17</artifactId>
             <version>2.23.0-alpha</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-opentelemetry</artifactId>
             <optional>true</optional>
         </dependency>
-
-
-
     </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -368,8 +329,6 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
-
 </project>

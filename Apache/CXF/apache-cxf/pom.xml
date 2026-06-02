@@ -1,30 +1,39 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
+        <version>2.1.1-SNAPSHOT</version>
     </parent>
-
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>org.apache.cxf</artifactId>
     <name>Apache CXF</name>
-
     <!--<version>${cxf.core.version}</version>-->
-    <version>2.1.0-SNAPSHOT</version>
-
+    <version>2.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>Apache CXF is an open-source services framework that aids in
         the development of services using front-end programming APIs, like JAX-WS
         and JAX-RS.
     </description>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <site.deploy.url>scp://people.apache.org/www/cxf.apache.org/maven-site</site.deploy.url>
     </properties>
-
+    <url>https://guicedee.com</url>
+    <scm>
+        <url>https://github.com/GuicedEE/Services</url>
+        <connection>scm:git:https://github.com/GuicedEE/Services.git</connection>
+        <developerConnection>scm:git:https://github.com/GuicedEE/Services.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <id>GedMarc</id>
+            <name>Marc Magon</name>
+            <email>marc.magon@gmail.com</email>
+            <url>https://github.com/GedMarc</url>
+        </developer>
+    </developers>
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -78,40 +87,30 @@
             <groupId>jakarta.ws.rs</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
         </dependency>
-
-
-
         <dependency>
             <groupId>org.xmlresolver</groupId>
             <artifactId>xmlresolver</artifactId>
             <version>5.2.2</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>3.3.0</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>com.sun.xml.fastinfoset</groupId>
             <artifactId>FastInfoset</artifactId>
             <version>2.1.1</version>
         </dependency>
-
-
-
         <dependency>
             <groupId>xml-resolver</groupId>
             <artifactId>xml-resolver</artifactId>
             <version>1.2</version>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -165,7 +164,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -226,30 +224,25 @@
                         </goals>
                         <configuration>
                             <target>
-                                <delete failonerror="false"
-                                        file="target/source-output/org/xmlresolver/utils/SaxProducer.java"/>
+                                <delete failonerror="false" file="target/source-output/org/xmlresolver/utils/SaxProducer.java" />
                             </target>
                             <failOnError>true</failOnError>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.coderplus.maven.plugins</groupId>
                 <artifactId>copy-rename-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -325,7 +318,6 @@
             </plugin>
         </plugins>
     </build>
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -333,6 +325,4 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-
 </project>

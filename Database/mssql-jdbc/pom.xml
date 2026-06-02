@@ -1,34 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
-
+        <version>2.1.1-SNAPSHOT</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>mssql-jdbc</artifactId>
     <packaging>jar</packaging>
-    <version>2.1.0-SNAPSHOT</version>
+    <version>2.1.1-SNAPSHOT</version>
     <name>mssqljdbc</name>
     <!--<version>${mssql.jdbc}</version>-->
-
     <description>
         Microsoft JDBC Driver for SQL Server.
     </description>
-
-    <url>https://github.com/Microsoft/mssql-jdbc</url>
-
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
-        </license>
-    </licenses>
-
+    <url>https://guicedee.com</url>
     <dependencies>
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
@@ -37,25 +24,21 @@
             <type>dll</type>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>${mssql.jdbc}.jre11</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>com.guicedee.modules.services</groupId>
             <artifactId>azure-identity</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk18on</artifactId>
@@ -66,16 +49,13 @@
             <artifactId>bcpkix-jdk18on</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
             <version>4.13.1</version>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -99,27 +79,22 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.coderplus.maven.plugins</groupId>
                 <artifactId>copy-rename-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -133,10 +108,8 @@
                     </additionalDependencies>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -145,7 +118,6 @@
                 <version>${mssql.jdbc}.jre11</version>
                 <optional>true</optional>
             </dependency>
-
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>standalone-bom</artifactId>
@@ -155,5 +127,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>

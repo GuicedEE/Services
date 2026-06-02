@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2008-2018, Hazelcast, Inc. All Rights Reserved.
   ~
@@ -12,7 +13,8 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  --><!--
+  -->
+<!--
   - Licensed under the Apache License, Version 2.0 (the "License");
   - you may not use this file except in compliance with the License.
   - You may obtain a copy of the License at
@@ -25,106 +27,79 @@
   - See the License for the specific language governing permissions and
   - limitations under the License.
 -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
+        <version>2.1.1-SNAPSHOT</version>
     </parent>
-
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>hazelcast-all</artifactId>
     <name>hazelcast-all</name>
     <!--<version>${hazelcast.version}</version>-->
-    <version>2.1.0-SNAPSHOT</version>
+    <version>2.1.1-SNAPSHOT</version>
     <description>Kubernetes Service Discovery for Hazelcast Discovery SPI</description>
-    <url>http://github.com/hazelcast/hazelcast-kubernetes</url>
     <inceptionYear>2015</inceptionYear>
     <packaging>jar</packaging>
-
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
     </properties>
-
-    <licenses>
-        <license>
-            <name>APACHE LICENSE 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-        <license>
-            <name>Hazelcast Community License</name>
-            <url>http://hazelcast.com/hazelcast-community-license</url>
-        </license>
-    </licenses>
-
+    <url>https://guicedee.com</url>
     <dependencies>
         <dependency>
             <groupId>com.guicedee.modules.services</groupId>
             <artifactId>cache-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>jakarta.activation</groupId>
             <artifactId>jakarta.activation-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.guicedee.modules.services</groupId>
             <artifactId>hibernate-core</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
             <version>${hazelcast.version}</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <optional>true</optional>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
             <optional>true</optional>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline-terminal</artifactId>
             <version>3.25.0</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline-reader</artifactId>
             <version>3.25.0</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
             <version>4.2.23</version>
             <optional>true</optional>
         </dependency>
-
-
         <dependency>
             <groupId>com.github.spotbugs</groupId>
             <artifactId>spotbugs-annotations</artifactId>
@@ -132,15 +107,12 @@
             <optional>true</optional>
             <scope>provided</scope>
         </dependency>
-
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <optional>true</optional>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
@@ -148,31 +120,26 @@
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>jakarta.jms</groupId>
             <artifactId>jakarta.jms-api</artifactId>
             <optional>true</optional>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-
         <dependency>
             <groupId>ch.randelshofer</groupId>
             <artifactId>fastdoubleparser</artifactId>
             <version>1.0.0</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>net.openhft</groupId>
             <artifactId>affinity</artifactId>
@@ -189,7 +156,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
@@ -197,9 +163,7 @@
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -229,7 +193,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -244,7 +207,7 @@
                             <target>
                                 <!-- Hazelcast sources use jakarta.annotation.CheckReturnValue which
                                      doesn't exist in jakarta.annotation-api 3.0.x. Create a stub. -->
-                                <mkdir dir="target/source-output/jakarta/annotation"/>
+                                <mkdir dir="target/source-output/jakarta/annotation" />
                                 <echo file="target/source-output/jakarta/annotation/CheckReturnValue.java">package jakarta.annotation;
 import java.lang.annotation.*;
 @Documented @Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.TYPE, ElementType.PACKAGE})
@@ -256,22 +219,18 @@ import java.lang.annotation.*;
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.coderplus.maven.plugins</groupId>
                 <artifactId>copy-rename-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -352,10 +311,8 @@ import java.lang.annotation.*;
                     </additionalDependencies>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -386,7 +343,6 @@ import java.lang.annotation.*;
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>google-bom</artifactId>
@@ -394,7 +350,6 @@ import java.lang.annotation.*;
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>jboss-bom</artifactId>
@@ -404,5 +359,4 @@ import java.lang.annotation.*;
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>
