@@ -217,6 +217,13 @@ These are shaded versions of third-party libraries with added module-info.java d
 | com.github.librepdf:openpdf | com.guicedee.modules.services:openpdf | com.lowagie.text |
 | io.swagger:swagger-core | com.guicedee.modules.services:swagger | io.swagger |
 
+- **GraphQL**: graphql-java, java-dataloader
+
+| Original Coordinates | GuicedEE Coordinates | Module Name |
+|----------------------|----------------------|-------------|
+| com.graphql-java:graphql-java | com.guicedee.modules.services:graphql-java | com.graphqljava |
+| com.graphql-java:java-dataloader | com.guicedee.modules.services:java-dataloader | org.dataloader |
+
 #### MicroProfile
 - **Configuration**: config-core, metrics-core
 

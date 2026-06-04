@@ -179,9 +179,9 @@
             <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.reactivestreams</groupId>
+            <groupId>com.guicedee.modules.services</groupId>
             <artifactId>reactive-streams</artifactId>
-            <version>1.0.3</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
     <build>

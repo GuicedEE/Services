@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.guicedee</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.1.1-SNAPSHOT</version>
+    </parent>
+    <groupId>com.guicedee.modules.services</groupId>
+    <artifactId>graphql-java</artifactId>
+    <name>com.graphqljava</name>
+    <version>2.1.1-SNAPSHOT</version>
+    <description>
+        A JPMS modularized shade of GraphQL-Java (com.graphql-java:graphql-java) exposing the
+        com.graphqljava module for a clean GuicedEE / jlink pipeline. ANTLR remains relocated
+        internally by GraphQL-Java under the graphql.org.antlr.* namespace. The stale Guava copy
+        that GraphQL-Java bundles under graphql.com.google.common.* is stripped out of this shade and
+        its references are rewritten back to com.google.common.* so the module reuses the canonical
+        com.google.guava:guava (module com.google.common) already shipped by GuicedEE. This avoids
+        duplicating Guava and removes the security risk of an out-of-date, embedded copy.
+    </description>
+    <url>https://guicedee.com</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <properties>
+        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>com.graphql-java:graphql-java</include>
+                                </includes>
+                            </artifactSet>
+                            <!--
+                                Drop the Guava copy that GraphQL-Java embeds (relocated under
+                                graphql/com/google/common). We do NOT want a second, stale Guava on
+                                the module path; the canonical com.google.guava:guava (module
+                                com.google.common) is added as a dependency below.
+                            -->
+                            <filters>
+                                <filter>
+                                    <artifact>com.graphql-java:graphql-java</artifact>
+                                    <excludes>
+                                        <exclude>graphql/com/google/**</exclude>
+                                        <exclude>META-INF/maven/com.google.guava/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <!--
+                                Rewrite GraphQL-Java's internal references from the relocated
+                                graphql.com.google.common.* back to their real location
+                                com.google.common.* so they bind to the canonical Guava module.
+                                ANTLR stays relocated under graphql.org.antlr.* and is left untouched.
+                            -->
+                            <relocations>
+                                <relocation>
+                                    <pattern>graphql.com.google</pattern>
+                                    <shadedPattern>com.google</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.coderplus.maven.plugins</groupId>
+                <artifactId>copy-rename-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>javadoc</id>
+                        <configuration>
+                            <!--
+                                GraphQL-Java relocates ANTLR into graphql.org.antlr.* in its bytecode, but its
+                                published -sources.jar keeps the original "import org.antlr.v4.runtime.*". Give the
+                                Javadoc tool the real ANTLR runtime so those imports resolve. This affects only the
+                                Javadoc classpath; ANTLR is not added to the module or exposed to consumers.
+                            -->
+                            <additionalDependencies combine.children="append">
+                                <dependency>
+                                    <groupId>org.antlr</groupId>
+                                    <artifactId>antlr4-runtime</artifactId>
+                                    <version>4.13.2</version>
+                                </dependency>
+                            </additionalDependencies>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java</artifactId>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.graphql-java</groupId>
+                    <artifactId>java-dataloader</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.reactivestreams</groupId>
+                    <artifactId>reactive-streams</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jspecify</groupId>
+                    <artifactId>jspecify</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- The JPMS modularized java-dataloader (module org.dataloader) -->
+        <dependency>
+            <groupId>com.guicedee.modules.services</groupId>
+            <artifactId>java-dataloader</artifactId>
+        </dependency>
+        <!--
+            Canonical Guava (module com.google.common). Replaces the stale copy GraphQL-Java
+            embeds; provided transitively so consumers of com.graphqljava get it on the module path.
+        -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.guicedee.modules.services</groupId>
+            <artifactId>reactive-streams</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jspecify</groupId>
+            <artifactId>jspecify</artifactId>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>standalone-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>guicedee-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
+
