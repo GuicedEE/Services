@@ -213,6 +213,17 @@
             <artifactId>opentelemetry-api</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--
+            Force the incubator API to match ${opentelemetry.version}.
+            opentelemetry-instrumentation-api drags in an older 1.57.0-alpha incubator,
+            which lacks DeclarativeConfigProperties.get(String) used by sdk-common's SdkConfigProvider.
+        -->
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-api-incubator</artifactId>
+            <version>${opentelemetry.version}-alpha</version>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-context</artifactId>

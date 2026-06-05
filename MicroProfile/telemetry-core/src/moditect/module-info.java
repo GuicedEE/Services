@@ -12,7 +12,7 @@ module com.guicedee.modules.services.opentelemetry {
 
 
 	uses io.opentelemetry.context.ContextStorageProvider;
-	uses io.opentelemetry.exporter.internal.http.HttpSenderProvider;
+	uses io.opentelemetry.sdk.common.export.HttpSenderProvider;
 
 	uses io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
 	uses io.opentelemetry.sdk.autoconfigure.spi.ConfigurablePropagatorProvider;
@@ -31,7 +31,7 @@ module com.guicedee.modules.services.opentelemetry {
 	provides io.opentelemetry.api.metrics.MeterProvider with io.opentelemetry.sdk.metrics.SdkMeterProvider;
 	provides io.opentelemetry.api.logs.LoggerProvider with io.opentelemetry.sdk.logs.SdkLoggerProvider;
 
-	provides io.opentelemetry.exporter.internal.http.HttpSenderProvider with
+	provides io.opentelemetry.sdk.common.export.HttpSenderProvider with
 			io.opentelemetry.exporter.sender.jdk.internal.JdkHttpSenderProvider;
 
 	exports io.opentelemetry.api;
