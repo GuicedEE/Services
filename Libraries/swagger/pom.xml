@@ -61,6 +61,14 @@
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
         </dependency>
+        <!-- Optional: swagger-core ModelResolver reflectively reads jakarta.validation
+             constraint annotations (e.g. @NotNull) off scanned DTOs. Provides the module name
+             for the `requires static jakarta.validation` directive. -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

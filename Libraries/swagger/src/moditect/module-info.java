@@ -8,6 +8,13 @@ module com.guicedee.modules.services.openapi {
 	requires jakarta.ws.rs;
 	requires jakarta.xml.bind;
 
+	// Optional bean-validation integration: swagger-core's ModelResolver reflectively reads
+	// jakarta.validation constraint annotations (e.g. @NotNull) off scanned resource DTOs while
+	// building the OpenAPI model. The dependency is optional at compile/run time, but because
+	// jakarta.validation is present in the resolved module graph of any app that uses it, this
+	// static requires still yields the runtime readability edge ModelResolver needs.
+	requires static jakarta.validation;
+
 	requires org.apache.commons.lang3;
 	
 	requires static com.fasterxml.jackson.jakarta.rs.json;
