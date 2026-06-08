@@ -22,6 +22,7 @@ module org.hibernate.orm.core {
 	requires java.desktop;
 	requires net.bytebuddy;
 
+
 //	requires java.management;
 //	requires dom4j;
 
