@@ -49,16 +49,10 @@ module io.vertx.mutiny {
 
 
     exports io.smallrye.mutiny.vertx;
-    exports io.smallrye.mutiny.vertx.codegen;
-    exports io.smallrye.mutiny.vertx.codegen.lang;
-    exports io.smallrye.mutiny.vertx.codegen.methods;
     exports io.smallrye.mutiny.vertx.core;
     exports io.smallrye.mutiny.vertx.impl;
 
     opens io.smallrye.mutiny.vertx to io.vertx.core;
-    opens io.smallrye.mutiny.vertx.codegen to io.vertx.core;
-    opens io.smallrye.mutiny.vertx.codegen.lang to io.vertx.core;
-    opens io.smallrye.mutiny.vertx.codegen.methods to io.vertx.core;
     opens io.smallrye.mutiny.vertx.core to io.vertx.core;
     opens io.smallrye.mutiny.vertx.impl to io.vertx.core;
 
@@ -102,9 +96,6 @@ module io.vertx.mutiny {
     opens io.smallrye.mutiny.tuples to io.vertx.core;
     opens io.smallrye.mutiny.unchecked to io.vertx.core;
     opens io.smallrye.mutiny.vertx to io.vertx.core;
-    opens io.smallrye.mutiny.vertx.codegen to io.vertx.core;
-    opens io.smallrye.mutiny.vertx.codegen.lang to io.vertx.core;
-    opens io.smallrye.mutiny.vertx.codegen.methods to io.vertx.core;
     opens io.smallrye.mutiny.vertx.core to io.vertx.core;
     opens io.smallrye.mutiny.vertx.impl to io.vertx.core;
 */

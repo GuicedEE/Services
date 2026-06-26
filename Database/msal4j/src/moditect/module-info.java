@@ -14,8 +14,8 @@ module com.azure.identity {
 
     requires com.google.gson;
 
-    requires com.fasterxml.jackson.databind;
-    requires com.fasterxml.jackson.core;
+    requires tools.jackson.databind;
+    requires tools.jackson.core;
     requires com.fasterxml.jackson.annotation;
 
     requires org.json;
@@ -31,7 +31,7 @@ module com.azure.identity {
   //  uses reactor.blockhound.integration.BlockHoundIntegration;
  //   provides reactor.blockhound.integration.BlockHoundIntegration with io.netty.util.internal.Hidden.NettyBlockHoundIntegration;
 
-    opens com.azure.identity.implementation to com.fasterxml.jackson.databind;
+    opens com.azure.identity.implementation to tools.jackson.databind;
 
-    opens com.microsoft.aad.msal4j to  com.fasterxml.jackson.databind;
+    opens com.microsoft.aad.msal4j to  tools.jackson.databind;
 }

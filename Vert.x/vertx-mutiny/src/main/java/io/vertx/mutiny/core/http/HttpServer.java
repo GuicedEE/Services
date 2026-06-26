@@ -391,10 +391,10 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
    * @return the {@link io.smallrye.mutiny.Uni uni} firing the result of the operation when completed, or a failure if the operation failed.
    */
   @CheckReturnValue
-  public io.smallrye.mutiny.Uni<io.vertx.mutiny.core.http.HttpServer> listen(io.vertx.mutiny.core.net.SocketAddress address) { 
+  public io.smallrye.mutiny.Uni<io.vertx.mutiny.core.http.HttpServer> listen(io.vertx.core.net.SocketAddress address) { 
     // In Vert.x 5, the listen method signature has changed to return a Future directly
     try {
-        Future<io.vertx.core.http.HttpServer> future = delegate.listen(address.getDelegate());
+        Future<io.vertx.core.http.HttpServer> future = delegate.listen(address);
         return UniHelper.toUni(future)
                 .map(server -> HttpServer.newInstance(server));
     } catch (Exception e) {
@@ -403,27 +403,27 @@ public class HttpServer implements io.smallrye.mutiny.vertx.MutinyDelegate, io.v
   }
 
   /**
-   * Blocking variant of {@link io.vertx.mutiny.core.http.HttpServer#listen(io.vertx.mutiny.core.net.SocketAddress)}.
+   * Blocking variant of {@link io.vertx.mutiny.core.http.HttpServer#listen(io.vertx.core.net.SocketAddress)}.
    * <p>
    * This method waits for the completion of the underlying asynchronous operation.
    * If the operation completes successfully, the result is returned, otherwise the failure is thrown (potentially wrapped in a RuntimeException).
    * @param address the address to listen on
    * @return the HttpServer instance produced by the operation.
    */
-  public io.vertx.mutiny.core.http.HttpServer listenAndAwait(io.vertx.mutiny.core.net.SocketAddress address) { 
+  public io.vertx.mutiny.core.http.HttpServer listenAndAwait(io.vertx.core.net.SocketAddress address) { 
     return (io.vertx.mutiny.core.http.HttpServer) listen(address).await().indefinitely();
   }
 
   /**
-   * Variant of {@link io.vertx.mutiny.core.http.HttpServer#listen(io.vertx.mutiny.core.net.SocketAddress)} that ignores the result of the operation.
+   * Variant of {@link io.vertx.mutiny.core.http.HttpServer#listen(io.vertx.core.net.SocketAddress)} that ignores the result of the operation.
    * <p>
-   * This method subscribes on the result of {@link io.vertx.mutiny.core.http.HttpServer#listen(io.vertx.mutiny.core.net.SocketAddress)}, but discards the outcome (item or failure).
-   * This method is useful to trigger the asynchronous operation from {@link io.vertx.mutiny.core.http.HttpServer#listen(io.vertx.mutiny.core.net.SocketAddress)} but you don't need to compose it with other operations.
+   * This method subscribes on the result of {@link io.vertx.mutiny.core.http.HttpServer#listen(io.vertx.core.net.SocketAddress)}, but discards the outcome (item or failure).
+   * This method is useful to trigger the asynchronous operation from {@link io.vertx.mutiny.core.http.HttpServer#listen(io.vertx.core.net.SocketAddress)} but you don't need to compose it with other operations.
    * @param address the address to listen on
    * @return the instance of HttpServer to chain method calls.
    */
   @Fluent
-  public io.vertx.mutiny.core.http.HttpServer listenAndForget(io.vertx.mutiny.core.net.SocketAddress address) { 
+  public io.vertx.mutiny.core.http.HttpServer listenAndForget(io.vertx.core.net.SocketAddress address) { 
     listen(address).subscribe().with(io.smallrye.mutiny.vertx.UniHelper.NOOP);
     return this;
   }

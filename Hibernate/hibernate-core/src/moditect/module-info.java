@@ -9,7 +9,7 @@ module org.hibernate.orm.core {
 	requires transitive jakarta.persistence;
 	requires transitive jakarta.validation;
 	//requires transitive org.hibernate.commons.annotations;
-	requires transitive com.fasterxml.jackson.databind;
+	requires transitive tools.jackson.databind;
 
 	
 	requires org.jboss.logging;
@@ -108,7 +108,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate.boot;
 	exports org.hibernate.resource.transaction.spi;
 
-	//opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
+	//opens org.hibernate.jpa.boot.internal to tools.jackson.databind;
 
 	exports org.hibernate.bytecode.enhance.internal.bytebuddy;
 	
@@ -363,7 +363,7 @@ module org.hibernate.orm.core {
 	opens org.hibernate.xsd.mapping;
 	opens org.hibernate.boot.jaxb.configuration.spi;
 
-	//opens org.hibernate.jpa.boot.internal to com.fasterxml.jackson.databind;
+	//opens org.hibernate.jpa.boot.internal to tools.jackson.databind;
 
 //	exports org.hibernate.internal.util.config to com.hazelcast.all, com.hazelcast.hibernate;
 

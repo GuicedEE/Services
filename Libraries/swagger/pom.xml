@@ -26,21 +26,17 @@
             <artifactId>jakarta.ws.rs-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
+            <groupId>tools.jackson.jakarta.rs</groupId>
             <artifactId>jackson-jakarta-rs-base</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
+            <groupId>tools.jackson.jakarta.rs</groupId>
             <artifactId>jackson-jakarta-rs-yaml-provider</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-        </dependency>
         <!-- Swagger runtime dependencies -->
         <dependency>
-            <groupId>io.swagger.core.v3</groupId>
+            <groupId>io.github.vpelikh</groupId>
             <artifactId>swagger-jaxrs2-jakarta</artifactId>
             <optional>true</optional>
         </dependency>
@@ -85,10 +81,10 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>io.swagger.core.v3:*:*</include>
+                                    <include>io.github.vpelikh:*:*</include>
                                     <include>org.yaml:snakeyaml:*</include>
-                                    <include>com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-yaml-provider</include>
-                                    <include>com.fasterxml.jackson.dataformat:jackson-dataformat-yaml</include>
+                                    <include>tools.jackson.jakarta.rs:jackson-jakarta-rs-yaml-provider</include>
+                                    <include>tools.jackson.dataformat:jackson-dataformat-yaml</include>
                                 </includes>
                             </artifactSet>
                         </configuration>

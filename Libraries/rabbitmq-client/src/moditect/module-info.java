@@ -9,7 +9,7 @@ module com.rabbitmq.client {
 	requires static java.security.sasl;
 	
 	requires org.slf4j;
-	requires com.fasterxml.jackson.databind;
+	requires tools.jackson.databind;
 	
 	exports com.rabbitmq.client;
 	exports com.rabbitmq.client.impl;

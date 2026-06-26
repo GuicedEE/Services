@@ -8,7 +8,7 @@ module com.guicedee.modules.services.opentelemetry {
 	requires com.google.common;
 
 	requires java.net.http;
-	requires com.fasterxml.jackson.core;
+	requires tools.jackson.core;
 
 
 	uses io.opentelemetry.context.ContextStorageProvider;
@@ -124,43 +124,43 @@ module com.guicedee.modules.services.opentelemetry {
 
 	exports io.vertx.tracing.opentelemetry;
 
-	opens io.opentelemetry.api to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.baggage to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.common to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.incubator to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.incubator.common to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.incubator.config to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.incubator.internal to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.incubator.logs to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.incubator.metrics to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.incubator.propagation to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.incubator.trace to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.logs to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.metrics to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.trace to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.context to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.instrumentation.log4j.appender.v2_17 to com.fasterxml.jackson.databind, com.guicedee.guicedinjection,org.apache.logging.log4j.core;
-	opens io.opentelemetry.instrumentation.log4j.appender.v2_17.internal to com.fasterxml.jackson.databind, com.guicedee.guicedinjection,org.apache.logging.log4j.core;
+	opens io.opentelemetry.api to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.baggage to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.common to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.incubator to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.incubator.common to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.incubator.config to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.incubator.internal to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.incubator.logs to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.incubator.metrics to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.incubator.propagation to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.incubator.trace to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.logs to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.metrics to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.api.trace to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.context to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.instrumentation.log4j.appender.v2_17 to tools.jackson.databind, com.guicedee.guicedinjection,org.apache.logging.log4j.core;
+	opens io.opentelemetry.instrumentation.log4j.appender.v2_17.internal to tools.jackson.databind, com.guicedee.guicedinjection,org.apache.logging.log4j.core;
 
-	opens io.opentelemetry.exporter.otlp.trace to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.exporter.otlp.logs to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.exporter.otlp.metrics to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.exporter.otlp.http.trace to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.exporter.otlp.trace to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.exporter.otlp.logs to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.exporter.otlp.metrics to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.exporter.otlp.http.trace to tools.jackson.databind, com.guicedee.guicedinjection;
 	exports io.opentelemetry.exporter.otlp.http.trace;
 	exports io.opentelemetry.exporter.otlp.http.logs;
-	opens io.opentelemetry.exporter.otlp.http.logs to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.exporter.otlp.http.metrics to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.exporter.otlp.http.logs to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.exporter.otlp.http.metrics to tools.jackson.databind, com.guicedee.guicedinjection;
 
-	opens io.opentelemetry.sdk.autoconfigure to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.sdk to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.sdk.logs to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.sdk.logs.export to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.sdk.metrics to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.sdk.resources to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.sdk.trace to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.sdk.trace.export to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.sdk.trace.data to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.sdk.logs.data to com.fasterxml.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk.autoconfigure to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk.logs to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk.logs.export to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk.metrics to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk.resources to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk.trace to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk.trace.export to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk.trace.data to tools.jackson.databind, com.guicedee.guicedinjection;
+	opens io.opentelemetry.sdk.logs.data to tools.jackson.databind, com.guicedee.guicedinjection;
 
 
 

@@ -20,7 +20,7 @@ module com.sun.jna {
 	requires static java.desktop;
 	
 	requires java.logging;
-	requires com.fasterxml.jackson.core;
+	requires tools.jackson.core;
 	requires com.fasterxml.jackson.annotation;
 
 	exports com.sun.jna.win32 to org.testcontainers;

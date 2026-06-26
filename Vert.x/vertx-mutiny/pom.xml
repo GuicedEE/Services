@@ -361,7 +361,7 @@
 
         <dependency>
             <groupId>io.smallrye.reactive</groupId>
-            <artifactId>vertx-mutiny-generator</artifactId>
+            <artifactId>vertx-mutiny-code-generator</artifactId>
             <optional>true</optional>
         </dependency>
 
@@ -487,7 +487,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
+            <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
