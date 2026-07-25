@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.1.1-SNAPSHOT</version>
+        <version>2.2.0</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>java-dataloader</artifactId>
     <name>org.dataloader</name>
-    <version>2.1.1-SNAPSHOT</version>
+    <version>2.2.0</version>
     <description>
         A JPMS modularized shade of java-dataloader (com.graphql-java:java-dataloader) exposing the
         org.dataloader module for a clean GuicedEE / jlink pipeline.

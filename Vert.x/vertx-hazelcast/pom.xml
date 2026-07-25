@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.1.1-SNAPSHOT</version>
+        <version>2.2.0</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>vertx-hazelcast</artifactId>
@@ -13,7 +13,7 @@
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services/Vert.x/vertx-hazelcast</project.scm.nameUrl>
     </properties>
-    <version>2.1.1-SNAPSHOT</version>
+    <version>2.2.0</version>
     <build>
         <plugins>
             <plugin>
