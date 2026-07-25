@@ -21,6 +21,10 @@
             <groupId>com.guicedee.modules.services</groupId>
             <artifactId>cache-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.smallrye.reactive</groupId>
+            <artifactId>mutiny</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

@@ -34,4 +34,14 @@ public abstract class AbstractCacheInterceptor<I> {
    */
   protected abstract Object proceed(I invocation) throws Throwable;
 
+  /**
+   * Return type for the intercepted method.
+   *
+   * @param invocation The intercepted invocation
+   * @return The intercepted method return type
+   */
+  protected Class<?> getReturnType(I invocation) {
+    return Object.class;
+  }
+
 }

@@ -17,6 +17,8 @@
 package org.jsr107.ri.annotations;
 
 
+import io.smallrye.mutiny.Uni;
+
 import javax.cache.Cache;
 import javax.cache.annotation.CacheKeyGenerator;
 import javax.cache.annotation.CacheResolver;
@@ -71,16 +73,23 @@ public abstract class AbstractCacheResultInterceptor<I> extends AbstractKeyedCac
       result = cache.get(cacheKey);
       if (result != null) {
         //Cache hit, return result
-        return result;
+        return this.createResult(result, invocation);
       }
 
       //Look for a cached exception
-      checkForCachedException(exceptionCache, cacheKey);
+      final Throwable cachedException = getCachedException(exceptionCache, cacheKey);
+      if (cachedException != null) {
+        return this.createFailure(cachedException, invocation);
+      }
     }
 
     try {
       //Call the annotated method
       result = this.proceed(invocation);
+
+      if (result instanceof Uni<?>) {
+        return this.cacheUniResult((Uni<?>) result, cache, cacheKey, exceptionCache, cacheResultAnnotation);
+      }
 
       //Cache non-null result
       if (result != null) {
@@ -105,15 +114,26 @@ public abstract class AbstractCacheResultInterceptor<I> extends AbstractKeyedCac
    */
   protected void checkForCachedException(final Cache<Object, Throwable> exceptionCache, final GeneratedCacheKey cacheKey)
       throws Throwable {
-    if (exceptionCache == null) {
-      return;
-    }
-
-    final Throwable throwable = exceptionCache.get(cacheKey);
+    final Throwable throwable = getCachedException(exceptionCache, cacheKey);
     if (throwable != null) {
       //Found exception, re-throw
       throw throwable;
     }
+  }
+
+  /**
+   * Get a cached exception that needs to be re-thrown.
+   *
+   * @param exceptionCache The exception cache, may be null if no exception caching is being done
+   * @param cacheKey       The cache key
+   * @return The cached exception, or null if no exception is cached
+   */
+  protected Throwable getCachedException(final Cache<Object, Throwable> exceptionCache, final GeneratedCacheKey cacheKey) {
+    if (exceptionCache == null) {
+      return null;
+    }
+
+    return exceptionCache.get(cacheKey);
   }
 
   /**
@@ -156,5 +176,60 @@ public abstract class AbstractCacheResultInterceptor<I> extends AbstractKeyedCac
     }
 
     return null;
+  }
+
+  /**
+   * Cache a Uni item or failure once the Uni is subscribed.
+   *
+   * @param uni                   The Uni returned by the intercepted method
+   * @param cache                 The cache to store non-null items in
+   * @param cacheKey              The cache key
+   * @param exceptionCache        The exception cache, may be null if no exception caching is being done
+   * @param cacheResultAnnotation The cache result annotation
+   * @return A Uni that preserves the original item/failure while updating caches
+   */
+  protected Uni<?> cacheUniResult(final Uni<?> uni, final Cache<Object, Object> cache, final GeneratedCacheKey cacheKey,
+                                  final Cache<Object, Throwable> exceptionCache,
+                                  final CacheResult cacheResultAnnotation) {
+    return uni.onItem().invoke(item -> {
+      if (item != null) {
+        cache.put(cacheKey, item);
+      }
+    }).onFailure().invoke(t -> cacheException(exceptionCache, cacheKey, cacheResultAnnotation, t));
+  }
+
+  /**
+   * Create the method result for a cached value.
+   *
+   * @param result     The cached value
+   * @param invocation The intercepted invocation
+   * @return The cached value, wrapped in a Uni if the method returns Uni
+   */
+  protected Object createResult(final Object result, final I invocation) {
+    if (isUniReturn(invocation)) {
+      return Uni.createFrom().item(result);
+    }
+
+    return result;
+  }
+
+  /**
+   * Create the method result for a cached failure.
+   *
+   * @param throwable  The cached failure
+   * @param invocation The intercepted invocation
+   * @return A failed Uni if the method returns Uni
+   * @throws Throwable The cached failure for non-Uni methods
+   */
+  protected Object createFailure(final Throwable throwable, final I invocation) throws Throwable {
+    if (isUniReturn(invocation)) {
+      return Uni.createFrom().failure(throwable);
+    }
+
+    throw throwable;
+  }
+
+  private boolean isUniReturn(final I invocation) {
+    return Uni.class.isAssignableFrom(getReturnType(invocation));
   }
 }

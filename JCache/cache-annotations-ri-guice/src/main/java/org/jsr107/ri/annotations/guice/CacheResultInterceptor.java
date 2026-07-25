@@ -66,5 +66,11 @@ public class CacheResultInterceptor extends AbstractCacheResultInterceptor<Metho
 	{
 		return invocation.proceed();
 	}
+
+	@Override
+	protected Class<?> getReturnType(MethodInvocation invocation)
+	{
+		return invocation.getMethod().getReturnType();
+	}
 	
 }
