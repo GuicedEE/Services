@@ -8,25 +8,33 @@ module com.github.librepdf.openpdf {
 	requires static imageio.tiff;
 	requires static org.apache.fop;
 
-	exports com.lowagie.text;
-	exports com.lowagie.text.alignment;
-	exports com.lowagie.text.error_messages;
-	exports com.lowagie.text.exceptions;
-	exports com.lowagie.text.factories;
-	exports com.lowagie.text.html;
-	exports com.lowagie.text.html.simpleparser;
-	exports com.lowagie.text.pdf;
-	exports com.lowagie.text.pdf.codec;
-	exports com.lowagie.text.pdf.codec.wmf;
-	exports com.lowagie.text.pdf.collection;
-	exports com.lowagie.text.pdf.crypto;
-	exports com.lowagie.text.pdf.draw;
-	exports com.lowagie.text.pdf.events;
-	exports com.lowagie.text.pdf.fonts;
-	exports com.lowagie.text.pdf.fonts.cmaps;
-	exports com.lowagie.text.pdf.hyphenation;
-	exports com.lowagie.text.pdf.interfaces;
-	exports com.lowagie.text.pdf.internal;
-	exports com.lowagie.text.pdf.parser;
+	// OpenPDF renamed its packages from com.lowagie.text.* to org.openpdf.text.* (the jar
+	// now ships org.openpdf.*, nothing under com.lowagie). Exporting the old names made
+	// every export stale at once:
+	//   InvalidModuleDescriptorException: Package com.lowagie.text not found in module
+	// The list below mirrors the previous API surface 1:1 under the new names. Note the jar
+	// also contains org.openpdf.text.utils / .xml / .xml.simpleparser / .xml.xmp,
+	// org.openpdf.bouncycastle and org.mozilla.universalchardet.* which stay unexported,
+	// as they were before the rename.
+	exports org.openpdf.text;
+	exports org.openpdf.text.alignment;
+	exports org.openpdf.text.error_messages;
+	exports org.openpdf.text.exceptions;
+	exports org.openpdf.text.factories;
+	exports org.openpdf.text.html;
+	exports org.openpdf.text.html.simpleparser;
+	exports org.openpdf.text.pdf;
+	exports org.openpdf.text.pdf.codec;
+	exports org.openpdf.text.pdf.codec.wmf;
+	exports org.openpdf.text.pdf.collection;
+	exports org.openpdf.text.pdf.crypto;
+	exports org.openpdf.text.pdf.draw;
+	exports org.openpdf.text.pdf.events;
+	exports org.openpdf.text.pdf.fonts;
+	exports org.openpdf.text.pdf.fonts.cmaps;
+	exports org.openpdf.text.pdf.hyphenation;
+	exports org.openpdf.text.pdf.interfaces;
+	exports org.openpdf.text.pdf.internal;
+	exports org.openpdf.text.pdf.parser;
 }
 

@@ -19,8 +19,10 @@ module javassist {
 	exports javassist.runtime;
 	exports javassist.scopedpool;
 	exports javassist.tools;
-	exports javassist.tools.reflect;
-	exports javassist.tools.rmi;
-	exports javassist.tools.web;
+	// javassist 3.32.0-GA removed javassist.tools.reflect, javassist.tools.rmi and
+	// javassist.tools.web (3.31.0-GA still shipped all three). Exporting a package the
+	// jar does not contain makes the module unreadable at runtime:
+	//   InvalidModuleDescriptorException: Package javassist.tools.reflect not found in module
+	// Re-add these only if a future upstream release restores those packages.
 
 }

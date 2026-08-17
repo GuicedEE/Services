@@ -20,12 +20,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.2</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>commons-fileupload</artifactId>
     <!--<version>${fileupload.version}</version>-->
-    <version>2.2.0</version>
+    <version>2.2.2</version>
     <name>Commons FileUpload</name>
     <description>
         The Apache Commons FileUpload component provides a simple yet flexible means of adding support for multipart

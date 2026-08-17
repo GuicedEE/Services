@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.2</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>cloudevents</artifactId>
     <name>cloudevents</name>
-    <version>2.2.0</version>
+    <version>2.2.2</version>
     <packaging>jar</packaging>
     <description>
         A modularized test containers implementation
@@ -27,6 +27,15 @@
             <groupId>io.cloudevents</groupId>
             <artifactId>cloudevents-api</artifactId>
             <optional>true</optional>
+            <!-- StandaloneBOM manages this as <scope>provided</scope>, and maven-shade never
+                 shades provided dependencies - it drops them silently, with no "Excluding"
+                 line in the log. That left the shaded jar without io.cloudevents,
+                 io.cloudevents.lang, io.cloudevents.rw and io.cloudevents.types while
+                 module-info still exported them, so every JPMS consumer died with:
+                   InvalidModuleDescriptorException: Package io.cloudevents.rw not found in module
+                 The API types are part of this module's public surface (CloudEvent itself),
+                 so the scope is overridden back to compile here. -->
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.cloudevents</groupId>

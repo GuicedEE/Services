@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.2</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>graphql-java</artifactId>
     <name>com.graphqljava</name>
-    <version>2.2.0</version>
+    <version>2.2.2</version>
     <description>
         A JPMS modularized shade of GraphQL-Java (com.graphql-java:graphql-java) exposing the
         com.graphqljava module for a clean GuicedEE / jlink pipeline. ANTLR remains relocated

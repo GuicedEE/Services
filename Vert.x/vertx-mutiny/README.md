@@ -112,7 +112,7 @@ io.vertx.mutiny
 |---|---|
 | `io.vertx.mutiny.core` | Mutiny wrapper for `Vertx` — the main entry point |
 | `io.vertx.mutiny.core.http` | Mutiny wrappers for `HttpServer`, `HttpClient`, WebSocket |
-| `io.vertx.mutiny.ext.web` | Mutiny wrappers for Vert.x Web `Router`, `Route` |
+| `io.vertx.mutiny.ext.web` | Mutiny wrappers for Vert.x Web `RouterConfig`, `Route` |
 | `io.vertx.mutiny.ext.web.client` | Mutiny wrapper for `WebClient` |
 | `io.vertx.mutiny.ext.web.codec` | Body codecs for web client |
 | `io.vertx.mutiny.ext.web.handler` | Route handlers |

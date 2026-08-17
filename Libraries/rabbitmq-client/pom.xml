@@ -4,13 +4,13 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.2</version>
     </parent>
     <artifactId>amqp-client</artifactId>
     <groupId>com.guicedee.modules.services</groupId>
     <name>RabbitMQ AMQP Client</name>
     <packaging>jar</packaging>
-    <version>2.2.0</version>
+    <version>2.2.2</version>
     <build>
         <plugins>
             <plugin>
@@ -160,8 +160,27 @@
                             <version>33.2.1-jre</version>
                         </additionalDependency>
                         <additionalDependency>
-                            <groupId>tools.jackson.core</groupId>
+                            <!-- amqp-client's own shaded sources (OAuth2ClientCredentialsGrantCredentialsProvider,
+                                 JacksonJsonRpcMapper) import com.fasterxml.jackson.databind.ObjectMapper and
+                                 com.fasterxml.jackson.core.TreeNode - i.e. Jackson 2. The Jackson 3 migration renamed
+                                 this groupId to tools.jackson.core, which is wrong here: that is a third-party
+                                 library's dependency, not GuicedEE's own Jackson usage, and Jackson 3 exposes
+                                 tools.jackson.* packages instead.
+                                 All three are listed explicitly because javadoc's additionalDependencies are NOT
+                                 resolved transitively - databind alone does not bring in core/annotations.
+                                 Javadoc-only; nothing here is shaded or published. -->
+                            <groupId>com.fasterxml.jackson.core</groupId>
                             <artifactId>jackson-databind</artifactId>
+                            <version>2.17.2</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>com.fasterxml.jackson.core</groupId>
+                            <artifactId>jackson-core</artifactId>
+                            <version>2.17.2</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>com.fasterxml.jackson.core</groupId>
+                            <artifactId>jackson-annotations</artifactId>
                             <version>2.17.2</version>
                         </additionalDependency>
                         <additionalDependency>

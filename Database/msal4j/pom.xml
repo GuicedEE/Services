@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.2</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>azure-identity</artifactId>
-    <version>2.2.0</version>
+    <version>2.2.2</version>
     <name>azure-identity</name>
 
     <properties>
@@ -81,6 +81,10 @@
                                 <delete dir="target/source-output/io/netty/util/internal/svm" failonerror="false"/>
                                 <delete file="target/source-output/io/netty/util/NetUtilSubstitutions.java" failonerror="false"/>
                                 <!-- Reactor optional deps -->
+                                <!-- Reactor publishes its Java 8 call-site implementation in the shared sources
+                                     JAR. JDK 25 no longer exposes its sun.misc APIs, so it cannot participate in
+                                     the aggregate shaded javadoc compilation. The runtime class remains shaded. -->
+                                <delete file="target/source-output/reactor/core/publisher/CallSiteSupplierFactory.java" failonerror="false"/>
                                 <delete file="target/source-output/reactor/core/publisher/Traces.java" failonerror="false"/>
                                 <delete file="target/source-output/reactor/core/scheduler/ReactorBlockHoundIntegration.java" failonerror="false"/>
                                 <delete file="target/source-output/reactor/netty/contextpropagation/ChannelContextAccessor.java" failonerror="false"/>
@@ -127,6 +131,11 @@
                             <groupId>io.micrometer</groupId>
                             <artifactId>micrometer-core</artifactId>
                             <version>1.12.5</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.micrometer</groupId>
+                            <artifactId>context-propagation</artifactId>
+                            <version>1.2.1</version>
                         </additionalDependency>
                         <!-- google tink (com.google.crypto.tink.subtle) -->
                         <additionalDependency>

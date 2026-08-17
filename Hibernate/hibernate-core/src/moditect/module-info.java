@@ -546,6 +546,11 @@ module org.hibernate.orm.core {
 	exports org.hibernate.dialect.lock.spi to org.hibernate.reactive;
 	exports org.hibernate.dialect.type to org.hibernate.reactive;
 	exports org.hibernate.loader to org.hibernate.reactive;
+    exports org.hibernate.persister.state.spi to org.hibernate.reactive;
+    exports org.hibernate.persister.state.internal to org.hibernate.reactive;
+    uses org.hibernate.engine.jdbc.batch.spi.BatchBuilder;
+    uses org.hibernate.stat.spi.StatisticsFactory;
+    uses org.hibernate.engine.extension.spi.ExtensionIntegration;
 }
 
 

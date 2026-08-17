@@ -4,13 +4,13 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.2</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>metrics-core</artifactId>
     <name>metrics-core</name>
     <packaging>jar</packaging>
-    <version>2.2.0</version>
+    <version>2.2.2</version>
     <!--<version>${jandex.version}</version>-->
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>

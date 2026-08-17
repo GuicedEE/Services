@@ -51,8 +51,9 @@ module com.guicedee.modules.services.opentelemetry {
 	exports io.opentelemetry.context;
 	exports io.opentelemetry.context.propagation;
 	exports io.opentelemetry.exporter.internal;
-	exports io.opentelemetry.exporter.internal.compression;
-	exports io.opentelemetry.exporter.internal.http;
+	// io.opentelemetry.exporter.internal.compression and .http no longer exist in the
+	// shaded OpenTelemetry version - exporting absent packages breaks module resolution
+	// (InvalidModuleDescriptorException) for every consumer.
 	exports io.opentelemetry.exporter.internal.marshal;
 	exports io.opentelemetry.exporter.internal.metrics;
 	exports io.opentelemetry.exporter.internal.otlp;
@@ -93,7 +94,7 @@ module com.guicedee.modules.services.opentelemetry {
 	exports io.opentelemetry.sdk.internal;
 	exports io.opentelemetry.sdk.logs;
 	exports io.opentelemetry.sdk.logs.data;
-	exports io.opentelemetry.sdk.logs.data.internal;
+	// io.opentelemetry.sdk.logs.data.internal is no longer present in the shaded jar.
 	exports io.opentelemetry.sdk.logs.export;
 	exports io.opentelemetry.sdk.logs.internal;
 	exports io.opentelemetry.sdk.metrics;
@@ -112,7 +113,7 @@ module com.guicedee.modules.services.opentelemetry {
 	exports io.opentelemetry.sdk.resources;
 	exports io.opentelemetry.sdk.testing.exporter;
 	exports io.opentelemetry.sdk.testing.logs;
-	exports io.opentelemetry.sdk.testing.logs.internal;
+	// io.opentelemetry.sdk.testing.logs.internal is no longer present in the shaded jar.
 	exports io.opentelemetry.sdk.testing.metrics;
 	exports io.opentelemetry.sdk.testing.time;
 	exports io.opentelemetry.sdk.testing.trace;
@@ -128,7 +129,9 @@ module com.guicedee.modules.services.opentelemetry {
 	opens io.opentelemetry.api.baggage to tools.jackson.databind, com.guicedee.guicedinjection;
 	opens io.opentelemetry.api.common to tools.jackson.databind, com.guicedee.guicedinjection;
 	opens io.opentelemetry.api.incubator to tools.jackson.databind, com.guicedee.guicedinjection;
-	opens io.opentelemetry.api.incubator.common to tools.jackson.databind, com.guicedee.guicedinjection;
+	// io.opentelemetry.api.incubator.common is not present in the shaded jar. `opens` is
+	// validated by the module system exactly like `exports`, so opening an absent package
+	// breaks resolution just the same.
 	opens io.opentelemetry.api.incubator.config to tools.jackson.databind, com.guicedee.guicedinjection;
 	opens io.opentelemetry.api.incubator.internal to tools.jackson.databind, com.guicedee.guicedinjection;
 	opens io.opentelemetry.api.incubator.logs to tools.jackson.databind, com.guicedee.guicedinjection;
