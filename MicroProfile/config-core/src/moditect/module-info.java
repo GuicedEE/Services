@@ -5,6 +5,7 @@ module io.smallrye.config.core {
 	exports org.eclipse.microprofile.config.inject;
 	
 	requires io.smallrye.common.classloader;
+	requires com.guicedee.client;
 	requires org.jboss.logging;
 	requires io.smallrye.common.constraint;
 

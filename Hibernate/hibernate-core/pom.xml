@@ -19,6 +19,10 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>com.guicedee</groupId>
+            <artifactId>client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
@@ -68,6 +72,12 @@
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate.orm</groupId>
+                    <artifactId>hibernate-scan-jandex</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
@@ -86,6 +96,11 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
@@ -122,6 +137,10 @@
                                 <relocation>
                                     <pattern>org.hibernate.boot.archive.internal.shade</pattern>
                                     <shadedPattern>org.hibernate.boot.archive.internal</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.hibernate.metamodel.internal.shade</pattern>
+                                    <shadedPattern>org.hibernate.metamodel.internal</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

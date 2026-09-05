@@ -85,6 +85,10 @@
     <url>https://guicedee.com</url>
     <dependencies>
         <dependency>
+            <groupId>com.guicedee</groupId>
+            <artifactId>client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.smallrye.config</groupId>
             <artifactId>smallrye-config-core</artifactId>
             <version>3.12.4</version>
@@ -136,7 +140,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.guicedee</groupId>
-                <artifactId>standalone-bom</artifactId>
+                <artifactId>guicedee-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
@@ -144,20 +148,6 @@
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>smallrye-bom</artifactId>
-                <version>${guicedee.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>com.guicedee</groupId>
-                <artifactId>jakarta-bom</artifactId>
-                <version>${guicedee.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>com.guicedee</groupId>
-                <artifactId>jboss-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>

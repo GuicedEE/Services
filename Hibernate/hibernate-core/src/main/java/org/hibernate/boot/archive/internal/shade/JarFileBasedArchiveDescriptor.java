@@ -6,31 +6,30 @@
  */
 package org.hibernate.boot.archive.internal.shade;
 
+import com.guicedee.client.IGuiceContext;
+import io.github.classgraph.Resource;
 import org.hibernate.boot.archive.spi.*;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.net.URI;
 import java.net.URL;
-import java.util.Enumeration;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import java.util.jar.JarInputStream;
-import java.util.logging.Logger;
-import java.util.zip.ZipEntry;
-
-import static org.hibernate.internal.log.UrlMessageBundle.URL_MESSAGE_LOGGER;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 
 /**
- * An ArchiveDescriptor implementation leveraging the {@link java.util.jar.JarFile} API for processing - specifically meant to support the new URL format for JRT and modules
+ * An ArchiveDescriptor implementation that obtains archive entries from the GuicedEE ClassGraph scan.
  *
  * @author Steve Ebersole
  * @author Marc Magon
  */
 public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
 {
+    private final IGuiceContext guiceContext;
+
     /**
      * Constructs a JarFileBasedArchiveDescriptor
      *
@@ -43,245 +42,116 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
             URL archiveUrl,
             String entry)
     {
+        this(archiveDescriptorFactory, archiveUrl, entry, IGuiceContext.instance());
+    }
+
+    /**
+     * Constructs a JarFileBasedArchiveDescriptor using an existing GuicedEE context.
+     *
+     * @param archiveDescriptorFactory The factory creating this
+     * @param archiveUrl               The URL to the archive
+     * @param entry                    The prefix for entries within the archive URL
+     * @param guiceContext             The GuicedEE context that owns the ClassGraph scan
+     */
+    public JarFileBasedArchiveDescriptor(
+            ArchiveDescriptorFactory archiveDescriptorFactory,
+            URL archiveUrl,
+            String entry,
+            IGuiceContext guiceContext)
+    {
         super(archiveDescriptorFactory, archiveUrl, entry);
+        this.guiceContext = Objects.requireNonNull(guiceContext, "guiceContext");
     }
 
     @Override
     public void visitArchive(ArchiveContext context)
     {
-        final JarFile jarFile = resolveJarFileReference();
-        if (jarFile == null)
+        for (Resource resource : getArchiveResources())
         {
-            return;
-        }
-
-        try
-        {
-            final Enumeration<? extends ZipEntry> zipEntries = jarFile.entries();
-            while (zipEntries.hasMoreElements())
+            final String name = normalizePathName(resource.getPathRelativeToClasspathElement());
+            if (getEntryBasePrefix() != null && !name.startsWith(getEntryBasePrefix()))
             {
-                final ZipEntry zipEntry = zipEntries.nextElement();
-                final String entryName = extractName(zipEntry);
-
-                if (getEntryBasePrefix() != null && !entryName.startsWith(getEntryBasePrefix()))
-                {
-                    continue;
-                }
-                if (zipEntry.isDirectory())
-                {
-                    continue;
-                }
-
-                if (entryName.equals(getEntryBasePrefix()))
-                {
-                    // exact match, might be a nested jar entry (ie from jar:file:..../foo.ear!/bar.jar)
-                    //
-                    // This algorithm assumes that the zipped file is only the URL root (including entry), not
-                    // just any random entry
-                    try (final InputStream is = new BufferedInputStream(jarFile.getInputStream(zipEntry));
-                         final JarInputStream jarInputStream = new JarInputStream(is))
-                    {
-                        ZipEntry subZipEntry = jarInputStream.getNextEntry();
-                        while (subZipEntry != null)
-                        {
-                            if (!subZipEntry.isDirectory())
-                            {
-                                String name = extractName(subZipEntry);
-                                final String relativeName = extractRelativeName(subZipEntry);
-                                String nameAdjust = relativeName;
-                                	//System.out.println("visiting - " + name);
-                                if (nameAdjust.startsWith("/modules/"))
-                                {
-                                    nameAdjust = name.substring(9);
-                                    nameAdjust = name.substring(name.indexOf('/') + 1);
-
-                                    name = nameAdjust;
-                                    System.out.println("visiting clean - " + name);
-                                }
-                                final InputStreamAccess inputStreamAccess = buildByteBasedInputStreamAccess(name, jarInputStream);
-
-                                String finalName = name;
-                                final ArchiveEntry entry = new ArchiveEntry()
-                                {
-                                    @Override
-                                    public String getName()
-                                    {
-                                        return finalName;
-                                    }
-
-                                    @Override
-                                    public String getNameWithinArchive()
-                                    {
-                                        return relativeName;
-                                    }
-
-                                    @Override
-                                    public InputStreamAccess getStreamAccess()
-                                    {
-                                        return inputStreamAccess;
-                                    }
-                                };
-
-                                final ArchiveEntryHandler entryHandler = context.obtainArchiveEntryHandler(entry);
-                                entryHandler.handleEntry(entry, context);
-                            }
-
-                            subZipEntry = jarInputStream.getNextEntry();
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        throw new ArchiveException("Error accessing JarFile entry [" + zipEntry.getName() + "]", e);
-                    }
-                }
-                else
-                {
-                    final String name = extractName(zipEntry);
-                    final String relativeName = extractRelativeName(zipEntry);
-                    final InputStreamAccess inputStreamAccess;
-                    try (InputStream is = jarFile.getInputStream(zipEntry))
-                    {
-                        inputStreamAccess = buildByteBasedInputStreamAccess(name, is);
-                    }
-                    catch (IOException e)
-                    {
-                        throw new ArchiveException(
-                                String.format(
-                                        "Unable to access stream from jar file [%s] for entry [%s]",
-                                        jarFile.getName(),
-                                        zipEntry.getName()
-                                )
-                        );
-                    }
-
-                    final ArchiveEntry entry = new ArchiveEntry()
-                    {
-                        @Override
-                        public String getName()
-                        {
-                            return name;
-                        }
-
-                        @Override
-                        public String getNameWithinArchive()
-                        {
-                            return relativeName;
-                        }
-
-                        @Override
-                        public InputStreamAccess getStreamAccess()
-                        {
-                            return inputStreamAccess;
-                        }
-                    };
-
-                    final ArchiveEntryHandler entryHandler = context.obtainArchiveEntryHandler(entry);
-                    entryHandler.handleEntry(entry, context);
-                }
+                continue;
             }
-        }
-        finally
-        {
-            try
-            {
-                jarFile.close();
-            }
-            catch (Exception ignore)
-            {
-            }
+
+            final ArchiveEntry entry = toArchiveEntry(resource, name);
+            final ArchiveEntryHandler entryHandler = context.obtainArchiveEntryHandler(entry);
+            entryHandler.handleEntry(entry, context);
         }
     }
 
     @Override
     public ArchiveEntry findEntry(String path)
     {
-        final JarFile jarFile = resolveJarFileReference();
-        if (jarFile == null)
+        final String normalizedPath = normalizePathName(path);
+        for (Resource resource : getArchiveResources())
         {
-            return null;
-        }
-
-        try
-        {
-            final JarEntry jarEntry = jarFile.getJarEntry(path);
-            if (jarEntry == null)
+            if (normalizedPath.equals(normalizePathName(resource.getPathRelativeToClasspathElement())))
             {
-                return null;
-            }
-            final String name = extractName(jarEntry);
-            final String relativeName = extractRelativeName(jarEntry);
-            final InputStreamAccess inputStreamAccess;
-            try (InputStream is = jarFile.getInputStream(jarEntry))
-            {
-                inputStreamAccess = buildByteBasedInputStreamAccess(name, is);
-            }
-            catch (IOException e)
-            {
-                throw new ArchiveException(
-                        String.format(
-                                "Unable to access stream from jar file [%s] for entry [%s]",
-                                jarFile.getName(),
-                                jarEntry.getName()
-                        )
-                );
-            }
-
-            return new ArchiveEntry()
-            {
-                @Override
-                public String getName()
-                {
-                    return name;
-                }
-
-                @Override
-                public String getNameWithinArchive()
-                {
-                    return relativeName;
-                }
-
-                @Override
-                public InputStreamAccess getStreamAccess()
-                {
-                    return inputStreamAccess;
-                }
-            };
-        }
-        finally
-        {
-            try
-            {
-                jarFile.close();
-            }
-            catch (Exception ignore)
-            {
+                return toArchiveEntry(resource, normalizedPath);
             }
         }
+        return null;
     }
 
-    private JarFile resolveJarFileReference()
+    private List<Resource> getArchiveResources()
     {
+        final URI archiveUri;
         try
         {
-            final String filePart = getArchiveUrl().getFile();
-            if (filePart != null && filePart.indexOf(' ') != -1)
-            {
-                // unescaped (from the container), keep as is
-                return new JarFile(getArchiveUrl().getFile());
-            }
-            else
-            {
-                return new JarFile(getArchiveUrl().toURI().getSchemeSpecificPart());
-            }
-        }
-        catch (IOException e)
-        {
-            URL_MESSAGE_LOGGER.logUnableToFindFileByUrl(getArchiveUrl(), e);
+            archiveUri = getArchiveUrl().toURI().normalize();
         }
         catch (URISyntaxException e)
         {
-            URL_MESSAGE_LOGGER.logMalformedUrl(getArchiveUrl(), e);
+            throw new ArchiveException("Malformed archive URL [" + getArchiveUrl() + "]", e);
         }
-        return null;
+
+        final List<Resource> resources = new ArrayList<>();
+        for (Resource resource : guiceContext.getScanResult().getAllResources())
+        {
+            URI classpathElementUri = resource.getClasspathElementURI();
+            if (classpathElementUri != null && archiveUri.equals(classpathElementUri.normalize()))
+            {
+                resources.add(resource);
+            }
+        }
+        return resources;
+    }
+
+    private ArchiveEntry toArchiveEntry(Resource resource, String name)
+    {
+        final String relativeName = getEntryBasePrefix() != null && name.contains(getEntryBasePrefix())
+                ? name.substring(getEntryBasePrefix().length())
+                : name;
+        final InputStreamAccess inputStreamAccess;
+        try (InputStream inputStream = resource.open())
+        {
+            inputStreamAccess = buildByteBasedInputStreamAccess(name, inputStream);
+        }
+        catch (IOException e)
+        {
+            throw new ArchiveException("Unable to access ClassGraph resource [" + resource.getURI() + "]", e);
+        }
+
+        return new ArchiveEntry()
+        {
+            @Override
+            public String getName()
+            {
+                return name;
+            }
+
+            @Override
+            public String getNameWithinArchive()
+            {
+                return relativeName;
+            }
+
+            @Override
+            public InputStreamAccess getStreamAccess()
+            {
+                return inputStreamAccess;
+            }
+        };
     }
 }

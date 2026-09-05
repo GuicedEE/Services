@@ -1,4 +1,5 @@
 module org.hibernate.orm.core {
+	requires com.guicedee.client;
 	requires transitive java.sql;
 	//requires com.guicedee.guicedinjection;
 	
@@ -400,6 +401,7 @@ module org.hibernate.orm.core {
 
 	provides jakarta.persistence.spi.PersistenceProvider with org.hibernate.jpa.HibernatePersistenceProvider;
 	provides org.hibernate.bytecode.spi.BytecodeProvider with org.hibernate.bytecode.internal.bytebuddy.BytecodeProviderImpl;
+	provides org.hibernate.boot.archive.scan.spi.ScannerFactory with com.guicedee.modules.services.hibernate.scan.ClassGraphScannerFactory;
 
 
 	opens org.hibernate.cache.spi.entry;
