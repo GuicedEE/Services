@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.2</version>
+        <version>2.2.3</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>mssql-jdbc</artifactId>
     <packaging>jar</packaging>
-    <version>2.2.2</version>
+    <version>2.2.3</version>
     <name>mssqljdbc</name>
     <!--<version>${mssql.jdbc}</version>-->
     <description>
@@ -38,6 +38,8 @@
         <dependency>
             <groupId>com.guicedee.modules.services</groupId>
             <artifactId>azure-identity</artifactId>
+            <!-- Azure authentication is optional, as in the upstream JDBC driver. -->
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
@@ -52,7 +54,7 @@
         <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
-            <version>4.13.1</version>
+            <version>${antlr4-runtime.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

@@ -21,6 +21,7 @@ open module org.testcontainers {
 	requires org.reactivestreams;
 
 	exports org.testcontainers.containers;
+	exports org.testcontainers.mssqlserver;
 	exports org.testcontainers.containers.wait.strategy;
 	exports org.testcontainers.containers.output;
 	exports org.testcontainers.containers.startupcheck;

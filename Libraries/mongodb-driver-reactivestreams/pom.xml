@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.2</version>
+        <version>2.2.3</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>mongodb-driver-reactivestreams</artifactId>
     <name>org.mongodb.driver.reactivestreams</name>
-    <version>2.2.2</version>
+    <version>2.2.3</version>
     <description>
         JPMS modularized shade of org.mongodb:mongodb-driver-reactivestreams exposing the
         org.mongodb.driver.reactivestreams module. This is the driver io.vertx:vertx-mongo-client

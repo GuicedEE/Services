@@ -3,6 +3,7 @@ open module com.hazelcast.all {
 	requires transitive cache.api;
 	
 	requires java.transaction.xa;
+	requires java.sql;
 	requires java.management;
 	
 	requires static  jdk.unsupported;

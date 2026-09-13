@@ -1,6 +1,7 @@
 package org.jsr107.ri.annotations.guice;
 
 import com.google.inject.Guice;
+import com.google.inject.util.Modules;
 import io.smallrye.mutiny.Uni;
 import org.jsr107.ri.annotations.guice.module.CacheAnnotationsModule;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +34,9 @@ class CacheResultUniTest {
   @BeforeEach
   void setUp() {
     MapCacheResolverFactory.clear();
-    service = Guice.createInjector(new CacheAnnotationsModule()).getInstance(TestService.class);
+    service = Guice.createInjector(Modules.override(new CacheAnnotationsModule())
+        .with(binder -> binder.bind(CacheResolverFactory.class).to(MapCacheResolverFactory.class)))
+        .getInstance(TestService.class);
   }
 
   @Test

@@ -11,6 +11,8 @@ module org.hibernate.orm.core {
 	requires transitive jakarta.validation;
 	//requires transitive org.hibernate.commons.annotations;
 	requires transitive tools.jackson.databind;
+	requires static com.fasterxml.jackson.databind;
+	requires static com.fasterxml.jackson.core;
 
 	
 	requires org.jboss.logging;

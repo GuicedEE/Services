@@ -18,6 +18,7 @@ module reactor.core {
 	exports reactor.util.context;
 	exports reactor.util.function;
 	exports reactor.util.retry;
+	exports reactor.util.repeat;
 
 	// NOTE: the jar ships META-INF/services for io.micrometer.context.ContextAccessor and
 	// reactor.blockhound.integration.BlockHoundIntegration. Neither interface is on the

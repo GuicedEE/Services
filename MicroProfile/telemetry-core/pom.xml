@@ -4,13 +4,13 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.2</version>
+        <version>2.2.3</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>telemetry-core</artifactId>
     <name>telemetry-core</name>
     <packaging>jar</packaging>
-    <version>2.2.2</version>
+    <version>2.2.3</version>
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
     </properties>
@@ -45,6 +45,15 @@
                                     <exclude>org.jetbrains.kotlin:*</exclude>
                                 </excludes>
                             </artifactSet>
+                            <relocations>
+                                <!-- The incubator configuration API still declares Jackson 2's ObjectMapper.
+                                     Its convertValue(Object, Class) call has the same signature in Jackson 3.
+                                     Keep this relocation specific; Jackson 2 and 3 are not generally binary compatible. -->
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.databind.ObjectMapper</pattern>
+                                    <shadedPattern>tools.jackson.databind.ObjectMapper</shadedPattern>
+                                </relocation>
+                            </relocations>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                             </transformers>
@@ -54,7 +63,7 @@
                                     <excludes>
                                         <exclude>module-info.class</exclude>
                                         <exclude>META-INF/versions/*/module-info.class</exclude>
-                                        <exclud>module-info.java</exclud>
+                                        <exclude>module-info.java</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
@@ -95,6 +104,26 @@
             <plugin>
                 <groupId>com.coderplus.maven.plugins</groupId>
                 <artifactId>copy-rename-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafe.version}</version>
+                <configuration>
+                    <!-- The integration test creates a module layer from the packaged shade. -->
+                    <useModulePath>false</useModulePath>
+                    <systemPropertyVariables>
+                        <telemetry.shaded.jar>${project.build.directory}/${project.build.finalName}.jar</telemetry.shaded.jar>
+                    </systemPropertyVariables>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -188,24 +217,9 @@
                             <version>33.2.1-jre</version>
                         </additionalDependency>
                         <additionalDependency>
-                            <!-- Same bulk-rename damage as rabbitmq-client: tools.jackson.core:2.17.2 is not a real
-                                 coordinate. This module has never been built far enough in a release to prove which
-                                 Jackson its shaded sources import, so both majors are supplied, and the Jackson 2
-                                 core/annotations siblings are listed explicitly because additionalDependencies are
-                                 not resolved transitively. Javadoc-only - nothing here is shaded or published. -->
-                            <groupId>com.fasterxml.jackson.core</groupId>
-                            <artifactId>jackson-databind</artifactId>
-                            <version>2.17.2</version>
-                        </additionalDependency>
-                        <additionalDependency>
-                            <groupId>com.fasterxml.jackson.core</groupId>
+                            <groupId>tools.jackson.core</groupId>
                             <artifactId>jackson-core</artifactId>
-                            <version>2.17.2</version>
-                        </additionalDependency>
-                        <additionalDependency>
-                            <groupId>com.fasterxml.jackson.core</groupId>
-                            <artifactId>jackson-annotations</artifactId>
-                            <version>2.17.2</version>
+                            <version>${jackson.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>tools.jackson.core</groupId>
@@ -225,8 +239,26 @@
     <url>https://guicedee.com</url>
     <dependencies>
         <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
         <dependency>
             <groupId>io.opentelemetry</groupId>

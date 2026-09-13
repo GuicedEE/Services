@@ -9,6 +9,8 @@ module com.guicedee.modules.services.opentelemetry {
 
 	requires java.net.http;
 	requires tools.jackson.core;
+	// InstrumentationConfigUtil exposes the Jackson 3 ObjectMapper in its shaded public API.
+	requires transitive tools.jackson.databind;
 
 
 	uses io.opentelemetry.context.ContextStorageProvider;

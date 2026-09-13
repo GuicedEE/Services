@@ -152,7 +152,7 @@ module org.hibernate.reactive {
     opens org.hibernate.reactive.vertx.impl to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
   //  opens org.hibernate.reactive.shaded.hibernate to org.hibernate.orm.core, io.vertx.core, com.guicedee.guicedinjection,io.vertx.codegen.api,net.bytebuddy,io.smallrye.mutiny,org.jboss.logging;
 
- //   provides io.vertx.core.spi.VertxServiceProvider with org.hibernate.reactive.context.impl.ContextualDataStorage;
+    provides io.vertx.core.spi.VertxServiceProvider with org.hibernate.reactive.context.impl.ContextualDataStorage;
     provides jakarta.persistence.spi.PersistenceProvider with org.hibernate.reactive.provider.ReactivePersistenceProvider;
     provides org.hibernate.boot.model.TypeContributor with org.hibernate.reactive.provider.impl.ReactiveTypeContributor;
     provides org.hibernate.engine.jdbc.dialect.spi.DialectResolver with org.hibernate.reactive.engine.jdbc.dialect.internal.ReactiveStandardDialectResolver;

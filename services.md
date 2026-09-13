@@ -19,6 +19,7 @@ The project transforms original libraries into JPMS-compatible versions with the
 |----------------------|----------------------|-------------| ------ |
 | ~~com.fazecast:jSerialComm~~ | ~~com.guicedee.modules.services:jserialcomm~~ | ~~io.jserialcomm~~ | Removed as of 2.11.2 - now properly modularized |
 | org.javassist:javassist | com.guicedee.modules.services:javassist | javassist |
+| com.nimbusds:oauth2-oidc-sdk | com.guicedee.modules.services:oauth2-oidc-sdk | oauth2.oidc.sdk | Bundles content-type, lang-tag, json-smart and accessors-smart; uses native nimbus-jose-jwt and ASM modules |
 | io.cloudevents:cloudevents-core | com.guicedee.modules.services:cloudevents | io.cloudevents |
 | org.testcontainers:testcontainers | com.guicedee.modules.services:testcontainers | org.testcontainers |
 | org.hibernate:hibernate-core | com.guicedee.modules.services:hibernate-core | org.hibernate.core |

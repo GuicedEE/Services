@@ -10,9 +10,14 @@ module org.mongodb.driver.core {
 	requires java.security.jgss;
 	requires java.sql;
 
+	// Driver DNS discovery invokes ServiceLoader from this named module.
+	uses com.mongodb.spi.dns.DnsClientProvider;
+	uses com.mongodb.spi.dns.InetAddressResolverProvider;
+
 	// All optional upstream. The Netty transport is only used when explicitly selected
 	// (default is NIO) and SLF4J is probed reflectively, so neither may be a hard edge.
 	requires static org.slf4j;
+	requires static io.netty.common;
 	requires static io.netty.buffer;
 	requires static io.netty.transport;
 	requires static io.netty.handler;
@@ -42,6 +47,8 @@ module org.mongodb.driver.core {
 	exports com.mongodb.selector;
 	exports com.mongodb.session;
 	exports com.mongodb.spi.dns;
+	exports com.mongodb.observability;
+	exports com.mongodb.observability.micrometer;
 
 	// The com.mongodb.internal.* packages are exported on purpose: the reactivestreams
 	// driver is a separate module and calls straight into them. Under an automatic module
@@ -56,6 +63,10 @@ module org.mongodb.driver.core {
 	exports com.mongodb.internal.bulk;
 	exports com.mongodb.internal.capi;
 	exports com.mongodb.internal.client.model;
+	exports com.mongodb.internal.client;
+	exports com.mongodb.internal.client.model.search;
+	exports com.mongodb.internal.observability;
+	exports com.mongodb.internal.observability.micrometer;
 	exports com.mongodb.internal.client.model.bulk;
 	exports com.mongodb.internal.client.model.changestream;
 	exports com.mongodb.internal.client.vault;
