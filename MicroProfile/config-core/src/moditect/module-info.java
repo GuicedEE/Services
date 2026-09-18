@@ -19,6 +19,7 @@ module io.smallrye.config.core {
 	uses org.eclipse.microprofile.config.spi.ConfigSourceProvider;
 	uses io.smallrye.config.ConfigSourceFactory;
 	uses org.eclipse.microprofile.config.spi.ConfigProviderResolver;
+	uses org.eclipse.microprofile.context.spi.ContextManagerProvider;
 	uses io.smallrye.config.ConfigSourceInterceptor;
 	uses io.smallrye.config.ConfigSourceInterceptorFactory;
 	uses org.eclipse.microprofile.config.spi.Converter;

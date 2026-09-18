@@ -12,7 +12,14 @@ module com.ehcache {
   exports org.ehcache.jsr107.config;
 
   provides javax.cache.spi.CachingProvider with org.ehcache.jsr107.EhcacheCachingProvider;
-  provides org.ehcache.core.spi.service.ServiceFactory with org.ehcache.impl.internal.store.heap.OnHeapStoreProviderFactory,
+  provides org.ehcache.core.spi.service.ServiceFactory with org.ehcache.impl.internal.store.copy.CopierStoreProviderFactory,
+                                                           org.ehcache.impl.internal.store.shared.SharedStorageProviderFactory,
+                                                           org.ehcache.impl.internal.store.shared.store.SharedStoreProviderFactory,
+                                                           org.ehcache.impl.internal.store.shared.authoritative.SharedAuthoritativeTierProviderFactory,
+                                                           org.ehcache.impl.internal.store.shared.caching.SharedCachingTierProviderFactory,
+                                                           org.ehcache.impl.internal.store.shared.caching.lower.SharedLowerCachingTierProviderFactory,
+                                                           org.ehcache.impl.internal.store.shared.caching.higher.SharedHigherCachingTierProviderFactory,
+                                                           org.ehcache.impl.internal.store.heap.OnHeapStoreProviderFactory,
                                                            org.ehcache.impl.internal.store.offheap.OffHeapStoreProviderFactory,
                                                            org.ehcache.impl.internal.store.disk.OffHeapDiskStoreProviderFactory,
                                                            org.ehcache.impl.internal.store.tiering.TieredStoreProviderFactory,

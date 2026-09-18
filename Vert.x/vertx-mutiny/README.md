@@ -10,6 +10,16 @@ A **modular repackage** of the [SmallRye Mutiny Vert.x bindings](https://github.
 
 This module shades the SmallRye Mutiny Vert.x core, web, SQL client, and other bindings into a single module and provides patched `Vertx` and `HttpServer` wrappers updated for the Vert.x 5 API (Future-based instead of callback-based).
 
+## Reactor compilation
+
+The `compile` phase runs Java compilation, JAR creation, shading, and Moditect in
+that order. This supplies the named `io.vertx.mutiny` module to reactor consumers
+such as GuicedEE Cerial before they compile. The wrapper's `target/classes`
+directory alone does not contain the complete module.
+
+JAR creation is forced on each build so shading always starts from the compiled
+wrapper classes. `package` and `install` retain the same modular artifact.
+
 ## ✨ Features
 
 - **Full JPMS module** — ships `module-info.java` (`module io.vertx.mutiny`) with explicit `exports`, `requires`, and `opens` directives
