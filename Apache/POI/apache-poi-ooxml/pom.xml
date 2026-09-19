@@ -205,7 +205,8 @@ limitations under the License.
                         <configuration>
                             <target>
                                 <delete dir="target/source-output/org/apache/batik/script/jacl" failonerror="false"/>
-                                <delete file="target/source-output/org/apache/pdfbox/pdmodel/common/filespecification/PDEmbeddedFile.java" failonerror="false"/>
+                                <delete file="target/source-output/org/apache/pdfbox/pdmodel/common/filespecification/PDEmbeddedFile.java"
+                                        failonerror="false"/>
                             </target>
                         </configuration>
                     </execution>
@@ -246,12 +247,20 @@ limitations under the License.
     </build>
 
     <dependencyManagement>
-    
+
 
         <dependencies>
             <dependency>
                 <groupId>com.guicedee</groupId>
                 <artifactId>apache-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>standalone-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
                 <type>pom</type>

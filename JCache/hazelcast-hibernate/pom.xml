@@ -157,6 +157,13 @@
             </dependency>
             <dependency>
                 <groupId>com.guicedee</groupId>
+                <artifactId>google-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
                 <artifactId>jakarta-bom</artifactId>
                 <version>${guicedee.version}</version>
                 <scope>import</scope>
