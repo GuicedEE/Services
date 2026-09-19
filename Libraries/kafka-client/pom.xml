@@ -6,7 +6,6 @@
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
         <version>2.2.3</version>
-
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>kafka-client</artifactId>
