@@ -21,6 +21,25 @@
         </license>
     </licenses>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>standalone-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>jakarta-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.keycloak</groupId>
@@ -83,8 +102,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
+            <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -109,7 +133,77 @@
                                     <include>org.keycloak</include>
                                 </includes>
                             </artifactSet>
-                            <filters>
+                            <!--
+                                 Rewrite the Jackson 2 references baked into the Keycloak binaries
+                                 onto Jackson 3. Order matters: maven-shade-plugin picks the FIRST
+                                 relocator whose pattern prefixes the class name, so the individually
+                                 renamed/moved types have to come before the two catch-all package
+                                 moves at the bottom.
+
+                                 com.fasterxml.jackson.annotation.* is deliberately NOT relocated -
+                                 Jackson 3 still consumes the Jackson 2.x annotations module (JSTEP-1).
+
+                                 Types with no Jackson 3 counterpart at all (ObjectCodec, the
+                                 jdk8/jsr310 datatype modules) cannot be relocated; the classes that
+                                 used them are replaced outright from src/main/java and the upstream
+                                 copies are filtered out below.
+                            -->
+                            <relocations combine.self="override">
+                                <!-- checked JsonProcessingException -> unchecked JacksonException -->
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.core.JsonProcessingException</pattern>
+                                    <shadedPattern>tools.jackson.core.JacksonException</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.core.JsonParseException</pattern>
+                                    <shadedPattern>tools.jackson.core.exc.StreamReadException</shadedPattern>
+                                </relocation>
+                                <!-- JsonFactory moved down into the json sub-package -->
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.core.JsonFactory</pattern>
+                                    <shadedPattern>tools.jackson.core.json.JsonFactory</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.core.JsonLocation</pattern>
+                                    <shadedPattern>tools.jackson.core.TokenStreamLocation</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.databind.JsonMappingException</pattern>
+                                    <shadedPattern>tools.jackson.databind.DatabindException</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.databind.JsonDeserializer</pattern>
+                                    <shadedPattern>tools.jackson.databind.ValueDeserializer</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.databind.JsonSerializer</pattern>
+                                    <shadedPattern>tools.jackson.databind.ValueSerializer</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.databind.SerializerProvider</pattern>
+                                    <shadedPattern>tools.jackson.databind.SerializationContext</shadedPattern>
+                                </relocation>
+                                <!-- Module (and Module$SetupContext) -> JacksonModule. Case sensitivity
+                                     keeps this from touching com.fasterxml.jackson.databind.module.* -->
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.databind.Module</pattern>
+                                    <shadedPattern>tools.jackson.databind.JacksonModule</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.databind.node.TextNode</pattern>
+                                    <shadedPattern>tools.jackson.databind.node.StringNode</shadedPattern>
+                                </relocation>
+                                <!-- everything else keeps its simple name and just changes package root -->
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.core</pattern>
+                                    <shadedPattern>tools.jackson.core</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.fasterxml.jackson.databind</pattern>
+                                    <shadedPattern>tools.jackson.databind</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <filters combine.self="override">
                                 <filter>
                                     <artifact>*:*</artifact>
                                     <excludes>
@@ -119,6 +213,38 @@
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>module-info.class</exclude>
                                         <exclude>META-INF/versions/**/module-info.class</exclude>
+                                    </excludes>
+                                </filter>
+                                <!--
+                                     Drop the upstream copies of the classes re-implemented against
+                                     Jackson 3 in src/main/java. The project artifact is shaded first
+                                     so ours would win on duplicate anyway, but being explicit keeps
+                                     the override list greppable and fails loudly if one goes stale.
+                                -->
+                                <filter>
+                                    <artifact>org.keycloak:keycloak-core</artifact>
+                                    <excludes>
+                                        <exclude>org/keycloak/util/JsonSerialization.class</exclude>
+                                        <exclude>org/keycloak/util/JsonSerialization$*.class</exclude>
+                                        <exclude>org/keycloak/json/StringListMapDeserializer.class</exclude>
+                                        <exclude>org/keycloak/json/StringListMapDeserializer$*.class</exclude>
+                                        <exclude>org/keycloak/json/StringOrArrayDeserializer.class</exclude>
+                                        <exclude>org/keycloak/json/StringOrArrayDeserializer$*.class</exclude>
+                                        <exclude>org/keycloak/json/StringOrArraySerializer.class</exclude>
+                                        <exclude>org/keycloak/json/StringOrArraySerializer$*.class</exclude>
+                                        <exclude>org/keycloak/representations/workflows/MultivaluedHashMapValueDeserializer.class</exclude>
+                                        <exclude>org/keycloak/representations/workflows/MultivaluedHashMapValueDeserializer$*.class</exclude>
+                                        <exclude>org/keycloak/representations/workflows/MultivaluedHashMapValueSerializer.class</exclude>
+                                        <exclude>org/keycloak/representations/workflows/MultivaluedHashMapValueSerializer$*.class</exclude>
+                                    </excludes>
+                                </filter>
+                                <filter>
+                                    <artifact>org.keycloak:keycloak-services</artifact>
+                                    <excludes>
+                                        <exclude>org/keycloak/services/util/ObjectMapperResolver.class</exclude>
+                                        <exclude>org/keycloak/services/util/ObjectMapperResolver$*.class</exclude>
+                                        <exclude>org/keycloak/protocol/oid4vc/model/CredentialOfferGrantsDeserializer.class</exclude>
+                                        <exclude>org/keycloak/protocol/oid4vc/model/CredentialOfferGrantsDeserializer$*.class</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
