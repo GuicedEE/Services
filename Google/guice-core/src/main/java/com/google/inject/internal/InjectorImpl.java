@@ -52,11 +52,13 @@ import com.google.inject.spi.ProviderBinding;
 import com.google.inject.spi.TypeConverterBinding;
 import com.google.inject.util.Providers;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -1058,16 +1060,37 @@ final class InjectorImpl implements Injector, Lookups {
   /** Returns parameter injectors, or {@code null} if there are no parameters. */
   SingleParameterInjector<?>[] getParametersInjectors(List<Dependency<?>> parameters, Errors errors)
       throws ErrorsException {
+    return getParametersInjectors(parameters, null, errors);
+  }
+
+  SingleParameterInjector<?>[] getConstructorParameterInjectors(
+      InjectionPoint injectionPoint, Errors errors) throws ErrorsException {
+    Constructor<?> constructor = (Constructor<?>) injectionPoint.getMember();
+    return getParametersInjectors(
+        injectionPoint.getDependencies(), constructor.getParameterAnnotations(), errors);
+  }
+
+  private SingleParameterInjector<?>[] getParametersInjectors(
+      List<Dependency<?>> parameters, Annotation[][] annotations, Errors errors)
+      throws ErrorsException {
     if (parameters.isEmpty()) {
       return null;
     }
 
     int numErrorsBefore = errors.size();
     SingleParameterInjector<?>[] result = new SingleParameterInjector<?>[parameters.size()];
-    int i = 0;
-    for (Dependency<?> parameter : parameters) {
+    Map<Class<? extends Annotation>, Map<Key<?>, InternalFactory<?>>> scopedFactories =
+        annotations == null ? null : new HashMap<>();
+    for (int i = 0; i < parameters.size(); i++) {
+      Dependency<?> parameter = parameters.get(i);
       try {
-        result[i++] = createParameterInjector(parameter, errors.withSource(parameter));
+        Errors parameterErrors = errors.withSource(parameter);
+        if (annotations == null) {
+          result[i] = createParameterInjector(parameter, parameterErrors);
+        } else {
+          result[i] = createConstructorParameterInjector(
+              parameter, annotations[i], scopedFactories, parameterErrors);
+        }
       } catch (ErrorsException rethrownBelow) {
         // rethrown below
       }
@@ -1082,6 +1105,59 @@ final class InjectorImpl implements Injector, Lookups {
     BindingImpl<? extends T> binding =
         getBindingOrThrow(dependency.getKey(), errors, JitLimitation.NO_JIT);
     return new SingleParameterInjector<T>(dependency, binding);
+  }
+
+  private <T> SingleParameterInjector<T> createConstructorParameterInjector(
+      Dependency<T> dependency,
+      Annotation[] annotations,
+      Map<Class<? extends Annotation>, Map<Key<?>, InternalFactory<?>>> scopedFactories,
+      Errors errors) throws ErrorsException {
+    int before = errors.size();
+    Class<? extends Annotation> scopeAnnotation =
+        findScopeAnnotation(errors, annotations);
+    errors.throwIfNewErrors(before);
+    return scopeAnnotation == null
+        ? createParameterInjector(dependency, errors)
+        : new SingleParameterInjector<>(
+            dependency, getScopedFactory(dependency, scopeAnnotation, scopedFactories, errors));
+  }
+
+  <T> InternalFactory<? extends T> getScopedFactory(
+      Dependency<T> dependency,
+      Class<? extends Annotation> scopeAnnotation,
+      Map<Class<? extends Annotation>, Map<Key<?>, InternalFactory<?>>> scopedFactories,
+      Errors errors) throws ErrorsException {
+    Map<Key<?>, InternalFactory<?>> factories =
+        scopedFactories.computeIfAbsent(scopeAnnotation, unused -> new HashMap<>());
+    InternalFactory<?> factory = factories.get(dependency.getKey());
+    if (factory == null) {
+      int before = errors.size();
+      Scoping scoping = Scoping.makeInjectable(Scoping.forAnnotation(scopeAnnotation), this, errors);
+      errors.throwIfNewErrors(before);
+      BindingImpl<? extends T> binding =
+          getBindingOrThrow(dependency.getKey(), errors, JitLimitation.NO_JIT);
+      Key<T> privateKey =
+          Key.get(dependency.getKey().getTypeLiteral(), UniqueAnnotations.create());
+      factory = Scoping.scope(privateKey, this, binding.getInternalFactory(), dependency, scoping);
+      factories.put(dependency.getKey(), factory);
+    }
+    @SuppressWarnings("unchecked")
+    InternalFactory<? extends T> typed = (InternalFactory<? extends T>) factory;
+    return typed;
+  }
+
+  <T> InternalFactory<? extends T> getFieldFactory(
+      Dependency<T> dependency,
+      Annotation[] annotations,
+      Map<Class<? extends Annotation>, Map<Key<?>, InternalFactory<?>>> scopedFactories,
+      Errors errors) throws ErrorsException {
+    int before = errors.size();
+    Class<? extends Annotation> scopeAnnotation =
+        findScopeAnnotation(errors, annotations);
+    errors.throwIfNewErrors(before);
+    return scopeAnnotation == null
+        ? getBindingOrThrow(dependency.getKey(), errors, JitLimitation.NO_JIT).getInternalFactory()
+        : getScopedFactory(dependency, scopeAnnotation, scopedFactories, errors);
   }
 
   /** Invokes a method. */
