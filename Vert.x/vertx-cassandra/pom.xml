@@ -75,7 +75,6 @@
         <dependency>
             <groupId>com.datastax.oss</groupId>
             <artifactId>java-driver-core</artifactId>
-            <version>4.15.0</version>
         </dependency>
         <dependency>
             <groupId>tools.jackson.core</groupId>

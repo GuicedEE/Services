@@ -85,37 +85,37 @@
                         <additionalDependency>
                             <groupId>net.shibboleth.utilities</groupId>
                             <artifactId>java-support</artifactId>
-                            <version>7.5.2</version>
+                            <version>${javadoc.java-support.7.5.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.opensaml</groupId>
                             <artifactId>opensaml-core</artifactId>
-                            <version>3.4.6</version>
+                            <version>${javadoc.opensaml3.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.opensaml</groupId>
                             <artifactId>opensaml-saml-api</artifactId>
-                            <version>3.4.6</version>
+                            <version>${javadoc.opensaml3.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.opensaml</groupId>
                             <artifactId>opensaml-security-api</artifactId>
-                            <version>3.4.6</version>
+                            <version>${javadoc.opensaml3.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.opensaml</groupId>
                             <artifactId>opensaml-xmlsec-api</artifactId>
-                            <version>3.4.6</version>
+                            <version>${javadoc.opensaml3.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.opensaml</groupId>
                             <artifactId>opensaml-xmlsec-impl</artifactId>
-                            <version>3.4.6</version>
+                            <version>${javadoc.opensaml3.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.opensaml</groupId>
                             <artifactId>opensaml-saml-impl</artifactId>
-                            <version>3.4.6</version>
+                            <version>${javadoc.opensaml3.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>joda-time</groupId>
@@ -130,7 +130,7 @@
                         <additionalDependency>
                             <groupId>org.cryptomator</groupId>
                             <artifactId>siv-mode</artifactId>
-                            <version>1.6.1</version>
+                            <version>${javadoc.siv-mode.1.6.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>jakarta.servlet</groupId>
@@ -140,7 +140,7 @@
                         <additionalDependency>
                             <groupId>javax.servlet</groupId>
                             <artifactId>javax.servlet-api</artifactId>
-                            <version>3.0.1</version>
+                            <version>${javadoc.javax.servlet.3.0.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>

@@ -90,24 +90,20 @@
         <dependency>
             <groupId>org.xmlresolver</groupId>
             <artifactId>xmlresolver</artifactId>
-            <version>5.2.2</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>3.3.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.fastinfoset</groupId>
             <artifactId>FastInfoset</artifactId>
-            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>xml-resolver</groupId>
             <artifactId>xml-resolver</artifactId>
-            <version>1.2</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
@@ -277,41 +273,41 @@
                         <additionalDependency>
                             <groupId>com.sun.xml.bind.external</groupId>
                             <artifactId>relaxng-datatype</artifactId>
-                            <version>4.0.5</version>
+                            <version>${javadoc.relaxng-datatype.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>net.java.dev.msv</groupId>
                             <artifactId>msv-core</artifactId>
-                            <version>2022.7</version>
+                            <version>${javadoc.msv-core.version}</version>
                         </additionalDependency>
                         <!-- Jing (com.thaiopensource.*) -->
                         <additionalDependency>
                             <groupId>com.thaiopensource</groupId>
                             <artifactId>jing</artifactId>
-                            <version>20091111</version>
+                            <version>${javadoc.jing.version}</version>
                         </additionalDependency>
                         <!-- Apache HttpClient 5 (org.apache.hc.client5, org.apache.hc.core5) -->
                         <additionalDependency>
                             <groupId>org.apache.httpcomponents.client5</groupId>
                             <artifactId>httpclient5</artifactId>
-                            <version>5.3.1</version>
+                            <version>${javadoc.httpclient5.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.apache.httpcomponents.core5</groupId>
                             <artifactId>httpcore5</artifactId>
-                            <version>5.2.4</version>
+                            <version>${javadoc.httpcore5.version}</version>
                         </additionalDependency>
                         <!-- Xerces (org.apache.xerces.*) -->
                         <additionalDependency>
                             <groupId>xerces</groupId>
                             <artifactId>xercesImpl</artifactId>
-                            <version>2.12.2</version>
+                            <version>${javadoc.xercesImpl.version}</version>
                         </additionalDependency>
                         <!-- JUnit (junit.framework) -->
                         <additionalDependency>
                             <groupId>junit</groupId>
                             <artifactId>junit</artifactId>
-                            <version>4.13.2</version>
+                            <version>${junit.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>

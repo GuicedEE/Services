@@ -16,19 +16,23 @@
 
 package com.google.inject.internal;
 
-import com.google.inject.internal.InjectorImpl.JitLimitation;
+import com.google.inject.Key;
 import com.google.inject.spi.Dependency;
 import com.google.inject.gee.InjectionPoint;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.util.Map;
 
 /** Sets an injectable field. */
 final class SingleFieldInjector implements SingleMemberInjector {
   final Field field;
   final InjectionPoint injectionPoint;
   final Dependency<?> dependency;
-  final BindingImpl<?> binding;
+  final InternalFactory<?> factory;
 
-  public SingleFieldInjector(InjectorImpl injector, InjectionPoint injectionPoint, Errors errors)
+  public SingleFieldInjector(InjectorImpl injector, InjectionPoint injectionPoint,
+      Map<Class<? extends Annotation>, Map<Key<?>, InternalFactory<?>>> scopedFactories,
+      Errors errors)
       throws ErrorsException {
     this.injectionPoint = injectionPoint;
     this.field = (Field) injectionPoint.getMember();
@@ -36,7 +40,7 @@ final class SingleFieldInjector implements SingleMemberInjector {
 
     // Ewwwww...
     field.setAccessible(true);
-    binding = injector.getBindingOrThrow(dependency.getKey(), errors, JitLimitation.NO_JIT);
+    factory = injector.getFieldFactory(dependency, field.getAnnotations(), scopedFactories, errors);
   }
 
   @Override
@@ -47,7 +51,7 @@ final class SingleFieldInjector implements SingleMemberInjector {
   @Override
   public void inject(InternalContext context, Object o) throws InternalProvisionException {
     try {
-      Object value = binding.getInternalFactory().get(context, dependency, false);
+      Object value = factory.get(context, dependency, false);
       field.set(o, value);
     } catch (InternalProvisionException e) {
       throw e.addSource(dependency);

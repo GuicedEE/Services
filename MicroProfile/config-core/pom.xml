@@ -65,17 +65,17 @@
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging-processor</artifactId>
-                            <version>2.2.1.Final</version>
+                            <version>${javadoc.jboss.logging.tools.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
-                            <version>3.6.1.Final</version>
+                            <version>${javadoc.jboss-logging.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging-annotations</artifactId>
-                            <version>2.2.1.Final</version>
+                            <version>${javadoc.jboss.logging.tools.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>
@@ -101,7 +101,6 @@
         <dependency>
             <groupId>org.eclipse.microprofile.context-propagation</groupId>
             <artifactId>microprofile-context-propagation-api</artifactId>
-            <version>1.3</version>
             <optional>true</optional>
         </dependency>
         <dependency>

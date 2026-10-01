@@ -76,22 +76,22 @@
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging-processor</artifactId>
-                            <version>2.2.1.Final</version>
+                            <version>${javadoc.jboss.logging.tools.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
-                            <version>3.6.1.Final</version>
+                            <version>${javadoc.jboss-logging.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging-annotations</artifactId>
-                            <version>2.2.1.Final</version>
+                            <version>${javadoc.jboss.logging.tools.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>jakarta.interceptor</groupId>
                             <artifactId>jakarta.interceptor-api</artifactId>
-                            <version>2.2.0</version>
+                            <version>${jakarta.interceptor.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>

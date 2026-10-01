@@ -130,7 +130,7 @@
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging-annotations</artifactId>
-                            <version>2.2.1.Final</version>
+                            <version>${javadoc.jboss.logging.tools.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>
@@ -138,7 +138,7 @@
                     <dependency>
                         <groupId>org.jboss.logging</groupId>
                         <artifactId>jboss-logging-annotations</artifactId>
-                        <version>2.2.1.Final</version>
+                        <version>${javadoc.jboss.logging.tools.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>

@@ -100,7 +100,7 @@
                         <additionalDependency>
                             <groupId>io.micrometer</groupId>
                             <artifactId>context-propagation</artifactId>
-                            <version>1.2.1</version>
+                            <version>${micrometer.context.propagation.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.slf4j</groupId>

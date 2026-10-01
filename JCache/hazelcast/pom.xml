@@ -85,13 +85,11 @@
         <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline-terminal</artifactId>
-            <version>3.25.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline-reader</artifactId>
-            <version>3.25.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -103,7 +101,6 @@
         <dependency>
             <groupId>com.github.spotbugs</groupId>
             <artifactId>spotbugs-annotations</artifactId>
-            <version>4.8.3</version>
             <optional>true</optional>
             <scope>provided</scope>
         </dependency>
@@ -116,7 +113,6 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.4.21</version>
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
@@ -137,13 +133,11 @@
         <dependency>
             <groupId>ch.randelshofer</groupId>
             <artifactId>fastdoubleparser</artifactId>
-            <version>1.0.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>net.openhft</groupId>
             <artifactId>affinity</artifactId>
-            <version>3.23.3</version>
             <optional>true</optional>
             <exclusions>
                 <exclusion>
@@ -240,73 +234,73 @@ import java.lang.annotation.*;
                         <additionalDependency>
                             <groupId>info.picocli</groupId>
                             <artifactId>picocli</artifactId>
-                            <version>4.7.6</version>
+                            <version>${javadoc.picocli.version}</version>
                         </additionalDependency>
                         <!-- com.codahale.metrics.health -->
                         <additionalDependency>
                             <groupId>io.dropwizard.metrics</groupId>
                             <artifactId>metrics-healthchecks</artifactId>
-                            <version>4.2.25</version>
+                            <version>${javadoc.metrics-healthchecks.version}</version>
                         </additionalDependency>
                         <!-- io.micrometer.core.instrument -->
                         <additionalDependency>
                             <groupId>io.micrometer</groupId>
                             <artifactId>micrometer-core</artifactId>
-                            <version>1.12.5</version>
+                            <version>${javadoc.micrometer-core.1.12.version}</version>
                         </additionalDependency>
                         <!-- io.prometheus.client -->
                         <additionalDependency>
                             <groupId>io.prometheus</groupId>
                             <artifactId>simpleclient</artifactId>
-                            <version>0.16.0</version>
+                            <version>${javadoc.simpleclient.version}</version>
                         </additionalDependency>
                         <!-- org.apache.log4j -->
                         <additionalDependency>
                             <groupId>log4j</groupId>
                             <artifactId>log4j</artifactId>
-                            <version>1.2.17</version>
+                            <version>${javadoc.log4j.version}</version>
                         </additionalDependency>
                         <!-- org.apache.logging.log4j.core.config -->
                         <additionalDependency>
                             <groupId>org.apache.logging.log4j</groupId>
                             <artifactId>log4j-core</artifactId>
-                            <version>2.23.1</version>
+                            <version>${javadoc.log4j-core.version}</version>
                         </additionalDependency>
                         <!-- com.damnhandy.uri.template -->
                         <additionalDependency>
                             <groupId>com.damnhandy</groupId>
                             <artifactId>handy-uri-templates</artifactId>
-                            <version>2.1.8</version>
+                            <version>${javadoc.handy-uri-templates.version}</version>
                         </additionalDependency>
                         <!-- com.google.re2j -->
                         <additionalDependency>
                             <groupId>com.google.re2j</groupId>
                             <artifactId>re2j</artifactId>
-                            <version>1.7</version>
+                            <version>${javadoc.re2j.version}</version>
                         </additionalDependency>
                         <!-- com.sun.jna -->
                         <additionalDependency>
                             <groupId>net.java.dev.jna</groupId>
                             <artifactId>jna</artifactId>
-                            <version>5.14.0</version>
+                            <version>${javadoc.jna.version}</version>
                         </additionalDependency>
                         <!-- com.sun.jna.platform -->
                         <additionalDependency>
                             <groupId>net.java.dev.jna</groupId>
                             <artifactId>jna-platform</artifactId>
-                            <version>5.14.0</version>
+                            <version>${javadoc.jna-platform.version}</version>
                         </additionalDependency>
                         <!-- javassist -->
                         <additionalDependency>
                             <groupId>org.javassist</groupId>
                             <artifactId>javassist</artifactId>
-                            <version>3.30.2-GA</version>
+                            <version>${javadoc.javassist.version}</version>
                         </additionalDependency>
                         <!-- org.apache.commons.validator.routines -->
                         <additionalDependency>
                             <groupId>commons-validator</groupId>
                             <artifactId>commons-validator</artifactId>
-                            <version>1.8.0</version>
+                            <version>${javadoc.commons-validator.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>

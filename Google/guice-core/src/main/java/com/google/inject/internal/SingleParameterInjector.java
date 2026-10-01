@@ -29,9 +29,18 @@ final class SingleParameterInjector<T> {
   private final InternalFactory<? extends T> factory;
 
   SingleParameterInjector(Dependency<T> dependency, BindingImpl<? extends T> binding) {
+    this(dependency, binding.getInternalFactory(), binding.getSource());
+  }
+
+  SingleParameterInjector(Dependency<T> dependency, InternalFactory<? extends T> factory) {
+    this(dependency, factory, dependency);
+  }
+
+  private SingleParameterInjector(
+      Dependency<T> dependency, InternalFactory<? extends T> factory, Object source) {
     this.dependency = dependency;
-    this.source = binding.getSource();
-    this.factory = binding.getInternalFactory();
+    this.source = source;
+    this.factory = factory;
   }
 
   T inject(InternalContext context) throws InternalProvisionException {
