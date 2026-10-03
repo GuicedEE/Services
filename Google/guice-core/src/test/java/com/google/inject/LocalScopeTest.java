@@ -101,6 +101,46 @@ public class LocalScopeTest {
   @ScopeAnnotation
   public @interface LocalScoped {}
 
+  static class DifferentScopesConstructorConsumer {
+    final Dependency singleton;
+    final Dependency local;
+
+    @Inject DifferentScopesConstructorConsumer(
+        @Singleton Dependency singleton, @LocalScoped Dependency local) {
+      this.singleton = singleton;
+      this.local = local;
+    }
+  }
+
+  static class DifferentScopesFieldConsumer {
+    @Inject @Singleton Dependency singleton;
+    @Inject @LocalScoped Dependency local;
+  }
+
+  @Test public void constructorScopeAnnotationsHaveSeparateLocalProviders() {
+    Injector injector = Guice.createInjector(new AbstractModule() {
+      @Override protected void configure() { bindScope(LocalScoped.class, Scopes.SINGLETON); }
+    });
+    DifferentScopesConstructorConsumer first =
+        injector.getInstance(DifferentScopesConstructorConsumer.class);
+    DifferentScopesConstructorConsumer second =
+        injector.getInstance(DifferentScopesConstructorConsumer.class);
+    assertSame(first.singleton, second.singleton);
+    assertSame(first.local, second.local);
+    assertNotSame(first.singleton, first.local);
+  }
+
+  @Test public void fieldScopeAnnotationsHaveSeparateLocalProviders() {
+    Injector injector = Guice.createInjector(new AbstractModule() {
+      @Override protected void configure() { bindScope(LocalScoped.class, Scopes.SINGLETON); }
+    });
+    DifferentScopesFieldConsumer first = injector.getInstance(DifferentScopesFieldConsumer.class);
+    DifferentScopesFieldConsumer second = injector.getInstance(DifferentScopesFieldConsumer.class);
+    assertSame(first.singleton, second.singleton);
+    assertSame(first.local, second.local);
+    assertNotSame(first.singleton, first.local);
+  }
+
   @Target({ElementType.PARAMETER, ElementType.FIELD})
   @Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
   @ScopeAnnotation
@@ -143,14 +183,33 @@ public class LocalScopeTest {
 
   @Test public void localScopeWrapsExistingScopedBinding() {
     created.set(0);
+    AtomicInteger wrapperCalls = new AtomicInteger();
+    Scope recordingScope = new Scope() {
+      @Override public <T> Provider<T> scope(Key<T> key, Provider<T> unscoped) {
+        return () -> {
+          wrapperCalls.incrementAndGet();
+          return unscoped.get();
+        };
+      }
+    };
     Injector injector = Guice.createInjector(new AbstractModule() {
       @Override protected void configure() {
+        bindScope(LocalScoped.class, recordingScope);
         bind(Dependency.class).in(Scopes.SINGLETON);
       }
     });
     Dependency direct = injector.getInstance(Dependency.class);
-    assertSame(direct, injector.getInstance(ConstructorConsumer.class).first);
-    assertSame(direct, injector.getInstance(FieldConsumer.class).first);
+    assertEquals(0, wrapperCalls.get());
+    assertSame(direct, injector.getInstance(CustomConstructorConsumer.class).value);
+    assertEquals(1, wrapperCalls.get());
+    assertSame(direct, injector.getInstance(CustomConstructorConsumer.class).value);
+    assertEquals(2, wrapperCalls.get());
+    assertSame(direct, injector.getInstance(CustomFieldConsumer.class).value);
+    assertEquals(3, wrapperCalls.get());
+    assertSame(direct, injector.getInstance(CustomFieldConsumer.class).value);
+    assertEquals(4, wrapperCalls.get());
+    assertSame(direct, injector.getInstance(Dependency.class));
+    assertEquals(4, wrapperCalls.get());
     assertEquals(1, created.get());
   }
 
