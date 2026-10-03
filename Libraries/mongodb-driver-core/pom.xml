@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.3</version>
+        <version>2.3.0</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>mongodb-driver-core</artifactId>
     <name>org.mongodb.driver.core</name>
-    <version>2.2.3</version>
+    <version>2.3.0</version>
     <description>
         JPMS modularized shade of org.mongodb:mongodb-driver-core exposing the
         org.mongodb.driver.core module.
@@ -71,6 +71,9 @@
                                         <include name="com/mongodb/internal/connection/SnappyCompressor.java"/>
                                         <include name="com/mongodb/internal/connection/UnixSocketChannelStream.java"/>
                                         <include name="com/mongodb/internal/connection/ZstdCompressor.java"/>
+                                        <!-- Removed upstream in 5.12.0. A non-clean release build can retain the
+                                             5.11.x source even though the class is absent from the 5.12 binary. -->
+                                        <include name="com/mongodb/internal/operation/retry/AttachmentKeys.java"/>
                                         <include name="com/mongodb/internal/graalvm/substitution/*.java"/>
                                         <include name="com/mongodb/internal/observability/micrometer/*.java"/>
                                         <include name="com/mongodb/observability/micrometer/*.java"/>

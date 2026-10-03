@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.3</version>
+        <version>2.3.0</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>testcontainers</artifactId>
     <name>testcontainers</name>
-    <version>2.2.3</version>
+    <version>2.3.0</version>
     <packaging>jar</packaging>
     <description>
         A modularized test containers implementation
@@ -289,37 +289,37 @@
                         <additionalDependency>
                             <groupId>com.github.docker-java</groupId>
                             <artifactId>docker-java-core</artifactId>
-                            <version>3.4.1</version>
+                            <version>${javadoc.docker-java-core.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.yaml</groupId>
                             <artifactId>snakeyaml</artifactId>
-                            <version>2.3</version>
+                            <version>${javadoc.snakeyaml.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>com.trilead</groupId>
                             <artifactId>trilead-ssh2</artifactId>
-                            <version>1.0.0-build222</version>
+                            <version>${javadoc.trilead-ssh2.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.zeroturnaround</groupId>
                             <artifactId>zt-exec</artifactId>
-                            <version>1.12</version>
+                            <version>${javadoc.zt-exec.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.awaitility</groupId>
                             <artifactId>awaitility</artifactId>
-                            <version>4.2.2</version>
+                            <version>${javadoc.awaitility.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.immutables</groupId>
                             <artifactId>value</artifactId>
-                            <version>2.10.1</version>
+                            <version>${javadoc.value.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.jetbrains</groupId>
                             <artifactId>annotations</artifactId>
-                            <version>26.0.2</version>
+                            <version>${jetbrains.annotations.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>

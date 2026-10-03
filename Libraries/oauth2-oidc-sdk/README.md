@@ -1,7 +1,7 @@
 # Nimbus OAuth2/OIDC JPMS service
 
-`com.guicedee.modules.services:oauth2-oidc-sdk:2.2.3` supplies the explicit
-`oauth2.oidc.sdk` module for jlink. Import `com.guicedee:guicedee-bom:2.2.3`
+`com.guicedee.modules.services:oauth2-oidc-sdk:2.3.0` supplies the explicit
+`oauth2.oidc.sdk` module for jlink. Import `com.guicedee:guicedee-bom:2.3.0`
 in Maven dependency management, then use:
 
 ```xml

@@ -4,13 +4,13 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.3</version>
+        <version>2.3.0</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>config-core</artifactId>
     <name>config-core</name>
     <packaging>jar</packaging>
-    <version>2.2.3</version>
+    <version>2.3.0</version>
     <!--<version>${jandex.version}</version>-->
     <properties>
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
@@ -65,17 +65,17 @@
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging-processor</artifactId>
-                            <version>2.2.1.Final</version>
+                            <version>${javadoc.jboss.logging.tools.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging</artifactId>
-                            <version>3.6.1.Final</version>
+                            <version>${javadoc.jboss-logging.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.jboss.logging</groupId>
                             <artifactId>jboss-logging-annotations</artifactId>
-                            <version>2.2.1.Final</version>
+                            <version>${javadoc.jboss.logging.tools.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>
@@ -101,7 +101,6 @@
         <dependency>
             <groupId>org.eclipse.microprofile.context-propagation</groupId>
             <artifactId>microprofile-context-propagation-api</artifactId>
-            <version>1.3</version>
             <optional>true</optional>
         </dependency>
         <dependency>

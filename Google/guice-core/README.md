@@ -1,22 +1,22 @@
-# Google Guice — GuicedEE Modular Fork
+# Google Guice ï¿½ GuicedEE Modular Fork
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue)](https://www.apache.org/licenses/LICENSE-2.0)
 ![Java 25+](https://img.shields.io/badge/Java-25%2B-green)
 ![Modular](https://img.shields.io/badge/Modular-Level3-green)
 
-A **full source copy** of [Google Guice 7](https://github.com/google/guice) repackaged with a proper **JPMS `module-info.java`** descriptor, modular access fixes for **JDK 25**, and a set of **SPI extension points** (`com.google.inject.gee`) that allow downstream modules to plug in custom annotations for injection, binding, scoping, and naming — without forking Guice internals themselves.
+A **full source copy** of [Google Guice 7](https://github.com/google/guice) repackaged with a proper **JPMS `module-info.java`** descriptor, modular access fixes for **JDK 25**, and a set of **SPI extension points** (`com.google.inject.gee`) that allow downstream modules to plug in custom annotations for injection, binding, scoping, and naming ï¿½ without forking Guice internals themselves.
 
 > **Upstream policy:** this module tracks Google Guice releases and carries documented GuicedEE extensions for JPMS, annotation SPIs, and local dependency scoping. Local scoping follows the proposal in google/guice#1949 while it remains a draft upstream.
 
 ## Features
 
-- **Full JPMS module** — ships a real `module-info.java` (`module com.google.guice`) with explicit `exports`, `requires`, and `uses` directives
-- **JDK 25 compatibility** — access-level and reflection fixes so Guice runs cleanly on the module path without `--add-opens` hacks
-- **Jakarta namespace** — uses `jakarta.inject` and `jakarta.annotation` (not `javax.*`)
-- **SPI-driven extensibility** — six `ServiceLoader`-based SPIs let you register custom annotations for injection points, scopes, bindings, and naming without touching Guice source
-- **Local dependency scopes** — apply a scope to an injected constructor parameter or field without changing the dependency binding for other consumers
-- **Multibindings built-in** — `MapBinder`, `Multibinder`, and `OptionalBinder` are included in the same module (no separate `guice-multibindings` artifact needed)
-- **Drop-in replacement** — all public Guice APIs remain unchanged; existing `@Inject`, `@Provides`, `@Singleton`, `bind()` EDSL code works as-is
+- **Full JPMS module** ï¿½ ships a real `module-info.java` (`module com.google.guice`) with explicit `exports`, `requires`, and `uses` directives
+- **JDK 25 compatibility** ï¿½ access-level and reflection fixes so Guice runs cleanly on the module path without `--add-opens` hacks
+- **Jakarta namespace** ï¿½ uses `jakarta.inject` and `jakarta.annotation` (not `javax.*`)
+- **SPI-driven extensibility** ï¿½ six `ServiceLoader`-based SPIs let you register custom annotations for injection points, scopes, bindings, and naming without touching Guice source
+- **Local dependency scopes** ï¿½ apply a scope to an injected constructor parameter or field without changing the dependency binding for other consumers
+- **Multibindings built-in** ï¿½ `MapBinder`, `Multibinder`, and `OptionalBinder` are included in the same module (no separate `guice-multibindings` artifact needed)
+- **Drop-in replacement** ï¿½ all public Guice APIs remain unchanged; existing `@Inject`, `@Provides`, `@Singleton`, `bind()` EDSL code works as-is
 
 ## Installation
 
@@ -155,7 +155,7 @@ The `com.google.inject.gee` package exposes six SPIs loaded via `java.util.Servi
 | `BindingAnnotationProvider` | Supply a list of annotation classes to be recognised as binding annotations (like `@Named`) |
 | `NamedAnnotationProvider` | Map custom naming annotations to Guice's `@Named`, enabling alternative naming strategies |
 
-### Example — Custom Injection Annotation
+### Example ï¿½ Custom Injection Annotation
 
 **1. Define your annotation:**
 
@@ -188,7 +188,7 @@ module my.extensions {
 
 Now Guice will inject members annotated with `@MyInject` in addition to `@Inject`.
 
-### Example — Custom Scope Annotation
+### Example ï¿½ Custom Scope Annotation
 
 A scope marked with `@ScopeAnnotation` can target injectable parameters and fields. Bind
 its implementation through `BindScopeProvider`:
@@ -234,7 +234,7 @@ public class MyScopes implements ScopeAnnotationProvider {
 Register `MyScopes` as a `ScopeAnnotationProvider` service and bind each concrete scope
 through `BindScopeProvider`.
 
-### Example — Custom Binding Annotation
+### Example ï¿½ Custom Binding Annotation
 
 ```java
 public class MyBindings implements BindingAnnotationProvider {
@@ -261,14 +261,14 @@ com.google.guice
 
 | Package | Description |
 |---|---|
-| `com.google.inject` | Core API — `Injector`, `Module`, `Binder`, `Key`, `TypeLiteral`, `Provider`, `Scope` |
-| `com.google.inject.binder` | Binding EDSL — `LinkedBindingBuilder`, `AnnotatedBindingBuilder`, `ScopedBindingBuilder` |
+| `com.google.inject` | Core API ï¿½ `Injector`, `Module`, `Binder`, `Key`, `TypeLiteral`, `Provider`, `Scope` |
+| `com.google.inject.binder` | Binding EDSL ï¿½ `LinkedBindingBuilder`, `AnnotatedBindingBuilder`, `ScopedBindingBuilder` |
 | `com.google.inject.matcher` | Class and method matchers for AOP interceptors |
 | `com.google.inject.multibindings` | `MapBinder`, `Multibinder`, `OptionalBinder` |
 | `com.google.inject.name` | `@Named` and `Names` utility |
-| `com.google.inject.spi` | Elements API — introspection, visitors, `InjectionPoint`, `Dependency` |
+| `com.google.inject.spi` | Elements API ï¿½ introspection, visitors, `InjectionPoint`, `Dependency` |
 | `com.google.inject.util` | `Modules.override()`, `Providers`, `Types` |
-| `com.google.inject.gee` | **GuicedEE SPIs** — extension points for custom annotations |
+| `com.google.inject.gee` | **GuicedEE SPIs** ï¿½ extension points for custom annotations |
 | `com.google.inject.internal` | Internal implementation (exported for framework use) |
 | `com.google.inject.internal.aop` | Internal AOP support |
 | `com.google.inject.internal.util` | Internal utilities |
@@ -287,8 +287,8 @@ com.google.guice
 
 ## Contributing
 
-Issues and pull requests are welcome — especially for upstream Guice version bumps, additional SPI hooks, and JDK compatibility fixes.
+Issues and pull requests are welcome ï¿½ especially for upstream Guice version bumps, additional SPI hooks, and JDK compatibility fixes.
 
 ## License
 
-[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) — same as upstream Google Guice.
+[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) ï¿½ same as upstream Google Guice.

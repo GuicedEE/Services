@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.3</version>
+        <version>2.3.0</version>
     </parent>
 
     <groupId>com.guicedee.modules.services</groupId>
@@ -17,7 +17,7 @@
         <project.scm.nameUrl>/GuicedEE/Services/Vert.x/vertx-mutiny</project.scm.nameUrl>
     </properties>
 
-    <version>2.2.3</version>
+    <version>2.3.0</version>
 
     <licenses>
         <license>
@@ -209,7 +209,7 @@
                         <additionalDependency>
                             <groupId>io.vertx</groupId>
                             <artifactId>vertx-auth-webauthn</artifactId>
-                            <version>5.0.0.CR2</version>
+                            <version>${javadoc.vertx-auth-webauthn.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>
@@ -217,17 +217,17 @@
                     <dependency>
                         <groupId>org.jboss.logmanager</groupId>
                         <artifactId>jboss-logmanager</artifactId>
-                        <version>3.0.4.Final</version>
+                        <version>${javadoc.jboss-logmanager.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jboss.logging</groupId>
                         <artifactId>jboss-logging</artifactId>
-                        <version>3.6.1.Final</version>
+                        <version>${javadoc.jboss-logging.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jboss.logging</groupId>
                         <artifactId>jboss-logging-processor</artifactId>
-                        <version>2.2.1.Final</version>
+                        <version>${javadoc.jboss.logging.tools.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>io.vertx</groupId>
@@ -282,7 +282,7 @@
                     <dependency>
                         <groupId>io.vertx</groupId>
                         <artifactId>vertx-auth-webauthn</artifactId>
-                        <version>5.0.0.CR2</version>
+                        <version>${javadoc.vertx-auth-webauthn.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>io.vertx</groupId>

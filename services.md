@@ -20,6 +20,7 @@ The project transforms original libraries into JPMS-compatible versions with the
 | ~~com.fazecast:jSerialComm~~ | ~~com.guicedee.modules.services:jserialcomm~~ | ~~io.jserialcomm~~ | Removed as of 2.11.2 - now properly modularized |
 | org.javassist:javassist | com.guicedee.modules.services:javassist | javassist |
 | com.nimbusds:oauth2-oidc-sdk | com.guicedee.modules.services:oauth2-oidc-sdk | oauth2.oidc.sdk | Bundles content-type, lang-tag, json-smart and accessors-smart; uses native nimbus-jose-jwt and ASM modules |
+| org.keycloak:keycloak-services | com.guicedee.modules.services:keycloak-api | org.keycloak.api | Compile-only Keycloak provider API bundle, relocated to Jackson 3; never deploy this JAR into Keycloak |
 | io.cloudevents:cloudevents-core | com.guicedee.modules.services:cloudevents | io.cloudevents |
 | org.testcontainers:testcontainers | com.guicedee.modules.services:testcontainers | org.testcontainers |
 | org.hibernate:hibernate-core | com.guicedee.modules.services:hibernate-core | org.hibernate.core |
@@ -183,6 +184,7 @@ These are shaded versions of third-party libraries with added module-info.java d
 | org.codehaus.btm:btm | com.guicedee.modules.services:btm | org.codehaus.btm |
 
 - **Utility Libraries**: bcrypt, jandex, javassist, json, kafka-client, mapstruct, scram, uadetector-core, uadetector-resources
+- **Security APIs**: keycloak-api, oauth2-oidc-sdk
 
 | Original Coordinates | GuicedEE Coordinates | Module Name | Notes |
 |----------------------|----------------------|-------------| ------ |
@@ -193,6 +195,8 @@ These are shaded versions of third-party libraries with added module-info.java d
 | org.json:json | com.guicedee.modules.services:json | org.json |
 | org.mapstruct:mapstruct | com.guicedee.modules.services:mapstruct | org.mapstruct |
 | com.ongres.scram:client | com.guicedee.modules.services:scram | com.ongres.scram.client |
+| org.keycloak:keycloak-services | com.guicedee.modules.services:keycloak-api | org.keycloak.api |
+| com.nimbusds:oauth2-oidc-sdk | com.guicedee.modules.services:oauth2-oidc-sdk | oauth2.oidc.sdk |
 | net.sf.uadetector:uadetector-core | com.guicedee.modules.services:uadetector-core | net.sf.uadetector.core |
 | net.sf.uadetector:uadetector-resources | com.guicedee.modules.services:uadetector-resources | net.sf.uadetector.resources |
 

@@ -21,14 +21,14 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.3</version>
+        <version>2.3.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>postgresql</artifactId>
 
-    <version>2.2.3</version>
+    <version>2.3.0</version>
     <name>PostgreSQL</name>
 
     <description>
@@ -154,27 +154,27 @@
                         <additionalDependency>
                             <groupId>com.ongres.scram</groupId>
                             <artifactId>scram-client</artifactId>
-                            <version>3.2</version>
+                            <version>${javadoc.scram-client.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>com.ongres.scram</groupId>
                             <artifactId>scram-common</artifactId>
-                            <version>3.2</version>
+                            <version>${javadoc.scram-common.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>jakarta.servlet</groupId>
                             <artifactId>jakarta.servlet-api</artifactId>
-                            <version>6.1.0</version>
+                            <version>${jakarta.servlet.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>org.osgi</groupId>
                             <artifactId>org.osgi.service.jdbc</artifactId>
-                            <version>1.1.0</version>
+                            <version>${javadoc.org.osgi.service.jdbc.version}</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>javax.servlet</groupId>
                             <artifactId>javax.servlet-api</artifactId>
-                            <version>4.0.1</version>
+                            <version>${javadoc.javax.servlet.4.0.version}</version>
                         </additionalDependency>
                     </additionalDependencies>
                 </configuration>

@@ -84,7 +84,6 @@ module org.mongodb.driver.core {
 	exports com.mongodb.internal.inject;
 	exports com.mongodb.internal.logging;
 	exports com.mongodb.internal.operation;
-	exports com.mongodb.internal.operation.retry;
 	exports com.mongodb.internal.selector;
 	exports com.mongodb.internal.session;
 	exports com.mongodb.internal.thread;
