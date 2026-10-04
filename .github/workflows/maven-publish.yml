@@ -25,6 +25,8 @@ jobs:
   # ==========================================================================================================================================
   detect-changes:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       aop: ${{ steps.filter.outputs.aop }}
       bcrypt: ${{ steps.filter.outputs.bcrypt }}
@@ -82,7 +84,9 @@ jobs:
       health-core: ${{ steps.filter.outputs.health-core }}
       telemetry-core: ${{ steps.filter.outputs.telemetry-core }}
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - name: Detect changed paths
         uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3
         id: filter
@@ -203,7 +207,7 @@ jobs:
   # Service builds â€“ only run when changed
   # ==========================================================================================================================================
   AOP:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.aop == 'true' }}
     with:
@@ -213,7 +217,7 @@ jobs:
     secrets: inherit
 
   BCrypt:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.bcrypt == 'true' }}
     with:
@@ -223,7 +227,7 @@ jobs:
     secrets: inherit
 
   Guice:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - AOP
@@ -235,7 +239,7 @@ jobs:
     secrets: inherit
 
   Guice-AssistedInject:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Guice
@@ -247,7 +251,7 @@ jobs:
     secrets: inherit
 
   Guice-Grapher:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Guice
@@ -260,7 +264,7 @@ jobs:
     secrets: inherit
 
   Guice-JMX:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Guice
@@ -272,7 +276,7 @@ jobs:
     secrets: inherit
 
   Guice-JNDI:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Guice
@@ -284,7 +288,7 @@ jobs:
     secrets: inherit
 
   Commons-Collections:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.commons-collections == 'true' }}
     with:
@@ -294,7 +298,7 @@ jobs:
     secrets: inherit
 
   Commons-BeanUtils:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Commons-Collections
@@ -306,7 +310,7 @@ jobs:
     secrets: inherit
 
   Commons-CSV:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.commons-csv == 'true' }}
     with:
@@ -316,7 +320,7 @@ jobs:
     secrets: inherit
 
   Commons-FileUpload:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.commons-fileupload == 'true' }}
     with:
@@ -326,7 +330,7 @@ jobs:
     secrets: inherit
 
   Commons-Math:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.commons-math == 'true' }}
     with:
@@ -336,7 +340,7 @@ jobs:
     secrets: inherit
 
   Apache-POI:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Commons-Math
@@ -349,7 +353,7 @@ jobs:
     secrets: inherit
 
   Apache-POI-OOXML:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Apache-POI
@@ -361,7 +365,7 @@ jobs:
     secrets: inherit
 
   Jandex:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.jandex == 'true' }}
     with:
@@ -371,7 +375,7 @@ jobs:
     secrets: inherit
 
   JavAssist:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.javassist == 'true' }}
     with:
@@ -381,7 +385,7 @@ jobs:
     secrets: inherit
 
   JSON:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.json == 'true' }}
     with:
@@ -391,7 +395,7 @@ jobs:
     secrets: inherit
 
   Mapstruct:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.mapstruct == 'true' }}
     with:
@@ -401,7 +405,7 @@ jobs:
     secrets: inherit
 
   JACC:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.jacc == 'true' }}
     with:
@@ -411,7 +415,7 @@ jobs:
     secrets: inherit
 
   UA-Detector:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.uadetector-core == 'true' }}
     with:
@@ -421,7 +425,7 @@ jobs:
     secrets: inherit
 
   UA-Detector-Resources:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - UA-Detector
@@ -433,7 +437,7 @@ jobs:
     secrets: inherit
 
   JNA-Platform:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.jna-platform == 'true' }}
     with:
@@ -443,7 +447,7 @@ jobs:
     secrets: inherit
 
   Azure-Identity:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - JNA-Platform
@@ -455,7 +459,7 @@ jobs:
     secrets: inherit
 
   MSSQL-JDBC:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Azure-Identity
@@ -467,7 +471,7 @@ jobs:
     secrets: inherit
 
   Postgres-SQL:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.postgresql == 'true' }}
     with:
@@ -477,7 +481,7 @@ jobs:
     secrets: inherit
 
   JavaNRSerialPort:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - JNA-Platform
@@ -489,7 +493,7 @@ jobs:
     secrets: inherit
 
   JCache:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cache-api == 'true' }}
     with:
@@ -499,7 +503,7 @@ jobs:
     secrets: inherit
 
   JCache-Annotations-Common:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - JCache
@@ -511,7 +515,7 @@ jobs:
     secrets: inherit
 
   JCache-Annotations-Guice:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - JCache-Annotations-Common
@@ -523,7 +527,7 @@ jobs:
     secrets: inherit
 
   OpenPDF:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.openpdf == 'true' }}
     with:
@@ -533,7 +537,7 @@ jobs:
     secrets: inherit
 
   Metrics:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.metrics-core == 'true' }}
     with:
@@ -543,7 +547,7 @@ jobs:
     secrets: inherit
 
   OpenAPI:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - JavAssist
@@ -555,7 +559,7 @@ jobs:
     secrets: inherit
 
   CXF-Core:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cxf-core == 'true' }}
     with:
@@ -565,7 +569,7 @@ jobs:
     secrets: inherit
 
   CXF-Security:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - CXF-Core
@@ -577,7 +581,7 @@ jobs:
     secrets: inherit
 
   CXF-Http-Transport:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - CXF-Core
@@ -590,7 +594,7 @@ jobs:
     secrets: inherit
 
   CXF-Rest:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - CXF-Http-Transport
@@ -602,7 +606,7 @@ jobs:
     secrets: inherit
 
   CXF-Rest-OpenAPI:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - CXF-Rest
@@ -615,7 +619,7 @@ jobs:
     secrets: inherit
 
   RabbitMQ:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.rabbitmq-client == 'true' }}
     with:
@@ -625,7 +629,7 @@ jobs:
     secrets: inherit
 
   Hibernate-Core:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Jandex
@@ -637,7 +641,7 @@ jobs:
     secrets: inherit
 
   Hibernate-Validator:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.hibernate-validator == 'true' }}
     with:
@@ -647,7 +651,7 @@ jobs:
     secrets: inherit
 
   Hibernate-Reactive:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Hibernate-Core
@@ -659,7 +663,7 @@ jobs:
     secrets: inherit
 
   Hibernate-JCache:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - JCache-Annotations-Guice
@@ -672,7 +676,7 @@ jobs:
     secrets: inherit
 
   Kafka-Client:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.kafka-client == 'true' }}
     with:
@@ -682,7 +686,7 @@ jobs:
     secrets: inherit
 
   TestContainers:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - JNA-Platform
@@ -694,7 +698,7 @@ jobs:
     secrets: inherit
 
   Scram:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.scram == 'true' }}
     with:
@@ -704,7 +708,7 @@ jobs:
     secrets: inherit
 
   Hazelcast:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - JCache
@@ -717,7 +721,7 @@ jobs:
     secrets: inherit
 
   Hazelcast-Hibernate:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - Hazelcast
@@ -730,7 +734,7 @@ jobs:
     secrets: inherit
 
   MicroProfileConfig:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.config-core == 'true' }}
     with:
@@ -740,7 +744,7 @@ jobs:
     secrets: inherit
 
   VertxMutiny:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.vertx-mutiny == 'true' }}
     with:
@@ -750,7 +754,7 @@ jobs:
     secrets: inherit
 
   VertxRabbit:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - RabbitMQ
@@ -762,7 +766,7 @@ jobs:
     secrets: inherit
 
   VertxCassandra:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.vertx-cassandra == 'true' }}
     with:
@@ -772,7 +776,7 @@ jobs:
     secrets: inherit
 
   EhCache:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs:
       - detect-changes
       - JCache
@@ -784,7 +788,7 @@ jobs:
     secrets: inherit
 
   CloudEvents:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.cloudevents == 'true' }}
     with:
@@ -794,7 +798,7 @@ jobs:
     secrets: inherit
 
   IBM-MQ:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     if: false
     with:
       baseDir: 'Libraries/ibm-mq/'
@@ -803,7 +807,7 @@ jobs:
     secrets: inherit
 
   MicroProfileHealth:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.health-core == 'true' }}
     with:
@@ -813,7 +817,7 @@ jobs:
     secrets: inherit
 
   MicroProfileTelemetry:
-    uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
+    uses: GuicedEE/Workflows/.github/workflows/projects.yml@445d698fbcf74c4b67294dbfbaf5d1cd18e0ed1d # reviewed master
     needs: detect-changes
     if: ${{ github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.telemetry-core == 'true' }}
     with:
