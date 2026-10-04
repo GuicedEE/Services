@@ -172,6 +172,12 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <relocations>
+                                <relocation>
+                                    <pattern>com.codahale.metrics</pattern>
+                                    <shadedPattern>com.hazelcast.shaded.metrics</shadedPattern>
+                                </relocation>
+                            </relocations>
                             <artifactSet>
                                 <includes>
                                     <include>com.hazelcast:*</include>

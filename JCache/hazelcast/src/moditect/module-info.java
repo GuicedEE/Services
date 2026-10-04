@@ -1,4 +1,5 @@
 open module com.hazelcast.all {
+    exports com.hazelcast.cache;
 	requires transitive java.logging;
 	requires transitive cache.api;
 	

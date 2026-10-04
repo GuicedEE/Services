@@ -19,6 +19,28 @@
 
     <build>
         <plugins>
+            <!-- Recreate the inputs before shading; otherwise a repeated build can
+                 shade its previous output and retain sources from older versions. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <forceCreation>true</forceCreation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <forceCreation>true</forceCreation>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>prepare-package</phase>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -59,6 +81,20 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
+                    <execution>
+                        <id>prepare</id>
+                        <configuration>
+                            <target xmlns:if="ant:if" combine.self="override">
+                                <available file="target/${project.artifactId}-${project.version}-sources.jar"
+                                           property="sources.jar.exists"/>
+                                <!-- Refresh only the generated Javadoc source tree. -->
+                                <delete dir="target/source-output" if:set="sources.jar.exists"/>
+                                <unzip src="target/${project.artifactId}-${project.version}-sources.jar"
+                                       dest="target/source-output/" if:set="sources.jar.exists"/>
+                                <delete file="target/source-output/module-info.java" failonerror="false"/>
+                            </target>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>remove-broken-shaded-sources</id>
                         <phase>verify</phase>
@@ -138,10 +174,37 @@
                             <version>${javadoc.reactor-pool.version}</version>
                         </additionalDependency>
                         <!-- micrometer (io.micrometer.core.instrument) -->
+                        <!-- Reactor Netty 1.2.18's optional compile APIs must be
+                             explicit here: Javadoc does not resolve their transitives. -->
                         <additionalDependency>
                             <groupId>io.micrometer</groupId>
                             <artifactId>micrometer-core</artifactId>
-                            <version>${javadoc.micrometer-core.1.12.version}</version>
+                            <version>1.14.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.micrometer</groupId>
+                            <artifactId>micrometer-commons</artifactId>
+                            <version>1.14.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.micrometer</groupId>
+                            <artifactId>micrometer-observation</artifactId>
+                            <version>1.14.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.micrometer</groupId>
+                            <artifactId>micrometer-tracing</artifactId>
+                            <version>1.4.0</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.netty.incubator</groupId>
+                            <artifactId>netty-incubator-codec-http3</artifactId>
+                            <version>0.0.30.Final</version>
+                        </additionalDependency>
+                        <additionalDependency>
+                            <groupId>io.netty.incubator</groupId>
+                            <artifactId>netty-incubator-codec-classes-quic</artifactId>
+                            <version>0.0.75.Final</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>io.micrometer</groupId>
@@ -241,11 +304,14 @@
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>msal4j</artifactId>
+            <!-- Match the API required by Azure Identity 1.18.4. -->
+            <version>1.23.1</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>msal4j-persistence-extension</artifactId>
+            <version>1.3.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
