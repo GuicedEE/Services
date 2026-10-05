@@ -3,7 +3,7 @@ module io.vertx.cassandra.client {
 
 	requires io.vertx.core.logging;
 
-	requires transitive com.datastax.oss.driver.core;
+	requires transitive java.driver.core;
 
 	exports io.vertx.cassandra;
 	exports io.vertx.cassandra.impl;

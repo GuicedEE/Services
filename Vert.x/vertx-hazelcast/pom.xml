@@ -29,6 +29,15 @@
                         <configuration>
                             <keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
                             <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
+                            <filters>
+                                <filter>
+                                    <artifact>io.vertx:vertx-hazelcast</artifact>
+                                    <excludes>
+                                        <!-- Use our default config with the schema matching Hazelcast 5.7. -->
+                                        <exclude>default-cluster.xml</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
                             <artifactSet>
                                 <includes>
                                     <include>io.vertx:vertx-hazelcast:*</include>
