@@ -34,6 +34,8 @@
                                 <includes>
                                     <include>io.opentelemetry:*</include>
                                     <include>io.opentelemetry.instrumentation:*</include>
+                                    <!-- Instrumentation 2.32 uses semantic-convention classes at runtime. -->
+                                    <include>io.opentelemetry.semconv:*</include>
                                     <include>io.vertx:vertx-opentelemetry</include>
                                 </includes>
                                 <excludes>
@@ -267,8 +269,8 @@
         </dependency>
         <!--
             Force the incubator API to match ${opentelemetry.version}.
-            opentelemetry-instrumentation-api drags in an older 1.57.0-alpha incubator,
-            which lacks DeclarativeConfigProperties.get(String) used by sdk-common's SdkConfigProvider.
+            Instrumentation has its own SDK baseline; its transitive incubator can differ.
+            Keep the incubator API aligned with the SDK so sdk-common sees matching methods.
         -->
         <dependency>
             <groupId>io.opentelemetry</groupId>
