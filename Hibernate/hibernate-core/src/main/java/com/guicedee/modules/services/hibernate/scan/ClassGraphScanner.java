@@ -79,8 +79,8 @@ public final class ClassGraphScanner implements Scanner
         {
             ClassInfo classInfo = scanResult.getClassInfo(entry.getKey());
             Resource resource = classInfo == null ? null : classInfo.getResource();
-            boolean root = classInfo != null && belongsTo(classInfo.getClasspathElementURI(), environment.getRootUrl());
-            boolean nonRoot = classInfo != null && belongsTo(classInfo.getClasspathElementURI(), environment.getNonRootUrls());
+            boolean root = belongsTo(resource, environment.getRootUrl());
+            boolean nonRoot = belongsTo(resource, environment.getNonRootUrls());
             if (resource != null && (root || nonRoot) && isListedOrDetectable(entry.getKey(), root, environment, options))
             {
                 classes.add(new ClassDescriptorValue(entry.getKey(), entry.getValue(), streamAccess(resource)));
@@ -110,7 +110,7 @@ public final class ClassGraphScanner implements Scanner
         {
             boolean root = belongsTo(resource, environment.getRootUrl());
             boolean nonRoot = belongsTo(resource, environment.getNonRootUrls());
-            String path = resource.getPathRelativeToClasspathElement();
+            String path = resource.getPath();
             String packageName = path.substring(0, path.length() - "/package-info.class".length()).replace('/', '.');
             if ((root || nonRoot) && isListedOrDetectable(packageName, root, environment, options))
             {
@@ -146,7 +146,7 @@ public final class ClassGraphScanner implements Scanner
         {
             boolean root = belongsTo(resource, environment.getRootUrl());
             boolean nonRoot = belongsTo(resource, environment.getNonRootUrls());
-            String path = resource.getPathRelativeToClasspathElement();
+            String path = resource.getPath();
             if ((root || nonRoot) && isMappingFile(path, root, environment, options))
             {
                 mappings.add(new MappingFileDescriptorValue(path, streamAccess(resource)));
@@ -180,7 +180,32 @@ public final class ClassGraphScanner implements Scanner
 
     private static boolean belongsTo(Resource resource, URL url)
     {
-        return resource != null && belongsTo(resource.getClasspathElementURI(), url);
+        if (resource == null)
+        {
+            return false;
+        }
+        URI origin = resource.getClasspathElementURI();
+        if (belongsTo(origin, url))
+        {
+            return true;
+        }
+        // ClassGraph 6 reports a package root inside an archive as its own classpath element.
+        // Map that root back to its immediate container, without treating nested dependency jars as the root archive.
+        if (origin != null && !resource.getPackageRootPrefix().isEmpty() && "jar".equals(origin.getScheme()))
+        {
+            String value = origin.toString();
+            int rootSeparator = value.lastIndexOf("!/");
+            if (rootSeparator >= 0)
+            {
+                String container = value.substring(0, rootSeparator);
+                if (container.indexOf("!/") < 0)
+                {
+                    container = container.substring("jar:".length());
+                }
+                return belongsTo(URI.create(container), url);
+            }
+        }
+        return false;
     }
 
     private static boolean belongsTo(URI resourceClasspathElementUri, URL url)

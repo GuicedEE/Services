@@ -68,7 +68,7 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
     {
         for (Resource resource : getArchiveResources())
         {
-            final String name = normalizePathName(resource.getPathRelativeToClasspathElement());
+            final String name = normalizePathName(resource.getPathRelativeToContainer());
             if (getEntryBasePrefix() != null && !name.startsWith(getEntryBasePrefix()))
             {
                 continue;
@@ -86,7 +86,7 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
         final String normalizedPath = normalizePathName(path);
         for (Resource resource : getArchiveResources())
         {
-            if (normalizedPath.equals(normalizePathName(resource.getPathRelativeToClasspathElement())))
+            if (normalizedPath.equals(normalizePathName(resource.getPathRelativeToContainer())))
             {
                 return toArchiveEntry(resource, normalizedPath);
             }
@@ -113,6 +113,24 @@ public class JarFileBasedArchiveDescriptor extends AbstractArchiveDescriptor
             if (classpathElementUri != null && archiveUri.equals(classpathElementUri.normalize()))
             {
                 resources.add(resource);
+            }
+            else if (classpathElementUri != null && !resource.getPackageRootPrefix().isEmpty()
+                    && "jar".equals(classpathElementUri.getScheme()))
+            {
+                String value = classpathElementUri.toString();
+                int rootSeparator = value.lastIndexOf("!/");
+                if (rootSeparator >= 0)
+                {
+                    String container = value.substring(0, rootSeparator);
+                    if (container.indexOf("!/") < 0)
+                    {
+                        container = container.substring("jar:".length());
+                    }
+                    if (archiveUri.equals(URI.create(container).normalize()))
+                    {
+                        resources.add(resource);
+                    }
+                }
             }
         }
         return resources;
