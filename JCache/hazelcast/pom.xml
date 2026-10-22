@@ -32,14 +32,14 @@
     <parent>
         <groupId>com.guicedee</groupId>
         <artifactId>parent</artifactId>
-        <version>2.4.0</version>
+        <version>2.4.1</version>
     </parent>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>hazelcast-all</artifactId>
     <name>hazelcast-all</name>
     <!--<version>${hazelcast.version}</version>-->
-    <version>2.4.0</version>
-    <description>Kubernetes Service Discovery for Hazelcast Discovery SPI</description>
+    <version>2.4.1</version>
+    <description>JPMS Hazelcast with shared Jackson 3 and no bundled Jackson 2 runtime</description>
     <inceptionYear>2015</inceptionYear>
     <packaging>jar</packaging>
     <properties>
@@ -157,9 +157,45 @@
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
+        <!-- Only the lightweight Jr helper is private; core/databind use the shared Jackson 3 BOM. -->
+        <dependency>
+            <groupId>tools.jackson.jr</groupId>
+            <artifactId>jackson-jr-objects</artifactId>
+            <version>${jackson.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.jr</groupId>
+            <artifactId>jackson-jr-annotation-support</artifactId>
+            <version>${jackson.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafe.version}</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                    <systemPropertyVariables>
+                        <hazelcast.shaded.jar>${project.build.directory}/${project.build.finalName}.jar</hazelcast.shaded.jar>
+                        <jackson.expected.version>${jackson.version}</jackson.expected.version>
+                    </systemPropertyVariables>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals><goal>integration-test</goal><goal>verify</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -172,7 +208,38 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <filters>
+                                <filter>
+                                    <artifact>com.hazelcast:hazelcast</artifact>
+                                    <excludes>
+                                        <!-- Remove upstream embedded implementations, their SPIs and version metadata.
+                                             Jackson 2 has no Hazelcast callers; Jackson 3 callers are rewired below. -->
+                                        <exclude>com/hazelcast/shaded/com/fasterxml/jackson/**</exclude>
+                                        <exclude>com/hazelcast/shaded/tools/jackson/**</exclude>
+                                        <exclude>META-INF/versions/*/com/hazelcast/shaded/com/fasterxml/jackson/**</exclude>
+                                        <exclude>META-INF/versions/*/com/hazelcast/shaded/tools/jackson/**</exclude>
+                                        <exclude>META-INF/maven/com.fasterxml.jackson.core/jackson-core/**</exclude>
+                                        <exclude>META-INF/maven/com.fasterxml.jackson.core/jackson-databind/**</exclude>
+                                        <exclude>META-INF/maven/tools.jackson.core/**</exclude>
+                                        <exclude>META-INF/maven/tools.jackson.jr/**</exclude>
+                                        <exclude>META-INF/services/com.hazelcast.shaded.com.fasterxml.jackson.*</exclude>
+                                        <exclude>META-INF/services/com.hazelcast.shaded.tools.jackson.*</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
                             <relocations>
+                                <relocation>
+                                    <pattern>com.hazelcast.shaded.tools.jackson.core</pattern>
+                                    <shadedPattern>tools.jackson.core</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.hazelcast.shaded.tools.jackson.databind</pattern>
+                                    <shadedPattern>tools.jackson.databind</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>tools.jackson.jr</pattern>
+                                    <shadedPattern>com.hazelcast.shaded.tools.jackson.jr</shadedPattern>
+                                </relocation>
                                 <relocation>
                                     <pattern>com.codahale.metrics</pattern>
                                     <shadedPattern>com.hazelcast.shaded.metrics</shadedPattern>
@@ -181,6 +248,8 @@
                             <artifactSet>
                                 <includes>
                                     <include>com.hazelcast:*</include>
+                                    <include>tools.jackson.jr:jackson-jr-objects</include>
+                                    <include>tools.jackson.jr:jackson-jr-annotation-support</include>
                                     <include>ch.qos.reload4j:*</include>
                                     <include>info.picocli:*</include>
                                     <include>org.jline:*</include>

@@ -44,7 +44,7 @@ GuicedEE modular version (recommended for most libraries):
 <dependency>
     <groupId>com.guicedee.modules.services</groupId>
     <artifactId>library-name</artifactId>
-    <version>2.4.0</version>
+    <version>2.4.1</version>
 </dependency>
 ```
 

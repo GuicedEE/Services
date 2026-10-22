@@ -1,6 +1,9 @@
 open module com.hazelcast.all {
     exports com.hazelcast.cache;
 	requires transitive java.logging;
+    requires tools.jackson.core;
+    requires tools.jackson.databind;
+    requires com.fasterxml.jackson.annotation;
 	requires transitive cache.api;
 	
 	requires java.transaction.xa;
@@ -122,8 +125,7 @@ open module com.hazelcast.all {
 					;
 	
 	
-	uses com.hazelcast.shaded.com.fasterxml.jackson.core.JsonFactory;
-	provides com.hazelcast.shaded.com.fasterxml.jackson.core.JsonFactory with com.hazelcast.shaded.com.fasterxml.jackson.core.JsonFactory;
+
 	
 	
 	uses com.hazelcast.spi.discovery.DiscoveryStrategyFactory;
