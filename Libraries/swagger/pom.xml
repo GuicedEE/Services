@@ -16,10 +16,24 @@
         <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
     </properties>
     <url>https://guicedee.com</url>
+    <!-- Official Swagger Core 3 builds while the final Jackson 3 release is pending.
+         https://github.com/swagger-api/swagger-core/issues/4991 -->
+    <repositories>
+        <repository>
+            <id>sonatype-central-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.classgraph</groupId>
+            <artifactId>classgraph</artifactId>
         </dependency>
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
@@ -36,13 +50,8 @@
         </dependency>
         <!-- Swagger runtime dependencies -->
         <dependency>
-            <groupId>io.github.vpelikh</groupId>
-            <artifactId>swagger-jaxrs2-jakarta</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-rest</artifactId>
             <optional>true</optional>
         </dependency>
         <!-- SnakeYAML Engine backs Jackson 3's jackson-dataformat-yaml (org.snakeyaml.engine.v2).
@@ -90,8 +99,7 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>io.github.vpelikh:*:*</include>
-                                    <include>org.yaml:snakeyaml:*</include>
+                                    <include>io.swagger.core.v3:*:*</include>
                                     <include>org.snakeyaml:snakeyaml-engine:*</include>
                                     <include>tools.jackson.jakarta.rs:jackson-jakarta-rs-yaml-provider</include>
                                     <include>tools.jackson.dataformat:jackson-dataformat-yaml</include>

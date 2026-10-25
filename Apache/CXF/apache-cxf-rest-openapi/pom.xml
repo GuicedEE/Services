@@ -35,6 +35,13 @@
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
             <optional>true</optional>
+            <exclusions>
+                <!-- The named Swagger wrapper supplies the official Jackson 3 runtime. -->
+                <exclusion>
+                    <groupId>io.swagger.core.v3</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -148,6 +155,16 @@
                                 </includes>
                             </artifactSet>
                             <relocations>
+                                <!-- CXF 4.2 still uses the pre-3.0 Swagger REST names.
+                                     Rewrite its bytecode and sources together with the SPI. -->
+                                <relocation>
+                                    <pattern>io.swagger.v3.jaxrs2.integration.JaxrsOpenApiContextBuilder</pattern>
+                                    <shadedPattern>io.swagger.v3.rest.integration.RestOpenApiContextBuilder</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>io.swagger.v3.jaxrs2</pattern>
+                                    <shadedPattern>io.swagger.v3.rest</shadedPattern>
+                                </relocation>
                                 <relocation>
                                     <pattern>schemas</pattern>
                                     <shadedPattern>schemas.openapi</shadedPattern>

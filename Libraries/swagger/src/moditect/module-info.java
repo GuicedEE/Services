@@ -25,10 +25,10 @@ module com.guicedee.modules.services.openapi {
 	exports tools.jackson.jakarta.rs.yaml;
 	opens tools.jackson.jakarta.rs.yaml;
 
-	exports io.swagger.v3.jaxrs2.integration;
+	exports io.swagger.v3.rest.integration;
 	exports io.swagger.v3.oas.integration;
 	exports io.swagger.v3.oas.models;
-	exports io.swagger.v3.jaxrs2.integration.resources;
+	exports io.swagger.v3.rest.integration.resources;
 
 	exports io.swagger.v3.oas.annotations;
 	exports io.swagger.v3.oas.annotations.media;
@@ -42,7 +42,7 @@ module com.guicedee.modules.services.openapi {
 	exports io.swagger.v3.oas.annotations.security;
 	exports io.swagger.v3.oas.models.tags;
 
-	exports io.swagger.v3.jaxrs2.ext;
+	exports io.swagger.v3.rest.ext;
 	exports io.swagger.v3.core.converter;
 	exports io.swagger.v3.oas.integration.api;
 
@@ -56,11 +56,11 @@ module com.guicedee.modules.services.openapi {
 	exports io.swagger.v3.oas.models.security;
 
 	exports io.swagger.v3.oas.models.parameters;
-	exports io.swagger.v3.jaxrs2;
+	exports io.swagger.v3.rest;
 	exports io.swagger.v3.core.util;
 	exports io.swagger.v3.core.jackson;
-	opens io.swagger.v3.jaxrs2.integration.resources to com.google.guice, org.apache.cxf;
-	opens io.swagger.v3.jaxrs2 to com.google.guice, org.apache.cxf;
+	opens io.swagger.v3.rest.integration.resources to com.google.guice, org.apache.cxf;
+	opens io.swagger.v3.rest to com.google.guice, org.apache.cxf;
 
 	opens io.swagger.v3.oas.integration to tools.jackson.databind;
 	opens io.swagger.v3.core.jackson to tools.jackson.databind;
@@ -90,7 +90,7 @@ module com.guicedee.modules.services.openapi {
 	opens io.swagger.v3.oas.models.security to tools.jackson.databind;
 	opens io.swagger.v3.oas.models.servers to tools.jackson.databind;
 
-	uses io.swagger.v3.jaxrs2.ext.OpenAPIExtension;
+	uses io.swagger.v3.rest.ext.OpenAPIExtension;
 	uses io.swagger.v3.core.converter.ModelConverter;
 	uses io.swagger.v3.oas.integration.api.OpenAPIConfigBuilder;
 	
