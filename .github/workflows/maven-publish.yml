@@ -97,6 +97,7 @@ jobs:
             bcrypt:
               - 'Libraries/bcrypt/**'
             guice-core:
+              - 'Google/guice-core'
               - 'Google/guice-core/**'
             guice-assistedinject:
               - 'Google/guice-assistedinject/**'
@@ -233,7 +234,8 @@ jobs:
       - AOP
     if: ${{ !cancelled() && (needs.AOP.result == 'success' || needs.AOP.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.guice-core == 'true' || needs.detect-changes.outputs.aop == 'true') }}
     with:
-      baseDir: 'Google/guice-core/'
+      repository: 'GuicedEE/guice-core'
+      baseDir: './'
       name: 'Guice'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit

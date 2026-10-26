@@ -1,0 +1,4 @@
+[submodule "Google/guice-core"]
+	path = Google/guice-core
+	url = https://github.com/GuicedEE/guice-core.git
+	branch = master
