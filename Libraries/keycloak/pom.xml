@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0">
-    <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.1.0</modelVersion>
 
     <parent>
         <groupId>com.guicedee</groupId>
@@ -264,7 +264,7 @@
             </plugin>
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>com.guicedee.maven</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
             </plugin>
 
