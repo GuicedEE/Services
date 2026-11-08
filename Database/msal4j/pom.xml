@@ -156,6 +156,11 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
                     <additionalDependencies>
+                        <additionalDependency>
+                            <groupId>org.jetbrains</groupId>
+                            <artifactId>annotations</artifactId>
+                            <version>${jetbrains.annotations.version}</version>
+                        </additionalDependency>
                         <!-- Netty's optional compression APIs are needed for shaded Javadoc. -->
                         <additionalDependency>
                             <groupId>com.ning</groupId>
@@ -179,22 +184,22 @@
                         <additionalDependency>
                             <groupId>io.micrometer</groupId>
                             <artifactId>micrometer-core</artifactId>
-                            <version>1.14.0</version>
+                            <version>1.17.2</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>io.micrometer</groupId>
                             <artifactId>micrometer-commons</artifactId>
-                            <version>1.14.0</version>
+                            <version>1.17.2</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>io.micrometer</groupId>
                             <artifactId>micrometer-observation</artifactId>
-                            <version>1.14.0</version>
+                            <version>1.17.2</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>io.micrometer</groupId>
                             <artifactId>micrometer-tracing</artifactId>
-                            <version>1.4.0</version>
+                            <version>1.7.2</version>
                         </additionalDependency>
                         <additionalDependency>
                             <groupId>io.netty.incubator</groupId>
@@ -304,8 +309,8 @@
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>msal4j</artifactId>
-            <!-- Match the API required by Azure Identity 1.18.4. -->
-            <version>1.23.1</version>
+            <!-- Match the API required by Azure Identity 1.19.0. -->
+            <version>1.26.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
