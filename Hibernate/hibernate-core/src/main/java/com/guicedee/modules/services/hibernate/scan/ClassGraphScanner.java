@@ -1,6 +1,7 @@
 package com.guicedee.modules.services.hibernate.scan;
 
 import com.guicedee.client.IGuiceContext;
+import com.guicedee.client.utils.Discovery;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.Resource;
 import org.hibernate.boot.archive.scan.spi.ClassDescriptor;
@@ -27,7 +28,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Hibernate scanner that classifies resources from the GuicedEE ClassGraph scan.
+ * Hibernate scanner that combines explicit discovery metadata with the optional ClassGraph scan.
  */
 public final class ClassGraphScanner implements Scanner
 {
@@ -55,10 +56,17 @@ public final class ClassGraphScanner implements Scanner
         Set<PackageDescriptor> packages = new LinkedHashSet<>();
         Set<MappingFileDescriptor> mappings = new LinkedHashSet<>();
 
-        var scanResult = guiceContext.getScanResult();
-        locateAnnotatedClasses(scanResult, environment, options, classes);
-        locatePackages(scanResult, environment, options, packages);
-        locateMappingFiles(scanResult, environment, options, mappings);
+        var explicit = new ExplicitPersistenceScanner(Discovery.registeredClasses(), Discovery.registeredPackages())
+                .scan(environment, options, parameters);
+        classes.addAll(explicit.getLocatedClasses());
+        packages.addAll(explicit.getLocatedPackages());
+        mappings.addAll(explicit.getLocatedMappingFiles());
+        if (!Discovery.isSpiOnly()) {
+            var scanResult = guiceContext.getScanResult();
+            locateAnnotatedClasses(scanResult, environment, options, classes);
+            locatePackages(scanResult, environment, options, packages);
+            locateMappingFiles(scanResult, environment, options, mappings);
+        }
 
         return new ScanResultValue(packages, classes, mappings);
     }
@@ -287,7 +295,7 @@ public final class ClassGraphScanner implements Scanner
         };
     }
 
-    private record ScanResultValue(
+    record ScanResultValue(
             Set<PackageDescriptor> packages,
             Set<ClassDescriptor> classes,
             Set<MappingFileDescriptor> mappings) implements ScanResult
@@ -311,7 +319,7 @@ public final class ClassGraphScanner implements Scanner
         }
     }
 
-    private record ClassDescriptorValue(String name, Categorization categorization, InputStreamAccess streamAccess)
+    record ClassDescriptorValue(String name, Categorization categorization, InputStreamAccess streamAccess)
             implements ClassDescriptor
     {
         @Override
@@ -345,7 +353,7 @@ public final class ClassGraphScanner implements Scanner
         }
     }
 
-    private record PackageDescriptorValue(String name, InputStreamAccess streamAccess) implements PackageDescriptor
+    record PackageDescriptorValue(String name, InputStreamAccess streamAccess) implements PackageDescriptor
     {
         @Override
         public boolean equals(Object object)
@@ -372,7 +380,7 @@ public final class ClassGraphScanner implements Scanner
         }
     }
 
-    private record MappingFileDescriptorValue(String name, InputStreamAccess streamAccess)
+    record MappingFileDescriptorValue(String name, InputStreamAccess streamAccess)
             implements MappingFileDescriptor
     {
         @Override

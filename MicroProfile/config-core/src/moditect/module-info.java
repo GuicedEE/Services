@@ -6,6 +6,7 @@ module io.smallrye.config.core {
 	
 	requires io.smallrye.common.classloader;
 	requires com.guicedee.client;
+    requires jakarta.annotation;
 	requires org.jboss.logging;
 	requires io.smallrye.common.constraint;
 

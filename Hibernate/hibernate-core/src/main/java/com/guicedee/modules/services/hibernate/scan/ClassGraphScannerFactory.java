@@ -6,7 +6,7 @@ import org.hibernate.boot.archive.scan.spi.ScannerFactory;
 import org.hibernate.boot.archive.spi.ArchiveDescriptorFactory;
 
 /**
- * Supplies the GuicedEE ClassGraph-backed Hibernate archive scanner.
+ * Supplies the GuicedEE Hibernate scanner for SPI and ClassGraph discovery modes.
  */
 public final class ClassGraphScannerFactory implements ScannerFactory
 {

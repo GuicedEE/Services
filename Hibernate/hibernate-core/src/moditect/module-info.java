@@ -365,6 +365,8 @@ module org.hibernate.orm.core {
 	opens org.hibernate.xsd.cfg;
 	opens org.hibernate.xsd.mapping;
 	opens org.hibernate.boot.jaxb.configuration.spi;
+	opens org.hibernate.boot.jaxb.mapping.spi to jakarta.xml.bind;
+	opens org.hibernate.boot.jaxb.hbm.spi to jakarta.xml.bind;
 
 	//opens org.hibernate.jpa.boot.internal to tools.jackson.databind;
 

@@ -1,0 +1,186 @@
+<?xml version="1.0" ?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.1.0" xsi:schemaLocation="http://maven.apache.org/POM/4.1.0 http://maven.apache.org/xsd/maven-4.1.0.xsd">
+    <modelVersion>4.1.0</modelVersion>
+    <parent>
+        <groupId>com.guicedee</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.5.1</version>
+    </parent>
+    <groupId>com.guicedee.modules.services</groupId>
+    <artifactId>firebase-admin</artifactId>
+    <name>firebase.admin</name>
+    <version>2.5.1</version>
+    <properties>
+        <project.scm.nameUrl>/GuicedEE/Services</project.scm.nameUrl>
+    </properties>
+    <description>Grouped Firebase Admin and Google SDK JPMS module.</description>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <relocations combine.self="override">
+                                <relocation>
+                                    <pattern>io</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.io</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org</pattern>
+                                    <excludes>
+                                        <!-- Native-image hosted APIs are supplied by the compiler, not shaded dependencies. -->
+                                        <exclude>org.graalvm.**</exclude>
+                                        <!-- JGSS is a JDK API; references must retain the platform package. -->
+                                        <exclude>org.ietf.**</exclude>
+                                        <!-- Conscrypt's JNI library looks up these original Java class names. -->
+                                        <exclude>org.conscrypt.**</exclude>
+                                        <exclude>org.w3c.**</exclude>
+                                        <exclude>org.xml.**</exclude>
+                                    </excludes>
+                                    <shadedPattern>com.google.firebase.internal.shaded.org</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.fasterxml</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.com.fasterxml</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.google.common</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.com.google.common</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.google.thirdparty</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.com.google.thirdparty</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.google.gson</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.com.google.gson</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.google.errorprone</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.com.google.errorprone</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.google.j2objc</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.com.google.j2objc</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.google.re2j</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.com.google.re2j</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.annotation</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.javax.annotation</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.sun</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.com.sun</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.aayushatharva</pattern>
+                                    <shadedPattern>com.google.firebase.internal.shaded.com.aayushatharva</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <artifactSet>
+                                <includes>
+                                    <include>*:*</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>org.projectlombok:*</exclude>
+                                    <exclude>org.junit*:*</exclude>
+                                    <exclude>org.apiguardian:*</exclude>
+                                    <exclude>org.opentest4j:*</exclude>
+                                    <exclude>io.projectreactor.tools:*</exclude>
+                                </excludes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>reset-shaded-documentation</id>
+                        <phase>initialize</phase>
+                        <goals><goal>run</goal></goals>
+                        <configuration>
+                            <!-- A wrapper has no own sources: never feed a previous shaded
+                                 source archive back into the next shade execution. -->
+                            <target>
+                                <delete file="${project.build.directory}/${project.build.finalName}-sources.jar"/>
+                                <delete file="${project.build.directory}/${project.build.finalName}-shaded-sources.jar"/>
+                                <delete file="${project.build.directory}/original-${project.build.finalName}-sources.jar"/>
+                                <delete dir="${project.build.directory}/source-output"/>
+                                <delete dir="${project.build.directory}/reports/apidocs"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.guicedee.maven</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.coderplus.maven.plugins</groupId>
+                <artifactId>copy-rename-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>javadoc</id>
+                        <configuration>
+                            <!-- Document the Firebase Admin API against this build's binary.
+                                 Bundled implementation sources are not a compilable source project. -->
+                            <sourceFileIncludes><include>com/google/firebase/**/*.java</include></sourceFileIncludes>
+                            <sourceFileExcludes><exclude>com/google/firebase/internal/shaded/**</exclude></sourceFileExcludes>
+                            <offlineLinks combine.self="override"/>
+                            <additionalOptions combine.self="override">
+                                <additionalOption>-Xdoclint:none</additionalOption>
+                                <additionalOption>--class-path</additionalOption>
+                                <!-- Javadoc executes in target/reports/apidocs; relative paths also
+                                     avoid Windows backslash escaping in its argument file. -->
+                                <additionalOption>../../${project.build.finalName}.jar</additionalOption>
+                                <additionalOption>--source-path</additionalOption>
+                                <additionalOption>../../javadoc-empty-sourcepath</additionalOption>
+                            </additionalOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <url>https://guicedee.com</url>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.guicedee</groupId>
+                <artifactId>standalone-bom</artifactId>
+                <version>${guicedee.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

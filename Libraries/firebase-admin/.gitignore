@@ -1,0 +1,4 @@
+/target/
+/flatter.pom
+/dependency-reduced-pom.xml
+/.flattened-pom.xml

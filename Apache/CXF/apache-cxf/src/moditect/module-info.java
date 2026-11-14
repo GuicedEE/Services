@@ -1,9 +1,6 @@
 module org.apache.cxf {
 
 	requires transitive java.logging;
-	requires transitive tools.jackson.databind;
-//	requires transitive tools.jackson.jakarta.rs.json;
-//	requires transitive tools.jackson.jakarta.rs.xml;
 	requires static jakarta.servlet;
 
 	requires static org.apache.commons.io;

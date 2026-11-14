@@ -10,6 +10,19 @@ A collection of popular third-party libraries repackaged with full **JPMS `modul
 
 Each service module provides proper `exports`, `requires`, `opens`, and `provides` directives, allowing libraries that ship as automatic or unnamed modules to work seamlessly on the module path alongside the rest of the GuicedEE ecosystem.
 
+## Upcoming in 2.6.0
+
+New wrappers are prepared for the next release; they are not yet announced as published 2.6.0 artifacts. All use `com.guicedee.modules.services` and BOM-managed versions.
+
+| Artifact | JPMS module | Documentation |
+|---|---|---|
+| `firebase-admin` | `firebase.admin` | [Firebase Admin and grouped Google SDKs](Libraries/firebase-admin/README.md) |
+| `commercetools` | `commercetools.sdk.java.api` | [Commerce API and GraphQL client](Libraries/commercetools/README.md) |
+| `zstd-jni` | `com.github.luben.zstd_jni` | [Descriptor correction with native resources preserved](Libraries/zstd-jni/README.md) |
+| `okio` | `okio` | [Explicit Okio module](Libraries/okio/README.md) |
+
+Commercetools now shares modular Netty, Bouncy Castle, Javassist, Zstd, logging, Jackson 3 and other supporting libraries. Remaining automatic dependencies stay grouped. Firebase and Commercetools can be used independently. See the [2.6.0 release notes](../RELEASE-2.6.0.md) for scope and validation.
+
 ## 📁 Module Layout
 
 | Category | Modules | Description |

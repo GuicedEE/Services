@@ -1,8 +1,10 @@
 package io.smallrye.config;
 
 import static io.smallrye.common.classloader.ClassPathUtils.consumeAsPath;
+import static io.smallrye.common.classloader.ClassPathUtils.consumeAsPaths;
 
 import com.guicedee.client.IGuiceContext;
+import com.guicedee.client.utils.Discovery;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -146,6 +148,17 @@ public abstract class AbstractLocationConfigSourceLoader {
     }
 
     protected List<ConfigSource> tryClassPath(final URI uri, final int ordinal, final ClassLoader classLoader) {
+        if (Discovery.isSpiOnly()) {
+            ClassLoader resourceLoader = classLoader != null ? classLoader : SecuritySupport.getContextClassLoader();
+            List<ConfigSource> sources = new ArrayList<>();
+            try {
+                // Resolve the requested resource only; pair each profile with its own base location.
+                consumeAsPaths(resourceLoader, uri.getPath(), new ConfigSourceClassPathConsumer(resourceLoader, uri, ordinal, sources));
+            } catch (IOException failure) {
+                throw ConfigMessages.msg.failedToLoadResource(failure, uri.toString());
+            }
+            return sources;
+        }
         return tryClassGraph(uri, ordinal, IGuiceContext.instance().getScanResult());
     }
 
