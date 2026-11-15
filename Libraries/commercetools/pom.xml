@@ -18,6 +18,17 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals><goal>jar-no-fork</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>${maven.dependency.version}</version>
                 <executions>
@@ -45,6 +56,24 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <filters combine.children="append">
+                                <!-- Keep our source-compatible mapper discovery changes when shading. -->
+                                <filter>
+                                    <artifact>com.commercetools.sdk:commercetools-sdk-java-api</artifact>
+                                    <excludes>
+                                        <exclude>com/commercetools/api/json/ApiModule.class</exclude>
+                                        <exclude>com/commercetools/api/json/ApiModule.java</exclude>
+                                    </excludes>
+                                </filter>
+                                <filter>
+                                    <artifact>com.commercetools.sdk:rmf-java-base</artifact>
+                                    <excludes>
+                                        <exclude>io/vrap/rmf/base/client/utils/json/JsonUtils*</exclude>
+                                        <exclude>io/vrap/rmf/base/client/utils/json/modules/SubTypeModule.class</exclude>
+                                        <exclude>io/vrap/rmf/base/client/utils/json/modules/SubTypeModule.java</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
                             <relocations combine.self="override">
                                 <relocation>
                                     <pattern>org</pattern>
@@ -164,8 +193,8 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <!-- A wrapper has no own sources: never feed a previous shaded
-                                 source archive back into the next shade execution. -->
+                            <!-- Never feed a previous shaded source archive back into
+                                 the next shade execution. Own sources are rebuilt below. -->
                             <target>
                                 <delete file="${project.build.directory}/${project.build.finalName}-sources.jar"/>
                                 <delete file="${project.build.directory}/${project.build.finalName}-shaded-sources.jar"/>
@@ -249,6 +278,11 @@
     </build>
     <url>https://guicedee.com</url>
     <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.commercetools.sdk</groupId>
             <artifactId>commercetools-sdk-java-api</artifactId>

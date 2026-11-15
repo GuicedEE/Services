@@ -41,3 +41,26 @@ Java Money/Moneta and the modular Reactive Streams wrapper. Moneta's JPMS
 requirement on OkHttp is supplied explicitly; Okio uses a small modular wrapper.
 SLF4J now resolves the application's logging provider. No Jackson 2 core or
 databind is part of this wrapper's resolved dependency graph.
+
+## Mapper discovery
+
+The SDK's API mixins and subtype module scan the same package. This wrapper
+shares that Reflections index only while a single `JsonUtils.createObjectMapper`
+call runs. It retains both default scanners, inherited types, application
+extensions, service providers and module options. The index is discarded on
+success or failure; separate threads, context class loaders and nested mapper
+construction have independent scopes. There is no trained or persistent cache.
+
+To request the upstream independent scans, return `"false"` for
+`ModelDiscovery.REUSE_OPTION` (`guicedee.reuseModelDiscovery`) from the SDK's
+`ModuleOptions`. Other options pass to providers unchanged.
+
+The three adapted SDK source files retain the 20.4.0 public API. When updating
+the managed upstream SDK version, review their upstream changes and run the
+discovery parity tests before packaging. The shade filters exclude only those
+replaced upstream classes; the JPMS descriptor and service registrations remain.
+
+The packaged-JAR checks cover named modules and application extensions. The
+upstream Reflections scanner reports zero URLs in the benchmark's jlink image;
+its passing business-workload checks do not prove complete SDK mixin/subtype
+discovery in a linked image. Scoped reuse does not fix that separate limitation.

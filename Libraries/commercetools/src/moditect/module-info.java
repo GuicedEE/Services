@@ -17,8 +17,9 @@ open module commercetools.sdk.java.api {
     requires transitive io.netty.transport;
     requires transitive io.netty.transport.classes.epoll;
     requires transitive io.netty.transport.classes.kqueue;
-    requires transitive io.netty.transport.epoll.linux.x86_64;
-    requires transitive io.netty.transport.kqueue.osx.x86_64;
+    // Native platform resources have runtime scope; they expose no SDK API.
+    requires static io.netty.transport.epoll.linux.x86_64;
+    requires static io.netty.transport.kqueue.osx.x86_64;
     requires transitive io.netty.transport.unix.common;
     requires transitive jakarta.annotation;
     requires transitive java.money;
