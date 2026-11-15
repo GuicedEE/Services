@@ -6,6 +6,9 @@ import org.hibernate.boot.archive.spi.InputStreamAccess;
 
 import java.io.*;
 import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import java.util.*;
 
 /** Reads explicitly registered model metadata and named mapping resources without enumerating archives. */
@@ -149,6 +152,13 @@ final class ExplicitPersistenceScanner implements org.hibernate.boot.archive.sca
     }
 
     private static InputStream open(URL url) throws IOException {
+        if ("jrt".equals(url.getProtocol())) {
+            // The jrt URL handler reports an absent optional resource as a generic IOException.
+            // Its filesystem provider distinguishes absence from real I/O errors, as file/jar URLs do.
+            try { return Files.newInputStream(Path.of(url.toURI())); }
+            catch (NoSuchFileException absent) { throw new FileNotFoundException(url.toExternalForm()); }
+            catch (URISyntaxException invalid) { throw new IOException("Invalid runtime-image resource " + url, invalid); }
+        }
         URLConnection connection = url.openConnection();
         connection.setUseCaches(false);
         return connection.getInputStream();

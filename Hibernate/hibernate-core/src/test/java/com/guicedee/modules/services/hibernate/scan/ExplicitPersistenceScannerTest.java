@@ -75,6 +75,18 @@ class ExplicitPersistenceScannerTest {
             if (previous == null) System.clearProperty("GUICEDEE_DISCOVERY_MODE"); else System.setProperty("GUICEDEE_DISCOVERY_MODE", previous);
         }
     }
+    @Test void missingOptionalMappingInRuntimeImageIsNotAnIoFailure() throws Exception {
+        var result = scan(environment(java.net.URI.create("jrt:/java.base").toURL(), List.of(), List.of(), List.of()), options(false, false));
+        assertTrue(result.getLocatedMappingFiles().isEmpty());
+    }
+    @Test void existingRuntimeImageResourceRemainsReadable() throws Exception {
+        String resource = "java/lang/Object.class";
+        var result = scan(environment(java.net.URI.create("jrt:/java.base").toURL(), List.of(), List.of(), List.of(resource)), options(false, false));
+        assertEquals(1, result.getLocatedMappingFiles().size());
+        var mapping = result.getLocatedMappingFiles().iterator().next();
+        assertEquals(resource, mapping.getName());
+        try (var input = mapping.getStreamAccess().accessInputStream()) { assertEquals(0xCA, input.read()); }
+    }
     private static Set<String> names(ScanResult result) { return result.getLocatedClasses().stream().map(ClassDescriptor::getName).collect(java.util.stream.Collectors.toSet()); }
     private static ScanEnvironment environment(URL root, List<URL> others, List<String> classes, List<String> mappings) {
         return new ScanEnvironment() {

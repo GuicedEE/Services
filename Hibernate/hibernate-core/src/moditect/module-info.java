@@ -496,6 +496,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate.tool.schema.extract.spi to org.hibernate.reactive;
 	exports org.hibernate.tool.schema.extract.internal to org.hibernate.reactive;
 	exports org.hibernate.generator.values to org.hibernate.reactive;
+	exports org.hibernate.generator.values.internal to org.hibernate.reactive;
 	exports org.hibernate.engine.jdbc.mutation to org.hibernate.reactive;
 	exports org.hibernate.engine.jdbc.mutation.internal to org.hibernate.reactive;
 	exports org.hibernate.engine.jdbc.mutation.group to org.hibernate.reactive;
