@@ -14,14 +14,13 @@ import org.hibernate.metamodel.internal.AbstractEntityInstantiatorPojo;
 import org.hibernate.persister.entity.EntityPersister;
 import org.hibernate.type.descriptor.java.JavaType;
 
-import java.util.Objects;
 
 /**
  * GuicedEE entity instantiator used when Hibernate enables its reflection optimizer.
  */
 public class EntityInstantiatorPojoOptimized extends AbstractEntityInstantiatorPojo
 {
-    private final IGuiceContext guiceContext;
+    private final GuiceEntityProvider entityProvider;
 
     public EntityInstantiatorPojoOptimized(
             EntityPersister persister,
@@ -40,7 +39,7 @@ public class EntityInstantiatorPojoOptimized extends AbstractEntityInstantiatorP
             IGuiceContext guiceContext)
     {
         super(persister, persistentClass, javaType);
-        this.guiceContext = Objects.requireNonNull(guiceContext, "guiceContext");
+        entityProvider = new GuiceEntityProvider(guiceContext, getMappedPojoClass());
     }
 
     @Override
@@ -52,7 +51,7 @@ public class EntityInstantiatorPojoOptimized extends AbstractEntityInstantiatorP
         }
         try
         {
-            return applyInterception(guiceContext.inject().getInstance(getMappedPojoClass()));
+            return applyInterception(entityProvider.get());
         }
         catch (Exception e)
         {

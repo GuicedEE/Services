@@ -9,17 +9,13 @@ package org.hibernate.metamodel.internal.shade;
 import com.guicedee.client.IGuiceContext;
 import org.hibernate.InstantiationException;
 import org.hibernate.PropertyNotFoundException;
-import org.hibernate.bytecode.enhance.spi.interceptor.LazyAttributeLoadingInterceptor;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.metamodel.internal.AbstractEntityInstantiatorPojo;
 import org.hibernate.persister.entity.EntityPersister;
 import org.hibernate.type.descriptor.java.JavaType;
 
 import java.lang.reflect.Constructor;
-import java.util.Objects;
 
-import static org.hibernate.engine.internal.ManagedTypeHelper.asPersistentAttributeInterceptable;
-import static org.hibernate.engine.internal.ManagedTypeHelper.isPersistentAttributeInterceptableType;
 import static org.hibernate.internal.CoreMessageLogger.CORE_LOGGER;
 import static org.hibernate.internal.util.ReflectHelper.getDefaultConstructor;
 
@@ -28,11 +24,8 @@ import static org.hibernate.internal.util.ReflectHelper.getDefaultConstructor;
  */
 public class EntityInstantiatorPojoStandard extends AbstractEntityInstantiatorPojo
 {
-    private final Class<?> proxyInterface;
-    private final boolean applyBytecodeInterception;
-    private final LazyAttributeLoadingInterceptor.EntityRelatedState loadingInterceptorState;
     private final Constructor<?> constructor;
-    private final IGuiceContext guiceContext;
+    private final GuiceEntityProvider entityProvider;
 
     public EntityInstantiatorPojoStandard(
             EntityPersister persister,
@@ -49,20 +42,8 @@ public class EntityInstantiatorPojoStandard extends AbstractEntityInstantiatorPo
             IGuiceContext guiceContext)
     {
         super(persister, persistentClass, javaType);
-        this.guiceContext = Objects.requireNonNull(guiceContext, "guiceContext");
-        proxyInterface = persistentClass.getProxyInterface();
+        entityProvider = new GuiceEntityProvider(guiceContext, getMappedPojoClass());
         constructor = isAbstract() ? null : resolveConstructor(getMappedPojoClass());
-        applyBytecodeInterception = isPersistentAttributeInterceptableType(persistentClass.getMappedClass());
-        if (applyBytecodeInterception)
-        {
-            loadingInterceptorState = new LazyAttributeLoadingInterceptor.EntityRelatedState(
-                    persister.getEntityName(),
-                    persister.getBytecodeEnhancementMetadata().getLazyAttributesMetadata().getLazyAttributeNames());
-        }
-        else
-        {
-            loadingInterceptorState = null;
-        }
     }
 
     protected static Constructor<?> resolveConstructor(Class<?> mappedPojoClass)
@@ -85,25 +66,6 @@ public class EntityInstantiatorPojoStandard extends AbstractEntityInstantiatorPo
     }
 
     @Override
-    protected Object applyInterception(Object entity)
-    {
-        if (applyBytecodeInterception)
-        {
-            asPersistentAttributeInterceptable(entity).$$_hibernate_setInterceptor(new LazyAttributeLoadingInterceptor(
-                    loadingInterceptorState,
-                    null,
-                    null));
-        }
-        return entity;
-    }
-
-    @Override
-    public boolean isInstance(Object object)
-    {
-        return super.isInstance(object) || proxyInterface != null && proxyInterface.isInstance(object);
-    }
-
-    @Override
     public Object instantiate()
     {
         if (isAbstract())
@@ -116,7 +78,7 @@ public class EntityInstantiatorPojoStandard extends AbstractEntityInstantiatorPo
         }
         try
         {
-            return applyInterception(guiceContext.inject().getInstance(getMappedPojoClass()));
+            return applyInterception(entityProvider.get());
         }
         catch (Exception e)
         {

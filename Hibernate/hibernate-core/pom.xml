@@ -98,6 +98,11 @@
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
@@ -137,6 +142,10 @@
                                 <relocation>
                                     <pattern>org.hibernate.boot.archive.internal.shade</pattern>
                                     <shadedPattern>org.hibernate.boot.archive.internal</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.hibernate.boot.model.source.internal.hbm.shade</pattern>
+                                    <shadedPattern>org.hibernate.boot.model.source.internal.hbm</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.hibernate.metamodel.internal.shade</pattern>
