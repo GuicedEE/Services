@@ -14,6 +14,16 @@
     <description>JPMS Module-Info's for Hibernate Reactive</description>
     <dependencies>
         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.guicedee.modules.services</groupId>
             <artifactId>hibernate-core</artifactId>
         </dependency>
@@ -66,6 +76,12 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <relocations combine.children="append">
+                                <relocation>
+                                    <pattern>org.hibernate.reactive.provider.impl.shade</pattern>
+                                    <shadedPattern>org.hibernate.reactive.provider.impl</shadedPattern>
+                                </relocation>
+                            </relocations>
                             <artifactSet>
                                 <includes>
                                     <include>org.hibernate.reactive:hibernate-reactive-core:*</include>

@@ -141,6 +141,10 @@
                             </filters>
                             <relocations>
                                 <relocation>
+                                    <pattern>org.hibernate.loader.ast.internal.shade</pattern>
+                                    <shadedPattern>org.hibernate.loader.ast.internal</shadedPattern>
+                                </relocation>
+                                <relocation>
                                     <pattern>org.hibernate.boot.models.internal.shade</pattern>
                                     <shadedPattern>org.hibernate.boot.models.internal</shadedPattern>
                                 </relocation>
