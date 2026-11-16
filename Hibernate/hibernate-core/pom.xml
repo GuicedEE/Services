@@ -136,6 +136,10 @@
                             </filters>
                             <relocations>
                                 <relocation>
+                                    <pattern>org.hibernate.boot.registry.classloading.internal.shade</pattern>
+                                    <shadedPattern>org.hibernate.boot.registry.classloading.internal</shadedPattern>
+                                </relocation>
+                                <relocation>
                                     <pattern>org.antlr</pattern>
                                     <shadedPattern>org.hibernate.relocated.antlr</shadedPattern>
                                 </relocation>
