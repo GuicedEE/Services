@@ -61,8 +61,23 @@
                 <artifactId>copy-rename-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
+                <groupId>org.jetbrains.dokka</groupId>
+                <artifactId>dokka-maven-plugin</artifactId>
+                <version>2.2.0</version>
+                <configuration>
+                    <jdkVersion>25</jdkVersion>
+                    <skip>${maven.javadoc.skip}</skip>
+                    <sourceDirectories>
+                        <sourceDirectory>${project.build.directory}/source-output</sourceDirectory>
+                    </sourceDirectories>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>kotlin-api-documentation</id>
+                        <phase>verify</phase>
+                        <goals><goal>javadocJar</goal></goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

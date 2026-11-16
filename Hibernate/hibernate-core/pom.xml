@@ -19,6 +19,11 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.hibernate.models</groupId>
+            <artifactId>hibernate-models</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>com.guicedee</groupId>
             <artifactId>client</artifactId>
         </dependency>
@@ -135,6 +140,10 @@
                                 </filter>
                             </filters>
                             <relocations>
+                                <relocation>
+                                    <pattern>org.hibernate.boot.models.internal.shade</pattern>
+                                    <shadedPattern>org.hibernate.boot.models.internal</shadedPattern>
+                                </relocation>
                                 <relocation>
                                     <pattern>org.hibernate.boot.registry.classloading.internal.shade</pattern>
                                     <shadedPattern>org.hibernate.boot.registry.classloading.internal</shadedPattern>
