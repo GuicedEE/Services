@@ -10,6 +10,11 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.security.CodeSource;
+import java.security.ProtectionDomain;
+import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExplicitPersistenceScannerTest {
@@ -21,6 +26,9 @@ class ExplicitPersistenceScannerTest {
         public String convertToDatabaseColumn(String value) { return value; }
         public String convertToEntityAttribute(String value) { return value; }
     }
+    @Retention(RetentionPolicy.RUNTIME) @interface OtherMetadata { Class<?> value(); }
+    static class AnnotationDependency { }
+    @Entity @OtherMetadata(AnnotationDependency.class) static class AnnotatedModel { @Id Long id; }
     static void throwIfInitialized() { throw new AssertionError("Discovery initialized the entity"); }
     private final List<Class<?>> models = List.of(Model.class, Embedded.class, Base.class, Conversion.class, String.class, Model.class);
     private URL root() { return getClass().getProtectionDomain().getCodeSource().getLocation(); }
@@ -86,6 +94,42 @@ class ExplicitPersistenceScannerTest {
         var mapping = result.getLocatedMappingFiles().iterator().next();
         assertEquals(resource, mapping.getName());
         try (var input = mapping.getStreamAccess().accessInputStream()) { assertEquals(0xCA, input.read()); }
+    }
+    @Test void excludedAndForeignClassesDoNotResolveAnnotationDependencies() throws Exception {
+        String modelName = AnnotatedModel.class.getName();
+        String annotationName = OtherMetadata.class.getName();
+        URL foreignRoot = directory.toUri().toURL();
+        byte[] bytecode;
+        try (var input = AnnotatedModel.class.getResourceAsStream("/" + modelName.replace('.', '/') + ".class")) {
+            bytecode = input.readAllBytes();
+        }
+        var annotationLoads = new AtomicInteger();
+        class ModelLoader extends ClassLoader {
+            ModelLoader() { super(ExplicitPersistenceScannerTest.class.getClassLoader()); }
+            Class<?> model() {
+                return defineClass(modelName, bytecode, 0, bytecode.length,
+                        new ProtectionDomain(new CodeSource(foreignRoot, (java.security.cert.Certificate[]) null), null));
+            }
+            @Override protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
+                if (name.equals(annotationName)) annotationLoads.incrementAndGet();
+                return super.loadClass(name, resolve);
+            }
+        }
+        Class<?> model = new ModelLoader().model();
+        var scanner = new ExplicitPersistenceScanner(List.of(model), List.of());
+        assertTrue(scanner.scan(environment(root(), List.of(), List.of(), List.of()), options(true, true), new ScanParameters() {}).getLocatedClasses().isEmpty());
+        assertTrue(scanner.scan(environment(foreignRoot, List.of(), List.of(), List.of()), options(false, false), new ScanParameters() {}).getLocatedClasses().isEmpty());
+        assertEquals(0, annotationLoads.get(), "Excluded classes must not resolve annotation dependencies");
+        assertEquals(Set.of(modelName), names(scanner.scan(environment(foreignRoot, List.of(), List.of(), List.of()), options(true, false), new ScanParameters() {})));
+        assertTrue(annotationLoads.get() > 0, "The probe must observe annotation loading for an eligible model");
+    }
+
+    @Test void scannerResultsRemainSpecificToEachPersistenceUnit() throws Exception {
+        var scanner = new ExplicitPersistenceScanner(models, List.of(getClass().getPackage()));
+        assertEquals(Set.of(Model.class.getName()), names(scanner.scan(
+                environment(root(), List.of(), List.of(Model.class.getName()), List.of()), options(false, false), new ScanParameters() {})));
+        assertEquals(Set.of(Conversion.class.getName()), names(scanner.scan(
+                environment(root(), List.of(), List.of(Conversion.class.getName()), List.of()), options(false, false), new ScanParameters() {})));
     }
     private static Set<String> names(ScanResult result) { return result.getLocatedClasses().stream().map(ClassDescriptor::getName).collect(java.util.stream.Collectors.toSet()); }
     private static ScanEnvironment environment(URL root, List<URL> others, List<String> classes, List<String> mappings) {

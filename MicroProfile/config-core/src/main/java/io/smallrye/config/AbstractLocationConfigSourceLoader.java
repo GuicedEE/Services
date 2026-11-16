@@ -1,7 +1,6 @@
 package io.smallrye.config;
 
 import static io.smallrye.common.classloader.ClassPathUtils.consumeAsPath;
-import static io.smallrye.common.classloader.ClassPathUtils.consumeAsPaths;
 
 import com.guicedee.client.IGuiceContext;
 import com.guicedee.client.utils.Discovery;
@@ -153,7 +152,17 @@ public abstract class AbstractLocationConfigSourceLoader {
             List<ConfigSource> sources = new ArrayList<>();
             try {
                 // Resolve the requested resource only; pair each profile with its own base location.
-                consumeAsPaths(resourceLoader, uri.getPath(), new ConfigSourceClassPathConsumer(resourceLoader, uri, ordinal, sources));
+                Enumeration<URL> resources = resourceLoader.getResources(uri.getPath());
+                while (resources.hasMoreElements()) {
+                    URL resource = resources.nextElement();
+                    if ("file".equals(resource.getProtocol()) || "jar".equals(resource.getProtocol())) {
+                        consumeAsPath(resource, new ConfigSourceClassPathConsumer(resourceLoader, uri, ordinal, sources));
+                    } else {
+                        // Linked modules (jrt:) and native resources are URL streams, not JAR paths.
+                        // Resolve profiles relative to this base URL to preserve source pairing.
+                        sources.addAll(tryUrlResource(URI.create(resource.toExternalForm()), ordinal));
+                    }
+                }
             } catch (IOException failure) {
                 throw ConfigMessages.msg.failedToLoadResource(failure, uri.toString());
             }

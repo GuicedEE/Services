@@ -23,23 +23,34 @@ final class ExplicitPersistenceScanner implements org.hibernate.boot.archive.sca
 
     @Override
     public ScanResult scan(ScanEnvironment environment, ScanOptions options, ScanParameters parameters) {
-        allowPersistenceUnitModules(environment);
+        List<URL> locations = locations(environment);
+        Set<URI> unitRoots = new HashSet<>();
+        locations.forEach(location -> unitRoots.add(normalized(location)));
+        URI rootLocation = environment.getRootUrl() == null ? null : normalized(environment.getRootUrl());
+        allowPersistenceUnitModules(unitRoots);
         Set<ClassDescriptor> classes = new LinkedHashSet<>();
         Set<PackageDescriptor> packages = new LinkedHashSet<>();
         Set<MappingFileDescriptor> mappings = new LinkedHashSet<>();
-        List<String> listed = environment.getExplicitlyListedClassNames();
+        Set<String> listed = new HashSet<>(environment.getExplicitlyListedClassNames());
+        boolean detectRoot = options.canDetectUnlistedClassesInRoot();
+        boolean detectNonRoot = options.canDetectUnlistedClassesInNonRoot();
+        Map<Module, URL> namedModuleLocations = new HashMap<>();
 
         // Explicit persistence.xml classes are processed by Hibernate itself, including XML-only models.
         // Discovery registrations supplement that list under the unit's exclude-unlisted-classes rules.
-        for (Class<?> type : registeredClasses) {
+        for (Class<?> type : new LinkedHashSet<>(registeredClasses)) {
+            boolean explicitlyListed = listed.contains(type.getName());
+            if (!explicitlyListed && !detectRoot && !detectNonRoot) continue;
+            URL origin = type.getModule().isNamed()
+                    ? namedModuleLocations.computeIfAbsent(type.getModule(), ignored -> origin(type)) : origin(type);
+            URI source = origin == null ? null : normalized(origin);
+            boolean root = Objects.equals(source, rootLocation) && source != null;
+            if (source == null || !unitRoots.contains(source)
+                    || !(explicitlyListed || (root ? detectRoot : detectNonRoot))) continue;
+            // Do not reflect on unrelated units or excluded application classes. This can
+            // otherwise load annotation types and their dependencies that this unit never uses.
             ClassDescriptor.Categorization category = category(type);
             if (category == null) continue;
-            URL origin = origin(type);
-            boolean root = sameLocation(origin, environment.getRootUrl());
-            boolean nonRoot = environment.getNonRootUrls() != null
-                    && environment.getNonRootUrls().stream().anyMatch(url -> sameLocation(origin, url));
-            if (!(root || nonRoot) || !(listed.contains(type.getName())
-                    || (root ? options.canDetectUnlistedClassesInRoot() : options.canDetectUnlistedClassesInNonRoot()))) continue;
             String path = type.getName().replace('.', '/') + ".class";
             URL resource = type.getResource("/" + path);
             if (resource == null) throw new ArchiveException("Cannot read registered persistence class " + type.getName());
@@ -49,17 +60,17 @@ final class ExplicitPersistenceScanner implements org.hibernate.boot.archive.sca
         Set<String> packageNames = new LinkedHashSet<>();
         registeredPackages.forEach(pkg -> packageNames.add(pkg.getName()));
         registeredClasses.forEach(type -> packageNames.add(type.getPackageName()));
-        for (URL location : locations(environment)) {
-            boolean root = sameLocation(location, environment.getRootUrl());
+        Set<String> mappingPaths = new LinkedHashSet<>(environment.getExplicitlyListedMappingFiles());
+        mappingPaths.add("META-INF/orm.xml");
+        for (URL location : locations) {
+            boolean root = normalized(location).equals(rootLocation);
             for (String name : packageNames) {
                 if (name.isEmpty() || !(listed.contains(name)
-                        || (root ? options.canDetectUnlistedClassesInRoot() : options.canDetectUnlistedClassesInNonRoot()))) continue;
+                        || (root ? detectRoot : detectNonRoot))) continue;
                 String path = name.replace('.', '/') + "/package-info.class";
                 URL resource = resourceAt(location, path);
                 if (resource != null) packages.add(new ClassGraphScanner.PackageDescriptorValue(name, streamAccess(resource, path)));
             }
-            Set<String> mappingPaths = new LinkedHashSet<>(environment.getExplicitlyListedMappingFiles());
-            mappingPaths.add("META-INF/orm.xml");
             for (String path : mappingPaths) {
                 if (path.equals("META-INF/orm.xml") && !root
                         && environment.getExplicitlyListedMappingFiles().contains(path)) continue;
@@ -71,33 +82,40 @@ final class ExplicitPersistenceScanner implements org.hibernate.boot.archive.sca
     }
 
     private static ClassDescriptor.Categorization category(Class<?> type) {
-        Set<String> annotations = new HashSet<>();
-        for (var annotation : type.getDeclaredAnnotations()) annotations.add(annotation.annotationType().getName());
-        if (annotations.contains("jakarta.persistence.Entity") || annotations.contains("jakarta.persistence.Embeddable")
-                || annotations.contains("jakarta.persistence.MappedSuperclass")) return ClassDescriptor.Categorization.MODEL;
-        return annotations.contains("jakarta.persistence.Converter") ? ClassDescriptor.Categorization.CONVERTER : null;
+        boolean converter = false;
+        for (var annotation : type.getDeclaredAnnotations()) {
+            String name = annotation.annotationType().getName();
+            if (name.equals("jakarta.persistence.Entity") || name.equals("jakarta.persistence.Embeddable")
+                    || name.equals("jakarta.persistence.MappedSuperclass")) return ClassDescriptor.Categorization.MODEL;
+            converter |= name.equals("jakarta.persistence.Converter");
+        }
+        return converter ? ClassDescriptor.Categorization.CONVERTER : null;
     }
 
     private static List<URL> locations(ScanEnvironment environment) {
-        Set<URL> locations = new LinkedHashSet<>();
-        if (environment.getRootUrl() != null) locations.add(environment.getRootUrl());
-        if (environment.getNonRootUrls() != null) locations.addAll(environment.getNonRootUrls());
-        return List.copyOf(locations);
+        // URL equality can perform DNS and treats file:/model.jar and jar:file:/model.jar!/
+        // as different roots. Compare normalized URIs once, keeping the root first.
+        Map<URI, URL> locations = new LinkedHashMap<>();
+        if (environment.getRootUrl() != null) locations.put(normalized(environment.getRootUrl()), environment.getRootUrl());
+        if (environment.getNonRootUrls() != null) {
+            for (URL location : environment.getNonRootUrls()) locations.putIfAbsent(normalized(location), location);
+        }
+        return List.copyOf(locations.values());
     }
 
     /** Hibernate's MethodHandles-based proxy factory needs a read edge as well as the application's opens. */
-    private void allowPersistenceUnitModules(ScanEnvironment environment) {
+    private void allowPersistenceUnitModules(Set<URI> roots) {
         Set<ModuleLayer> layers = new LinkedHashSet<>();
         addLayer(layers, ModuleLayer.boot());
         registeredClasses.forEach(type -> addLayer(layers, type.getModule().getLayer()));
         com.guicedee.client.IGuiceContext.scanRoots.forEach(type -> addLayer(layers, type.getModule().getLayer()));
-        List<URL> roots = locations(environment);
         Module hibernate = ExplicitPersistenceScanner.class.getModule();
         for (ModuleLayer layer : layers) for (Module module : layer.modules()) {
+            if (hibernate.canRead(module)) continue;
             var location = layer.configuration().findModule(module.getName()).flatMap(resolved -> resolved.reference().location());
             if (location.isEmpty()) continue;
             URI source = normalized(location.get());
-            if (roots.stream().anyMatch(root -> normalized(root).equals(source))) hibernate.addReads(module);
+            if (roots.contains(source)) hibernate.addReads(module);
         }
     }
 
@@ -117,10 +135,6 @@ final class ExplicitPersistenceScanner implements org.hibernate.boot.archive.sca
         }
         var source = type.getProtectionDomain().getCodeSource();
         return source == null ? null : source.getLocation();
-    }
-
-    private static boolean sameLocation(URL left, URL right) {
-        return left != null && right != null && normalized(left).equals(normalized(right));
     }
 
     private static URI normalized(URL url) {

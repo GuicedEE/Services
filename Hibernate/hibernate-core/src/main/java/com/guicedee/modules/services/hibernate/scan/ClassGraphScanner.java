@@ -36,6 +36,8 @@ public final class ClassGraphScanner implements Scanner
     private static final String EMBEDDABLE = "jakarta.persistence.Embeddable";
     private static final String MAPPED_SUPERCLASS = "jakarta.persistence.MappedSuperclass";
     private static final String CONVERTER = "jakarta.persistence.Converter";
+    private static final boolean DIAGNOSTICS = !com.guicedee.client.Environment
+            .getSystemPropertyOrEnvironment("GUICEDEE_DIAGNOSTICS_DIR", "").isBlank();
 
     private final IGuiceContext guiceContext;
 
@@ -52,21 +54,33 @@ public final class ClassGraphScanner implements Scanner
     @Override
     public ScanResult scan(ScanEnvironment environment, ScanOptions options, ScanParameters parameters)
     {
-        Set<ClassDescriptor> classes = new LinkedHashSet<>();
-        Set<PackageDescriptor> packages = new LinkedHashSet<>();
-        Set<MappingFileDescriptor> mappings = new LinkedHashSet<>();
+        if (!DIAGNOSTICS) return scanUnit(environment, options, parameters);
+        long start = System.nanoTime();
+        boolean success = false;
+        try {
+            ScanResult result = scanUnit(environment, options, parameters);
+            success = true;
+            return result;
+        } finally {
+            org.jboss.logging.Logger.getLogger(ClassGraphScanner.class).infof(
+                    "[PERSISTENCE-PHASE] phase=discovery-scan unit=scan-root durationNs=%d success=%s",
+                    System.nanoTime() - start, success);
+        }
+    }
 
+    private ScanResult scanUnit(ScanEnvironment environment, ScanOptions options, ScanParameters parameters)
+    {
         var explicit = new ExplicitPersistenceScanner(Discovery.registeredClasses(), Discovery.registeredPackages())
                 .scan(environment, options, parameters);
-        classes.addAll(explicit.getLocatedClasses());
-        packages.addAll(explicit.getLocatedPackages());
-        mappings.addAll(explicit.getLocatedMappingFiles());
-        if (!Discovery.isSpiOnly()) {
-            var scanResult = guiceContext.getScanResult();
-            locateAnnotatedClasses(scanResult, environment, options, classes);
-            locatePackages(scanResult, environment, options, packages);
-            locateMappingFiles(scanResult, environment, options, mappings);
-        }
+        if (Discovery.isSpiOnly()) return explicit;
+
+        Set<ClassDescriptor> classes = new LinkedHashSet<>(explicit.getLocatedClasses());
+        Set<PackageDescriptor> packages = new LinkedHashSet<>(explicit.getLocatedPackages());
+        Set<MappingFileDescriptor> mappings = new LinkedHashSet<>(explicit.getLocatedMappingFiles());
+        var scanResult = guiceContext.getScanResult();
+        locateAnnotatedClasses(scanResult, environment, options, classes);
+        locatePackages(scanResult, environment, options, packages);
+        locateMappingFiles(scanResult, environment, options, mappings);
 
         return new ScanResultValue(packages, classes, mappings);
     }

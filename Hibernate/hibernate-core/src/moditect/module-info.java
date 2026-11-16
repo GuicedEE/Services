@@ -306,7 +306,7 @@ module org.hibernate.orm.core {
 	exports org.hibernate.procedure;
 //	exports org.hibernate.procedure.spi;
 	//exports org.hibernate.procedure.internal;
-//	exports org.hibernate.property.access.spi;
+	exports org.hibernate.property.access.spi;
 	//exports org.hibernate.property.access.internal;
 /*
 	exports org.hibernate.proxy.map;
@@ -417,7 +417,7 @@ module org.hibernate.orm.core {
 
 	exports org.hibernate.jpa.internal.util to org.hibernate.reactive;
 	exports org.hibernate.boot.cfgxml.internal to org.hibernate.reactive;
-	exports org.hibernate.bytecode.internal to org.hibernate.reactive;
+	exports org.hibernate.bytecode.internal to org.hibernate.reactive, com.guicedee.persistence;
 	exports org.hibernate.engine.config.internal to org.hibernate.reactive;
 	exports org.hibernate.property.access.internal to org.hibernate.reactive;
 	exports org.hibernate.tool.schema.internal.script to org.hibernate.reactive;

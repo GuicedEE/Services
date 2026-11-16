@@ -1,4 +1,8 @@
 open module firebase.admin {
+    // Native-image adapters use these shaded Netty types in their signatures.
+    exports com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.buffer;
+    exports com.google.firebase.internal.shaded.io.grpc.netty.shaded.io.netty.util.internal.logging;
+
     uses com.google.firebase.internal.shaded.io.opentelemetry.context.ContextStorageProvider;
 
     uses com.google.cloud.grpc.GrpcTransportOptions$ExecutorFactory;
